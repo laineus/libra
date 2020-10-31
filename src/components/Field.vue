@@ -2,7 +2,7 @@
   <div>
     <component v-for="v in layers" :key="v.index" :is="v.component" :ref="v.ref" :depth="config.DEPTH[v.depth] || 0" :tilemap="field.tilemap" :layerIndex="v.index" :tileset="field.tilesets" :collision="collides" @create="layerCreate" />
     <Image v-for="v in images" :key="v.id" :ref="v.ref" :texture="`tileset/${v.key}`" :x="v.x" :y="v.y" :origin="0" @create="obj => obj.setDepth(obj.y + obj.height)" />
-    <Character ref="player" :initX="playerX" :initY="playerY" :initR="playerR" :speed="200" name="player" @create="charaCreate" />
+    <Player ref="player" :initX="playerX" :initY="playerY" :initR="playerR" @create="charaCreate" />
     <Character v-for="v in charas" :key="v.id" :ref="v.ref" :initX="v.x" :initY="v.y" :initR="v.radian" :name="v.name" :random="100" @create="charaCreate" />
     <Substance v-for="v in substances" :key="v.id" :ref="v.ref" :initX="v.x" :initY="v.y" :name="v.name" />
     <Area v-for="v in areas" :key="v.id" :x="v.x" :y="v.y" :width="v.width" :height="v.height" />
@@ -12,6 +12,7 @@
 
 <script>
 import fieldService from './modules/fieldService'
+import Player from './Player'
 import Character from './Character'
 import Substance from './Substance'
 import Area from './Area'
@@ -22,7 +23,7 @@ import setupCamera from './modules/setupCamera'
 import maps from '@/data/maps'
 import config from '@/data/config'
 export default {
-  components: { StaticTilemapLayer, DynamicTilemapLayer, Image, Character, Substance, Area, Gate },
+  components: { StaticTilemapLayer, DynamicTilemapLayer, Image, Player, Character, Substance, Area, Gate },
   props: [
     'fieldKey', 'playerX', 'playerY', 'playerR'
   ],

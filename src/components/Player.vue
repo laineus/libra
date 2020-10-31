@@ -1,5 +1,5 @@
 <template>
-  <Substance ref="substance" :initX="initX" :initY="initY" :name="name" @create="create" @preUpdate="update" />
+  <Substance ref="substance" :initX="initX" :initY="initY" name="player" @create="create" @preUpdate="update" />
 </template>
 
 <script>
@@ -12,10 +12,7 @@ export default {
   props: {
     initX: { default: 0 },
     initY: { default: 0 },
-    initR: { default: 0 },
-    name: { default: null },
-    speed: { default: 120 },
-    random: { default: null } // leave chase random null
+    initR: { default: 0 }
   },
   emits: ['create'],
   setup (props, context) {
@@ -25,13 +22,12 @@ export default {
     const object = computed(() => substance.value?.object)
     const image = computed(() => substance.value?.image)
     const following = useFollowing(object)
-    if (props.random) following.setRandomWalk(120)
     const { play: playFrameAnim } = useFrameAnimChara(object, image, props.initR)
     const create = obj => context.emit('create', obj)
     const update = obj => {
       playFrameAnim()
       if (event.state) return
-      following.walkToTargetPosition(props.speed)
+      following.walkToTargetPosition(200)
     }
     onMounted(() => {
       scene.physics.world.enable(object.value)
@@ -42,12 +38,7 @@ export default {
       create, update,
       // Following
       setTargetPosition: following.setTargetPosition,
-      clearTargetPosition: following.clearTargetPosition,
-      // Extend from Substance
-      checkable: computed(() => substance.value?.checkable),
-      distanceToPlayer: computed(() => substance.value?.distanceToPlayer),
-      execTapEvent: computed(() => substance.value?.execTapEvent),
-      setTapEvent: computed(() => substance.value?.setTapEvent)
+      clearTargetPosition: following.clearTargetPosition
     }
   }
 }
