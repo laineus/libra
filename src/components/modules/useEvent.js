@@ -9,7 +9,7 @@ export default () => {
   const exec = () => {
     if (!event.value) return
     return eventManager.exec(event.value).then(result => {
-      player.value?.following.clearTargetPosition()
+      player.value?.clearTargetPosition()
       return result
     })
   }

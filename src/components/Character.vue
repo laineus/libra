@@ -40,7 +40,9 @@ export default {
     return {
       object, image, substance,
       create, update,
-      following,
+      // Following
+      setTargetPosition: following.setTargetPosition,
+      clearTargetPosition: following.clearTargetPosition,
       // Extend from Substance
       checkable: computed(() => substance.value?.checkable),
       distanceToPlayer: computed(() => substance.value?.distanceToPlayer),
