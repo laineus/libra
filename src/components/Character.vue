@@ -5,7 +5,6 @@
 <script>
 import { computed, inject, onMounted, ref } from 'vue'
 import Substance from './Substance'
-import useRandomWalk from './modules/useRandomWalk'
 import useFollowing from './modules/useFollowing'
 import useFrameAnimChara from './modules/useFrameAnimChara'
 export default {
@@ -26,13 +25,12 @@ export default {
     const object = computed(() => substance.value?.object)
     const image = computed(() => substance.value?.image)
     const following = useFollowing(object)
-    const randomWalk = props.random ? useRandomWalk(object, 100) : null
-    const frameAnim = useFrameAnimChara(object, image, props.initR)
+    if (props.random) following.setRandomWalk(120)
+    const { play: playFrameAnim } = useFrameAnimChara(object, image, props.initR)
     const create = obj => context.emit('create', obj)
     const update = obj => {
-      frameAnim.play()
+      playFrameAnim()
       if (event.state) return
-      if (randomWalk) randomWalk.play(pos => following.setTargetPosition(pos.x, pos.y))
       following.walkToTargetPosition(props.speed)
     }
     onMounted((a) => {
@@ -46,7 +44,7 @@ export default {
       // Extend from Substance
       checkable: computed(() => substance.value?.checkable),
       distanceToPlayer: computed(() => substance.value?.distanceToPlayer),
-      tapEvent: computed(() => substance.value?.tapEvent),
+      execTapEvent: computed(() => substance.value?.execTapEvent),
       setTapEvent: computed(() => substance.value?.setTapEvent)
     }
   }

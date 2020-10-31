@@ -51,7 +51,7 @@ export default {
       nealestCheckable,
       check: () => {
         if (!nealestCheckable.value) return
-        nealestCheckable.value.tapEvent.exec()
+        nealestCheckable.value.execTapEvent()
       }
     }
   }

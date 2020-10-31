@@ -44,7 +44,9 @@ export default {
       create, update,
       object, image,
       imgWidth, imgHeight, depth,
-      tapEvent, setTapEvent: tapEvent.setEvent
+      tapEvent,
+      execTapEvent: tapEvent.exec,
+      setTapEvent: tapEvent.setEvent
     }
   }
 }

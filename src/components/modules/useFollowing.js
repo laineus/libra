@@ -1,10 +1,12 @@
 import { computed, ref, reactive, unref } from 'vue'
+import useRandomWalk from '@/components/modules/useRandomWalk'
 
 export default chara => {
   const targetPosition = reactive({
     x: null,
     y: null
   })
+  let randomWalk = null
   const targetObject = ref(null)
   const setTargetObject = object => targetObject.value = object
   let resolver = null
@@ -20,11 +22,16 @@ export default chara => {
     targetPosition.y = null
     if (resolver) resolver()
   }
+  const setRandomWalk = distance => {
+    if (!distance) return randomWalk = null
+    randomWalk = useRandomWalk(chara, distance)
+  }
   const hasTargetPosition = computed(() => targetPosition.x !== null && targetPosition.y !== null)
   const getDiffToTargetPositionX = () => hasTargetPosition.value ? targetPosition.x - unref(chara).x : 0
   const getDiffToTargetPositionY = () => hasTargetPosition.value ? targetPosition.y - unref(chara).y : 0
   const getDiffToTargetPositionDistance = (x, y) => Math.hypot(x || getDiffToTargetPositionX(), y || getDiffToTargetPositionY())
   const walkToTargetPosition = speed => {
+    if (randomWalk) randomWalk.play(pos => setTargetPosition(pos.x, pos.y))
     if (targetObject.value) setTargetPosition(targetObject.value.x, targetObject.value.y)
     if (!hasTargetPosition.value) return
     const diffX = getDiffToTargetPositionX()
@@ -43,6 +50,7 @@ export default chara => {
     targetPosition,
     setTargetPosition,
     clearTargetPosition,
+    setRandomWalk,
     hasTargetPosition,
     getDiffToTargetPositionX,
     getDiffToTargetPositionY,

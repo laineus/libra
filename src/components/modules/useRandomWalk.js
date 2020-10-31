@@ -1,4 +1,4 @@
-import { inject, ref } from 'vue'
+import { inject, ref, unref } from 'vue'
 export default (chara, range) => {
   const field = inject('field')
   const radius = Math.round(range / 2)
@@ -9,8 +9,8 @@ export default (chara, range) => {
   setNextDelay()
   const getRandomPosition = (tryCount = 10) => {
     if (tryCount === 0) return null
-    const x = chara.value.x + Math.randomInt(-radius, radius)
-    const y = chara.value.y + Math.randomInt(-radius, radius)
+    const x = unref(chara).x + Math.randomInt(-radius, radius)
+    const y = unref(chara).y + Math.randomInt(-radius, radius)
     const collides = field.value.isCollides(x.toTile, y.toTile)
     return collides ? getRandomPosition(tryCount - 1) : { x, y }
   }
