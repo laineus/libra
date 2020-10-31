@@ -15,7 +15,7 @@ export default {
     initY: { default: 0 },
     initR: { default: 0 }
   },
-  emits: ['create'],
+  emits: ['create', 'shot'],
   setup (props, context) {
     const scene = inject('scene')
     const event = inject('event')
@@ -24,14 +24,19 @@ export default {
     const object = computed(() => substance.value?.object)
     const image = computed(() => substance.value?.image)
     const following = useFollowing(object)
-    const { play: playFrameAnim, lookAt } = useFrameAnimChara(object, image, props.initR)
+    const { play: playFrameAnim, lookTo } = useFrameAnimChara(object, image, props.initR)
     const gun = useGun(context, object)
+    const getRadianToPointer = () => {
+      const diffX = scene.input.manager.pointers[0]?.x + camera.value?.scrollX - object.value?.x
+      const diffY = scene.input.manager.pointers[0]?.y + camera.value?.scrollY - object.value?.y
+      return Math.atan2(diffY, diffX)
+    }
     const create = obj => context.emit('create', obj)
     const update = obj => {
       playFrameAnim()
       if (event.state) return
       if (gun.mode.value) {
-        lookAt(scene.input.manager.pointers[0]?.x + camera.value?.scrollX, scene.input.manager.pointers[0]?.y + camera.value?.scrollY)
+        lookTo(getRadianToPointer())
       } else {
         following.walkToTargetPosition(200)
       }
@@ -41,9 +46,12 @@ export default {
       object.value.body.setDrag(500)
     })
     scene.input.on('pointerdown', pointer => {
-      if (pointer.button !== 2) return
-      gun.setMode(!gun.mode.value)
-      following.clearTargetPosition()
+      if (pointer.button === 0) {
+        if (gun.mode.value) gun.shot(getRadianToPointer())
+      } else if (pointer.button === 2) {
+        gun.setMode(!gun.mode.value)
+        following.clearTargetPosition()
+      }
     })
     return {
       object, substance,

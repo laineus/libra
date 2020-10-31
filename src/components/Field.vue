@@ -2,11 +2,12 @@
   <div>
     <component v-for="v in layers" :key="v.index" :is="v.component" :ref="v.ref" :depth="config.DEPTH[v.depth] || 0" :tilemap="field.tilemap" :layerIndex="v.index" :tileset="field.tilesets" :collision="collides" @create="layerCreate" />
     <Image v-for="v in images" :key="v.id" :ref="v.ref" :texture="`tileset/${v.key}`" :x="v.x" :y="v.y" :origin="0" @create="obj => obj.setDepth(obj.y + obj.height)" />
-    <Player ref="player" :initX="playerX" :initY="playerY" :initR="playerR" @create="charaCreate" />
+    <Player ref="player" :initX="playerX" :initY="playerY" :initR="playerR" @create="charaCreate" @shot="addBullet" />
     <Character v-for="v in charas" :key="v.id" :ref="v.ref" :initX="v.x" :initY="v.y" :initR="v.radian" :name="v.name" :random="100" @create="charaCreate" />
     <Substance v-for="v in substances" :key="v.id" :ref="v.ref" :initX="v.x" :initY="v.y" :name="v.name" />
     <Area v-for="v in areas" :key="v.id" :x="v.x" :y="v.y" :width="v.width" :height="v.height" />
     <Gate v-for="v in gates" :key="v.id" :x="v.x" :y="v.y" :width="v.width" :height="v.height" :to="{ key: v.name, x: v.fieldX.toPixel, y: v.fieldY.toPixel }" />
+    <Bullet v-for="v in bullets" :key="v.id" :initX="v.x" :initY="v.y" :r="v.r" />
   </div>
 </template>
 
@@ -17,13 +18,14 @@ import Character from './Character'
 import Substance from './Substance'
 import Area from './Area'
 import Gate from './Gate'
+import Bullet from './Bullet'
 import { inject, onMounted, ref } from 'vue'
 import { refObj, Image, StaticTilemapLayer, DynamicTilemapLayer } from 'phavuer'
 import setupCamera from './modules/setupCamera'
 import maps from '@/data/maps'
 import config from '@/data/config'
 export default {
-  components: { StaticTilemapLayer, DynamicTilemapLayer, Image, Player, Character, Substance, Area, Gate },
+  components: { StaticTilemapLayer, DynamicTilemapLayer, Image, Player, Character, Substance, Area, Gate, Bullet },
   props: [
     'fieldKey', 'playerX', 'playerY', 'playerR'
   ],
@@ -40,6 +42,14 @@ export default {
     const substances = objects.filter(v => v.type === 'Substance')
     const areas = objects.filter(v => v.type === 'Area')
     const gates = objects.filter(v => v.type === 'Gate')
+    const bullets = ref([])
+    const addBullet = ({ x, y, r }) => {
+      bullets.value.push({ id: Symbol('bullet_id'), x, y, r })
+    }
+    const delBullet = (id) => {
+      const i = bullets.value.findIndex(v => v.id === id)
+      bullets.value.splice(i, 1)
+    }
     const isCollides = (tileX, tileY) => {
       return layers.some(layer => {
         const tile = layer.ref.value.getTileAt(tileX, tileY)
@@ -70,6 +80,7 @@ export default {
       field, collides,
       width: field.width, height: field.height,
       layers, images, player, objects, charas, substances, areas, gates,
+      bullets, addBullet, delBullet,
       isCollides, getObjectById,
       layerCreate, charaCreate,
       play: update
