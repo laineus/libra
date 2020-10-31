@@ -23,7 +23,12 @@ export default {
       object.value.body.velocity.normalize().scale(360)
     })
     const update = obj => {
-      if (field.value?.isCollides(obj.x.toTile, obj.y.toTile)) {
+      const found = field.value.charas.concat(field.value.substances).map(v => v.ref.value).find(v => {
+        return Math.abs(obj.x - v.object.x) < v.object.width.half && Math.abs(obj.y - (v.object.y - v.object.height.half)) < v.object.height.half
+      })
+      if (found) {
+        context.emit('del')
+      } else if (field.value?.isCollides(obj.x.toTile, obj.y.toTile)) {
         context.emit('del')
       }
     }
