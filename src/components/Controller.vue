@@ -32,6 +32,7 @@ export default {
     const virtualStick = ref(null)
     const mobile = inject('mobile')
     const wasd = wasdController(scene.input.keyboard)
+    scene.input.mouse.disableContextMenu()
     return {
       mobile,
       virtualStick,
@@ -42,7 +43,7 @@ export default {
         return (mobile ? virtualStick.value.velocityY : wasd.velocity.y) * props.velocity
       },
       get activePointer () {
-        return scene.input.manager.pointers.find(v => v.isDown)
+        return scene.input.manager.pointers.find(v => v.isDown && v.button === 0)
       }
     }
   }

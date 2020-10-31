@@ -1,7 +1,7 @@
 import { inject } from 'vue'
 import Talker from '@/util/Talker'
 export default {
-  bgm: 'town',
+  bgm: null,
   create () {
     const field = inject('field')
     const talk = inject('talk')

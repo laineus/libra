@@ -28,7 +28,11 @@ export default (object, image, initR) => {
       unref(image).setFrame(BASE_FRAME[directionKey]) // Set last frame
     }
   }
+  const lookAt = (x, y) => {
+    directionKey = velocityToDirectionKey(x - unref(object).x, y - unref(object).y)
+  }
   return {
-    play
+    play,
+    lookAt
   }
 }
