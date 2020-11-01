@@ -5,6 +5,7 @@
       <Controller ref="controller" />
       <Circle :visible="mobile && nealestCheckable" :radius="80" :fillColor="0x000000" :alpha="0.5" :x="(100).byRight" :y="(100).byBottom" @pointerdown="check" />
       <Talk ref="talk" />
+      <Menu />
     </template>
     <Rectangle :fillColor="0x000000" :origin="0" :width="config.WIDTH" :height="config.HEIGHT" :depth="config.DEPTH.TRANSITION" :alpha="transitionAlpha" />
   </Scene>
@@ -16,9 +17,10 @@ import { refScene, Scene, Rectangle, Circle } from 'phavuer'
 import Title from './Title'
 import Controller from './Controller'
 import Talk from './Talk'
+import Menu from './Menu'
 import config from '@/data/config'
 export default {
-  components: { Scene, Title, Controller, Rectangle, Circle, Talk },
+  components: { Scene, Title, Controller, Rectangle, Circle, Talk, Menu },
   setup (props) {
     const mobile = inject('mobile')
     const frames = inject('frames')
