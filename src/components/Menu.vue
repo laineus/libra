@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Circle v-for="(v, i) in menu" :key="i" :fillColor="0xBBAA88" :radius="25" :x="(220).byRight + (i * 60)" :y="(40).byBottom" @pointerdown="index = i" />
+    <Circle v-for="(v, i) in menu" :key="i" :fillColor="0xBBAA88" :radius="25" :x="(220).byRight + (i * 60)" :y="(40).byBottom" @pointerdown="p => select(i, p)" />
     <MenuContainer v-if="selected" :arrowX="24 + (index * 60)" :height="selected.height" :title="selected.name">
       <!-- <component :is="menu[0].component" /> -->
       <Circle :fillColor="0x0000ff" :radius="25" :x="30" :y="56" />
@@ -23,10 +23,15 @@ export default {
   setup () {
     const index = ref(null)
     const selected = computed(() => menu[index.value])
+    const select = (i, pointer) => {
+      pointer.isDown = false
+      index.value = index.value === i ? null : i
+    }
     return {
       menu,
       index,
-      selected
+      selected,
+      select
     }
   }
 }
