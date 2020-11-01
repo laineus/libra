@@ -31,7 +31,7 @@ export default chara => {
   const getDiffToTargetPositionY = () => hasTargetPosition.value ? targetPosition.y - unref(chara).y : 0
   const getDiffToTargetPositionDistance = (x, y) => Math.hypot(x || getDiffToTargetPositionX(), y || getDiffToTargetPositionY())
   const walkToTargetPosition = speed => {
-    if (randomWalk) randomWalk.play(pos => setTargetPosition(pos.x, pos.y))
+    if (randomWalk) randomWalk.play(pos => setTargetPosition(pos.x, pos.y)) // Cannot read property 'x' of null
     if (targetObject.value) setTargetPosition(targetObject.value.x, targetObject.value.y)
     if (!hasTargetPosition.value) return
     const diffX = getDiffToTargetPositionX()
