@@ -2,8 +2,7 @@
   <div>
     <Circle v-for="(v, i) in menu" :key="i" :fillColor="0xBBAA88" :radius="25" :x="(220).byRight + (i * 60)" :y="(40).byBottom" @pointerdown="p => select(i, p)" />
     <MenuContainer v-if="selected" :arrowX="24 + (index * 60)" :height="selected.height" :title="selected.name">
-      <!-- <component :is="menu[0].component" /> -->
-      <Circle :fillColor="0x0000ff" :radius="25" :x="30" :y="56" />
+      <component :is="selected.component" :x="30" :y="56" />
     </MenuContainer>
   </div>
 </template>
@@ -11,15 +10,16 @@
 <script>
 import { Circle } from 'phavuer'
 import MenuContainer from '@/components/MenuContainer'
+import MenuBag from '@/components/MenuBag'
 import { computed, ref } from 'vue'
 const menu = [
   { name: 'Status', component: 'MenuStatus', height: 300 },
-  { name: 'Bag', component: '', height: 415 },
+  { name: 'Bag', component: 'MenuBag', height: 415 },
   { name: 'Map', component: '', height: 300 },
   { name: 'System', component: '', height: 300 }
 ]
 export default {
-  components: { Circle, MenuContainer },
+  components: { Circle, MenuContainer, MenuBag },
   setup () {
     const index = ref(null)
     const selected = computed(() => menu[index.value])
