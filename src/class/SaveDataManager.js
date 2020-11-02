@@ -2,6 +2,7 @@ import moment from 'moment'
 import defaultState from '@/data/defaultState'
 import { encrypt, decrypt } from '@/util/encryption'
 import AppStorage from '@/class/AppStorage'
+import { reactive } from 'vue'
 const appStorage = new AppStorage()
 const STORAGE_KEY = 'data'
 // const SHIFT = 11
@@ -24,7 +25,7 @@ export default class SaveDataManager {
     })
   }
   setState (state) {
-    this.state = state
+    this.state = reactive(state)
   }
   async getList () {
     const promises = (9).toArray().map(this.getRow.bind(this))
