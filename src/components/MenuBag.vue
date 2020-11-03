@@ -14,11 +14,10 @@ export default {
   components: { Container, Image, MenuContainer },
   setup () {
     const storage = inject('storage')
-    const scene = inject('scene')
+    const controller = inject('controller')
     const object = refObj(null)
     const offsetX = computed(() => object.value?.x + object.value?.parentContainer.x)
     const offsetY = computed(() => object.value?.y + object.value?.parentContainer.y)
-    const pointers = scene.input.manager.pointers
     const grabbed = ref(null)
     console.log(storage)
     const items = computed(() => storage.state.items)
@@ -27,8 +26,8 @@ export default {
     }
     const update = () => {
       if (grabbed.value) {
-        grabbed.value.bagX = Math.fix(pointers[0].x - offsetX.value, 0, 235)
-        grabbed.value.bagY = Math.fix(pointers[0].y - offsetY.value, 0, 415)
+        grabbed.value.bagX = Math.fix(controller.value.activePointer.x - offsetX.value, 0, 235)
+        grabbed.value.bagY = Math.fix(controller.value.activePointer.y - offsetY.value, 0, 415)
       }
     }
     const drop = () => {

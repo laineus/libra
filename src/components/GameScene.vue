@@ -16,6 +16,7 @@ export default {
     const scene = refScene(null)
     const frames = inject('frames')
     const uiScene = inject('uiScene')
+    const controller = inject('controller')
     const camera = inject('camera')
     const field = ref(null)
     const fps = ref(0)
@@ -25,14 +26,13 @@ export default {
       if (!field.value) return
       fps.value = Math.round(scene.game.loop.actualFps)
       field.value.play(time)
-      const controller = uiScene.value.controller
-      if (controller.velocityX || controller.velocityY) {
-        const x = Math.fix(field.value.player.object.x + controller.velocityX, 0, field.value.field.width)
-        const y = Math.fix(field.value.player.object.y + controller.velocityY, 0, field.value.field.height)
+      if (controller.value.velocityX || controller.value.velocityY) {
+        const x = Math.fix(field.value.player.object.x + controller.value.velocityX, 0, field.value.field.width)
+        const y = Math.fix(field.value.player.object.y + controller.value.velocityY, 0, field.value.field.height)
         field.value.player.setTargetPosition(x, y)
-      } else if (controller.activePointer) {
-        const worldX = controller.activePointer.x + camera.value.scrollX
-        const worldY = controller.activePointer.y + camera.value.scrollY
+      } else if (controller.value.activePointer) {
+        const worldX = controller.value.activePointer.x + camera.value.scrollX
+        const worldY = controller.value.activePointer.y + camera.value.scrollY
         if (field.value.isCollides(worldX.toTile, worldY.toTile)) return
         field.value.player.setTargetPosition(worldX, worldY)
       }

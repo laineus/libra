@@ -39,6 +39,7 @@ export default {
     provide('camera', computed(() => gameScene.value?.scene.cameras.main))
     provide('player', computed(() => gameScene.value?.field?.player))
     provide('uiScene', uiScene)
+    provide('controller', computed(() => uiScene.value?.controller))
     provide('talk', computed(() => uiScene.value?.talk))
     provide('mobile', !game.device.os.desktop)
     provide('audio', new AudioController(game.sound))
