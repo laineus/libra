@@ -2,18 +2,18 @@
   <MenuContainer :arrowX="24 + (1 * 60)" :height="415" :title="'Bag'" :visible="!grab.dispose">
     <Container :x="5" :y="26 + 5" @preUpdate="update" ref="object">
       <Rectangle fillColor="0xFF0000" :alpha="0.5" :origin="0" :width="220" :height="405" />
-      <Image v-for="v in items" :key="v.id" :texture="`chara_sprite/${v.key}`" :x="v.bagX" :y="v.bagY" :origin="0.5" :visible="grab.item !== v" @pointerdown="p => grabItem(p, v)" @pointerup="drop" />
+      <Image v-for="v in items" :key="v.id" :texture="`chara_sprite/${v.key}`" :x="v.bagX" :y="v.bagY" :origin="0.5" :visible="grab.item !== v" @pointerdown="p => grabItem(p, v)" />
     </Container>
   </MenuContainer>
-  <Image v-if="grab.item" :texture="`chara_sprite/${grab.item.key}`" :x="grab.x" :y="grab.y" :origin="0.5" @pointerup="drop" />
+  <Image v-if="grab.item" :texture="`chara_sprite/${grab.item.key}`" :x="grab.x" :y="grab.y" :origin="0.5" @pointerup="p => drop(p)" />
 </template>
 
 <script>
 import { Container, Image, refObj, Rectangle } from 'phavuer'
-import { inject, computed, ref, reactive } from 'vue'
+import { inject, computed, reactive } from 'vue'
 import MenuContainer from '@/components/MenuContainer'
-const WIDTH = 220
-const HEIGHT = 405
+// const WIDTH = 220
+// const HEIGHT = 405
 export default {
   components: { Container, Image, MenuContainer, Rectangle },
   setup () {
@@ -35,15 +35,21 @@ export default {
       grab.y = pointer.y
     }
     const update = () => {
-      if (grab.item) {
-        if (controller.value.activePointer) {
-          grab.x = controller.value.activePointer.x
-          grab.y = controller.value.activePointer.y
+      if (grab.item && controller.value.activePointer) {
+        grab.x = controller.value.activePointer.x
+        grab.y = controller.value.activePointer.y
+        if (grab.dispose) {
+          if (Phaser.Math.Distance.Between(grab.x, grab.y, (160).byRight, (40).byBottom) < 20)  grab.dispose = false
+        } else {
+          if ((grab.x - offsetX.value) < 0) grab.dispose = true
         }
-        if (!grab.dispose && (grab.x - offsetX.value) < 0) grab.dispose = true
       }
     }
-    const drop = () => {
+    const drop = (pointer) => {
+      if (grab.dispose) {} else {
+        grab.item.bagX = pointer.x - offsetX.value
+        grab.item.bagY = pointer.y - offsetY.value
+      }
       grab.item = null
     }
     return {
