@@ -1,43 +1,56 @@
 <template>
-  <MenuContainer :arrowX="24 + (1 * 60)" :height="415" :title="'Bag'">
-    <Container :x="30" :y="56" @preUpdate="update" ref="object">
-      <Image v-for="v in items" :key="v.id" :texture="`chara_sprite/${v.key}`" :x="v.bagX" :y="v.bagY" :origin="0.5" @pointerdown="grab(v)" @pointerup="drop" />
+  <MenuContainer :arrowX="24 + (1 * 60)" :height="415" :title="'Bag'" :visible="!grab.dispose">
+    <Container :x="5" :y="26 + 5" @preUpdate="update" ref="object">
+      <Rectangle fillColor="0xFF0000" :alpha="0.5" :origin="0" :width="220" :height="405" />
+      <Image v-for="v in items" :key="v.id" :texture="`chara_sprite/${v.key}`" :x="v.bagX" :y="v.bagY" :origin="0.5" :visible="grab.item !== v" @pointerdown="p => grabItem(p, v)" @pointerup="drop" />
     </Container>
   </MenuContainer>
+  <Image v-if="grab.item" :texture="`chara_sprite/${grab.item.key}`" :x="grab.x" :y="grab.y" :origin="0.5" @pointerup="drop" />
 </template>
 
 <script>
-import { Container, Image, refObj } from 'phavuer'
-import { inject, computed, ref } from 'vue'
+import { Container, Image, refObj, Rectangle } from 'phavuer'
+import { inject, computed, ref, reactive } from 'vue'
 import MenuContainer from '@/components/MenuContainer'
+const WIDTH = 220
+const HEIGHT = 405
 export default {
-  components: { Container, Image, MenuContainer },
+  components: { Container, Image, MenuContainer, Rectangle },
   setup () {
     const storage = inject('storage')
     const controller = inject('controller')
     const object = refObj(null)
     const offsetX = computed(() => object.value?.x + object.value?.parentContainer.x)
     const offsetY = computed(() => object.value?.y + object.value?.parentContainer.y)
-    const grabbed = ref(null)
+    const grab = reactive({
+      item: null,
+      dispose: false,
+      x: 0, y: 0
+    })
     console.log(storage)
     const items = computed(() => storage.state.items)
-    const grab = (v) => {
-      grabbed.value = v
+    const grabItem = (pointer, item) => {
+      grab.item = item
+      grab.x = pointer.x
+      grab.y = pointer.y
     }
     const update = () => {
-      if (grabbed.value) {
-        grabbed.value.bagX = Math.fix(controller.value.activePointer.x - offsetX.value, 0, 235)
-        grabbed.value.bagY = Math.fix(controller.value.activePointer.y - offsetY.value, 0, 415)
+      if (grab.item) {
+        if (controller.value.activePointer) {
+          grab.x = controller.value.activePointer.x
+          grab.y = controller.value.activePointer.y
+        }
+        if (!grab.dispose && (grab.x - offsetX.value) < 0) grab.dispose = true
       }
     }
     const drop = () => {
-      grabbed.value = null
+      grab.item = null
     }
     return {
       items,
       object,
-      grab, update, drop,
-      c: o => console.log(o)
+      controller, grab,
+      grabItem, update, drop
     }
   }
 }
