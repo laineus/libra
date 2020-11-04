@@ -19,7 +19,7 @@ import Substance from './Substance'
 import Area from './Area'
 import Gate from './Gate'
 import Bullet from './Bullet'
-import { inject, onMounted, ref } from 'vue'
+import { inject, onMounted, ref, computed, shallowReactive } from 'vue'
 import { refObj, Image, StaticTilemapLayer, DynamicTilemapLayer } from 'phavuer'
 import setupCamera from './modules/setupCamera'
 import maps from '@/data/maps'
@@ -37,18 +37,18 @@ export default {
     console.log(field)
     const layers = field.layers.map(v => Object.assign({ ref: refObj(null) }, v))
     const images = field.images.map(v => Object.assign({ ref: refObj(null) }, v))
-    const objects = field.objects.map(v => Object.assign({ ref: ref(null) }, v))
-    const charas = objects.filter(v => v.type === 'Character')
-    const substances = objects.filter(v => v.type === 'Substance')
-    const areas = objects.filter(v => v.type === 'Area')
-    const gates = objects.filter(v => v.type === 'Gate')
-    const bullets = ref([])
+    const objects = shallowReactive(field.objects.map(v => Object.assign({ ref: ref(null) }, v)))
+    const charas = computed(() => objects.filter(v => v.type === 'Character'))
+    const substances = computed(() => objects.filter(v => v.type === 'Substance'))
+    const areas = computed(() => objects.filter(v => v.type === 'Area'))
+    const gates = computed(() => objects.filter(v => v.type === 'Gate'))
+    const bullets = shallowReactive([])
     const addBullet = ({ x, y, r }) => {
-      bullets.value.push({ id: Symbol('bullet_id'), x, y, r })
+      bullets.push({ id: Symbol('bullet_id'), x, y, r })
     }
     const delBullet = (id) => {
-      const i = bullets.value.findIndex(v => v.id === id)
-      bullets.value.splice(i, 1)
+      const i = bullets.findIndex(v => v.id === id)
+      bullets.splice(i, 1)
     }
     const isCollides = (tileX, tileY) => {
       return layers.some(layer => {
