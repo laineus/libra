@@ -16,7 +16,8 @@ import MenuContainer from '@/components/MenuContainer'
 // const HEIGHT = 405
 export default {
   components: { Container, Image, MenuContainer, Rectangle },
-  setup () {
+  emits: ['close'],
+  setup (_, context) {
     const storage = inject('storage')
     const controller = inject('controller')
     const object = refObj(null)
@@ -46,7 +47,10 @@ export default {
       }
     }
     const drop = (pointer) => {
-      if (grab.dispose) {} else {
+      if (grab.dispose) {
+        items.value.delete(grab.item)
+        context.emit('close')
+      } else {
         grab.item.bagX = pointer.x - offsetX.value
         grab.item.bagY = pointer.y - offsetY.value
       }

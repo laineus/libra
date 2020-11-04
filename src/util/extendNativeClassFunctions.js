@@ -50,6 +50,11 @@ Object.defineProperty(Array.prototype, 'random', {
 Object.defineProperty(Array.prototype, 'count', {
   value (callbackfn) { return this.filter(callbackfn).length }
 })
+Object.defineProperty(Array.prototype, 'delete', {
+  value (callbackfn) {
+    this.splice(this.findIndex(typeof callbackfn === 'function' ? callbackfn : v => v === callbackfn), 1)
+  }
+})
 Object.defineProperty(Array.prototype, 'findMin', {
   value (callbackfn) {
     return this.reduce((result, record) => {

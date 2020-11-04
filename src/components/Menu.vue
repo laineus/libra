@@ -1,7 +1,7 @@
 <template>
   <div>
     <Circle v-for="(v, i) in menu" :key="i" :fillColor="0xBBAA88" :radius="25" :x="(220).byRight + (i * 60)" :y="(40).byBottom" @pointerdown="p => select(i, p)" />
-    <component v-if="selected" :is="selected.component" />
+    <component v-if="selected" :is="selected.component" @close="index = null" />
   </div>
 </template>
 
