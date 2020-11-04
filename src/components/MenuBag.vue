@@ -1,7 +1,6 @@
 <template>
   <MenuContainer :arrowX="24 + (1 * 60)" :height="415" :title="'Bag'" :visible="!grab.dispose">
     <Container :x="5" :y="26 + 5" @preUpdate="update" ref="object">
-      <Rectangle fillColor="0xFF0000" :alpha="0.5" :origin="0" :width="220" :height="405" />
       <Image v-for="v in items" :key="v.id" :ref="v.ref" :texture="`chara_sprite/${v.key}`" :x="v.bagX" :y="v.bagY" :origin="0.5" :visible="toRaw(grab.item) !== v" @pointerdown="p => grabItem(p, v)" />
     </Container>
   </MenuContainer>
@@ -9,13 +8,13 @@
 </template>
 
 <script>
-import { Container, Image, refObj, Rectangle } from 'phavuer'
+import { Container, Image, refObj } from 'phavuer'
 import { inject, computed, reactive, toRaw } from 'vue'
 import MenuContainer from '@/components/MenuContainer'
 const WIDTH = 220
 const HEIGHT = 405
 export default {
-  components: { Container, Image, MenuContainer, Rectangle },
+  components: { Container, Image, MenuContainer },
   emits: ['close'],
   setup (_, context) {
     const storage = inject('storage')
@@ -41,7 +40,7 @@ export default {
         grab.x = controller.activePointer.x
         grab.y = controller.activePointer.y
         if (grab.dispose) {
-          if (Phaser.Math.Distance.Between(grab.x, grab.y, (160).byRight, (40).byBottom) < 20)  grab.dispose = false
+          if (Phaser.Math.Distance.Between(grab.x, grab.y, (160).byRight, (40).byBottom) < 20) grab.dispose = false
         } else {
           if ((grab.x - offsetX.value) < 0) grab.dispose = true
         }

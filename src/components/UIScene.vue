@@ -25,7 +25,12 @@ export default {
     const mobile = inject('mobile')
     const frames = inject('frames')
     const field = inject('field')
-    const scene = refScene(null)
+    const refs = {
+      scene: refScene(null),
+      controller: ref(null),
+      talk: ref(null),
+      menu: ref(null)
+    }
     const titleScreen = ref(true)
     const transitionAlpha = ref(0)
     const nealestCheckable = ref(null)
@@ -39,14 +44,14 @@ export default {
     const transition = (duration = 500) => {
       return new Promise(resolve => {
         transitionAlpha.value = 0
-        scene.value.add.tween({ targets: transitionAlpha, duration, hold: duration.half, value: 1, yoyo: true, onYoyo: resolve })
+        refs.scene.value.add.tween({ targets: transitionAlpha, duration, hold: duration.half, value: 1, yoyo: true, onYoyo: resolve })
       })
     }
     return {
       mobile,
       config,
       create, update,
-      scene, controller: ref(null), talk: ref(null), menu: ref(null),
+      ...refs,
       titleScreen,
       transition,
       transitionAlpha,
