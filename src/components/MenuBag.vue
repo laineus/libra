@@ -19,7 +19,9 @@ export default {
   emits: ['close'],
   setup (_, context) {
     const storage = inject('storage')
-    const controller = inject('controller')
+    const controller = inject('controller').value
+    const camera = inject('camera').value
+    const field = inject('field').value
     const object = refObj(null)
     const offsetX = computed(() => object.value?.x + object.value?.parentContainer.x)
     const offsetY = computed(() => object.value?.y + object.value?.parentContainer.y)
@@ -28,17 +30,16 @@ export default {
       dispose: false,
       x: 0, y: 0
     })
-    console.log(storage)
-    const items = computed(() => storage.state.items)
+    const items = storage.state.items
     const grabItem = (pointer, item) => {
       grab.item = item
       grab.x = pointer.x
       grab.y = pointer.y
     }
     const update = () => {
-      if (grab.item && controller.value.activePointer) {
-        grab.x = controller.value.activePointer.x
-        grab.y = controller.value.activePointer.y
+      if (grab.item && controller.activePointer) {
+        grab.x = controller.activePointer.x
+        grab.y = controller.activePointer.y
         if (grab.dispose) {
           if (Phaser.Math.Distance.Between(grab.x, grab.y, (160).byRight, (40).byBottom) < 20)  grab.dispose = false
         } else {
@@ -48,7 +49,8 @@ export default {
     }
     const drop = (pointer) => {
       if (grab.dispose) {
-        items.value.delete(grab.item)
+        field.addObject({ type: 'Substance', name: 'flower', x: grab.x + camera.scrollX, y: grab.y + camera.scrollY })
+        items.delete(grab.item)
         context.emit('close')
       } else {
         grab.item.bagX = pointer.x - offsetX.value

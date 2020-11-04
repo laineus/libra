@@ -42,6 +42,9 @@ export default {
     const substances = computed(() => objects.filter(v => v.type === 'Substance'))
     const areas = computed(() => objects.filter(v => v.type === 'Area'))
     const gates = computed(() => objects.filter(v => v.type === 'Gate'))
+    const addObject = object => {
+      objects.push(Object.assign({ ref: ref(null), id: Symbol('id') }, object))
+    }
     const bullets = shallowReactive([])
     const addBullet = ({ x, y, r }) => {
       bullets.push({ id: Symbol('bullet_id'), x, y, r })
@@ -80,6 +83,7 @@ export default {
       field, collides,
       width: field.width, height: field.height,
       layers, images, player, objects, charas, substances, areas, gates,
+      addObject,
       bullets, addBullet, delBullet,
       isCollides, getObjectById,
       layerCreate, charaCreate,
