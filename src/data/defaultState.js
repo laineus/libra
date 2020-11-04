@@ -6,6 +6,7 @@ export default {
   saved: null,
   sec: 0,
   items: [
-    { id: 1, key: 'flower', bagX: 30, bagY: 40 }
+    { id: 1, key: 'flower', bagX: 30, bagY: 40 },
+    { id: 2, key: 'flower', bagX: 40, bagY: 90 }
   ]
 }

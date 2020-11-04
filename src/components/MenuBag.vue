@@ -2,7 +2,7 @@
   <MenuContainer :arrowX="24 + (1 * 60)" :height="415" :title="'Bag'" :visible="!grab.dispose">
     <Container :x="5" :y="26 + 5" @preUpdate="update" ref="object">
       <Rectangle fillColor="0xFF0000" :alpha="0.5" :origin="0" :width="220" :height="405" />
-      <Image v-for="v in items" :key="v.id" :texture="`chara_sprite/${v.key}`" :x="v.bagX" :y="v.bagY" :origin="0.5" :visible="grab.item !== v" @pointerdown="p => grabItem(p, v)" />
+      <Image v-for="v in items" :key="v.id" :ref="v.ref" :texture="`chara_sprite/${v.key}`" :x="v.bagX" :y="v.bagY" :origin="0.5" :visible="toRaw(grab.item) !== v" @pointerdown="p => grabItem(p, v)" />
     </Container>
   </MenuContainer>
   <Image v-if="grab.item" :texture="`chara_sprite/${grab.item.key}`" :x="grab.x" :y="grab.y" :origin="0.5" @pointerup="p => drop(p)" />
@@ -10,7 +10,7 @@
 
 <script>
 import { Container, Image, refObj, Rectangle } from 'phavuer'
-import { inject, computed, reactive } from 'vue'
+import { inject, computed, reactive, toRaw } from 'vue'
 import MenuContainer from '@/components/MenuContainer'
 // const WIDTH = 220
 // const HEIGHT = 405
@@ -30,7 +30,7 @@ export default {
       dispose: false,
       x: 0, y: 0
     })
-    const items = storage.state.items
+    const items = computed(() => storage.state.items.map(v => Object.assign({ ref: refObj(null), original: v }, v)))
     const grabItem = (pointer, item) => {
       grab.item = item
       grab.x = pointer.x
@@ -50,15 +50,16 @@ export default {
     const drop = (pointer) => {
       if (grab.dispose) {
         field.addObject({ type: 'Substance', name: 'flower', x: grab.x + camera.scrollX, y: grab.y + camera.scrollY })
-        items.delete(grab.item)
+        storage.state.items.delete(grab.item.original)
         context.emit('close')
       } else {
-        grab.item.bagX = pointer.x - offsetX.value
-        grab.item.bagY = pointer.y - offsetY.value
+        grab.item.original.bagX = pointer.x - offsetX.value
+        grab.item.original.bagY = pointer.y - offsetY.value
       }
       grab.item = null
     }
     return {
+      toRaw,
       items,
       object,
       controller, grab,
