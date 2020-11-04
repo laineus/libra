@@ -12,8 +12,8 @@
 import { Container, Image, refObj, Rectangle } from 'phavuer'
 import { inject, computed, reactive, toRaw } from 'vue'
 import MenuContainer from '@/components/MenuContainer'
-// const WIDTH = 220
-// const HEIGHT = 405
+const WIDTH = 220
+const HEIGHT = 405
 export default {
   components: { Container, Image, MenuContainer, Rectangle },
   emits: ['close'],
@@ -48,13 +48,15 @@ export default {
       }
     }
     const drop = (pointer) => {
+      const wHalf = grab.item.ref.width.half
+      const hHalf = grab.item.ref.height.half
       if (grab.dispose) {
-        field.addObject({ type: 'Substance', name: 'flower', x: grab.x + camera.scrollX, y: grab.y + camera.scrollY })
+        field.addObject({ type: 'Substance', name: 'flower', x: grab.x + camera.scrollX, y: grab.y + camera.scrollY + hHalf })
         storage.state.items.delete(grab.item.original)
         context.emit('close')
       } else {
-        grab.item.original.bagX = pointer.x - offsetX.value
-        grab.item.original.bagY = pointer.y - offsetY.value
+        grab.item.original.bagX = Math.fix(pointer.x - offsetX.value, wHalf, WIDTH - wHalf)
+        grab.item.original.bagY = Math.fix(pointer.y - offsetY.value, hHalf, HEIGHT - hHalf)
       }
       grab.item = null
     }
