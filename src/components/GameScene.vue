@@ -14,6 +14,8 @@ export default {
   setup (props, context) {
     const fieldData = reactive({ name: null, x: 0, y: 0, r: 0 })
     const scene = refScene(null)
+    const event = inject('event')
+    const menuOpened = inject('menuOpened')
     const frames = inject('frames')
     const uiScene = inject('uiScene')
     const controller = inject('controller')
@@ -26,15 +28,17 @@ export default {
       if (!field.value) return
       fps.value = Math.round(scene.game.loop.actualFps)
       field.value.play(time)
-      if (controller.value.velocityX || controller.value.velocityY) {
-        const x = Math.fix(field.value.player.object.x + controller.value.velocityX, 0, field.value.field.width)
-        const y = Math.fix(field.value.player.object.y + controller.value.velocityY, 0, field.value.field.height)
-        field.value.player.setTargetPosition(x, y)
-      } else if (controller.value.activePointer) {
-        const worldX = controller.value.activePointer.x + camera.value.scrollX
-        const worldY = controller.value.activePointer.y + camera.value.scrollY
-        if (field.value.isCollides(worldX.toTile, worldY.toTile)) return
-        field.value.player.setTargetPosition(worldX, worldY)
+      if (!event.state && !menuOpened.value) {
+        if (controller.value.velocityX || controller.value.velocityY) {
+          const x = Math.fix(field.value.player.object.x + controller.value.velocityX, 0, field.value.field.width)
+          const y = Math.fix(field.value.player.object.y + controller.value.velocityY, 0, field.value.field.height)
+          field.value.player.setTargetPosition(x, y)
+        } else if (controller.value.activePointer) {
+          const worldX = controller.value.activePointer.x + camera.value.scrollX
+          const worldY = controller.value.activePointer.y + camera.value.scrollY
+          if (field.value.isCollides(worldX.toTile, worldY.toTile)) return
+          field.value.player.setTargetPosition(worldX, worldY)
+        }
       }
     }
     const setField = async (name, x, y, r) => {

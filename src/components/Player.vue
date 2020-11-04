@@ -20,6 +20,7 @@ export default {
     const scene = inject('scene')
     const event = inject('event')
     const camera = inject('camera')
+    const menuOpened = inject('menuOpened')
     const substance = ref(null)
     const object = computed(() => substance.value?.object)
     const image = computed(() => substance.value?.image)
@@ -34,7 +35,7 @@ export default {
     const create = obj => context.emit('create', obj)
     const update = obj => {
       playFrameAnim()
-      if (event.state) return
+      if (event.state || menuOpened.value) return
       if (gun.mode.value) {
         lookTo(getRadianToPointer())
       } else {
@@ -46,6 +47,7 @@ export default {
       object.value.body.setDrag(500)
     })
     scene.input.on('pointerdown', pointer => {
+      if (event.state || menuOpened.value) return
       if (pointer.button === 0) {
         if (gun.mode.value) gun.shot(getRadianToPointer())
       } else if (pointer.button === 2) {

@@ -5,7 +5,7 @@
       <Controller ref="controller" />
       <Circle :visible="mobile && nealestCheckable" :radius="80" :fillColor="0x000000" :alpha="0.5" :x="(100).byRight" :y="(100).byBottom" @pointerdown="check" />
       <Talk ref="talk" />
-      <Menu />
+      <Menu ref="menu" />
     </template>
     <Rectangle :fillColor="0x000000" :origin="0" :width="config.WIDTH" :height="config.HEIGHT" :depth="config.DEPTH.TRANSITION" :alpha="transitionAlpha" />
   </Scene>
@@ -46,7 +46,7 @@ export default {
       mobile,
       config,
       create, update,
-      scene, controller: ref(null), talk: ref(null),
+      scene, controller: ref(null), talk: ref(null), menu: ref(null),
       titleScreen,
       transition,
       transitionAlpha,
