@@ -24,8 +24,7 @@ export default {
     const index = ref(null)
     const selected = computed(() => menu[index.value])
     const select = indexOrName => {
-      const i = typeof indexOrName === 'string' ? menu.findIndex(v => v.key === indexOrName) : indexOrName
-      index.value = index.value === i ? null : i
+      index.value = typeof indexOrName === 'string' ? menu.findIndex(v => v.key === indexOrName) : indexOrName
       return new Promise(resolve => {
         nextTick(() => {
           resolve(selected.value?.ref.value)
@@ -34,7 +33,7 @@ export default {
     }
     const onTap = (i, pointer) => {
       pointer.isDown = false
-      select(i)
+      index.value === i ? index.value = null : select(i)
     }
     return {
       menu,

@@ -1,10 +1,10 @@
 <template>
   <MenuContainer :arrowX="24 + (1 * 60)" :height="415" :title="'Bag'" :visible="grab.mode !== 'dispose'">
     <Container :x="5" :y="26 + 5" @preUpdate="update" ref="object">
-      <Image v-for="v in items" :key="v.id" :ref="v.ref" :texture="`chara_sprite/${v.key}`" :x="v.bagX" :y="v.bagY" :origin="0.5" :visible="toRaw(grab.item) !== v" @pointerdown="grabItem(v, 'move')" />
+      <Image v-for="v in items" :key="v.id" :texture="`chara_sprite/${v.key}`" :x="v.bagX" :y="v.bagY" :origin="0.5" :visible="toRaw(grab.item) !== v" @pointerdown="grabItem(v, 'move')" />
     </Container>
   </MenuContainer>
-  <Image v-if="grab.item" :texture="`chara_sprite/${grab.item.key}`" :x="grab.x" :y="grab.y" :origin="0.5" @pointerup="p => drop(p)" />
+  <Image v-if="grab.item" ref="grabRef" :texture="`chara_sprite/${grab.item.key}`" :x="grab.x" :y="grab.y" :origin="0.5" @pointerup="p => drop(p)" />
 </template>
 
 <script>
@@ -29,7 +29,8 @@ export default {
       mode: null,
       x: 0, y: 0
     })
-    const items = computed(() => storage.state.items.map(v => Object.assign({ ref: refObj(null), original: v }, v)))
+    const grabRef = refObj(null)
+    const items = computed(() => storage.state.items.map(v => Object.assign({ original: v }, v)))
     const update = () => {
       if (grab.item && controller.activePointer) {
         grab.x = controller.activePointer.x
@@ -47,8 +48,8 @@ export default {
       update()
     }
     const drop = (pointer) => {
-      const wHalf = grab.item.ref.width.half
-      const hHalf = grab.item.ref.height.half
+      const wHalf = grabRef.value.width.half
+      const hHalf = grabRef.value.height.half
       if (grab.mode === 'dispose') {
         field.addObject({ type: 'Substance', name: 'flower', x: grab.x + camera.scrollX, y: grab.y + camera.scrollY + hHalf })
         storage.state.items.delete(grab.item.original)
@@ -56,6 +57,14 @@ export default {
       } else if (grab.mode === 'move') {
         grab.item.original.bagX = Math.fix(pointer.x - offsetX.value, wHalf, WIDTH - wHalf)
         grab.item.original.bagY = Math.fix(pointer.y - offsetY.value, hHalf, HEIGHT - hHalf)
+      } if (grab.mode === 'capture') {
+        storage.state.items.push({
+          id: Symbol('TODO'),
+          key: grab.item.key,
+          bagX: Math.fix(pointer.x - offsetX.value, wHalf, WIDTH - wHalf),
+          bagY: Math.fix(pointer.y - offsetY.value, hHalf, HEIGHT - hHalf)
+        })
+        context.emit('close')
       }
       grab.item = null
     }
@@ -63,7 +72,7 @@ export default {
       toRaw,
       items,
       object,
-      controller, grab,
+      controller, grab, grabRef,
       grabItem, update, drop
     }
   }
