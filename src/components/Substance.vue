@@ -4,6 +4,7 @@
       <Image ref="image" :texture="`chara_sprite/${name}`" :originX="0.5" :originY="1" v-if="name" />
     </Container>
     <TapArea v-if="tapEvent.event.value" :visible="checkable" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @tap="tapEvent.exec" />
+    <GrabArea v-else-if="name" :visible="grabbable" :texture="`chara_sprite/${name}`" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" />
   </div>
 </template>
 
@@ -11,9 +12,10 @@
 import { refObj, Container, Image } from 'phavuer'
 import { computed, inject, reactive, ref, toRefs } from 'vue'
 import TapArea from './TapArea'
+import GrabArea from './GrabArea'
 import useEvent from './modules/useEvent'
 export default {
-  components: { Container, Image, TapArea },
+  components: { Container, Image, TapArea, GrabArea },
   props: {
     initX: { default: 0 },
     initY: { default: 0 },
@@ -41,6 +43,7 @@ export default {
     return {
       ...toRefs(data),
       checkable: computed(() => !event.state && tapEvent.event.value && data.distanceToPlayer < 150),
+      grabbable: computed(() => !event.state && data.distanceToPlayer < 150),
       create, update,
       object, image,
       imgWidth, imgHeight, depth,

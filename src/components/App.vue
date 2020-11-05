@@ -39,6 +39,7 @@ export default {
     provide('camera', computed(() => gameScene.value?.scene.cameras.main))
     provide('player', computed(() => gameScene.value?.field?.player))
     provide('uiScene', uiScene)
+    provide('menu', computed(() => uiScene.value?.menu))
     provide('menuOpened', computed(() => uiScene.value?.menu.selected))
     provide('controller', computed(() => uiScene.value?.controller))
     provide('talk', computed(() => uiScene.value?.talk))
