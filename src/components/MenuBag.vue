@@ -1,7 +1,7 @@
 <template>
-  <MenuContainer :arrowX="24 + (1 * 60)" :height="415" :title="'Bag'" :visible="!grab.dispose">
+  <MenuContainer :arrowX="24 + (1 * 60)" :height="415" :title="'Bag'" :visible="grab.mode !== 'dispose'">
     <Container :x="5" :y="26 + 5" @preUpdate="update" ref="object">
-      <Image v-for="v in items" :key="v.id" :ref="v.ref" :texture="`chara_sprite/${v.key}`" :x="v.bagX" :y="v.bagY" :origin="0.5" :visible="toRaw(grab.item) !== v" @pointerdown="p => grabItem(p, v)" />
+      <Image v-for="v in items" :key="v.id" :ref="v.ref" :texture="`chara_sprite/${v.key}`" :x="v.bagX" :y="v.bagY" :origin="0.5" :visible="toRaw(grab.item) !== v" @pointerdown="grabItem(v, 'move')" />
     </Container>
   </MenuContainer>
   <Image v-if="grab.item" :texture="`chara_sprite/${grab.item.key}`" :x="grab.x" :y="grab.y" :origin="0.5" @pointerup="p => drop(p)" />
@@ -26,34 +26,34 @@ export default {
     const offsetY = computed(() => object.value?.y + object.value?.parentContainer.y)
     const grab = reactive({
       item: null,
-      dispose: false,
+      mode: null,
       x: 0, y: 0
     })
     const items = computed(() => storage.state.items.map(v => Object.assign({ ref: refObj(null), original: v }, v)))
-    const grabItem = (pointer, item) => {
-      grab.item = item
-      grab.x = pointer.x
-      grab.y = pointer.y
-    }
     const update = () => {
       if (grab.item && controller.activePointer) {
         grab.x = controller.activePointer.x
         grab.y = controller.activePointer.y
-        if (grab.dispose) {
-          if (Phaser.Math.Distance.Between(grab.x, grab.y, (160).byRight, (40).byBottom) < 20) grab.dispose = false
-        } else {
-          if ((grab.x - offsetX.value) < 0) grab.dispose = true
+        if (grab.mode === 'move') {
+          if ((grab.x - offsetX.value) < 0) grab.mode = 'dispose'
+        } else if (grab.mode === 'dispose') {
+          if (Phaser.Math.Distance.Between(grab.x, grab.y, (160).byRight, (40).byBottom) < 20) grab.mode = 'move'
         }
       }
+    }
+    const grabItem = (item, mode) => {
+      grab.item = item
+      grab.mode = mode
+      update()
     }
     const drop = (pointer) => {
       const wHalf = grab.item.ref.width.half
       const hHalf = grab.item.ref.height.half
-      if (grab.dispose) {
+      if (grab.mode === 'dispose') {
         field.addObject({ type: 'Substance', name: 'flower', x: grab.x + camera.scrollX, y: grab.y + camera.scrollY + hHalf })
         storage.state.items.delete(grab.item.original)
         context.emit('close')
-      } else {
+      } else if (grab.mode === 'move') {
         grab.item.original.bagX = Math.fix(pointer.x - offsetX.value, wHalf, WIDTH - wHalf)
         grab.item.original.bagY = Math.fix(pointer.y - offsetY.value, hHalf, HEIGHT - hHalf)
       }
