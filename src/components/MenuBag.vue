@@ -1,5 +1,5 @@
 <template>
-  <MenuContainer :arrowX="24 + (1 * 60)" :height="415" :title="'Bag'" :visible="grab.mode !== 'dispose'">
+  <MenuContainer :arrowX="25 + (1 * 60)" :height="415" :title="'Bag'" :visible="grab.mode !== 'dispose'">
     <Container :x="5" :y="26 + 5" @preUpdate="update" ref="object">
       <Image v-for="v in items" :key="v.id" :texture="`chara_sprite/${v.key}`" :x="v.bagX" :y="v.bagY" :origin="0.5" :visible="toRaw(grab.item) !== v" @pointerdown="grabItem(v, 'move')" />
     </Container>

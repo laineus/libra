@@ -4,16 +4,21 @@
     <template v-if="selected">
       <MenuStatus v-if="selected.key === 'status'" :ref="menu[0].ref" @close="index = null" />
       <MenuBag v-else-if="selected.key === 'bag'" :ref="menu[1].ref" @close="index = null" />
+      <MenuMap v-else-if="selected.key === 'map'" :ref="menu[2].ref" @close="index = null" />
+      <MenuSystem v-else-if="selected.key === 'system'" :ref="menu[3].ref" @close="index = null" />
     </template>
   </div>
 </template>
 
 <script>
 import { Circle } from 'phavuer'
+import MenuStatus from '@/components/MenuStatus'
 import MenuBag from '@/components/MenuBag'
+import MenuMap from '@/components/MenuMap'
+import MenuSystem from '@/components/MenuSystem'
 import { computed, nextTick, ref } from 'vue'
 export default {
-  components: { Circle, MenuBag },
+  components: { Circle, MenuStatus, MenuBag, MenuMap, MenuSystem },
   setup () {
     const menu = [
       { key: 'status', ref: ref(null) },
