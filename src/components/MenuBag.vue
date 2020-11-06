@@ -27,8 +27,10 @@ export default {
     const grab = reactive({
       item: null,
       mode: null,
+      resolver: null,
       x: 0, y: 0
     })
+    const onBagArea = computed(() => (grab.x - offsetX.value) >= 0)
     const grabRef = refObj(null)
     const items = computed(() => storage.state.items.map(v => Object.assign({ original: v }, v)))
     const update = () => {
@@ -36,7 +38,7 @@ export default {
         grab.x = controller.activePointer.x
         grab.y = controller.activePointer.y
         if (grab.mode === 'move') {
-          if ((grab.x - offsetX.value) < 0) grab.mode = 'dispose'
+          if (!onBagArea.value) grab.mode = 'dispose'
         } else if (grab.mode === 'dispose') {
           if (Phaser.Math.Distance.Between(grab.x, grab.y, (160).byRight, (40).byBottom) < 20) grab.mode = 'move'
         }
@@ -45,7 +47,12 @@ export default {
     const grabItem = (item, mode) => {
       grab.item = item
       grab.mode = mode
+      if (grab.resolver) grab.resolver()
+      const promise = new Promise(resolve => {
+        grab.resolver = resolve
+      })
       update()
+      return promise
     }
     const drop = (pointer) => {
       const wHalf = grabRef.value.width.half
@@ -53,20 +60,28 @@ export default {
       if (grab.mode === 'dispose') {
         field.addObject({ type: 'Substance', name: 'flower', x: grab.x + camera.scrollX, y: grab.y + camera.scrollY + hHalf })
         storage.state.items.delete(grab.item.original)
+        grab.resolver()
         context.emit('close')
       } else if (grab.mode === 'move') {
         grab.item.original.bagX = Math.fix(pointer.x - offsetX.value, wHalf, WIDTH - wHalf)
         grab.item.original.bagY = Math.fix(pointer.y - offsetY.value, hHalf, HEIGHT - hHalf)
+        grab.resolver()
       } if (grab.mode === 'capture') {
-        storage.state.items.push({
-          id: Symbol('TODO'),
-          key: grab.item.key,
-          bagX: Math.fix(pointer.x - offsetX.value, wHalf, WIDTH - wHalf),
-          bagY: Math.fix(pointer.y - offsetY.value, hHalf, HEIGHT - hHalf)
-        })
+        if (onBagArea.value) {
+          storage.state.items.push({
+            id: Symbol('TODO'),
+            key: grab.item.key,
+            bagX: Math.fix(pointer.x - offsetX.value, wHalf, WIDTH - wHalf),
+            bagY: Math.fix(pointer.y - offsetY.value, hHalf, HEIGHT - hHalf)
+          })
+          grab.resolver(true)
+        } else {
+          grab.resolver(false)
+        }
         context.emit('close')
       }
       grab.item = null
+      grab.resolver = null
     }
     return {
       toRaw,

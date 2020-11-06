@@ -1,5 +1,5 @@
 <template>
-  <Substance ref="substance" :initX="initX" :initY="initY" :name="name" @create="create" @preUpdate="update" />
+  <Substance ref="substance" :initX="initX" :initY="initY" :name="name" @create="create" @preUpdate="update" @del="$emit('del')" />
 </template>
 
 <script>
@@ -17,7 +17,7 @@ export default {
     speed: { default: 120 },
     random: { default: null } // leave chase random null
   },
-  emits: ['create'],
+  emits: ['create', 'del'],
   setup (props, context) {
     const scene = inject('scene')
     const event = inject('event')

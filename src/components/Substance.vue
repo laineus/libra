@@ -4,7 +4,7 @@
       <Image ref="image" :texture="`chara_sprite/${name}`" :originX="0.5" :originY="1" v-if="name" />
     </Container>
     <TapArea v-if="tapEvent.event.value" :visible="checkable" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @tap="tapEvent.exec" />
-    <GrabArea v-else-if="name" :visible="grabbable" :texture="`chara_sprite/${name}`" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" />
+    <GrabArea v-else-if="name" :visible="grabbable" :texture="`chara_sprite/${name}`" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @capture="$emit('del')" />
   </div>
 </template>
 
@@ -21,7 +21,7 @@ export default {
     initY: { default: 0 },
     name: { default: null }
   },
-  emits: ['create', 'preUpdate'],
+  emits: ['create', 'preUpdate', 'del'],
   setup (props, context) {
     const event = inject('event')
     const player = inject('player')

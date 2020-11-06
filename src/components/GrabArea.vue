@@ -11,14 +11,17 @@ export default {
     follow: { default: null },
     name: { default: null }
   },
-  setup (props) {
+  emits: ['capture'],
+  setup (props, context) {
     const menu = inject('menu')
     const data = reactive({
       x: 0, y: 0
     })
     const grab = () => {
       menu.value.select('bag').then(menuBag => {
-        menuBag.grabItem({ key: 'flower' }, 'capture')
+        menuBag.grabItem({ key: 'flower' }, 'capture').then(bool => {
+          if (bool) context.emit('capture')
+        })
       })
     }
     const update = () => {
