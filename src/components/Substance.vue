@@ -1,10 +1,10 @@
 <template>
   <div>
     <Container ref="object" :x="initX" :y="initY" :width="imgWidth" :height="imgWidth" :depth="depth" @create="create" @preUpdate="update">
-      <Image ref="image" :texture="`chara_sprite/${name}`" :originX="0.5" :originY="1" v-if="name" />
+      <Image ref="image" :texture="`chara_sprite/${name}`" :originX="0.5" :originY="1" :alpha="alpha" v-if="name" />
     </Container>
     <TapArea v-if="tapEvent.event.value" :visible="checkable" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @tap="tapEvent.exec" />
-    <GrabArea v-else-if="name" :visible="grabbable" :texture="`chara_sprite/${name}`" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @capture="$emit('del')" />
+    <GrabArea v-else-if="name" :visible="grabbable" :texture="`chara_sprite/${name}`" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @grab="alpha = 0.5" @capture="$emit('del')" @cancel="alpha = 1" />
   </div>
 </template>
 
@@ -30,6 +30,7 @@ export default {
     const imgWidth = computed(() => image.value ? image.value.width : 30)
     const imgHeight = computed(() => image.value ? image.value.height : 30)
     const depth = ref(0)
+    const alpha = ref(1)
     const tapEvent = useEvent()
     const data = reactive({
       distanceToPlayer: null
@@ -46,7 +47,7 @@ export default {
       grabbable: computed(() => !event.state && data.distanceToPlayer < 150),
       create, update,
       object, image,
-      imgWidth, imgHeight, depth,
+      imgWidth, imgHeight, depth, alpha,
       tapEvent,
       execTapEvent: tapEvent.exec,
       setTapEvent: tapEvent.setEvent

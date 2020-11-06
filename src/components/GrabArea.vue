@@ -11,7 +11,7 @@ export default {
     follow: { default: null },
     name: { default: null }
   },
-  emits: ['capture'],
+  emits: ['grab', 'capture', 'cancel'],
   setup (props, context) {
     const menu = inject('menu')
     const data = reactive({
@@ -19,8 +19,9 @@ export default {
     })
     const grab = () => {
       menu.value.select('bag').then(menuBag => {
+        context.emit('grab')
         menuBag.grabItem({ key: 'flower' }, 'capture').then(bool => {
-          if (bool) context.emit('capture')
+          context.emit(bool ? 'capture' : 'cancel')
         })
       })
     }
