@@ -4,7 +4,7 @@
       <Image ref="image" :texture="`chara_sprite/${name}`" :originX="0.5" :originY="1" :alpha="alpha" v-if="name" />
     </Container>
     <TapArea v-if="tapEvent.event.value" :visible="checkable" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @tap="tapEvent.exec" />
-    <GrabArea v-else-if="name" :visible="grabbable" :texture="`chara_sprite/${name}`" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @grab="alpha = 0.5" @capture="$emit('del')" @cancel="alpha = 1" />
+    <GrabArea v-else-if="capture" :visible="grabbable" :texture="`chara_sprite/${name}`" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @grab="alpha = 0.5" @capture="$emit('del')" @cancel="alpha = 1" />
   </div>
 </template>
 
@@ -19,7 +19,8 @@ export default {
   props: {
     initX: { default: 0 },
     initY: { default: 0 },
-    name: { default: null }
+    name: { default: null },
+    capture: { default: true }
   },
   emits: ['create', 'preUpdate', 'del'],
   setup (props, context) {

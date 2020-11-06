@@ -4,7 +4,7 @@
     <Image v-for="v in images" :key="v.id" :ref="v.ref" :texture="`tileset/${v.key}`" :x="v.x" :y="v.y" :origin="0" @create="obj => obj.setDepth(obj.y + obj.height)" />
     <Player ref="player" :initX="playerX" :initY="playerY" :initR="playerR" @create="charaCreate" @shot="addBullet" />
     <Character v-for="v in charas" :key="v.id" :ref="v.ref" :initX="v.x" :initY="v.y" :initR="v.radian" :name="v.name" :random="100" @create="charaCreate" @del="delObject(v.id)" />
-    <Substance v-for="v in substances" :key="v.id" :ref="v.ref" :initX="v.x" :initY="v.y" :name="v.name" @del="delObject(v.id)" />
+    <Substance v-for="v in substances" :key="v.id" :ref="v.ref" :initX="v.x" :initY="v.y" :name="v.name" :capture="Boolean(v.name)" @del="delObject(v.id)" />
     <Area v-for="v in areas" :key="v.id" :x="v.x" :y="v.y" :width="v.width" :height="v.height" />
     <Gate v-for="v in gates" :key="v.id" :x="v.x" :y="v.y" :width="v.width" :height="v.height" :to="{ key: v.name, x: v.fieldX.toPixel, y: v.fieldY.toPixel }" />
     <Bullet v-for="v in bullets" :key="v.id" :initX="v.x" :initY="v.y" :r="v.r" @del="delBullet(v.id)" />
