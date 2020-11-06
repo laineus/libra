@@ -1,29 +1,27 @@
 <template>
-  <MenuContainer :arrowX="25 + (1 * 60)" :height="415" :title="'Bag'" :visible="grab.mode !== 'dispose'">
-    <Container :x="5" :y="26 + 5" @preUpdate="update" ref="object">
-      <Image v-for="v in items" :key="v.id" :texture="`chara_sprite/${v.key}`" :x="v.bagX" :y="v.bagY" :origin="0.5" :visible="toRaw(grab.item) !== v" @pointerdown="grabItem(v, 'move')" />
-    </Container>
+  <MenuContainer ref="container" :arrowX="25 + (1 * 60)" :height="415" :title="'Bag'" :visible="grab.mode !== 'dispose'" @preUpdate="update">
+    <Image v-for="v in items" :key="v.id" :texture="`chara_sprite/${v.key}`" :x="v.bagX" :y="v.bagY" :origin="0.5" :visible="toRaw(grab.item) !== v" @pointerdown="grabItem(v, 'move')" />
   </MenuContainer>
   <Image v-if="grab.item" ref="grabRef" :texture="`chara_sprite/${grab.item.key}`" :x="grab.x" :y="grab.y" :origin="0.5" @pointerup="p => drop(p)" />
 </template>
 
 <script>
-import { Container, Image, refObj } from 'phavuer'
-import { inject, computed, reactive, toRaw } from 'vue'
+import { Image, refObj } from 'phavuer'
+import { inject, computed, reactive, ref, toRaw } from 'vue'
 import MenuContainer from '@/components/MenuContainer'
 const WIDTH = 220
 const HEIGHT = 405
 export default {
-  components: { Container, Image, MenuContainer },
+  components: { Image, MenuContainer },
   emits: ['close'],
   setup (_, context) {
     const storage = inject('storage')
     const controller = inject('controller').value
     const camera = inject('camera').value
     const field = inject('field').value
-    const object = refObj(null)
-    const offsetX = computed(() => object.value?.x + object.value?.parentContainer.x)
-    const offsetY = computed(() => object.value?.y + object.value?.parentContainer.y)
+    const container = ref(null)
+    const offsetX = computed(() => container.value?.offsetX)
+    const offsetY = computed(() => container.value?.offsetY)
     const grab = reactive({
       item: null,
       mode: null,
@@ -86,7 +84,7 @@ export default {
     return {
       toRaw,
       items,
-      object,
+      container,
       controller, grab, grabRef,
       grabItem, update, drop
     }
