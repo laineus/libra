@@ -1,20 +1,20 @@
 <template>
   <Container :x="0" :y="0" v-if="current">
     <Rectangle :origin="0" :width="config.WIDTH" :height="config.HEIGHT" @pointerdown="next" />
-    <Container :x="x" :y="y">
-      <Rectangle ref="bg" :origin="0.5" :fillColor="0x222222" :alpha="0.8" :width="bgWidth" :height="bgHeight" :displayOriginX="bgWidth.half" :displayOriginY="bgHeight.half" />
-      <Text ref="name" :text="current.chara.name" :style="{ fontSize: 15, fontStyle: 'bold', color: '#FFFFFF', stroke: '#111111', strokeThickness: 3 }" :originX="0" :originY="1" :x="-bgWidth.half + 8" :y="-bgHeight.half + 8" />
-      <Text ref="txt" :text="current.text" :style="{ fontSize: 14, fontStyle: 'normal', color: '#FFFFFF' }" :origin="0.5" />
-    </Container>
+    <SpeachBubble :x="x" :y="y" :width="bgWidth" :height="bgHeight">
+      <Text ref="name" v-if="current.chara" :text="current.chara.name" :style="{ fontSize: 15, fontStyle: 'bold', color: '#BBAA88', stroke: '#553311', strokeThickness: 3 }" :originX="0" :originY="1" :x="4" :y="4" />
+      <Text ref="txt" :text="current.text" :style="{ fontSize: 14, fontStyle: 'normal', color: '#553311' }" :x="7" :y="7" :lineSpacing="3" :padding="{ top: 2 }" />
+    </SpeachBubble>
   </Container>
 </template>
 
 <script>
 import { refObj, Container, Rectangle, Text } from 'phavuer'
 import { computed, ref, inject, onUpdated, reactive, toRefs } from 'vue'
+import SpeachBubble from './SpeachBubble'
 import config from '@/data/config'
 export default {
-  components: { Container, Rectangle, Text },
+  components: { Container, Rectangle, Text, SpeachBubble },
   setup () {
     // inject
     const camera = inject('camera')
@@ -27,7 +27,7 @@ export default {
     let resolver = null
     const data = reactive({
       x: computed(() => current.value?.chara.x - camera.value?.scrollX),
-      y: computed(() => current.value?.chara.y - camera.value?.scrollY - 70),
+      y: computed(() => current.value?.chara.y - camera.value?.scrollY - 50),
       bgWidth: 0,
       bgHeight: 0
     })
@@ -46,8 +46,8 @@ export default {
     }
     onUpdated(() => {
       if (!current.value) return
-      data.bgWidth = Math.max(txt.value.width + 20, 100)
-      data.bgHeight = txt.value.height + 20
+      data.bgWidth = Math.max(txt.value.width + 14, 100)
+      data.bgHeight = txt.value.height + 14
     })
     return {
       config,
