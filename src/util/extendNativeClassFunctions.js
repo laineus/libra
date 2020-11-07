@@ -3,6 +3,9 @@ import config from '@/data/config'
 Object.defineProperty(Number.prototype, 'half', {
   get () { return this / 2 }
 })
+Object.defineProperty(Number.prototype, 'twice', {
+  get () { return this * 2 }
+})
 Object.defineProperty(Number.prototype, 'toTile', {
   get () { return Math.floor(this / config.TILE_SIZE) }
 })

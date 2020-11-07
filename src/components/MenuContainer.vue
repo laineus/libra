@@ -1,9 +1,9 @@
 <template>
   <Container :x="(margin + width).byRight" :y="(bottom + height + labelHeight).byBottom">
     <RoundRectangle :y="labelHeight" :width="width" :height="height" :fillColor="0xBBAA88" :radius="{ tl: 0, tr: radius, bl: radius, br: radius }" :origin="0" />
-    <RoundRectangle :x="padding" :y="padding + labelHeight" :width="width - (padding * 2)" :height="height - (padding * 2)" :lineWidth="2" :strokeColor="0x553311" :radius="{ tl: 0, tr: radius, bl: radius, br: radius }" :origin="0" />
+    <RoundRectangle :x="padding" :y="padding + labelHeight" :width="width - padding.twice" :height="height - padding.twice" :lineWidth="2" :strokeColor="0x553311" :radius="{ tl: 0, tr: radius, bl: radius, br: radius }" :origin="0" />
     <RoundRectangle :width="labelWidth" :height="labelHeight" :fillColor="0xBBAA88" :radius="{ tl: radius, tr: radius, bl: 0, br: 0 }" :originX="0" />
-    <RoundRectangle :x="padding - 1" :y="padding - 1" :width="labelWidth - (padding * 2) + 2" :height="labelHeight + 2" :fillColor="0x553311" :radius="{ tl: radius, tr: radius, bl: 0, br: 0 }" :originX="0" />
+    <RoundRectangle :x="padding - 1" :y="padding - 1" :width="labelWidth - padding.twice + 2" :height="labelHeight + 2" :fillColor="0x553311" :radius="{ tl: radius, tr: radius, bl: 0, br: 0 }" :originX="0" />
     <Rectangle :x="arrowX" :y="height + labelHeight" :width="20" :height="20" :fillColor="0xBBAA88" :rotation="Math.PI / 4" />
     <Rectangle :x="arrowX" :y="height + labelHeight - 5.5" :width="20" :height="20" :fillColor="0xBBAA88" :rotation="Math.PI / 4" :lineWidth="2" :strokeColor="0x553311" :origin="0.5" />
     <Rectangle :x="arrowX" :y="height + labelHeight - 15" :width="29" :height="20" :fillColor="0xBBAA88" />
