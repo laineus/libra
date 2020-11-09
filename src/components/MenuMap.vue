@@ -1,19 +1,21 @@
 <template>
   <MenuContainer ref="container" :arrowX="25 + (2 * 60)" :height="320" :title="'Map'">
-    <Container v-for="(v, i) in places" :key="i" :y="i * 30">
-      <Text :x="10" :y="8" :text="`${v.key} x: ${v.x} y: ${v.y}`" :style="{ fontSize: 13, fontStyle: 'bold', color: '#553311' }" @pointerdown="p => onTap(p, v)" />
+    <Container v-for="(v, i) in places" :key="i" :x="rowWidth.half" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerdown="p => onTap(p, v)">
+      <Rectangle :visible="v === selected" :fillColor="0xEE8811" :width="rowWidth" :height="rowHeight" :alpha="0.8" />
+      <Line :x="0" :y="rowHeight.half - 0.5" :lineWidth="0.5" :x2="rowWidth" :strokeColor="0x553311" :alpha="0.25" />
+      <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="`${v.key} x: ${v.x} y: ${v.y}`" :style="{ fontSize: 13, fontStyle: 'bold', color: '#553311' }" />
     </Container>
-    <Selector v-if="data.selected" :x="data.tapX" :y="data.tapY" :list="['へ移動', 'キャンセル']" @select="submit" />
+    <Selector v-if="selected" :x="tapX" :y="tapY" :list="['移動', 'キャンセル']" @select="submit" />
   </MenuContainer>
 </template>
 
 <script>
 import MenuContainer from '@/components/MenuContainer'
-import { inject, reactive, ref } from 'vue'
-import { Container, Text } from 'phavuer'
+import { inject, reactive, ref, toRefs } from 'vue'
+import { Container, Rectangle, Text, Line } from 'phavuer'
 import Selector from './Selector'
 export default {
-  components: { MenuContainer, Container, Text, Selector },
+  components: { MenuContainer, Container, Rectangle, Text, Line, Selector },
   emits: ['close'],
   setup (_, context) {
     const gameScene = inject('gameScene').value
@@ -21,19 +23,20 @@ export default {
     const container = ref(null)
     const places = storage.state.places
     const data = reactive({
+      rowWidth: 220, rowHeight: 35,
       selected: null,
       tapX: 0, tapY: 0
     })
     const submit = i => {
       if (i === 1) return data.selected = null
-      const place = places[i]
+      const place = data.selected
       gameScene.setField(place.key, place.x, place.y)
       context.emit('close')
     }
     return {
       places,
       container,
-      data,
+      ...toRefs(data),
       submit,
       onTap: (pointer, place) => {
         if (data.selected) {
