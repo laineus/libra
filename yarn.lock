@@ -5815,10 +5815,10 @@ phaser@^3.24.1:
     imports-loader "^1.1.0"
     path "^0.12.7"
 
-phavuer@^0.3.4:
-  version "0.3.4"
-  resolved "https://registry.yarnpkg.com/phavuer/-/phavuer-0.3.4.tgz#7191677b3b935e9f4e2a1a32f7d425545555af1f"
-  integrity sha512-Z/7LV2dC4Mf4eC8U6NTu5SdzxR7DqjWELtqFjBHzUiHaSrKv8/+hDnBtkcQuvuF5CHI8r5EqbaNyxNTEj+o6oQ==
+phavuer@^0.3.5:
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/phavuer/-/phavuer-0.3.5.tgz#c1b95ac98443f5d76b880c2b4b991d0ee4eae21b"
+  integrity sha512-oCV74Rq/whszodr6VR/gXncR2Y/47TtXZJ1/lNT1LCsRLUIZYgB/uUXojEaOc/NBuPw+KWuWxGVoDUi+9arTYw==
 
 phin@^2.9.1:
   version "2.9.3"
