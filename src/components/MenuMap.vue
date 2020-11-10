@@ -1,9 +1,9 @@
 <template>
   <MenuContainer ref="container" :arrowX="25 + (2 * 60)" :height="320" :title="'Map'">
     <Container v-for="(v, i) in places" :key="i" :x="rowWidth.half" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerdown="p => onTap(p, v)">
-      <Rectangle :visible="v === selected" :fillColor="0xEE8811" :width="rowWidth" :height="rowHeight" :alpha="0.8" />
-      <Line :x="0" :y="rowHeight.half - 0.5" :lineWidth="0.5" :x2="rowWidth" :strokeColor="0x553311" :alpha="0.25" />
-      <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="`${v.key} x: ${v.x} y: ${v.y}`" :style="{ fontSize: 13, fontStyle: 'bold', color: '#553311' }" />
+      <Rectangle :visible="v === selected" :fillColor="COLORS.orange" :width="rowWidth" :height="rowHeight" :alpha="0.8" />
+      <Line :x="0" :y="rowHeight.half - 0.5" :lineWidth="0.5" :x2="rowWidth" :strokeColor="COLORS.brown" :alpha="0.25" />
+      <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="`${v.key} x: ${v.x} y: ${v.y}`" :style="{ fontSize: 13, fontStyle: 'bold', color: COLORS.brown.toColorString }" />
     </Container>
     <Selector v-if="selected" :x="tapX" :y="tapY" :list="['移動', 'キャンセル']" @select="submit" />
   </MenuContainer>
@@ -13,6 +13,7 @@
 import MenuContainer from '@/components/MenuContainer'
 import { inject, reactive, ref, toRefs } from 'vue'
 import { Container, Rectangle, Text, Line } from 'phavuer'
+import config from '@/data/config'
 import Selector from './Selector'
 export default {
   components: { MenuContainer, Container, Rectangle, Text, Line, Selector },
@@ -34,6 +35,7 @@ export default {
       context.emit('close')
     }
     return {
+      COLORS: config.COLORS,
       places,
       container,
       ...toRefs(data),

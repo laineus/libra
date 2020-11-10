@@ -1,9 +1,9 @@
 <template>
   <SpeachBubble :width="bgWidth" :height="(bgHeight * options.length) + (2 * (options.length - 1))">
     <Container v-for="(v, i) in options" :key="i" :y="(bgHeight + 2) * i">
-      <RoundRectangle :fillColor="0x553311" :radius="4" :width="bgWidth" :height="bgHeight" @pointerdown="select(i)" />
-      <Rectangle :fillColor="0xBBAA88" :x="10" :y="14" :width="3" :height="3" :rotation="Math.PI / 4" />
-      <Text :ref="v.ref" :text="v.text" :style="{ fontSize: 14, fontStyle: 'normal', color: '#BBAA88' }" :x="18" :y="6" :lineSpacing="3" :padding="{ top: 2 }" />
+      <RoundRectangle :fillColor="COLORS.brown" :radius="4" :width="bgWidth" :height="bgHeight" @pointerdown="select(i)" />
+      <Rectangle :fillColor="COLORS.soy" :x="10" :y="14" :width="3" :height="3" :rotation="Math.PI / 4" />
+      <Text :ref="v.ref" :text="v.text" :style="{ fontSize: 14, fontStyle: 'normal', color: COLORS.soy.toColorString }" :x="18" :y="6" :lineSpacing="3" :padding="{ top: 2 }" />
     </Container>
   </SpeachBubble>
 </template>
@@ -33,7 +33,7 @@ export default {
       context.emit('select', i)
     }
     return {
-      config,
+      COLORS: config.COLORS,
       options,
       ...toRefs(data),
       select

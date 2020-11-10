@@ -7,13 +7,14 @@ export default {
     TEXT: '"M PLUS 1p"'
   },
   COLORS: {
-    theme: 0xAACC22,
+    brown: 0x553311,
+    soy: 0xBBAA88,
+    orange: 0xEE8811,
     white: 0xFFFFFF,
     gray: 0xAAAAAA,
     ghost: 0x555555,
     dark: 0x151515,
-    black: 0x000000,
-    soy: 0xFFEEBB
+    black: 0x000000
   },
   DEPTH: {
     GROUND: 0, // + y

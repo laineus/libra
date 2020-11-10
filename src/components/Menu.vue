@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Circle v-for="(v, i) in menu" :key="i" :fillColor="0xBBAA88" :radius="25" :x="(220).byRight + (i * 60)" :y="(40).byBottom" @pointerdown="p => onTap(i, p)" />
+    <Circle v-for="(v, i) in menu" :key="i" :fillColor="COLORS.soy" :radius="25" :x="(220).byRight + (i * 60)" :y="(40).byBottom" @pointerdown="p => onTap(i, p)" />
     <template v-if="selected">
       <MenuStatus v-if="selected.key === 'status'" :ref="menu[0].ref" @close="index = null" />
       <MenuBag v-else-if="selected.key === 'bag'" :ref="menu[1].ref" @close="index = null" />
@@ -11,12 +11,13 @@
 </template>
 
 <script>
+import { computed, nextTick, ref } from 'vue'
 import { Circle } from 'phavuer'
+import config from '@/data/config'
 import MenuStatus from '@/components/MenuStatus'
 import MenuBag from '@/components/MenuBag'
 import MenuMap from '@/components/MenuMap'
 import MenuSystem from '@/components/MenuSystem'
-import { computed, nextTick, ref } from 'vue'
 export default {
   components: { Circle, MenuStatus, MenuBag, MenuMap, MenuSystem },
   setup () {
@@ -41,6 +42,7 @@ export default {
       index.value === i ? index.value = null : select(i)
     }
     return {
+      COLORS: config.COLORS,
       menu,
       index,
       onTap,

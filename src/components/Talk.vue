@@ -2,8 +2,8 @@
   <Container :x="0" :y="0" v-if="current">
     <Rectangle :origin="0" :width="config.WIDTH" :height="config.HEIGHT" @pointerdown="next" />
     <SpeachBubble :x="x" :y="y" :width="bgWidth" :height="bgHeight">
-      <Text ref="name" v-if="current.chara" :text="current.chara.name" :style="{ fontSize: 15, fontStyle: 'bold', color: '#BBAA88', stroke: '#553311', strokeThickness: 3 }" :originX="0" :originY="1" :x="4" :y="4" />
-      <Text ref="txt" :text="current.text" :style="{ fontSize: 14, fontStyle: 'normal', color: '#553311' }" :x="7" :y="7" :lineSpacing="3" :padding="{ top: 2 }" />
+      <Text ref="name" v-if="current.chara" :text="current.chara.name" :style="{ fontSize: 15, fontStyle: 'bold', color: COLORS.soy.toColorString, stroke: COLORS.brown.toColorString, strokeThickness: 3 }" :originX="0" :originY="1" :x="4" :y="4" />
+      <Text ref="txt" :text="current.text" :style="{ fontSize: 14, fontStyle: 'normal', color: COLORS.brown.toColorString }" :x="7" :y="7" :lineSpacing="3" :padding="{ top: 2 }" />
     </SpeachBubble>
   </Container>
 </template>
@@ -50,7 +50,7 @@ export default {
       data.bgHeight = txt.value.height + 14
     })
     return {
-      config,
+      config, COLORS: config.COLORS,
       current,
       next,
       setTalk,
