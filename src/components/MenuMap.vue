@@ -1,6 +1,6 @@
 <template>
   <MenuContainer ref="container" :arrowX="25 + (2 * 60)" :height="320" :title="'Map'">
-    <Container v-for="(v, i) in slots" :key="i" :x="rowWidth.half" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerdown="p => onTap(p, i)">
+    <Container v-for="(v, i) in places" :key="i" :x="rowWidth.half" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerdown="p => onTap(p, i)">
       <Rectangle :visible="i === selectedIndex" :fillColor="COLORS.orange" :width="rowWidth" :height="rowHeight" :alpha="0.8" />
       <Line :x="0" :y="rowHeight.half - 0.5" :lineWidth="0.5" :x2="rowWidth" :strokeColor="COLORS.brown" :alpha="0.25" />
       <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="v ? `${v.key} x: ${v.x} y: ${v.y}` : '未登録'" :style="{ fontSize: 13, fontStyle: 'bold', color: COLORS.brown.toColorString }" />
@@ -11,7 +11,7 @@
 
 <script>
 import MenuContainer from '@/components/MenuContainer'
-import { computed, inject, reactive, ref, toRefs } from 'vue'
+import { inject, reactive, ref, toRefs } from 'vue'
 import { Container, Rectangle, Text, Line } from 'phavuer'
 import config from '@/data/config'
 import Selector from './Selector'
@@ -21,12 +21,10 @@ export default {
   setup (_, context) {
     const gameScene = inject('gameScene').value
     const storage = inject('storage')
+    const field = inject('field').value
+    const player = inject('player').value
     const container = ref(null)
     const places = storage.state.places
-    const slots = computed(() => {
-      const emptySlots = (8 - places.length).toArray().map(() => null)
-      return storage.state.places.concat(emptySlots)
-    })
     const data = reactive({
       rowWidth: 220, rowHeight: 35,
       selectedIndex: null,
@@ -37,15 +35,15 @@ export default {
       const place = places[data.selectedIndex]
       if (place) {
         gameScene.setField(place.key, place.x, place.y)
+        context.emit('close')
       } else {
-        // TODO
+        places[data.selectedIndex] = { key: field.name, x: player.object.x, y: player.object.y }
+        data.selectedIndex = null
       }
-      context.emit('close')
     }
     return {
       COLORS: config.COLORS,
       places,
-      slots,
       container,
       ...toRefs(data),
       submit,

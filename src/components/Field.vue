@@ -75,7 +75,7 @@ export default {
     return {
       config,
       field, collides,
-      width: field.width, height: field.height,
+      name: field.name, width: field.width, height: field.height,
       layers, images, player, objects, charas, substances, areas, gates,
       addObject, delObject,
       bullets, addBullet, delBullet,
