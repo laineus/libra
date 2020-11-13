@@ -1,8 +1,8 @@
 <template>
-  <MenuContainer ref="container" :arrowX="25 + (2 * 60)" :height="320" :title="'Map'">
+  <MenuContainer ref="container" :arrowX="25 + (2 * 60)" :height="305" :title="'Map'">
     <Container v-for="(v, i) in places" :key="i" :x="rowWidth.half" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerdown="p => onTap(p, i)">
       <Rectangle :visible="i === selectedIndex" :fillColor="COLORS.orange" :width="rowWidth" :height="rowHeight" :alpha="0.8" />
-      <Line :x="0" :y="rowHeight.half - 0.5" :lineWidth="0.5" :x2="rowWidth" :strokeColor="COLORS.brown" :alpha="0.25" />
+      <Line v-if="i !== places.length - 1" :x="0" :y="rowHeight.half - 0.5" :lineWidth="0.5" :x2="rowWidth" :strokeColor="COLORS.brown" :alpha="0.25" />
       <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="v ? `${v.key} x: ${v.x} y: ${v.y}` : '未登録'" :style="{ fontSize: 13, fontStyle: 'bold', color: COLORS.brown.toColorString }" />
     </Container>
     <Selector v-if="selectedIndex !== null" :x="tapX" :y="tapY" :list="[places[selectedIndex] ? '登録した場所へ移動' : '現在地を登録', 'キャンセル']" @select="submit" />
@@ -26,7 +26,7 @@ export default {
     const container = ref(null)
     const places = storage.state.places
     const data = reactive({
-      rowWidth: 220, rowHeight: 35,
+      rowWidth: 220, rowHeight: 37,
       selectedIndex: null,
       tapX: 0, tapY: 0
     })
