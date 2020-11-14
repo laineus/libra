@@ -3,7 +3,7 @@
     <Container v-for="(v, i) in places" :key="i" :x="rowWidth.half" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerdown="p => onTap(p, i)">
       <Rectangle :visible="i === selectedIndex" :fillColor="COLORS.orange" :width="rowWidth" :height="rowHeight" :alpha="0.8" />
       <Line v-if="i !== places.length - 1" :x="0" :y="rowHeight.half - 0.5" :lineWidth="0.5" :x2="rowWidth" :strokeColor="COLORS.brown" :alpha="0.25" />
-      <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="v ? `${v.key} x: ${v.x} y: ${v.y}` : '未登録'" :style="{ fontSize: 13, fontStyle: 'bold', color: COLORS.brown.toColorString }" />
+      <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="v ? `${mapName(v.key)} (${v.x}, ${v.y})` : '未登録'" :style="{ fontSize: 13, fontStyle: 'bold', color: COLORS.brown.toColorString }" />
     </Container>
     <Selector v-if="selectedIndex !== null" :x="tapX" :y="tapY" :list="[places[selectedIndex] ? '登録した場所へ移動' : '現在地を登録', 'キャンセル']" @select="submit" />
   </MenuContainer>
@@ -15,6 +15,7 @@ import { inject, reactive, ref, toRefs } from 'vue'
 import { Container, Rectangle, Text, Line } from 'phavuer'
 import config from '@/data/config'
 import Selector from '@/components/Selector'
+import maps from '@/data/maps'
 export default {
   components: { MenuContainer, Container, Rectangle, Text, Line, Selector },
   emits: ['close'],
@@ -41,12 +42,14 @@ export default {
         data.selectedIndex = null
       }
     }
+    const mapName = key => maps[key]?.name
     return {
       COLORS: config.COLORS,
       places,
       container,
       ...toRefs(data),
       submit,
+      mapName,
       onTap: (pointer, i) => {
         if (data.selectedIndex) {
           data.selectedIndex = null

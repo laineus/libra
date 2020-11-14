@@ -44,7 +44,7 @@ export default {
       loadData()
     }
     const timeString = time => moment(time * 1000).format('YYYY-MM-DD HH:mm')
-    const mapName = key => maps[key]?.name || '不明'
+    const mapName = key => maps[key]?.name
     return {
       COLORS: config.COLORS,
       list,
