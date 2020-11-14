@@ -4,7 +4,7 @@ import { encrypt, decrypt } from '@/util/encryption'
 import AppStorage from '@/class/AppStorage'
 import { reactive } from 'vue'
 const appStorage = new AppStorage()
-const STORAGE_KEY = 'data'
+const STORAGE_KEY = 'libra_data'
 // const SHIFT = 11
 const SHIFT = 0
 export default class SaveDataManager {

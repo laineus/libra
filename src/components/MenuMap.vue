@@ -38,7 +38,7 @@ export default {
         gameScene.setField(place.key, place.x, place.y)
         context.emit('close')
       } else {
-        places[data.selectedIndex] = { key: field.name, x: player.object.x, y: player.object.y }
+        places[data.selectedIndex] = { key: field.name, x: Math.round(player.object.x), y: Math.round(player.object.y) }
         data.selectedIndex = null
       }
     }

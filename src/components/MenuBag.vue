@@ -61,16 +61,16 @@ export default {
         grab.resolver()
         context.emit('close')
       } else if (grab.mode === 'move') {
-        grab.item.original.bagX = Math.fix(pointer.x - offsetX.value, wHalf, WIDTH - wHalf)
-        grab.item.original.bagY = Math.fix(pointer.y - offsetY.value, hHalf, HEIGHT - hHalf)
+        grab.item.original.bagX = Math.round(Math.fix(pointer.x - offsetX.value, wHalf, WIDTH - wHalf))
+        grab.item.original.bagY = Math.round(Math.fix(pointer.y - offsetY.value, hHalf, HEIGHT - hHalf))
         grab.resolver()
       } if (grab.mode === 'capture') {
         if (onBagArea.value) {
           storage.state.items.push({
-            id: Symbol('TODO'),
+            id: Math.randomInt(1000000, 9999999),
             key: grab.item.key,
-            bagX: Math.fix(pointer.x - offsetX.value, wHalf, WIDTH - wHalf),
-            bagY: Math.fix(pointer.y - offsetY.value, hHalf, HEIGHT - hHalf)
+            bagX: Math.round(Math.fix(pointer.x - offsetX.value, wHalf, WIDTH - wHalf)),
+            bagY: Math.round(Math.fix(pointer.y - offsetY.value, hHalf, HEIGHT - hHalf))
           })
           grab.resolver(true)
         } else {
