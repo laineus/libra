@@ -1,6 +1,7 @@
 import { inject } from 'vue'
 import Talker from '@/util/Talker'
 export default {
+  name: '部屋',
   bgm: null,
   create () {
     const field = inject('field')

@@ -1,5 +1,6 @@
 import { inject } from 'vue'
 export default {
+  name: '街',
   bgm: 'town',
   create () {
     const field = inject('field')

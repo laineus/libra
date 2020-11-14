@@ -14,7 +14,7 @@ import MenuContainer from '@/components/MenuContainer'
 import { inject, reactive, ref, toRefs } from 'vue'
 import { Container, Rectangle, Text, Line } from 'phavuer'
 import config from '@/data/config'
-import Selector from './Selector'
+import Selector from '@/components/Selector'
 export default {
   components: { MenuContainer, Container, Rectangle, Text, Line, Selector },
   emits: ['close'],
