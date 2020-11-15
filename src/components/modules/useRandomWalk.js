@@ -19,7 +19,7 @@ export default (chara, range) => {
     if (delay.value > 0) return
     setNextDelay()
     const pos = getRandomPosition()
-    return callback(pos)
+    return pos ? callback(pos) : false
   }
   return { play }
 }
