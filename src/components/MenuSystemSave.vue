@@ -1,11 +1,13 @@
 <template>
-  <Container v-for="(v, i) in list" :key="i" :x="rowWidth.half" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerdown="p => onTap(p, i)">
-    <Rectangle :visible="i === selectedIndex" :fillColor="COLORS.orange" :width="rowWidth" :height="rowHeight" :alpha="0.8" />
-    <Line v-if="i !== list.length - 1" :x="0" :y="rowHeight.half - 0.5" :lineWidth="0.5" :x2="rowWidth" :strokeColor="COLORS.brown" :alpha="0.25" />
-    <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="v.name" :style="{ fontSize: 13, fontStyle: 'bold', color: COLORS.brown.toColorString }" />
-    <Text v-if="v.exists" :x="-15" :y="0" :originY="0.5" :text="`${mapName(v.state.map)}\n${timeString(v.state.saved)}`" :lineSpacing="1" :style="{ fontSize: 11, fontStyle: 'bold', color: COLORS.brown.toColorString }" />
+  <Container>
+    <Container v-for="(v, i) in list" :key="i" :x="rowWidth.half" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerdown="p => onTap(p, i)">
+      <Rectangle :visible="i === selectedIndex" :fillColor="COLORS.orange" :width="rowWidth" :height="rowHeight" :alpha="0.8" />
+      <Line v-if="i !== list.length - 1" :x="0" :y="rowHeight.half - 0.5" :lineWidth="0.5" :x2="rowWidth" :strokeColor="COLORS.brown" :alpha="0.25" />
+      <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="v.name" :style="{ fontSize: 13, fontStyle: 'bold', color: COLORS.brown.toColorString }" />
+      <Text v-if="v.exists" :x="-15" :y="0" :originY="0.5" :text="`${mapName(v.state.map)}\n${timeString(v.state.saved)}`" :lineSpacing="1" :style="{ fontSize: 11, fontStyle: 'bold', color: COLORS.brown.toColorString }" />
+    </Container>
+    <Selector v-if="selectedIndex !== null" :x="tapX" :y="tapY" :list="[list[selectedIndex].exists ? '上書き保存' : '保存', 'キャンセル']" @select="submit" />
   </Container>
-  <Selector v-if="selectedIndex !== null" :x="tapX" :y="tapY" :list="[list[selectedIndex].exists ? '上書き保存' : '保存', 'キャンセル']" @select="submit" />
 </template>
 
 <script>

@@ -28,7 +28,7 @@ export default class SaveDataManager {
     this.state = reactive(state)
   }
   async getList () {
-    const promises = (9).toArray().map(this.getRow.bind(this))
+    const promises = (7).toArray().map(this.getRow.bind(this))
     return Promise.all(promises)
   }
   async getRow (number) {
