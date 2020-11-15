@@ -1,6 +1,6 @@
 <template>
   <Scene ref="scene" name="GameScene" :autoStart="true" @update="update">
-    {{ fps }}
+    <template v-if="false">{{ fps }}</template>
     <Field ref="field" v-if="fieldData.name" :fieldKey="fieldData.name" :playerX="fieldData.x" :playerY="fieldData.y" :playerR="fieldData.r" />
   </Scene>
 </template>
