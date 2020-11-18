@@ -1,7 +1,8 @@
 <template>
   <div>
-    <Circle v-for="(v, i) in menu" :key="i" :fillColor="COLORS.soy" :radius="25" :x="(220).byRight + (i * 60)" :y="(40).byBottom" @pointerdown="p => onTap(i, p)" />
+    <Circle v-for="(v, i) in menu" :key="i" :fillColor="COLORS.soy" :radius="25" :x="(220).byRight + (i * 60)" :y="(40).byBottom" @pointerdown="(...args) => tapButton(i, ...args)" />
     <template v-if="selected">
+      <Container :depth="-1" :x="config.WIDTH.half" :y="config.HEIGHT.half" :width="config.WIDTH" :height="config.HEIGHT" @pointerdown="tapCloseArea" />
       <MenuStatus v-if="selected.key === 'status'" :ref="menu[0].ref" @close="index = null" />
       <MenuBag v-else-if="selected.key === 'bag'" :ref="menu[1].ref" @close="index = null" />
       <MenuMap v-else-if="selected.key === 'map'" :ref="menu[2].ref" @close="index = null" />
@@ -12,14 +13,14 @@
 
 <script>
 import { computed, nextTick, ref } from 'vue'
-import { Circle } from 'phavuer'
+import { Container, Circle } from 'phavuer'
 import config from '@/data/config'
 import MenuStatus from '@/components/MenuStatus'
 import MenuBag from '@/components/MenuBag'
 import MenuMap from '@/components/MenuMap'
 import MenuSystem from '@/components/MenuSystem'
 export default {
-  components: { Circle, MenuStatus, MenuBag, MenuMap, MenuSystem },
+  components: { Container, Circle, MenuStatus, MenuBag, MenuMap, MenuSystem },
   setup () {
     const menu = [
       { key: 'status', ref: ref(null) },
@@ -37,17 +38,24 @@ export default {
         })
       })
     }
-    const onTap = (i, pointer) => {
+    const close = () => {
+      index.value = null
+    }
+    const tapButton = (i, pointer, _x, _y, e) => {
+      e.stopPropagation()
       pointer.isDown = false
-      index.value === i ? index.value = null : select(i)
+      index.value === i ? close() : select(i)
+    }
+    const tapCloseArea = pointer => {
+      pointer.isDown = false
+      close()
     }
     return {
-      COLORS: config.COLORS,
+      config, COLORS: config.COLORS,
       menu,
-      index,
-      onTap,
-      selected,
-      select
+      index, selected,
+      select,
+      tapButton, tapCloseArea
     }
   }
 }

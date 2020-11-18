@@ -1,8 +1,8 @@
 <template>
   <Container :x="(margin + width).byRight" :y="(bottom + height + labelHeight).byBottom">
-    <RoundRectangle :y="labelHeight" :width="width" :height="height" :fillColor="COLORS.soy" :radius="{ tl: 0, tr: radius, bl: radius, br: radius }" :origin="0" />
+    <RoundRectangle :y="labelHeight" :width="width" :height="height" :fillColor="COLORS.soy" :radius="{ tl: 0, tr: radius, bl: radius, br: radius }" :origin="0" @pointerdown="onTapBg" />
     <RoundRectangle :x="padding" :y="padding + labelHeight" :width="width - padding.twice" :height="height - padding.twice" :lineWidth="2" :strokeColor="COLORS.brown" :radius="{ tl: 0, tr: radius, bl: radius, br: radius }" :origin="0" />
-    <RoundRectangle :width="labelWidth" :height="labelHeight" :fillColor="COLORS.soy" :radius="{ tl: radius, tr: radius, bl: 0, br: 0 }" :originX="0" />
+    <RoundRectangle :width="labelWidth" :height="labelHeight" :fillColor="COLORS.soy" :radius="{ tl: radius, tr: radius, bl: 0, br: 0 }" :originX="0" @pointerdown="onTapBg" />
     <RoundRectangle :x="padding - 1" :y="padding - 1" :width="labelWidth - padding.twice + 2" :height="labelHeight + 2" :fillColor="COLORS.brown" :radius="{ tl: radius, tr: radius, bl: 0, br: 0 }" :originX="0" />
     <Rectangle :x="arrowX" :y="height + labelHeight" :width="20" :height="20" :fillColor="COLORS.soy" :rotation="Math.PI / 4" />
     <Rectangle :x="arrowX" :y="height + labelHeight - 5.5" :width="20" :height="20" :fillColor="COLORS.soy" :rotation="Math.PI / 4" :lineWidth="2" :strokeColor="COLORS.brown" :origin="0.5" />
@@ -37,7 +37,8 @@ export default {
       radius,
       bottom,
       labelWidth, labelHeight,
-      offsetX, offsetY
+      offsetX, offsetY,
+      onTapBg: (...args) => args[3].stopPropagation()
     }
   }
 }
