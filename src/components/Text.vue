@@ -1,19 +1,32 @@
 <template>
-  <Text :style="{ fontSize: size, fontStyle: bold ? 'bold' : null, fontFamily: config.FONT, color: color.toColorString }" />
+  <Text ref="object" :style="mergedStyle" />
 </template>
 
 <script>
-import { Text } from 'phavuer'
+import { refObj, Text } from 'phavuer'
 import config from '@/data/config'
+import { computed } from 'vue'
 export default {
   components: { Text },
   props: {
     size: { default: 15 },
     bold: { default: false },
-    color: { default: config.COLORS.brown }
+    color: { default: 'brown' },
+    style: { default: null }
   },
-  setup () {
-    return { config }
+  setup (props) {
+    const mergedStyle = computed(() => {
+      return Object.assign({
+        fontSize: props.size,
+        fontStyle: props.bold ? 'bold' : 'normal',
+        fontFamily: config.FONT,
+        color: config.COLORS[props.color].toColorString
+      }, props.style)
+    })
+    return {
+      object: refObj(),
+      mergedStyle
+    }
   }
 }
 </script>

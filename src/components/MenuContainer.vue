@@ -7,7 +7,7 @@
     <Rectangle :x="arrowX" :y="height + labelHeight" :width="20" :height="20" :fillColor="COLORS.soy" :rotation="Math.PI / 4" />
     <Rectangle :x="arrowX" :y="height + labelHeight - 5.5" :width="20" :height="20" :fillColor="COLORS.soy" :rotation="Math.PI / 4" :lineWidth="2" :strokeColor="COLORS.brown" :origin="0.5" />
     <Rectangle :x="arrowX" :y="height + labelHeight - 15" :width="29" :height="20" :fillColor="COLORS.soy" />
-    <Text :text="title" :x="12" :y="9" :style="{ fontSize: 16, fontStyle: 'bold', color: COLORS.soy.toColorString }" />
+    <Text :text="title" :x="12" :y="7" :size="16" :bold="true" color="soy" />
     <Container :x="5" :y="labelHeight + 5">
       <slot />
     </Container>
@@ -15,7 +15,8 @@
 </template>
 
 <script>
-import { Container, Rectangle, RoundRectangle, Text } from 'phavuer'
+import { Container, Rectangle, RoundRectangle } from 'phavuer'
+import Text from '@/components/Text'
 import config from '@/data/config'
 export default {
   components: { Container, Rectangle, RoundRectangle, Text },

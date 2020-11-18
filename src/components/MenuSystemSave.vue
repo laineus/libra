@@ -3,8 +3,8 @@
     <Container v-for="(v, i) in list" :key="i" :x="rowWidth.half" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerdown="p => onTap(p, i)">
       <Rectangle :visible="i === selectedIndex" :fillColor="COLORS.orange" :width="rowWidth" :height="rowHeight" :alpha="0.8" />
       <Line v-if="i !== list.length - 1" :x="0" :y="rowHeight.half - 0.5" :lineWidth="0.5" :x2="rowWidth" :strokeColor="COLORS.brown" :alpha="0.25" />
-      <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="v.name" :style="{ fontSize: 13, fontStyle: 'bold', color: COLORS.brown.toColorString }" />
-      <Text v-if="v.exists" :x="-15" :y="0" :originY="0.5" :text="`${mapName(v.state.map)}\n${timeString(v.state.saved)}`" :lineSpacing="1" :style="{ fontSize: 11, fontStyle: 'bold', color: COLORS.brown.toColorString }" />
+      <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="v.name" :size="13" :bold="true" />
+      <Text v-if="v.exists" :x="-15" :y="0" :originY="0.5" :text="`${mapName(v.state.map)}\n${timeString(v.state.saved)}`" :lineSpacing="1" :size="11" :bold="true" />
     </Container>
     <Selector v-if="selectedIndex !== null" :x="tapX" :y="tapY" :list="[list[selectedIndex].exists ? '上書き保存' : '保存', 'キャンセル']" @select="submit" />
   </Container>
@@ -12,12 +12,13 @@
 
 <script>
 import { reactive, ref, toRefs } from 'vue'
-import { Container, Rectangle, Text, Line } from 'phavuer'
+import { Container, Rectangle, Line } from 'phavuer'
 import moment from 'moment'
 import SaveDataManager from '@/class/SaveDataManager'
 import config from '@/data/config'
-import Selector from '@/components/Selector'
 import maps from '@/data/maps'
+import Text from '@/components/Text'
+import Selector from '@/components/Selector'
 export default {
   components: { Container, Rectangle, Text, Line, Selector },
   props: ['offsetX', 'offsetY'],

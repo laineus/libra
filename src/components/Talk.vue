@@ -2,17 +2,18 @@
   <Container :x="0" :y="0" v-if="current">
     <Rectangle :origin="0" :width="config.WIDTH" :height="config.HEIGHT" @pointerdown="next" />
     <SpeachBubble :x="x" :y="y" :width="bgWidth" :height="bgHeight">
-      <Text ref="name" v-if="current.chara" :text="current.chara.name" :style="{ fontSize: 15, fontStyle: 'bold', color: COLORS.soy.toColorString, stroke: COLORS.brown.toColorString, strokeThickness: 3 }" :originX="0" :originY="1" :x="4" :y="4" />
-      <Text ref="txt" :text="current.text" :style="{ fontSize: 14, fontStyle: 'normal', color: COLORS.brown.toColorString }" :x="7" :y="7" :lineSpacing="3" :padding="{ top: 2 }" />
+      <Text ref="name" v-if="current.chara" :text="current.chara.name" :size="15" :bold="true" color="soy" :style="{ stroke: COLORS.brown.toColorString, strokeThickness: 3 }" :originX="0" :originY="1" :x="4" :y="4" />
+      <Text ref="txt" :text="current.text" :size="14" :x="7" :y="7" :lineSpacing="3" :padding="{ top: 2 }" />
     </SpeachBubble>
   </Container>
 </template>
 
 <script>
-import { refObj, Container, Rectangle, Text } from 'phavuer'
+import { refObj, Container, Rectangle } from 'phavuer'
 import { computed, ref, inject, onUpdated, reactive, toRefs } from 'vue'
-import SpeachBubble from './SpeachBubble'
 import config from '@/data/config'
+import SpeachBubble from '@/components/SpeachBubble'
+import Text from '@/components/Text'
 export default {
   components: { Container, Rectangle, Text, SpeachBubble },
   setup () {

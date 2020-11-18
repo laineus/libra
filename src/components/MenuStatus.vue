@@ -1,21 +1,22 @@
 <template>
   <MenuContainer :arrowX="25 + (0 * 64)" :height="350" :title="'Status'">
     <template v-for="(v, i) in LIST.slice(0, 3)" :key="i">
-      <Text :x="10" :y="10 + (i * 20)" :text="v.label" :style="{ fontSize: 15, fontStyle: 'bold', color: COLORS.brown.toColorString }" />
-      <Text :x="115" :y="10 + (i * 20)" :text="v.value.value" :style="{ fontSize: 15, fontStyle: 'bold', color: COLORS.brown.toColorString }" />
+      <Text :x="10" :y="10 + (i * 20)" :text="v.label" />
+      <Text :x="115" :y="10 + (i * 20)" :text="v.value.value" />
     </template>
     <Image texture="libra" :tint="COLORS.brown" :x="115" :y="165" :frame="Math.abs(charmDiff)" :flipX="charmDiff < 0" />
     <template v-for="(v, i) in LIST.slice(3)" :key="i">
-      <Text :x="10" :y="270 + (i * 20)" :text="v.label" :style="{ fontSize: 15, fontStyle: 'bold', color: COLORS.brown.toColorString }" />
-      <Text :x="150" :y="270 + (i * 20)" :text="v.value.value" :style="{ fontSize: 15, fontStyle: 'bold', color: COLORS.brown.toColorString }" />
+      <Text :x="10" :y="270 + (i * 20)" :text="v.label" />
+      <Text :x="150" :y="270 + (i * 20)" :text="v.value.value" />
     </template>
   </MenuContainer>
 </template>
 
 <script>
 import { inject, computed } from 'vue'
-import { Text, Image } from 'phavuer'
+import { Image } from 'phavuer'
 import MenuContainer from '@/components/MenuContainer'
+import Text from '@/components/Text'
 import config from '@/data/config'
 import maps from '@/data/maps'
 const secToMinSecString = sec => {
