@@ -18,7 +18,12 @@ import { Text, Image } from 'phavuer'
 import MenuContainer from '@/components/MenuContainer'
 import config from '@/data/config'
 import maps from '@/data/maps'
-const secToMinSecString = sec => `${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, '0')}`
+const secToMinSecString = sec => {
+  const s = sec % 60
+  const m = Math.floor(sec / 60) % 60
+  const h = Math.floor(sec / 3600)
+  return `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`
+}
 export default {
   components: { Text, Image, MenuContainer },
   setup () {
