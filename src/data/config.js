@@ -2,10 +2,7 @@ export default {
   WIDTH: 960,
   HEIGHT: 540,
   TILE_SIZE: 32,
-  FONTS: {
-    UI: '"Electrolize"',
-    TEXT: '"M PLUS 1p"'
-  },
+  FONT: '"Josefin Sans", "M PLUS 1p"',
   COLORS: {
     brown: 0x553311,
     soy: 0xBBAA88,
