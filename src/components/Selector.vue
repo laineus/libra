@@ -3,7 +3,7 @@
     <Container v-for="(v, i) in options" :key="i" :y="(bgHeight + 2) * i">
       <RoundRectangle :fillColor="COLORS.brown" :radius="4" :width="bgWidth" :height="bgHeight" @pointerdown="select(i)" />
       <Rectangle :fillColor="COLORS.soy" :x="10" :y="14" :width="3" :height="3" :rotation="Math.PI / 4" />
-      <Text :ref="v.ref" :text="v.text" :size="14" :color="soy" :x="18" :y="6" :lineSpacing="3" :padding="{ top: 2 }" />
+      <Text :ref="v.ref" :text="v.text" :size="14" color="soy" :x="18" :y="5" :lineSpacing="3" />
     </Container>
   </SpeachBubble>
 </template>

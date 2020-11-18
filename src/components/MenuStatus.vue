@@ -1,13 +1,13 @@
 <template>
   <MenuContainer :arrowX="25 + (0 * 64)" :height="350" :title="'Status'">
     <template v-for="(v, i) in LIST.slice(0, 3)" :key="i">
-      <Text :x="10" :y="10 + (i * 20)" :text="v.label" />
-      <Text :x="115" :y="10 + (i * 20)" :text="v.value.value" />
+      <Text :x="10" :y="10 + (i * 20)" :size="14" :bold="true" :text="v.label" />
+      <Text :x="115" :y="10 + (i * 20)" :size="14" :text="v.value.value" />
     </template>
     <Image texture="libra" :tint="COLORS.brown" :x="115" :y="165" :frame="Math.abs(charmDiff)" :flipX="charmDiff < 0" />
     <template v-for="(v, i) in LIST.slice(3)" :key="i">
-      <Text :x="10" :y="270 + (i * 20)" :text="v.label" />
-      <Text :x="150" :y="270 + (i * 20)" :text="v.value.value" />
+      <Text :x="10" :y="270 + (i * 20)" :size="14" :bold="true" :text="v.label" />
+      <Text :x="135" :y="270 + (i * 20)" :size="14" :text="v.value.value" />
     </template>
   </MenuContainer>
 </template>
