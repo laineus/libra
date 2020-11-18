@@ -33,6 +33,8 @@ export default {
       }
     })
     const frames = reactive({ total: 0, game: 0 })
+    const sdm = new SaveDataManager()
+    setInterval(() => sdm.state.sec++, 1000)
     provide('event', event)
     provide('frames', frames)
     provide('gameScene', gameScene)
@@ -46,7 +48,7 @@ export default {
     provide('talk', computed(() => uiScene.value?.talk))
     provide('mobile', !game.device.os.desktop)
     provide('audio', new AudioController(game.sound))
-    provide('storage', new SaveDataManager())
+    provide('storage', sdm)
     provide('setting', new CommonSetting())
     return {
       gameScene, uiScene
