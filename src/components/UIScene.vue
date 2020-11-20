@@ -6,6 +6,7 @@
       <Circle :visible="mobile && nealestCheckable" :radius="80" :fillColor="0x000000" :alpha="0.5" :x="(100).byRight" :y="(100).byBottom" @pointerdown="check" />
       <Talk ref="talk" />
       <Menu ref="menu" />
+      <Image v-for="v in 5" :key="v" texture="hp" :frame="v === 5 ? 1 : 0" :x="40 + ((v - 1) * 42)" :y="(35).byBottom" />
     </template>
     <Rectangle :fillColor="0x000000" :origin="0" :width="config.WIDTH" :height="config.HEIGHT" :depth="config.DEPTH.TRANSITION" :alpha="transitionAlpha" />
   </Scene>
@@ -13,14 +14,14 @@
 
 <script>
 import { inject, ref } from 'vue'
-import { refScene, Scene, Rectangle, Circle } from 'phavuer'
+import { refScene, Scene, Rectangle, Circle, Image } from 'phavuer'
 import Title from './Title'
 import Controller from './Controller'
 import Talk from './Talk'
 import Menu from './Menu'
 import config from '@/data/config'
 export default {
-  components: { Scene, Title, Controller, Rectangle, Circle, Talk, Menu },
+  components: { Scene, Title, Controller, Rectangle, Circle, Image, Talk, Menu },
   setup (props) {
     const mobile = inject('mobile')
     const frames = inject('frames')
