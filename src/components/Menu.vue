@@ -1,6 +1,9 @@
 <template>
   <div>
-    <Circle v-for="(v, i) in menu" :key="i" :fillColor="COLORS.soy" :radius="25" :x="(220).byRight + (i * 60)" :y="(40).byBottom" @pointerdown="(...args) => tapButton(i, ...args)" />
+    <Container v-for="(v, i) in menu" :key="i" :x="(220).byRight + (i * 60)" :y="(40).byBottom">
+      <Circle :fillColor="COLORS.brown" :radius="25" :lineWidth="2" :strokeColor="COLORS.soy" @pointerdown="(...args) => tapButton(i, ...args)" />
+      <Image texture="menu_icons" :frame="i" :tint="COLORS.soy" :scale="1" />
+    </Container>
     <template v-if="selected">
       <Container :depth="-1" :x="config.WIDTH.half" :y="config.HEIGHT.half" :width="config.WIDTH" :height="config.HEIGHT" @pointerdown="tapCloseArea" />
       <MenuStatus v-if="selected.key === 'status'" :ref="menu[0].ref" @close="index = null" />
@@ -13,14 +16,14 @@
 
 <script>
 import { computed, nextTick, ref } from 'vue'
-import { Container, Circle } from 'phavuer'
+import { Container, Circle, Image } from 'phavuer'
 import config from '@/data/config'
 import MenuStatus from '@/components/MenuStatus'
 import MenuBag from '@/components/MenuBag'
 import MenuMap from '@/components/MenuMap'
 import MenuSystem from '@/components/MenuSystem'
 export default {
-  components: { Container, Circle, MenuStatus, MenuBag, MenuMap, MenuSystem },
+  components: { Container, Circle, Image, MenuStatus, MenuBag, MenuMap, MenuSystem },
   setup () {
     const menu = [
       { key: 'status', ref: ref(null) },
