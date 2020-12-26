@@ -1,5 +1,5 @@
 export default {
-  map: 'room1',
+  map: 'home1',
   x: 500,
   y: 600,
   r: 90,

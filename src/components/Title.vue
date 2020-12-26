@@ -14,7 +14,7 @@ export default {
     return {
       config,
       tap: async () => {
-        await gameScene.value.setField('room1', 640, 310)
+        await gameScene.value.setField('home1', 640, 310)
         context.emit('close')
       }
     }
