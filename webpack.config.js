@@ -4,6 +4,7 @@ const webpack = require('webpack')
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
 const WriteFilePlugin = require('write-file-webpack-plugin')
+const AutoTileWebpackPlugin = require('auto-tile-webpack-plugin')
 const TileExtrudeWebpackPlugin = require('tile-extrude-webpack-plugin')
 const PhaserAssetsWebpackPlugin = require('phaser-assets-webpack-plugin')
 
@@ -65,6 +66,7 @@ module.exports = (_env, argv) => ({
       '__VUE_OPTIONS_API__': JSON.stringify(false),
       '__VUE_PROD_DEVTOOLS__': JSON.stringify(false)
     }),
+    new AutoTileWebpackPlugin({ size: 32, input: './public/img/map/autotiles', output: './public/img/map/tilesets' }),
     new TileExtrudeWebpackPlugin({ size: 32, input: './public/img/map/tilesets', output: './public/img/map/extruded_tilesets' }),
     new PhaserAssetsWebpackPlugin(assetSettings),
     new webpack.ProvidePlugin({
