@@ -1,4 +1,12 @@
 { "columns":8,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"",
+         "target":"."
+        }
+    },
  "image":"..\/..\/img\/map\/tilesets\/home_ceil.png",
  "imageheight":192,
  "imagewidth":256,
@@ -90,22 +98,6 @@
          "type":"collides"
         }, 
         {
-         "id":20,
-         "type":"collides"
-        }, 
-        {
-         "id":21,
-         "type":"collides"
-        }, 
-        {
-         "id":22,
-         "type":"collides"
-        }, 
-        {
-         "id":23,
-         "type":"collides"
-        }, 
-        {
          "id":24,
          "type":"collides"
         }, 
@@ -142,26 +134,6 @@
          "type":"collides"
         }, 
         {
-         "id":33,
-         "type":"collides"
-        }, 
-        {
-         "id":34,
-         "type":"collides"
-        }, 
-        {
-         "id":35,
-         "type":"collides"
-        }, 
-        {
-         "id":36,
-         "type":"collides"
-        }, 
-        {
-         "id":37,
-         "type":"collides"
-        }, 
-        {
          "id":38,
          "type":"collides"
         }, 
@@ -178,27 +150,7 @@
          "type":"collides"
         }, 
         {
-         "id":42,
-         "type":"collides"
-        }, 
-        {
-         "id":43,
-         "type":"collides"
-        }, 
-        {
          "id":44,
-         "type":"collides"
-        }, 
-        {
-         "id":45,
-         "type":"collides"
-        }, 
-        {
-         "id":46,
-         "type":"collides"
-        }, 
-        {
-         "id":47,
          "type":"collides"
         }],
  "tilewidth":32,
