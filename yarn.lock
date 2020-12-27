@@ -1747,10 +1747,10 @@ atob@^2.1.2:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-auto-tile-webpack-plugin@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/auto-tile-webpack-plugin/-/auto-tile-webpack-plugin-0.9.0.tgz#0d2d0c68e31968f597f27a212cdca63c1f37d169"
-  integrity sha512-whAbKRKR1bmAzAiTBy99540fAxYBD1bm7fI2N7I6v0FwuWmHrUOsbmYb09pxw084wCr/5dsB/ok62CkPwq73og==
+auto-tile-webpack-plugin@^0.9.1:
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/auto-tile-webpack-plugin/-/auto-tile-webpack-plugin-0.9.1.tgz#2553cd2a5edd64cc72345c3f385a7025d4c85b65"
+  integrity sha512-rpiQHzeuKlrVTWDK/3YiGp9+PDt4vc2BvlTGvQAOF/K2WRt6e4DKxDyjtRzl7qfn4vOcPSjAmjTFkT29090iqg==
   dependencies:
     sharp "^0.27.0"
 
@@ -7498,10 +7498,10 @@ thunky@^1.0.2:
   resolved "https://registry.yarnpkg.com/thunky/-/thunky-1.1.0.tgz#5abaf714a9405db0504732bbccd2cedd9ef9537d"
   integrity sha512-eHY7nBftgThBqOyHGVN+l8gF0BucP09fMo0oO/Lb0w1OF80dJv+lDVpXG60WMQvkcxAkNybKsrEIE3ZtKGmPrA==
 
-tile-extrude-webpack-plugin@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/tile-extrude-webpack-plugin/-/tile-extrude-webpack-plugin-1.0.0.tgz#edf588272f66ddb60b32c4b323cc6334249bc33a"
-  integrity sha512-hMOHMJR0fyqBmMTvhd4zynQmJCM4xGEJfxdCb5RGkbl7QD+5p31TdQxwQM1anDOlncwN6fTn+zVce6rwCdYsXw==
+tile-extrude-webpack-plugin@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/tile-extrude-webpack-plugin/-/tile-extrude-webpack-plugin-1.0.1.tgz#19fd7e245d8ea2e3f6d3b8e5b4c0247f9b38735d"
+  integrity sha512-7lKnS9tlbSqNACs3rBO+JnIYsUwBftmXWzA/5Ep0khzver4zOh933x3V8/tYJE61oiDFSE6H6Z6Tgk+/IV4BMg==
   dependencies:
     imagemin "^7.0.1"
     imagemin-pngquant "^9.0.0"
