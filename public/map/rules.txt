@@ -1,1 +1,2 @@
 ../img/map/tilesets/home_ceil.tmx
+../img/map/tilesets/stomach_ceil.tmx
