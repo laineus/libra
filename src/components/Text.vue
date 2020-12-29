@@ -1,5 +1,5 @@
 <template>
-  <Text ref="object" :style="mergedStyle" />
+  <PhavuerText ref="object" :style="mergedStyle" />
 </template>
 
 <script>
@@ -7,7 +7,7 @@ import { refObj, Text } from 'phavuer'
 import config from '@/data/config'
 import { computed } from 'vue'
 export default {
-  components: { Text },
+  components: { PhavuerText: Text },
   props: {
     size: { default: 15 },
     bold: { default: false },
