@@ -38,7 +38,7 @@ const getTilesets = tilemap => {
 const getLayers = (tilemap, tileSettings) => {
   const animationTileIds = tileSettings.filter(v => 'animation' in v.setting).map(v => v.id)
   return tilemap.layers.map((layer, index) => {
-    if (!layer.visible) return
+    if (!layer.visible) return null
     const hasAnimTile = layer.data.flat().some(v => animationTileIds.includes(v.index))
     const component = hasAnimTile ? 'DynamicTilemapLayer' : 'StaticTilemapLayer'
     return mapProperties({ index, component }, layer.properties)
