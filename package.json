@@ -12,8 +12,8 @@
   "dependencies": {
     "moment": "^2.29.1",
     "phaser": "^3.50.1",
-    "phavuer": "^0.3.7",
-    "vue": "^3.0.4"
+    "phavuer": "^0.4.0",
+    "vue": "3.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",

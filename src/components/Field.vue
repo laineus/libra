@@ -1,6 +1,6 @@
 <template>
   <div>
-    <component v-for="v in layers" :key="v.index" :is="v.component" :ref="v.ref" :depth="config.DEPTH[v.depth] || 0" :tilemap="field.tilemap" :layerIndex="v.index" :tileset="field.tilesets" :collision="collides" @create="layerCreate" />
+    <TilemapLayer v-for="v in layers" :key="v.index" :ref="v.ref" :depth="config.DEPTH[v.depth] || 0" :tilemap="field.tilemap" :layerIndex="v.index" :tileset="field.tilesets" :collision="collides" @create="layerCreate" />
     <Image v-for="v in images" :key="v.id" :ref="v.ref" :texture="`tileset/${v.key}`" :x="v.x" :y="v.y" :origin="0" @create="obj => obj.setDepth(obj.y + obj.height)" />
     <Player ref="player" :initX="playerX" :initY="playerY" :initR="playerR" @create="charaCreate" @shot="addBullet" />
     <Character v-for="v in charas" :key="v.id" :ref="v.ref" :initX="v.x" :initY="v.y" :initR="v.radian" :name="v.name" :random="100" @create="charaCreate" @del="delObject(v.id)" />
@@ -20,12 +20,12 @@ import Area from './Area'
 import Gate from './Gate'
 import Bullet from './Bullet'
 import { inject, onMounted, ref, computed, shallowReactive } from 'vue'
-import { refObj, Image, StaticTilemapLayer, DynamicTilemapLayer } from 'phavuer'
+import { refObj, Image, TilemapLayer } from 'phavuer'
 import setupCamera from './modules/setupCamera'
 import maps from '@/data/maps'
 import config from '@/data/config'
 export default {
-  components: { StaticTilemapLayer, DynamicTilemapLayer, Image, Player, Character, Substance, Area, Gate, Bullet },
+  components: { TilemapLayer, Image, Player, Character, Substance, Area, Gate, Bullet },
   props: [
     'fieldKey', 'playerX', 'playerY', 'playerR'
   ],

@@ -35,13 +35,10 @@ const getTileSettingsByType = (settings, type) => {
 const getTilesets = tilemap => {
   return tilemap.tilesets.map(tileset => tilemap.addTilesetImage(tileset.name, `tileset/${tileset.name}`, 32, 32, 1, 2))
 }
-const getLayers = (tilemap, tileSettings) => {
-  const animationTileIds = tileSettings.filter(v => 'animation' in v.setting).map(v => v.id)
+const getLayers = tilemap => {
   return tilemap.layers.map((layer, index) => {
     if (!layer.visible) return null
-    const hasAnimTile = layer.data.flat().some(v => animationTileIds.includes(v.index))
-    const component = hasAnimTile ? 'DynamicTilemapLayer' : 'StaticTilemapLayer'
-    return mapProperties({ index, component }, layer.properties)
+    return mapProperties({ index }, layer.properties)
   }).filter(Boolean)
 }
 const getUpdateEvent = (tilemap, tilesettings) => {
@@ -90,7 +87,7 @@ export default (scene, mapKey) => {
   const tileSettings = getTileSettings(scene, tilemap)
   console.log(tilemap)
   console.log(rawData)
-  const layers = getLayers(tilemap, tileSettings)
+  const layers = getLayers(tilemap)
   const tilesets = getTilesets(tilemap)
   const images = getImage(rawData)
   const objects = getObjects(rawData)
