@@ -77,6 +77,34 @@
                  "width":96,
                  "x":416,
                  "y":608
+                }, 
+                {
+                 "height":0,
+                 "id":2,
+                 "name":"",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"color",
+                         "type":"color",
+                         "value":"#fff9b514"
+                        }, 
+                        {
+                         "name":"intensity",
+                         "type":"float",
+                         "value":1
+                        }, 
+                        {
+                         "name":"radius",
+                         "type":"int",
+                         "value":600
+                        }],
+                 "rotation":0,
+                 "type":"Light",
+                 "visible":true,
+                 "width":0,
+                 "x":558,
+                 "y":364
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -97,8 +125,14 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":2,
+ "nextobjectid":3,
  "orientation":"orthogonal",
+ "properties":[
+        {
+         "name":"ambient",
+         "type":"color",
+         "value":"#ff968865"
+        }],
  "renderorder":"right-down",
  "tiledversion":"2020.08.05",
  "tileheight":32,

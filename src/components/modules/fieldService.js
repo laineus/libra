@@ -93,6 +93,7 @@ export default (scene, mapKey) => {
   const objects = getObjects(rawData)
   const update = getUpdateEvent(tilemap, tileSettings)
   const getObjectsByType = type => objects.filter(v => v.type === type)
+  const properties = Array.isArray(tilemap.properties) ? mapProperties({}, tilemap.properties) : tilemap.properties
 
   return {
     name: mapKey,
@@ -105,6 +106,7 @@ export default (scene, mapKey) => {
     objects,
     update,
     getObjectsByType,
-    getTileSettingsByType: type => getTileSettingsByType(tileSettings, type)
+    getTileSettingsByType: type => getTileSettingsByType(tileSettings, type),
+    properties
   }
 }
