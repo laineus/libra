@@ -8,7 +8,8 @@
     <Area v-for="v in areas" :key="v.id" :x="v.x" :y="v.y" :width="v.width" :height="v.height" />
     <Gate v-for="v in gates" :key="v.id" :x="v.x" :y="v.y" :width="v.width" :height="v.height" :to="{ key: v.name, x: v.fieldX.toPixel, y: v.fieldY.toPixel }" />
     <Bullet v-for="v in bullets" :key="v.id" :initX="v.x" :initY="v.y" :r="v.r" @del="delBullet(v.id)" />
-    <Light v-for="v in lights" :key="v.id" :x="v.x" :y="v.y" :intensity="v.intensity || 1" :color="v.color" :radius="v.radius" />
+    <Light v-for="v in lights" :key="v.id" :x="v.x" :y="v.y" :ref="v.ref" :intensity="v.intensity || 1" :color="v.color" :radius="v.radius" />
+    <Image :depth="999999" texture="darkness" :x="0" :y="0" :alpha="0.8" :origin="0" />
   </div>
 </template>
 
@@ -20,6 +21,7 @@ import Substance from './Substance'
 import Area from './Area'
 import Gate from './Gate'
 import Bullet from './Bullet'
+import Darkness from './modules/Darkness'
 import { inject, onMounted, ref, computed, shallowReactive } from 'vue'
 import { refObj, Image, TilemapLayer, Light } from 'phavuer'
 import setupCamera from './modules/setupCamera'
@@ -68,12 +70,16 @@ export default {
       group.add(obj)
     }
     const event = maps[props.fieldKey] || {}
+    scene.textures.remove('darkness')
+    const darkness = new Darkness(scene, 'darkness', 1000, 1000)
     onMounted(() => {
       setupCamera(inject('camera').value, field.width, field.height, player.value.object)
       if (event.create) event.create()
       audio.setBgm(event.bgm || null)
+      darkness.setLights([player.value.object, ...lights.map(l => l.ref.value)])
     })
     const update = (time) => {
+      darkness.render()
       field.update(time)
       if (event.update) event.update()
     }
