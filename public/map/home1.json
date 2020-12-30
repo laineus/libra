@@ -87,24 +87,136 @@
                         {
                          "name":"color",
                          "type":"color",
-                         "value":"#fff9b514"
+                         "value":"#ffffb433"
                         }, 
                         {
                          "name":"intensity",
                          "type":"float",
-                         "value":1
+                         "value":0.5
                         }, 
                         {
                          "name":"radius",
                          "type":"int",
-                         "value":600
+                         "value":3000
                         }],
                  "rotation":0,
                  "type":"Light",
                  "visible":true,
                  "width":0,
-                 "x":558,
-                 "y":364
+                 "x":455,
+                 "y":194
+                }, 
+                {
+                 "height":0,
+                 "id":3,
+                 "name":"",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"color",
+                         "type":"color",
+                         "value":"#ffffb433"
+                        }, 
+                        {
+                         "name":"intensity",
+                         "type":"float",
+                         "value":0.5
+                        }, 
+                        {
+                         "name":"radius",
+                         "type":"int",
+                         "value":3000
+                        }],
+                 "rotation":0,
+                 "type":"Light",
+                 "visible":true,
+                 "width":0,
+                 "x":322,
+                 "y":359
+                }, 
+                {
+                 "height":0,
+                 "id":4,
+                 "name":"",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"color",
+                         "type":"color",
+                         "value":"#ffffb433"
+                        }, 
+                        {
+                         "name":"intensity",
+                         "type":"float",
+                         "value":0.5
+                        }, 
+                        {
+                         "name":"radius",
+                         "type":"int",
+                         "value":3000
+                        }],
+                 "rotation":0,
+                 "type":"Light",
+                 "visible":true,
+                 "width":0,
+                 "x":646,
+                 "y":353
+                }, 
+                {
+                 "height":0,
+                 "id":5,
+                 "name":"",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"color",
+                         "type":"color",
+                         "value":"#ffffb433"
+                        }, 
+                        {
+                         "name":"intensity",
+                         "type":"float",
+                         "value":0.5
+                        }, 
+                        {
+                         "name":"radius",
+                         "type":"int",
+                         "value":3000
+                        }],
+                 "rotation":0,
+                 "type":"Light",
+                 "visible":true,
+                 "width":0,
+                 "x":661,
+                 "y":130
+                }, 
+                {
+                 "height":0,
+                 "id":6,
+                 "name":"",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"color",
+                         "type":"color",
+                         "value":"#ffffb433"
+                        }, 
+                        {
+                         "name":"intensity",
+                         "type":"float",
+                         "value":0.5
+                        }, 
+                        {
+                         "name":"radius",
+                         "type":"int",
+                         "value":3000
+                        }],
+                 "rotation":0,
+                 "type":"Light",
+                 "visible":true,
+                 "width":0,
+                 "x":828,
+                 "y":543
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -125,13 +237,13 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":3,
+ "nextobjectid":7,
  "orientation":"orthogonal",
  "properties":[
         {
          "name":"ambient",
          "type":"color",
-         "value":"#ff968865"
+         "value":"#ff968c76"
         }],
  "renderorder":"right-down",
  "tiledversion":"2020.08.05",
