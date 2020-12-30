@@ -22,7 +22,8 @@ const mapProperties = (base, properties) => {
 // }
 const getTileSettings = (scene, tilemap) => {
   return tilemap.tilesets.map(set => {
-    return scene.cache.json.get(set.name).tiles.map(v => {
+    const tiles = scene.cache.json.get(set.name).tiles || []
+    return tiles.map(v => {
       return { id: v.id + set.firstgid, setting: v }
     })
   }).flat()
