@@ -1,5 +1,5 @@
 <template>
-  <Substance ref="substance" :initX="initX" :initY="initY" :name="gun.mode.value ? 'player_gun' : 'player'" @create="create" @preUpdate="update" :capture="false" />
+  <Substance ref="substance" :initX="initX" :initY="initY" :texture="gun.mode.value ? 'chara_sprite/player_gun' : 'chara_sprite/player'" @create="create" @preUpdate="update" :capture="false" />
 </template>
 
 <script>
