@@ -16,7 +16,7 @@ export default {
     const player = inject('player')
     const object = refObj(null)
     const areaEvent = useEvent()
-    let lastEnteredFrame = 0
+    let lastEnteredFrame = frames.game
     const active = computed(() => areaEvent.event.value && !event.state)
     const onEnter = () => {
       const newEntered = lastEnteredFrame < (frames.game - FRAMES_FOR_NEW_ENTER)
