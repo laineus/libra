@@ -10,7 +10,7 @@ import GameScene from '@/components/GameScene'
 import UIScene from '@/components/UIScene'
 import AudioController from '@/class/AudioController'
 import SaveDataManager from '@/class/SaveDataManager'
-import CommonSetting from '@/class/CommonSetting'
+import setting from '@/data/setting'
 import { inject, provide, ref, computed, reactive } from 'vue'
 export default {
   components: { GameScene, UIScene },
@@ -49,7 +49,7 @@ export default {
     provide('mobile', !game.device.os.desktop)
     provide('audio', new AudioController(game.sound))
     provide('storage', sdm)
-    provide('setting', new CommonSetting())
+    provide('setting', setting)
     return {
       gameScene, uiScene
     }
