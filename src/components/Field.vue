@@ -76,7 +76,7 @@ export default {
     const event = maps[props.fieldKey] || {}
     scene.textures.remove('darkness')
     const darkness = new Darkness(scene, 'darkness', field.width, field.height)
-    darkness.fillBg(field.properties.darkness ? argbToRgba(field.properties.darkness) : 0x000000).removeArcs(lights.map(l => {
+    darkness.fillBg(argbToRgba(field.properties.darkness || 0x77000000)).removeArcs(lights.map(l => {
       return { x: l.x, y: l.y, radius: 120 }
     })).save().refresh()
     onMounted(() => {
