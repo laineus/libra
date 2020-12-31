@@ -6,7 +6,6 @@ export default class {
     this.height = height
     this.lights = null
     this.savedImageData = null
-    this.fillBg()
   }
   save () {
     this.savedImageData = this.context.getImageData(0, 0, this.width, this.height)
@@ -21,9 +20,9 @@ export default class {
     this.texture.refresh()
     return this
   }
-  fillBg () {
+  fillBg (color) {
     this.context.globalCompositeOperation = 'source-over'
-    this.context.fillStyle = '#000000'
+    this.context.fillStyle = color
     this.context.fillRect(0, 0, this.width, this.height)
     return this
   }

@@ -119,6 +119,12 @@
  "nextlayerid":6,
  "nextobjectid":3,
  "orientation":"orthogonal",
+ "properties":[
+        {
+         "name":"darkness",
+         "type":"color",
+         "value":"#a0543242"
+        }],
  "renderorder":"right-down",
  "tiledversion":"2020.12.18",
  "tileheight":32,

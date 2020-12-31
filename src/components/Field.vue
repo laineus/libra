@@ -9,7 +9,7 @@
     <Gate v-for="v in gates" :key="v.id" :x="v.x" :y="v.y" :width="v.width" :height="v.height" :to="{ key: v.name, x: v.fieldX.toPixel, y: v.fieldY.toPixel }" />
     <Bullet v-for="v in bullets" :key="v.id" :initX="v.x" :initY="v.y" :r="v.r" @del="delBullet(v.id)" />
     <Light v-for="v in lights" :key="v.id" :x="v.x" :y="v.y" :ref="v.ref" :intensity="v.intensity || 1" :color="v.color" :radius="v.radius" />
-    <Image :depth="999999" texture="darkness" :x="0" :y="0" :alpha="0.9" :origin="0" />
+    <Image :depth="999999" texture="darkness" :x="0" :y="0" :origin="0" />
   </div>
 </template>
 
@@ -27,6 +27,10 @@ import { refObj, Image, TilemapLayer, Light } from 'phavuer'
 import setupCamera from './modules/setupCamera'
 import maps from '@/data/maps'
 import config from '@/data/config'
+const argbToRgba = argb => {
+  const argbStr = argb.toColorString
+  return `#${argbStr.substr(3, 6)}${argbStr.substr(1, 2)}`
+}
 export default {
   components: { TilemapLayer, Image, Light, Player, Character, Substance, Area, Gate, Bullet },
   props: [
@@ -72,13 +76,13 @@ export default {
     const event = maps[props.fieldKey] || {}
     scene.textures.remove('darkness')
     const darkness = new Darkness(scene, 'darkness', field.width, field.height)
+    darkness.fillBg(field.properties.darkness ? argbToRgba(field.properties.darkness) : 0x000000).removeArcs(lights.map(l => {
+      return { x: l.x, y: l.y, radius: 120 }
+    })).save().refresh()
     onMounted(() => {
       setupCamera(inject('camera').value, field.width, field.height, player.value.object)
       if (event.create) event.create()
       audio.setBgm(event.bgm || null)
-      darkness.removeArcs(lights.map(l => {
-        return { x: l.x, y: l.y, radius: 120 }
-      })).save().refresh()
     })
     const update = (time) => {
       darkness.restore().removeArc(player.value.object.x, player.value.object.y, 300).refresh()

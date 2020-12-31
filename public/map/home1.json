@@ -244,9 +244,14 @@
          "name":"ambient",
          "type":"color",
          "value":"#ff968c76"
+        }, 
+        {
+         "name":"darkness",
+         "type":"color",
+         "value":"#d2544226"
         }],
  "renderorder":"right-down",
- "tiledversion":"2020.08.05",
+ "tiledversion":"2020.12.18",
  "tileheight":32,
  "tilesets":[
         {
