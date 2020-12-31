@@ -1,8 +1,8 @@
 export default {
-  map: 'home1',
-  x: 500,
-  y: 600,
-  r: 90,
+  map: '',
+  x: 0,
+  y: 0,
+  r: 0,
   saved: null,
   sec: 0,
   status: {

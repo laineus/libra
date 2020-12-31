@@ -22,6 +22,7 @@ export default {
     const camera = inject('camera')
     const menuOpened = inject('menuOpened')
     const substance = ref(null)
+    const r = ref(0)
     const object = computed(() => substance.value?.object)
     const image = computed(() => substance.value?.image)
     const following = useFollowing(object)
@@ -34,10 +35,11 @@ export default {
     }
     const create = obj => context.emit('create', obj)
     const update = obj => {
+      r.value = getRadianToPointer()
       playFrameAnim()
       if (event.state || menuOpened.value) return
       if (gun.mode.value) {
-        lookTo(getRadianToPointer())
+        lookTo(r.value)
       } else {
         following.walkToTargetPosition(200)
       }
@@ -49,7 +51,7 @@ export default {
     scene.input.on('pointerdown', pointer => {
       if (event.state || menuOpened.value) return
       if (pointer.button === 0) {
-        if (gun.mode.value) gun.shot(getRadianToPointer())
+        if (gun.mode.value) gun.shot(r.value)
       } else if (pointer.button === 2) {
         gun.setMode(!gun.mode.value)
         following.clearTargetPosition()
@@ -59,6 +61,7 @@ export default {
       object, substance,
       create, update,
       gun,
+      r,
       // Following
       setTargetPosition: following.setTargetPosition,
       clearTargetPosition: following.clearTargetPosition

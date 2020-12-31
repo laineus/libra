@@ -12,7 +12,7 @@ export default {
     const gameScene = inject('gameScene')
     const area = ref(null)
     onMounted(() => {
-      area.value.setEvent(() => gameScene.value.setField(props.to.key, props.to.x, props.to.y))
+      area.value.setEvent(() => gameScene.value.setField(props.to.key, props.to.x, props.to.y, props.to.r))
     })
     return {
       area
