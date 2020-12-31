@@ -9,7 +9,7 @@
     <Gate v-for="v in gates" :key="v.id" :x="v.x" :y="v.y" :width="v.width" :height="v.height" :to="{ key: v.name, x: v.fieldX.toPixel, y: v.fieldY.toPixel }" />
     <Bullet v-for="v in bullets" :key="v.id" :initX="v.x" :initY="v.y" :r="v.r" @del="delBullet(v.id)" />
     <Light v-for="v in lights" :key="v.id" :x="v.x" :y="v.y" :ref="v.ref" :intensity="v.intensity || 1" :color="v.color" :radius="v.radius" />
-    <Image :depth="999999" texture="darkness" :x="0" :y="0" :alpha="0.8" :origin="0" />
+    <Image :depth="999999" texture="darkness" :x="0" :y="0" :alpha="0.9" :origin="0" />
   </div>
 </template>
 
@@ -71,15 +71,17 @@ export default {
     }
     const event = maps[props.fieldKey] || {}
     scene.textures.remove('darkness')
-    const darkness = new Darkness(scene, 'darkness', 1000, 1000)
+    const darkness = new Darkness(scene, 'darkness', field.width, field.height)
     onMounted(() => {
       setupCamera(inject('camera').value, field.width, field.height, player.value.object)
       if (event.create) event.create()
       audio.setBgm(event.bgm || null)
-      darkness.setLights([player.value.object, ...lights.map(l => l.ref.value)])
+      darkness.removeArcs(lights.map(l => {
+        return { x: l.x, y: l.y, radius: 120 }
+      })).save().refresh()
     })
     const update = (time) => {
-      darkness.render()
+      darkness.restore().removeArc(player.value.object.x, player.value.object.y, 300).refresh()
       field.update(time)
       if (event.update) event.update()
     }

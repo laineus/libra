@@ -5,28 +5,41 @@ export default class {
     this.width = width
     this.height = height
     this.lights = null
-    this.render()
+    this.savedImageData = null
+    this.fillBg()
   }
-  setLights (array) {
-    this.lights = array
-    this.render()
+  save () {
+    this.savedImageData = this.context.getImageData(0, 0, this.width, this.height)
+    return this
   }
-  render () {
+  restore () {
+    if (!this.savedImageData) return this
+    this.context.putImageData(this.savedImageData, 0, 0)
+    return this
+  }
+  refresh () {
+    this.texture.refresh()
+    return this
+  }
+  fillBg () {
     this.context.globalCompositeOperation = 'source-over'
     this.context.fillStyle = '#000000'
     this.context.fillRect(0, 0, this.width, this.height)
-    if (this.lights) {
-      this.context.globalCompositeOperation = 'destination-out'
-      this.lights.forEach(obj => {
-        this.context.beginPath()
-        const gradient = this.context.createRadialGradient(obj.x, obj.y, 0, obj.x, obj.y, 100)
-        gradient.addColorStop(0, 'rgba(255, 255, 255, 1)')
-        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)')
-        this.context.fillStyle = gradient
-        this.context.arc(obj.x, obj.y, 100, 0, Math.PI * 2)
-        this.context.fill()
-      })
-    }
-    this.texture.refresh()
+    return this
+  }
+  removeArc (x, y, radius) {
+    this.context.beginPath()
+    const gradient = this.context.createRadialGradient(x, y, 0, x, y, radius)
+    gradient.addColorStop(0, 'rgba(255, 255, 255, 1)')
+    gradient.addColorStop(1, 'rgba(255, 255, 255, 0)')
+    this.context.globalCompositeOperation = 'destination-out'
+    this.context.fillStyle = gradient
+    this.context.arc(x, y, radius, 0, Math.PI * 2)
+    this.context.fill()
+    return this
+  }
+  removeArcs (list) {
+    list.forEach(v => this.removeArc(v.x, v.y, v.radius))
+    return this
   }
 }
