@@ -5,8 +5,8 @@
     <Player ref="player" :initX="playerX" :initY="playerY" :initR="playerR" :pipeline="pipeline" @create="charaCreate" @shot="addBullet" />
     <Character v-for="v in charas" :key="v.id" :ref="v.ref" :initX="v.x" :initY="v.y" :initR="v.radian" :name="v.name" :random="v.random" :pipeline="pipeline" @create="charaCreate" @del="delObject(v.id)" />
     <Substance v-for="v in substances" :key="v.id" :ref="v.ref" :initX="v.x" :initY="v.y" :texture="`object/${v.name}`" :capture="Boolean(v.name)" :pipeline="pipeline" @del="delObject(v.id)" />
-    <Area v-for="v in areas" :key="v.id" :x="v.x" :y="v.y" :width="v.width" :height="v.height" />
-    <Gate v-for="v in gates" :key="v.id" :x="v.x" :y="v.y" :width="v.width" :height="v.height" :to="{ key: v.name, x: v.fieldX.toPixel, y: v.fieldY.toPixel, r: player && player.r }" />
+    <Area v-for="v in areas" :key="v.id" :ref="v.ref" :x="v.x" :y="v.y" :width="v.width" :height="v.height" />
+    <Gate v-for="v in gates" :key="v.id" :ref="v.ref" :x="v.x" :y="v.y" :width="v.width" :height="v.height" :to="{ key: v.name, x: v.fieldX.toPixel, y: v.fieldY.toPixel, r: player && player.r }" />
     <Bullet v-for="v in bullets" :key="v.id" :initX="v.x" :initY="v.y" :r="v.r" @del="delBullet(v.id)" />
     <Light v-for="v in lights" :key="v.id" :x="v.x" :y="v.y" :ref="v.ref" :intensity="v.intensity || 1" :color="v.color" :radius="v.radius" />
     <Image :depth="config.DEPTH.DARKNESS" texture="darkness" :x="0" :y="0" :origin="0" />
