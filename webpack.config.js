@@ -70,7 +70,7 @@ module.exports = (_env, argv) => ({
     new TileExtrudeWebpackPlugin({ size: 32, input: './public/img/map/tilesets', output: './public/img/map/extruded_tilesets' }),
     new PhaserAssetsWebpackPlugin(assetSettings),
     new webpack.ProvidePlugin({
-      t: [path.resolve(__dirname, 'src/locales/t'), 'default']
+      t: [path.resolve(__dirname, 'src/data/translate'), 'default']
     }),
     new VueLoaderPlugin()
   ],

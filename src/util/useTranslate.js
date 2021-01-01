@@ -1,6 +1,3 @@
-import locales from '@/locales/index'
-import setting from '@/data/setting'
-
 const getReplaceText = values => text => {
   if (['string', 'number'].includes(typeof values)) {
     return text.replace(/#\{\w+\}/g, values)
@@ -13,11 +10,11 @@ const getReplaceText = values => text => {
   }
 }
 
-export default (key, values) => {
-  const locale = locales[setting.state.lang]
-  const text = key.split('.').reduce((obj, k) => obj && obj[k], locale)
+export default textData => (lang, key, values) => {
+  const data = textData[lang]
+  const text = key.split('.').reduce((obj, k) => obj && obj[k], data)
   if (text === undefined) {
-    console.error(`Translation missing: "${key}" of "${setting.state.lang}"`)
+    console.error(`Translation missing: "${key}" of "${lang}"`)
     return 'Missing'
   }
   const replaceText = getReplaceText(values)
