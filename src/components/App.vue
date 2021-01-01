@@ -19,15 +19,17 @@ export default {
     Phaser.BlendModes.OVERLAY = game.renderer.addBlendMode([WebGLRenderingContext.SRC_ALPHA, WebGLRenderingContext.ONE], WebGLRenderingContext.FUNC_ADD)
     const gameScene = ref(null)
     const uiScene = ref(null)
-    const event = reactive({
+    const eventManager = reactive({
       state: false,
-      setState (bool) { this.state = bool },
+      setState (bool) {
+        eventManager.state = bool
+      },
       exec (event) {
-        this.setState(true)
+        eventManager.setState(true)
         const promise = event()
         if (!promise || typeof promise.then !== 'function') throw new Error('Event must returns Promise instance')
         return promise.then(result => {
-          this.setState(false)
+          eventManager.setState(false)
           return result
         })
       }
@@ -35,7 +37,7 @@ export default {
     const frames = reactive({ total: 0, game: 0 })
     const sdm = new SaveDataManager()
     setInterval(() => sdm.state.sec++, 1000)
-    provide('event', event)
+    provide('event', eventManager)
     provide('frames', frames)
     provide('gameScene', gameScene)
     provide('field', computed(() => gameScene.value?.field))
@@ -50,6 +52,7 @@ export default {
     provide('audio', new AudioController(game.sound))
     provide('storage', sdm)
     provide('setting', setting)
+    provide('sleep', time => new Promise(resolve => setTimeout(resolve, time)))
     return {
       gameScene, uiScene
     }
