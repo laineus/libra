@@ -1,7 +1,7 @@
 import 'phaser'
 import { createPhavuerApp } from 'phavuer'
+import assets from 'assets'
 import '@/util/extendNativeClassFunctions'
-import loadAssets from '@/util/loadAssets'
 import App from '@/components/App'
 import config from '@/data/config'
 
@@ -20,7 +20,11 @@ const option = {
       createPhavuerApp(this.game, App)
     },
     preload () {
-      loadAssets(this)
+      Object.keys(assets).forEach(method => {
+        assets[method].forEach(args => {
+          this.load[method](...args)
+        })
+      })
     }
   },
   parent: 'game',

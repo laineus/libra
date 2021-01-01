@@ -1,12 +1,22 @@
 import moment from 'moment'
 import defaultState from '@/data/defaultState'
-import { encrypt, decrypt } from '@/util/encryption'
 import AppStorage from '@/class/AppStorage'
 import { reactive } from 'vue'
 const appStorage = new AppStorage()
 const STORAGE_KEY = 'libra_data'
 // const SHIFT = 11
 const SHIFT = 0
+const useObfuscator = shift => {
+  return {
+    encrypt: str => {
+      return Array.from(str).map(v => v.charCodeAt() + shift).join(',')
+    },
+    decrypt: str => {
+      return String.fromCharCode(...str.split(',').map(v => Number(v) + shift))
+    }
+  }
+}
+const { encrypt, decrypt } = useObfuscator(SHIFT)
 export default class SaveDataManager {
   constructor () {
     this.lastNumber = null
