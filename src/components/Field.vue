@@ -22,7 +22,7 @@ import Area from './Area'
 import Gate from './Gate'
 import Bullet from './Bullet'
 import Darkness from './modules/Darkness'
-import { inject, onMounted, ref, computed, shallowReactive } from 'vue'
+import { inject, onBeforeUnmount, onMounted, ref, computed, shallowReactive } from 'vue'
 import { refObj, Image, TilemapLayer, Light } from 'phavuer'
 import setupCamera from './modules/setupCamera'
 import maps from '@/data/maps'
@@ -79,6 +79,9 @@ export default {
       setupCamera(inject('camera').value, field.width, field.height, player.value.object)
       if (event.create) event.create()
       audio.setBgm(event.bgm || null)
+    })
+    onBeforeUnmount(() => {
+      darkness.destroy()
     })
     const update = (time) => {
       darkness.restore().removeArc(player.value.object.x, player.value.object.y, 300).refresh()

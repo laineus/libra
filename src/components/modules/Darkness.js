@@ -24,6 +24,9 @@ export default class {
     this.texture.refresh()
     return this
   }
+  destroy () {
+    this.texture.destroy()
+  }
   fillBg (color) {
     this.context.globalCompositeOperation = 'source-over'
     this.context.fillStyle = argbToRgba(color)
