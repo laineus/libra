@@ -9,6 +9,7 @@ export default {
     const { exec } = inject('event')
     const sleep = inject('sleep')
     const kajitsu = field.value.getObjectById(2)
+    const area = field.value.getObjectById(5)
     // const apple = field.value.getObjectById(4)
     const tKajitsu = new Talker('NPC', kajitsu.object)
     exec(async () => {
@@ -24,6 +25,14 @@ export default {
         { chara: tKajitsu, text: walk.shift() }
       ])
       await revert()
+    })
+    area.setEvent(async () => {
+      const talking = t('events.forest2Kajitsu.talk')
+      await talk.value.setTalk([
+        { chara: tKajitsu, text: talking.shift() },
+        { chara: tKajitsu, text: talking.shift() },
+        { chara: tKajitsu, text: talking.shift() }
+      ])
     })
     kajitsu.setTapEvent(async () => {
       const walk = t('events.forest2Kajitsu.walk')
