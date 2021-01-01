@@ -27,10 +27,6 @@ import { refObj, Image, TilemapLayer, Light } from 'phavuer'
 import setupCamera from './modules/setupCamera'
 import maps from '@/data/maps'
 import config from '@/data/config'
-const argbToRgba = argb => {
-  const argbStr = argb.toColorString
-  return `#${argbStr.substr(3, 6)}${argbStr.substr(1, 2)}`
-}
 export default {
   components: { TilemapLayer, Image, Light, Player, Character, Substance, Area, Gate, Bullet },
   props: [
@@ -76,7 +72,7 @@ export default {
     const event = maps[props.fieldKey] || {}
     scene.textures.remove('darkness')
     const darkness = new Darkness(scene, 'darkness', field.width, field.height)
-    darkness.fillBg(argbToRgba(field.properties.darkness || 0x77000000)).removeArcs(lights.map(l => {
+    darkness.fillBg(field.properties.darkness || 0x77000000).removeArcs(lights.map(l => {
       return { x: l.x, y: l.y, radius: 120 }
     })).save().refresh()
     onMounted(() => {

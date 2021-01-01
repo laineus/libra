@@ -1,3 +1,7 @@
+const argbToRgba = argb => {
+  const argbStr = argb.toColorString
+  return `#${argbStr.substr(3, 6)}${argbStr.substr(1, 2)}`
+}
 export default class {
   constructor (scene, key, width, height) {
     this.texture = scene.textures.createCanvas(key, width, height)
@@ -22,7 +26,7 @@ export default class {
   }
   fillBg (color) {
     this.context.globalCompositeOperation = 'source-over'
-    this.context.fillStyle = color
+    this.context.fillStyle = argbToRgba(color)
     this.context.fillRect(0, 0, this.width, this.height)
     return this
   }
