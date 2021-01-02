@@ -1,9 +1,10 @@
-import { inject, ref } from 'vue'
+import { inject, ref, unref, computed } from 'vue'
 export default () => {
   const eventManager = inject('event')
-  const event = ref(null)
+  const _event = ref(null)
+  const event = computed(() => unref(_event.value)) // Allow to use computed for event value
   const setEvent = e => {
-    event.value = e
+    _event.value = e
   }
   const exec = () => {
     if (!event.value) return
