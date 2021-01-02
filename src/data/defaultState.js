@@ -23,5 +23,8 @@ export default {
     null,
     null,
     null
-  ]
+  ],
+  events: {
+    intro: 0
+  }
 }
