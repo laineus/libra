@@ -1,14 +1,15 @@
 <template>
   <MenuContainer ref="container" :arrowX="25 + (1 * 60)" :height="415" :title="'Bag'" :visible="grab.mode !== 'dispose'" @preUpdate="update">
-    <Image v-for="v in items" :key="v.id" :texture="`chara_sprite/${v.key}`" :x="v.bagX" :y="v.bagY" :origin="0.5" :visible="toRaw(grab.item) !== v" @pointerdown="grabItem(v, 'move')" />
+    <Image v-for="v in bagItems" :key="v.id" :texture="keyToTexture(v.key)" :x="v.bagX" :y="v.bagY" :origin="0.5" :visible="grab.item !== v" @pointerdown="grabItem(v, 'move')" />
   </MenuContainer>
-  <Image v-if="grab.item" ref="grabRef" :texture="`chara_sprite/${grab.item.key}`" :x="grab.x" :y="grab.y" :origin="0.5" @pointerup="p => drop(p)" />
+  <Image v-if="grab.item" ref="grabRef" :texture="keyToTexture(grab.item.key)" :x="grab.x" :y="grab.y" :origin="0.5" @pointerup="p => drop(p)" />
 </template>
 
 <script>
 import { Image, refObj } from 'phavuer'
-import { inject, computed, reactive, ref, toRaw } from 'vue'
+import { inject, computed, reactive, ref } from 'vue'
 import MenuContainer from '@/components/MenuContainer'
+import items from '@/data/items'
 const WIDTH = 220
 const HEIGHT = 405
 export default {
@@ -30,7 +31,6 @@ export default {
     })
     const onBagArea = computed(() => (grab.x - offsetX.value) >= 0)
     const grabRef = refObj(null)
-    const items = computed(() => storage.state.items.map(v => Object.assign({ original: v }, v)))
     const update = () => {
       if (grab.item && controller.activePointer) {
         grab.x = controller.activePointer.x
@@ -52,17 +52,17 @@ export default {
       update()
       return promise
     }
-    const drop = (pointer) => {
+    const drop = pointer => {
       const wHalf = grabRef.value.width.half
       const hHalf = grabRef.value.height.half
       if (grab.mode === 'dispose') {
         field.addObject({ type: 'Substance', name: 'flower', x: grab.x + camera.scrollX, y: grab.y + camera.scrollY + hHalf })
-        storage.state.items.delete(grab.item.original)
+        storage.state.items.delete(grab.item)
         grab.resolver()
         context.emit('close')
       } else if (grab.mode === 'move') {
-        grab.item.original.bagX = Math.round(Math.fix(pointer.x - offsetX.value, wHalf, WIDTH - wHalf))
-        grab.item.original.bagY = Math.round(Math.fix(pointer.y - offsetY.value, hHalf, HEIGHT - hHalf))
+        grab.item.bagX = Math.round(Math.fix(pointer.x - offsetX.value, wHalf, WIDTH - wHalf))
+        grab.item.bagY = Math.round(Math.fix(pointer.y - offsetY.value, hHalf, HEIGHT - hHalf))
         grab.resolver()
       } if (grab.mode === 'capture') {
         if (onBagArea.value) {
@@ -81,9 +81,10 @@ export default {
       grab.item = null
       grab.resolver = null
     }
+    const keyToTexture = key => items.find(v => v.key === key).texture
     return {
-      toRaw,
-      items,
+      keyToTexture,
+      bagItems: storage.state.items,
       container,
       controller, grab, grabRef,
       grabItem, update, drop

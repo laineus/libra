@@ -20,7 +20,7 @@ export default {
     const grab = () => {
       menu.value.select('bag').then(menuBag => {
         context.emit('grab')
-        menuBag.grabItem({ key: 'flower' }, 'capture').then(bool => {
+        menuBag.grabItem({ key: props.name }, 'capture').then(bool => {
           context.emit(bool ? 'capture' : 'cancel')
         })
       })

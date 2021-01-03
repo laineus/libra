@@ -1,16 +1,17 @@
 <template>
   <div>
     <Container ref="object" :x="initX" :y="initY" :width="imgWidth" :height="imgWidth" :depth="depth" @create="create" @preUpdate="update">
-      <Image ref="image" :texture="texture" :originX="0.5" :originY="1" :alpha="alpha" :pipeline="pipeline" v-if="texture" />
+      <Image ref="image" :texture="imageTexture" :originX="0.5" :originY="1" :alpha="alpha" :pipeline="pipeline" v-if="imageTexture" />
     </Container>
     <TapArea v-if="tapEvent.event.value" :visible="checkable" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @tap="tapEvent.exec" />
-    <GrabArea v-else-if="capture" :visible="grabbable" :texture="texture" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @grab="alpha = 0.5" @capture="$emit('del')" @cancel="alpha = 1" />
+    <GrabArea v-else-if="capture" :visible="grabbable" :name="name" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @grab="alpha = 0.5" @capture="$emit('del')" @cancel="alpha = 1" />
   </div>
 </template>
 
 <script>
 import { refObj, Container, Image } from 'phavuer'
 import { computed, inject, reactive, ref, toRefs } from 'vue'
+import items from '@/data/items'
 import TapArea from './TapArea'
 import GrabArea from './GrabArea'
 import useEvent from './modules/useEvent'
@@ -19,6 +20,7 @@ export default {
   props: {
     initX: { default: 0 },
     initY: { default: 0 },
+    name: { default: null },
     texture: { default: null },
     capture: { default: true },
     pipeline: { default: null }
@@ -37,6 +39,8 @@ export default {
     const data = reactive({
       distanceToPlayer: null
     })
+    const itemData = items.find(v => v.key === props.name)
+    const imageTexture = computed(() => props.texture || itemData?.texture)
     const create = obj => context.emit('create', obj)
     const update = obj => {
       if (depth.value !== obj.y) depth.value = obj.y
@@ -49,6 +53,7 @@ export default {
       grabbable: computed(() => !event.state && data.distanceToPlayer < 150),
       create, update,
       object, image,
+      imageTexture,
       imgWidth, imgHeight, depth, alpha,
       tapEvent,
       execTapEvent: tapEvent.exec,

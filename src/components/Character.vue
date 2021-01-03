@@ -1,5 +1,5 @@
 <template>
-  <Substance ref="substance" :initX="initX" :initY="initY" :texture="`chara_sprite/${name}`" @create="create" @preUpdate="update" @del="$emit('del')" />
+  <Substance ref="substance" :initX="initX" :initY="initY" :name="name" @create="create" @preUpdate="update" @del="$emit('del')" />
 </template>
 
 <script>
