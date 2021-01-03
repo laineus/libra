@@ -11,11 +11,16 @@ export default {
   setup (props) {
     const gameScene = inject('gameScene')
     const area = ref(null)
+    const gateEvent = () => gameScene.value.setField(props.to.key, props.to.x, props.to.y, props.to.r)
+    const setEvent = (...arg) => area.value.setEvent(...arg)
+    const restoreEvent = () => setEvent(gateEvent)
     onMounted(() => {
-      area.value.setEvent(() => gameScene.value.setField(props.to.key, props.to.x, props.to.y, props.to.r))
+      setEvent(gateEvent)
     })
     return {
-      area
+      area,
+      setEvent,
+      restoreEvent
     }
   }
 }
