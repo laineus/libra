@@ -62,7 +62,8 @@ export default {
       tapEvent,
       execTapEvent: tapEvent.exec,
       setTapEvent: tapEvent.setEvent,
-      setVisible, setCapturable
+      setVisible, setCapturable,
+      destroy: () => context.emit('del')
     }
   }
 }

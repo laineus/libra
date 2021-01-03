@@ -17,6 +17,7 @@ export default {
     const area = field.value.getObjectById(5)
     const apple = field.value.getObjectById(4)
     apple.setVisible(computed(() => storage.state.events.intro === 3 && !hasApple.value))
+    if (hasApple.value) apple.destroy()
     const tKajitsu = new Talker('NPC', kajitsu.object)
 
     // Auto start event
