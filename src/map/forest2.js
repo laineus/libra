@@ -97,8 +97,9 @@ export default {
             { chara: tKajitsu, text: completed.shift() },
             { chara: tKajitsu, text: completed.shift() }
           ])
-          await uiScene.value.transition(200)
+          const onCompleted = await uiScene.value.transition(1000)
           storage.state.events.intro = 4
+          await onCompleted()
         }
       }
     })

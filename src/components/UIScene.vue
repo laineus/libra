@@ -44,9 +44,11 @@ export default {
       nealestCheckable.value = field.value.charas.concat(field.value.substances).map(v => v.ref.value).filter(v => v.checkable).findMin(v => v.distanceToPlayer)
     }
     const transition = (duration = 500) => {
-      return new Promise(resolve => {
-        transitionAlpha.value = 0
-        refs.scene.value.add.tween({ targets: transitionAlpha, duration, hold: duration.half, value: 1, yoyo: true, onYoyo: resolve })
+      return new Promise(onYoyo => {
+        const promiseOnComplete = new Promise(onComplete => {
+          transitionAlpha.value = 0
+          refs.scene.value.add.tween({ targets: transitionAlpha, duration, hold: duration.half, value: 1, yoyo: true, onYoyo: () => onYoyo(() => promiseOnComplete), onComplete })
+        })
       })
     }
     return {

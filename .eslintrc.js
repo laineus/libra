@@ -10,6 +10,7 @@ module.exports = {
     'no-extend-native': 0,
     'lines-between-class-members': 0,
     'no-return-assign': 0,
+    'promise/param-names': 0,
     'vue/max-attributes-per-line': 0,
     'vue/attributes-order': 0,
     'vue/attribute-hyphenation': 0,
