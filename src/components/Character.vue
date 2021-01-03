@@ -48,6 +48,7 @@ export default {
       distanceToPlayer: computed(() => substance.value?.distanceToPlayer),
       execTapEvent: computed(() => substance.value?.execTapEvent),
       setTapEvent: computed(() => substance.value?.setTapEvent),
+      setVisible: computed(() => substance.value?.setVisible),
       setCapturable: computed(() => substance.value?.setCapturable)
     }
   }

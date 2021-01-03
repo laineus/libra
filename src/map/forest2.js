@@ -9,29 +9,32 @@ export default {
     const talk = inject('talk')
     const { exec } = inject('event')
     const sleep = inject('sleep')
+    const hasApple = computed(() => storage.state.items.some(v => v.key === 'apple'))
     const kajitsu = field.value.getObjectById(2)
-    console.log(kajitsu)
     kajitsu.setCapturable(false)
     const area = field.value.getObjectById(5)
-    // const apple = field.value.getObjectById(4)
+    const apple = field.value.getObjectById(4)
+    apple.setVisible(storage.state.events.intro >= 3 && !hasApple.value)
     const tKajitsu = new Talker('NPC', kajitsu.object)
 
     // Auto start event
-    exec(async () => {
-      await sleep(1000)
-      const revert = await camera.move(0, -100, 2000)
-      await sleep(500)
-      const walk = t('events.forest2Kajitsu.walk')
-      await talk.value.setTalk([
-        { chara: tKajitsu, text: walk.shift() },
-        { chara: tKajitsu, text: walk.shift() },
-        { chara: tKajitsu, text: walk.shift() },
-        { chara: tKajitsu, text: walk.shift() },
-        { chara: tKajitsu, text: walk.shift() }
-      ])
-      await revert()
-      storage.state.events.intro = 1
-    })
+    if (storage.state.events.intro === 0) {
+      exec(async () => {
+        await sleep(1000)
+        const revert = await camera.move(0, -100, 2000)
+        await sleep(500)
+        const walk = t('events.forest2Kajitsu.walk')
+        await talk.value.setTalk([
+          { chara: tKajitsu, text: walk.shift() },
+          { chara: tKajitsu, text: walk.shift() },
+          { chara: tKajitsu, text: walk.shift() },
+          { chara: tKajitsu, text: walk.shift() },
+          { chara: tKajitsu, text: walk.shift() }
+        ])
+        await revert()
+        storage.state.events.intro = 1
+      })
+    }
 
     // Area event
     const areaEvent = computed(() => {
@@ -54,18 +57,19 @@ export default {
         case 0: return null
         case 1: return null
         case 2: return async () => {
-          const apple = t('events.forest2Kajitsu.apple')
+          apple.setVisible(true)
+          const apl = t('events.forest2Kajitsu.apple')
           await talk.value.setTalk([
-            { chara: tKajitsu, text: apple.shift() },
-            { chara: tKajitsu, text: apple.shift() }
+            { chara: tKajitsu, text: apl.shift() },
+            { chara: tKajitsu, text: apl.shift() }
           ])
           const revert = await camera.move(100, -200, 2000)
           await sleep(500)
           await talk.value.setTalk([
-            { chara: tKajitsu, text: apple.shift() },
-            { chara: tKajitsu, text: apple.shift() },
-            { chara: tKajitsu, text: apple.shift() },
-            { chara: tKajitsu, text: apple.shift() }
+            { chara: tKajitsu, text: apl.shift() },
+            { chara: tKajitsu, text: apl.shift() },
+            { chara: tKajitsu, text: apl.shift() },
+            { chara: tKajitsu, text: apl.shift() }
           ])
           await revert()
           storage.state.events.intro = 3
