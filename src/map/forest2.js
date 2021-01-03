@@ -17,7 +17,8 @@ export default {
     const talk = inject('talk')
     const { exec } = inject('event')
     const sleep = inject('sleep')
-    const hasApple = computed(() => storage.state.items.some(v => v.key === 'apple'))
+    const hasApple = computed(() => storage.state.items.some(v => v.key === 'apple') || storage.state.roomItems.some(v => v.key === 'apple'))
+    const sumStatus = computed(() => storage.state.status.heart + storage.state.status.body)
     const gate = field.value.getObjectById(1)
     if (storage.state.events.intro < STEPS.COMPLETED) {
       gate.setEvent(async () => {
@@ -29,8 +30,10 @@ export default {
     kajitsu.setVisible(computed(() => storage.state.events.intro < STEPS.COMPLETED))
     const area = field.value.getObjectById(5)
     const apple = field.value.getObjectById(4)
-    apple.setVisible(computed(() => storage.state.events.intro === STEPS.APPLE && !hasApple.value))
-    if (hasApple.value) apple.destroy()
+    apple.setVisible(computed(() => storage.state.events.intro >= STEPS.APPLE))
+    const canMountApple = computed(() => sumStatus.value > 0 ? Math.chance(0.01) : !hasApple.value)
+    if (!canMountApple.value) apple.destroy()
+
     const tKajitsu = new Talker('NPC', kajitsu.object)
 
     // Auto start event

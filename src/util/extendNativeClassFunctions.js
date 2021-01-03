@@ -85,7 +85,7 @@ Math.sum = (...args) => args.reduce((accumulator, current) => accumulator + curr
 Math.average = (...args) => Math.sum(...args) / args.length
 Math.fix = (value, min, max) => Math.min(Math.max(value, min), max)
 Math.randomInt = (min, max) => Math.floor(Math.random() * (max + 1 - min)) + min
-Math.chance = percent => (percent / 100) > Math.random()
+Math.chance = value => value > Math.random()
 // Object class method
 Object.isObject = value => Boolean(value && value.constructor === Object)
 // Array class method
