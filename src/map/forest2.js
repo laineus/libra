@@ -17,7 +17,7 @@ export default {
     const talk = inject('talk')
     const { exec } = inject('event')
     const sleep = inject('sleep')
-    const hasApple = computed(() => storage.state.items.some(v => v.key === 'apple') || storage.state.roomItems.some(v => v.key === 'apple'))
+    const hasApple = computed(() => storage.state.bagItems.some(v => v.key === 'apple') || storage.state.roomItems.some(v => v.key === 'apple'))
     const sumStatus = computed(() => storage.state.status.heart + storage.state.status.body)
     const gate = field.value.getObjectById(1)
     if (storage.state.events.intro < STEPS.COMPLETED) {

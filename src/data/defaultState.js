@@ -10,7 +10,7 @@ export default {
     heart: 0,
     body: 0
   },
-  items: [
+  bagItems: [
     { id: 1, key: 'flower', bagX: 30, bagY: 40 },
     { id: 2, key: 'flower', bagX: 40, bagY: 90 }
   ],

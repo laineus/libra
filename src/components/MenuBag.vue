@@ -60,7 +60,7 @@ export default {
       if (grab.mode === 'dispose') {
         const itemData = keyToItemData(grab.item.key)
         field.addObject({ type: itemData.type, name: itemData.key, x: grab.x + camera.scrollX, y: grab.y + camera.scrollY + hHalf })
-        storage.state.items.delete(grab.item)
+        storage.state.bagItems.delete(grab.item)
         grab.resolver()
         context.emit('close')
       } else if (grab.mode === 'move') {
@@ -69,7 +69,7 @@ export default {
         grab.resolver()
       } if (grab.mode === 'capture') {
         if (onBagArea.value) {
-          storage.state.items.push({
+          storage.state.bagItems.push({
             id: Math.randomInt(1000000, 9999999),
             key: grab.item.key,
             bagX: Math.round(Math.fix(pointer.x - offsetX.value, wHalf, WIDTH - wHalf)),
@@ -86,7 +86,7 @@ export default {
     }
     return {
       keyToTexture,
-      bagItems: storage.state.items,
+      bagItems: storage.state.bagItems,
       container,
       controller, grab, grabRef,
       grabItem, update, drop
