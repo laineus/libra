@@ -26,7 +26,7 @@ export default {
     const image = computed(() => substance.value?.image)
     const following = useFollowing(object)
     if (props.random) following.setRandomWalk(120)
-    const { play: playFrameAnim } = useFrameAnimChara(object, image, props.initR)
+    const { play: playFrameAnim } = useFrameAnimChara(object, image, props.initR, 4)
     const create = obj => context.emit('create', obj)
     const update = obj => {
       playFrameAnim()

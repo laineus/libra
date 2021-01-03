@@ -1,5 +1,5 @@
 <template>
-  <Substance ref="substance" :initX="initX" :initY="initY" :texture="gun.mode.value ? 'chara_sprite/player_gun' : 'chara_sprite/player'" @create="create" @preUpdate="update" />
+  <Substance ref="substance" :initX="initX" :initY="initY" :texture="gun.mode.value ? 'chara_sprite/libra_gun' : 'chara_sprite/libra'" @create="create" @preUpdate="update" />
 </template>
 
 <script>
@@ -26,7 +26,7 @@ export default {
     const object = computed(() => substance.value?.object)
     const image = computed(() => substance.value?.image)
     const following = useFollowing(object)
-    const { play: playFrameAnim, lookTo } = useFrameAnimChara(object, image, props.initR)
+    const { play: playFrameAnim, lookTo } = useFrameAnimChara(object, image, props.initR, 8)
     const gun = useGun(context, object)
     const getRadianToPointer = () => {
       const diffX = scene.input.manager.pointers[0]?.x + camera.value?.scrollX - object.value?.x

@@ -1,5 +1,8 @@
 [
   ["player.png", 3, 4],
+  ["libra.png", 3, 8],
+  ["libra_gun.png", 3, 8],
+  ["amili.png", 3, 8],
   ["player_gun.png", 3, 4],
   ["kajitsu.png", 3, 4]
 ]
