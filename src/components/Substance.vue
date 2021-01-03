@@ -1,16 +1,16 @@
 <template>
   <div>
-    <Container ref="object" :visible="visible" :x="initX" :y="initY" :width="imgWidth" :height="imgWidth" :depth="depth" @create="create" @preUpdate="update">
+    <Container ref="object" :visible="unref(visible)" :x="initX" :y="initY" :width="imgWidth" :height="imgWidth" :depth="depth" @create="create" @preUpdate="update">
       <Image ref="image" :texture="imageTexture" :originX="0.5" :originY="1" :alpha="alpha" :pipeline="pipeline" v-if="imageTexture" />
     </Container>
-    <TapArea v-if="tapEvent.event.value" :visible="visible && checkable" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @tap="tapEvent.exec" />
-    <GrabArea v-else-if="capturable" :visible="visible && grabbable" :name="name" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @grab="alpha = 0.5" @capture="$emit('del')" @cancel="alpha = 1" />
+    <TapArea v-if="tapEvent.event.value" :visible="unref(visible) && checkable" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @tap="tapEvent.exec" />
+    <GrabArea v-else-if="capturable" :visible="unref(visible) && grabbable" :name="name" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @grab="alpha = 0.5" @capture="$emit('del')" @cancel="alpha = 1" />
   </div>
 </template>
 
 <script>
 import { refObj, Container, Image } from 'phavuer'
-import { computed, inject, reactive, ref, toRefs } from 'vue'
+import { computed, inject, reactive, ref, toRefs, unref } from 'vue'
 import items from '@/data/items'
 import TapArea from './TapArea'
 import GrabArea from './GrabArea'
@@ -51,6 +51,7 @@ export default {
       context.emit('preUpdate', obj)
     }
     return {
+      unref,
       ...toRefs(data),
       checkable: computed(() => !event.state && tapEvent.event.value && data.distanceToPlayer < 150),
       grabbable: computed(() => !event.state && data.distanceToPlayer < 150),
