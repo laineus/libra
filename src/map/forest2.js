@@ -2,8 +2,9 @@ import { computed, inject } from 'vue'
 import Talker from '@/util/Talker'
 export default {
   name: '森2',
-  create () {
+  async create () {
     const storage = inject('storage')
+    const uiScene = inject('uiScene')
     const field = inject('field')
     const camera = inject('camera').value
     const talk = inject('talk')
@@ -12,9 +13,10 @@ export default {
     const hasApple = computed(() => storage.state.items.some(v => v.key === 'apple'))
     const kajitsu = field.value.getObjectById(2)
     kajitsu.setCapturable(false)
+    kajitsu.setVisible(computed(() => storage.state.events.intro < 4))
     const area = field.value.getObjectById(5)
     const apple = field.value.getObjectById(4)
-    apple.setVisible(storage.state.events.intro >= 3 && !hasApple.value)
+    apple.setVisible(computed(() => storage.state.events.intro === 3 && !hasApple.value))
     const tKajitsu = new Talker('NPC', kajitsu.object)
 
     // Auto start event
@@ -53,11 +55,10 @@ export default {
 
     // Talk Events
     const kajitsuEvent = computed(() => {
-      switch (storage.state.events.intro) {
-        case 0: return null
-        case 1: return null
-        case 2: return async () => {
+      if (storage.state.events.intro === 2) {
+        return async () => {
           apple.setVisible(true)
+          storage.state.events.intro = 3
           const apl = t('events.forest2Kajitsu.apple')
           await talk.value.setTalk([
             { chara: tKajitsu, text: apl.shift() },
@@ -72,16 +73,32 @@ export default {
             { chara: tKajitsu, text: apl.shift() }
           ])
           await revert()
-          storage.state.events.intro = 3
         }
-        case 3: return async () => {
-          const apple = t('events.forest2Kajitsu.apple').slice(2)
+      } else if (storage.state.events.intro === 3 && !hasApple.value) {
+        return async () => {
+          const apl = t('events.forest2Kajitsu.apple').slice(2)
           await talk.value.setTalk([
-            { chara: tKajitsu, text: apple.shift() },
-            { chara: tKajitsu, text: apple.shift() },
-            { chara: tKajitsu, text: apple.shift() },
-            { chara: tKajitsu, text: apple.shift() }
+            { chara: tKajitsu, text: apl.shift() },
+            { chara: tKajitsu, text: apl.shift() },
+            { chara: tKajitsu, text: apl.shift() },
+            { chara: tKajitsu, text: apl.shift() }
           ])
+        }
+      } else if (storage.state.events.intro === 3 && hasApple.value) {
+        return async () => {
+          const completed = t('events.forest2Kajitsu.completed')
+          await talk.value.setTalk([
+            { chara: tKajitsu, text: completed.shift() },
+            { chara: tKajitsu, text: completed.shift() },
+            { chara: tKajitsu, text: completed.shift() },
+            { chara: tKajitsu, text: completed.shift() },
+            { chara: tKajitsu, text: completed.shift() },
+            { chara: tKajitsu, text: completed.shift() },
+            { chara: tKajitsu, text: completed.shift() },
+            { chara: tKajitsu, text: completed.shift() }
+          ])
+          await uiScene.value.transition(200)
+          storage.state.events.intro = 4
         }
       }
     })
