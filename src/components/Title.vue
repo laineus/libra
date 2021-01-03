@@ -14,7 +14,7 @@ export default {
     return {
       config,
       tap: async () => {
-        await gameScene.value.setField('forest2', 400, 752, -Math.PI.half)
+        await gameScene.value.setField('home1', 400, 752, -Math.PI.half)
         context.emit('close')
       }
     }
