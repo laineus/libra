@@ -1,5 +1,5 @@
 <template>
-  <Substance ref="substance" :initX="initX" :initY="initY" :texture="gun.mode.value ? 'chara_sprite/player_gun' : 'chara_sprite/player'" @create="create" @preUpdate="update" :capture="false" />
+  <Substance ref="substance" :initX="initX" :initY="initY" :texture="gun.mode.value ? 'chara_sprite/player_gun' : 'chara_sprite/player'" @create="create" @preUpdate="update" />
 </template>
 
 <script>
@@ -47,6 +47,7 @@ export default {
     onMounted(() => {
       scene.physics.world.enable(object.value)
       object.value.body.setDrag(500)
+      substance.value.setCapturable(false)
     })
     scene.input.on('pointerdown', pointer => {
       if (event.state || menuOpened.value) return

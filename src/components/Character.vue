@@ -47,7 +47,8 @@ export default {
       checkable: computed(() => substance.value?.checkable),
       distanceToPlayer: computed(() => substance.value?.distanceToPlayer),
       execTapEvent: computed(() => substance.value?.execTapEvent),
-      setTapEvent: computed(() => substance.value?.setTapEvent)
+      setTapEvent: computed(() => substance.value?.setTapEvent),
+      setCapturable: computed(() => substance.value?.setCapturable)
     }
   }
 }

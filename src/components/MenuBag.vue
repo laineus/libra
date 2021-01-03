@@ -10,6 +10,8 @@ import { Image, refObj } from 'phavuer'
 import { inject, computed, reactive, ref } from 'vue'
 import MenuContainer from '@/components/MenuContainer'
 import items from '@/data/items'
+const keyToItemData = key => items.find(v => v.key === key)
+const keyToTexture = key => keyToItemData(key).texture
 const WIDTH = 220
 const HEIGHT = 405
 export default {
@@ -56,7 +58,8 @@ export default {
       const wHalf = grabRef.value.width.half
       const hHalf = grabRef.value.height.half
       if (grab.mode === 'dispose') {
-        field.addObject({ type: 'Substance', name: 'flower', x: grab.x + camera.scrollX, y: grab.y + camera.scrollY + hHalf })
+        const itemData = keyToItemData(grab.item.key)
+        field.addObject({ type: itemData.type, name: itemData.key, x: grab.x + camera.scrollX, y: grab.y + camera.scrollY + hHalf })
         storage.state.items.delete(grab.item)
         grab.resolver()
         context.emit('close')
@@ -81,7 +84,6 @@ export default {
       grab.item = null
       grab.resolver = null
     }
-    const keyToTexture = key => items.find(v => v.key === key).texture
     return {
       keyToTexture,
       bagItems: storage.state.items,

@@ -4,7 +4,7 @@
       <Image ref="image" :texture="imageTexture" :originX="0.5" :originY="1" :alpha="alpha" :pipeline="pipeline" v-if="imageTexture" />
     </Container>
     <TapArea v-if="tapEvent.event.value" :visible="checkable" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @tap="tapEvent.exec" />
-    <GrabArea v-else-if="capture" :visible="grabbable" :name="name" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @grab="alpha = 0.5" @capture="$emit('del')" @cancel="alpha = 1" />
+    <GrabArea v-else-if="capturable" :visible="grabbable" :name="name" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @grab="alpha = 0.5" @capture="$emit('del')" @cancel="alpha = 1" />
   </div>
 </template>
 
@@ -22,7 +22,6 @@ export default {
     initY: { default: 0 },
     name: { default: null },
     texture: { default: null },
-    capture: { default: true },
     pipeline: { default: null }
   },
   emits: ['create', 'preUpdate', 'del'],
@@ -37,8 +36,10 @@ export default {
     const alpha = ref(1)
     const tapEvent = useEvent()
     const data = reactive({
+      capturable: Boolean(props.name),
       distanceToPlayer: null
     })
+    const setCapturable = bool => data.capturable = bool
     const itemData = items.find(v => v.key === props.name)
     const imageTexture = computed(() => props.texture || itemData?.texture)
     const create = obj => context.emit('create', obj)
@@ -57,7 +58,8 @@ export default {
       imgWidth, imgHeight, depth, alpha,
       tapEvent,
       execTapEvent: tapEvent.exec,
-      setTapEvent: tapEvent.setEvent
+      setTapEvent: tapEvent.setEvent,
+      setCapturable
     }
   }
 }

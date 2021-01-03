@@ -10,6 +10,8 @@ export default {
     const { exec } = inject('event')
     const sleep = inject('sleep')
     const kajitsu = field.value.getObjectById(2)
+    console.log(kajitsu)
+    kajitsu.setCapturable(false)
     const area = field.value.getObjectById(5)
     // const apple = field.value.getObjectById(4)
     const tKajitsu = new Talker('NPC', kajitsu.object)
