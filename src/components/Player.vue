@@ -62,7 +62,7 @@ export default {
       object, substance,
       create, update,
       gun,
-      r,
+      r, lookTo,
       // Following
       setTargetPosition: following.setTargetPosition,
       clearTargetPosition: following.clearTargetPosition

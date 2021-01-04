@@ -28,7 +28,7 @@ export default {
     const following = useFollowing(object)
     if (props.random) following.setRandomWalk(120)
     const itemData = items.find(v => v.key === props.name)
-    const { play: playFrameAnim } = useFrameAnimChara(object, image, props.initR, itemData.numOfDirection || 4)
+    const { play: playFrameAnim, lookTo } = useFrameAnimChara(object, image, props.initR, itemData.numOfDirection || 4)
     const create = obj => context.emit('create', obj)
     const update = obj => {
       playFrameAnim()
@@ -42,6 +42,7 @@ export default {
     return {
       object, substance,
       create, update,
+      lookTo,
       // Following
       setTargetPosition: following.setTargetPosition,
       clearTargetPosition: following.clearTargetPosition,

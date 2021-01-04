@@ -181,6 +181,41 @@
          "y":0
         }, 
         {
+         "draworder":"topdown",
+         "id":8,
+         "name":"positions",
+         "objects":[
+                {
+                 "height":0,
+                 "id":8,
+                 "name":"bed",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Position",
+                 "visible":true,
+                 "width":0,
+                 "x":696,
+                 "y":224
+                }, 
+                {
+                 "height":0,
+                 "id":9,
+                 "name":"entrance",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Position",
+                 "visible":true,
+                 "width":0,
+                 "x":453,
+                 "y":508
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
          "id":2,
          "image":"home1.png",
          "name":"preview",
@@ -192,8 +227,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":8,
- "nextobjectid":8,
+ "nextlayerid":9,
+ "nextobjectid":10,
  "orientation":"orthogonal",
  "properties":[
         {

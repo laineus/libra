@@ -58,8 +58,8 @@ export default (object, image, initR, numOfDirection) => {
       unref(image).setFrame(baseFrames[directionKey]) // Set last frame
     }
   }
-  const lookTo = r => {
-    directionKey = velocityToDirectionKey(r)
+  const lookTo = rOrKey => {
+    directionKey = typeof rOrKey === 'string' ? rOrKey : velocityToDirectionKey(rOrKey)
   }
   return {
     play,
