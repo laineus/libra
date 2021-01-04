@@ -61,7 +61,7 @@ export default {
           field ? gameScene.value?.field.objects.map(v => v.name) : []
         ).count(v => v === key) >= count
       },
-      removeItem: (key, count = 1) => sdm.state.bagItems.count(v => v.key === key) >= count
+      removeItem: (key, count = 1) => count.toArray().forEach(() => sdm.state.bagItems.delete(v => v.key === key))
     })
     return {
       gameScene, uiScene

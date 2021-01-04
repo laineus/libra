@@ -20,6 +20,7 @@ export default {
         ])
         return
       }
+      bag.removeItem('apple')
       await talk.setTalk([
         { chara: tAmili, text: 'ありがとう！' },
         { chara: tAmili, text: '今日はどうしたい？' }
