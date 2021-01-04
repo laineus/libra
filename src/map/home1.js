@@ -8,6 +8,8 @@ export default {
     const field = inject('field').value
     const talk = inject('talk').value
     const uiScene = inject('uiScene').value
+    const state = inject('storage').state
+
     const amili = field.getObjectById(7)
     amili.setCapturable(false)
     const tAmili = new Talker('アミリ', amili.object)
@@ -25,6 +27,8 @@ export default {
         { chara: tAmili, text: 'ありがとう！' },
         { chara: tAmili, text: '今日はどうしたい？' }
       ])
+      const action = await uiScene.setSelector(['散歩がしたい', '一緒に寝たい'])
+      state.status[action === 0 ? 'heart' : 'body'] += 1
     }
     amili.setTapEvent(async () => {
       await talk.setTalk([
