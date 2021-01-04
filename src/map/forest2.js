@@ -17,7 +17,8 @@ export default {
     const talk = inject('talk')
     const { exec } = inject('event')
     const sleep = inject('sleep')
-    const hasApple = computed(() => storage.state.bagItems.some(v => v.key === 'apple') || storage.state.roomItems.some(v => v.key === 'apple'))
+    const bag = inject('bag')
+
     const sumStatus = computed(() => storage.state.status.heart + storage.state.status.body)
     const gate = field.value.getObjectById(1)
     if (storage.state.events.intro < STEPS.COMPLETED) {
@@ -31,7 +32,7 @@ export default {
     const area = field.value.getObjectById(5)
     const apple = field.value.getObjectById(4)
     apple.setVisible(computed(() => storage.state.events.intro >= STEPS.APPLE))
-    const canMountApple = computed(() => sumStatus.value > 0 ? Math.chance(0.01) : !hasApple.value)
+    const canMountApple = computed(() => sumStatus.value > 0 ? Math.chance(0.01) : !bag.hasItem('apple', 1, { room: true, bag: true }))
     if (!canMountApple.value) apple.destroy()
 
     const tKajitsu = new Talker('NPC', kajitsu.object)
@@ -91,7 +92,7 @@ export default {
           ])
           await revert()
         }
-      } else if (storage.state.events.intro === STEPS.APPLE && !hasApple.value) {
+      } else if (storage.state.events.intro === STEPS.APPLE && !bag.hasItem('apple')) {
         return async () => {
           const apl = t('events.forest2Kajitsu.apple').slice(2)
           await talk.value.setTalk([
@@ -101,7 +102,7 @@ export default {
             { chara: tKajitsu, text: apl.shift() }
           ])
         }
-      } else if (storage.state.events.intro === STEPS.APPLE && hasApple.value) {
+      } else if (storage.state.events.intro === STEPS.APPLE) {
         return async () => {
           const completed = t('events.forest2Kajitsu.completed')
           await talk.value.setTalk([

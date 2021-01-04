@@ -53,6 +53,16 @@ export default {
     provide('storage', sdm)
     provide('setting', setting)
     provide('sleep', time => new Promise(resolve => setTimeout(resolve, time)))
+    provide('bag', {
+      hasItem: (key, count = 1, { bag = false, room = false, field = false } = { bag: true }) => {
+        return [].concat(
+          bag ? sdm.state.bagItems.map(v => v.key) : [],
+          room ? sdm.state.roomItems.map(v => v.key) : [],
+          field ? gameScene.value?.field.objects.map(v => v.name) : []
+        ).count(v => v === key) >= count
+      },
+      removeItem: (key, count = 1) => sdm.state.bagItems.count(v => v.key === key) >= count
+    })
     return {
       gameScene, uiScene
     }
