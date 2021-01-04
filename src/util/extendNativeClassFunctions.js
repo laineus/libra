@@ -58,6 +58,15 @@ Object.defineProperty(Array.prototype, 'delete', {
     this.splice(this.findIndex(typeof callbackfn === 'function' ? callbackfn : v => v === callbackfn), 1)
   }
 })
+Object.defineProperty(Array.prototype, 'toObject', {
+  value (callbackfn) {
+    return this.reduce((result, record) => {
+      const [key, value] = callbackfn(record)
+      result[key] = value
+      return result
+    }, {})
+  }
+})
 Object.defineProperty(Array.prototype, 'findMin', {
   value (callbackfn) {
     return this.reduce((result, record) => {
