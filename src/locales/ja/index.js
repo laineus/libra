@@ -1,6 +1,13 @@
 export default {
   title: 'サンプルゲーム',
   events: {
+    name: {
+      libra: 'リブラ',
+      amili: 'アミリ'
+    },
+    places: {
+      home: '部屋'
+    },
     forest2Kajitsu: {
       walk: [
         'はじめまして。',
@@ -32,6 +39,17 @@ export default {
         'さあ、彼女が待っていますよ。',
         '私はこれで失礼します。'
       ]
+    },
+    home: {
+      welcomeback: 'おかえり、リブラ！',
+      giveApple: ['リンゴを渡す', 'なんでもない'],
+      noApple: 'ないじゃん',
+      gaveApple: ['ありがとう！', '今日はどうしたい？'],
+      reward: ['散歩がしたい', '一緒に寝たい'],
+      requestApple: {
+        a: ['リブラ、またお腹が減ったわ。', 'またリンゴ持ってきて！'],
+        b: ['ん～', 'またリンゴ食べたいなぁ', 'リブラ、持ってきてくれるよね？']
+      }
     }
   }
 }

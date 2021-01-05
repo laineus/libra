@@ -11,8 +11,8 @@ export default {
     body: 0
   },
   bagItems: [
-    { id: 1, key: 'flower', bagX: 30, bagY: 40 },
-    { id: 2, key: 'flower', bagX: 40, bagY: 90 }
+    { id: 1, key: 'apple', bagX: 30, bagY: 40 },
+    { id: 2, key: 'apple', bagX: 40, bagY: 90 }
   ],
   roomItems: [],
   places: [
