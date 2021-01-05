@@ -40,6 +40,13 @@ export default {
         resolver = resolve
       })
     }
+    const getSpeakScripts = chara => (key, values) => {
+      const scripts = [].concat(t(key, values))
+      const arr = scripts.map(text => {
+        return { chara, text }
+      })
+      return setTalk(arr)
+    }
     const next = (pointer) => {
       pointer.isDown = false
       list.value.splice(0, 1)
@@ -54,7 +61,7 @@ export default {
       config, COLORS: config.COLORS,
       current,
       next,
-      setTalk,
+      setTalk, getSpeakScripts,
       bg, txt,
       ...toRefs(data)
     }
