@@ -11,10 +11,10 @@ export default {
   name: '森2',
   async create () {
     const storage = inject('storage')
-    const uiScene = inject('uiScene')
+    const uiScene = inject('uiScene').value
     const field = inject('field').value
     const camera = inject('camera').value
-    const talk = inject('talk')
+    const talk = inject('talk').value
     const { exec } = inject('event')
     const sleep = inject('sleep')
     const bag = inject('bag')
@@ -44,7 +44,7 @@ export default {
         const revert = await camera.move(0, -100, 2000)
         await sleep(500)
         const walk = t('events.forest2Kajitsu.walk')
-        await talk.value.setTalk([
+        await talk.setTalk([
           { chara: tKajitsu, text: walk.shift() },
           { chara: tKajitsu, text: walk.shift() },
           { chara: tKajitsu, text: walk.shift() },
@@ -61,7 +61,7 @@ export default {
       if (storage.state.events.intro !== STEPS.WALK) return
       return async () => {
         const talking = t('events.forest2Kajitsu.talk')
-        await talk.value.setTalk([
+        await talk.setTalk([
           { chara: tKajitsu, text: talking.shift() },
           { chara: tKajitsu, text: talking.shift() },
           { chara: tKajitsu, text: talking.shift() }
@@ -78,13 +78,13 @@ export default {
           mountApple()
           storage.state.events.intro = STEPS.APPLE
           const apl = t('events.forest2Kajitsu.apple')
-          await talk.value.setTalk([
+          await talk.setTalk([
             { chara: tKajitsu, text: apl.shift() },
             { chara: tKajitsu, text: apl.shift() }
           ])
           const revert = await camera.move(100, -200, 2000)
           await sleep(500)
-          await talk.value.setTalk([
+          await talk.setTalk([
             { chara: tKajitsu, text: apl.shift() },
             { chara: tKajitsu, text: apl.shift() },
             { chara: tKajitsu, text: apl.shift() },
@@ -95,7 +95,7 @@ export default {
       } else if (storage.state.events.intro === STEPS.APPLE && !bag.hasItem('apple')) {
         return async () => {
           const apl = t('events.forest2Kajitsu.apple').slice(2)
-          await talk.value.setTalk([
+          await talk.setTalk([
             { chara: tKajitsu, text: apl.shift() },
             { chara: tKajitsu, text: apl.shift() },
             { chara: tKajitsu, text: apl.shift() },
@@ -105,7 +105,7 @@ export default {
       } else if (storage.state.events.intro === STEPS.APPLE) {
         return async () => {
           const completed = t('events.forest2Kajitsu.completed')
-          await talk.value.setTalk([
+          await talk.setTalk([
             { chara: tKajitsu, text: completed.shift() },
             { chara: tKajitsu, text: completed.shift() },
             { chara: tKajitsu, text: completed.shift() },
@@ -115,7 +115,7 @@ export default {
             { chara: tKajitsu, text: completed.shift() },
             { chara: tKajitsu, text: completed.shift() }
           ])
-          const onCompleted = await uiScene.value.transition(1000)
+          const onCompleted = await uiScene.transition(1000)
           storage.state.events.intro = STEPS.COMPLETED
           gate.restoreEvent()
           await onCompleted()
