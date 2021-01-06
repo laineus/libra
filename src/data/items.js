@@ -15,6 +15,10 @@ const makeCharacter = (name, obj) => {
 export default [
   makeItem('flower'),
   makeItem('apple'),
+  makeItem('lily'),
+  makeItem('cosmos'),
+  makeItem('dandelion'),
+  makeCharacter('ladybird'),
   makeCharacter('kajitsu'),
   makeCharacter('amili')
 ]
