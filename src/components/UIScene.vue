@@ -6,6 +6,7 @@
       <Circle :visible="mobile && nealestCheckable" :radius="80" :fillColor="0x000000" :alpha="0.5" :x="(100).byRight" :y="(100).byBottom" @pointerdown="check" />
       <Talk ref="talk" />
       <Selector v-if="selector.list" :x="selector.x" :y="selector.y" :list="selector.list" @select="selector.resolver" />
+      <Log ref="log" />
       <Menu ref="menu" />
       <Image v-for="v in 5" :key="v" texture="hp" :frame="Math.round(state.status.hp / 20) >= v ? 0 : 1" :x="40 + ((v - 1) * 42)" :y="(35).byBottom" />
     </template>
@@ -21,9 +22,10 @@ import Controller from './Controller'
 import Talk from './Talk'
 import Selector from './Selector'
 import Menu from './Menu'
+import Log from './Log'
 import config from '@/data/config'
 export default {
-  components: { Scene, Title, Controller, Rectangle, Circle, Image, Talk, Selector, Menu },
+  components: { Scene, Title, Controller, Rectangle, Circle, Image, Talk, Selector, Menu, Log },
   setup (props) {
     const mobile = inject('mobile')
     const frames = inject('frames')
@@ -35,6 +37,7 @@ export default {
       scene: refScene(null),
       controller: ref(null),
       talk: ref(null),
+      log: ref(null),
       menu: ref(null)
     }
     const titleScreen = ref(true)
