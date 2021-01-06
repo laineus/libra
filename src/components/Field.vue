@@ -25,6 +25,7 @@ import Darkness from './modules/Darkness'
 import { inject, onBeforeUnmount, onMounted, ref, computed, shallowReactive } from 'vue'
 import { refObj, Image, TilemapLayer, Light } from 'phavuer'
 import setupCamera from './modules/setupCamera'
+import randomObjectByRandom from './modules/randomObjectByRandom'
 import maps from '@/data/maps'
 import config from '@/data/config'
 export default {
@@ -62,6 +63,7 @@ export default {
       })
     }
     const getObjectById = id => objects.find(v => v.id === id)?.ref.value
+    randomObjectByRandom(objects.filter(v => v.type === 'Random')).forEach(addObject)
     const collides = field.getTileSettingsByType('collides').map(v => v.id)
     const group = scene.add.group()
     const layerCreate = layer => {
