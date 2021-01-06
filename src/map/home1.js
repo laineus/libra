@@ -31,11 +31,21 @@ export default {
       amili.lookTo(hangout ? 'up' : 'leftDown')
       uiScene.log.push(hangout ? '心の魅力が上がった' : '体の魅力が上がった')
     }
+    const itemReaction = async () => {
+      const keys = Object.keys(t('events.itemReactions'))
+      const doneList = state.events.itemReactions
+      const name = field.objects.map(v => v.name).find(name => !doneList.includes(name) && keys.includes(name))
+      if (!name) return false
+      await speakAmiliScripts(`events.itemReactions.${name}`)
+      talked = true
+      return true
+    }
     const requestApple = async () => {
       await speakAmiliScripts(Math.chance(0.5) ? 'events.home.requestApple.a' : 'events.home.requestApple.b')
     }
     amili.setTapEvent(async () => {
       if (!talked) {
+        await itemReaction() ||
         await speakAmiliScripts('events.home.welcomeback')
         talked = true
       } else {

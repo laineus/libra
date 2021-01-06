@@ -12,7 +12,7 @@ export default {
   },
   bagItems: [
     { id: 1, key: 'apple', bagX: 30, bagY: 40 },
-    { id: 2, key: 'apple', bagX: 40, bagY: 90 }
+    { id: 2, key: 'lily', bagX: 40, bagY: 90 }
   ],
   roomItems: [],
   places: [
@@ -26,6 +26,7 @@ export default {
     null
   ],
   events: {
-    intro: 0
+    intro: 0,
+    itemReactions: []
   }
 }
