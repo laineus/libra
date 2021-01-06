@@ -19,6 +19,8 @@ export default [
   makeItem('cosmos'),
   makeItem('dandelion'),
   makeCharacter('ladybird'),
+  makeCharacter('stagBeetle'),
+  makeCharacter('beetle'),
   makeCharacter('kajitsu'),
   makeCharacter('amili')
 ]
