@@ -16,5 +16,5 @@ export default [
   makeItem('flower'),
   makeItem('apple'),
   makeCharacter('kajitsu'),
-  makeCharacter('amili', { numOfDirection: 8 })
+  makeCharacter('amili')
 ]
