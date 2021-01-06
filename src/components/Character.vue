@@ -26,8 +26,8 @@ export default {
     const object = computed(() => substance.value?.object)
     const image = computed(() => substance.value?.image)
     const following = useFollowing(object)
-    if (props.random) following.setRandomWalk(120)
     const itemData = items.find(v => v.key === props.name)
+    if (props.random) following.setRandomWalk(typeof props.random === 'number' ? props.random : 120)
     const textureData = scene.textures.get(itemData.texture)
     const numOfDirection = (textureData.frameTotal - 1) / 3
     const { play: playFrameAnim, lookTo } = useFrameAnimChara(object, image, props.initR, numOfDirection)
