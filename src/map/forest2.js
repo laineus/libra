@@ -12,7 +12,7 @@ export default {
   async create () {
     const storage = inject('storage')
     const uiScene = inject('uiScene')
-    const field = inject('field')
+    const field = inject('field').value
     const camera = inject('camera').value
     const talk = inject('talk')
     const { exec } = inject('event')
@@ -20,20 +20,20 @@ export default {
     const bag = inject('bag')
 
     const sumStatus = computed(() => storage.state.status.heart + storage.state.status.body)
-    const gate = field.value.getObjectById(1)
+    const gate = field.getObjectById(1)
     if (storage.state.events.intro < STEPS.COMPLETED) {
       gate.setEvent(async () => {
         console.log('この先へはまだ行けません')
       })
     }
-    const kajitsu = field.value.getObjectById(2)
+    const kajitsu = field.getObjectById(2)
     kajitsu.setCapturable(false)
     kajitsu.setVisible(computed(() => storage.state.events.intro < STEPS.COMPLETED))
-    const area = field.value.getObjectById(5)
-    const apple = field.value.getObjectById(4)
-    apple.setVisible(computed(() => storage.state.events.intro >= STEPS.APPLE))
-    const canMountApple = computed(() => sumStatus.value > 0 ? Math.chance(0.01) : !bag.hasItem('apple', 1, { room: true, bag: true }))
-    if (!canMountApple.value) apple.destroy()
+    const area = field.getObjectById(5)
+    const mountApple = () => field.addObject({ type: 'Substance', name: 'apple', x: field.positions.apple.x, y: field.positions.apple.y })
+    if (sumStatus.value > 0 ? Math.chance(0.01) : !bag.hasItem('apple', 1, { room: true, bag: true })) {
+      mountApple()
+    }
 
     const tKajitsu = new Talker('NPC', kajitsu.object)
 
@@ -75,7 +75,7 @@ export default {
     const kajitsuEvent = computed(() => {
       if (storage.state.events.intro === STEPS.TALK) {
         return async () => {
-          apple.setVisible(true)
+          mountApple()
           storage.state.events.intro = STEPS.APPLE
           const apl = t('events.forest2Kajitsu.apple')
           await talk.value.setTalk([

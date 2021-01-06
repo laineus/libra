@@ -108,7 +108,7 @@
                  "name":"apple",
                  "point":true,
                  "rotation":0,
-                 "type":"Substance",
+                 "type":"Position",
                  "visible":true,
                  "width":0,
                  "x":590.907415853325,

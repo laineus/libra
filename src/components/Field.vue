@@ -45,6 +45,7 @@ export default {
     const substances = computed(() => objects.filter(v => v.type === 'Substance'))
     const areas = computed(() => objects.filter(v => v.type === 'Area'))
     const gates = computed(() => objects.filter(v => v.type === 'Gate'))
+    const positions = computed(() => objects.filter(v => v.type === 'Position').toObject(v => [v.name, { x: v.x, y: v.y }]))
     const lights = objects.filter(v => v.type === 'Light')
     scene.lights.setAmbientColor(field.properties.ambient || 0xFFFFFF)
     lights.length ? scene.lights.enable() : scene.lights.disable()
@@ -92,7 +93,7 @@ export default {
       config,
       field, collides,
       name: field.name, width: field.width, height: field.height,
-      layers, images, player, objects, charas, substances, areas, gates, lights,
+      layers, images, player, objects, charas, substances, areas, gates, lights, positions,
       pipeline,
       addObject, delObject,
       bullets, addBullet, delBullet,
