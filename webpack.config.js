@@ -3,6 +3,7 @@
 const webpack = require('webpack')
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const AutoTileWebpackPlugin = require('auto-tile-webpack-plugin')
 const TileExtrudeWebpackPlugin = require('tile-extrude-webpack-plugin')
 const PhaserAssetsWebpackPlugin = require('phaser-assets-webpack-plugin')
@@ -15,8 +16,8 @@ module.exports = (_env, argv) => ({
     vendor: ['phaser', 'vue']
   },
   output: {
-    path: path.resolve(__dirname, 'public/js'),
-    filename: '[name].bundle.js'
+    path: path.resolve(__dirname, 'public'),
+    filename: 'js/[name].bundle.js'
   },
   module: {
     rules: [
@@ -56,6 +57,9 @@ module.exports = (_env, argv) => ({
     contentBase: path.resolve(__dirname, 'public')
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'src/index.html')
+    }),
     new webpack.DefinePlugin({
       'ENV': JSON.stringify(argv.mode),
       'typeof CANVAS_RENDERER': JSON.stringify(true),
