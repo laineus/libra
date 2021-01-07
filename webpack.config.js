@@ -26,7 +26,6 @@ module.exports = (_env, argv) => ({
         include: path.resolve(__dirname, 'src/'),
         loader: 'babel-loader',
         options: {
-          plugins: ['@babel/plugin-proposal-optional-chaining'],
           presets: [
             ['@babel/preset-env', { targets: { node: 'current' } }]
           ]
