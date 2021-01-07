@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TilemapLayer v-for="v in layers" :key="v.index" :ref="v.ref" :depth="config.DEPTH[v.depth] || 0" :tilemap="field.tilemap" :layerIndex="v.index" :tileset="field.tilesets" :collision="collides" :pipeline="pipeline" @create="layerCreate" />
+    <TilemapLayer v-for="v in layers" :key="v.index" :ref="v.ref" :depth="config.DEPTH[v.depth] ?? 0" :tilemap="field.tilemap" :layerIndex="v.index" :tileset="field.tilesets" :collision="collides" :pipeline="pipeline" @create="layerCreate" />
     <Image v-for="v in images" :key="v.id" :ref="v.ref" :texture="`tileset/${v.key}`" :x="v.x" :y="v.y" :origin="0" :pipeline="pipeline" @create="obj => obj.setDepth(obj.y + obj.height)" />
     <Player ref="player" :initX="playerX" :initY="playerY" :initR="playerR" :pipeline="pipeline" @create="charaCreate" @shot="addBullet" />
     <Character v-for="v in charas" :key="v.id" :ref="v.ref" :initX="v.x" :initY="v.y" :initR="v.radian" :name="v.name" :random="v.random" :pipeline="pipeline" @create="charaCreate" @del="delObject(v.id)" />
@@ -8,7 +8,7 @@
     <Area v-for="v in areas" :key="v.id" :ref="v.ref" :x="v.x" :y="v.y" :width="v.width" :height="v.height" />
     <Gate v-for="v in gates" :key="v.id" :ref="v.ref" :x="v.x" :y="v.y" :width="v.width" :height="v.height" :to="{ key: v.name, x: v.fieldX.toPixel, y: v.fieldY.toPixel, r: player && player.r }" />
     <Bullet v-for="v in bullets" :key="v.id" :initX="v.x" :initY="v.y" :r="v.r" @del="delBullet(v.id)" />
-    <Light v-for="v in lights" :key="v.id" :x="v.x" :y="v.y" :ref="v.ref" :intensity="v.intensity || 1" :color="v.color" :radius="v.radius" />
+    <Light v-for="v in lights" :key="v.id" :x="v.x" :y="v.y" :ref="v.ref" :intensity="v.intensity ?? 1" :color="v.color" :radius="v.radius" />
     <Image :depth="config.DEPTH.DARKNESS" texture="darkness" :x="0" :y="0" :origin="0" />
   </div>
 </template>
@@ -48,7 +48,7 @@ export default {
     const gates = computed(() => objects.filter(v => v.type === 'Gate'))
     const positions = computed(() => objects.filter(v => v.type === 'Position').toObject(v => [v.name, { x: v.x, y: v.y }]))
     const lights = objects.filter(v => v.type === 'Light')
-    scene.lights.setAmbientColor(field.properties.ambient || 0xFFFFFF)
+    scene.lights.setAmbientColor(field.properties.ambient ?? 0xFFFFFF)
     lights.length ? scene.lights.enable() : scene.lights.disable()
     const pipeline = computed(() => lights.length ? 'Light2D' : 'TextureTintPipeline')
     const addObject = object => objects.push(Object.assign({ ref: ref(null), id: Symbol('id') }, object))
@@ -75,7 +75,7 @@ export default {
     const event = maps[props.fieldKey] || {}
     scene.textures.remove('darkness')
     const darkness = new Darkness(scene, 'darkness', field.width, field.height)
-    darkness.fillBg(field.properties.darkness || 0x77000000).removeArcs(lights.map(l => {
+    darkness.fillBg(field.properties.darkness ?? 0x77000000).removeArcs(lights.map(l => {
       return { x: l.x, y: l.y, radius: 120 }
     })).save().refresh()
     onMounted(() => {

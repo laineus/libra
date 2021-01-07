@@ -7,7 +7,7 @@ export default list => {
     count.toArray().forEach(() => {
       const randomValue = Math.random()
       const name = names.find((_, i) => {
-        return randomValue <= Math.sum(...(i + 1).toArray().map(i => chances[i] || 1))
+        return randomValue <= Math.sum(...(i + 1).toArray().map(i => chances[i] ?? 1))
       })
       if (!name) return
       result.push({
