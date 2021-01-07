@@ -3,7 +3,6 @@
 const webpack = require('webpack')
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
-const WriteFilePlugin = require('write-file-webpack-plugin')
 const AutoTileWebpackPlugin = require('auto-tile-webpack-plugin')
 const TileExtrudeWebpackPlugin = require('tile-extrude-webpack-plugin')
 const PhaserAssetsWebpackPlugin = require('phaser-assets-webpack-plugin')
@@ -58,7 +57,6 @@ module.exports = (_env, argv) => ({
     contentBase: path.resolve(__dirname, 'public')
   },
   plugins: [
-    new WriteFilePlugin(),
     new webpack.DefinePlugin({
       'ENV': JSON.stringify(argv.mode),
       'typeof CANVAS_RENDERER': JSON.stringify(true),
@@ -75,11 +73,5 @@ module.exports = (_env, argv) => ({
     new VueLoaderPlugin()
   ],
   externals: {},
-  optimization: {
-    splitChunks: {
-      name: 'vendor',
-      chunks: 'initial'
-    }
-  },
   performance: { hints: false }
 })
