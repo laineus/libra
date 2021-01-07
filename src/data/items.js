@@ -23,5 +23,7 @@ export default [
   makeCharacter('stagBeetle'),
   makeCharacter('beetle'),
   makeCharacter('kajitsu'),
+  makeCharacter('torrent'),
+  makeCharacter('flog'),
   makeCharacter('amili')
 ]
