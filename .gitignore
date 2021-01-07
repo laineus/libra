@@ -1,4 +1,6 @@
 node_modules
+/public/index.html
 /public/js/*.bundle.js
+/public/js/*.bundle.js*
 /public/img/map/tilesets/*.tmx
 /public/img/map/extruded_tilesets/*.png
