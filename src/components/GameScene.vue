@@ -20,6 +20,7 @@ export default {
     const uiScene = inject('uiScene')
     const controller = inject('controller')
     const camera = inject('camera')
+    const storage = inject('storage')
     const field = ref(null)
     const fps = ref(0)
     provide('field', field)
@@ -45,6 +46,7 @@ export default {
       await uiScene.value.transition(200)
       fieldData.name = null
       nextTick(() => {
+        storage.state.map = name
         fieldData.name = name
         fieldData.x = x
         fieldData.y = y

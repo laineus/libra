@@ -11,10 +11,9 @@
 </template>
 
 <script>
-import { reactive, ref, toRefs } from 'vue'
+import { inject, reactive, ref, toRefs } from 'vue'
 import { Container, Rectangle, Line } from 'phavuer'
 import moment from 'moment'
-import SaveDataManager from '@/class/SaveDataManager'
 import config from '@/data/config'
 import maps from '@/data/maps'
 import Text from '@/components/Text'
@@ -23,7 +22,7 @@ export default {
   components: { Container, Rectangle, Text, Line, Selector },
   props: ['offsetX', 'offsetY'],
   setup (props) {
-    const sdm = new SaveDataManager()
+    const storage = inject('storage')
     const list = ref([])
     const data = reactive({
       rowWidth: 220, rowHeight: 37,
@@ -31,7 +30,7 @@ export default {
       tapX: 0, tapY: 0
     })
     const loadData = () => {
-      sdm.getList().then(v => {
+      storage.getList().then(v => {
         list.value = v
         console.log(list.value)
       })
@@ -40,7 +39,7 @@ export default {
     const submit = i => {
       if (i === 1) return data.selectedIndex = null
       const row = list.value[data.selectedIndex]
-      sdm.save(row.number)
+      storage.save(row.number)
       data.selectedIndex = null
       loadData()
     }

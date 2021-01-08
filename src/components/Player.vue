@@ -21,6 +21,7 @@ export default {
     const event = inject('event')
     const camera = inject('camera')
     const menuOpened = inject('menuOpened')
+    const storage = inject('storage')
     const substance = ref(null)
     const r = ref(0)
     const object = computed(() => substance.value?.object)
@@ -43,6 +44,8 @@ export default {
       } else {
         following.walkToTargetPosition(200)
       }
+      storage.state.x = Number(obj.x)
+      storage.state.y = Number(obj.y)
     }
     onMounted(() => {
       scene.physics.world.enable(object.value)
