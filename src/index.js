@@ -20,10 +20,8 @@ const option = {
       createPhavuerApp(this.game, App)
     },
     preload () {
-      Object.keys(assets).forEach(method => {
-        assets[method].forEach(args => {
-          this.load[method](...args)
-        })
+      Object.entries(assets).forEach(([method, list]) => {
+        list.forEach(args => this.load[method](...args))
       })
     }
   },

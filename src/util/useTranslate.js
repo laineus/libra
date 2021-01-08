@@ -2,8 +2,8 @@ const getReplaceText = values => text => {
   if (['string', 'number'].includes(typeof values)) {
     return text.replace(/#\{\w+\}/g, values)
   } else if (typeof values === 'object') {
-    return Object.keys(values).reduce((text, key) => {
-      return text.replace(new RegExp(`#\\{${key}\\}`, 'g'), values[key])
+    return Object.entries(values).reduce((text, [key, value]) => {
+      return text.replace(new RegExp(`#\\{${key}\\}`, 'g'), value)
     }, text)
   } else {
     return text

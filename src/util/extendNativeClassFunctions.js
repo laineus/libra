@@ -28,18 +28,6 @@ Object.defineProperty(Number.prototype, 'byBottom', {
   get () { return config.HEIGHT - this }
 })
 // String instance methods
-Object.defineProperty(String.prototype, 'width', {
-  get () {
-    return [...Array(this.valueOf().length).keys()].map(i => {
-      const charCode = this.charCodeAt(i)
-      if (charCode >= 0x00 && charCode < 0x81) return 1
-      if (charCode === 0xf8f0) return 1
-      if (charCode >= 0xff61 && charCode < 0xffa0) return 1
-      if (charCode >= 0xf8f1 && charCode < 0xf8f4) return 1
-      return 2
-    }).reduce((sum, v) => sum + v, 0)
-  }
-})
 Object.defineProperty(String.prototype, 'toColorInt', {
   get () { return parseInt(this.slice(1), 16) }
 })
@@ -60,11 +48,7 @@ Object.defineProperty(Array.prototype, 'delete', {
 })
 Object.defineProperty(Array.prototype, 'toObject', {
   value (callbackfn) {
-    return this.reduce((result, record) => {
-      const [key, value] = callbackfn(record)
-      result[key] = value
-      return result
-    }, {})
+    return Object.fromEntries(this.map(callbackfn))
   }
 })
 Object.defineProperty(Array.prototype, 'findMin', {
