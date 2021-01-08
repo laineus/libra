@@ -83,3 +83,5 @@ Math.chance = value => value > Math.random()
 Object.isObject = value => Boolean(value && value.constructor === Object)
 // Array class method
 Array.range = (start, end) => (end - start + 1).toArray().map(i => i + start)
+// Global variables
+window.l = console.log
