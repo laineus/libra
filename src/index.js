@@ -25,6 +25,10 @@ const option = {
       })
     }
   },
+  render: {
+    antialiasGL: false,
+    roundPixels: true
+  },
   parent: 'game',
   physics: {
     default: 'arcade',
