@@ -40,12 +40,11 @@ export default {
         resolver = resolve
       })
     }
-    const getSpeakScripts = chara => (key, values) => {
-      const scripts = [].concat(t(key, values))
-      const arr = scripts.map(text => {
+    const getSpeakScripts = chara => scripts => {
+      const list = scripts.map(text => {
         return { chara, text }
       })
-      return setTalk(arr)
+      return setTalk(list)
     }
     const next = (pointer) => {
       pointer.isDown = false

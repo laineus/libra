@@ -18,9 +18,9 @@ export default {
     const appleEvent = async () => {
       const result = await uiScene.setSelector(t('events.home.giveApple'))
       if (result === 1) return
-      if (!bag.hasItem('apple')) return await speakAmiliScripts('events.home.noApple')
+      if (!bag.hasItem('apple')) return await speakAmiliScripts(t('events.home.noApple'))
       bag.removeItem('apple')
-      await speakAmiliScripts('events.home.gaveApple')
+      await speakAmiliScripts(t('events.home.gaveApple'))
       const hangout = await uiScene.setSelector(t('events.home.reward')) === 0
       await uiScene.transition(700)
       state.status[hangout ? 'heart' : 'body'] += 1
@@ -36,17 +36,17 @@ export default {
       const doneList = state.events.itemReactions
       const name = field.objects.map(v => v.name).find(name => !doneList.includes(name) && keys.includes(name))
       if (!name) return false
-      await speakAmiliScripts(`events.itemReactions.${name}`)
+      await speakAmiliScripts(t(`events.itemReactions.${name}`))
       talked = true
       return true
     }
     const requestApple = async () => {
-      await speakAmiliScripts(Math.chance(0.5) ? 'events.home.requestApple.a' : 'events.home.requestApple.b')
+      await speakAmiliScripts(t(Math.chance(0.5) ? 'events.home.requestApple.a' : 'events.home.requestApple.b'))
     }
     amili.setTapEvent(async () => {
       if (!talked) {
         await itemReaction() ||
-        await speakAmiliScripts('events.home.welcomeback')
+        await speakAmiliScripts(t('events.home.welcomeback'))
         talked = true
       } else {
         await requestApple()
