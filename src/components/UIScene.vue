@@ -1,5 +1,5 @@
 <template>
-  <Scene ref="scene" name="UIScene" :autoStart="true" @create="create" @update="update">
+  <Scene ref="scene" name="UIScene" :autoStart="true" @update="update">
     <Title @close="titleScreen = false" v-if="titleScreen" />
     <template v-else>
       <Controller ref="controller" />
@@ -56,8 +56,6 @@ export default {
         }
       })
     }
-    const create = (scene, payload) => {
-    }
     const update = (scene, time) => {
       frames.total++
       if (!field.value) return
@@ -75,7 +73,7 @@ export default {
       state: storage.state,
       mobile,
       config,
-      create, update,
+      update,
       ...refs,
       titleScreen,
       transition,

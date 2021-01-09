@@ -1,5 +1,5 @@
 <template>
-  <Substance ref="substance" :initX="initX" :initY="initY" :name="name" @create="create" @preUpdate="update" @del="$emit('del')" />
+  <Substance ref="substance" :initX="initX" :initY="initY" :name="name" @preUpdate="update" @del="$emit('del')" />
 </template>
 
 <script>
@@ -18,7 +18,7 @@ export default {
     speed: { default: 120 },
     random: { default: null } // leave chase random null
   },
-  emits: ['create', 'del'],
+  emits: ['del'],
   setup (props, context) {
     const scene = inject('scene')
     const event = inject('event')
@@ -31,7 +31,6 @@ export default {
     const textureData = scene.textures.get(itemData.texture)
     const numOfDirection = (textureData.frameTotal - 1) / 3
     const { play: playFrameAnim, lookTo } = useFrameAnimChara(object, image, props.initR, numOfDirection)
-    const create = obj => context.emit('create', obj)
     const update = obj => {
       playFrameAnim()
       if (event.state) return
@@ -43,7 +42,7 @@ export default {
     })
     return {
       object, substance,
-      create, update,
+      update,
       lookTo,
       // Following
       setTargetPosition: following.setTargetPosition,

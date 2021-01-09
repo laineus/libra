@@ -1,5 +1,5 @@
 <template>
-  <Substance ref="substance" :initX="initX" :initY="initY" :texture="gun.mode.value ? 'chara_sprite/libra_gun' : 'chara_sprite/libra'" @create="create" @preUpdate="update" />
+  <Substance ref="substance" :initX="initX" :initY="initY" :texture="gun.mode.value ? 'chara_sprite/libra_gun' : 'chara_sprite/libra'" @preUpdate="update" />
 </template>
 
 <script>
@@ -15,7 +15,7 @@ export default {
     initY: { default: 0 },
     initR: { default: 0 }
   },
-  emits: ['create', 'shot'],
+  emits: ['shot'],
   setup (props, context) {
     const scene = inject('scene')
     const event = inject('event')
@@ -34,7 +34,6 @@ export default {
       const diffY = scene.input.manager.pointers[0]?.y + camera.value?.scrollY - object.value?.y
       return Math.atan2(diffY, diffX)
     }
-    const create = obj => context.emit('create', obj)
     const update = obj => {
       r.value = getRadianToPointer()
       playFrameAnim()
@@ -63,7 +62,7 @@ export default {
     })
     return {
       object, substance,
-      create, update,
+      update,
       gun,
       r, lookTo,
       // Following
