@@ -1,7 +1,7 @@
 <template>
   <div>
     <Container ref="object" :visible="unref(visible)" :x="initX" :y="initY" :width="imgWidth" :height="imgWidth" :depth="depth" @create="create" @preUpdate="update">
-      <Image ref="image" :texture="imageTexture" :originX="0.5" :originY="1" :alpha="alpha" :pipeline="pipeline" v-if="imageTexture" />
+      <Image ref="image" v-if="imageTexture" :texture="imageTexture" :originX="0.5" :originY="1" :alpha="alpha" :tint="tint" :pipeline="pipeline" :tween="tween" />
     </Container>
     <TapArea v-if="tapEvent.event.value" :visible="unref(visible) && checkable" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @tap="tapEvent.exec" />
     <GrabArea v-else-if="capturable" :visible="unref(visible) && grabbable" :name="name" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @grab="alpha = 0.5" @capture="$emit('del')" @cancel="alpha = 1" />
@@ -15,6 +15,7 @@ import items from '@/data/items'
 import TapArea from './TapArea'
 import GrabArea from './GrabArea'
 import useEvent from './modules/useEvent'
+import config from '@/data/config'
 export default {
   components: { Container, Image, TapArea, GrabArea },
   props: {
@@ -35,15 +36,31 @@ export default {
     const depth = ref(0)
     const alpha = ref(1)
     const tapEvent = useEvent()
+    const itemData = items.find(v => v.key === props.name)
+    const imageTexture = computed(() => props.texture || itemData?.texture)
     const data = reactive({
       visible: true,
+      tint: config.COLORS.white,
+      tween: null,
       capturable: Boolean(props.name),
-      distanceToPlayer: null
+      distanceToPlayer: null,
+      hp: itemData?.hp ?? 10
     })
     const setVisible = bool => data.visible = bool
     const setCapturable = bool => data.capturable = bool
-    const itemData = items.find(v => v.key === props.name)
-    const imageTexture = computed(() => props.texture || itemData?.texture)
+    const damage = () => {
+      data.hp -= Math.randomInt(3, 7)
+      if (data.hp >= 0) return
+      data.tint = 0xFF7777
+      data.tween = {
+        scale: 1.5, alpha: 0,
+        duration: 250,
+        onComplete: () => {
+          data.tween = null
+          context.emit('del')
+        }
+      }
+    }
     const create = obj => context.emit('create', obj)
     const update = obj => {
       if (depth.value !== obj.y) depth.value = obj.y
@@ -56,6 +73,7 @@ export default {
       checkable: computed(() => !event.state && tapEvent.event.value && data.distanceToPlayer < 150),
       grabbable: computed(() => !event.state && data.distanceToPlayer < 150),
       create, update,
+      damage,
       object, image,
       imageTexture,
       imgWidth, imgHeight, depth, alpha,

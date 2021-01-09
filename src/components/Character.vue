@@ -44,6 +44,7 @@ export default {
       object, substance,
       update,
       lookTo,
+      damage: () => substance.value?.damage(),
       // Following
       setTargetPosition: following.setTargetPosition,
       clearTargetPosition: following.clearTargetPosition,

@@ -28,6 +28,7 @@ export default {
       })
       if (found) {
         context.emit('del')
+        found.damage()
       } else if (field.value?.isCollides(obj.x.toTile, obj.y.toTile)) {
         context.emit('del')
       }
