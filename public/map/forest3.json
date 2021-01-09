@@ -114,7 +114,19 @@
          "draworder":"topdown",
          "id":6,
          "name":"items",
-         "objects":[],
+         "objects":[
+                {
+                 "height":0,
+                 "id":5,
+                 "name":"hercules",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Character",
+                 "visible":true,
+                 "width":0,
+                 "x":798.666666666667,
+                 "y":844
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -152,7 +164,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":5,
+ "nextobjectid":6,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2020.12.18",
