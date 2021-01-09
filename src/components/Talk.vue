@@ -41,7 +41,7 @@ export default {
       })
     }
     const getSpeakScripts = chara => scripts => {
-      const list = scripts.map(text => {
+      const list = [].concat(scripts).map(text => {
         return { chara, text }
       })
       return setTalk(list)
