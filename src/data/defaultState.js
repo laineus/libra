@@ -27,6 +27,7 @@ export default {
   ],
   events: {
     intro: 0,
-    itemReactions: []
+    itemReactions: [],
+    torrentFlog: 0
   }
 }

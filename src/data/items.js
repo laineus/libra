@@ -29,5 +29,6 @@ export default [
   makeCharacter('kajitsu'),
   makeCharacter('torrent'),
   makeCharacter('flog'),
+  makeCharacter('hercules'),
   makeCharacter('amili')
 ]
