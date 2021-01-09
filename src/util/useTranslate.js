@@ -12,7 +12,7 @@ const getReplaceText = values => text => {
 
 export default textData => (lang, key, values) => {
   const data = textData[lang]
-  const text = key.split('.').reduce((obj, k) => obj && obj[k], data)
+  const text = key.split('.').reduce((obj, k) => obj?.[k], data)
   if (text === undefined) {
     console.error(`Translation missing: "${key}" of "${lang}"`)
     return 'Missing'

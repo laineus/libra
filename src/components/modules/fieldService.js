@@ -29,7 +29,7 @@ const getTileSettings = (scene, tilemap) => {
   }).flat()
 }
 const getTileSettingsByType = (settings, type) => {
-  return settings.filter(tile => tile.setting.type && tile.setting.type.split(',').includes(type)).map(tile => {
+  return settings.filter(tile => tile.setting.type?.split(',').includes(type)).map(tile => {
     return mapProperties({ id: tile.id }, tile.setting.properties)
   })
 }

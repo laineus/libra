@@ -6,7 +6,7 @@
     <Character v-for="v in charas" :key="v.id" :ref="v.ref" :initX="v.x" :initY="v.y" :initR="v.radian" :name="v.name" :random="v.random" :pipeline="pipeline" @create="charaCreate" @del="delObject(v.id)" />
     <Substance v-for="v in substances" :key="v.id" :ref="v.ref" :initX="v.x" :initY="v.y" :name="v.name" :pipeline="pipeline" @del="delObject(v.id)" />
     <Area v-for="v in areas" :key="v.id" :ref="v.ref" :x="v.x" :y="v.y" :width="v.width" :height="v.height" />
-    <Gate v-for="v in gates" :key="v.id" :ref="v.ref" :x="v.x" :y="v.y" :width="v.width" :height="v.height" :to="{ key: v.name, x: v.fieldX.toPixel, y: v.fieldY.toPixel, r: player && player.r }" />
+    <Gate v-for="v in gates" :key="v.id" :ref="v.ref" :x="v.x" :y="v.y" :width="v.width" :height="v.height" :to="{ key: v.name, x: v.fieldX.toPixel, y: v.fieldY.toPixel, r: player?.r }" />
     <Bullet v-for="v in bullets" :key="v.id" :initX="v.x" :initY="v.y" :r="v.r" @del="delBullet(v.id)" />
     <Light v-for="v in lights" :key="v.id" :x="v.x" :y="v.y" :ref="v.ref" :intensity="v.intensity ?? 1" :color="v.color" :radius="v.radius" />
     <Image :depth="config.DEPTH.DARKNESS" texture="darkness" :x="0" :y="0" :origin="0" />
@@ -57,10 +57,7 @@ export default {
     const addBullet = ({ x, y, r }) => bullets.push({ id: Symbol('bullet_id'), x, y, r })
     const delBullet = itemOrId => bullets.delete(typeof itemOrId === 'object' ? itemOrId : v => v.id === itemOrId)
     const isCollides = (tileX, tileY) => {
-      return layers.some(layer => {
-        const tile = layer.ref.value.getTileAt(tileX, tileY)
-        return tile && tile.collides
-      })
+      return layers.some(layer => layer.ref.value.getTileAt(tileX, tileY)?.collides)
     }
     const getObjectById = id => objects.find(v => v.id === id)?.ref.value
     randomObjectByRandom(objects.filter(v => v.type === 'Random')).forEach(addObject)
