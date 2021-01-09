@@ -41,14 +41,22 @@ export default {
       }
     }
     const torrentEvent3 = async () => {
-      await speakTorrent('aaa')
+      const scripts = t('events.torrentFlog.torrent3.report')
+      const leaked = await uiScene.setSelector(scripts.shift()) === 0
+      if (leaked) {
+        await speakTorrent(scripts.splice(0, 4))
+        const agreed = await uiScene.setSelector(scripts.shift()) === 0
+        await speakTorrent(agreed ? t('events.torrentFlog.torrent3.end3') : t('events.torrentFlog.torrent3.end2'))
+      } else {
+        await speakTorrent(t('events.torrentFlog.torrent3.end1'))
+      }
       state.events.torrentFlog = STEPS.COMPLETED
     }
     torrent.setTapEvent(computed(() => {
       if (state.events.torrentFlog === STEPS.NULL) return torrentEvent1
       if (state.events.torrentFlog <= STEPS.FOUND) return torrentEvent2
       if (state.events.torrentFlog === STEPS.GAVE) return torrentEvent3
-      return async () => speakTorrent('end')
+      return async () => speakTorrent(t('events.torrentFlog.torrent4'))
     }))
     flog.setTapEvent(async () => {
       if (state.events.torrentFlog === STEPS.FOUND && bag.hasItem('hercules')) {
