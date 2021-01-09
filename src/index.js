@@ -1,9 +1,11 @@
 import 'phaser'
 import { createPhavuerApp } from 'phavuer'
 import assets from 'assets'
-import '@/util/extendNativeClassFunctions'
+import extendNativeClassFunctions from '@/util/extendNativeClassFunctions'
 import App from '@/components/App'
 import config from '@/data/config'
+
+extendNativeClassFunctions(config.WIDTH, config.HEIGHT, config.TILE_SIZE)
 
 location.query = location.search.substr(1).split('&').filter(Boolean).reduce((obj, v) => {
   const arr = v.split('=')
