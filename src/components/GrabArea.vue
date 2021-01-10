@@ -20,7 +20,7 @@ export default {
     const data = shallowReactive({
       x: 0, y: 0, grabbing: false
     })
-    const handTween = reactive({ x: 13, y: 3, yoyo: true, repeat: -1, duration: 700 })
+    const handTween = reactive({ x: 13, y: 3, yoyo: true, repeat: -1, duration: 700, onStop: v => v.seek(0) })
     const grab = () => {
       menu.value.select('bag').then(menuBag => {
         data.grabbing = true
