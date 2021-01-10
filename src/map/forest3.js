@@ -50,6 +50,7 @@ export default {
       } else {
         await speakTorrent(t('events.torrentFlog.torrent3.end1'))
       }
+      await field.addObject({ type: 'Substance', name: 'apple', x: torrent.object.x, y: torrent.object.y + 5 }).then(v => v.drop())
       state.events.torrentFlog = STEPS.COMPLETED
     }
     torrent.setTapEvent(computed(() => {
