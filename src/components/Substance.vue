@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Container ref="object" :visible="unref(visible)" :x="initX" :y="initY" :width="imgWidth" :height="imgWidth" :depth="depth" @create="create" @preUpdate="update">
-      <Image ref="image" v-if="imageTexture" :texture="imageTexture" :originX="0.5" :originY="1" :alpha="alpha" :tint="tint" :pipeline="pipeline" :tween="tween" />
+    <Container ref="object" :visible="unref(visible)" :x="initX" :y="initY" :width="imgWidth" :height="imgWidth" :depth="depth" :tween="tween" @create="create" @preUpdate="update">
+      <Image ref="image" v-if="imageTexture" :texture="imageTexture" :originX="0.5" :originY="1" :alpha="alpha" :tint="tint" :pipeline="pipeline" />
     </Container>
     <TapArea v-if="tapEvent.event.value" :visible="unref(visible) && checkable" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @tap="tapEvent.exec" />
     <GrabArea v-else-if="capturable" :visible="unref(visible) && grabbable" :name="name" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @grab="alpha = 0.5" @capture="$emit('del')" @cancel="alpha = 1" />
@@ -48,6 +48,22 @@ export default {
     })
     const setVisible = bool => data.visible = bool
     const setCapturable = bool => data.capturable = bool
+    const drop = () => {
+      return new Promise(resolve => {
+        const x = ['-=5', '+=5'].random()
+        data.tween = {
+          x, y: '-=5',
+          duration: 100,
+          onComplete: (v) => {
+            data.tween = {
+              x, y: '+=13',
+              duration: 100,
+              onComplete: () => resolve()
+            }
+          }
+        }
+      })
+    }
     const damage = () => {
       data.hp -= Math.randomInt(3, 7)
       if (data.hp >= 0) return
@@ -73,7 +89,7 @@ export default {
       checkable: computed(() => !event.state && tapEvent.event.value && data.distanceToPlayer < 150),
       grabbable: computed(() => !event.state && data.distanceToPlayer < 150),
       create, update,
-      damage,
+      drop, damage,
       object, image,
       imageTexture,
       imgWidth, imgHeight, depth, alpha,
