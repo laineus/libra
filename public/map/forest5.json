@@ -34,7 +34,7 @@
         {
          "draworder":"topdown",
          "id":5,
-         "name":"objects",
+         "name":"events",
          "objects":[
                 {
                  "height":32,
@@ -57,6 +57,18 @@
                  "width":128,
                  "x":736,
                  "y":0
+                }, 
+                {
+                 "height":0,
+                 "id":2,
+                 "name":"torrent",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Character",
+                 "visible":true,
+                 "width":0,
+                 "x":457.101158442032,
+                 "y":224.172215634407
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -95,7 +107,7 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":2,
+ "nextobjectid":3,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2020.12.18",
