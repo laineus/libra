@@ -15,7 +15,7 @@ export default {
     const bag = inject('bag')
 
     const flog = field.getObjectById(3)
-    const speakFlog = talk.getSpeakScripts(new Talker('カエル', torrent.object))
+    const speakFlog = talk.getSpeakScripts(new Talker('カエル', flog.object))
 
     const cloverEvent1 = async () => {
       await speakFlog(t('events.clover.flog1'))
