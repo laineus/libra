@@ -10,6 +10,7 @@
     <Bullet v-for="v in bullets" :key="v.id" :initX="v.x" :initY="v.y" :r="v.r" @del="delBullet(v.id)" />
     <Light v-for="v in lights" :key="v.id" :x="v.x" :y="v.y" :ref="v.ref" :intensity="v.intensity ?? 1" :color="v.color" :radius="v.radius" />
     <Image :depth="config.DEPTH.DARKNESS" texture="darkness" :x="0" :y="0" :origin="0" />
+    <ManualTile v-for="v in manualTiles" :key="v.id" :setting="v" :tilesets="field.tilesets" :collides="collides.includes(v.gid)" @create="layerCreate" />
   </div>
 </template>
 
@@ -21,6 +22,7 @@ import Substance from './Substance'
 import Area from './Area'
 import Gate from './Gate'
 import Bullet from './Bullet'
+import ManualTile from './ManualTile'
 import Darkness from './modules/Darkness'
 import { inject, onBeforeUnmount, onMounted, ref, computed, shallowReactive, nextTick } from 'vue'
 import { refObj, Image, TilemapLayer, Light } from 'phavuer'
@@ -29,7 +31,7 @@ import randomObjectByRandom from './modules/randomObjectByRandom'
 import maps from '@/data/maps'
 import config from '@/data/config'
 export default {
-  components: { TilemapLayer, Image, Light, Player, Character, Substance, Area, Gate, Bullet },
+  components: { TilemapLayer, Image, Light, Player, Character, Substance, Area, Gate, Bullet, ManualTile },
   props: [
     'fieldKey', 'playerX', 'playerY', 'playerR'
   ],
@@ -42,6 +44,7 @@ export default {
     const layers = field.layers.map(v => Object.assign({ ref: refObj(null) }, v))
     const images = field.images.map(v => Object.assign({ ref: refObj(null) }, v))
     const objects = shallowReactive(field.objects.map(v => Object.assign({ ref: ref(null) }, v)))
+    const manualTiles = computed(() => objects.filter(v => 'gid' in v))
     const charas = computed(() => objects.filter(v => v.type === 'Character'))
     const substances = computed(() => objects.filter(v => v.type === 'Substance'))
     const areas = computed(() => objects.filter(v => v.type === 'Area'))
@@ -68,12 +71,14 @@ export default {
     const getObjectById = id => objects.find(v => v.id === id)?.ref.value
     randomObjectByRandom(objects.filter(v => v.type === 'Random')).forEach(addObject)
     const collides = field.getTileSettingsByType('collides').map(v => v.id)
-    const group = scene.add.group()
+    const layerGroup = scene.add.group()
+    const objectGroup = scene.add.group()
+    scene.physics.add.collider(layerGroup, objectGroup)
     const layerCreate = layer => {
-      scene.physics.add.collider(layer, group)
+      layerGroup.add(layer)
     }
     const charaCreate = obj => {
-      group.add(obj)
+      objectGroup.add(obj)
     }
     const event = maps[props.fieldKey] || {}
     scene.textures.remove('darkness')
@@ -98,7 +103,7 @@ export default {
       config,
       field, collides,
       name: field.name, width: field.width, height: field.height,
-      layers, images, player, objects, charas, substances, areas, gates, lights, positions,
+      layers, images, player, objects, charas, substances, areas, gates, lights, positions, manualTiles,
       pipeline,
       addObject, delObject,
       bullets, addBullet, delBullet,
