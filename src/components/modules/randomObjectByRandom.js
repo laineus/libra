@@ -10,9 +10,11 @@ export default list => {
         return randomValue <= Math.sum(...(i + 1).toArray().map(i => chances[i] ?? 1))
       })
       if (!name) return
+      const itemData = items.find(v => v.key === name)
+      if (!itemData) throw new Error(`Undefined item name: ${name}.`)
       result.push({
         name,
-        type: items.find(v => v.key === name).type,
+        type: itemData.type,
         x: Math.randomInt(x, x + width),
         y: Math.randomInt(y, y + height)
       })
