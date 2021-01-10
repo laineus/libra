@@ -22,7 +22,7 @@ import Area from './Area'
 import Gate from './Gate'
 import Bullet from './Bullet'
 import Darkness from './modules/Darkness'
-import { inject, onBeforeUnmount, onMounted, ref, computed, shallowReactive } from 'vue'
+import { inject, onBeforeUnmount, onMounted, ref, computed, shallowReactive, nextTick } from 'vue'
 import { refObj, Image, TilemapLayer, Light } from 'phavuer'
 import setupCamera from './modules/setupCamera'
 import randomObjectByRandom from './modules/randomObjectByRandom'
@@ -51,7 +51,13 @@ export default {
     scene.lights.setAmbientColor(field.properties.ambient ?? 0xFFFFFF)
     lights.length ? scene.lights.enable() : scene.lights.disable()
     const pipeline = computed(() => lights.length ? 'Light2D' : 'TextureTintPipeline')
-    const addObject = object => objects.push(Object.assign({ ref: ref(null), id: Symbol('id') }, object))
+    const addObject = object => {
+      const obj = Object.assign({ ref: ref(null), id: Symbol('id') }, object)
+      objects.push(obj)
+      return new Promise(resolve => {
+        nextTick(() => resolve(obj.ref.value))
+      })
+    }
     const delObject = itemOrId => objects.delete(typeof itemOrId === 'object' ? itemOrId : v => v.id === itemOrId)
     const bullets = shallowReactive([])
     const addBullet = ({ x, y, r }) => bullets.push({ id: Symbol('bullet_id'), x, y, r })
