@@ -23,6 +23,7 @@ export default [
   makeItem('lily'),
   makeItem('cosmos'),
   makeItem('dandelion'),
+  makeItem('kinoko'),
   makeCharacter('ladybird'),
   makeCharacter('stagBeetle'),
   makeCharacter('beetle'),
