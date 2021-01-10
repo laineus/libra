@@ -1,4 +1,12 @@
 { "columns":8,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"",
+         "target":"."
+        }
+    },
  "image":"..\/..\/img\/map\/tilesets\/forest.png",
  "imageheight":256,
  "imagewidth":256,
@@ -39,6 +47,14 @@
         }, 
         {
          "id":19,
+         "type":"collides"
+        }, 
+        {
+         "id":32,
+         "type":"collides"
+        }, 
+        {
+         "id":33,
          "type":"collides"
         }],
  "tilewidth":32,
