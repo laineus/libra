@@ -65,6 +65,7 @@ export default {
         await speakFlog(scripts.splice(0, 4))
         const accepted = await uiScene.setSelector(scripts.shift()) === 0
         accepted ? scripts.shift() : await speakFlog(scripts.shift())
+        bag.removeItem('hercules')
         uiScene.log.push(scripts.shift()[accepted ? 0 : 1])
         await speakFlog(scripts.splice(0, 3))
         await uiScene.setSelector(scripts.shift())

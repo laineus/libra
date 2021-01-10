@@ -28,6 +28,7 @@ export default {
   events: {
     intro: 0,
     itemReactions: [],
-    torrentFlog: 0
+    torrentFlog: 0,
+    clover: 0
   }
 }
