@@ -26,6 +26,7 @@ export default [
   makeItem('kinoko'),
   makeItem('clover3'),
   makeItem('clover4'),
+  makeItem('gardenia'),
   makeCharacter('ladybird'),
   makeCharacter('stagBeetle'),
   makeCharacter('beetle'),
