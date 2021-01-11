@@ -19,7 +19,8 @@ export default {
       { name: 'stomach1', x: 800, y: 240 },
       { name: 'forest2', x: 300, y: 550 },
       { name: 'forest3', x: 500, y: 800 },
-      { name: 'forest4', x: 800, y: 300 }
+      { name: 'forest4', x: 800, y: 300 },
+      { name: 'forest5', x: 500, y: 360 }
     ]
     const changeMap = () => {
       if (!selectedMap.value) return
