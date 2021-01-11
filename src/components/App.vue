@@ -2,18 +2,20 @@
   <div>
     <GameScene ref="gameScene" />
     <UIScene ref="uiScene" />
+    <Debug />
   </div>
 </template>
 
 <script>
 import GameScene from '@/components/GameScene'
 import UIScene from '@/components/UIScene'
+import Debug from '@/components/Debug'
 import AudioController from '@/class/AudioController'
 import SaveDataManager from '@/class/SaveDataManager'
 import setting from '@/data/setting'
 import { inject, provide, ref, computed, reactive } from 'vue'
 export default {
-  components: { GameScene, UIScene },
+  components: { GameScene, UIScene, Debug },
   setup () {
     const game = inject('game')
     Phaser.BlendModes.OVERLAY = game.renderer.addBlendMode([WebGLRenderingContext.SRC_ALPHA, WebGLRenderingContext.ONE], WebGLRenderingContext.FUNC_ADD)
