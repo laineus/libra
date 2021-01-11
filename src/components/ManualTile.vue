@@ -1,10 +1,11 @@
 <template>
-  <Image ref="object" :texture="texture" :frame="frameName" :x="setting.x" :y="setting.y" :width="32" :height="32" :originX="0" :originY="0" />
+  <Image ref="object" :texture="texture" :frame="frameName" :x="setting.x" :y="setting.y" :displayWidth="setting.width" :displayHeight="setting.height" :originX="0" :originY="0" />
 </template>
 
 <script>
 import { Image, refObj } from 'phavuer'
 import { onMounted, inject } from 'vue'
+import config from '@/data/config'
 export default {
   components: { Image },
   props: ['setting', 'tilesets', 'collides'],
@@ -18,7 +19,7 @@ export default {
     const frameName = `tile_${props.setting.gid - tileset.firstgid + 1}`
     if (!tileset.image.has(frameName)) {
       const { x, y } = tileset.texCoordinates[tileset.firstgid + props.setting.gid - 2]
-      tileset.image.add(frameName, 0, x, y, 32, 32)
+      tileset.image.add(frameName, 0, x, y, config.TILE_SIZE, config.TILE_SIZE)
     }
     onMounted(() => {
       if (!props.collides) return
