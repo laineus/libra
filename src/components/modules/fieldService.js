@@ -6,6 +6,7 @@ export const DEPTH = {
   SUN_LIGHT: 140000,
   DARKNESS: 130000
 }
+const pathToName = path => path.split('/').slice(-1)[0].split('.')[0]
 const mapProperties = (base, properties) => {
   if (properties) {
     properties.forEach(property => {
@@ -20,8 +21,8 @@ const mapProperties = (base, properties) => {
 //     color: parseInt(str.slice(3), 16)
 //   }
 // }
-const getTileSettings = (scene, tilemap) => {
-  return tilemap.tilesets.map(set => {
+const getTileSettings = (scene, tilesets) => {
+  return tilesets.map(set => {
     const tiles = scene.cache.json.get(set.name).tiles || []
     return tiles.map(v => {
       return { id: v.id + set.firstgid, setting: v }
@@ -34,7 +35,9 @@ const getTileSettingsByType = (settings, type) => {
   })
 }
 const getTilesets = tilemap => {
-  return tilemap.tilesets.map(tileset => tilemap.addTilesetImage(tileset.name, `tileset/${tileset.name}`, 32, 32, 1, 2))
+  return tilemap.tilesets.map(tileset => {
+    return tilemap.addTilesetImage(tileset.name, `tileset/${pathToName(tileset.name)}`, 32, 32, 1, 2)
+  })
 }
 const getLayers = tilemap => {
   return tilemap.layers.map((layer, index) => {
@@ -66,7 +69,7 @@ const getImage = rawData => {
   return images.map(image => {
     return mapProperties({
       id: image.id,
-      key: image.image.split('/').slice(-1)[0].split('.')[0],
+      key: pathToName(image.image),
       name: image.name,
       x: image.offsetx,
       y: image.offsety,
@@ -85,7 +88,7 @@ const getObjects = rawData => {
 export default (scene, mapKey) => {
   const tilemap = new Phaser.Tilemaps.ParseToTilemap(scene, mapKey)
   const rawData = scene.cache.tilemap.get(mapKey).data
-  const tileSettings = getTileSettings(scene, tilemap)
+  const tileSettings = getTileSettings(scene, rawData.tilesets)
   console.log(tilemap)
   console.log(rawData)
   const layers = getLayers(tilemap)
