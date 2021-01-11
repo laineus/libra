@@ -76,12 +76,12 @@
                         {
                          "name":"fieldX",
                          "type":"int",
-                         "value":1
+                         "value":3
                         }, 
                         {
                          "name":"fieldY",
                          "type":"int",
-                         "value":15
+                         "value":18
                         }],
                  "rotation":0,
                  "type":"Gate",

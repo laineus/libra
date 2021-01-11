@@ -57,7 +57,7 @@
          "name":"events",
          "objects":[
                 {
-                 "height":32,
+                 "height":64,
                  "id":1,
                  "name":"stomach1",
                  "properties":[
@@ -69,14 +69,14 @@
                         {
                          "name":"fieldY",
                          "type":"int",
-                         "value":2
+                         "value":3
                         }],
                  "rotation":0,
                  "type":"Gate",
                  "visible":true,
                  "width":96,
                  "x":416,
-                 "y":608
+                 "y":576
                 }, 
                 {
                  "height":0,
