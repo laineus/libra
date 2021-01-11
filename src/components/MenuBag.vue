@@ -1,12 +1,12 @@
 <template>
-  <MenuContainer ref="container" :arrowX="25 + (1 * 60)" :height="415" :title="'Bag'" :visible="grab.mode !== 'dispose'" @preUpdate="update">
+  <MenuContainer ref="container" :arrowX="25 + (1 * 60)" :height="415" :title="'Bag'" :visible="grab.mode !== 'dispose'">
     <Image v-for="v in bagItems" :key="v.id" :texture="keyToTexture(v.key)" :x="v.bagX" :y="v.bagY" :origin="0.5" :visible="grab.item !== v" @pointerdown="grabItem(v, 'move')" />
   </MenuContainer>
   <Image v-if="grab.item" ref="grabRef" :texture="keyToTexture(grab.item.key)" :x="grab.x" :y="grab.y" :origin="0.5" @pointerup="p => drop(p)" />
 </template>
 
 <script>
-import { Image, refObj } from 'phavuer'
+import { Image, refObj, onPreUpdate } from 'phavuer'
 import { inject, computed, reactive, ref } from 'vue'
 import MenuContainer from '@/components/MenuContainer'
 import items from '@/data/items'
@@ -44,6 +44,7 @@ export default {
         }
       }
     }
+    onPreUpdate(update)
     const grabItem = (item, mode) => {
       grab.item = item
       grab.mode = mode
@@ -89,7 +90,7 @@ export default {
       bagItems: storage.state.bagItems,
       container,
       controller, grab, grabRef,
-      grabItem, update, drop
+      grabItem, drop
     }
   }
 }

@@ -1,9 +1,9 @@
 <template>
-  <Rectangle ref="object" :fillColor="0xDDBB33" :width="15" :height="2" :x="initX" :y="initY" :rotation="r" @preUpdate="update" />
+  <Rectangle ref="object" :fillColor="0xDDBB33" :width="15" :height="2" :x="initX" :y="initY" :rotation="r" />
 </template>
 
 <script>
-import { refObj, Rectangle } from 'phavuer'
+import { refObj, Rectangle, onPreUpdate } from 'phavuer'
 import { onMounted, inject } from 'vue'
 export default {
   components: { Rectangle },
@@ -22,7 +22,8 @@ export default {
       object.value.body.setVelocity(Math.cos(props.r), Math.sin(props.r))
       object.value.body.velocity.normalize().scale(360)
     })
-    const update = obj => {
+    onPreUpdate(() => {
+      const obj = object.value
       const found = field.value.charas.concat(field.value.substances).map(v => v.ref.value).find(v => {
         return Math.abs(obj.x - v.object.x) < v.object.width.half && Math.abs(obj.y - (v.object.y - v.object.height.half)) < v.object.height.half
       })
@@ -32,10 +33,9 @@ export default {
       } else if (field.value?.isCollides(obj.x.toTile, obj.y.toTile)) {
         context.emit('del')
       }
-    }
+    })
     return {
-      object,
-      update
+      object
     }
   }
 }

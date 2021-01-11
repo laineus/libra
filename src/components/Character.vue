@@ -1,9 +1,10 @@
 <template>
-  <Substance ref="substance" :initX="initX" :initY="initY" :name="name" @preUpdate="update" @del="$emit('del')" />
+  <Substance ref="substance" :initX="initX" :initY="initY" :name="name" @del="$emit('del')" />
 </template>
 
 <script>
 import { computed, inject, onMounted, ref } from 'vue'
+import { onPreUpdate } from 'phavuer'
 import Substance from './Substance'
 import useFollowing from './modules/useFollowing'
 import useFrameAnimChara from './modules/useFrameAnimChara'
@@ -31,18 +32,17 @@ export default {
     const textureData = scene.textures.get(itemData.texture)
     const numOfDirection = (textureData.frameTotal - 1) / 3
     const { play: playFrameAnim, lookTo } = useFrameAnimChara(object, image, props.initR, numOfDirection)
-    const update = obj => {
+    onPreUpdate(() => {
       playFrameAnim()
       if (event.state) return
       following.walkToTargetPosition(props.speed)
-    }
+    })
     onMounted(() => {
       scene.physics.world.enable(object.value)
       object.value.body.setDrag(500)
     })
     return {
       object, substance,
-      update,
       lookTo,
       damage: () => substance.value?.damage(),
       // Following

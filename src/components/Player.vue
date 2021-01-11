@@ -1,9 +1,10 @@
 <template>
-  <Substance ref="substance" :initX="initX" :initY="initY" :texture="gun.mode.value ? 'chara_sprite/libra_gun' : 'chara_sprite/libra'" @preUpdate="update" />
+  <Substance ref="substance" :initX="initX" :initY="initY" :texture="gun.mode.value ? 'chara_sprite/libra_gun' : 'chara_sprite/libra'" />
 </template>
 
 <script>
 import { computed, inject, onMounted, ref } from 'vue'
+import { onPreUpdate } from 'phavuer'
 import Substance from './Substance'
 import useFollowing from './modules/useFollowing'
 import useFrameAnimChara from './modules/useFrameAnimChara'
@@ -34,7 +35,7 @@ export default {
       const diffY = scene.input.manager.pointers[0]?.y + camera.value?.scrollY - object.value?.y
       return Math.atan2(diffY, diffX)
     }
-    const update = obj => {
+    onPreUpdate(() => {
       r.value = getRadianToPointer()
       playFrameAnim()
       if (event.state || menuOpened.value) return
@@ -43,9 +44,9 @@ export default {
       } else {
         following.walkToTargetPosition(200)
       }
-      storage.state.x = Number(obj.x)
-      storage.state.y = Number(obj.y)
-    }
+      storage.state.x = Number(object.value.x)
+      storage.state.y = Number(object.value.y)
+    })
     onMounted(() => {
       scene.physics.world.enable(object.value)
       object.value.body.setDrag(500)
@@ -62,7 +63,6 @@ export default {
     })
     return {
       object, substance,
-      update,
       gun,
       r, lookTo,
       // Following

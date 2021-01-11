@@ -1,11 +1,11 @@
 <template>
-  <Container :depth="100000" :x="data.x" :y="data.y" @pointerdown="grab" @preUpdate="update">
+  <Container :depth="100000" :x="data.x" :y="data.y" @pointerdown="grab">
     <Image texture="hand_catch" :x="10" :alpha="data.grabbing ? 1 : 0.5" :tint="data.grabbing ? 0xFF0000 : config.COLORS.white" :tween="data.grabbing ? null : handTween" />
   </Container>
 </template>
 
 <script>
-import { Container, Image } from 'phavuer'
+import { Container, Image, onPreUpdate } from 'phavuer'
 import { inject, reactive, shallowReactive } from 'vue'
 import config from '@/data/config'
 export default {
@@ -31,17 +31,17 @@ export default {
         })
       })
     }
-    const update = () => {
+    onPreUpdate(() => {
       if (props.follow) {
         data.x = props.follow.x
         data.y = props.follow.y
       }
-    }
+    })
     return {
       config,
       data,
       handTween,
-      grab, update
+      grab
     }
   }
 }

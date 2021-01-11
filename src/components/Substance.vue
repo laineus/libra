@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Container ref="object" :visible="unref(visible)" :x="initX" :y="initY" :width="imgWidth" :height="imgWidth" :depth="depth" :tween="tween" @create="create" @preUpdate="update">
+    <Container ref="object" :visible="unref(visible)" :x="initX" :y="initY" :width="imgWidth" :height="imgWidth" :depth="depth" :tween="tween" @create="create">
       <Image ref="image" v-if="imageTexture" :texture="imageTexture" :originX="0.5" :originY="1" :alpha="alpha" :tint="tint" :pipeline="pipeline" />
     </Container>
     <TapArea v-if="tapEvent.event.value" :visible="unref(visible) && checkable" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @tap="tapEvent.exec" />
@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { refObj, Container, Image } from 'phavuer'
+import { refObj, Container, Image, onPreUpdate } from 'phavuer'
 import { computed, inject, reactive, ref, toRefs, unref } from 'vue'
 import items from '@/data/items'
 import TapArea from './TapArea'
@@ -25,7 +25,7 @@ export default {
     texture: { default: null },
     pipeline: { default: null }
   },
-  emits: ['create', 'preUpdate', 'del'],
+  emits: ['create', 'del'],
   setup (props, context) {
     const event = inject('event')
     const player = inject('player')
@@ -78,17 +78,16 @@ export default {
       }
     }
     const create = obj => context.emit('create', obj)
-    const update = obj => {
-      if (depth.value !== obj.y) depth.value = obj.y
+    onPreUpdate(() => {
+      if (depth.value !== object.value.y) depth.value = object.value.y
       data.distanceToPlayer = Phaser.Math.Distance.Between(object.value.x, object.value.y, player.value.object.x, player.value.object.y)
-      context.emit('preUpdate', obj)
-    }
+    })
     return {
       unref,
       ...toRefs(data),
       checkable: computed(() => !event.state && tapEvent.event.value && data.distanceToPlayer < 150),
       grabbable: computed(() => !event.state && data.distanceToPlayer < 150),
-      create, update,
+      create,
       drop, damage,
       object, image,
       imageTexture,

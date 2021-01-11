@@ -1,6 +1,6 @@
 <template>
   <Container ref="object">
-    <Rectangle :origin="0" :x="left" :y="top" :width="width" :height="height" :fillColor="fillColor" @pointerdown="pointerdown" @pointerup="pointerup" @preUpdate="update" /><!-- Stroke -->
+    <Rectangle :origin="0" :x="left" :y="top" :width="width" :height="height" :fillColor="fillColor" @pointerdown="pointerdown" @pointerup="pointerup" /><!-- Stroke -->
     <Rectangle :origin="0" :x="left + outline" :y="top + outline" :width="innerWidth" :height="innerHeight" :fillColor="bgColor" /><!-- BG -->
     <Rectangle :origin="0" :x="left + outline" :y="top + outline" :width="innerWidth" :height="innerHeight" :fillColor="fillColor" :scaleX="value / max" /><!-- Value -->
   </Container>
@@ -24,7 +24,7 @@ export default {
     fillColor: { default: config.COLORS.brown },
     bgColor: { default: config.COLORS.black }
   },
-  emits: ['pointerdown', 'pointerup', 'update'],
+  emits: ['pointerdown', 'pointerup'],
   setup (props, context) {
     const innerWidth = computed(() => props.width - props.outline.twice)
     const innerHeight = computed(() => props.height - props.outline.twice)
@@ -37,8 +37,7 @@ export default {
       innerWidth, innerHeight,
       left, top,
       pointerdown: (...args) => context.emit('pointerdown', ...args),
-      pointerup: (...args) => context.emit('pointerup', ...args),
-      update: (...args) => context.emit('update', ...args)
+      pointerup: (...args) => context.emit('pointerup', ...args)
     }
   }
 }
