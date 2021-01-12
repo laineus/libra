@@ -1,7 +1,7 @@
 <template>
   <div>
-    <TilemapLayer v-for="v in layers" :key="v.index" :ref="v.ref" :depth="config.DEPTH[v.depth] ?? 0" :tilemap="field.tilemap" :layerIndex="v.index" :tileset="field.tilesets" :collision="collides" :pipeline="pipeline" @create="layerCreate" />
-    <ManualTile v-for="v in manualTiles" :key="v.id" :setting="v" :tilesets="field.tilesets" :collides="collides.includes(v.gid)" :depth="v.y + 32" @create="layerCreate" />
+    <TilemapLayer v-for="v in layers" :key="v.index" :ref="v.ref" :depth="config.DEPTH[v.depth] ?? 0" :tilemap="field.tilemap" :layerIndex="v.index" :tileset="field.tilesets" :pipeline="pipeline" @create="layerCreate" />
+    <ManualTile v-for="v in manualTiles" :key="v.id" :setting="v" :tilesets="field.tilesets" :depth="v.y + 32" @create="layerCreate" />
     <Image v-for="(v, i) in images" :key="i" :ref="v.ref" :texture="`tileset/${v.key}`" :x="v.x" :y="v.y" :origin="0" :pipeline="pipeline" @create="obj => obj.setDepth(obj.y + obj.height)" />
     <Player ref="player" :initX="playerX" :initY="playerY" :initR="playerR" :pipeline="pipeline" @create="charaCreate" @shot="addBullet" />
     <Character v-for="v in charas" :key="v.id" :ref="v.ref" :initX="v.x" :initY="v.y" :initR="v.radian" :name="v.name" :random="v.random" :pipeline="pipeline" @create="charaCreate" @del="delObject(v.id)" />
@@ -70,12 +70,12 @@ export default {
     }
     const getObjectById = id => objects.find(v => v.id === id)?.ref.value
     randomObjectByRandom(objects.filter(v => v.type === 'Random')).forEach(addObject)
-    const collides = field.getTileSettingsByType('collides').map(v => v.id)
     const layerGroup = scene.add.group()
     const objectGroup = scene.add.group()
     scene.physics.add.collider(layerGroup, objectGroup)
     const layerCreate = layer => {
       layerGroup.add(layer)
+      layer.setCollisionByProperty?.({ collides: true })
     }
     const charaCreate = obj => {
       objectGroup.add(obj)
@@ -101,7 +101,7 @@ export default {
     }
     return {
       config,
-      field, collides,
+      field,
       name: field.name, width: field.width, height: field.height,
       layers, images, player, objects, charas, substances, areas, gates, lights, positions, manualTiles,
       pipeline,

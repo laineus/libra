@@ -21,19 +21,6 @@ const mapProperties = (base, properties) => {
 //     color: parseInt(str.slice(3), 16)
 //   }
 // }
-const getTileSettings = (scene, tilesets) => {
-  return tilesets.map(set => {
-    const tiles = scene.cache.json.get(set.name).tiles || []
-    return tiles.map(v => {
-      return { id: v.id + set.firstgid, setting: v }
-    })
-  }).flat()
-}
-const getTileSettingsByType = (settings, type) => {
-  return settings.filter(tile => tile.setting.type?.split(',').includes(type)).map(tile => {
-    return mapProperties({ id: tile.id }, tile.setting.properties)
-  })
-}
 const getTilesets = tilemap => {
   return tilemap.tilesets.map(tileset => {
     return tilemap.addTilesetImage(tileset.name, `tileset/${pathToName(tileset.name)}`, 32, 32, 1, 2)
@@ -78,8 +65,8 @@ const getImage = tilemap => {
     }, image.properties)
   })
 }
-const getObjects = rawData => {
-  return rawData.layers.filter(l => l.visible && l.type === 'objectgroup').map(v => v.objects).flat().map(data => {
+const getObjects = tilemap => {
+  return tilemap.objects.filter(l => l.visible).map(v => v.objects).flat().map(data => {
     const result = mapProperties(Object.assign({}, data, { radian: (data.rotation + 90) * (Math.PI / 180) }), data.properties)
     delete result.properties
     return result
@@ -87,16 +74,11 @@ const getObjects = rawData => {
 }
 export default (scene, mapKey) => {
   const tilemap = new Phaser.Tilemaps.ParseToTilemap(scene, mapKey)
-  const rawData = scene.cache.tilemap.get(mapKey).data
-  const tileSettings = getTileSettings(scene, rawData.tilesets)
-  console.log(tilemap)
-  console.log(rawData)
   const layers = getLayers(tilemap)
   const tilesets = getTilesets(tilemap)
   const images = getImage(tilemap)
-  const objects = getObjects(rawData)
+  const objects = getObjects(tilemap)
   const update = getUpdateEvent(tilemap)
-  const getObjectsByType = type => objects.filter(v => v.type === type)
   const properties = Array.isArray(tilemap.properties) ? mapProperties({}, tilemap.properties) : tilemap.properties
 
   return {
@@ -109,8 +91,6 @@ export default (scene, mapKey) => {
     images,
     objects,
     update,
-    getObjectsByType,
-    getTileSettingsByType: type => getTileSettingsByType(tileSettings, type),
     properties
   }
 }

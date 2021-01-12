@@ -8,7 +8,7 @@ import { onMounted, inject } from 'vue'
 import config from '@/data/config'
 export default {
   components: { Image },
-  props: ['setting', 'tilesets', 'collides'],
+  props: ['setting', 'tilesets'],
   setup (props) {
     const scene = inject('scene')
     const object = refObj(null)
@@ -23,6 +23,7 @@ export default {
       tileset.image.add(frameName, 0, x, y, config.TILE_SIZE, config.TILE_SIZE)
     }
     onMounted(() => {
+      // TODO
       if (!props.collides) return
       scene.physics.world.enable(object.value)
       object.value.body.setImmovable(true)
