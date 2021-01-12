@@ -130,30 +130,12 @@
  "tileheight":32,
  "tilesets":[
         {
-         "columns":8,
          "firstgid":1,
-         "image":"..\/img\/map\/tilesets\/stomach.png",
-         "imageheight":256,
-         "imagewidth":256,
-         "margin":0,
-         "name":"stomach",
-         "spacing":0,
-         "tilecount":64,
-         "tileheight":32,
-         "tilewidth":32
+         "source":"tileset_settings\/stomach.json"
         }, 
         {
-         "columns":8,
          "firstgid":65,
-         "image":"..\/img\/map\/tilesets\/stomach_ceil.png",
-         "imageheight":192,
-         "imagewidth":256,
-         "margin":0,
-         "name":"stomach_ceil",
-         "spacing":0,
-         "tilecount":48,
-         "tileheight":32,
-         "tilewidth":32
+         "source":"tileset_settings\/stomach_ceil.json"
         }],
  "tilewidth":32,
  "type":"map",

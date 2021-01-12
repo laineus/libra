@@ -2216,43 +2216,16 @@
  "tileheight":32,
  "tilesets":[
         {
-         "columns":8,
          "firstgid":1,
-         "image":"..\/img\/map\/tilesets\/forest.png",
-         "imageheight":256,
-         "imagewidth":256,
-         "margin":0,
-         "name":"forest",
-         "spacing":0,
-         "tilecount":64,
-         "tileheight":32,
-         "tilewidth":32
+         "source":"tileset_settings\/forest.json"
         }, 
         {
-         "columns":8,
          "firstgid":65,
-         "image":"..\/img\/map\/tilesets\/forest_sand.png",
-         "imageheight":192,
-         "imagewidth":256,
-         "margin":0,
-         "name":"forest_sand",
-         "spacing":0,
-         "tilecount":48,
-         "tileheight":32,
-         "tilewidth":32
+         "source":"tileset_settings\/forest_sand.json"
         }, 
         {
-         "columns":8,
          "firstgid":113,
-         "image":"..\/img\/map\/tilesets\/forest_ceil.png",
-         "imageheight":192,
-         "imagewidth":256,
-         "margin":0,
-         "name":"forest_ceil",
-         "spacing":0,
-         "tilecount":48,
-         "tileheight":32,
-         "tilewidth":32
+         "source":"tileset_settings\/forest_ceil.json"
         }],
  "tilewidth":32,
  "type":"map",
