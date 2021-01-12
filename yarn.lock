@@ -5727,6 +5727,11 @@ phaser-assets-webpack-plugin@^1.1.0:
   dependencies:
     image-size "^0.9.1"
 
+phaser-tiled-json-external-loader@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/phaser-tiled-json-external-loader/-/phaser-tiled-json-external-loader-0.1.1.tgz#2549b04cbfb47c75beffa38277e459a03154c411"
+  integrity sha512-KgVg/BhHYxmESUkwRQ1vNNqYkr5/HQ2meDZqSQP0dKpsqVwDp0JHf0X2d1fUSCYEQamozhKBxagYxWZLDVBrew==
+
 phaser@^3.50.1:
   version "3.50.1"
   resolved "https://registry.yarnpkg.com/phaser/-/phaser-3.50.1.tgz#a45fcc31cc448f7ad3d3c408a80c65e0198fbad5"
