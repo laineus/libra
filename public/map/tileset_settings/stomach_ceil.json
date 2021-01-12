@@ -14,144 +14,314 @@
  "name":"stomach_ceil",
  "spacing":0,
  "tilecount":48,
- "tiledversion":"2020.08.05",
+ "tiledversion":"2020.12.18",
  "tileheight":32,
  "tiles":[
         {
          "id":0,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":1,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":2,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":3,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":4,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":5,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":6,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":7,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":8,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":9,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":10,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":11,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":12,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":13,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":14,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":15,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":16,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":17,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":18,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":19,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":24,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":25,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":26,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":27,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":28,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":29,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":30,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":31,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":32,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":38,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":39,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":40,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":41,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":44,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }],
  "tilewidth":32,
  "type":"tileset",

@@ -8,46 +8,86 @@
         }
     },
  "image":"..\/..\/img\/map\/tilesets\/stomach.png",
- "imageheight":736,
+ "imageheight":256,
  "imagewidth":256,
  "margin":0,
  "name":"stomach",
  "spacing":0,
- "tilecount":184,
- "tiledversion":"2020.08.05",
+ "tilecount":64,
+ "tiledversion":"2020.12.18",
  "tileheight":32,
  "tiles":[
         {
          "id":8,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":9,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":10,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":11,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":16,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":17,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":18,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":19,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }],
  "tilewidth":32,
  "type":"tileset",

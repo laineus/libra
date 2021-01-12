@@ -19,43 +19,93 @@
  "tiles":[
         {
          "id":8,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":9,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":10,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":11,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":16,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":17,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":18,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":19,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":32,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }, 
         {
          "id":33,
-         "type":"collides"
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
         }],
  "tilewidth":32,
  "type":"tileset",
