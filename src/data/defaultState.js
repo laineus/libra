@@ -16,8 +16,8 @@ export default {
   ],
   roomItems: [],
   places: [
-    { key: 'room1', x: 400, y: 400 },
-    { key: 'town1', x: 500, y: 480 },
+    { key: 'home1', x: 400, y: 400 },
+    { key: 'forest3', x: 500, y: 480 },
     null,
     null,
     null,
