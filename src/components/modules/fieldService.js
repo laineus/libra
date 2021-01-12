@@ -45,12 +45,15 @@ const getLayers = tilemap => {
     return mapProperties({ index }, layer.properties)
   }).filter(Boolean)
 }
-const getUpdateEvent = (tilemap, tilesettings) => {
-  const animationTiles = tilesettings.filter(v => 'animation' in v.setting).map(v => {
-    const targets = tilemap.layers.filter(v => v.visible).map(l => l.data.flat()).flat().filter(tile => tile.index === v.id)
-    const max = Math.sum(...v.setting.animation.map(v => v.duration))
-    return { targets, animations: v.setting.animation, max }
-  })
+const getUpdateEvent = tilemap => {
+  const animationTiles = tilemap.tilesets.map(tileset => {
+    return Object.entries(tileset.tileData).filter(([_, d]) => 'animation' in d).map(([localTileId, data]) => {
+      const tileId = tileset.firstgid + Number(localTileId)
+      const targets = tilemap.layers.filter(v => v.visible).map(l => l.data.flat()).flat().filter(tile => tile.index === tileId)
+      const max = Math.sum(...data.animation.map(v => v.duration))
+      return { targets, animations: data.animation, max }
+    })
+  }).flat()
   return (time) => {
     animationTiles.forEach(setting => {
       const current = time % setting.max
@@ -95,7 +98,7 @@ export default (scene, mapKey) => {
   const tilesets = getTilesets(tilemap)
   const images = getImage(rawData)
   const objects = getObjects(rawData)
-  const update = getUpdateEvent(tilemap, tileSettings)
+  const update = getUpdateEvent(tilemap)
   const getObjectsByType = type => objects.filter(v => v.type === type)
   const properties = Array.isArray(tilemap.properties) ? mapProperties({}, tilemap.properties) : tilemap.properties
 

@@ -418,12 +418,6 @@
  "nextlayerid":7,
  "nextobjectid":23,
  "orientation":"orthogonal",
- "properties":[
-        {
-         "name":"a",
-         "type":"object",
-         "value":0
-        }],
  "renderorder":"right-down",
  "tiledversion":"2020.12.18",
  "tileheight":32,
