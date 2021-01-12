@@ -18,7 +18,7 @@ export default {
     const tilesetRaw = scene.cache.tilemap.get(props.field.name).data.tilesets.find(v => {
       return props.setting.gid >= v.firstgid && props.setting.gid < (v.firstgid + v.tilecount)
     })
-    const objectGroup = tilesetRaw.tiles.find(v => (v.id + tilesetRaw.firstgid) === props.setting.gid).objectgroup
+    const objectGroup = tilesetRaw.tiles.find(v => (v.id + tilesetRaw.firstgid) === props.setting.gid)?.objectgroup
     const physicsSetting = objectGroup?.objects[0]
     // Make a texture
     const index = props.setting.gid - tileset.firstgid
