@@ -5742,10 +5742,10 @@ phaser@^3.50.1:
     imports-loader "^1.2.0"
     path "^0.12.7"
 
-phavuer@^0.6.1:
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/phavuer/-/phavuer-0.6.1.tgz#2d74bce5c05449c54995bba3f40fd46b7aec3434"
-  integrity sha512-y90MhH9ugJrjXDZKTAuOKFqLkpiVtdlQYmQiXDADUE4TQtBkPjkiq4DwlfPvKIfj0J1mQAkbxMa1N7Of0/M4tg==
+phavuer@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/phavuer/-/phavuer-0.6.2.tgz#003369afaa6c64d02053eec55615d34186c05b1d"
+  integrity sha512-eB41Qvx9JuOLxY4RezbKDmHRqtrmQtGTR78/hGiy/uXSu51qNiJSnU/5fO3Kzmnpd/2X5Dma45jvR9OmPaXOjg==
 
 phin@^2.9.1:
   version "2.9.3"
