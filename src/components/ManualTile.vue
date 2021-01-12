@@ -8,13 +8,18 @@ import { onMounted, inject } from 'vue'
 import config from '@/data/config'
 export default {
   components: { Image },
-  props: ['setting', 'tilesets'],
+  props: ['setting', 'field'],
   setup (props) {
     const scene = inject('scene')
     const object = refObj(null)
-    const tileset = props.tilesets.find(v => {
+    const tileset = props.field.tilesets.find(v => {
       return props.setting.gid >= v.firstgid && props.setting.gid < (v.firstgid + v.total)
     })
+    const tilesetRaw = scene.cache.tilemap.get(props.field.name).data.tilesets.find(v => {
+      return props.setting.gid >= v.firstgid && props.setting.gid < (v.firstgid + v.tilecount)
+    })
+    const objectGroup = tilesetRaw.tiles.find(v => (v.id + tilesetRaw.firstgid) === props.setting.gid).objectgroup
+    const physicsSetting = objectGroup?.objects[0]
     // Make a texture
     const index = props.setting.gid - tileset.firstgid
     const frameName = tileset.total === 1 ? '__BASE' :  `tile_${index}`
@@ -23,10 +28,11 @@ export default {
       tileset.image.add(frameName, 0, x, y, config.TILE_SIZE, config.TILE_SIZE)
     }
     onMounted(() => {
-      // TODO
-      if (!props.collides) return
+      if (!physicsSetting) return
       scene.physics.world.enable(object.value)
       object.value.body.setImmovable(true)
+      object.value.body.setSize(physicsSetting.width, physicsSetting.height)
+      object.value.body.setOffset(physicsSetting.x, physicsSetting.y)
     })
     return {
       object,
