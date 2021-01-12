@@ -8,7 +8,7 @@ export const DEPTH = {
 }
 const pathToName = path => path.split('/').slice(-1)[0].split('.')[0]
 const mapProperties = (base, properties) => {
-  if (properties) {
+  if (properties && Array.isArray(properties)) {
     properties.forEach(property => {
       base[property.name] = property.type === 'color' ? strColorToInt(property.value) : property.value
     })
@@ -67,17 +67,14 @@ const getUpdateEvent = tilemap => {
   }
 }
 const strColorToInt = str => parseInt(str.slice(1), 16)
-const getImage = rawData => {
-  const images = rawData.layers.filter(l => l.visible && l.type === 'imagelayer')
-  return images.map(image => {
+const getImage = tilemap => {
+  return tilemap.images.filter(l => l.visible).map(image => {
     return mapProperties({
-      id: image.id,
       key: pathToName(image.image),
       name: image.name,
-      x: image.offsetx,
-      y: image.offsety,
-      alpha: image.opacity,
-      tint: image.tintcolor ? strColorToInt(image.tintcolor) : null
+      x: image.x,
+      y: image.y,
+      alpha: image.alpha
     }, image.properties)
   })
 }
@@ -96,7 +93,7 @@ export default (scene, mapKey) => {
   console.log(rawData)
   const layers = getLayers(tilemap)
   const tilesets = getTilesets(tilemap)
-  const images = getImage(rawData)
+  const images = getImage(tilemap)
   const objects = getObjects(rawData)
   const update = getUpdateEvent(tilemap)
   const getObjectsByType = type => objects.filter(v => v.type === type)
