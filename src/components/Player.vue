@@ -1,16 +1,18 @@
 <template>
-  <Substance ref="substance" :initX="initX" :initY="initY" :texture="gun.mode.value ? 'chara_sprite/libra_gun' : 'chara_sprite/libra'" />
+  <Substance ref="substance" :initX="initX" :initY="initY" :texture="gun.mode.value ? 'chara_sprite/libra_gun' : 'chara_sprite/libra'">
+    <Body :drag="500" />
+  </Substance>
 </template>
 
 <script>
 import { computed, inject, onMounted, ref } from 'vue'
-import { onPreUpdate } from 'phavuer'
+import { onPreUpdate, Body } from 'phavuer'
 import Substance from './Substance'
 import useFollowing from './modules/useFollowing'
 import useFrameAnimChara from './modules/useFrameAnimChara'
 import useGun from './modules/useGun'
 export default {
-  components: { Substance },
+  components: { Body, Substance },
   props: {
     initX: { default: 0 },
     initY: { default: 0 },
@@ -48,8 +50,6 @@ export default {
       storage.state.y = Number(object.value.y)
     })
     onMounted(() => {
-      scene.physics.world.enable(object.value)
-      object.value.body.setDrag(500)
       substance.value.setCapturable(false)
     })
     scene.input.on('pointerdown', pointer => {

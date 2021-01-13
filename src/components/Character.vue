@@ -1,16 +1,18 @@
 <template>
-  <Substance ref="substance" :initX="initX" :initY="initY" :name="name" @del="$emit('del')" />
+  <Substance ref="substance" :initX="initX" :initY="initY" :name="name" @del="$emit('del')">
+    <Body :drag="500" :offsetX="Math.max(substance?.imgWidth - 30, 0).half" :width="Math.min(substance?.imgWidth, 30)" :height="Math.min(substance?.imgHeight, 30)" />
+  </Substance>
 </template>
 
 <script>
-import { computed, inject, onMounted, ref } from 'vue'
-import { onPreUpdate } from 'phavuer'
+import { computed, inject, ref } from 'vue'
+import { onPreUpdate, Body } from 'phavuer'
 import Substance from './Substance'
 import useFollowing from './modules/useFollowing'
 import useFrameAnimChara from './modules/useFrameAnimChara'
 import items from '@/data/items'
 export default {
-  components: { Substance },
+  components: { Substance, Body },
   props: {
     initX: { default: 0 },
     initY: { default: 0 },
@@ -36,10 +38,6 @@ export default {
       playFrameAnim()
       if (event.state) return
       following.walkToTargetPosition(props.speed)
-    })
-    onMounted(() => {
-      scene.physics.world.enable(object.value)
-      object.value.body.setDrag(500)
     })
     return {
       object, substance,
