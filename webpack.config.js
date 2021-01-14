@@ -4,13 +4,13 @@ const webpack = require('webpack')
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const AutoTileWebpackPlugin = require('auto-tile-webpack-plugin')
-const TileExtrudeWebpackPlugin = require('tile-extrude-webpack-plugin')
+// const AutoTileWebpackPlugin = require('auto-tile-webpack-plugin')
+// const TileExtrudeWebpackPlugin = require('tile-extrude-webpack-plugin')
 const PhaserAssetsWebpackPlugin = require('phaser-assets-webpack-plugin')
 
 const assetsConfig = require('./assets.config')
-const autotileConfig = require('./autotile.config')
-const extrudeConfig = require('./extrude.config')
+// const autotileConfig = require('./autotile.config')
+// const extrudeConfig = require('./extrude.config')
 
 module.exports = (_env, argv) => ({
   entry: {
@@ -76,8 +76,8 @@ module.exports = (_env, argv) => ({
       '__VUE_OPTIONS_API__': JSON.stringify(false),
       '__VUE_PROD_DEVTOOLS__': JSON.stringify(false)
     }),
-    new AutoTileWebpackPlugin(autotileConfig),
-    new TileExtrudeWebpackPlugin(extrudeConfig),
+    // new AutoTileWebpackPlugin(autotileConfig),
+    // new TileExtrudeWebpackPlugin(extrudeConfig),
     new PhaserAssetsWebpackPlugin(assetsConfig),
     new webpack.ProvidePlugin({
       t: [path.resolve(__dirname, 'src/data/translate'), 'default']
