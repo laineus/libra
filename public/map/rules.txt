@@ -2,3 +2,4 @@
 ../img/map/tilesets/stomach_ceil.tmx
 ../img/map/tilesets/forest_ceil.tmx
 ../img/map/tilesets/forest_sand.tmx
+../img/map/tilesets/cave_ceil.tmx
