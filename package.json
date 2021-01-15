@@ -14,7 +14,7 @@
     "moment": "^2.29.1",
     "phaser": "^3.52.0",
     "phaser-tiled-json-external-loader": "^0.1.1",
-    "phavuer": "^0.7.0",
+    "phavuer": "^0.7.1",
     "vue": "3.0.5"
   },
   "devDependencies": {
