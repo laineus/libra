@@ -131,6 +131,28 @@
                  "width":96,
                  "x":0,
                  "y":224
+                }, 
+                {
+                 "height":96,
+                 "id":5,
+                 "name":"ice4",
+                 "properties":[
+                        {
+                         "name":"fieldX",
+                         "type":"int",
+                         "value":4
+                        }, 
+                        {
+                         "name":"fieldY",
+                         "type":"int",
+                         "value":8
+                        }],
+                 "rotation":0,
+                 "type":"Gate",
+                 "visible":true,
+                 "width":64,
+                 "x":1216,
+                 "y":608
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -139,7 +161,7 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":5,
+ "nextobjectid":6,
  "orientation":"orthogonal",
  "properties":[
         {
