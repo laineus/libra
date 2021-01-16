@@ -593,6 +593,28 @@
                  "width":0,
                  "x":655.333333333333,
                  "y":319.333333333333
+                }, 
+                {
+                 "height":96,
+                 "id":33,
+                 "name":"cave1",
+                 "properties":[
+                        {
+                         "name":"fieldX",
+                         "type":"int",
+                         "value":35
+                        }, 
+                        {
+                         "name":"fieldY",
+                         "type":"int",
+                         "value":11
+                        }],
+                 "rotation":0,
+                 "type":"Gate",
+                 "visible":true,
+                 "width":96,
+                 "x":0,
+                 "y":416
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -668,7 +690,7 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":33,
+ "nextobjectid":34,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2020.12.18",

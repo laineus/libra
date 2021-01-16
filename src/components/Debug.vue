@@ -8,20 +8,17 @@
 </template>
 
 <script>
+import assets from 'assets'
 import { ref, inject } from 'vue'
 export default {
   setup () {
+    l(assets.tilemapTiledJSONExternal)
     const gameScene = inject('gameScene')
     const uiScene = inject('uiScene')
     const selectedMap = ref(null)
-    const mapList = [
-      { name: 'home1', x: 540, y: 360 },
-      { name: 'stomach1', x: 800, y: 240 },
-      { name: 'forest2', x: 300, y: 550 },
-      { name: 'forest3', x: 500, y: 800 },
-      { name: 'forest4', x: 800, y: 300 },
-      { name: 'forest5', x: 500, y: 360 }
-    ]
+    const mapList = assets.tilemapTiledJSONExternal.map(v => {
+      return { name: v[0], x: 400, y: 400 }
+    })
     const changeMap = () => {
       if (!selectedMap.value) return
       uiScene.value.titleScreen = false
