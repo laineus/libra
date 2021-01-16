@@ -3,3 +3,6 @@
 ../img/map/tilesets/forest_ceil.tmx
 ../img/map/tilesets/forest_sand.tmx
 ../img/map/tilesets/cave_ceil.tmx
+../img/map/tilesets/ice_ceil.tmx
+../img/map/tilesets/base_ceil.tmx
+../img/map/tilesets/red_ceil.tmx
