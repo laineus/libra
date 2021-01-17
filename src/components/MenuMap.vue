@@ -3,7 +3,7 @@
     <Container v-for="(v, i) in places" :key="i" :x="rowWidth.half" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerdown="p => tapItem(p, i)">
       <Rectangle :visible="i === selectedIndex" :fillColor="COLORS.orange" :width="rowWidth" :height="rowHeight" :alpha="0.8" />
       <Line v-if="i !== places.length - 1" :x="0" :y="rowHeight.half" :lineWidth="0.5" :x2="rowWidth" :strokeColor="COLORS.brown" :alpha="0.25" />
-      <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="v ? `${mapName(v.key)} (${v.x}, ${v.y})` : '未登録'" :size="13" :bold="true" />
+      <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="v ? `${mapName(v.key)} (${v.x}, ${v.y})` : '未登録'" :size="13" :bold="true" @pointerdown="p => tapItem(p, i)" /><!-- TODO -->
       <Image v-if="v" texture="garbage" :scale="0.45" :tint="COLORS.brown" :x="91" @pointerdown="p => tapGarbage(p, i)" />
     </Container>
     <template v-if="selectedIndex !== null">
