@@ -1,6 +1,6 @@
 import { inject } from 'vue'
 import Talker from '@/util/Talker'
-const STEPS = {
+export const STEPS = {
   NULL: 0,
   STARTED: 1,
   TALKED_TORRENT: 2,

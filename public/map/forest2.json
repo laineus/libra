@@ -124,6 +124,18 @@
                  "width":288,
                  "x":320,
                  "y":448
+                }, 
+                {
+                 "height":0,
+                 "id":24,
+                 "name":"torrent",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Character",
+                 "visible":true,
+                 "width":0,
+                 "x":527.782165379855,
+                 "y":255.177697884128
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -465,7 +477,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":24,
+ "nextobjectid":25,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2020.12.18",
