@@ -5,7 +5,7 @@ const STEPS = {
   RECEIVED: 1
 }
 export default {
-  name: '森2',
+  name: '洞窟2',
   async create () {
     const uiScene = inject('uiScene').value
     const field = inject('field').value
