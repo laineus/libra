@@ -597,7 +597,7 @@
                 {
                  "height":96,
                  "id":33,
-                 "name":"cave1",
+                 "name":"cave2",
                  "properties":[
                         {
                          "name":"fieldX",
@@ -607,7 +607,7 @@
                         {
                          "name":"fieldY",
                          "type":"int",
-                         "value":11
+                         "value":19
                         }],
                  "rotation":0,
                  "type":"Gate",

@@ -118,12 +118,12 @@
                         {
                          "name":"fieldX",
                          "type":"int",
-                         "value":33
+                         "value":35
                         }, 
                         {
                          "name":"fieldY",
                          "type":"int",
-                         "value":16
+                         "value":11
                         }],
                  "rotation":0,
                  "type":"Gate",
