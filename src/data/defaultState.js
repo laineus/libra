@@ -29,6 +29,7 @@ export default {
     intro: 0,
     itemReactions: [],
     torrentFlog: 0,
-    clover: 0
+    clover: 0,
+    straDoll: 0
   }
 }
