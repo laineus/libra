@@ -27,6 +27,7 @@ export default [
   makeItem('clover3'),
   makeItem('clover4'),
   makeItem('gardenia'),
+  makeItem('strawDoll'),
   makeCharacter('ladybird'),
   makeCharacter('stagBeetle'),
   makeCharacter('beetle'),
@@ -35,5 +36,6 @@ export default [
   makeCharacter('flog'),
   makeCharacter('flogLarge'),
   makeCharacter('hercules'),
+  makeCharacter('bat'),
   makeCharacter('amili')
 ]

@@ -127,7 +127,7 @@ export default {
 
     // ----------------------------------------------------------------------------------
 
-    const torrent = field.getObjectById(2)
+    const torrent = field.getObjectById(24)
     const speakTorrent = talk.getSpeakScripts(new Talker('トレント', torrent.object))
     torrent.setVisible(computed(() => state.events.curse >= CURSE_STEPS.STARTED))
     const execCurse = async () => {

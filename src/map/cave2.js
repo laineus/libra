@@ -20,7 +20,7 @@ export default {
     flog.setTapEvent(async () => {
       if (state.events.strawDoll === STEPS.NULL) {
         await speakFlog(t('events.strawDoll.start'))
-        const receive = await uiScene.setSelector(t('events.clover.flog2.options')) === 1
+        const receive = await uiScene.setSelector(t('events.strawDoll.options')) === 1
         if (!receive) {
           return await speakFlog(t('events.strawDoll.answer1'))
         }
@@ -28,7 +28,7 @@ export default {
         await speakFlog(scripts.splice(0, 2))
         await dropDoll()
         await speakFlog(scripts)
-        state.events.strawDoll === STEPS.RECEIVED
+        state.events.strawDoll = STEPS.RECEIVED
       } if (bag.hasItem('strawDoll', { bag: true, room: true, field: true })) {
         await speakFlog(t('events.strawDoll.received'))
       } else {

@@ -30,7 +30,7 @@ export default {
     itemReactions: [],
     torrentFlog: 0,
     clover: 0,
-    straDoll: 0,
+    strawDoll: 0,
     curse: 0
   }
 }

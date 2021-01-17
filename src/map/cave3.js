@@ -73,8 +73,8 @@ export default {
         await speakLeft(t('events.curse.completed'))
       }
     }
-    speakLeft.setTapEvent(event)
-    speakRight.setTapEvent(async () => {
+    leftBat.setTapEvent(event)
+    rightBat.setTapEvent(async () => {
       if (state.events.curse === STEPS.STARTED) {
         return await speakRight(t('events.curse.started2'))
       }
