@@ -29,7 +29,7 @@ export default {
         await dropDoll()
         await speakFlog(scripts)
         state.events.strawDoll = STEPS.RECEIVED
-      } if (bag.hasItem('strawDoll', { bag: true, room: true, field: true })) {
+      } else if (bag.hasItem('strawDoll', 1, { bag: true, room: true, field: true })) {
         await speakFlog(t('events.strawDoll.received'))
       } else {
         await speakFlog(t('events.strawDoll.disposed'))
