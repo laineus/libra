@@ -121,6 +121,18 @@
                  "width":96,
                  "x":1184,
                  "y":576
+                }, 
+                {
+                 "height":0,
+                 "id":5,
+                 "name":"snake",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Character",
+                 "visible":true,
+                 "width":0,
+                 "x":990,
+                 "y":274
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -140,7 +152,7 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":5,
+ "nextobjectid":6,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2020.12.18",
