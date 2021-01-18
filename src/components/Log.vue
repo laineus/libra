@@ -17,10 +17,12 @@ export default {
   setup () {
     let lastId = 0
     const list = shallowReactive([])
-    const push = text => {
-      list.splice(10)
-      list.unshift({ id: lastId, text, refText: refObj(null), time: 100 })
-      lastId++
+    const push = (...textList) => {
+      textList.forEach(text => {
+        list.splice(10)
+        list.unshift({ id: lastId, text, refText: refObj(null), time: 100 })
+        lastId++
+      })
     }
     const timer = setInterval(() => {
       list.forEach(v => v.time -= 1)
