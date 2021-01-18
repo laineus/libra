@@ -150,7 +150,7 @@ export default {
       } else {
         await speakTorrent(t('events.curser.greet'))
         if (state.events.curse === CURSE_STEPS.TALKED_TORRENT) {
-          const wannaCurse = await uiScene.setSelector(t('events.curser.options2')) === 0
+          const wannaCurse = await uiScene.setSelector(t('events.curser.options2')) === 1
           if (wannaCurse) await execCurse()
         }
       }

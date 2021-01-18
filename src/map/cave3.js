@@ -1,4 +1,4 @@
-import { inject } from 'vue'
+import { inject, computed } from 'vue'
 import Talker from '@/util/Talker'
 export const STEPS = {
   NULL: 0,
@@ -33,6 +33,7 @@ export default {
     const dropApple = chara => field.addObject({ type: 'Substance', name: 'apple', x: chara.object.x, y: chara.object.y }).then(v => v.drop())
 
     const timeEstimated = state.events.curse === STEPS.NOTICED_DID
+    rightBat.setVisible(computed(() => ![STEPS.EXECUTED, STEPS.EXECUTED_END].includes(state.events.curse)))
 
     const event = async () => {
       if (state.events.curse === STEPS.NULL) {
@@ -58,16 +59,16 @@ export default {
           state.events.curse = STEPS.NOTICED_DID
         } else {
           const scripts = t('events.curse.answer2')
-          await speakRight(scripts.splice(0, 3))
+          await talkBoth(scripts.splice(0, 3), [tl, tr, tr])
           dropApple(rightBat)
-          await talkBoth(scripts, [tl, tl, tr])
+          await talkBoth(scripts, [tl, tr, tr])
           state.events.curse = STEPS.COMPLETED
         }
       } else if (state.events.curse === STEPS.NOTICED_DID) {
         if (!timeEstimated) {
-          return await talkBoth(t('events.curse.noticedDid1'), [tr, tr, tr, tr, tl])
+          return await talkBoth(t('events.curse.noticedDid1'), [tl, tr])
         }
-        await talkBoth(t('events.curse.noticedDid2'), [tl, tr])
+        await talkBoth(t('events.curse.noticedDid2'), [tr, tr, tr, tr, tl])
         state.events.curse = STEPS.COMPLETED
       } else if (state.events.curse === STEPS.COMPLETED) {
         await speakLeft(t('events.curse.completed'))
