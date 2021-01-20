@@ -25,7 +25,7 @@ export default {
     onPreUpdate(() => {
       const obj = object.value
       const found = field.value.charas.concat(field.value.substances).map(v => v.ref.value).filter(Boolean).find(v => {
-        return Math.abs(obj.x - v.object.x) < v.object.width.half && Math.abs(obj.y - (v.object.y - v.object.height.half)) < v.object.height.half
+        return Math.abs(obj.x - v.object.x) < v.object.width.half && Math.abs(obj.y - (v.object.y - v.object.height.half)) < v.object.height.half && v.hp > 0
       })
       if (found) {
         context.emit('del')

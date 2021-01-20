@@ -70,6 +70,7 @@ export default {
       })
     }
     const damage = () => {
+      if (data.hp <= 0) return
       data.hp -= Math.randomInt(3, 7)
       if (data.hp >= 0) return
       if (itemData?.drop) {
