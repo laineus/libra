@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { inject, reactive } from 'vue'
+import { inject, reactive, ref, watch } from 'vue'
 import { Image } from 'phavuer'
 const splitFrame = (texture, frame, count) => {
   const sum = count * count
@@ -44,10 +44,12 @@ export default {
     const scene = inject('scene')
     const textures = scene.textures.get(props.texture)
     const frames = splitFrame(textures, props.initialFrame, splitCount)
+    const broken = ref(false)
+    watch(broken, () => context.emit('broken'))
     const tweens = reactive((splitCount * splitCount).toArray().map(i => {
       const r = Math.randomInt(-1.5, 1.5)
       return {
-        x: Math.randomInt(-45, 45),
+        x: Math.randomInt(-15, 15),
         y: '-=5',
         ease: Phaser.Math.Easing.Quadratic.Out,
         rotation: r,
@@ -62,7 +64,7 @@ export default {
               tweens[i] = {
                 alpha: 0,
                 duration: 300,
-                onComplete: () => context.emit('broken')
+                onComplete: () => broken.value = true
               }
             }
           }
