@@ -1,8 +1,8 @@
 <template>
   <MenuContainer ref="container" :arrowX="25 + (1 * 60)" :height="415" :title="'Bag'" :visible="grab.mode !== 'dispose'">
-    <Image v-for="v in bagItems" :key="v.id" :texture="keyToTexture(v.key)" :x="v.bagX" :y="v.bagY" :origin="0.5" :visible="grab.item !== v" @pointerdown="grabItem(v, 'move')" />
+    <Image v-for="v in bagItems" :key="v.id" :texture="keyToTexture(v.key)" frame="__BASE" :x="v.bagX" :y="v.bagY" :origin="0.5" :visible="grab.item !== v" @pointerdown="grabItem(v, 'move')" />
   </MenuContainer>
-  <Image v-if="grab.item" ref="grabRef" :texture="keyToTexture(grab.item.key)" :x="grab.x" :y="grab.y" :origin="0.5" @pointerup="p => drop(p)" />
+  <Image v-if="grab.item" ref="grabRef" :texture="keyToTexture(grab.item.key)" frame="__BASE" :x="grab.x" :y="grab.y" :origin="0.5" @pointerup="p => drop(p)" />
 </template>
 
 <script>

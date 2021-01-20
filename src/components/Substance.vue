@@ -28,7 +28,7 @@ export default {
     name: { default: null },
     texture: { default: null },
     pipeline: { default: null },
-    frame: { default: 0 }
+    frame: { default: '__BASE' }
   },
   emits: ['create', 'del'],
   setup (props, context) {
