@@ -38,7 +38,8 @@ export default {
     texture: { default: null },
     initialFrame: { default: null }
   },
-  setup (props) {
+  emits: ['broken'],
+  setup (props, context) {
     const splitCount = 3
     const scene = inject('scene')
     const textures = scene.textures.get(props.texture)
@@ -50,13 +51,20 @@ export default {
         y: '-=5',
         ease: Phaser.Math.Easing.Quadratic.Out,
         rotation: r,
-        duration: 60,
+        duration: 100,
         onComplete: () => {
           tweens[i] = {
             y: 0,
             rotation: r.twice,
             ease: Phaser.Math.Easing.Quadratic.In,
-            duration: 200
+            duration: 200,
+            onComplete: () => {
+              tweens[i] = {
+                alpha: 0,
+                duration: 300,
+                onComplete: () => context.emit('broken')
+              }
+            }
           }
         }
       }
