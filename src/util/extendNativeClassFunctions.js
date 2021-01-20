@@ -43,7 +43,9 @@ export default (screenWidth, screenHeight, tileSize) => {
   })
   Object.defineProperty(Array.prototype, 'delete', {
     value (callbackfn) {
-      this.splice(this.findIndex(typeof callbackfn === 'function' ? callbackfn : v => v === callbackfn), 1)
+      const i = this.findIndex(typeof callbackfn === 'function' ? callbackfn : v => v === callbackfn)
+      if (i === -1) return
+      this.splice(i, 1)
     }
   })
   Object.defineProperty(Array.prototype, 'toObject', {
