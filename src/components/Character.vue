@@ -1,5 +1,5 @@
 <template>
-  <Substance ref="substance" :initX="initX" :initY="initY" :name="name" @del="$emit('del')">
+  <Substance ref="substance" :initX="initX" :initY="initY" :name="name" :frame="frame" @del="$emit('del')">
     <Body :drag="500" :offsetX="Math.max(substance?.imgWidth - 30, 0).half" :width="Math.min(substance?.imgWidth, 30)" :height="Math.min(substance?.imgHeight, 30)" />
   </Substance>
 </template>
@@ -26,6 +26,7 @@ export default {
     const scene = inject('scene')
     const event = inject('event')
     const substance = ref(null)
+    const frame = ref(0)
     const object = computed(() => substance.value?.object)
     const image = computed(() => substance.value?.image)
     const following = useFollowing(object)
@@ -35,12 +36,13 @@ export default {
     const numOfDirection = (textureData.frameTotal - 1) / 3
     const { play: playFrameAnim, lookTo } = useFrameAnimChara(object, image, props.initR, numOfDirection)
     onPreUpdate(() => {
-      playFrameAnim()
+      frame.value = playFrameAnim()
       if (event.state) return
       following.walkToTargetPosition(props.speed)
     })
     return {
       object, substance,
+      frame,
       lookTo,
       damage: () => substance.value?.damage(),
       // Following

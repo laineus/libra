@@ -1,7 +1,7 @@
 <template>
   <div>
     <Container ref="object" :visible="unref(visible)" :x="initX" :y="initY" :width="imgWidth" :height="imgWidth" :depth="depth" :tween="tween" @create="create">
-      <Image ref="image" v-if="imageTexture" :texture="imageTexture" :originX="0.5" :originY="1" :alpha="alpha" :tint="tint" :pipeline="pipeline" />
+      <Image ref="image" v-if="imageTexture" :texture="imageTexture" :frame="frame" :originX="0.5" :originY="1" :alpha="alpha" :tint="tint" :pipeline="pipeline" />
       <slot />
     </Container>
     <TapArea v-if="tapEvent.event.value" :visible="unref(visible) && checkable" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @tap="tapEvent.exec" />
@@ -24,7 +24,8 @@ export default {
     initY: { default: 0 },
     name: { default: null },
     texture: { default: null },
-    pipeline: { default: null }
+    pipeline: { default: null },
+    frame: { default: 0 }
   },
   emits: ['create', 'del'],
   setup (props, context) {

@@ -53,10 +53,9 @@ export default (object, image, initR, numOfDirection) => {
     if (walking) {
       const r = Math.atan2(unref(object).body.velocity.y, unref(object).body.velocity.x)
       directionKey = velocityToDirectionKey(r)
-      frameAnim.play(directionKey)
-    } else {
-      unref(image).setFrame(baseFrames[directionKey]) // Set last frame
+      return frameAnim.play(directionKey)
     }
+    return baseFrames[directionKey]
   }
   const lookTo = rOrKey => {
     directionKey = typeof rOrKey === 'string' ? rOrKey : velocityToDirectionKey(rOrKey)

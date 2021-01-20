@@ -1,5 +1,5 @@
 <template>
-  <Substance ref="substance" :initX="initX" :initY="initY" :texture="gun.mode.value ? 'chara_sprite/libra_gun' : 'chara_sprite/libra'">
+  <Substance ref="substance" :initX="initX" :initY="initY" :texture="gun.mode.value ? 'chara_sprite/libra_gun' : 'chara_sprite/libra'" :frame="frame">
     <Body :drag="500" />
   </Substance>
 </template>
@@ -27,6 +27,7 @@ export default {
     const storage = inject('storage')
     const substance = ref(null)
     const r = ref(0)
+    const frame = ref(0)
     const object = computed(() => substance.value?.object)
     const image = computed(() => substance.value?.image)
     const following = useFollowing(object)
@@ -39,7 +40,7 @@ export default {
     }
     onPreUpdate(() => {
       r.value = getRadianToPointer()
-      playFrameAnim()
+      frame.value = playFrameAnim()
       if (event.state || menuOpened.value) return
       if (gun.mode.value) {
         lookTo(r.value)
@@ -64,7 +65,7 @@ export default {
     return {
       object, substance,
       gun,
-      r, lookTo,
+      r, frame, lookTo,
       // Following
       setTargetPosition: following.setTargetPosition,
       clearTargetPosition: following.clearTargetPosition

@@ -1,5 +1,4 @@
-import { unref } from 'vue'
-export default (settings, obj) => {
+export default settings => {
   const patterns = {}
   let tick = 0
   let lastPlayedKey = null
@@ -16,9 +15,7 @@ export default (settings, obj) => {
     } else {
       tick++
     }
-    const frame = patterns[key](tick)
-    if (obj) unref(obj).setFrame(frame)
-    return frame
+    return patterns[key](tick)
   }
   return {
     play
