@@ -28,6 +28,7 @@ export default {
   },
   emits: ['create', 'del'],
   setup (props, context) {
+    const field = inject('field')
     const event = inject('event')
     const player = inject('player')
     const object = refObj(null)
@@ -76,6 +77,11 @@ export default {
           data.tween = null
           context.emit('del')
         }
+      }
+      if (itemData?.drop) {
+        itemData.drop.filter(v => Math.chance(v.chance)).forEach(v => {
+          field.value.dropItem(v.key, object.value)
+        })
       }
     }
     const create = obj => context.emit('create', obj)

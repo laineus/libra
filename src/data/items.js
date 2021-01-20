@@ -28,6 +28,7 @@ export default [
   makeItem('clover4'),
   makeItem('gardenia'),
   makeItem('strawDoll'),
+  makeItem('crystal', { drop: [{ key: 'sapphire', chance: 0.2 }, { key: 'emerald', chance: 0.2 }, { key: 'amethyst', chance: 0.2 }, { key: 'ruby', chance: 0.2 }] }),
   makeCharacter('ladybird'),
   makeCharacter('stagBeetle'),
   makeCharacter('beetle'),
