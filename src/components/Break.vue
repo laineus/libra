@@ -53,13 +53,13 @@ export default {
         y: '-=5',
         ease: Phaser.Math.Easing.Quadratic.Out,
         rotation: r,
-        duration: 100,
+        duration: 120,
         onComplete: () => {
           tweens[i] = {
             y: 0,
             rotation: r.twice,
             ease: Phaser.Math.Easing.Quadratic.In,
-            duration: 200,
+            duration: 250,
             onComplete: () => {
               tweens[i] = {
                 alpha: 0,
