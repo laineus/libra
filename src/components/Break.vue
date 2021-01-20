@@ -42,27 +42,31 @@ export default {
   setup (props, context) {
     const splitCount = 3
     const scene = inject('scene')
-    const textures = scene.textures.get(props.texture)
-    const frames = splitFrame(textures, props.initialFrame, splitCount)
+    const texture = scene.textures.get(props.texture)
+    const baseFrame = texture.get(props.initialFrame)
+    const frames = splitFrame(texture, props.initialFrame, splitCount)
     const broken = ref(false)
     watch(broken, () => context.emit('broken'))
     const tweens = reactive((splitCount * splitCount).toArray().map(i => {
-      const r = Math.randomInt(-1.5, 1.5)
+      const r = Math.randomInt(-0.5, 0.5)
+      const xSeed = (((i % splitCount) / (splitCount - 1)) - 0.5) * 2
+      const x = Math.randomInt(-baseFrame.width, baseFrame.width) * xSeed
       return {
-        x: Math.randomInt(-15, 15),
-        y: '-=5',
+        x: x * 0.5, y: '-=5',
         ease: Phaser.Math.Easing.Quadratic.Out,
         rotation: r,
         duration: 120,
         onComplete: () => {
           tweens[i] = {
+            x: x,
             y: 0,
-            rotation: r.twice,
+            rotation: r * 3,
             ease: Phaser.Math.Easing.Quadratic.In,
             duration: 250,
             onComplete: () => {
               tweens[i] = {
                 alpha: 0,
+                y: '+=6',
                 duration: 300,
                 onComplete: () => broken.value = true
               }
