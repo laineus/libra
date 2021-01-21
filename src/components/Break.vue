@@ -52,7 +52,7 @@ export default {
       const xSeed = (((i % splitCount) / (splitCount - 1)) - 0.5) * 2
       const x = Math.randomInt(-baseFrame.width, baseFrame.width) * xSeed
       return {
-        x: x * 0.5, y: '-=5',
+        x: x * 0.7, y: '-=5',
         ease: Phaser.Math.Easing.Quadratic.Out,
         rotation: r,
         duration: 120,

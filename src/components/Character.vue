@@ -49,6 +49,7 @@ export default {
       setTargetPosition: following.setTargetPosition,
       clearTargetPosition: following.clearTargetPosition,
       // Extend from Substance
+      hp: computed(() => substance.value?.hp),
       checkable: computed(() => substance.value?.checkable),
       distanceToPlayer: computed(() => substance.value?.distanceToPlayer),
       execTapEvent: computed(() => substance.value?.execTapEvent),
