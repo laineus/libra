@@ -42,5 +42,6 @@ export default [
   makeCharacter('flogLarge'),
   makeCharacter('hercules'),
   makeCharacter('bat'),
+  makeCharacter('penguin'),
   makeCharacter('amili')
 ]
