@@ -1,6 +1,6 @@
-import { computed, inject } from 'vue'
+import { inject } from 'vue'
 import Talker from '@/util/Talker'
-const STEPS = {
+export const STEPS = {
   NULL: 0,
   IGNORED: 1,
   STARTED: 2,
