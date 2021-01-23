@@ -50,5 +50,4 @@ const option = {
 }
 
 const game = new Phaser.Game(option)
-window.game = game
 window.addEventListener('resize', () => game.scale.refresh())
