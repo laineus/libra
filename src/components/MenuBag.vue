@@ -1,8 +1,8 @@
 <template>
   <MenuContainer ref="container" :arrowX="25 + (1 * 60)" :height="415" :title="'Bag'" :visible="grab.mode !== 'dispose'">
-    <Image v-for="v in bagItems" :key="v.id" :texture="keyToTexture(v.key)" frame="__BASE" :x="v.bagX" :y="v.bagY" :scale="v.scale" :origin="0.5" :visible="grab.item !== v" @pointerdown="grabItem(v, 'move')" />
+    <Image v-for="v in bagItems" :key="v.id" :texture="keyToTexture(v.key)" :frame="keyToFrame(v.key)" :x="v.bagX" :y="v.bagY" :scale="v.scale" :origin="0.5" :visible="grab.item !== v" @pointerdown="grabItem(v, 'move')" />
   </MenuContainer>
-  <Image v-if="grab.item" ref="grabRef" :texture="keyToTexture(grab.item.key)" frame="__BASE" :x="grab.x" :y="grab.y" :scale="grab.item.scale" :origin="0.5" @pointerup="p => drop(p)" />
+  <Image v-if="grab.item" ref="grabRef" :texture="keyToTexture(grab.item.key)" :frame="keyToFrame(grab.item.key)" :x="grab.x" :y="grab.y" :scale="grab.item.scale" :origin="0.5" @pointerup="p => drop(p)" />
 </template>
 
 <script>
@@ -12,6 +12,7 @@ import MenuContainer from '@/components/MenuContainer'
 import items from '@/data/items'
 const keyToItemData = key => items.find(v => v.key === key)
 const keyToTexture = key => keyToItemData(key).texture
+const keyToFrame = key => keyToItemData(key).type === 'Character' ? 1 : '__BASE'
 const WIDTH = 220
 const HEIGHT = 405
 export default {
@@ -87,7 +88,7 @@ export default {
       grab.resolver = null
     }
     return {
-      keyToTexture,
+      keyToTexture, keyToFrame,
       bagItems: storage.state.bagItems,
       container,
       controller, grab, grabRef,
