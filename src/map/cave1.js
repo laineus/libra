@@ -16,7 +16,6 @@ export default {
 
     const snake = field.getObjectById(5)
     const speakSnake = talk.getSpeakScripts(new Talker('コウモリ', snake.object))
-    const dropApple = () => field.addObject({ type: 'Substance', name: 'apple', x: speakSnake.object.x, y: speakSnake.object.y }).then(v => v.drop())
 
     snake.setTapEvent(async () => {
       if (state.events.snakeFlog === STEPS.NULL) {
@@ -24,16 +23,16 @@ export default {
         state.events.snakeFlog = STEPS.STARTED
       } else if (state.events.snakeFlog === STEPS.STARTED) {
         if (bag.hasItem('sapphire', 2) && bag.hasItem('emerald', 2) && bag.hasItem('amethyst', 2) && bag.hasItem('ruby', 2)) {
-          bag.removeItem('sapphire', 2)
-          bag.removeItem('emerald', 2)
-          bag.removeItem('amethyst', 2)
-          bag.removeItem('ruby', 2)
           const give = await uiScene.setSelector(t('events.snakeFlog.options')) === 0
           if (give) {
+            bag.removeItem('sapphire', 2)
+            bag.removeItem('emerald', 2)
+            bag.removeItem('amethyst', 2)
+            bag.removeItem('ruby', 2)
             await speakSnake(t('events.snakeFlog.complete1'))
             uiScene.log.push(...t('events.snakeFlog.logs'))
             await speakSnake(t('events.snakeFlog.complete2'))
-            dropApple()
+            field.dropItem('apple', snake.object)
             state.events.snakeFlog = STEPS.COMPLETED
           }
           return

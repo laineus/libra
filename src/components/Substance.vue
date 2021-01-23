@@ -81,7 +81,7 @@ export default {
       if (data.hp >= 0) return
       if (itemData?.drop) {
         itemData.drop.filter(v => Math.chance(v.chance)).forEach(v => {
-          field.value.dropItem(v.key, object.value)
+          field.value.dropItem(v.key, object.value, { scale: itemData.minScale ? Math.randomInt(itemData.minScale * 10, 10) / 10 : 1 })
         })
       }
     }

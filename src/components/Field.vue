@@ -63,9 +63,9 @@ export default {
       })
     }
     const delObject = itemOrId => objects.delete(typeof itemOrId === 'object' ? itemOrId : v => v.id === itemOrId)
-    const dropItem = (name, gameObject) => {
+    const dropItem = (name, gameObject, options) => {
       const itemData = items.find(v => v.key === name)
-      return addObject({ type: itemData.type, name, x: gameObject.x, y: gameObject.y }).then(v => v.drop?.())
+      return addObject(Object.assign({ type: itemData.type, name, x: gameObject.x, y: gameObject.y }, options)).then(v => v.drop?.())
     }
     const bullets = shallowReactive([])
     const addBullet = ({ x, y, r }) => bullets.push({ id: Symbol('bullet_id'), x, y, r })
