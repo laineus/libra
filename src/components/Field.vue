@@ -30,6 +30,7 @@ import setupCamera from './modules/setupCamera'
 import randomObjectByRandom from './modules/randomObjectByRandom'
 import maps from '@/data/maps'
 import config from '@/data/config'
+import items from '@/data/items'
 export default {
   components: { TilemapLayer, Image, Light, Player, Character, Substance, Area, Gate, Bullet, ManualTile },
   props: [
@@ -62,6 +63,10 @@ export default {
       })
     }
     const delObject = itemOrId => objects.delete(typeof itemOrId === 'object' ? itemOrId : v => v.id === itemOrId)
+    const dropItem = (name, gameObject) => {
+      const itemData = items.find(v => v.key === name)
+      return addObject({ type: itemData.type, name, x: gameObject.x, y: gameObject.y }).then(v => v.drop?.())
+    }
     const bullets = shallowReactive([])
     const addBullet = ({ x, y, r }) => bullets.push({ id: Symbol('bullet_id'), x, y, r })
     const delBullet = itemOrId => bullets.delete(typeof itemOrId === 'object' ? itemOrId : v => v.id === itemOrId)
@@ -104,7 +109,7 @@ export default {
       name: field.name, width: field.width, height: field.height,
       layers, images, player, objects, charas, substances, areas, gates, lights, positions, manualTiles,
       pipeline,
-      addObject, delObject,
+      addObject, delObject, dropItem,
       bullets, addBullet, delBullet,
       isCollides, getObjectById,
       layerCreate, charaCreate,

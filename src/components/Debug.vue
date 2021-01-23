@@ -12,7 +12,6 @@ import assets from 'assets'
 import { ref, inject } from 'vue'
 export default {
   setup () {
-    l(assets.tilemapTiledJSONExternal)
     const gameScene = inject('gameScene')
     const uiScene = inject('uiScene')
     const selectedMap = ref(null)

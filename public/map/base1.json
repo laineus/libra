@@ -81,7 +81,7 @@
                 {
                  "height":96,
                  "id":2,
-                 "name":"ice1",
+                 "name":"ice4",
                  "properties":[
                         {
                          "name":"fieldX",
@@ -121,7 +121,7 @@
  "nextobjectid":3,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"2020.12.18",
+ "tiledversion":"2020.08.05",
  "tileheight":32,
  "tilesets":[
         {

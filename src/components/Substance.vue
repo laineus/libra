@@ -1,7 +1,10 @@
 <template>
   <div>
     <Container ref="object" :visible="unref(visible)" :x="initX" :y="initY" :width="imgWidth" :height="imgWidth" :depth="depth" :tween="tween" @create="create">
-      <Image ref="image" v-if="imageTexture" :texture="imageTexture" :originX="0.5" :originY="1" :alpha="alpha" :tint="tint" :pipeline="pipeline" />
+      <template v-if="imageTexture">
+        <Image v-if="hp > 0" ref="image" :texture="imageTexture" :frame="frame" :originX="0.5" :originY="1" :alpha="alpha" :pipeline="pipeline" />
+        <Break v-else :texture="imageTexture" :initialFrame="frame" @broken="$emit('del')" />
+      </template>
       <slot />
     </Container>
     <TapArea v-if="tapEvent.event.value" :visible="unref(visible) && checkable" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @tap="tapEvent.exec" />
@@ -15,19 +18,21 @@ import { computed, inject, reactive, ref, toRefs, unref } from 'vue'
 import items from '@/data/items'
 import TapArea from './TapArea'
 import GrabArea from './GrabArea'
+import Break from './Break'
 import useEvent from './modules/useEvent'
-import config from '@/data/config'
 export default {
-  components: { Container, Image, TapArea, GrabArea },
+  components: { Container, Image, TapArea, GrabArea, Break },
   props: {
     initX: { default: 0 },
     initY: { default: 0 },
     name: { default: null },
     texture: { default: null },
-    pipeline: { default: null }
+    pipeline: { default: null },
+    frame: { default: '__BASE' }
   },
   emits: ['create', 'del'],
   setup (props, context) {
+    const field = inject('field')
     const event = inject('event')
     const player = inject('player')
     const object = refObj(null)
@@ -41,7 +46,6 @@ export default {
     const imageTexture = computed(() => props.texture || itemData?.texture)
     const data = reactive({
       visible: true,
-      tint: config.COLORS.white,
       tween: null,
       capturable: Boolean(props.name),
       distanceToPlayer: null,
@@ -66,16 +70,13 @@ export default {
       })
     }
     const damage = () => {
+      if (data.hp <= 0) return
       data.hp -= Math.randomInt(3, 7)
       if (data.hp >= 0) return
-      data.tint = 0xFF7777
-      data.tween = {
-        scale: 1.5, alpha: 0,
-        duration: 250,
-        onComplete: () => {
-          data.tween = null
-          context.emit('del')
-        }
+      if (itemData?.drop) {
+        itemData.drop.filter(v => Math.chance(v.chance)).forEach(v => {
+          field.value.dropItem(v.key, object.value)
+        })
       }
     }
     const create = obj => context.emit('create', obj)

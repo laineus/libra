@@ -28,6 +28,14 @@ export default [
   makeItem('clover4'),
   makeItem('gardenia'),
   makeItem('strawDoll'),
+  makeItem('sapphire'),
+  makeItem('emerald'),
+  makeItem('amethyst'),
+  makeItem('ruby'),
+  makeItem('crystal', { drop: [{ key: 'sapphire', chance: 0.2 }, { key: 'emerald', chance: 0.2 }, { key: 'amethyst', chance: 0.2 }, { key: 'ruby', chance: 0.2 }] }),
+  makeItem('uminoke'),
+  makeItem('unadon'),
+  makeItem('antonLetter', { texture: 'item/letter' }),
   makeCharacter('ladybird'),
   makeCharacter('stagBeetle'),
   makeCharacter('beetle'),
@@ -37,5 +45,6 @@ export default [
   makeCharacter('flogLarge'),
   makeCharacter('hercules'),
   makeCharacter('bat'),
+  makeCharacter('penguin'),
   makeCharacter('amili')
 ]
