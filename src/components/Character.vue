@@ -1,5 +1,5 @@
 <template>
-  <Substance ref="substance" :initX="initX" :initY="initY" :name="name" :frame="frame" @del="$emit('del')">
+  <Substance ref="substance" :name="name" :frame="frame" @del="$emit('del')">
     <Body :drag="500" :offsetX="Math.max(substance?.imgWidth - 30, 0).half" :width="Math.min(substance?.imgWidth, 30)" :height="Math.min(substance?.imgHeight, 30)" />
   </Substance>
 </template>
@@ -14,8 +14,6 @@ import items from '@/data/items'
 export default {
   components: { Substance, Body },
   props: {
-    initX: { default: 0 },
-    initY: { default: 0 },
     initR: { default: 0 },
     name: { default: null },
     speed: { default: 120 },
