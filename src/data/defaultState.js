@@ -34,6 +34,7 @@ export default {
     strawDoll: 0,
     curse: 0,
     eel: 0,
-    liveForEveryone: 0
+    liveForEveryone: 0,
+    pityPenguin: 0
   }
 }

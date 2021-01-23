@@ -121,6 +121,18 @@
                  "width":96,
                  "x":1184,
                  "y":416
+                }, 
+                {
+                 "height":0,
+                 "id":4,
+                 "name":"penguin",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Character",
+                 "visible":true,
+                 "width":0,
+                 "x":289.157894736842,
+                 "y":653.122807017544
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -140,10 +152,10 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":4,
+ "nextobjectid":5,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"2020.08.05",
+ "tiledversion":"2020.12.18",
  "tileheight":32,
  "tilesets":[
         {

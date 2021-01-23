@@ -1,6 +1,13 @@
 import { inject } from 'vue'
 import { STEPS as EEL_STEPS } from '@/map/ice1'
 import Talker from '@/util/Talker'
+const PITY_STEPS = {
+  NULL: 0,
+  STARTED: 1,
+  FOUND: 2,
+  SOLVED: 3,
+  COMPLETED: 4
+}
 export default {
   name: '氷3',
   async create () {
@@ -10,6 +17,7 @@ export default {
     const talk = inject('talk').value
     const bag = inject('bag')
 
+    // EEL
     const anton = field.getObjectById(3)
     const speakAnton = talk.getSpeakScripts(new Talker('アントン先生', anton.object))
 
@@ -44,6 +52,38 @@ export default {
         state.events.eel = EEL_STEPS.SOLVED
       } else if (state.events.eel >= EEL_STEPS.SOLVED) {
         await speakAnton(t('events.anton.completed'))
+      }
+    })
+
+    // PITY
+    const firend = field.getObjectById(4)
+    const speakFriend = talk.getSpeakScripts(new Talker('ペンギン', anton.object))
+
+    firend.setTapEvent(async () => {
+      if (state.events.pityPenguin === PITY_STEPS.NULL) {
+        const scripts = t('events.pityPenguinFriend.start1').concat(t('events.pityPenguinFriend.start2'))
+        await speakFriend(scripts)
+        state.events.pityPenguin = PITY_STEPS.STARTED
+      } else if (state.events.pityPenguin === PITY_STEPS.STARTED) {
+        if (bag.hasItem('gardenia')) {
+          await speakFriend(t('events.pityPenguinFriend.found1'))
+          await field.dropItem('pityLetter')
+          state.events.pityPenguin = PITY_STEPS.FOUND
+        } else {
+          await speakFriend(t('events.pityPenguinFriend.start2'))
+        }
+      } else if (state.events.pityPenguin === PITY_STEPS.FOUND) {
+        if (bag.hasItem('pityLetter', 1, { bag: true, room: true, field: true })) {
+          await speakFriend(t('events.pityPenguinFriend.found2'))
+        } else {
+          await speakFriend(t('events.pityPenguinFriend.lost'))
+          await field.dropItem('pityLetter')
+        }
+      } else if (state.events.pityPenguin === PITY_STEPS.SOLVED) {
+        await speakFriend(t('events.pityPenguinFriend.solved'))
+        state.events.pityPenguin = PITY_STEPS.COMPLETED
+      } else if (state.events.pityPenguin === PITY_STEPS.COMPLETED) {
+        await speakFriend(t('events.pityPenguinFriend.completed'))
       }
     })
   }
