@@ -115,6 +115,24 @@
                  "width":0,
                  "x":396.969696969697,
                  "y":1709.09090909091
+                }, 
+                {
+                 "height":0,
+                 "id":230,
+                 "name":"torrent",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"scale",
+                         "type":"float",
+                         "value":0.5
+                        }],
+                 "rotation":0,
+                 "type":"Character",
+                 "visible":true,
+                 "width":0,
+                 "x":886.666666666667,
+                 "y":646.666666666667
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -424,13 +442,13 @@
                 {
                  "height":0,
                  "id":167,
-                 "name":"flog,flogLarge",
+                 "name":"flog",
                  "point":true,
                  "properties":[
                         {
                          "name":"chance",
                          "type":"string",
-                         "value":"0.4,0.1"
+                         "value":"0.5"
                         }],
                  "rotation":0,
                  "type":"Random",
@@ -460,13 +478,13 @@
                 {
                  "height":0,
                  "id":169,
-                 "name":"flog,flogLarge",
+                 "name":"flog",
                  "point":true,
                  "properties":[
                         {
                          "name":"chance",
                          "type":"string",
-                         "value":"0.4,0.1"
+                         "value":"0.5"
                         }],
                  "rotation":0,
                  "type":"Random",
@@ -478,13 +496,13 @@
                 {
                  "height":0,
                  "id":170,
-                 "name":"flog,flogLarge",
+                 "name":"flog",
                  "point":true,
                  "properties":[
                         {
                          "name":"chance",
                          "type":"string",
-                         "value":"0.4,0.1"
+                         "value":"0.5"
                         }],
                  "rotation":0,
                  "type":"Random",
@@ -1081,7 +1099,7 @@
          "y":0
         }],
  "nextlayerid":9,
- "nextobjectid":230,
+ "nextobjectid":231,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2020.12.18",

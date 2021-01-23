@@ -417,13 +417,13 @@
                 {
                  "height":0,
                  "id":22,
-                 "name":"flog,flogLarge",
+                 "name":"flog",
                  "point":true,
                  "properties":[
                         {
                          "name":"chance",
                          "type":"string",
-                         "value":"0.4,0.1"
+                         "value":"0.5"
                         }],
                  "rotation":0,
                  "type":"Random",
