@@ -61,7 +61,7 @@ export default {
           return v < 0 ? `-=${Math.abs(v)}` : `+=${v}`
         }
         const x = getRandomAddition(-12, 12)
-        const y = getRandomAddition(6, 17)
+        const y = getRandomAddition(10, 25)
         data.tween = {
           x, y: '-=5',
           duration: 100,

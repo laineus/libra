@@ -43,7 +43,7 @@ export default {
           // 手紙のみ
           await speakHachi(t('events.pityPenguinFriend.solve3'))
         }
-        await field.dropItem('apple')
+        await field.dropItem('apple', hachi.object)
         state.events.pityPenguin = PITY_STEPS.SOLVED
       } else if (state.events.pityPenguin >= PITY_STEPS.SOLVED) {
         await speakHachi(t('events.pityPenguinFriend.solved'))

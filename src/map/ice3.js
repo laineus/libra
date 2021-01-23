@@ -56,10 +56,10 @@ export default {
     })
 
     // PITY
-    const firend = field.getObjectById(4)
-    const speakFriend = talk.getSpeakScripts(new Talker('ペンギン', anton.object))
+    const friend = field.getObjectById(4)
+    const speakFriend = talk.getSpeakScripts(new Talker('ペンギン', friend.object))
 
-    firend.setTapEvent(async () => {
+    friend.setTapEvent(async () => {
       if (state.events.pityPenguin === PITY_STEPS.NULL) {
         const scripts = t('events.pityPenguinFriend.start1').concat(t('events.pityPenguinFriend.start2'))
         await speakFriend(scripts)
@@ -67,7 +67,7 @@ export default {
       } else if (state.events.pityPenguin === PITY_STEPS.STARTED) {
         if (bag.hasItem('gardenia')) {
           await speakFriend(t('events.pityPenguinFriend.found1'))
-          await field.dropItem('pityLetter')
+          await field.dropItem('pityLetter', friend.object)
           state.events.pityPenguin = PITY_STEPS.FOUND
         } else {
           await speakFriend(t('events.pityPenguinFriend.start2'))
@@ -77,7 +77,7 @@ export default {
           await speakFriend(t('events.pityPenguinFriend.found2'))
         } else {
           await speakFriend(t('events.pityPenguinFriend.lost'))
-          await field.dropItem('pityLetter')
+          await field.dropItem('pityLetter', friend.object)
         }
       } else if (state.events.pityPenguin === PITY_STEPS.SOLVED) {
         await speakFriend(t('events.pityPenguinFriend.solved'))

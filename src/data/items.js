@@ -40,6 +40,7 @@ export default [
   makeItem('uminoke'),
   makeItem('unadon'),
   makeItem('antonLetter', { texture: 'item/letter' }),
+  makeItem('pityLetter', { texture: 'item/letter' }),
   makeCharacter('ladybird'),
   makeCharacter('stagBeetle'),
   makeCharacter('beetle'),
