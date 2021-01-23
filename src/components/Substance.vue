@@ -2,13 +2,13 @@
   <div>
     <Container ref="object" :visible="unref(visible)" :x="initX" :y="initY" :width="imgWidth" :height="imgWidth" :depth="depth" :tween="tween" @create="create">
       <template v-if="imageTexture">
-        <Image v-if="hp > 0" ref="image" :texture="imageTexture" :frame="frame" :originX="0.5" :originY="1" :alpha="alpha" :pipeline="pipeline" />
+        <Image v-if="hp > 0" ref="image" :texture="imageTexture" :frame="frame" :originX="0.5" :originY="1" :scale="scale" :alpha="alpha" :pipeline="pipeline" />
         <Break v-else :texture="imageTexture" :initialFrame="frame" @broken="$emit('del')" />
       </template>
       <slot />
     </Container>
     <TapArea v-if="tapEvent.event.value" :visible="unref(visible) && checkable" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @tap="tapEvent.exec" />
-    <GrabArea v-else-if="capturable" :visible="unref(visible) && grabbable" :name="name" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @grab="alpha = 0.5" @capture="$emit('del')" @cancel="alpha = 1" />
+    <GrabArea v-else-if="capturable" :visible="unref(visible) && grabbable" :name="name" :scale="scale" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @grab="alpha = 0.5" @capture="$emit('del')" @cancel="alpha = 1" />
   </div>
 </template>
 
@@ -25,6 +25,7 @@ export default {
   props: {
     initX: { default: 0 },
     initY: { default: 0 },
+    scale: { default: 1 },
     name: { default: null },
     texture: { default: null },
     pipeline: { default: null },

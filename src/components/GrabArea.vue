@@ -12,7 +12,8 @@ export default {
   components: { Container, Image },
   props: {
     follow: { default: null },
-    name: { default: null }
+    name: { default: null },
+    scale: { default: null }
   },
   emits: ['grab', 'capture', 'cancel'],
   setup (props, context) {
@@ -25,7 +26,7 @@ export default {
       menu.value.select('bag').then(menuBag => {
         data.grabbing = true
         context.emit('grab')
-        menuBag.grabItem({ key: props.name }, 'capture').then(bool => {
+        menuBag.grabItem({ key: props.name, scale: props.scale }, 'capture').then(bool => {
           data.grabbing = false
           context.emit(bool ? 'capture' : 'cancel')
         })

@@ -1,8 +1,8 @@
 <template>
   <MenuContainer ref="container" :arrowX="25 + (1 * 60)" :height="415" :title="'Bag'" :visible="grab.mode !== 'dispose'">
-    <Image v-for="v in bagItems" :key="v.id" :texture="keyToTexture(v.key)" frame="__BASE" :x="v.bagX" :y="v.bagY" :origin="0.5" :visible="grab.item !== v" @pointerdown="grabItem(v, 'move')" />
+    <Image v-for="v in bagItems" :key="v.id" :texture="keyToTexture(v.key)" frame="__BASE" :x="v.bagX" :y="v.bagY" :scale="v.scale" :origin="0.5" :visible="grab.item !== v" @pointerdown="grabItem(v, 'move')" />
   </MenuContainer>
-  <Image v-if="grab.item" ref="grabRef" :texture="keyToTexture(grab.item.key)" frame="__BASE" :x="grab.x" :y="grab.y" :origin="0.5" @pointerup="p => drop(p)" />
+  <Image v-if="grab.item" ref="grabRef" :texture="keyToTexture(grab.item.key)" frame="__BASE" :x="grab.x" :y="grab.y" :scale="grab.item.scale" :origin="0.5" @pointerup="p => drop(p)" />
 </template>
 
 <script>
@@ -60,7 +60,7 @@ export default {
       const hHalf = grabRef.value.height.half
       if (grab.mode === 'dispose') {
         const itemData = keyToItemData(grab.item.key)
-        field.addObject({ type: itemData.type, name: itemData.key, x: grab.x + camera.scrollX, y: grab.y + camera.scrollY + hHalf })
+        field.addObject({ type: itemData.type, name: itemData.key, x: grab.x + camera.scrollX, y: grab.y + camera.scrollY + hHalf * (grab.item.scale ?? 1), scale: grab.item.scale })
         storage.state.bagItems.delete(grab.item)
         grab.resolver()
         context.emit('close')
@@ -73,6 +73,7 @@ export default {
           storage.state.bagItems.push({
             id: Math.randomInt(1000000, 9999999),
             key: grab.item.key,
+            scale: grab.item.scale,
             bagX: Math.round(Math.fix(pointer.x - offsetX.value, wHalf, WIDTH - wHalf)),
             bagY: Math.round(Math.fix(pointer.y - offsetY.value, hHalf, HEIGHT - hHalf))
           })
