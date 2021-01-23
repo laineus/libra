@@ -39,7 +39,7 @@ export default {
       following.walkToTargetPosition(props.speed)
     })
     return {
-      object, substance,
+      object, image, substance,
       frame,
       lookTo,
       damage: () => substance.value?.damage(),

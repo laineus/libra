@@ -3,7 +3,7 @@
     <Container ref="object" :visible="unref(visible)" :x="initX" :y="initY" :width="imgWidth" :height="imgWidth" :depth="depth" :tween="tween" @create="create">
       <template v-if="imageTexture">
         <Image v-if="hp > 0" ref="image" :texture="imageTexture" :frame="frame" :originX="0.5" :originY="1" :scale="scale" :alpha="alpha" :pipeline="pipeline" />
-        <Break v-else :texture="imageTexture" :initialFrame="frame" @broken="$emit('del')" />
+        <Break v-else :texture="imageTexture" :scale="scale" :initialFrame="frame" @broken="$emit('del')" />
       </template>
       <slot />
     </Container>

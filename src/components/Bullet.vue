@@ -24,8 +24,8 @@ export default {
     })
     onPreUpdate(() => {
       const obj = object.value
-      const found = field.value.charas.concat(field.value.substances).map(v => v.ref.value).filter(Boolean).find(v => {
-        return Math.abs(obj.x - v.object.x) < v.object.width.half && Math.abs(obj.y - (v.object.y - v.object.height.half)) < v.object.height.half && v.hp > 0
+      const found = field.value.charas.concat(field.value.substances).map(v => v.ref.value).filter(v => v?.hp > 0).find(v => {
+        return Math.abs(obj.x - v.object.x) < (v.object.width.half * v.image.scaleX) && Math.abs(obj.y - (v.object.y - v.object.height.half)) < (v.object.height.half * v.image.scaleY)
       })
       if (found) {
         context.emit('del')
