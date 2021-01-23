@@ -1,5 +1,5 @@
 import { inject } from 'vue'
-import { PITY_STEPS } from '@/map/ice1'
+import { PITY_STEPS } from '@/map/ice3'
 import Talker from '@/util/Talker'
 export default {
   name: '氷4',
@@ -11,7 +11,7 @@ export default {
     const bag = inject('bag')
 
     const hachi = field.getObjectById(4)
-    const speakHachi = talk.getSpeakScripts(new Talker('ペンギン', anton.object))
+    const speakHachi = talk.getSpeakScripts(new Talker('ペンギン', hachi.object))
 
     hachi.setTapEvent(async () => {
       if (state.events.pityPenguin < PITY_STEPS.FOUND) {

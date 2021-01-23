@@ -7,7 +7,9 @@ import cave1 from '@/map/cave1'
 import cave2 from '@/map/cave2'
 import cave3 from '@/map/cave3'
 import ice1 from '@/map/ice1'
+import ice2 from '@/map/ice2'
 import ice3 from '@/map/ice3'
+import ice4 from '@/map/ice4'
 export default {
   home1,
   forest2,
@@ -18,5 +20,7 @@ export default {
   cave2,
   cave3,
   ice1,
-  ice3
+  ice2,
+  ice3,
+  ice4
 }

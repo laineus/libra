@@ -1,9 +1,9 @@
 import { inject } from 'vue'
+import Talker from '@/util/Talker'
 const STEPS = {
   NULL: 0,
   COMPLETED: 1
 }
-import Talker from '@/util/Talker'
 export default {
   name: '氷2',
   async create () {
