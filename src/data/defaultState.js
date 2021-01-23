@@ -33,6 +33,7 @@ export default {
     snakeFlog: 0,
     strawDoll: 0,
     curse: 0,
-    eel: 0
+    eel: 0,
+    liveForEveryone: 0
   }
 }
