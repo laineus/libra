@@ -7,8 +7,8 @@
       </template>
       <slot />
     </Container>
-    <TapArea v-if="tapEvent.event.value" :visible="unref(visible) && checkable" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @tap="tapEvent.exec" />
-    <GrabArea v-else-if="capturable" :visible="unref(visible) && grabbable" :name="name" :scale="scale" :width="imgWidth + 15" :height="imgHeight + 40" :follow="object" @grab="alpha = 0.5" @capture="$emit('del')" @cancel="alpha = 1" />
+    <TapArea v-if="tapEvent.event.value" :visible="unref(visible) && checkable" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @tap="tapEvent.exec" />
+    <GrabArea v-else-if="capturable" :visible="unref(visible) && grabbable" :name="name" :scale="scale" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @grab="alpha = 0.5" @capture="$emit('del')" @cancel="alpha = 1" />
   </div>
 </template>
 
