@@ -1,7 +1,7 @@
 import { inject } from 'vue'
 import { STEPS as EEL_STEPS } from '@/map/ice1'
 import Talker from '@/util/Talker'
-const PITY_STEPS = {
+export const PITY_STEPS = {
   NULL: 0,
   STARTED: 1,
   FOUND: 2,
