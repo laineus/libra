@@ -56,13 +56,18 @@ export default {
     const setCapturable = bool => data.capturable = bool
     const drop = () => {
       return new Promise(resolve => {
-        const x = ['-=5', '+=5'].random()
+        const getRandomAddition = (min, max) => {
+          const v = Math.randomInt(min, max)
+          return v < 0 ? `-=${Math.abs(v)}` : `+=${v}`
+        }
+        const x = getRandomAddition(-12, 12)
+        const y = getRandomAddition(6, 17)
         data.tween = {
           x, y: '-=5',
           duration: 100,
           onComplete: (v) => {
             data.tween = {
-              x, y: '+=13',
+              x, y: y,
               duration: 100,
               onComplete: () => resolve()
             }

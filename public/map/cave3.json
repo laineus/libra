@@ -123,6 +123,60 @@
                  "width":0,
                  "x":852.631578947369,
                  "y":416.842105263158
+                }, 
+                {
+                 "height":0,
+                 "id":5,
+                 "name":"crystal",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":239.408837279445,
+                 "y":650.954607148243
+                }, 
+                {
+                 "height":0,
+                 "id":6,
+                 "name":"crystal",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":273.044789624491,
+                 "y":302.723571105414
+                }, 
+                {
+                 "height":0,
+                 "id":7,
+                 "name":"crystal",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":362.08113406726,
+                 "y":710.312170110089
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -142,7 +196,7 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":5,
+ "nextobjectid":8,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2020.12.18",

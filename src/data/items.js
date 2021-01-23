@@ -35,7 +35,7 @@ export default [
   makeItem('ruby', { minScale: 0.6 }),
   makeItem('crystal', {
     minScale: 0.6,
-    drop: [{ key: 'rock', chance: 0.3 }, { key: 'sapphire', chance: 0.25 }, { key: 'emerald', chance: 0.25 }, { key: 'amethyst', chance: 0.25 }, { key: 'ruby', chance: 0.25 }]
+    drop: [{ key: 'rock', chance: 0.5 }, { key: 'sapphire', chance: 0.25 }, { key: 'emerald', chance: 0.25 }, { key: 'amethyst', chance: 0.25 }, { key: 'ruby', chance: 0.25 }]
   }),
   makeItem('uminoke'),
   makeItem('unadon'),
