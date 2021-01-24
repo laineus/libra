@@ -16,6 +16,7 @@ export default {
     const gameScene = inject('gameScene')
     const uiScene = inject('uiScene')
     const storage = inject('storage')
+    window.assets = assets
     window.game = game
     window.state = storage.state
     const selectedMap = ref(null)

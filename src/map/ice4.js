@@ -19,7 +19,7 @@ export default {
       } else if (state.events.pityPenguin === PITY_STEPS.FOUND) {
         await speakHachi(t('events.pityPenguin.greet'))
         if (!bag.hasItem('pityLetter')) return
-        const hasGardenia = bag.hasGardenia('gardenia')
+        const hasGardenia = bag.hasItem('gardenia')
         const options = t('events.pityPenguin.options')
         if (!hasGardenia) options.shift()
         const opt = await uiScene.setSelector(options)
@@ -30,23 +30,23 @@ export default {
           // 手紙とクチナシ
           bag.removeItem('gardenia')
           uiScene.log.push(t('events.pityPenguin.log2'))
-          await speakHachi(t('events.pityPenguinFriend.solve1'))
-          const reactions = t('events.pityPenguinFriend.reactions')
+          await speakHachi(t('events.pityPenguin.solve1'))
+          const reactions = t('events.pityPenguin.reactions')
           const reaction1 = await uiScene.setSelector(reactions) === 0
           if (reaction1) {
-            await speakHachi(t('events.pityPenguinFriend.answer1'))
+            await speakHachi(t('events.pityPenguin.answer1'))
           } else {
-            await speakHachi(t('events.pityPenguinFriend.answer2'))
+            await speakHachi(t('events.pityPenguin.answer2'))
           }
-          await speakHachi(t('events.pityPenguinFriend.solve2'))
+          await speakHachi(t('events.pityPenguin.solve2'))
         } else {
           // 手紙のみ
-          await speakHachi(t('events.pityPenguinFriend.solve3'))
+          await speakHachi(t('events.pityPenguin.solve3'))
         }
         await field.dropItem('apple', hachi.object)
         state.events.pityPenguin = PITY_STEPS.SOLVED
       } else if (state.events.pityPenguin >= PITY_STEPS.SOLVED) {
-        await speakHachi(t('events.pityPenguinFriend.solved'))
+        await speakHachi(t('events.pityPenguin.solved'))
       }
     })
   }
