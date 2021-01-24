@@ -22,7 +22,7 @@ export default {
       const newEntered = lastEnteredFrame < (frames.game - FRAMES_FOR_NEW_ENTER)
       lastEnteredFrame = frames.game
       if (active.value && newEntered) {
-        player.value.object.body.velocity.normalize().scale(70)
+        player.value.stopWalking()
         areaEvent.exec()
       }
     }

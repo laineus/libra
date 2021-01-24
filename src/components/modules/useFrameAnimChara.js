@@ -1,5 +1,5 @@
 import useFrameAnim from '@/components/modules/useFrameAnim'
-import { inject, unref } from 'vue'
+import { unref } from 'vue'
 const WALK_ANIM = [
   { key: 'down', frames: [1, 0, 1, 2], duration: 7 },
   { key: 'left', frames: [4, 3, 4, 5], duration: 7 },
@@ -41,14 +41,10 @@ const getVelocityToDirectionKey = numOfDirection => r => {
 }
 export default (object, image, initR, numOfDirection) => {
   const velocityToDirectionKey = getVelocityToDirectionKey(numOfDirection)
-  const event = inject('event')
   const frameAnim = useFrameAnim(WALK_ANIM, image)
   let directionKey = velocityToDirectionKey(initR)
+  const base = () => baseFrames[directionKey]
   const play = () => {
-    if (event.state) {
-      unref(image).setFrame(baseFrames[directionKey])
-      return
-    }
     const walking = Math.hypot(unref(object).body.velocity.x, unref(object).body.velocity.y) > 1
     if (walking) {
       const r = Math.atan2(unref(object).body.velocity.y, unref(object).body.velocity.x)
@@ -61,6 +57,7 @@ export default (object, image, initR, numOfDirection) => {
     directionKey = typeof rOrKey === 'string' ? rOrKey : velocityToDirectionKey(rOrKey)
   }
   return {
+    base,
     play,
     lookTo
   }

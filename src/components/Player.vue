@@ -31,7 +31,7 @@ export default {
     const object = computed(() => substance.value?.object)
     const image = computed(() => substance.value?.image)
     const following = useFollowing(object)
-    const { play: playFrameAnim, lookTo } = useFrameAnimChara(object, image, props.initR, 8)
+    const { base: getBaseFrame, play: playFrameAnim, lookTo } = useFrameAnimChara(object, image, props.initR, 8)
     const gun = useGun(context, object)
     const getRadianToPointer = () => {
       const diffX = scene.input.manager.pointers[0]?.x + camera.value?.scrollX - object.value?.x
@@ -41,7 +41,6 @@ export default {
     onPreUpdate(() => {
       r.value = getRadianToPointer()
       frame.value = playFrameAnim()
-      if (event.state || menuOpened.value) return
       if (gun.mode.value) {
         lookTo(r.value)
       } else {
@@ -62,10 +61,16 @@ export default {
         following.clearTargetPosition()
       }
     })
+    const stopWalking = () => {
+      following.clearTargetPosition()
+      object.value.body.velocity.normalize().scale(0)
+      frame.value = getBaseFrame()
+    }
     return {
       object, substance,
       gun,
       r, frame, lookTo,
+      stopWalking,
       // Following
       setTargetPosition: following.setTargetPosition,
       clearTargetPosition: following.clearTargetPosition
