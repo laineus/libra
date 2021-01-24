@@ -1,12 +1,17 @@
 export default {
   title: 'サンプルゲーム',
+  name: {
+    libra: 'リブラ',
+    amili: 'アミリ'
+  },
+  places: {
+    home: '部屋'
+  },
   events: {
-    name: {
-      libra: 'リブラ',
-      amili: 'アミリ'
-    },
-    places: {
-      home: '部屋'
+    libra: {
+      exclamation: '！',
+      question: '？',
+      silence: '………。'
     },
     forest2Kajitsu: {
       walk: [
@@ -585,6 +590,17 @@ export default {
       ],
       solved: ['届けてきてくれたようだな。あんたのおかげで助かったよ。'],
       completed: ['女に騙されるのは恥ずかしい事なんかじゃあないさ。']
+    },
+    dark: {
+      kajitsu1: ['それが懐かしいですか？'],
+      kajitsu2: ['ここがどこだか思い出しましたか？'],
+      kajitsu3: [
+        '思い出せませんか…。',
+        'あなたがこの世界に来て一ヶ月ほど経ちました。',
+        'だけどあなたは何故ここへ来たのかを忘れている。'
+      ],
+      kajitsu4: ['このままではアミリさんが危ないですよ。'],
+      kajitsu5: ['私はこの先で待っています。必ず来てください。']
     }
   }
 }

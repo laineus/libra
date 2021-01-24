@@ -67,7 +67,7 @@
          "name":"events",
          "objects":[
                 {
-                 "height":64,
+                 "height":96,
                  "id":1,
                  "name":"home1",
                  "properties":[
@@ -153,6 +153,28 @@
                  "width":64,
                  "x":1216,
                  "y":608
+                }, 
+                {
+                 "height":96,
+                 "id":6,
+                 "name":"dark1",
+                 "properties":[
+                        {
+                         "name":"fieldX",
+                         "type":"int",
+                         "value":35
+                        }, 
+                        {
+                         "name":"fieldY",
+                         "type":"int",
+                         "value":11
+                        }],
+                 "rotation":0,
+                 "type":"Gate",
+                 "visible":true,
+                 "width":96,
+                 "x":1056,
+                 "y":0
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -161,7 +183,7 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":6,
+ "nextobjectid":7,
  "orientation":"orthogonal",
  "properties":[
         {

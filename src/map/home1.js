@@ -1,7 +1,7 @@
 import { inject } from 'vue'
 import Talker from '@/util/Talker'
 export default {
-  name: t('events.places.home'),
+  name: t('places.home'),
   bgm: null,
   create () {
     const bag = inject('bag')
@@ -13,7 +13,7 @@ export default {
     let talked = false
     const amili = field.getObjectById(7)
     amili.setCapturable(false)
-    const tAmili = new Talker(t('events.name.amili'), amili.object)
+    const tAmili = new Talker(t('name.amili'), amili.object)
     const speakAmiliScripts = talk.getSpeakScripts(tAmili)
     const appleEvent = async () => {
       const result = await uiScene.setSelector(t('events.home.giveApple'))
