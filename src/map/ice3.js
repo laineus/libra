@@ -22,9 +22,9 @@ export default {
     const speakAnton = talk.getSpeakScripts(new Talker('アントン先生', anton.object))
 
     anton.setTapEvent(async () => {
-      if (state.events.eel < EEL_STEPS.STATED) {
+      if (state.events.eel < EEL_STEPS.STARTED) {
         return await speakAnton(t('events.anton.start1'))
-      } else if (state.events.eel === EEL_STEPS.STATED) {
+      } else if (state.events.eel === EEL_STEPS.STARTED) {
         await speakAnton(t('events.anton.start1'))
         if (!bag.hasItem('uminoke')) return
         const cancel = await uiScene.setSelector(t('events.anton.startOptions1')) === 1
@@ -38,20 +38,24 @@ export default {
         if (approgize) {
           const scripts = t('events.anton.answer2')
           await speakAnton(scripts.splice(0, 2))
-          await uiScene.transition(1000)()
+          const onComplete = await uiScene.transition(1000)
+          await onComplete()
           await speakAnton(scripts)
-          field.dropItem('unadon')
-          await field.dropItem('antonLetter')
+          field.dropItem('unadon', anton.object)
+          await field.dropItem('antonLetter', anton.object)
         } else {
           const scripts = t('events.anton.answer1')
           await speakAnton(scripts.splice(0, 1))
-          await uiScene.transition(1000)()
+          const onComplete = await uiScene.transition(1000)
+          await onComplete()
           await speakAnton(scripts)
-          await field.dropItem('unadon')
+          await field.dropItem('unadon', anton.object)
         }
         state.events.eel = EEL_STEPS.SOLVED
-      } else if (state.events.eel >= EEL_STEPS.SOLVED) {
-        await speakAnton(t('events.anton.completed'))
+      } else if (state.events.eel === EEL_STEPS.SOLVED) {
+        await speakAnton(t('events.anton.solved'))
+      } else if (state.events.eel > EEL_STEPS.SOLVED) {
+        await speakAnton(t('events.anton.start1'))
       }
     })
 
