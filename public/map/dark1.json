@@ -74,6 +74,41 @@
                  "width":96,
                  "x":512,
                  "y":0
+                }, 
+                {
+                 "height":0,
+                 "id":3,
+                 "name":"bike1",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Substance",
+                 "visible":true,
+                 "width":0,
+                 "x":561.333333333333,
+                 "y":466.666666666667
+                }, 
+                {
+                 "height":229.333333333333,
+                 "id":4,
+                 "name":"",
+                 "rotation":0,
+                 "type":"Area",
+                 "visible":true,
+                 "width":313.333333333333,
+                 "x":406.666666666667,
+                 "y":412
+                }, 
+                {
+                 "height":0,
+                 "id":5,
+                 "name":"kajitsu",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Character",
+                 "visible":true,
+                 "width":0,
+                 "x":561.333333333333,
+                 "y":669.333333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -82,7 +117,7 @@
          "y":0
         }],
  "nextlayerid":4,
- "nextobjectid":3,
+ "nextobjectid":6,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2020.12.18",

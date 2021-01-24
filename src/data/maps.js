@@ -10,6 +10,7 @@ import ice1 from '@/map/ice1'
 import ice2 from '@/map/ice2'
 import ice3 from '@/map/ice3'
 import ice4 from '@/map/ice4'
+import dark1 from '@/map/dark1'
 export default {
   home1,
   forest2,
@@ -22,5 +23,6 @@ export default {
   ice1,
   ice2,
   ice3,
-  ice4
+  ice4,
+  dark1
 }
