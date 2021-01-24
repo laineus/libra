@@ -44,7 +44,7 @@ export default {
       if (gun.mode.value) {
         lookTo(r.value)
       } else {
-        following.walkToTargetPosition(200)
+        following.walkToTargetPosition(event.state ? 100 : 200)
       }
       storage.state.x = Number(object.value.x)
       storage.state.y = Number(object.value.y)
