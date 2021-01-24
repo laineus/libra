@@ -22,7 +22,7 @@ export default {
       bag.removeItem('apple')
       await speakAmiliScripts(t('events.home.gaveApple'))
       const hangout = await uiScene.setSelector(t('events.home.reward')) === 0
-      await uiScene.transition(700)
+      const completeTransition = await uiScene.transition(700)
       state.status[hangout ? 'heart' : 'body'] += 1
       const position = field.positions[hangout ? 'entrance' : 'bed']
       field.player.lookTo(hangout ? 'up' : 'rightDown')
@@ -30,6 +30,7 @@ export default {
       amili.object.setPosition(position.x + 20, position.y)
       amili.lookTo(hangout ? 'up' : 'leftDown')
       uiScene.log.push(hangout ? '心の魅力が上がった' : '体の魅力が上がった')
+      await completeTransition()
     }
     const itemReaction = async () => {
       const keys = Object.keys(t('events.itemReactions'))

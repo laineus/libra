@@ -115,10 +115,10 @@ export default {
             { chara: tKajitsu, text: completed.shift() },
             { chara: tKajitsu, text: completed.shift() }
           ])
-          const onCompleted = await uiScene.transition(1000)
+          const completeTransition = await uiScene.transition(1000)
           state.events.intro = STEPS.COMPLETED
           gate.restoreEvent()
-          await onCompleted()
+          await completeTransition()
         }
       }
     })
@@ -132,9 +132,8 @@ export default {
     const execCurse = async () => {
       if (bag.hasItem('strawDoll')) {
         await speakTorrent(t('events.curser.exec1'))
-        const onCompleted = await uiScene.transition(1000)
+        await uiScene.transition(1000).then(complete => complete())
         state.events.curse = CURSE_STEPS.EXECUTED
-        await onCompleted()
         await speakTorrent(t('events.curser.exec2'))
       } else {
         await speakTorrent(t('events.curser.failed'))

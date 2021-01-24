@@ -43,7 +43,7 @@ export default {
       }
     }
     const setField = async (name, x, y, r) => {
-      await uiScene.value.transition(200)
+      const completeTransition = await uiScene.value.transition(200)
       fieldData.name = null
       nextTick(() => {
         storage.state.map = name
@@ -52,6 +52,7 @@ export default {
         fieldData.y = y
         fieldData.r = r
       })
+      completeTransition()
     }
     return {
       fps,

@@ -38,16 +38,14 @@ export default {
         if (approgize) {
           const scripts = t('events.anton.answer2')
           await speakAnton(scripts.splice(0, 2))
-          const onComplete = await uiScene.transition(1000)
-          await onComplete()
+          await uiScene.transition(1000).then(complete => complete())
           await speakAnton(scripts)
           field.dropItem('unadon', anton.object)
           await field.dropItem('antonLetter', anton.object)
         } else {
           const scripts = t('events.anton.answer1')
           await speakAnton(scripts.splice(0, 1))
-          const onComplete = await uiScene.transition(1000)
-          await onComplete()
+          await uiScene.transition(1000).then(complete => complete())
           await speakAnton(scripts)
           await field.dropItem('unadon', anton.object)
         }
