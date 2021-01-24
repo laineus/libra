@@ -37,7 +37,13 @@ export default [
     minScale: 0.6,
     drop: [{ key: 'rock', chance: 0.5 }, { key: 'sapphire', chance: 0.25 }, { key: 'emerald', chance: 0.25 }, { key: 'amethyst', chance: 0.25 }, { key: 'ruby', chance: 0.25 }]
   }),
-  makeItem('uminoke'),
+  makeItem('fish', { minScale: 0.7 }),
+  makeItem('uminoke', { texture: 'item/unagi' }),
+  makeItem('unagi', { minScale: 0.7 }),
+  makeItem('ice', {
+    minScale: 0.6,
+    drop: [{ key: 'fish', chance: 0.5 }, { key: 'fish', chance: 0.5 }, { key: 'unagi', chance: 0.03 }]
+  }),
   makeItem('unadon'),
   makeItem('antonLetter', { texture: 'item/letter' }),
   makeItem('pityLetter', { texture: 'item/letter' }),

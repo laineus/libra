@@ -144,7 +144,61 @@
          "draworder":"topdown",
          "id":5,
          "name":"items",
-         "objects":[],
+         "objects":[
+                {
+                 "height":0,
+                 "id":8,
+                 "name":"ice",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":342.385280701754,
+                 "y":546.666824561404
+                }, 
+                {
+                 "height":0,
+                 "id":9,
+                 "name":"ice",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":768.210280701755,
+                 "y":513.578824561404
+                }, 
+                {
+                 "height":0,
+                 "id":10,
+                 "name":"ice",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":458.912280701754,
+                 "y":317.929824561404
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -152,7 +206,7 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":5,
+ "nextobjectid":11,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2020.12.18",

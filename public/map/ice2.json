@@ -144,7 +144,79 @@
          "draworder":"topdown",
          "id":5,
          "name":"items",
-         "objects":[],
+         "objects":[
+                {
+                 "height":0,
+                 "id":9,
+                 "name":"ice",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":392.243404710406,
+                 "y":167.744464071137
+                }, 
+                {
+                 "height":0,
+                 "id":10,
+                 "name":"ice",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":351.884404710406,
+                 "y":543.592464071137
+                }, 
+                {
+                 "height":0,
+                 "id":11,
+                 "name":"ice",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":787.010404710406,
+                 "y":416.207464071137
+                }, 
+                {
+                 "height":0,
+                 "id":12,
+                 "name":"ice",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":629.356404710406,
+                 "y":581.429464071137
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -152,10 +224,10 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":5,
+ "nextobjectid":13,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"2020.08.05",
+ "tiledversion":"2020.12.18",
  "tileheight":32,
  "tilesets":[
         {

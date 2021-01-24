@@ -122,7 +122,97 @@
          "draworder":"topdown",
          "id":5,
          "name":"items",
-         "objects":[],
+         "objects":[
+                {
+                 "height":0,
+                 "id":9,
+                 "name":"ice",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":582.936564385468,
+                 "y":524.252502460116
+                }, 
+                {
+                 "height":0,
+                 "id":10,
+                 "name":"ice",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":466.871564385468,
+                 "y":689.874502460116
+                }, 
+                {
+                 "height":0,
+                 "id":11,
+                 "name":"ice",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":1034.15856438547,
+                 "y":607.715502460116
+                }, 
+                {
+                 "height":0,
+                 "id":12,
+                 "name":"ice",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":680.745564385468,
+                 "y":254.301502460116
+                }, 
+                {
+                 "height":0,
+                 "id":13,
+                 "name":"ice",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":432.964564385468,
+                 "y":219.090502460116
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -130,10 +220,10 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":4,
+ "nextobjectid":14,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"2020.08.05",
+ "tiledversion":"2020.12.18",
  "tileheight":32,
  "tilesets":[
         {
