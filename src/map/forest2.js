@@ -17,7 +17,6 @@ export default {
     const camera = inject('camera').value
     const talk = inject('talk').value
     const { exec } = inject('event')
-    const sleep = inject('sleep')
     const bag = inject('bag')
 
     const sumStatus = computed(() => state.status.heart + state.status.body)

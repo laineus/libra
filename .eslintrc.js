@@ -28,6 +28,7 @@ module.exports = {
     Phaser: true,
     greenworks: true,
     t: true,
+    sleep: true,
     l: true,
     ENV: true
   }

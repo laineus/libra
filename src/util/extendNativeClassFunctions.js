@@ -86,5 +86,6 @@ export default (screenWidth, screenHeight, tileSize) => {
   // Array class method
   Array.range = (start, end) => (end - start + 1).toArray().map(i => i + start)
   // Global variables
+  window.sleep = duration => new Promise(resolve => setTimeout(resolve, duration))
   window.l = console.log
 }

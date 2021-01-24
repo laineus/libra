@@ -54,7 +54,6 @@ export default {
     provide('audio', new AudioController(game.sound))
     provide('storage', sdm)
     provide('setting', setting)
-    provide('sleep', time => new Promise(resolve => setTimeout(resolve, time)))
     provide('bag', {
       hasItem: (key, count = 1, { bag = false, room = false, field = false } = { bag: true }) => {
         return [].concat(
