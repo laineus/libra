@@ -22,7 +22,6 @@ export default {
   emits: ['del'],
   setup (props, context) {
     const scene = inject('scene')
-    const event = inject('event')
     const substance = ref(null)
     const frame = ref(0)
     const object = computed(() => substance.value?.object)
@@ -35,7 +34,6 @@ export default {
     const { play: playFrameAnim, lookTo } = useFrameAnimChara(object, image, props.initR, numOfDirection)
     onPreUpdate(() => {
       frame.value = playFrameAnim()
-      if (event.state) return
       following.walkToTargetPosition(props.speed)
     })
     return {

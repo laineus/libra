@@ -1,4 +1,4 @@
-import { inject } from 'vue'
+import { computed, inject } from 'vue'
 import Talker from '@/util/Talker'
 const STEPS = { NULL: 0, COMPLETED: 1 }
 export default {
@@ -19,7 +19,7 @@ export default {
 
     kajitsu.setVisible(false)
 
-    area.setEvent(async () => {
+    const event = async () => {
       await speakLibra(t('events.libra.exclamation'))
       await libra.setTargetPosition((17).toPixelCenter, (16).toPixel)
       await sleep(1000)
@@ -44,7 +44,14 @@ export default {
       await speakKajitsu(t('events.dark.kajitsu4'))
       await speakLibra(t('events.libra.exclamation'))
       await speakKajitsu(t('events.dark.kajitsu5'))
+      await kajitsu.setTargetPosition((19).toPixelCenter, (15).toPixelCenter)
+      libra.lookTo('right')
+      await kajitsu.setTargetPosition((19).toPixelCenter, (14).toPixel)
+      libra.lookTo('up')
+      await kajitsu.setTargetPosition((16).toPixelCenter, (5).toPixel)
       kajitsu.setVisible(false)
-    })
+      state.events.dark = STEPS.COMPLETED
+    }
+    area.setEvent(computed(() => state.events.dark === STEPS.COMPLETED ? null : event))
   }
 }
