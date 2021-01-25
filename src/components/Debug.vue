@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import assets from 'assets'
+import assets from '../assets.json'
 import { ref, inject } from 'vue'
 export default {
   setup () {

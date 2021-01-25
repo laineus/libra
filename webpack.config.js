@@ -78,7 +78,7 @@ module.exports = (_env, argv) => ({
     }),
     // new AutoTileWebpackPlugin(autotileConfig),
     // new TileExtrudeWebpackPlugin(extrudeConfig),
-    new PhaserAssetsWebpackPlugin(assetsConfig),
+    new PhaserAssetsWebpackPlugin(assetsConfig, { documentRoot: './public', output: './src/assets.json' }),
     new webpack.ProvidePlugin({
       t: [path.resolve(__dirname, 'src/data/translate'), 'default']
     }),

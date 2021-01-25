@@ -1,7 +1,7 @@
 import 'phaser'
 import { createPhavuerApp } from 'phavuer'
 import registerTiledJSONExternalLoader from 'phaser-tiled-json-external-loader'
-import assets from 'assets'
+import assets from './assets.json'
 import extendNativeClassFunctions from '@/util/extendNativeClassFunctions'
 import App from '@/components/App'
 import config from '@/data/config'

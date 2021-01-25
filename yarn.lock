@@ -5721,10 +5721,10 @@ pend@~1.2.0:
   resolved "https://registry.yarnpkg.com/pend/-/pend-1.2.0.tgz#7a57eb550a6783f9115331fcf4663d5c8e007a50"
   integrity sha1-elfrVQpng/kRUzH89GY9XI4AelA=
 
-phaser-assets-webpack-plugin@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/phaser-assets-webpack-plugin/-/phaser-assets-webpack-plugin-1.1.0.tgz#88e5dee18671eae969dbe468294949c036e48c81"
-  integrity sha512-mdgaBglu52YHOi8iqzq0neXnttSkFHLdg5+wlAzeWCvO/Tt0PxVh5cY+dduoW9fa7mfZsoBCKLPl6U/9xvnpZQ==
+phaser-assets-webpack-plugin@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/phaser-assets-webpack-plugin/-/phaser-assets-webpack-plugin-2.0.0.tgz#35dd5290b0b39e447ec9875fb5649123d8e10c6c"
+  integrity sha512-s5GaDOkyTfx3LMzlYv9sXNT5qdjU32K7wt+1c4iPiwhiyJXm+Py91sbaJRmYTopuz2ijqCjXo4O4s+kZikcqrg==
   dependencies:
     image-size "^0.9.1"
 
