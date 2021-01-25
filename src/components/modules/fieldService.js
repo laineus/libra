@@ -1,11 +1,3 @@
-export const DEPTH = {
-  GROUND: 0,
-  PARTICLES: 100000,
-  TOP: 110000,
-  LIGHT: 120000,
-  SUN_LIGHT: 140000,
-  DARKNESS: 130000
-}
 const pathToName = path => path.split('/').slice(-1)[0].split('.')[0]
 const mapProperties = (base, properties) => {
   if (properties && Array.isArray(properties)) {

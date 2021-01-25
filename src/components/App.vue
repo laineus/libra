@@ -28,6 +28,7 @@ export default {
       },
       exec (event) {
         eventManager.setState(true)
+        gameScene.value?.field?.player.stopWalking()
         const promise = event()
         if (!promise || typeof promise.then !== 'function') throw new Error('Event must returns Promise instance')
         return promise.then(result => {
