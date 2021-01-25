@@ -8,7 +8,6 @@ export default {
     const field = inject('field').value
     const talk = inject('talk').value
     const state = inject('storage').state
-    const bag = inject('bag')
     const libra = inject('player').value
 
     const area = field.getObjectById(4)
@@ -17,18 +16,35 @@ export default {
     const tKajitsu = new Talker('カジツ', kajitsu.object)
     const speakLibra = talk.getSpeakScripts(tLibra)
     const speakKajitsu = talk.getSpeakScripts(tKajitsu)
-    const talkBoth = (scripts, map) => {
-      const list = scripts.map((text, i) => {
-        return { chara: map[i], text }
-      })
-      return talk.setTalk(list)
-    }
+
+    kajitsu.setVisible(false)
 
     area.setEvent(async () => {
-      await sleep(1000)
       await speakLibra(t('events.libra.exclamation'))
-      await libra.setTargetPosition(libra.object.x, libra.object.y - (4).toPixel)
+      await libra.setTargetPosition((17).toPixelCenter, (16).toPixel)
       await sleep(1000)
+      await speakLibra(t('events.libra.silence'))
+      const completeTransition = await uiScene.transition(500)
+      await sleep(500)
+      uiScene.setScreenMessage(t('events.dark.kajitsu1'))
+      await sleep(2500)
+      uiScene.setScreenMessage(null)
+      await sleep(500)
+      kajitsu.setVisible(true)
+      kajitsu.lookTo('up')
+      await completeTransition()
+      await sleep(500)
+      libra.lookTo('down')
+      await speakLibra(t('events.libra.exclamation'))
+      await sleep(500)
+      await speakKajitsu(t('events.dark.kajitsu2'))
+      await speakLibra(t('events.libra.question'))
+      await speakKajitsu(t('events.dark.kajitsu3'))
+      await sleep(1000)
+      await speakKajitsu(t('events.dark.kajitsu4'))
+      await speakLibra(t('events.libra.exclamation'))
+      await speakKajitsu(t('events.dark.kajitsu5'))
+      kajitsu.setVisible(false)
     })
   }
 }

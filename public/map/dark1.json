@@ -1,4 +1,11 @@
 { "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "target":"."
+        }
+    },
  "height":36,
  "infinite":false,
  "layers":[
@@ -20,6 +27,12 @@
          "id":2,
          "name":"red_ceil",
          "opacity":1,
+         "properties":[
+                {
+                 "name":"depth",
+                 "type":"string",
+                 "value":"CEIL"
+                }],
          "type":"tilelayer",
          "visible":true,
          "width":36,
@@ -120,7 +133,7 @@
  "nextobjectid":6,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"2020.12.18",
+ "tiledversion":"2020.08.05",
  "tileheight":32,
  "tilesets":[
         {
