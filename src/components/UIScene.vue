@@ -11,6 +11,7 @@
       <Image v-for="v in 5" :key="v" texture="hp" :frame="Math.round(state.status.hp / 20) >= v ? 0 : 1" :x="40 + ((v - 1) * 42)" :y="(35).byBottom" />
     </template>
     <Rectangle :fillColor="0x000000" :origin="0" :width="config.WIDTH" :height="config.HEIGHT" :depth="config.DEPTH.TRANSITION" :alpha="transitionAlpha" />
+    <Text v-if="screenMessage" :text="screenMessage" :x="config.WIDTH.half" :y="config.HEIGHT.half" :size="17" color="white" :origin="0.5" :depth="config.DEPTH.TRANSITION" />
   </Scene>
 </template>
 
@@ -23,9 +24,10 @@ import Talk from './Talk'
 import Selector from './Selector'
 import Menu from './Menu'
 import Log from './Log'
+import Text from './Text'
 import config from '@/data/config'
 export default {
-  components: { Scene, Title, Controller, Rectangle, Circle, Image, Talk, Selector, Menu, Log },
+  components: { Scene, Title, Controller, Rectangle, Circle, Image, Talk, Selector, Menu, Log, Text },
   setup (props) {
     const mobile = inject('mobile')
     const frames = inject('frames')
@@ -42,6 +44,8 @@ export default {
     }
     const titleScreen = ref(true)
     const transitionAlpha = ref(0)
+    const screenMessage = ref(null)
+    const setScreenMessage = text => screenMessage.value = text
     const nealestCheckable = ref(null)
     const selector = reactive({ list: null, resolver: null, x: 0, y: 0 })
     const setSelector = list => {
@@ -86,6 +90,7 @@ export default {
       transitionAlpha,
       nealestCheckable,
       selector, setSelector,
+      screenMessage, setScreenMessage,
       check: () => {
         if (!nealestCheckable.value) return
         nealestCheckable.value.execTapEvent()
