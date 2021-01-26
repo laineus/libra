@@ -6,3 +6,5 @@
 ../img/map/tilesets/ice_ceil.tmx
 ../img/map/tilesets/base_ceil.tmx
 ../img/map/tilesets/red_ceil.tmx
+../img/map/tilesets/road_line.tmx
+../img/map/tilesets/road_step.tmx
