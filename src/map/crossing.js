@@ -2,7 +2,7 @@ import { computed, inject } from 'vue'
 import Talker from '@/util/Talker'
 import { MAIN_STEPS } from './consts'
 export default {
-  name: '暗闇',
+  name: '交差点',
   async create () {
     const uiScene = inject('uiScene').value
     const field = inject('field').value
@@ -21,37 +21,32 @@ export default {
 
     const event = async () => {
       await speakLibra(t('events.libra.exclamation'))
-      await libra.setTargetPosition((17).toPixelCenter, (16).toPixel)
+      await libra.setTargetPosition((27).toPixelCenter, (16).toPixelCenter)
+      kajitsu.lookTo('up')
       await sleep(1000)
       await speakLibra(t('events.libra.silence'))
       const completeTransition = await uiScene.transition(500)
       await sleep(500)
-      uiScene.setScreenMessage(t('events.dark.kajitsu1'))
+      uiScene.setScreenMessage(t('events.crossing.start1'))
       await sleep(2500)
       uiScene.setScreenMessage(null)
       await sleep(500)
       kajitsu.setVisible(true)
-      kajitsu.lookTo('up')
+      kajitsu.lookTo('left')
       await completeTransition()
       await sleep(500)
-      libra.lookTo('down')
-      await speakLibra(t('events.libra.exclamation'))
-      await sleep(500)
-      await speakKajitsu(t('events.dark.kajitsu2'))
-      await speakLibra(t('events.libra.question'))
-      await speakKajitsu(t('events.dark.kajitsu3'))
-      await sleep(1000)
-      await speakKajitsu(t('events.dark.kajitsu4'))
-      await speakLibra(t('events.libra.exclamation'))
-      await speakKajitsu(t('events.dark.kajitsu5'))
-      await kajitsu.setTargetPosition((19).toPixelCenter, (15).toPixelCenter)
       libra.lookTo('right')
-      await kajitsu.setTargetPosition((19).toPixelCenter, (14).toPixel)
+      await speakKajitsu(t('events.crossing.start2'))
+      await speakLibra(t('events.libra.exclamation'))
+      await speakKajitsu(t('events.crossing.start3'))
+      await speakLibra(t('events.libra.silence'))
+      await speakKajitsu(t('events.crossing.start4'))
+      await kajitsu.setTargetPosition((29).toPixelCenter, (12).toPixelCenter)
       libra.lookTo('up')
-      await kajitsu.setTargetPosition((16).toPixelCenter, (5).toPixel)
+      await kajitsu.setTargetPosition((27).toPixelCenter, (4).toPixelCenter)
       kajitsu.setVisible(false)
-      state.events.main = MAIN_STEPS.DARK
+      state.events.main = MAIN_STEPS.CROSSING
     }
-    area.setEvent(computed(() => state.events.main < MAIN_STEPS.DARK ? event : null))
+    area.setEvent(computed(() => state.events.main < MAIN_STEPS.CROSSING ? event : null))
   }
 }

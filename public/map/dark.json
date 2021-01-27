@@ -69,17 +69,17 @@
                 {
                  "height":96,
                  "id":2,
-                 "name":"stomach",
+                 "name":"crossing",
                  "properties":[
                         {
                          "name":"fieldX",
                          "type":"int",
-                         "value":34
+                         "value":27
                         }, 
                         {
                          "name":"fieldY",
                          "type":"int",
-                         "value":4
+                         "value":27
                         }],
                  "rotation":0,
                  "type":"Gate",
