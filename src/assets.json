@@ -235,6 +235,10 @@
       "/map/forest5.json"
     ],
     [
+      "heart",
+      "/map/heart.json"
+    ],
+    [
       "home",
       "/map/home.json"
     ],
