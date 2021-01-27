@@ -191,8 +191,8 @@
   ],
   "tilemapTiledJSONExternal": [
     [
-      "base1",
-      "/map/base1.json"
+      "base",
+      "/map/base.json"
     ],
     [
       "cave1",
@@ -207,8 +207,12 @@
       "/map/cave3.json"
     ],
     [
-      "dark1",
-      "/map/dark1.json"
+      "crossing",
+      "/map/crossing.json"
+    ],
+    [
+      "dark",
+      "/map/dark.json"
     ],
     [
       "forest1",
@@ -231,8 +235,8 @@
       "/map/forest5.json"
     ],
     [
-      "home1",
-      "/map/home1.json"
+      "home",
+      "/map/home.json"
     ],
     [
       "ice1",
@@ -251,12 +255,8 @@
       "/map/ice4.json"
     ],
     [
-      "road",
-      "/map/road.json"
-    ],
-    [
-      "stomach1",
-      "/map/stomach1.json"
+      "stomach",
+      "/map/stomach.json"
     ]
   ],
   "audio": [

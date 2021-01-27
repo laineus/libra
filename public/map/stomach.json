@@ -69,7 +69,7 @@
                 {
                  "height":96,
                  "id":1,
-                 "name":"home1",
+                 "name":"home",
                  "properties":[
                         {
                          "name":"fieldX",
@@ -157,7 +157,7 @@
                 {
                  "height":96,
                  "id":6,
-                 "name":"dark1",
+                 "name":"dark",
                  "properties":[
                         {
                          "name":"fieldX",
