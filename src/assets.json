@@ -161,6 +161,18 @@
       "/img/map/extruded_tilesets/red_ceil.png"
     ],
     [
+      "tileset/road",
+      "/img/map/extruded_tilesets/road.png"
+    ],
+    [
+      "tileset/road_line",
+      "/img/map/extruded_tilesets/road_line.png"
+    ],
+    [
+      "tileset/road_step",
+      "/img/map/extruded_tilesets/road_step.png"
+    ],
+    [
       "tileset/stomach",
       "/img/map/extruded_tilesets/stomach.png"
     ],
@@ -237,6 +249,10 @@
     [
       "ice4",
       "/map/ice4.json"
+    ],
+    [
+      "road",
+      "/map/road.json"
     ],
     [
       "stomach1",
