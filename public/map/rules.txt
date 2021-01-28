@@ -8,3 +8,7 @@
 ../img/map/tilesets/red_ceil.tmx
 ../img/map/tilesets/road_line.tmx
 ../img/map/tilesets/road_step.tmx
+../img/map/tilesets/gray_ceil.tmx
+../img/map/tilesets/fall_sand.tmx
+../img/map/tilesets/fall_ceil.tmx
+../img/map/tilesets/coalmine_ceil.tmx
