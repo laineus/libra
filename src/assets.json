@@ -121,12 +121,36 @@
       "/img/map/extruded_tilesets/base_ceil.png"
     ],
     [
+      "tileset/carpet",
+      "/img/map/extruded_tilesets/carpet.png"
+    ],
+    [
       "tileset/cave",
       "/img/map/extruded_tilesets/cave.png"
     ],
     [
       "tileset/cave_ceil",
       "/img/map/extruded_tilesets/cave_ceil.png"
+    ],
+    [
+      "tileset/coalmine",
+      "/img/map/extruded_tilesets/coalmine.png"
+    ],
+    [
+      "tileset/coalmine_ceil",
+      "/img/map/extruded_tilesets/coalmine_ceil.png"
+    ],
+    [
+      "tileset/fall",
+      "/img/map/extruded_tilesets/fall.png"
+    ],
+    [
+      "tileset/fall_ceil",
+      "/img/map/extruded_tilesets/fall_ceil.png"
+    ],
+    [
+      "tileset/fall_sand",
+      "/img/map/extruded_tilesets/fall_sand.png"
     ],
     [
       "tileset/forest",
@@ -141,6 +165,10 @@
       "/img/map/extruded_tilesets/forest_sand.png"
     ],
     [
+      "tileset/gray_ceil",
+      "/img/map/extruded_tilesets/gray_ceil.png"
+    ],
+    [
       "tileset/home",
       "/img/map/extruded_tilesets/home.png"
     ],
@@ -149,12 +177,20 @@
       "/img/map/extruded_tilesets/home_ceil.png"
     ],
     [
+      "tileset/hospital",
+      "/img/map/extruded_tilesets/hospital.png"
+    ],
+    [
       "tileset/ice",
       "/img/map/extruded_tilesets/ice.png"
     ],
     [
       "tileset/ice_ceil",
       "/img/map/extruded_tilesets/ice_ceil.png"
+    ],
+    [
+      "tileset/mansion",
+      "/img/map/extruded_tilesets/mansion.png"
     ],
     [
       "tileset/red_ceil",
@@ -207,12 +243,32 @@
       "/map/cave3.json"
     ],
     [
+      "coalmine1",
+      "/map/coalmine1.json"
+    ],
+    [
+      "coalmine2",
+      "/map/coalmine2.json"
+    ],
+    [
+      "coalmine3",
+      "/map/coalmine3.json"
+    ],
+    [
       "crossing",
       "/map/crossing.json"
     ],
     [
       "dark",
       "/map/dark.json"
+    ],
+    [
+      "fall1",
+      "/map/fall1.json"
+    ],
+    [
+      "fall2",
+      "/map/fall2.json"
     ],
     [
       "forest1",
@@ -257,6 +313,10 @@
     [
       "ice4",
       "/map/ice4.json"
+    ],
+    [
+      "mansion1",
+      "/map/mansion1.json"
     ],
     [
       "stomach",
