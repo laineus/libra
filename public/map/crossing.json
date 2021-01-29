@@ -108,12 +108,12 @@
                         {
                          "name":"fieldX",
                          "type":"int",
-                         "value":17
+                         "value":25
                         }, 
                         {
                          "name":"fieldY",
                          "type":"int",
-                         "value":4
+                         "value":27
                         }],
                  "rotation":0,
                  "type":"Gate",
@@ -152,7 +152,7 @@
          "y":0
         }],
  "nextlayerid":14,
- "nextobjectid":6,
+ "nextobjectid":7,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2020.08.05",
