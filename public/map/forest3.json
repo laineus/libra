@@ -39,19 +39,19 @@
          "name":"events",
          "objects":[
                 {
-                 "height":32,
+                 "height":96,
                  "id":1,
                  "name":"forest1",
                  "properties":[
                         {
                          "name":"fieldX",
                          "type":"int",
-                         "value":23
+                         "value":26
                         }, 
                         {
                          "name":"fieldY",
                          "type":"int",
-                         "value":28
+                         "value":29
                         }],
                  "rotation":0,
                  "type":"Gate",
@@ -68,7 +68,7 @@
                         {
                          "name":"fieldX",
                          "type":"int",
-                         "value":34
+                         "value":33
                         }, 
                         {
                          "name":"fieldY",
@@ -78,7 +78,7 @@
                  "rotation":0,
                  "type":"Gate",
                  "visible":true,
-                 "width":64,
+                 "width":96,
                  "x":0,
                  "y":576
                 }, 
@@ -310,8 +310,8 @@
                  "type":"Random",
                  "visible":true,
                  "width":0,
-                 "x":77,
-                 "y":687
+                 "x":160,
+                 "y":672
                 }, 
                 {
                  "height":0,
@@ -958,7 +958,7 @@
  "nextobjectid":231,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"2020.12.18",
+ "tiledversion":"2019.12.11",
  "tileheight":32,
  "tilesets":[
         {
@@ -979,6 +979,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.4,
+ "version":1.2,
  "width":40
 }

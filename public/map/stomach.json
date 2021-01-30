@@ -89,7 +89,7 @@
                  "y":0
                 }, 
                 {
-                 "height":64,
+                 "height":96,
                  "id":2,
                  "name":"forest1",
                  "properties":[
@@ -101,14 +101,14 @@
                         {
                          "name":"fieldY",
                          "type":"int",
-                         "value":3
+                         "value":4
                         }],
                  "rotation":0,
                  "type":"Gate",
                  "visible":true,
                  "width":96,
                  "x":416,
-                 "y":928
+                 "y":896
                 }, 
                 {
                  "height":96,
@@ -192,7 +192,7 @@
          "value":"#dc321a20"
         }],
  "renderorder":"right-down",
- "tiledversion":"2020.08.05",
+ "tiledversion":"2019.12.11",
  "tileheight":32,
  "tilesets":[
         {
@@ -205,6 +205,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.4,
+ "version":1.2,
  "width":40
 }

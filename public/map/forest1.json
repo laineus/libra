@@ -69,7 +69,7 @@
          "name":"objects",
          "objects":[
                 {
-                 "height":64,
+                 "height":96,
                  "id":1,
                  "name":"stomach",
                  "properties":[
@@ -81,7 +81,7 @@
                         {
                          "name":"fieldY",
                          "type":"int",
-                         "value":27
+                         "value":26
                         }],
                  "rotation":0,
                  "type":"Gate",
@@ -98,7 +98,7 @@
                         {
                          "name":"fieldX",
                          "type":"int",
-                         "value":26
+                         "value":25
                         }, 
                         {
                          "name":"fieldY",
@@ -108,7 +108,7 @@
                  "rotation":0,
                  "type":"Gate",
                  "visible":true,
-                 "width":64,
+                 "width":96,
                  "x":0,
                  "y":544
                 }, 
@@ -125,7 +125,7 @@
                         {
                          "name":"fieldY",
                          "type":"int",
-                         "value":1
+                         "value":4
                         }],
                  "rotation":0,
                  "type":"Gate",
@@ -419,7 +419,7 @@
  "nextobjectid":23,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"2020.12.18",
+ "tiledversion":"2019.12.11",
  "tileheight":32,
  "tilesets":[
         {
@@ -436,6 +436,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.4,
+ "version":1.2,
  "width":36
 }

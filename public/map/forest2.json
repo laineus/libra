@@ -76,7 +76,7 @@
                         {
                          "name":"fieldX",
                          "type":"int",
-                         "value":3
+                         "value":4
                         }, 
                         {
                          "name":"fieldY",
@@ -86,8 +86,8 @@
                  "rotation":0,
                  "type":"Gate",
                  "visible":true,
-                 "width":64,
-                 "x":896,
+                 "width":96,
+                 "x":864,
                  "y":768
                 }, 
                 {
@@ -477,10 +477,10 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":25,
+ "nextobjectid":26,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"2020.12.18",
+ "tiledversion":"2019.12.11",
  "tileheight":32,
  "tilesets":[
         {
@@ -497,6 +497,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.4,
+ "version":1.2,
  "width":30
 }

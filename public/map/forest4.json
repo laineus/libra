@@ -635,7 +635,7 @@
                         {
                          "name":"fieldX",
                          "type":"int",
-                         "value":3
+                         "value":4
                         }, 
                         {
                          "name":"fieldY",
@@ -645,12 +645,12 @@
                  "rotation":0,
                  "type":"Gate",
                  "visible":true,
-                 "width":64,
-                 "x":1152,
+                 "width":96,
+                 "x":1120,
                  "y":384
                 }, 
                 {
-                 "height":64,
+                 "height":96,
                  "id":2,
                  "name":"forest5",
                  "properties":[
@@ -662,14 +662,14 @@
                         {
                          "name":"fieldY",
                          "type":"int",
-                         "value":3
+                         "value":4
                         }],
                  "rotation":0,
                  "type":"Gate",
                  "visible":true,
                  "width":96,
                  "x":512,
-                 "y":1152
+                 "y":1120
                 }, 
                 {
                  "height":0,
@@ -693,7 +693,7 @@
  "nextobjectid":34,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"2020.12.18",
+ "tiledversion":"2019.12.11",
  "tileheight":32,
  "tilesets":[
         {
@@ -710,6 +710,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.4,
+ "version":1.2,
  "width":38
 }
