@@ -44,12 +44,89 @@
          "width":40,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":4,
+         "name":"events",
+         "objects":[
+                {
+                 "height":96,
+                 "id":1,
+                 "name":"fall1",
+                 "properties":[
+                        {
+                         "name":"fieldX",
+                         "type":"int",
+                         "value":35
+                        }, 
+                        {
+                         "name":"fieldY",
+                         "type":"int",
+                         "value":15
+                        }],
+                 "rotation":0,
+                 "type":"Gate",
+                 "visible":true,
+                 "width":96,
+                 "x":0,
+                 "y":480
+                }, 
+                {
+                 "height":96,
+                 "id":2,
+                 "name":"coalmine2",
+                 "properties":[
+                        {
+                         "name":"fieldX",
+                         "type":"int",
+                         "value":20
+                        }, 
+                        {
+                         "name":"fieldY",
+                         "type":"int",
+                         "value":27
+                        }],
+                 "rotation":0,
+                 "type":"Gate",
+                 "visible":true,
+                 "width":96,
+                 "x":704,
+                 "y":0
+                }, 
+                {
+                 "height":96,
+                 "id":3,
+                 "name":"coalmine3",
+                 "properties":[
+                        {
+                         "name":"fieldX",
+                         "type":"int",
+                         "value":35
+                        }, 
+                        {
+                         "name":"fieldY",
+                         "type":"int",
+                         "value":15
+                        }],
+                 "rotation":0,
+                 "type":"Gate",
+                 "visible":true,
+                 "width":96,
+                 "x":704,
+                 "y":928
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":4,
- "nextobjectid":1,
+ "nextlayerid":5,
+ "nextobjectid":4,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"2020.08.05",
+ "tiledversion":"2019.12.11",
  "tileheight":32,
  "tilesets":[
         {
@@ -62,6 +139,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.4,
+ "version":1.2,
  "width":40
 }
