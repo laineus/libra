@@ -71,6 +71,28 @@
                  "width":96,
                  "x":128,
                  "y":928
+                }, 
+                {
+                 "height":96,
+                 "id":2,
+                 "name":"cemetery",
+                 "properties":[
+                        {
+                         "name":"fieldX",
+                         "type":"int",
+                         "value":19
+                        }, 
+                        {
+                         "name":"fieldY",
+                         "type":"int",
+                         "value":35
+                        }],
+                 "rotation":0,
+                 "type":"Gate",
+                 "visible":true,
+                 "width":96,
+                 "x":736,
+                 "y":0
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -79,7 +101,7 @@
          "y":0
         }],
  "nextlayerid":19,
- "nextobjectid":2,
+ "nextobjectid":3,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2019.12.11",
