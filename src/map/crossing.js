@@ -10,6 +10,12 @@ export default {
     const state = inject('storage').state
     const libra = inject('player').value
 
+    const gate = field.getObjectById(3)
+    gate.setEvent(computed(() => {
+      if (state.events.main < MAIN_STEPS.HEART) return async () => uiScene.log.push('この先へはまだ行けません')
+      return false
+    }))
+
     const area = field.getObjectById(4)
     const kajitsu = field.getObjectById(5)
     const tLibra = new Talker('リブラ', libra.object)

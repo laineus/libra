@@ -99,6 +99,28 @@
                  "width":96,
                  "x":928,
                  "y":928
+                }, 
+                {
+                 "height":96,
+                 "id":3,
+                 "name":"mansion2",
+                 "properties":[
+                        {
+                         "name":"fieldX",
+                         "type":"int",
+                         "value":33
+                        }, 
+                        {
+                         "name":"fieldY",
+                         "type":"int",
+                         "value":19
+                        }],
+                 "rotation":0,
+                 "type":"Gate",
+                 "visible":true,
+                 "width":96,
+                 "x":0,
+                 "y":448
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -118,10 +140,10 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":3,
+ "nextobjectid":4,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"2020.08.05",
+ "tiledversion":"2019.12.11",
  "tileheight":32,
  "tilesets":[
         {
@@ -134,6 +156,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.4,
+ "version":1.2,
  "width":40
 }
