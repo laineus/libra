@@ -11,7 +11,7 @@
     "tile": "autotile --config autotile.config.js && tile-extrude --config extrude.config.js"
   },
   "dependencies": {
-    "moment": "^2.29.1",
+    "dayjs": "^1.10.4",
     "phaser": "^3.52.0",
     "phaser-tiled-json-external-loader": "^0.1.1",
     "phavuer": "^0.7.3",

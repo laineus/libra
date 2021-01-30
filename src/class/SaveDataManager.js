@@ -1,4 +1,4 @@
-import moment from 'moment'
+import dayjs from 'dayjs'
 import defaultState from '@/data/defaultState'
 import AppStorage from '@/class/AppStorage'
 import { reactive } from 'vue'
@@ -71,7 +71,7 @@ export default class SaveDataManager {
   }
   async save (number) {
     const promises = []
-    this.state.saved = moment().unix()
+    this.state.saved = dayjs().unix()
     const str = encrypt(JSON.stringify(this.state), SHIFT)
     promises.push(appStorage.setItem(`${STORAGE_KEY}_${number}`, str))
     if (this.lastSnapshot) promises.push(appStorage.setItem(`${STORAGE_KEY}_${number}_ss`, this.lastSnapshot))

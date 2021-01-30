@@ -13,7 +13,7 @@
 <script>
 import { inject, reactive, ref, toRefs } from 'vue'
 import { Container, Rectangle, Line } from 'phavuer'
-import moment from 'moment'
+import dayjs from 'dayjs'
 import config from '@/data/config'
 import maps from '@/data/maps'
 import Text from '@/components/Text'
@@ -43,7 +43,7 @@ export default {
       data.selectedIndex = null
       loadData()
     }
-    const timeString = time => moment(time * 1000).format('YYYY-MM-DD HH:mm')
+    const timeString = time => dayjs(time * 1000).format('YYYY-MM-DD HH:mm')
     const mapName = key => maps[key]?.name
     return {
       COLORS: config.COLORS,
