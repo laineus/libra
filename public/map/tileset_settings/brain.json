@@ -1,0 +1,14 @@
+{ "columns":8,
+ "image":"..\/..\/img\/map\/tilesets\/brain.png",
+ "imageheight":256,
+ "imagewidth":256,
+ "margin":0,
+ "name":"brain",
+ "spacing":0,
+ "tilecount":64,
+ "tiledversion":"2019.12.11",
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset",
+ "version":1.2
+}

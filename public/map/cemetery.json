@@ -59,6 +59,28 @@
                  "width":96,
                  "x":576,
                  "y":1184
+                }, 
+                {
+                 "height":96,
+                 "id":2,
+                 "name":"brain",
+                 "properties":[
+                        {
+                         "name":"fieldX",
+                         "type":"int",
+                         "value":15
+                        }, 
+                        {
+                         "name":"fieldY",
+                         "type":"int",
+                         "value":15
+                        }],
+                 "rotation":0,
+                 "type":"Gate",
+                 "visible":true,
+                 "width":96,
+                 "x":576,
+                 "y":0
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -67,7 +89,7 @@
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":2,
+ "nextobjectid":3,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2019.12.11",
