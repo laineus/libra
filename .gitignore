@@ -1,4 +1,5 @@
 node_modules
+/src/assets.json
 /public/index.html
 /public/js/*.bundle.js
 /public/js/*.bundle.js*
