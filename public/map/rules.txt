@@ -12,3 +12,4 @@
 ../img/map/tilesets/fall_sand.tmx
 ../img/map/tilesets/fall_ceil.tmx
 ../img/map/tilesets/coalmine_ceil.tmx
+../img/map/tilesets/carpet.tmx
