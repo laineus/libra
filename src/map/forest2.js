@@ -21,11 +21,10 @@ export default {
 
     const sumStatus = computed(() => state.status.heart + state.status.body)
     const gate = field.getObjectById(1)
-    if (state.events.intro < STEPS.COMPLETED) {
-      gate.setEvent(async () => {
-        console.log('この先へはまだ行けません')
-      })
-    }
+    gate.setEvent(computed(() => {
+      if (state.events.intro < STEPS.COMPLETED) return async () => uiScene.log.push('この先へはまだ行けません')
+      return false
+    }))
     const kajitsu = field.getObjectById(2)
     kajitsu.setCapturable(false)
     kajitsu.setVisible(computed(() => state.events.intro < STEPS.COMPLETED))
@@ -117,7 +116,6 @@ export default {
           ])
           const completeTransition = await uiScene.transition(1000)
           state.events.intro = STEPS.COMPLETED
-          gate.restoreEvent()
           await completeTransition()
         }
       }

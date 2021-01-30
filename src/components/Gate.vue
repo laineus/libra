@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { inject, ref, onMounted } from 'vue'
+import { inject, ref, onMounted, computed, unref } from 'vue'
 import Area from './Area'
 export default {
   components: { Area },
@@ -11,8 +11,12 @@ export default {
   setup (props) {
     const gameScene = inject('gameScene')
     const area = ref(null)
-    const gateEvent = () => gameScene.value.setField(props.to.key, props.to.x, props.to.y, props.to.r)
-    const setEvent = (...arg) => area.value.setEvent(...arg)
+    const gateEvent = async () => gameScene.value.setField(props.to.key, props.to.x, props.to.y, props.to.r)
+    const setEvent = (event) => {
+      area.value.setEvent(computed(() => {
+        return unref(event) || gateEvent
+      }))
+    }
     const restoreEvent = () => setEvent(gateEvent)
     onMounted(() => {
       setEvent(gateEvent)
