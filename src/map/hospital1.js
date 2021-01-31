@@ -1,5 +1,6 @@
 import { computed, inject } from 'vue'
 import Talker from '@/util/Talker'
+import config from '@/data/config'
 export const ENLIGHTENMENT_STEPS = {
   NULL: 0,
   COMPLETED: 1
@@ -21,7 +22,7 @@ export default {
       const answer1 = await uiScene.setSelector(t('events.enlightenment.options')) === 0
       await speakGhost(answer1 ? t('events.enlightenment.answer1') : t('events.enlightenment.answer2'))
       await speakGhost(t('events.enlightenment.complete'))
-      const completeTransition = await uiScene.transition(1000)
+      const completeTransition = await uiScene.transition(1000, { color: config.COLORS.white })
       field.dropItem('apple', ghost.object)
       state.events.enlightenment = ENLIGHTENMENT_STEPS.COMPLETED
       await completeTransition()

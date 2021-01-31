@@ -10,7 +10,7 @@
       <Menu ref="menu" />
       <Image v-for="v in 5" :key="v" texture="hp" :frame="Math.round(state.status.hp / 20) >= v ? 0 : 1" :x="40 + ((v - 1) * 42)" :y="(35).byBottom" />
     </template>
-    <Rectangle :fillColor="0x000000" :origin="0" :width="config.WIDTH" :height="config.HEIGHT" :depth="config.DEPTH.TRANSITION" :alpha="transitionAlpha" />
+    <Rectangle :fillColor="transitionData.color" :origin="0" :width="config.WIDTH" :height="config.HEIGHT" :depth="config.DEPTH.TRANSITION" :alpha="transitionData.alpha" />
     <Text v-if="screenMessage" :text="screenMessage" :x="config.WIDTH.half" :y="config.HEIGHT.half" :size="17" color="white" :origin="0.5" :depth="config.DEPTH.TRANSITION" />
   </Scene>
 </template>
@@ -43,7 +43,10 @@ export default {
       menu: ref(null)
     }
     const titleScreen = ref(true)
-    const transitionAlpha = ref(0)
+    const transitionData = reactive({
+      alpha: 0,
+      color: 0x000000
+    })
     const screenMessage = ref(null)
     const setScreenMessage = text => screenMessage.value = text
     const nealestCheckable = ref(null)
@@ -65,16 +68,17 @@ export default {
       if (!field.value) return
       nealestCheckable.value = field.value.charas.concat(field.value.substances).map(v => v.ref.value).filter(v => v.checkable).findMin(v => v.distanceToPlayer)
     }
-    const transition = (duration = 500, hold) => {
+    const transition = (duration = 500, { hold, color = 0x000000 } = {}) => {
       hold = hold ?? duration.half
+      transitionData.color = color
       const start = () => new Promise(resolve => {
         const onComplete = () => sleep(hold.half).then(resolve)
-        transitionAlpha.value = 0
-        refs.scene.value.add.tween({ targets: transitionAlpha, duration, value: 1, onComplete })
+        transitionData.alpha = 0
+        refs.scene.value.add.tween({ targets: transitionData, duration, alpha: 1, onComplete })
       })
       const complete = () => new Promise(resolve => {
         sleep(hold.half).then(() => {
-          refs.scene.value.add.tween({ targets: transitionAlpha, duration, value: 0, onComplete: resolve })
+          refs.scene.value.add.tween({ targets: transitionData, duration, alpha: 0, onComplete: resolve })
         })
       })
       return start().then(() => complete)
@@ -87,7 +91,7 @@ export default {
       ...refs,
       titleScreen,
       transition,
-      transitionAlpha,
+      transitionData,
       nealestCheckable,
       selector, setSelector,
       screenMessage, setScreenMessage,
