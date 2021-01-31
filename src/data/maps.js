@@ -13,6 +13,7 @@ import ice4 from '@/map/ice4'
 import dark from '@/map/dark'
 import crossing from '@/map/crossing'
 import heart from '@/map/heart'
+import hospital1 from '@/map/hospital1'
 export default {
   home,
   forest2,
@@ -28,5 +29,6 @@ export default {
   ice4,
   dark,
   crossing,
-  heart
+  heart,
+  hospital1
 }

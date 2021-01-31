@@ -36,6 +36,7 @@ export default {
     curse: 0,
     eel: 0,
     liveForEveryone: 0,
-    pityPenguin: 0
+    pityPenguin: 0,
+    enlightenment: 0
   }
 }
