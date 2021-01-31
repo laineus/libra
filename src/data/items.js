@@ -60,6 +60,7 @@ export default [
   makeCharacter('bat'),
   makeCharacter('snake'),
   makeCharacter('penguin'),
+  makeCharacter('minePenguin'),
   makeCharacter('ghost'),
   makeCharacter('amili')
 ]
