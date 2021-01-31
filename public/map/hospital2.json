@@ -93,6 +93,18 @@
                  "width":96,
                  "x":736,
                  "y":0
+                }, 
+                {
+                 "height":0,
+                 "id":3,
+                 "name":"ghost",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Character",
+                 "visible":true,
+                 "width":0,
+                 "x":1088,
+                 "y":320
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -101,7 +113,7 @@
          "y":0
         }],
  "nextlayerid":19,
- "nextobjectid":3,
+ "nextobjectid":4,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2019.12.11",

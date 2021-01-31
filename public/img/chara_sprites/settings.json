@@ -13,5 +13,6 @@
   ["hercules.png", 3, 8],
   ["bat.png", 3, 4],
   ["penguin.png", 3, 4],
-  ["snake.png", 3, 4]
+  ["snake.png", 3, 4],
+  ["ghost.png", 3, 4]
 ]
