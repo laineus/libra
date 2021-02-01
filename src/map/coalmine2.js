@@ -45,4 +45,3 @@ export default {
     })
   }
 }
-// uiScene.log.push(t('events.matsutake.log'))
