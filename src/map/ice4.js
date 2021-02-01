@@ -1,5 +1,5 @@
 import { inject } from 'vue'
-import { PITY_STEPS } from '@/map/ice3'
+import { PITY_STEPS } from '@/data/eventSteps'
 import Talker from '@/util/Talker'
 export default {
   name: '氷4',

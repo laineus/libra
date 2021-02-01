@@ -1,13 +1,6 @@
 import { computed, inject } from 'vue'
 import Talker from '@/util/Talker'
-import { STEPS as CURSE_STEPS } from './cave3'
-const STEPS = {
-  INTRO: 0,
-  WALK: 1,
-  TALK: 2,
-  APPLE: 3,
-  COMPLETED: 4
-}
+import { INTRO_STEPS, CURSE_STEPS } from '@/data/eventSteps'
 export default {
   name: '森2',
   async create () {
@@ -22,12 +15,12 @@ export default {
     const sumStatus = computed(() => state.status.heart + state.status.body)
     const gate = field.getObjectById(1)
     gate.setEvent(computed(() => {
-      if (state.events.intro < STEPS.COMPLETED) return async () => uiScene.log.push('この先へはまだ行けません')
+      if (state.events.intro < INTRO_STEPS.COMPLETED) return async () => uiScene.log.push('この先へはまだ行けません')
       return false
     }))
     const kajitsu = field.getObjectById(2)
     kajitsu.setCapturable(false)
-    kajitsu.setVisible(computed(() => state.events.intro < STEPS.COMPLETED))
+    kajitsu.setVisible(computed(() => state.events.intro < INTRO_STEPS.COMPLETED))
     const area = field.getObjectById(5)
     const mountApple = () => field.addObject({ type: 'Substance', name: 'apple', x: field.positions.apple.x, y: field.positions.apple.y })
     if (sumStatus.value > 0 ? Math.chance(0.01) : !bag.hasItem('apple', 1, { room: true, bag: true })) {
@@ -37,7 +30,7 @@ export default {
     const tKajitsu = new Talker('カジツ', kajitsu.object)
 
     // Auto start event
-    if (state.events.intro === STEPS.INTRO) {
+    if (state.events.intro === INTRO_STEPS.INTRO) {
       exec(async () => {
         await sleep(1000)
         const revert = await camera.move(0, -100, 2000)
@@ -51,13 +44,13 @@ export default {
           { chara: tKajitsu, text: walk.shift() }
         ])
         await revert()
-        state.events.intro = STEPS.WALK
+        state.events.intro = INTRO_STEPS.WALK
       })
     }
 
     // Area event
     const areaEvent = computed(() => {
-      if (state.events.intro !== STEPS.WALK) return
+      if (state.events.intro !== INTRO_STEPS.WALK) return
       return async () => {
         const talking = t('events.forest2Kajitsu.talk')
         await talk.setTalk([
@@ -65,17 +58,17 @@ export default {
           { chara: tKajitsu, text: talking.shift() },
           { chara: tKajitsu, text: talking.shift() }
         ])
-        state.events.intro = STEPS.TALK
+        state.events.intro = INTRO_STEPS.TALK
       }
     })
     area.setEvent(areaEvent)
 
     // Talk Events
     const kajitsuEvent = computed(() => {
-      if (state.events.intro === STEPS.TALK) {
+      if (state.events.intro === INTRO_STEPS.TALK) {
         return async () => {
           mountApple()
-          state.events.intro = STEPS.APPLE
+          state.events.intro = INTRO_STEPS.APPLE
           const apl = t('events.forest2Kajitsu.apple')
           await talk.setTalk([
             { chara: tKajitsu, text: apl.shift() },
@@ -91,7 +84,7 @@ export default {
           ])
           await revert()
         }
-      } else if (state.events.intro === STEPS.APPLE && !bag.hasItem('apple')) {
+      } else if (state.events.intro === INTRO_STEPS.APPLE && !bag.hasItem('apple')) {
         return async () => {
           const apl = t('events.forest2Kajitsu.apple').slice(2)
           await talk.setTalk([
@@ -101,7 +94,7 @@ export default {
             { chara: tKajitsu, text: apl.shift() }
           ])
         }
-      } else if (state.events.intro === STEPS.APPLE) {
+      } else if (state.events.intro === INTRO_STEPS.APPLE) {
         return async () => {
           const completed = t('events.forest2Kajitsu.completed')
           await talk.setTalk([
@@ -115,7 +108,7 @@ export default {
             { chara: tKajitsu, text: completed.shift() }
           ])
           const completeTransition = await uiScene.transition(1000)
-          state.events.intro = STEPS.COMPLETED
+          state.events.intro = INTRO_STEPS.COMPLETED
           await completeTransition()
         }
       }

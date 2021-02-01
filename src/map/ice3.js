@@ -1,13 +1,6 @@
 import { inject } from 'vue'
-import { STEPS as EEL_STEPS } from '@/map/ice1'
+import { EEL_STEPS, PITY_STEPS } from '@/data/eventSteps'
 import Talker from '@/util/Talker'
-export const PITY_STEPS = {
-  NULL: 0,
-  STARTED: 1,
-  FOUND: 2,
-  SOLVED: 3,
-  COMPLETED: 4
-}
 export default {
   name: '氷3',
   async create () {

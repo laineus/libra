@@ -1,10 +1,7 @@
 import { computed, inject } from 'vue'
 import Talker from '@/util/Talker'
 import config from '@/data/config'
-export const ENLIGHTENMENT_STEPS = {
-  NULL: 0,
-  COMPLETED: 1
-}
+import { ENLIGHTENMENT_STEPS } from '@/data/eventSteps'
 export default {
   name: '病院1',
   async create () {

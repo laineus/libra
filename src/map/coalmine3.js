@@ -1,10 +1,6 @@
 import { inject } from 'vue'
 import Talker from '@/util/Talker'
-export const MATSUTAKE_STEPS = {
-  NULL: 0,
-  STARTED: 1,
-  COMPLETED: 2
-}
+import { MATSUTAKE_STEPS } from '@/data/eventSteps'
 export default {
   name: '炭鉱3',
   async create () {

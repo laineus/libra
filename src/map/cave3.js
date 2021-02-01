@@ -1,14 +1,6 @@
 import { inject, computed } from 'vue'
 import Talker from '@/util/Talker'
-export const STEPS = {
-  NULL: 0,
-  STARTED: 1,
-  TALKED_TORRENT: 2,
-  EXECUTED: 3,
-  EXECUTED_END: 4,
-  NOTICED_DID: 5,
-  COMPLETED: 6
-}
+import { CURSE_STEPS } from '@/data/eventSteps'
 export default {
   name: '洞窟3',
   async create () {
@@ -32,51 +24,51 @@ export default {
     }
     const dropApple = chara => field.addObject({ type: 'Substance', name: 'apple', x: chara.object.x, y: chara.object.y }).then(v => v.drop())
 
-    const timeEstimated = state.events.curse === STEPS.NOTICED_DID
-    rightBat.setVisible(computed(() => ![STEPS.EXECUTED, STEPS.EXECUTED_END].includes(state.events.curse)))
+    const timeEstimated = state.events.curse === CURSE_STEPS.NOTICED_DID
+    rightBat.setVisible(computed(() => ![CURSE_STEPS.EXECUTED, CURSE_STEPS.EXECUTED_END].includes(state.events.curse)))
 
     const event = async () => {
-      if (state.events.curse === STEPS.NULL) {
+      if (state.events.curse === CURSE_STEPS.NULL) {
         await talkBoth(t('events.curse.start1'), [tr, tl, tr])
         if (bag.hasItem('strawDoll')) {
           await talkBoth(t('events.curse.start2'), [tl, tl, tl, tr, tl, tr, tr, tr, tr, tl, tl, tl, tl])
-          state.events.curse = STEPS.STARTED
+          state.events.curse = CURSE_STEPS.STARTED
         }
-      } else if (state.events.curse === STEPS.STARTED) {
+      } else if (state.events.curse === CURSE_STEPS.STARTED) {
         await speakLeft(t('events.curse.started1'))
-      } else if (state.events.curse === STEPS.EXECUTED) {
+      } else if (state.events.curse === CURSE_STEPS.EXECUTED) {
         await speakLeft(t('events.curse.executed'))
-        state.events.curse = STEPS.EXECUTED_END
-      } else if (state.events.curse === STEPS.EXECUTED_END) {
+        state.events.curse = CURSE_STEPS.EXECUTED_END
+      } else if (state.events.curse === CURSE_STEPS.EXECUTED_END) {
         await speakLeft(t('events.curse.completed'))
-      } else if (state.events.curse === STEPS.TALKED_TORRENT) {
+      } else if (state.events.curse === CURSE_STEPS.TALKED_TORRENT) {
         const did = await uiScene.setSelector(t('events.curse.noticeOptions')) === 0
         if (did) {
           const scripts = t('events.curse.answer1')
           await speakLeft(scripts.splice(0, 2))
           dropApple(leftBat)
           await talkBoth(scripts, [tr, tl, tr])
-          state.events.curse = STEPS.NOTICED_DID
+          state.events.curse = CURSE_STEPS.NOTICED_DID
         } else {
           const scripts = t('events.curse.answer2')
           await talkBoth(scripts.splice(0, 3), [tl, tr, tr])
           dropApple(rightBat)
           await talkBoth(scripts, [tl, tr, tr])
-          state.events.curse = STEPS.COMPLETED
+          state.events.curse = CURSE_STEPS.COMPLETED
         }
-      } else if (state.events.curse === STEPS.NOTICED_DID) {
+      } else if (state.events.curse === CURSE_STEPS.NOTICED_DID) {
         if (!timeEstimated) {
           return await talkBoth(t('events.curse.noticedDid1'), [tl, tr])
         }
         await talkBoth(t('events.curse.noticedDid2'), [tr, tr, tr, tr, tl])
-        state.events.curse = STEPS.COMPLETED
-      } else if (state.events.curse === STEPS.COMPLETED) {
+        state.events.curse = CURSE_STEPS.COMPLETED
+      } else if (state.events.curse === CURSE_STEPS.COMPLETED) {
         await speakLeft(t('events.curse.completed'))
       }
     }
     leftBat.setTapEvent(event)
     rightBat.setTapEvent(async () => {
-      if (state.events.curse === STEPS.STARTED) {
+      if (state.events.curse === CURSE_STEPS.STARTED) {
         return await speakRight(t('events.curse.started2'))
       }
       await event()

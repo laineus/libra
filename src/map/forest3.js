@@ -1,12 +1,6 @@
 import { inject, computed } from 'vue'
 import Talker from '@/util/Talker'
-const STEPS = {
-  NULL: 0,
-  STARTED: 1,
-  FOUND: 2,
-  GAVE: 3,
-  COMPLETED: 4
-}
+import { TORRENT_FLOG_STEPS } from '@/data/eventSteps'
 export default {
   name: '森2',
   async create () {
@@ -30,12 +24,12 @@ export default {
       await speakTorrent(scripts.splice(0, 3))
       await uiScene.setSelector(scripts.shift())
       await speakTorrent(scripts)
-      state.events.torrentFlog = STEPS.STARTED
+      state.events.torrentFlog = TORRENT_FLOG_STEPS.STARTED
     }
     const torrentEvent2 = async () => {
       if (bag.hasItem('hercules')) {
         await speakTorrent(t('events.torrentFlog.torrent2.found'))
-        state.events.torrentFlog = STEPS.FOUND
+        state.events.torrentFlog = TORRENT_FLOG_STEPS.FOUND
       } else {
         await speakTorrent(t('events.torrentFlog.torrent2.started'))
       }
@@ -51,16 +45,16 @@ export default {
         await speakTorrent(t('events.torrentFlog.torrent3.end1'))
       }
       await field.addObject({ type: 'Substance', name: 'apple', x: torrent.object.x, y: torrent.object.y + 5 }).then(v => v.drop())
-      state.events.torrentFlog = STEPS.COMPLETED
+      state.events.torrentFlog = TORRENT_FLOG_STEPS.COMPLETED
     }
     torrent.setTapEvent(computed(() => {
-      if (state.events.torrentFlog === STEPS.NULL) return torrentEvent1
-      if (state.events.torrentFlog <= STEPS.FOUND) return torrentEvent2
-      if (state.events.torrentFlog === STEPS.GAVE) return torrentEvent3
+      if (state.events.torrentFlog === TORRENT_FLOG_STEPS.NULL) return torrentEvent1
+      if (state.events.torrentFlog <= TORRENT_FLOG_STEPS.FOUND) return torrentEvent2
+      if (state.events.torrentFlog === TORRENT_FLOG_STEPS.GAVE) return torrentEvent3
       return async () => speakTorrent(t('events.torrentFlog.torrent4'))
     }))
     flog.setTapEvent(async () => {
-      if (state.events.torrentFlog === STEPS.FOUND && bag.hasItem('hercules')) {
+      if (state.events.torrentFlog === TORRENT_FLOG_STEPS.FOUND && bag.hasItem('hercules')) {
         const scripts = t('events.torrentFlog.flog.give')
         await speakFlog(scripts.splice(0, 4))
         const accepted = await uiScene.setSelector(scripts.shift()) === 0
@@ -70,7 +64,7 @@ export default {
         await speakFlog(scripts.splice(0, 3))
         await uiScene.setSelector(scripts.shift())
         await speakFlog(scripts)
-        state.events.torrentFlog = STEPS.GAVE
+        state.events.torrentFlog = TORRENT_FLOG_STEPS.GAVE
       } else {
         await speakFlog(t('events.torrentFlog.flog.greeting'))
       }

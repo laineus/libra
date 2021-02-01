@@ -1,10 +1,6 @@
 import { inject } from 'vue'
 import Talker from '@/util/Talker'
-export const STEPS = {
-  NULL: 0,
-  STARTED: 1,
-  COMPLETED: 2
-}
+import { SNAKE_FLOG_STEPS } from '@/data/eventSteps'
 export default {
   name: '洞窟1',
   async create () {
@@ -18,10 +14,10 @@ export default {
     const speakSnake = talk.getSpeakScripts(new Talker('コウモリ', snake.object))
 
     snake.setTapEvent(async () => {
-      if (state.events.snakeFlog === STEPS.NULL) {
+      if (state.events.snakeFlog === SNAKE_FLOG_STEPS.NULL) {
         await speakSnake(t('events.snakeFlog.start'))
-        state.events.snakeFlog = STEPS.STARTED
-      } else if (state.events.snakeFlog === STEPS.STARTED) {
+        state.events.snakeFlog = SNAKE_FLOG_STEPS.STARTED
+      } else if (state.events.snakeFlog === SNAKE_FLOG_STEPS.STARTED) {
         if (bag.hasItem('sapphire', 2) && bag.hasItem('emerald', 2) && bag.hasItem('amethyst', 2) && bag.hasItem('ruby', 2)) {
           const give = await uiScene.setSelector(t('events.snakeFlog.options')) === 0
           if (give) {
@@ -33,12 +29,12 @@ export default {
             uiScene.log.push(...t('events.snakeFlog.logs'))
             await speakSnake(t('events.snakeFlog.complete2'))
             field.dropItem('apple', snake.object)
-            state.events.snakeFlog = STEPS.COMPLETED
+            state.events.snakeFlog = SNAKE_FLOG_STEPS.COMPLETED
           }
           return
         }
         return await speakSnake(t('events.snakeFlog.started'))
-      } else if (state.events.snakeFlog === STEPS.COMPLETED) {
+      } else if (state.events.snakeFlog === SNAKE_FLOG_STEPS.COMPLETED) {
         await speakSnake(t('events.snakeFlog.completed'))
       }
     })

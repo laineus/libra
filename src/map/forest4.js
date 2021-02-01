@@ -1,10 +1,6 @@
 import { inject } from 'vue'
 import Talker from '@/util/Talker'
-const STEPS = {
-  NULL: 0,
-  STARTED: 1,
-  COMPLETED: 2
-}
+import { CLOVER_STEPS } from '@/data/eventSteps'
 export default {
   name: '森4',
   async create () {
@@ -19,7 +15,7 @@ export default {
 
     const cloverEvent1 = async () => {
       await speakFlog(t('events.clover.flog1'))
-      state.clover = STEPS.STARTED
+      state.clover = CLOVER_STEPS.STARTED
     }
     const cloverEvent2 = async () => {
       const give = await uiScene.setSelector(t('events.clover.flog2.options')) === 0
@@ -33,14 +29,14 @@ export default {
         await speakFlog(scripts)
       }
       await field.addObject({ type: 'Substance', name: 'apple', x: flog.object.x, y: flog.object.y }).then(v => v.drop())
-      state.clover = STEPS.COMPLETED
+      state.clover = CLOVER_STEPS.COMPLETED
     }
     const cloverEvent3 = async () => {
       await speakFlog(t('events.clover.flog3'))
     }
     flog.setTapEvent(async () => {
-      if (state.clover === STEPS.COMPLETED) return await cloverEvent3()
-      if (state.clover === STEPS.STARTED && bag.hasItem('clover4')) return await cloverEvent2()
+      if (state.clover === CLOVER_STEPS.COMPLETED) return await cloverEvent3()
+      if (state.clover === CLOVER_STEPS.STARTED && bag.hasItem('clover4')) return await cloverEvent2()
       return await cloverEvent1()
     })
   }
