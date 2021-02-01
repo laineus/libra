@@ -76,3 +76,10 @@ export const ENLIGHTENMENT_STEPS = {
   NULL: 0,
   COMPLETED: 1
 }
+export const APPRECIATION_STEPS = {
+  NULL: 0,
+  TALKED: 1,
+  STARTED: 2,
+  SOLVED: 3,
+  COMPLETED: 4
+}
