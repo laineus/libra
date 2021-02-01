@@ -3,7 +3,7 @@
     <Container ref="object" :visible="unref(visible)" :x="initX" :y="initY" :width="imgWidth" :height="imgWidth" :depth="depth" :tween="tween" @create="create">
       <template v-if="imageTexture">
         <Image v-if="hp > 0" ref="image" :texture="imageTexture" :frame="frame" :originX="0.5" :originY="1" :scale="scale" :alpha="alpha" :pipeline="pipeline" />
-        <Break v-else :texture="imageTexture" :scale="scale" :initialFrame="frame" @broken="$emit('del')" />
+        <Break v-else :texture="imageTexture" :scale="scale" :initialFrame="frame" @broken="onBroken" />
       </template>
       <slot />
     </Container>
@@ -52,6 +52,14 @@ export default {
       distanceToPlayer: null,
       hp: itemData?.hp ?? 10
     })
+    let onDestroy = null
+    const setDestroyEvent = e => {
+      onDestroy = e
+    }
+    const onBroken = () => {
+      onDestroy?.()
+      context.emit('del')
+    }
     const setVisible = bool => data.visible = bool
     const setCapturable = bool => data.capturable = bool
     const drop = () => {
@@ -103,6 +111,8 @@ export default {
       tapEvent,
       execTapEvent: tapEvent.exec,
       setTapEvent: tapEvent.setEvent,
+      setDestroyEvent,
+      onBroken,
       setVisible, setCapturable,
       destroy: () => context.emit('del')
     }

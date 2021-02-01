@@ -49,6 +49,7 @@ export default {
       checkable: computed(() => substance.value?.checkable),
       distanceToPlayer: computed(() => substance.value?.distanceToPlayer),
       execTapEvent: computed(() => substance.value?.execTapEvent),
+      setDestroyEvent: computed(() => substance.value?.setDestroyEvent),
       setTapEvent: computed(() => substance.value?.setTapEvent),
       setVisible: computed(() => substance.value?.setVisible),
       setCapturable: computed(() => substance.value?.setCapturable)
