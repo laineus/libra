@@ -88,3 +88,10 @@ export const REGAIN_STEPS = {
   STARTED: 1,
   COMPLETED: 2
 }
+export const BEAUTY_STEPS = {
+  NULL: 0,
+  STARTED: 1,
+  SOLVED: 2,
+  EXECUTED: 3,
+  COMPLETED: 4
+}

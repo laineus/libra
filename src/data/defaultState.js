@@ -39,6 +39,7 @@ export default {
     pityPenguin: 0,
     enlightenment: 0,
     appreciation: 0,
-    regain: 0
+    regain: 0,
+    beauty: 0
   }
 }
