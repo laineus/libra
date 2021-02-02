@@ -65,6 +65,7 @@ export default [
   makeCharacter('snake'),
   makeCharacter('penguin'),
   makeCharacter('minePenguin'),
+  makeCharacter('fallTorrent'),
   makeCharacter('ghost'),
   makeCharacter('amili')
 ]
