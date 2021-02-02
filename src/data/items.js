@@ -54,6 +54,7 @@ export default [
   makeItem('coinGold'),
   makeItem('coinSilver'),
   makeItem('elixir'),
+  ...(17).toArray().map(i => makeItem(`art${i}`)),
   makeCharacter('ladybird'),
   makeCharacter('stagBeetle'),
   makeCharacter('beetle'),
