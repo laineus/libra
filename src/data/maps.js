@@ -13,11 +13,14 @@ import ice4 from '@/map/ice4'
 import dark from '@/map/dark'
 import crossing from '@/map/crossing'
 import heart from '@/map/heart'
+import fall2 from '@/map/fall2'
 import coalmine1 from '@/map/coalmine1'
 import coalmine2 from '@/map/coalmine2'
 import coalmine3 from '@/map/coalmine3'
 import hospital1 from '@/map/hospital1'
+import hospital2 from '@/map/hospital2'
 import mansion2 from '@/map/mansion2'
+import mansion3 from '@/map/mansion3'
 export default {
   home,
   forest2,
@@ -34,9 +37,12 @@ export default {
   dark,
   crossing,
   heart,
+  fall2,
   coalmine1,
   coalmine2,
   coalmine3,
   hospital1,
-  mansion2
+  hospital2,
+  mansion2,
+  mansion3
 }

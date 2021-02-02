@@ -10,7 +10,7 @@ export default {
     const talk = inject('talk').value
     const state = inject('storage').state
 
-    const ghost = field.getObjectById(TODO)
+    const ghost = field.getObjectById(3)
     const speakGhost = talk.getSpeakScripts(new Talker('幽霊', ghost.object))
 
     ghost.setVisible(computed(() => state.events.forever < FOREVER_STEPS.COMPLETED))

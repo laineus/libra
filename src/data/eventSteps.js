@@ -95,3 +95,9 @@ export const BEAUTY_STEPS = {
   EXECUTED: 3,
   COMPLETED: 4
 }
+export const FOREVER_STEPS = {
+  NULL: 0,
+  STARTED: 1,
+  EXECUTED: 2,
+  COMPLETED: 3
+}
