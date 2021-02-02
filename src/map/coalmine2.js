@@ -24,17 +24,17 @@ export default {
         const accept = await uiScene.setSelector(t('events.painter.options')) === 0
         if (accept) {
           await speakPenguin(t('events.painter.answer1'))
-          await field.dropItem('illustLove', penguin.object)
+          await field.dropItem('art15', penguin.object)
           state.events.painter = PAINTER_STEPS.STARTED
         } else {
           await speakPenguin(t('events.painter.answer2'))
         }
       } else if (state.events.painter === PAINTER_STEPS.STARTED) {
-        if (bag.hasItem('illustLove', 1, { bag: true, room: true, field: true })) {
+        if (bag.hasItem('art15', 1, { bag: true, room: true, field: true })) {
           await speakPenguin(t('events.painter.started'))
         } else {
           await speakPenguin(t('events.painter.lost'))
-          await field.dropItem('illustLove', penguin.object)
+          await field.dropItem('art15', penguin.object)
         }
       } else if (state.events.painter === PAINTER_STEPS.SOLVED) {
         await speakPenguin(t('events.painter.complete'))

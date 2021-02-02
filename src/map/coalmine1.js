@@ -18,10 +18,10 @@ export default {
         await speakPenguin(t('events.miner.greet'))
       } else if (state.events.appreciation === APPRECIATION_STEPS.STARTED) {
         await speakPenguin(t('events.miner.greet'))
-        if (!bag.hasItem('illustMiner')) return
+        if (!bag.hasItem('art16')) return
         const give = await uiScene.setSelector(t('events.miner.options')) === 0
         if (!give) return
-        bag.removeItem('illustMiner')
+        bag.removeItem('art16')
         uiScene.log.push(t('events.miner.log'))
         await speakPenguin(t('events.miner.solve'))
         state.events.appreciation = APPRECIATION_STEPS.SOLVED

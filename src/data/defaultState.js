@@ -14,7 +14,7 @@ export default {
     { id: 1, key: 'apple', bagX: 30, bagY: 40 },
     { id: 2, key: 'lily', bagX: 40, bagY: 90 },
     { id: 3, key: 'elixir', bagX: 40, bagY: 130 },
-    { id: 4, key: 'art16', bagX: 40, bagY: 160 }
+    { id: 4, key: 'matsutake', bagX: 40, bagY: 160 }
   ],
   roomItems: [],
   places: [

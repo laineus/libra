@@ -16,11 +16,12 @@ export default {
     pumpkin.setTapEvent(async () => {
       if (state.events.painter < PAINTER_STEPS.SOLVED) {
         await speakPumpkin(t('events.collector.start'))
-        if (!bag.hasItem('illustLove')) return
+        if (!bag.hasItem('art15')) return
         const give = await uiScene.setSelector(t('events.collector.options')) === 0
         if (!give) return
         await speakPumpkin(t('events.collector.solve1'))
-        bag.removeItem('illustLove')
+        bag.removeItem('art15')
+        uiScene.log.push(t('events.collector.log'))
         await speakPumpkin(t('events.collector.solve2'))
         field.dropItem('coinGold', pumpkin.object)
         field.dropItem('coinGold', pumpkin.object)
@@ -44,18 +45,18 @@ export default {
         const accept = await uiScene.setSelector(t('events.child.options')) === 0
         if (accept) {
           await speakChild(t('events.child.answer1'))
-          await field.dropItem('illustMiner', child.object)
+          await field.dropItem('art16', child.object)
           state.events.appreciation = APPRECIATION_STEPS.STARTED
         } else {
           await speakChild(t('events.child.answer2'))
           state.events.appreciation = APPRECIATION_STEPS.TALKED
         }
       } else if (state.events.appreciation === APPRECIATION_STEPS.STARTED) {
-        if (bag.hasItem('illustMiner', 1, { bag: true, room: true, field: true })) {
+        if (bag.hasItem('art16', 1, { bag: true, room: true, field: true })) {
           await speakChild(t('events.child.started'))
         } else {
           await speakChild(t('events.child.lost'))
-          await field.dropItem('illustMiner', child.object)
+          await field.dropItem('art16', child.object)
         }
       } else if (state.events.appreciation === APPRECIATION_STEPS.SOLVED) {
         await speakChild(t('events.child.complete1'))
