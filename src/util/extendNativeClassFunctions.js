@@ -1,4 +1,5 @@
-export default (screenWidth, screenHeight, tileSize) => {
+import config from '@/data/config'
+const extendNativeClassFunctions = (screenWidth, screenHeight, tileSize) => {
   // Number instance methods
   Object.defineProperty(Number.prototype, 'half', {
     get () { return this / 2 }
@@ -89,3 +90,4 @@ export default (screenWidth, screenHeight, tileSize) => {
   window.sleep = duration => new Promise(resolve => setTimeout(resolve, duration))
   window.l = console.log
 }
+extendNativeClassFunctions(config.WIDTH, config.HEIGHT, config.TILE_SIZE)
