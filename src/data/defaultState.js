@@ -41,6 +41,6 @@ export default {
     appreciation: 0,
     regain: 0,
     beauty: 0,
-    foever: 0
+    forever: 0
   }
 }

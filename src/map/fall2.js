@@ -14,13 +14,15 @@ export default {
     let skipStart1 = false
     torrent.setVisible(computed(() => state.events.forever < FOREVER_STEPS.EXECUTED))
     torrent.setTapEvent(async () => {
-      await speakTorrent(t('events.forever.torrent.greet'))
       if (state.events.forever === FOREVER_STEPS.STARTED) {
         if (!skipStart1) {
+          await speakTorrent(t('events.forever.torrent.greet'))
           await speakTorrent(t('events.forever.torrent.start1'))
           skipStart1 = true
         }
         await speakTorrent(t('events.forever.torrent.start2'))
+      } else {
+        await speakTorrent(t('events.forever.torrent.greet'))
       }
     })
     torrent.setDestroyEvent(() => {

@@ -16,7 +16,7 @@ export default {
     ghost.setVisible(computed(() => state.events.forever < FOREVER_STEPS.COMPLETED))
     ghost.setTapEvent(async () => {
       if (state.events.forever === FOREVER_STEPS.NULL) {
-        await speakGhost(t('events.forever.ghost.start1'))
+        await speakGhost(t('events.forever.ghost.start'))
         const accept = await uiScene.setSelector(t('events.forever.ghost.options')) === 0
         if (accept) {
           await speakGhost(t('events.forever.ghost.answer1'))
