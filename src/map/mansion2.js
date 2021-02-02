@@ -35,7 +35,7 @@ export default {
     })
 
     // -------------------------------------------
-  
+
     const child = field.getObjectById(5)
     const speakChild = talk.getSpeakScripts(new Talker('カボチャ', child.object))
     child.setTapEvent(async () => {
@@ -51,7 +51,7 @@ export default {
           state.events.appreciation = APPRECIATION_STEPS.TALKED
         }
       } else if (state.events.appreciation === APPRECIATION_STEPS.STARTED) {
-        if (hasItem('illustMiner', 1, { bag: true, room: true, field: true })) {
+        if (bag.hasItem('illustMiner', 1, { bag: true, room: true, field: true })) {
           await speakChild(t('events.child.started'))
         } else {
           await speakChild(t('events.child.lost'))

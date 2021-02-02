@@ -83,3 +83,8 @@ export const APPRECIATION_STEPS = {
   SOLVED: 3,
   COMPLETED: 4
 }
+export const REGAIN_STEPS = {
+  NULL: 0,
+  STARTED: 1,
+  COMPLETED: 2
+}
