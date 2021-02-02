@@ -20,7 +20,7 @@ export default {
       if (state.events.beauty === BEAUTY_STEPS.NULL) {
         await speakLady1(t('events.lady1.start'))
         state.events.beauty = BEAUTY_STEPS.STARTED
-      } if (state.events.beauty === BEAUTY_STEPS.STARTED) {
+      } else if (state.events.beauty === BEAUTY_STEPS.STARTED) {
         if (!bag.hasItem('elixir')) return await speakLady1(t('events.lady1.started'))
         const give = await uiScene.setSelector(t('events.lady1.options')) === 0
         if (!give) return
