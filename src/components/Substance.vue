@@ -7,8 +7,8 @@
       </template>
       <slot />
     </Container>
-    <TapArea v-if="tapEvent.event.value" :visible="unref(visible) && checkable" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @tap="tapEvent.exec" />
-    <GrabArea v-else-if="capturable" :visible="unref(visible) && grabbable" :name="name" :scale="scale" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @grab="alpha = 0.5" @capture="$emit('del')" @cancel="alpha = 1" />
+    <TapArea v-if="tapEvent.event.value" :visible="interactive" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @tap="tapEvent.exec" />
+    <GrabArea v-else-if="capturable" :visible="interactive" :name="name" :scale="scale" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @grab="alpha = 0.5" @capture="$emit('del')" @cancel="alpha = 1" />
   </div>
 </template>
 
@@ -98,11 +98,13 @@ export default {
       if (depth.value !== object.value.y) depth.value = object.value.y
       data.distanceToPlayer = Phaser.Math.Distance.Between(object.value.x, object.value.y, player.value.object.x, player.value.object.y)
     })
+    const interactive = computed(() => !event.state && data.distanceToPlayer < 150 && !player.value?.gun.mode.value && unref(data.visible))
     return {
       unref,
       ...toRefs(data),
-      checkable: computed(() => !event.state && tapEvent.event.value && data.distanceToPlayer < 150),
-      grabbable: computed(() => !event.state && data.distanceToPlayer < 150),
+      interactive,
+      checkable: computed(() => interactive.value && tapEvent.event.value),
+      grabbable: computed(() => interactive.value && !tapEvent.event.value && data.capturable),
       create,
       drop, damage,
       object, image,

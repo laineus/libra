@@ -15,7 +15,10 @@ export default {
   emits: ['tap'],
   setup (props, context) {
     const tapArea = refObj(null)
-    const onTap = () => context.emit('tap')
+    const onTap = e => {
+      if (e.button !== 0) return
+      context.emit('tap')
+    }
     onPreUpdate(() => {
       if (props.follow) tapArea.value.setPosition(props.follow.x, props.follow.y - tapArea.value.height.half + 10)
     })
