@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { ref, reactive, provide, inject, nextTick } from 'vue'
+import { ref, reactive, provide, inject, nextTick, onMounted } from 'vue'
 import { refScene, Scene } from 'phavuer'
 import Field from './Field'
 export default {
@@ -24,6 +24,9 @@ export default {
     const field = ref(null)
     const fps = ref(0)
     provide('field', field)
+    onMounted(() => {
+      scene.value.input.setTopOnly(false)
+    })
     const update = (scene, time) => {
       frames.game++
       if (!field.value) return
