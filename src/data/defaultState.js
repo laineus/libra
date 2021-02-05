@@ -46,5 +46,6 @@ export default {
     regain: 0,
     beauty: 0,
     forever: 0
-  }
+  },
+  killed: []
 }

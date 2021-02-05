@@ -8,7 +8,7 @@
       <slot />
     </Container>
     <TapArea v-if="tapEvent.event.value" :visible="interactive" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @tap="tapEvent.exec" />
-    <GrabArea v-else-if="capturable" :visible="interactive" :name="name" :scale="scale" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @grab="alpha = 0.5" @capture="$emit('del')" @cancel="alpha = 1" />
+    <GrabArea v-else-if="capturable" :visible="interactive" :name="name" :scale="scale" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @grab="alpha = 0.5" @capture="onBroken" @cancel="alpha = 1" />
   </div>
 </template>
 
@@ -23,6 +23,7 @@ import useEvent from './modules/useEvent'
 export default {
   components: { Container, Image, TapArea, GrabArea, Break },
   props: {
+    unique: { default: null },
     initX: { default: 0 },
     initY: { default: 0 },
     scale: { default: 1 },
@@ -36,6 +37,7 @@ export default {
     const field = inject('field')
     const event = inject('event')
     const player = inject('player')
+    const state = inject('storage').state
     const object = refObj(null)
     const image = refObj(null)
     const imgWidth = computed(() => image.value ? image.value.width : 30)
@@ -58,8 +60,10 @@ export default {
     }
     const onBroken = () => {
       onDestroy?.()
+      if (props.unique) state.killed.push(props.unique)
       context.emit('del')
     }
+    if (props.unique && state.killed.includes(props.unique)) context.emit('del')
     const setVisible = bool => data.visible = bool
     const setCapturable = bool => data.capturable = bool
     const drop = () => {
