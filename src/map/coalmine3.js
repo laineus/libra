@@ -11,9 +11,8 @@ export default {
     const bag = inject('bag')
 
     const penguin = field.getObjectById(2)
-    const speakPenguin = talk.getSpeakScripts(new Talker('炭鉱ペンギン', penguin.object))
-
-    penguin.setTapEvent(async () => {
+    penguin?.setTapEvent(async () => {
+      const speakPenguin = talk.getSpeakScripts(new Talker('炭鉱ペンギン', penguin.object))
       if (state.events.matsutake === MATSUTAKE_STEPS.NULL) {
         await speakPenguin(t('events.matsutake.start'))
         state.events.matsutake = MATSUTAKE_STEPS.STARTED

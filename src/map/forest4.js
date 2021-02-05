@@ -11,33 +11,28 @@ export default {
     const bag = inject('bag')
 
     const flog = field.getObjectById(3)
-    const speakFlog = talk.getSpeakScripts(new Talker('カエル', flog.object))
-
-    const cloverEvent1 = async () => {
-      await speakFlog(t('events.clover.flog1'))
-      state.clover = CLOVER_STEPS.STARTED
-    }
-    const cloverEvent2 = async () => {
-      const give = await uiScene.setSelector(t('events.clover.flog2.options')) === 0
-      if (give) {
-        const scripts = t('events.clover.flog2.end1')
-        bag.removeItem('clover4')
-        uiScene.log.push(scripts.shift())
-        await speakFlog(scripts)
-      } else {
-        const scripts = t('events.clover.flog2.end2')
-        await speakFlog(scripts)
+    flog?.setTapEvent(async () => {
+      const speakFlog = talk.getSpeakScripts(new Talker('カエル', flog.object))
+      if (state.clover === CLOVER_STEPS.NULL) {
+        await speakFlog(t('events.clover.flog1'))
+        state.clover = CLOVER_STEPS.STARTED
+      } else if (state.clover === CLOVER_STEPS.STARTED) {
+        if (!bag.hasItem('clover4')) return await speakFlog(t('events.clover.flog1'))
+        const give = await uiScene.setSelector(t('events.clover.flog2.options')) === 0
+        if (give) {
+          const scripts = t('events.clover.flog2.end1')
+          bag.removeItem('clover4')
+          uiScene.log.push(scripts.shift())
+          await speakFlog(scripts)
+        } else {
+          const scripts = t('events.clover.flog2.end2')
+          await speakFlog(scripts)
+        }
+        await field.addObject({ type: 'Substance', name: 'apple', x: flog.object.x, y: flog.object.y }).then(v => v.drop())
+        state.clover = CLOVER_STEPS.COMPLETED
+      } else if (state.clover === CLOVER_STEPS.COMPLETED) {
+        await speakFlog(t('events.clover.flog3'))
       }
-      await field.addObject({ type: 'Substance', name: 'apple', x: flog.object.x, y: flog.object.y }).then(v => v.drop())
-      state.clover = CLOVER_STEPS.COMPLETED
-    }
-    const cloverEvent3 = async () => {
-      await speakFlog(t('events.clover.flog3'))
-    }
-    flog.setTapEvent(async () => {
-      if (state.clover === CLOVER_STEPS.COMPLETED) return await cloverEvent3()
-      if (state.clover === CLOVER_STEPS.STARTED && bag.hasItem('clover4')) return await cloverEvent2()
-      return await cloverEvent1()
     })
   }
 }

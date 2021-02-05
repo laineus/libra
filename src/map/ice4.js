@@ -11,9 +11,8 @@ export default {
     const bag = inject('bag')
 
     const hachi = field.getObjectById(4)
-    const speakHachi = talk.getSpeakScripts(new Talker('ペンギン', hachi.object))
-
-    hachi.setTapEvent(async () => {
+    hachi?.setTapEvent(async () => {
+      const speakHachi = talk.getSpeakScripts(new Talker('ペンギン', hachi.object))
       if (state.events.pityPenguin < PITY_STEPS.FOUND) {
         await speakHachi(t('events.pityPenguin.greet'))
       } else if (state.events.pityPenguin === PITY_STEPS.FOUND) {

@@ -11,9 +11,8 @@ export default {
     const bag = inject('bag')
 
     const fisher = field.getObjectById(3)
-    const speakFisher = talk.getSpeakScripts(new Talker('ペンギン', fisher.object))
-
-    fisher.setTapEvent(async () => {
+    fisher?.setTapEvent(async () => {
+      const speakFisher = talk.getSpeakScripts(new Talker('ペンギン', fisher.object))
       const option2 = async () => {
         const ignore = await uiScene.setSelector(t('events.eel.startOptions2')) === 1
         if (ignore) {

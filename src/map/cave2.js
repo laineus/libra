@@ -11,10 +11,8 @@ export default {
     const bag = inject('bag')
 
     const flog = field.getObjectById(5)
-    const speakFlog = talk.getSpeakScripts(new Talker('カエル', flog.object))
-
-    const dropDoll = () => field.addObject({ type: 'Substance', name: 'strawDoll', x: flog.object.x, y: flog.object.y }).then(v => v.drop())
-    flog.setTapEvent(async () => {
+    flog?.setTapEvent(async () => {
+      const speakFlog = talk.getSpeakScripts(new Talker('カエル', flog.object))
       if (state.events.strawDoll === STRAWDOLL_STEPS.NULL) {
         await speakFlog(t('events.strawDoll.start'))
         const receive = await uiScene.setSelector(t('events.strawDoll.options')) === 1
@@ -24,13 +22,14 @@ export default {
         const scripts = t('events.strawDoll.answer2')
         await speakFlog(scripts.splice(0, 2))
         await dropDoll()
+        field.dropItem('strawDoll', flog.object)
         await speakFlog(scripts)
         state.events.strawDoll = STRAWDOLL_STEPS.RECEIVED
       } else if (bag.hasItem('strawDoll', 1, { bag: true, room: true, field: true })) {
         await speakFlog(t('events.strawDoll.received'))
       } else {
         await speakFlog(t('events.strawDoll.disposed'))
-        await dropDoll()
+        field.dropItem('strawDoll', flog.object)
       }
     })
   }

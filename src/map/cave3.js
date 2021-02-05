@@ -12,6 +12,8 @@ export default {
 
     const leftBat = field.getObjectById(3)
     const rightBat = field.getObjectById(4)
+    if (!leftBat || !rightBat) return
+
     const tl = new Talker('コウモリ', leftBat.object)
     const tr = new Talker('コウモリ', rightBat.object)
     const speakLeft = talk.getSpeakScripts(tl)
@@ -22,7 +24,6 @@ export default {
       })
       return talk.setTalk(list)
     }
-    const dropApple = chara => field.addObject({ type: 'Substance', name: 'apple', x: chara.object.x, y: chara.object.y }).then(v => v.drop())
 
     const timeEstimated = state.events.curse === CURSE_STEPS.NOTICED_DID
     rightBat.setVisible(computed(() => ![CURSE_STEPS.EXECUTED, CURSE_STEPS.EXECUTED_END].includes(state.events.curse)))
@@ -46,13 +47,13 @@ export default {
         if (did) {
           const scripts = t('events.curse.answer1')
           await speakLeft(scripts.splice(0, 2))
-          dropApple(leftBat)
+          field.dropItem('apple', leftBat.object)
           await talkBoth(scripts, [tr, tl, tr])
           state.events.curse = CURSE_STEPS.NOTICED_DID
         } else {
           const scripts = t('events.curse.answer2')
           await talkBoth(scripts.splice(0, 3), [tl, tr, tr])
-          dropApple(rightBat)
+          field.dropItem('apple', rightBat.object)
           await talkBoth(scripts, [tl, tr, tr])
           state.events.curse = CURSE_STEPS.COMPLETED
         }

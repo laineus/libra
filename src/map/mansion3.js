@@ -12,11 +12,8 @@ export default {
     const bag = inject('bag')
 
     const lady1 = field.getObjectById(2)
-    const speakLady1 = talk.getSpeakScripts(new Talker('カボチャ', lady1.object))
-    const lady2 = field.getObjectById(3)
-    const speakLady2 = talk.getSpeakScripts(new Talker('カボチャ', lady2.object))
-
-    lady1.setTapEvent(async () => {
+    lady1?.setTapEvent(async () => {
+      const speakLady1 = talk.getSpeakScripts(new Talker('カボチャ', lady1.object))
       if (state.events.beauty === BEAUTY_STEPS.NULL) {
         await speakLady1(t('events.lady1.start'))
         state.events.beauty = BEAUTY_STEPS.STARTED
@@ -42,14 +39,16 @@ export default {
         await speakLady1(t('events.lady1.solved'))
       }
     })
-    lady1.setDestroyEvent(() => {
+    lady1?.setDestroyEvent(() => {
       if (state.events.beauty === BEAUTY_STEPS.SOLVED) {
         state.events.beauty = BEAUTY_STEPS.EXECUTED
       }
     })
 
     let lady2MissionStarted = false
-    lady2.setTapEvent(async () => {
+    const lady2 = field.getObjectById(3)
+    lady2?.setTapEvent(async () => {
+      const speakLady2 = talk.getSpeakScripts(new Talker('カボチャ', lady2.object))
       if (state.events.beauty < BEAUTY_STEPS.SOLVED) {
         await speakLady2(t('events.lady2.greet'))
       } else if (state.events.beauty === BEAUTY_STEPS.SOLVED) {

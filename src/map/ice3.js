@@ -12,9 +12,8 @@ export default {
 
     // EEL
     const anton = field.getObjectById(3)
-    const speakAnton = talk.getSpeakScripts(new Talker('アントン先生', anton.object))
-
-    anton.setTapEvent(async () => {
+    anton?.setTapEvent(async () => {
+      const speakAnton = talk.getSpeakScripts(new Talker('アントン先生', anton.object))
       if (state.events.eel < EEL_STEPS.STARTED) {
         return await speakAnton(t('events.anton.start1'))
       } else if (state.events.eel === EEL_STEPS.STARTED) {
@@ -52,9 +51,8 @@ export default {
 
     // PITY
     const friend = field.getObjectById(4)
-    const speakFriend = talk.getSpeakScripts(new Talker('ペンギン', friend.object))
-
-    friend.setTapEvent(async () => {
+    friend?.setTapEvent(async () => {
+      const speakFriend = talk.getSpeakScripts(new Talker('ペンギン', friend.object))
       if (state.events.pityPenguin === PITY_STEPS.NULL) {
         const scripts = t('events.pityPenguinFriend.start1').concat(t('events.pityPenguinFriend.start2'))
         await speakFriend(scripts)

@@ -11,9 +11,8 @@ export default {
     const bag = inject('bag')
 
     const pumpkin = field.getObjectById(4)
-    const speakPumpkin = talk.getSpeakScripts(new Talker('カボチャ', pumpkin.object))
-
-    pumpkin.setTapEvent(async () => {
+    pumpkin?.setTapEvent(async () => {
+      const speakPumpkin = talk.getSpeakScripts(new Talker('カボチャ', pumpkin.object))
       if (state.events.painter < PAINTER_STEPS.SOLVED) {
         await speakPumpkin(t('events.collector.start'))
         if (!bag.hasItem('art15')) return
@@ -38,8 +37,8 @@ export default {
     // -------------------------------------------
 
     const child = field.getObjectById(5)
-    const speakChild = talk.getSpeakScripts(new Talker('カボチャ', child.object))
-    child.setTapEvent(async () => {
+    child?.setTapEvent(async () => {
+      const speakChild = talk.getSpeakScripts(new Talker('カボチャ', child.object))
       if (state.events.appreciation < APPRECIATION_STEPS.STARTED) {
         await speakChild(state.events.appreciation === APPRECIATION_STEPS.NULL ? t('events.child.start') : t('events.child.start').slice(-1))
         const accept = await uiScene.setSelector(t('events.child.options')) === 0

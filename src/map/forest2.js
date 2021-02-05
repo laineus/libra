@@ -118,31 +118,33 @@ export default {
     // ----------------------------------------------------------------------------------
 
     const torrent = field.getObjectById(24)
-    const speakTorrent = talk.getSpeakScripts(new Talker('トレント', torrent.object))
-    torrent.setVisible(computed(() => state.events.curse >= CURSE_STEPS.STARTED))
-    const execCurse = async () => {
-      if (bag.hasItem('strawDoll')) {
-        await speakTorrent(t('events.curser.exec1'))
-        await uiScene.transition(1000).then(complete => complete())
-        state.events.curse = CURSE_STEPS.EXECUTED
-        await speakTorrent(t('events.curser.exec2'))
-      } else {
-        await speakTorrent(t('events.curser.failed'))
-      }
-    }
-    torrent.setTapEvent(async () => {
-      if (state.events.curse === CURSE_STEPS.STARTED) {
-        await speakTorrent(t('events.curser.start'))
-        state.events.curse = CURSE_STEPS.TALKED_TORRENT
-        const wannaCurse = await uiScene.setSelector(t('events.curser.options')) === 0
-        wannaCurse ? await execCurse() : await speakTorrent(t('events.curser.cancel'))
-      } else {
-        await speakTorrent(t('events.curser.greet'))
-        if (state.events.curse === CURSE_STEPS.TALKED_TORRENT) {
-          const wannaCurse = await uiScene.setSelector(t('events.curser.options2')) === 1
-          if (wannaCurse) await execCurse()
+    if (torrent) {
+      const speakTorrent = talk.getSpeakScripts(new Talker('トレント', torrent.object))
+      torrent.setVisible(computed(() => state.events.curse >= CURSE_STEPS.STARTED))
+      const execCurse = async () => {
+        if (bag.hasItem('strawDoll')) {
+          await speakTorrent(t('events.curser.exec1'))
+          await uiScene.transition(1000).then(complete => complete())
+          state.events.curse = CURSE_STEPS.EXECUTED
+          await speakTorrent(t('events.curser.exec2'))
+        } else {
+          await speakTorrent(t('events.curser.failed'))
         }
       }
-    })
+      torrent.setTapEvent(async () => {
+        if (state.events.curse === CURSE_STEPS.STARTED) {
+          await speakTorrent(t('events.curser.start'))
+          state.events.curse = CURSE_STEPS.TALKED_TORRENT
+          const wannaCurse = await uiScene.setSelector(t('events.curser.options')) === 0
+          wannaCurse ? await execCurse() : await speakTorrent(t('events.curser.cancel'))
+        } else {
+          await speakTorrent(t('events.curser.greet'))
+          if (state.events.curse === CURSE_STEPS.TALKED_TORRENT) {
+            const wannaCurse = await uiScene.setSelector(t('events.curser.options2')) === 1
+            if (wannaCurse) await execCurse()
+          }
+        }
+      })
+    }
   }
 }

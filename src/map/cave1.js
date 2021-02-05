@@ -11,9 +11,8 @@ export default {
     const bag = inject('bag')
 
     const snake = field.getObjectById(5)
-    const speakSnake = talk.getSpeakScripts(new Talker('コウモリ', snake.object))
-
-    snake.setTapEvent(async () => {
+    snake?.setTapEvent(async () => {
+      const speakSnake = talk.getSpeakScripts(new Talker('コウモリ', snake.object))
       if (state.events.snakeFlog === SNAKE_FLOG_STEPS.NULL) {
         await speakSnake(t('events.snakeFlog.start'))
         state.events.snakeFlog = SNAKE_FLOG_STEPS.STARTED

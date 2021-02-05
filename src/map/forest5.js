@@ -7,9 +7,8 @@ export default {
     const talk = inject('talk').value
 
     const torrent = field.getObjectById(2)
-    const speakTorrent = talk.getSpeakScripts(new Talker('トレント', torrent.object))
-
-    torrent.setTapEvent(async () => {
+    torrent?.setTapEvent(async () => {
+      const speakTorrent = talk.getSpeakScripts(new Talker('トレント', torrent.object))
       await speakTorrent(t('events.clover.torrent'))
     })
   }

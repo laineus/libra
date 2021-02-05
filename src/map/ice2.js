@@ -10,9 +10,8 @@ export default {
     const talk = inject('talk').value
 
     const penguin = field.getObjectById(4)
-    const speakPenguin = talk.getSpeakScripts(new Talker('ペンギン', penguin.object))
-
-    penguin.setTapEvent(async () => {
+    penguin?.setTapEvent(async () => {
+      const speakPenguin = talk.getSpeakScripts(new Talker('ペンギン', penguin.object))
       if (state.events.liveForEveryone === LIVE_FOR_EVERYONE_STEPS.NULL) {
         await speakPenguin(t('events.liveForEveryone.start'))
         await field.dropItem('apple', penguin.object)

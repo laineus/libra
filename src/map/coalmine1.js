@@ -11,9 +11,8 @@ export default {
     const bag = inject('bag')
 
     const penguin = field.getObjectById(4)
-    const speakPenguin = talk.getSpeakScripts(new Talker('炭鉱ペンギン', penguin.object))
-
-    penguin.setTapEvent(async () => {
+    penguin?.setTapEvent(async () => {
+      const speakPenguin = talk.getSpeakScripts(new Talker('炭鉱ペンギン', penguin.object))
       if (state.events.appreciation < APPRECIATION_STEPS.STARTED) {
         await speakPenguin(t('events.miner.greet'))
       } else if (state.events.appreciation === APPRECIATION_STEPS.STARTED) {
