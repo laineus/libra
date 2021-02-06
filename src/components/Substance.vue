@@ -7,7 +7,7 @@
       </template>
       <slot />
     </Container>
-    <TapArea v-if="tapEvent.event.value" :visible="interactive" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @tap="tapEvent.exec" />
+    <TapArea v-if="tapEvent.event.value" :visible="interactive" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @tap="execTapEvent" />
     <GrabArea v-else-if="capturable" :visible="interactive" :name="name" :scale="scale" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @grab="alpha = 0.5" @capture="onBroken" @cancel="alpha = 1" />
   </div>
 </template>
@@ -36,6 +36,7 @@ export default {
   setup (props, context) {
     const field = inject('field')
     const event = inject('event')
+    const camera = inject('camera')
     const player = inject('player')
     const state = inject('storage').state
     const object = refObj(null)
@@ -103,6 +104,13 @@ export default {
       data.distanceToPlayer = Phaser.Math.Distance.Between(object.value.x, object.value.y, player.value.object.x, player.value.object.y)
     })
     const interactive = computed(() => !event.state && data.distanceToPlayer < 150 && !player.value?.gun.mode.value && unref(data.visible))
+    const execTapEvent = async () => {
+      if (!tapEvent.event) return
+      const fixCamera = await camera.value.look((object.value.x + player.value.object.x).half, (object.value.y + player.value.object.y).half, 500)
+      const result = await tapEvent.exec()
+      await fixCamera()
+      return result
+    }
     return {
       unref,
       ...toRefs(data),
@@ -115,7 +123,7 @@ export default {
       imageTexture,
       imgWidth, imgHeight, depth, alpha,
       tapEvent,
-      execTapEvent: tapEvent.exec,
+      execTapEvent,
       setTapEvent: tapEvent.setEvent,
       setDestroyEvent,
       onBroken,
