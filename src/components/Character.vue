@@ -1,5 +1,5 @@
 <template>
-  <Substance ref="substance" :name="name" :frame="frame" @del="$emit('del')">
+  <Substance ref="substance" :name="name" :frame="frame" @del="$emit('del')" @startEvent="stopWalking">
     <Body :drag="500" :offsetX="Math.max(substance?.imgWidth - 30, 0).half" :width="Math.min(substance?.imgWidth, 30)" :height="Math.min(substance?.imgHeight, 30)" />
   </Substance>
 </template>
@@ -34,7 +34,7 @@ export default {
     if (props.random) following.setRandomWalk(typeof props.random === 'number' ? props.random : 120)
     const textureData = scene.textures.get(itemData.texture)
     const numOfDirection = Object.keys(textureData.frames).map(Number).count(Number.isInteger) / 3
-    const { play: playFrameAnim, lookTo } = useFrameAnimChara(object, image, props.initR, numOfDirection)
+    const { base: getBaseFrame, play: playFrameAnim, lookTo } = useFrameAnimChara(object, image, props.initR, numOfDirection)
     const setTemper = type => {
       if (!itemData) return
       if (itemData.temper[type] === TEMPER.RANDOM) {
@@ -56,12 +56,19 @@ export default {
       setTemper('shot')
       substance.value?.damage()
     }
+    const stopWalking = () => {
+      following.setRandomWalk(false)
+      following.clearTargetPosition()
+      object.value.body.velocity.normalize().scale(0)
+      frame.value = getBaseFrame()
+    }
     return {
       object, image, substance,
       frame,
       lookTo,
       damage,
       // Following
+      stopWalking,
       setTargetPosition: following.setTargetPosition,
       clearTargetPosition: following.clearTargetPosition,
       // Extend from Substance

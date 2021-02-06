@@ -32,7 +32,7 @@ export default {
     pipeline: { default: null },
     frame: { default: '__BASE' }
   },
-  emits: ['create', 'del'],
+  emits: ['create', 'del', 'startEvent'],
   setup (props, context) {
     const field = inject('field')
     const event = inject('event')
@@ -104,12 +104,14 @@ export default {
       data.distanceToPlayer = Phaser.Math.Distance.Between(object.value.x, object.value.y, player.value.object.x, player.value.object.y)
     })
     const interactive = computed(() => !event.state && data.distanceToPlayer < 150 && !player.value?.gun.mode.value && unref(data.visible))
-    const execTapEvent = async () => {
-      if (!tapEvent.event) return
-      const fixCamera = await camera.value.look((object.value.x + player.value.object.x).half, (object.value.y + player.value.object.y).half, 500)
-      const result = await tapEvent.exec()
-      await fixCamera()
-      return result
+    const setTapEvent = event => {
+      tapEvent.setEvent(async () => {
+        context.emit('startEvent')
+        const fixCamera = await camera.value.look((object.value.x + player.value.object.x).half, (object.value.y + player.value.object.y).half, 500)
+        const result = await event()
+        await fixCamera()
+        return result
+      })
     }
     return {
       unref,
@@ -123,8 +125,8 @@ export default {
       imageTexture,
       imgWidth, imgHeight, depth, alpha,
       tapEvent,
-      execTapEvent,
-      setTapEvent: tapEvent.setEvent,
+      execTapEvent: tapEvent.exec,
+      setTapEvent,
       setDestroyEvent,
       onBroken,
       setVisible, setCapturable,
