@@ -1,5 +1,5 @@
 <template>
-  <Container :x="(margin + width).byRight" :y="(bottom + height + labelHeight).byBottom">
+  <Container :x="(margin + width).byRight + (x ?? 0)" :y="(bottom + height + labelHeight).byBottom">
     <RoundRectangle :y="labelHeight" :width="width" :height="height" :fillColor="COLORS.soy" :radius="{ tl: 0, tr: radius, bl: radius, br: radius }" :origin="0" @pointerdown="onTapBg" @wheel="$emit('wheel', $event)" />
     <RoundRectangle :x="padding" :y="padding + labelHeight" :width="width - padding.twice" :height="height - padding.twice" :lineWidth="2" :strokeColor="COLORS.brown" :radius="{ tl: 0, tr: radius, bl: radius, br: radius }" :origin="0" />
     <RoundRectangle :width="labelWidth" :height="labelHeight" :fillColor="COLORS.soy" :radius="{ tl: radius, tr: radius, bl: 0, br: 0 }" :originX="0" @pointerdown="onTapBg" />
@@ -20,7 +20,7 @@ import Text from '@/components/Text'
 import config from '@/data/config'
 export default {
   components: { Container, Rectangle, RoundRectangle, Text },
-  props: ['arrowX', 'height', 'title'],
+  props: ['x', 'arrowX', 'height', 'title'],
   emits: ['wheel'],
   setup (props) {
     const margin = 15

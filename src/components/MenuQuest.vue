@@ -1,5 +1,5 @@
 <template>
-  <MenuContainer ref="container" :arrowX="25 + (2 * 60)" :height="305" title="Quest" @wheel="onWheel">
+  <MenuContainer ref="container" :arrowX="25 + (1 * 60)" :height="305" title="Quest" @wheel="onWheel">
     <Container v-for="(v, i) in places.slice(offset, offset + 8)" :key="i" :x="rowWidth.half" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerup="p => tapItem(p, i)">
       <Line v-if="i !== places.length - 1" :x="0" :y="rowHeight.half" :lineWidth="0.5" :x2="rowWidth" :strokeColor="COLORS.brown" :alpha="0.25" />
       <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="v.key" :size="13" :bold="true" @pointerup="p => tapItem(p, i)" /><!-- TODO -->

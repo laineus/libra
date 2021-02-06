@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Container v-for="(v, i) in menu" :key="i" :x="(220).byRight + (i * 60)" :y="(40).byBottom">
+    <Container v-for="(v, i) in menu" :key="i" :x="(280).byRight + (i * 60)" :y="(40).byBottom">
       <Circle :fillColor="COLORS.brown" :radius="25" :lineWidth="2" :strokeColor="COLORS.soy" @pointerdown="(...args) => tapButton(i, ...args)" />
       <Image texture="menu_icons" :frame="i" :tint="COLORS.soy" />
     </Container>
