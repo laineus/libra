@@ -77,6 +77,12 @@
                  "id":2,
                  "name":"minePenguin",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"unique",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"Character",
                  "visible":true,
@@ -94,7 +100,7 @@
  "nextobjectid":3,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"2019.12.11",
+ "tiledversion":"2020.08.05",
  "tileheight":32,
  "tilesets":[
         {
@@ -107,6 +113,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.2,
+ "version":1.4,
  "width":40
 }

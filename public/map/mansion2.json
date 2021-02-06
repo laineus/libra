@@ -121,6 +121,12 @@
                  "id":4,
                  "name":"pumpkin",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"unique",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"Character",
                  "visible":true,
@@ -133,6 +139,12 @@
                  "id":5,
                  "name":"pumpkin",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"unique",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"Character",
                  "visible":true,

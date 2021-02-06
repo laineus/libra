@@ -83,6 +83,12 @@
                  "id":5,
                  "name":"flog",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"unique",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"Character",
                  "visible":true,
@@ -205,7 +211,7 @@
  "nextobjectid":11,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"2020.12.18",
+ "tiledversion":"2020.08.05",
  "tileheight":32,
  "tilesets":[
         {

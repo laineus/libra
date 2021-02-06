@@ -77,6 +77,12 @@
                  "id":2,
                  "name":"minePenguin",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"unique",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"Character",
                  "visible":true,
