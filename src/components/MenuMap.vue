@@ -38,7 +38,6 @@ export default {
       del: false
     })
     const onTap = del => (pointer, i) => {
-      console.log(pointer)
       if (data.selectedIndex) {
         data.selectedIndex = null
         return
