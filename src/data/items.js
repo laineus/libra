@@ -24,6 +24,7 @@ const makeCharacter = (name, obj) => {
     type: 'Character',
     texture: `chara_sprite/${snakeCase(name)}`,
     speed: 120,
+    standingAnim: false,
     temper: PLANT
   }, obj)
 }
@@ -73,12 +74,12 @@ export default [
   makeCharacter('torrent', { temper: ELEPHANT, speed: 50 }),
   makeCharacter('flog', { temper: CAT, speed: 30 }),
   makeCharacter('hercules', { temper: BEAR, speed: 18 }),
-  makeCharacter('bat', { temper: CAT, speed: 120 }),
+  makeCharacter('bat', { temper: CAT, speed: 120, standingAnim: true }),
   makeCharacter('snake', { temper: SHARK, speed: 40 }),
   makeCharacter('penguin', { temper: FISH, speed: 50 }),
   makeCharacter('minePenguin', { temper: FISH, speed: 50 }),
   makeCharacter('fallTorrent', { temper: ELEPHANT, speed: 50 }),
-  makeCharacter('ghost', { temper: CAT, speed: 60 }),
+  makeCharacter('ghost', { temper: CAT, speed: 60, standingAnim: true }),
   makeCharacter('pumpkin', { temper: FISH, speed: 50 }),
   makeCharacter('amili')
 ]

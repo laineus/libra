@@ -39,7 +39,7 @@ const getVelocityToDirectionKey = numOfDirection => r => {
     }
   }
 }
-export default (object, image, initR, numOfDirection) => {
+export default (object, image, initR, numOfDirection, standingAnim = false) => {
   const velocityToDirectionKey = getVelocityToDirectionKey(numOfDirection)
   const frameAnim = useFrameAnim(WALK_ANIM, image)
   let directionKey = velocityToDirectionKey(initR)
@@ -49,6 +49,8 @@ export default (object, image, initR, numOfDirection) => {
     if (walking) {
       const r = Math.atan2(unref(object).body.velocity.y, unref(object).body.velocity.x)
       directionKey = velocityToDirectionKey(r)
+      return frameAnim.play(directionKey)
+    } else if (standingAnim) {
       return frameAnim.play(directionKey)
     }
     return baseFrames[directionKey]

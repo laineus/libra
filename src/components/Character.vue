@@ -34,7 +34,7 @@ export default {
     if (props.random) following.setRandomWalk(typeof props.random === 'number' ? props.random : 120)
     const textureData = scene.textures.get(itemData.texture)
     const numOfDirection = Object.keys(textureData.frames).map(Number).count(Number.isInteger) / 3
-    const { base: getBaseFrame, play: playFrameAnim, lookTo } = useFrameAnimChara(object, image, props.initR, numOfDirection)
+    const { base: getBaseFrame, play: playFrameAnim, lookTo } = useFrameAnimChara(object, image, props.initR, numOfDirection, itemData?.standingAnim)
     const setTemper = type => {
       if (!itemData) return
       if (itemData.temper[type] === TEMPER.RANDOM) {
