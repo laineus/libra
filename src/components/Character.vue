@@ -1,5 +1,5 @@
 <template>
-  <Substance ref="substance" :name="name" :frame="frame" @del="$emit('del')" @startEvent="stopWalking">
+  <Substance ref="substance" :name="name" :frame="frame" @del="$emit('del')" @startEvent="startEvent">
     <Body :drag="500" :offsetX="Math.max(substance?.imgWidth - 30, 0).half" :width="Math.min(substance?.imgWidth, 30)" :height="Math.min(substance?.imgHeight, 30)" />
   </Substance>
 </template>
@@ -62,11 +62,16 @@ export default {
       object.value.body.velocity.normalize().scale(0)
       frame.value = getBaseFrame()
     }
+    const startEvent = () => {
+      stopWalking()
+      lookTo(player.value.object)
+    }
     return {
       object, image, substance,
       frame,
       lookTo,
       damage,
+      startEvent,
       // Following
       stopWalking,
       setTargetPosition: following.setTargetPosition,

@@ -53,8 +53,12 @@ export default (object, image, initR, numOfDirection) => {
     }
     return baseFrames[directionKey]
   }
-  const lookTo = rOrKey => {
-    directionKey = typeof rOrKey === 'string' ? rOrKey : velocityToDirectionKey(rOrKey)
+  const lookTo = to => {
+    switch (typeof to) {
+      case 'string': return directionKey = to
+      case 'number': return directionKey = velocityToDirectionKey(to)
+      case 'object': return directionKey = velocityToDirectionKey(Math.atan2(to.y - unref(object).y, to.x - unref(object).x))
+    }
   }
   return {
     base,
