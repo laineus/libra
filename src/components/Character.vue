@@ -30,6 +30,7 @@ export default {
     const image = computed(() => substance.value?.image)
     const following = useFollowing(object)
     const itemData = items.find(v => v.key === props.name)
+    const speed = itemData ? itemData.speed : props.speed
     if (props.random) following.setRandomWalk(typeof props.random === 'number' ? props.random : 120)
     const textureData = scene.textures.get(itemData.texture)
     const numOfDirection = (textureData.frameTotal - 1) / 3
@@ -49,7 +50,7 @@ export default {
     })
     onPreUpdate(() => {
       frame.value = playFrameAnim()
-      following.walkToTargetPosition(props.speed)
+      following.walkToTargetPosition(speed)
     })
     const damage = () => {
       setTemper('shot')

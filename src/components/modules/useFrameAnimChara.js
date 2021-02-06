@@ -1,14 +1,14 @@
 import useFrameAnim from '@/components/modules/useFrameAnim'
 import { unref } from 'vue'
 const WALK_ANIM = [
-  { key: 'down', frames: [1, 0, 1, 2], duration: 7 },
-  { key: 'left', frames: [4, 3, 4, 5], duration: 7 },
-  { key: 'right', frames: [7, 6, 7, 8], duration: 7 },
-  { key: 'up', frames: [10, 9, 10, 11], duration: 7 },
-  { key: 'leftDown', frames: [13, 12, 13, 14], duration: 7 },
-  { key: 'rightDown', frames: [16, 15, 16, 17], duration: 7 },
-  { key: 'leftUp', frames: [19, 18, 19, 20], duration: 7 },
-  { key: 'rightUp', frames: [22, 21, 22, 23], duration: 7 }
+  { key: 'down', frames: [1, 0, 1, 2], duration: 10 },
+  { key: 'left', frames: [4, 3, 4, 5], duration: 10 },
+  { key: 'right', frames: [7, 6, 7, 8], duration: 10 },
+  { key: 'up', frames: [10, 9, 10, 11], duration: 10 },
+  { key: 'leftDown', frames: [13, 12, 13, 14], duration: 10 },
+  { key: 'rightDown', frames: [16, 15, 16, 17], duration: 10 },
+  { key: 'leftUp', frames: [19, 18, 19, 20], duration: 10 },
+  { key: 'rightUp', frames: [22, 21, 22, 23], duration: 10 }
 ]
 const baseFrames = WALK_ANIM.reduce((result, v) => {
   result[v.key] = v.frames[0]
