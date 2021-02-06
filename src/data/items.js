@@ -1,3 +1,12 @@
+import { TEMPER } from '@/data/constants'
+const PLANT = { normal: TEMPER.STOP, shot: TEMPER.STOP }
+const BEAR = { normal: TEMPER.ESCAPE, shot: TEMPER.ATTACK }
+const BUG = { normal: TEMPER.RANDOM, shot: TEMPER.RANDOM }
+const FISH = { normal: TEMPER.RANDOM, shot: TEMPER.ESCAPE }
+const ELEPHANT = { normal: TEMPER.RANDOM, shot: TEMPER.ATTACK }
+const CAT = { normal: TEMPER.ATTACK, shot: TEMPER.ESCAPE }
+const SHARK = { normal: TEMPER.ATTACK, shot: TEMPER.ATTACK }
+
 const snakeCase = str => {
   str = str.charAt(0).toLowerCase() + str.slice(1)
   return str.replace(/[A-Z]/g, s => `_${s.toLowerCase()}`)
@@ -13,7 +22,8 @@ const makeCharacter = (name, obj) => {
   return Object.assign({
     key: name,
     type: 'Character',
-    texture: `chara_sprite/${snakeCase(name)}`
+    texture: `chara_sprite/${snakeCase(name)}`,
+    temper: PLANT
   }, obj)
 }
 export default [
@@ -55,19 +65,19 @@ export default [
   makeItem('coinSilver'),
   makeItem('elixir'),
   ...(17).toArray().map(i => makeItem(`art${i}`)),
-  makeCharacter('ladybird'),
-  makeCharacter('stagBeetle'),
-  makeCharacter('beetle'),
+  makeCharacter('ladybird', { temper: BUG }),
+  makeCharacter('stagBeetle', { temper: CAT }),
+  makeCharacter('beetle', { temper: BEAR }),
   makeCharacter('kajitsu'),
-  makeCharacter('torrent'),
-  makeCharacter('flog'),
-  makeCharacter('hercules'),
-  makeCharacter('bat'),
-  makeCharacter('snake'),
-  makeCharacter('penguin'),
-  makeCharacter('minePenguin'),
-  makeCharacter('fallTorrent'),
-  makeCharacter('ghost'),
-  makeCharacter('pumpkin'),
+  makeCharacter('torrent', { temper: ELEPHANT }),
+  makeCharacter('flog', { temper: CAT }),
+  makeCharacter('hercules', { temper: BEAR }),
+  makeCharacter('bat', { temper: CAT }),
+  makeCharacter('snake', { temper: SHARK }),
+  makeCharacter('penguin', { temper: FISH }),
+  makeCharacter('minePenguin', { temper: FISH }),
+  makeCharacter('fallTorrent', { temper: ELEPHANT }),
+  makeCharacter('ghost', { temper: CAT }),
+  makeCharacter('pumpkin', { temper: FISH }),
   makeCharacter('amili')
 ]
