@@ -9,6 +9,11 @@
       <Log ref="log" />
       <Menu ref="menu" />
       <Image v-for="v in 5" :key="v" texture="hp" :frame="Math.round(state.status.hp / 20) >= v ? 0 : 1" :x="40 + ((v - 1) * 42)" :y="(35).byBottom" />
+      <Container :x="config.WIDTH.half" :y="50" v-if="mapName">
+        <RoundRectangle :tween="{ width: 166, alpha: 1, duration: 300, yoyo: true, hold: 3000 }" :width="10" :height="32" :alpha="0" :origin="0.5" :radius="5" :fillColor="config.COLORS.brown" />
+        <RoundRectangle :tween="{ width: 161, alpha: 1, duration: 300, yoyo: true, hold: 3000 }" :width="5" :height="27" :alpha="0" :origin="0.5" :radius="5" :strokeColor="config.COLORS.soy" :lineWidth="1" />
+        <Text :tween="{ alpha: 1, duration: 300, yoyo: true, hold: 3000, onComplete: () => setMapName(null) }" :alpha="0" :text="mapName" :origin="0.5" color="soy" :bold="true" />
+      </Container>
     </template>
     <Rectangle :fillColor="transitionData.color" :origin="0" :width="config.WIDTH" :height="config.HEIGHT" :depth="config.DEPTH.TRANSITION" :alpha="transitionData.alpha" />
     <Text v-if="screenMessage" :text="screenMessage" :x="config.WIDTH.half" :y="config.HEIGHT.half" :size="17" color="white" :origin="0.5" :depth="config.DEPTH.TRANSITION" />
@@ -17,7 +22,7 @@
 
 <script>
 import { inject, reactive, ref } from 'vue'
-import { refScene, Scene, Rectangle, Circle, Image } from 'phavuer'
+import { refScene, Scene, Rectangle, Circle, Image, Container, RoundRectangle } from 'phavuer'
 import Title from './Title'
 import Controller from './Controller'
 import Talk from './Talk'
@@ -26,8 +31,9 @@ import Menu from './Menu'
 import Log from './Log'
 import Text from './Text'
 import config from '@/data/config'
+import maps from '@/data/maps'
 export default {
-  components: { Scene, Title, Controller, Rectangle, Circle, Image, Talk, Selector, Menu, Log, Text },
+  components: { Scene, Title, Controller, Rectangle, Circle, Image, Container, RoundRectangle, Talk, Selector, Menu, Log, Text },
   setup (props) {
     const mobile = inject('mobile')
     const frames = inject('frames')
@@ -83,6 +89,10 @@ export default {
       })
       return start().then(() => complete)
     }
+    const mapName = ref(null)
+    const setMapName = name => {
+      mapName.value = maps[name]?.name
+    }
     return {
       state: storage.state,
       mobile,
@@ -95,6 +105,7 @@ export default {
       nealestCheckable,
       selector, setSelector,
       screenMessage, setScreenMessage,
+      mapName, setMapName,
       check: () => {
         if (!nealestCheckable.value) return
         nealestCheckable.value.execTapEvent()

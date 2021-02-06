@@ -48,12 +48,14 @@ export default {
     const setField = async (name, x, y, r) => {
       const completeTransition = await uiScene.value.transition(200)
       fieldData.name = null
+      uiScene.value.setMapName(null)
       nextTick(() => {
         storage.state.map = name
         fieldData.name = name
         fieldData.x = x
         fieldData.y = y
         fieldData.r = r
+        uiScene.value.setMapName(name)
       })
       completeTransition()
     }
