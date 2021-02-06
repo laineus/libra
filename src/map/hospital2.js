@@ -27,7 +27,7 @@ export default {
         await speakGhost(t('events.forever.ghost.started'))
       } else if (state.events.forever === FOREVER_STEPS.EXECUTED) {
         await speakGhost(t('events.forever.ghost.complete1'))
-        field.dropItem('apple', ghost.object)
+        await field.dropItem('apple', ghost.object)
         await speakGhost(t('events.forever.ghost.complete2'))
         const completeTransition = await uiScene.transition(1000, { color: config.COLORS.white })
         state.events.forever = FOREVER_STEPS.COMPLETED

@@ -27,7 +27,7 @@ export default {
             await speakSnake(t('events.snakeFlog.complete1'))
             uiScene.log.push(...t('events.snakeFlog.logs'))
             await speakSnake(t('events.snakeFlog.complete2'))
-            field.dropItem('apple', snake.object)
+            await field.dropItem('apple', snake.object)
             state.events.snakeFlog = SNAKE_FLOG_STEPS.COMPLETED
           }
           return

@@ -47,13 +47,13 @@ export default {
         if (did) {
           const scripts = t('events.curse.answer1')
           await speakLeft(scripts.splice(0, 2))
-          field.dropItem('apple', leftBat.object)
+          await field.dropItem('apple', leftBat.object)
           await talkBoth(scripts, [tr, tl, tr])
           state.events.curse = CURSE_STEPS.NOTICED_DID
         } else {
           const scripts = t('events.curse.answer2')
           await talkBoth(scripts.splice(0, 3), [tl, tr, tr])
-          field.dropItem('apple', rightBat.object)
+          await field.dropItem('apple', rightBat.object)
           await talkBoth(scripts, [tl, tr, tr])
           state.events.curse = CURSE_STEPS.COMPLETED
         }

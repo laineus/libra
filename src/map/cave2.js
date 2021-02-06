@@ -21,15 +21,14 @@ export default {
         }
         const scripts = t('events.strawDoll.answer2')
         await speakFlog(scripts.splice(0, 2))
-        await dropDoll()
-        field.dropItem('strawDoll', flog.object)
+        await field.dropItem('strawDoll', flog.object)
         await speakFlog(scripts)
         state.events.strawDoll = STRAWDOLL_STEPS.RECEIVED
       } else if (bag.hasItem('strawDoll', 1, { bag: true, room: true, field: true })) {
         await speakFlog(t('events.strawDoll.received'))
       } else {
         await speakFlog(t('events.strawDoll.disposed'))
-        field.dropItem('strawDoll', flog.object)
+        await field.dropItem('strawDoll', flog.object)
       }
     })
   }
