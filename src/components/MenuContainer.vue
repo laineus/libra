@@ -1,6 +1,6 @@
 <template>
   <Container :x="(margin + width).byRight" :y="(bottom + height + labelHeight).byBottom">
-    <RoundRectangle ref="bg" :y="labelHeight" :width="width" :height="height" :fillColor="COLORS.soy" :radius="{ tl: 0, tr: radius, bl: radius, br: radius }" :origin="0" @pointerdown="onTapBg" />
+    <RoundRectangle :y="labelHeight" :width="width" :height="height" :fillColor="COLORS.soy" :radius="{ tl: 0, tr: radius, bl: radius, br: radius }" :origin="0" @pointerdown="onTapBg" @wheel="$emit('wheel', $event)" />
     <RoundRectangle :x="padding" :y="padding + labelHeight" :width="width - padding.twice" :height="height - padding.twice" :lineWidth="2" :strokeColor="COLORS.brown" :radius="{ tl: 0, tr: radius, bl: radius, br: radius }" :origin="0" />
     <RoundRectangle :width="labelWidth" :height="labelHeight" :fillColor="COLORS.soy" :radius="{ tl: radius, tr: radius, bl: 0, br: 0 }" :originX="0" @pointerdown="onTapBg" />
     <RoundRectangle :x="padding - 1" :y="padding - 1" :width="labelWidth - padding.twice + 2" :height="labelHeight + 2" :fillColor="COLORS.brown" :radius="{ tl: radius, tr: radius, bl: 0, br: 0 }" :originX="0" />
@@ -15,12 +15,13 @@
 </template>
 
 <script>
-import { refObj, Container, Rectangle, RoundRectangle } from 'phavuer'
+import { Container, Rectangle, RoundRectangle } from 'phavuer'
 import Text from '@/components/Text'
 import config from '@/data/config'
 export default {
   components: { Container, Rectangle, RoundRectangle, Text },
   props: ['arrowX', 'height', 'title'],
+  emits: ['wheel'],
   setup (props) {
     const margin = 15
     const padding = 4
@@ -32,7 +33,6 @@ export default {
     const offsetX = (margin + width).byRight + 5
     const offsetY = (bottom + props.height).byBottom + 5
     return {
-      bg: refObj(null),
       COLORS: config.COLORS,
       margin, padding,
       width,

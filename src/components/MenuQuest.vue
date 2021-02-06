@@ -1,5 +1,5 @@
 <template>
-  <MenuContainer ref="container" :arrowX="25 + (2 * 60)" :height="305" title="Quest">
+  <MenuContainer ref="container" :arrowX="25 + (2 * 60)" :height="305" title="Quest" @wheel="onWheel">
     <Container v-for="(v, i) in places.slice(offset, offset + 8)" :key="i" :x="rowWidth.half" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerup="p => tapItem(p, i)">
       <Line v-if="i !== places.length - 1" :x="0" :y="rowHeight.half" :lineWidth="0.5" :x2="rowWidth" :strokeColor="COLORS.brown" :alpha="0.25" />
       <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="v.key" :size="13" :bold="true" @pointerup="p => tapItem(p, i)" /><!-- TODO -->
@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { onMounted, reactive, ref, toRefs } from 'vue'
+import { reactive, ref, toRefs } from 'vue'
 import { Container, RoundRectangle, Line } from 'phavuer'
 import MenuContainer from '@/components/MenuContainer'
 import Text from '@/components/Text'
@@ -40,11 +40,9 @@ export default {
       rowWidth: 220, rowHeight: 37,
       selectedIndex: null
     })
-    onMounted(() => {
-      container.value.bg.setInteractive().on('wheel', e => {
-        data.offset = Math.fix(data.offset + Math.sign(e.deltaY), 0, places.length - 8)
-      })
-    })
+    const onWheel = e => {
+      data.offset = Math.fix(data.offset + Math.sign(e.deltaY), 0, places.length - 8)
+    }
     const tapItem = (pointer, i) => {
     }
     return {
@@ -52,7 +50,8 @@ export default {
       places,
       container,
       ...toRefs(data),
-      tapItem
+      tapItem,
+      onWheel
     }
   }
 }
