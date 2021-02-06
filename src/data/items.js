@@ -23,6 +23,7 @@ const makeCharacter = (name, obj) => {
     key: name,
     type: 'Character',
     texture: `chara_sprite/${snakeCase(name)}`,
+    speed: 120,
     temper: PLANT
   }, obj)
 }
