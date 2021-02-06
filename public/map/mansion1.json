@@ -93,6 +93,29 @@
                  "width":160,
                  "x":512,
                  "y":0
+                }, 
+                {
+                 "height":0,
+                 "id":3,
+                 "name":"pumpkin",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"scale",
+                         "type":"float",
+                         "value":0.7
+                        }, 
+                        {
+                         "name":"unique",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"Character",
+                 "visible":true,
+                 "width":0,
+                 "x":672,
+                 "y":672
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -101,10 +124,10 @@
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":3,
+ "nextobjectid":4,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"2019.12.11",
+ "tiledversion":"2020.08.05",
  "tileheight":32,
  "tilesets":[
         {
@@ -121,6 +144,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.2,
+ "version":1.4,
  "width":37
 }

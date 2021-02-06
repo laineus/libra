@@ -133,24 +133,6 @@
                  "width":0,
                  "x":832,
                  "y":512
-                }, 
-                {
-                 "height":0,
-                 "id":5,
-                 "name":"pumpkin",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"unique",
-                         "type":"bool",
-                         "value":true
-                        }],
-                 "rotation":0,
-                 "type":"Character",
-                 "visible":true,
-                 "width":0,
-                 "x":288,
-                 "y":352
                 }],
          "opacity":1,
          "type":"objectgroup",

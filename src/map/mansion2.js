@@ -1,6 +1,6 @@
 import { inject } from 'vue'
 import Talker from '@/util/Talker'
-import { PAINTER_STEPS, APPRECIATION_STEPS } from '@/data/eventSteps'
+import { PAINTER_STEPS } from '@/data/eventSteps'
 export default {
   name: '豪邸2',
   async create () {
@@ -31,41 +31,6 @@ export default {
         state.events.painter = PAINTER_STEPS.SOLVED
       } else {
         await speakPumpkin(t('events.collector.solved'))
-      }
-    })
-
-    // -------------------------------------------
-
-    const child = field.getObjectById(5)
-    child?.setTapEvent(async () => {
-      const speakChild = talk.getSpeakScripts(new Talker('カボチャ', child.object))
-      if (state.events.appreciation < APPRECIATION_STEPS.STARTED) {
-        await speakChild(state.events.appreciation === APPRECIATION_STEPS.NULL ? t('events.child.start') : t('events.child.start').slice(-1))
-        const accept = await uiScene.setSelector(t('events.child.options')) === 0
-        if (accept) {
-          await speakChild(t('events.child.answer1'))
-          await field.dropItem('art16', child.object)
-          state.events.appreciation = APPRECIATION_STEPS.STARTED
-        } else {
-          await speakChild(t('events.child.answer2'))
-          state.events.appreciation = APPRECIATION_STEPS.TALKED
-        }
-      } else if (state.events.appreciation === APPRECIATION_STEPS.STARTED) {
-        if (bag.hasItem('art16', 1, { bag: true, room: true, field: true })) {
-          await speakChild(t('events.child.started'))
-        } else {
-          await speakChild(t('events.child.lost'))
-          await field.dropItem('art16', child.object)
-        }
-      } else if (state.events.appreciation === APPRECIATION_STEPS.SOLVED) {
-        await speakChild(t('events.child.complete1'))
-        field.dropItem('coinSilver', child.object)
-        field.dropItem('sapphire', child.object)
-        await field.dropItem('apple', child.object)
-        await speakChild(t('events.child.complete2'))
-        state.events.appreciation = APPRECIATION_STEPS.COMPLETED
-      } else if (state.events.appreciation === APPRECIATION_STEPS.COMPLETED) {
-        await speakChild(t('events.child.completed'))
       }
     })
   }

@@ -19,6 +19,7 @@ import coalmine2 from '@/map/coalmine2'
 import coalmine3 from '@/map/coalmine3'
 import hospital1 from '@/map/hospital1'
 import hospital2 from '@/map/hospital2'
+import mansion1 from '@/map/mansion1'
 import mansion2 from '@/map/mansion2'
 import mansion3 from '@/map/mansion3'
 export default {
@@ -43,6 +44,7 @@ export default {
   coalmine3,
   hospital1,
   hospital2,
+  mansion1,
   mansion2,
   mansion3
 }
