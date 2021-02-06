@@ -35,7 +35,8 @@ export default {
     const onBagArea = computed(() => (grab.x - offsetX.value) >= 0)
     const grabRef = refObj(null)
     const update = () => {
-      if (grab.item && controller.activePointer) {
+      if (grab.item) {
+        if (!controller.activePointer) return drop()
         grab.x = controller.activePointer.x
         grab.y = controller.activePointer.y
         if (grab.mode === 'move') {
