@@ -25,6 +25,7 @@ export default {
   setup (props, context) {
     const scene = inject('scene')
     const player = inject('player')
+    const state = inject('storage').state
     const substance = ref(null)
     const frame = ref(0)
     const object = computed(() => substance.value?.object)
@@ -68,6 +69,7 @@ export default {
           attackData.delay = 0
           attackData.diffX = diffX.half
           attackData.diffY = diffY.half - 10
+          state.status.hp -= 10
         }
       }
     })
@@ -92,7 +94,7 @@ export default {
       damage,
       startEvent,
       attackData,
-      attackEffect: { duration: 150, tweens: [{ scale: 0.6 }, { scale: 1.2, alpha: 0 }], onComplete: () => attackData.effect = false },
+      attackEffect: { duration: 120, tweens: [{ scale: 0.6 }, { scale: 1, alpha: 0 }], onComplete: () => attackData.effect = false },
       // Following
       stopWalking,
       setTargetPosition: following.setTargetPosition,
