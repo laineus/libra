@@ -33,14 +33,13 @@ export default chara => {
   const hasTargetPosition = computed(() => targetPosition.x !== null && targetPosition.y !== null)
   const getDiffToTargetPositionX = () => hasTargetPosition.value ? targetPosition.x - unref(chara).x : 0
   const getDiffToTargetPositionY = () => hasTargetPosition.value ? targetPosition.y - unref(chara).y : 0
-  const getDiffToTargetPositionDistance = (x, y) => Math.hypot(x ?? getDiffToTargetPositionX(), y ?? getDiffToTargetPositionY())
   const walkToTargetPosition = speed => {
     if (randomWalk) randomWalk.play(pos => setTargetPosition(pos.x, pos.y)) // Cannot read property 'x' of null
     if (targetObject.value) setTargetPosition(targetObject.value.x, targetObject.value.y)
     if (!hasTargetPosition.value) return
     const diffX = getDiffToTargetPositionX()
     const diffY = getDiffToTargetPositionY()
-    const distance = getDiffToTargetPositionDistance(diffX, diffY)
+    const distance = Math.hypot(diffX, diffY)
     if (targetObject.value) {
       if (!leaveFromTargetObject.value && (distance < 50 || distance > 200)) return clearTargetPosition()
       if (leaveFromTargetObject.value && distance > 160) return clearTargetPosition()
@@ -61,7 +60,6 @@ export default chara => {
     hasTargetPosition,
     getDiffToTargetPositionX,
     getDiffToTargetPositionY,
-    getDiffToTargetPositionDistance,
     walkToTargetPosition,
     targetObject,
     setTargetObject
