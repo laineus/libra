@@ -7,6 +7,47 @@ export default {
   places: {
     home: '部屋'
   },
+  quest: {
+    torrentFlog: {
+      title: '生きることに必死な二人'
+    },
+    clover: {
+      title: '不幸な四つ葉のクローバー'
+    },
+    snakeFlog: {
+      title: 'ヘビとカエルの天秤'
+    },
+    curse: {
+      title: '呪いのかけ方'
+    },
+    eel: {
+      title: 'ウミノケ'
+    },
+    pityPenguin: {
+      title: '気の毒な男'
+    },
+    liveForEveryone: {
+      title: '人のために生きるペンギン'
+    },
+    matsutake: {
+      title: '夢の高級キノコ'
+    },
+    painter: {
+      title: '炭坑の絵描き'
+    },
+    child: {
+      title: 'お屋敷の子ども'
+    },
+    beauty: {
+      title: '不老不死の薬'
+    },
+    enlightenment: {
+      title: '悟り'
+    },
+    forever: {
+      title: 'ずっと一緒に居て下さい'
+    }
+  },
   events: {
     libra: {
       exclamation: '！',
