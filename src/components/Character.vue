@@ -1,19 +1,20 @@
 <template>
   <Substance ref="substance" :name="name" :frame="frame" @del="$emit('del')" @startEvent="startEvent">
     <Body :drag="500" :offsetX="Math.max(substance?.imgWidth - 30, 0).half" :width="Math.min(substance?.imgWidth, 30)" :height="Math.min(substance?.imgHeight, 30)" />
+    <Image v-if="attackData.effect" texture="attack" :scale="0" :alpha="1" :x="attackData.diffX" :y="attackData.diffY" :timeline="attackEffect" />
   </Substance>
 </template>
 
 <script>
-import { computed, inject, onMounted, ref } from 'vue'
-import { onPreUpdate, Body } from 'phavuer'
+import { computed, inject, onMounted, reactive, ref } from 'vue'
+import { onPreUpdate, Body, Image } from 'phavuer'
 import Substance from './Substance'
 import useFollowing from './modules/useFollowing'
 import useFrameAnimChara from './modules/useFrameAnimChara'
 import items from '@/data/items'
 import { TEMPER } from '@/data/constants'
 export default {
-  components: { Substance, Body },
+  components: { Substance, Body, Image },
   props: {
     initR: { default: 0 },
     name: { default: null },
@@ -48,9 +49,27 @@ export default {
     onMounted(() => {
       setTemper('normal')
     })
+    const attackData = reactive({
+      effect: false,
+      delay: 0,
+      diffX: 0, diffY: 0
+    })
     onPreUpdate(() => {
       frame.value = playFrameAnim()
       following.walkToTargetPosition(speed)
+      // Attack
+      if (following.targetObject.value) {
+        const diffX = following.targetObject.value.x - object.value.x
+        const diffY = following.targetObject.value.y - object.value.y
+        const distance = Math.hypot(diffX, diffY)
+        distance < 70 ? attackData.delay++ : attackData.delay = 0
+        if (attackData.delay > 100) {
+          attackData.effect = true
+          attackData.delay = 0
+          attackData.diffX = diffX.half
+          attackData.diffY = diffY.half - 10
+        }
+      }
     })
     const damage = () => {
       setTemper('shot')
@@ -72,6 +91,8 @@ export default {
       lookTo,
       damage,
       startEvent,
+      attackData,
+      attackEffect: { duration: 150, tweens: [{ scale: 0.6 }, { scale: 1.2, alpha: 0 }], onComplete: () => attackData.effect = false },
       // Following
       stopWalking,
       setTargetPosition: following.setTargetPosition,
