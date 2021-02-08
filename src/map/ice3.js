@@ -28,7 +28,6 @@ export default {
         await speakAnton(t('events.anton.start3'))
         const approgize = await uiScene.setSelector(t('events.anton.startOptions3')) === 1
         if (approgize) {
-          const scripts = t('events.anton.answer2')
           await speakAnton(t('events.anton.answer2_1'))
           await uiScene.transition(1000).then(complete => complete())
           await speakAnton(t('events.anton.answer2_2'))
