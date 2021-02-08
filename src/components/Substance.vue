@@ -100,6 +100,7 @@ export default {
     })
     const interactive = computed(() => !event.state && data.distanceToPlayer < 150 && !player.value?.gun.mode.value && unref(data.visible))
     const setTapEvent = event => {
+      if (!event) return tapEvent.setEvent(null)
       tapEvent.setEvent(async () => {
         context.emit('startEvent')
         const fixCamera = await camera.value.look((object.value.x + player.value.object.x).half, (object.value.y + player.value.object.y).half, 500)

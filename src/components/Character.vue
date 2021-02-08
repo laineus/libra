@@ -77,6 +77,7 @@ export default {
     const damage = () => {
       setTemper('shot')
       substance.value?.damage()
+      substance.value?.setTapEvent(null)
     }
     const stopWalking = () => {
       following.setRandomWalk(false)
@@ -87,6 +88,10 @@ export default {
     const startEvent = () => {
       stopWalking()
       lookTo(player.value.object)
+    }
+    const setTapEvent = (...arg) => {
+      substance.value?.setTapEvent(...arg)
+      following.setTargetObject(null)
     }
     return {
       object, image, substance,
@@ -106,7 +111,7 @@ export default {
       distanceToPlayer: computed(() => substance.value?.distanceToPlayer),
       execTapEvent: computed(() => substance.value?.execTapEvent),
       setDestroyEvent: computed(() => substance.value?.setDestroyEvent),
-      setTapEvent: computed(() => substance.value?.setTapEvent),
+      setTapEvent,
       setVisible: computed(() => substance.value?.setVisible),
       setCapturable: computed(() => substance.value?.setCapturable)
     }
