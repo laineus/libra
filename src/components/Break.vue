@@ -9,13 +9,13 @@
       :x="(frame.width * scale * -splitCount.half) + ((i % splitCount) * frame.width * scale)"
       :y="(frame.height * scale * -splitCount) + (Math.floor(i / splitCount) * frame.height * scale)"
       :scale="scale"
-      :tween="tweens[i]"
+      :tweens="tweens[i]"
     />
   </div>
 </template>
 
 <script>
-import { inject, reactive, ref, watch } from 'vue'
+import { inject, reactive } from 'vue'
 import { Image } from 'phavuer'
 const splitFrame = (texture, frame, count) => {
   const sum = count * count
@@ -47,35 +47,31 @@ export default {
     const texture = scene.textures.get(props.texture)
     const baseFrame = texture.get(props.initialFrame)
     const frames = splitFrame(texture, props.initialFrame, splitCount)
-    const broken = ref(false)
-    watch(broken, () => context.emit('broken'))
     const tweens = reactive((splitCount * splitCount).toArray().map(i => {
       const r = Math.randomInt(-0.5, 0.5)
       const xSeed = (((i % splitCount) / (splitCount - 1)) - 0.5) * 2
       const x = Math.randomInt(-baseFrame.width * props.scale, baseFrame.width * props.scale) * xSeed
-      return {
-        x: x * 0.7, y: '-=5',
-        ease: Phaser.Math.Easing.Quadratic.Out,
-        rotation: r,
-        duration: 120,
-        onComplete: () => {
-          tweens[i] = {
-            x: x,
-            y: 0,
-            rotation: r * 3,
-            ease: Phaser.Math.Easing.Quadratic.In,
-            duration: 250,
-            onComplete: () => {
-              tweens[i] = {
-                alpha: 0,
-                y: '+=6',
-                duration: 300,
-                onComplete: () => broken.value = true
-              }
-            }
-          }
+      return [
+        {
+          x: x * 0.7, y: '-=5',
+          ease: Phaser.Math.Easing.Quadratic.Out,
+          rotation: r,
+          duration: 120
+        },
+        {
+          x: x,
+          y: 0,
+          rotation: r * 3,
+          ease: Phaser.Math.Easing.Quadratic.In,
+          duration: 250
+        },
+        {
+          alpha: 0,
+          y: '+=6',
+          duration: 300,
+          onComplete: () => context.emit('broken')
         }
-      }
+      ]
     }))
     return {
       frames,
