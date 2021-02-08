@@ -14,34 +14,32 @@ export default {
     torrent?.setTapEvent(async () => {
       const speakTorrent = talk.getSpeakScripts(new Talker('トレント', torrent.object))
       if (state.events.torrentFlog === TORRENT_FLOG_STEPS.NULL) {
-        const scripts = t('events.torrentFlog.torrent1')
-        await speakTorrent(scripts.splice(0, 2))
-        await uiScene.setSelector(scripts.shift())
-        await speakTorrent(scripts.splice(0, 3))
-        await uiScene.setSelector(scripts.shift())
-        await speakTorrent(scripts)
+        await speakTorrent(t('events.torrentFlog.start1'))
+        await uiScene.setSelector(t('events.torrentFlog.options1'))
+        await speakTorrent(t('events.torrentFlog.start2'))
+        await uiScene.setSelector(t('events.torrentFlog.options2'))
+        await speakTorrent(t('events.torrentFlog.start3'))
         state.events.torrentFlog = TORRENT_FLOG_STEPS.STARTED
       } else if (state.events.torrentFlog <= TORRENT_FLOG_STEPS.FOUND) {
         if (bag.hasItem('hercules')) {
-          await speakTorrent(t('events.torrentFlog.torrent2.found'))
+          await speakTorrent(t('events.torrentFlog.found'))
           state.events.torrentFlog = TORRENT_FLOG_STEPS.FOUND
         } else {
-          await speakTorrent(t('events.torrentFlog.torrent2.started'))
+          await speakTorrent(t('events.torrentFlog.started'))
         }
       } else if (state.events.torrentFlog === TORRENT_FLOG_STEPS.GAVE) {
-        const scripts = t('events.torrentFlog.torrent3.report')
-        const leaked = await uiScene.setSelector(scripts.shift()) === 0
+        const leaked = await uiScene.setSelector(t('events.torrentFlog.options3')) === 0
         if (leaked) {
-          await speakTorrent(scripts.splice(0, 4))
-          const agreed = await uiScene.setSelector(scripts.shift()) === 0
-          await speakTorrent(agreed ? t('events.torrentFlog.torrent3.end3') : t('events.torrentFlog.torrent3.end2'))
+          await speakTorrent(t('events.torrentFlog.report'))
+          const agreed = await uiScene.setSelector(t('events.torrentFlog.options4')) === 0
+          await speakTorrent(agreed ? t('events.torrentFlog.end3') : t('events.torrentFlog.end2'))
         } else {
-          await speakTorrent(t('events.torrentFlog.torrent3.end1'))
+          await speakTorrent(t('events.torrentFlog.end1'))
         }
         await field.addObject({ type: 'Substance', name: 'apple', x: torrent.object.x, y: torrent.object.y + 5 }).then(v => v.drop())
         state.events.torrentFlog = TORRENT_FLOG_STEPS.COMPLETED
       } else if (state.events.torrentFlog === TORRENT_FLOG_STEPS.COMPLETED) {
-        await speakTorrent(t('events.torrentFlog.torrent4'))
+        await speakTorrent(t('events.torrentFlog.completed'))
       }
     })
 
@@ -49,15 +47,14 @@ export default {
     flog?.setTapEvent(async () => {
       const speakFlog = talk.getSpeakScripts(new Talker('カエル', flog.object))
       if (state.events.torrentFlog === TORRENT_FLOG_STEPS.FOUND && bag.hasItem('hercules')) {
-        const scripts = t('events.torrentFlog.flog.give')
-        await speakFlog(scripts.splice(0, 4))
-        const accepted = await uiScene.setSelector(scripts.shift()) === 0
-        accepted ? scripts.shift() : await speakFlog(scripts.shift())
+        await speakFlog(t('events.torrentFlog.flog.give1'))
+        const accepted = await uiScene.setSelector(t('events.torrentFlog.flog.options1')) === 0
+        if (accepted) await speakFlog(t('events.torrentFlog.flog.give2'))
         bag.removeItem('hercules')
-        uiScene.log.push(scripts.shift()[accepted ? 0 : 1])
-        await speakFlog(scripts.splice(0, 3))
-        await uiScene.setSelector(scripts.shift())
-        await speakFlog(scripts)
+        uiScene.log.push(accepted ? t('events.torrentFlog.flog.log1') : t('events.torrentFlog.flog.log2'))
+        await speakFlog(t('events.torrentFlog.flog.give3'))
+        await uiScene.setSelector(t('events.torrentFlog.flog.options2'))
+        await speakFlog(t('events.torrentFlog.flog.give4'))
         state.events.torrentFlog = TORRENT_FLOG_STEPS.GAVE
       } else {
         await speakFlog(t('events.torrentFlog.flog.greeting'))

@@ -45,16 +45,14 @@ export default {
       } else if (state.events.curse === CURSE_STEPS.TALKED_TORRENT) {
         const did = await uiScene.setSelector(t('events.curse.noticeOptions')) === 0
         if (did) {
-          const scripts = t('events.curse.answer1')
-          await speakLeft(scripts.splice(0, 2))
+          await speakLeft(t('events.curse.answer1_1'))
           await field.dropItem('apple', leftBat.object)
-          await talkBoth(scripts, [tr, tl, tr])
+          await talkBoth(t('events.curse.answer1_2'), [tr, tl, tr])
           state.events.curse = CURSE_STEPS.NOTICED_DID
         } else {
-          const scripts = t('events.curse.answer2')
-          await talkBoth(scripts.splice(0, 3), [tl, tr, tr])
+          await talkBoth(t('events.curse.answer2_1'), [tl, tr, tr])
           await field.dropItem('apple', rightBat.object)
-          await talkBoth(scripts, [tl, tr, tr])
+          await talkBoth(t('events.curse.answer2_2'), [tl, tr, tr])
           state.events.curse = CURSE_STEPS.COMPLETED
         }
       } else if (state.events.curse === CURSE_STEPS.NOTICED_DID) {

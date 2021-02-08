@@ -19,10 +19,9 @@ export default {
         if (!receive) {
           return await speakFlog(t('events.strawDoll.answer1'))
         }
-        const scripts = t('events.strawDoll.answer2')
-        await speakFlog(scripts.splice(0, 2))
+        await speakFlog(t('events.strawDoll.answer2_1'))
         await field.dropItem('strawDoll', flog.object)
-        await speakFlog(scripts)
+        await speakFlog(t('events.strawDoll.answer2_2'))
         state.events.strawDoll = STRAWDOLL_STEPS.RECEIVED
       } else if (bag.hasItem('strawDoll', 1, { bag: true, room: true, field: true })) {
         await speakFlog(t('events.strawDoll.received'))

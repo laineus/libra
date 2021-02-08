@@ -29,16 +29,15 @@ export default {
         const approgize = await uiScene.setSelector(t('events.anton.startOptions3')) === 1
         if (approgize) {
           const scripts = t('events.anton.answer2')
-          await speakAnton(scripts.splice(0, 2))
+          await speakAnton(t('events.anton.answer2_1'))
           await uiScene.transition(1000).then(complete => complete())
-          await speakAnton(scripts)
+          await speakAnton(t('events.anton.answer2_2'))
           field.dropItem('unadon', anton.object)
           await field.dropItem('antonLetter', anton.object)
         } else {
-          const scripts = t('events.anton.answer1')
-          await speakAnton(scripts.splice(0, 1))
+          await speakAnton(t('events.anton.answer1_1'))
           await uiScene.transition(1000).then(complete => complete())
-          await speakAnton(scripts)
+          await speakAnton(t('events.anton.answer1_2'))
           await field.dropItem('unadon', anton.object)
         }
         state.events.eel = EEL_STEPS.SOLVED

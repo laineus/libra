@@ -20,13 +20,11 @@ export default {
         if (!bag.hasItem('clover4')) return await speakFlog(t('events.clover.flog1'))
         const give = await uiScene.setSelector(t('events.clover.flog2.options')) === 0
         if (give) {
-          const scripts = t('events.clover.flog2.end1')
           bag.removeItem('clover4')
-          uiScene.log.push(scripts.shift())
-          await speakFlog(scripts)
+          uiScene.log.push(t('events.clover.flog2.log'))
+          await speakFlog(t('events.clover.flog2.end1'))
         } else {
-          const scripts = t('events.clover.flog2.end2')
-          await speakFlog(scripts)
+          await speakFlog(t('events.clover.flog2.end2'))
         }
         await field.addObject({ type: 'Substance', name: 'apple', x: flog.object.x, y: flog.object.y }).then(v => v.drop())
         state.clover = CLOVER_STEPS.COMPLETED
