@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Container ref="object" :visible="unref(visible)" :x="initX" :y="initY" :width="imgWidth" :height="imgWidth" :depth="depth" :tween="tween" @create="create">
+    <Container ref="object" :visible="unref(visible)" :x="initX" :y="initY" :width="imgWidth" :height="imgWidth" :depth="depth" :tweens="tweens" @create="create">
       <template v-if="imageTexture">
         <Image v-if="hp > 0" ref="image" :texture="imageTexture" :frame="frame" :originX="0.5" :originY="1" :scale="scale" :alpha="alpha" :pipeline="pipeline" />
         <Break v-else :texture="imageTexture" :scale="scale" :initialFrame="frame" @broken="onBroken" />
@@ -20,6 +20,7 @@ import TapArea from './TapArea'
 import GrabArea from './GrabArea'
 import Break from './Break'
 import useEvent from './modules/useEvent'
+const toAdditionalString = v => v < 0 ? `-=${Math.abs(v)}` : `+=${v}`
 export default {
   components: { Container, Image, TapArea, GrabArea, Break },
   props: {
@@ -50,7 +51,7 @@ export default {
     const imageTexture = computed(() => props.texture || itemData?.texture)
     const data = reactive({
       visible: true,
-      tween: null,
+      tweens: null,
       capturable: Boolean(props.name),
       distanceToPlayer: null,
       hp: itemData?.hp ?? 10
@@ -69,24 +70,18 @@ export default {
     const setCapturable = bool => data.capturable = bool
     const drop = () => {
       return new Promise(resolve => {
-        const getRandomAddition = (min, max) => {
-          const v = Math.randomInt(min, max)
-          return v < 0 ? `-=${Math.abs(v)}` : `+=${v}`
-        }
-        const x = getRandomAddition(-12, 12)
-        const y = getRandomAddition(10, 25)
-        data.tween = {
-          x, y: '-=5',
-          duration: 100,
-          onComplete: (v) => {
-            data.tween = {
-              x, y: y,
-              duration: 100,
-              onComplete: () => resolve()
-            }
-          }
-        }
+        const x = toAdditionalString(Math.randomInt(-12, 12))
+        const y = toAdditionalString(Math.randomInt(10, 25))
+        data.tweens = [
+          { x, y: '-=5', duration: 100 },
+          { x, y, duration: 100, onComplete: resolve }
+        ]
       })
+    }
+    const attackAnim = r => {
+      const x = toAdditionalString(Math.cos(r) * 10)
+      const y = toAdditionalString(Math.sin(r) * 10)
+      data.tweens = [{ x, y, duration: 80, yoyo: true }]
     }
     const damage = () => {
       if (data.hp <= 0) return
@@ -120,7 +115,7 @@ export default {
       checkable: computed(() => interactive.value && tapEvent.event.value),
       grabbable: computed(() => interactive.value && !tapEvent.event.value && data.capturable),
       create,
-      drop, damage,
+      drop, damage, attackAnim,
       object, image,
       imageTexture,
       imgWidth, imgHeight, depth, alpha,

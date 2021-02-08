@@ -70,6 +70,7 @@ export default {
           attackData.diffX = diffX.half
           attackData.diffY = diffY.half - 10
           state.status.hp -= 10
+          substance.value?.attackAnim(Math.atan2(diffY, diffX))
         }
       }
     })
