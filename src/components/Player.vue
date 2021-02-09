@@ -61,6 +61,9 @@ export default {
         following.clearTargetPosition()
       }
     })
+    const damage = r => {
+      storage.state.status.hp -= 10
+    }
     const stopWalking = () => {
       following.clearTargetPosition()
       object.value.body.velocity.normalize().scale(0)
@@ -69,6 +72,7 @@ export default {
     return {
       object, substance,
       gun,
+      damage,
       r, frame, lookTo,
       stopWalking,
       // Following

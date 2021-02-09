@@ -25,8 +25,8 @@ export default {
   setup (props, context) {
     const scene = inject('scene')
     const player = inject('player')
-    const state = inject('storage').state
     const substance = ref(null)
+    const attackTarget = ref(null)
     const frame = ref(0)
     const object = computed(() => substance.value?.object)
     const image = computed(() => substance.value?.image)
@@ -42,6 +42,7 @@ export default {
       if (itemData.temper[type] === TEMPER.RANDOM) {
         following.setRandomWalk(150)
       } else if (itemData.temper[type] === TEMPER.ATTACK) {
+        attackTarget.value = player.value
         following.setTargetObject(player.value.object)
       } else if (itemData.temper[type] === TEMPER.ESCAPE) {
         following.setTargetObject(player.value.object, true)
@@ -59,9 +60,9 @@ export default {
       frame.value = playFrameAnim()
       following.walkToTargetPosition(speed)
       // Attack
-      if (following.targetObject.value) {
-        const diffX = following.targetObject.value.x - object.value.x
-        const diffY = following.targetObject.value.y - object.value.y
+      if (attackTarget.value) {
+        const diffX = attackTarget.value.object.x - object.value.x
+        const diffY = attackTarget.value.object.y - object.value.y
         const distance = Math.hypot(diffX, diffY)
         distance < 70 ? attackData.delay++ : attackData.delay = 0
         if (attackData.delay > 100) {
@@ -69,8 +70,9 @@ export default {
           attackData.delay = 0
           attackData.diffX = diffX.half
           attackData.diffY = diffY.half - 10
-          state.status.hp -= 10
-          substance.value?.attackAnim(Math.atan2(diffY, diffX))
+          const angle = Math.atan2(diffY, diffX)
+          substance.value?.attackAnim(angle)
+          attackTarget.value.damage(angle)
         }
       }
     })
@@ -91,6 +93,7 @@ export default {
     }
     const setTapEvent = (...arg) => {
       substance.value?.setTapEvent(...arg)
+      attackTarget.value = null
       following.setTargetObject(null)
     }
     return {
