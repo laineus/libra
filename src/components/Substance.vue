@@ -43,8 +43,8 @@ export default {
     const state = inject('storage').state
     const object = refObj(null)
     const image = refObj(null)
-    const imgWidth = computed(() => image.value ? image.value.width : 30)
-    const imgHeight = computed(() => image.value ? image.value.height : 30)
+    const imgWidth = computed(() => image.value?.width ?? 30)
+    const imgHeight = computed(() => image.value?.height ?? 30)
     const depth = ref(0)
     const alpha = ref(1)
     const tapEvent = useEvent()

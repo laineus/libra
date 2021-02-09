@@ -24,7 +24,7 @@ export default {
     const event = inject('event')
     const camera = inject('camera')
     const menuOpened = inject('menuOpened')
-    const storage = inject('storage')
+    const state = inject('storage').state
     const substance = ref(null)
     const r = ref(0)
     const frame = ref(0)
@@ -46,11 +46,12 @@ export default {
       } else {
         following.walkToTargetPosition(event.state ? 100 : 200)
       }
-      storage.state.x = Number(object.value.x)
-      storage.state.y = Number(object.value.y)
+      state.x = Number(object.value.x)
+      state.y = Number(object.value.y)
     })
     onMounted(() => {
       substance.value.setCapturable(false)
+      substance.value.hp = state.status.hp
     })
     scene.input.on('pointerdown', pointer => {
       if (event.state || menuOpened.value) return
@@ -62,8 +63,8 @@ export default {
       }
     })
     const damage = r => {
-      storage.state.status.hp = substance.value.hp
       substance.value.damage(r)
+      state.status.hp = substance.value.hp
     }
     const stopWalking = () => {
       following.clearTargetPosition()
