@@ -4,6 +4,7 @@
       <template v-if="imageTexture">
         <Image v-if="hp > 0" ref="image" :texture="imageTexture" :frame="frame" :originX="0.5" :originY="1" :scale="scale" :alpha="alpha" :pipeline="pipeline" />
         <Break v-else :texture="imageTexture" :scale="scale" :initialFrame="frame" @broken="onBroken" />
+        <Image v-if="damageEffectData.value" texture="attack" :scale="0" :alpha="1" :x="damageEffectData.diffX" :y="damageEffectData.diffY - imgHeight.half" :timeline="damageEffectTimeline" />
       </template>
       <slot />
     </Container>
@@ -83,9 +84,14 @@ export default {
       const y = toAdditionalString(Math.sin(r) * 10)
       data.tweens = [{ x, y, duration: 80, yoyo: true }]
     }
-    const damage = () => {
+    const damageEffectData = reactive({ value: false, diffX: 0, diffY: 0 })
+    const damageEffectTimeline = { duration: 120, tweens: [{ scale: 0.6 }, { scale: 1, alpha: 0 }], onComplete: () => damageEffectData.value = false }
+    const damage = r => {
       if (data.hp <= 0) return
       data.hp -= Math.randomInt(3, 7)
+      damageEffectData.value = true
+      damageEffectData.diffX = Math.cos(r) * -15
+      damageEffectData.diffY = Math.sin(r) * -15
       if (data.hp >= 0) return
       if (itemData?.drop) {
         itemData.drop.filter(v => Math.chance(v.chance)).forEach(v => {
@@ -117,6 +123,7 @@ export default {
       grabbable: computed(() => interactive.value && !tapEvent.event.value && data.capturable),
       create,
       drop, damage, attackAnim,
+      damageEffectData, damageEffectTimeline,
       object, image,
       imageTexture,
       imgWidth, imgHeight, depth, alpha,

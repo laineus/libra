@@ -62,7 +62,8 @@ export default {
       }
     })
     const damage = r => {
-      storage.state.status.hp -= 10
+      storage.state.status.hp = substance.value.hp
+      substance.value.damage(r)
     }
     const stopWalking = () => {
       following.clearTargetPosition()
