@@ -20,6 +20,7 @@ export default {
   },
   emits: ['shot'],
   setup (props, context) {
+    const gameScene = inject('gameScene')
     const scene = inject('scene')
     const event = inject('event')
     const camera = inject('camera')
@@ -65,6 +66,13 @@ export default {
     const damage = r => {
       substance.value.damage(r)
       state.status.hp = substance.value.hp
+      if (substance.value.hp <= 0) {
+        event.exec(async () => {
+          await sleep(3000)
+          await gameScene.value.setField('home', (14).toPixelCenter, (17).toPixelCenter)
+          state.status.hp = 100
+        })
+      }
     }
     const stopWalking = () => {
       following.clearTargetPosition()
@@ -77,6 +85,7 @@ export default {
       damage,
       r, frame, lookTo,
       stopWalking,
+      hp: computed(() => substance.value?.hp),
       // Following
       setTargetPosition: following.setTargetPosition,
       clearTargetPosition: following.clearTargetPosition

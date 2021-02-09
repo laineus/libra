@@ -55,7 +55,7 @@ export default {
       frame.value = playFrameAnim()
       following.walkToTargetPosition(speed)
       // Attack
-      if (attackTarget.value) {
+      if (attackTarget.value?.hp > 0) {
         const diffX = attackTarget.value.object.x - object.value.x
         const diffY = attackTarget.value.object.y - object.value.y
         const distance = Math.hypot(diffX, diffY)
