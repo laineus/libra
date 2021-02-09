@@ -69,8 +69,7 @@ export default {
       if (substance.value.hp <= 0) {
         event.exec(async () => {
           await sleep(3000)
-          await gameScene.value.setField('home', (14).toPixelCenter, (17).toPixelCenter)
-          state.status.hp = 100
+          await gameScene.value.setField('home', 0, 0)
         })
       }
     }

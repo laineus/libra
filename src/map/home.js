@@ -3,8 +3,9 @@ import Talker from '@/util/Talker'
 export default {
   name: t('places.home'),
   bgm: null,
-  create () {
+  create ({ respawn }) {
     const bag = inject('bag')
+    const event = inject('event')
     const field = inject('field').value
     const talk = inject('talk').value
     const uiScene = inject('uiScene').value
@@ -15,6 +16,16 @@ export default {
     amili.setCapturable(false)
     const tAmili = new Talker(t('name.amili'), amili.object)
     const speakAmiliScripts = talk.getSpeakScripts(tAmili)
+
+    if (respawn) {
+      field.player.object.setPosition(field.positions.bed.x, field.positions.bed.y)
+      amili.object.setPosition(field.positions.bed.x + 20, field.positions.bed.y)
+      event.exec(async () => {
+        await sleep(2000)
+        await speakAmiliScripts(['TODO'])
+      })
+    }
+
     const appleEvent = async () => {
       const result = await uiScene.setSelector(t('events.home.giveApple'))
       if (result === 1) return

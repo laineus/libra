@@ -39,6 +39,7 @@ export default {
   setup (props) {
     const scene = inject('scene')
     const audio = inject('audio')
+    const state = inject('storage').state
     const player = ref(null)
     const field = fieldService(scene, props.fieldKey)
     console.log(field)
@@ -90,9 +91,11 @@ export default {
     darkness.fillBg(field.properties.darkness ?? 0x77000000).removeArcs(lights.map(l => {
       return { x: l.x, y: l.y, radius: 120 }
     })).save().refresh()
+    const respawn = state.status.hp <= 0
+    if (respawn) state.status.hp = 100
     onMounted(() => {
       setupCamera(inject('camera').value, field.width, field.height, player.value.object)
-      if (event.create) event.create()
+      if (event.create) event.create({ respawn })
       audio.setBgm(event.bgm || null)
     })
     onBeforeUnmount(() => {
