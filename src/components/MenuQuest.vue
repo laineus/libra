@@ -2,7 +2,7 @@
   <MenuContainer ref="container" :arrowX="25 + (1 * 60)" :height="305" title="Quest" @wheel="onWheel" @pointermove="onSwipe">
     <Container v-for="(v, i) in quest.slice(offset, offset + 8)" :key="i" :visible="!selected" :x="rowWidth.half" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerup="p => tapItem(p, i)">
       <Line v-if="i !== 8 - 1" :x="0" :y="rowHeight.half" :lineWidth="0.5" :x2="rowWidth" :strokeColor="COLORS.brown" :alpha="0.25" />
-      <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="t(`quest.${v.key}.title`)" :size="13" :bold="true" />
+      <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="v.started(state) ? t(`quest.${v.key}.title`) : '？？？'" :size="13" :bold="v.started(state)" />
       <Image :x="rowWidth.half - 12" :y="0" :originY="0.5" texture="check" frame="1" :tint="COLORS.brown" v-if="v.completed(state)" />
     </Container>
     <Container v-if="selected">
@@ -47,6 +47,7 @@ export default {
       scrollY = 0
     }
     const tapItem = (pointer, i) => {
+      if (!quest[i].started(state)) return
       data.selected = quest[i]
     }
     return {
