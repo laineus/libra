@@ -13,10 +13,10 @@ export default {
     const flog = field.getObjectById(3)
     flog?.setTapEvent(async () => {
       const speakFlog = talk.getSpeakScripts(new Talker('カエル', flog.object))
-      if (state.clover === CLOVER_STEPS.NULL) {
+      if (state.events.clover === CLOVER_STEPS.NULL) {
         await speakFlog(t('events.clover.flog1'))
-        state.clover = CLOVER_STEPS.STARTED
-      } else if (state.clover === CLOVER_STEPS.STARTED) {
+        state.events.clover = CLOVER_STEPS.STARTED
+      } else if (state.events.clover === CLOVER_STEPS.STARTED) {
         if (!bag.hasItem('clover4')) return await speakFlog(t('events.clover.flog1'))
         const give = await uiScene.setSelector(t('events.clover.flog2.options')) === 0
         if (give) {
@@ -27,8 +27,8 @@ export default {
           await speakFlog(t('events.clover.flog2.end2'))
         }
         await field.addObject({ type: 'Substance', name: 'apple', x: flog.object.x, y: flog.object.y }).then(v => v.drop())
-        state.clover = CLOVER_STEPS.COMPLETED
-      } else if (state.clover === CLOVER_STEPS.COMPLETED) {
+        state.events.clover = CLOVER_STEPS.COMPLETED
+      } else if (state.events.clover === CLOVER_STEPS.COMPLETED) {
         await speakFlog(t('events.clover.flog3'))
       }
     })
