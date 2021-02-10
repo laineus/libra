@@ -2,7 +2,7 @@
   <MenuContainer ref="container" :arrowX="25 + (1 * 60)" :height="305" title="Quest" @wheel="onWheel">
     <Container v-for="(v, i) in quest.slice(offset, offset + 8)" :key="i" :x="rowWidth.half" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerup="p => tapItem(p, i)">
       <Line v-if="i !== 8 - 1" :x="0" :y="rowHeight.half" :lineWidth="0.5" :x2="rowWidth" :strokeColor="COLORS.brown" :alpha="0.25" />
-      <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="t(`quest.${v.key}.title`)" :size="13" :bold="true" @pointerup="p => tapItem(p, i)" /><!-- TODO -->
+      <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="t(`quest.${v.key}.title`)" :size="13" :bold="true" />
     </Container>
     <RoundRectangle :x="rowWidth + 13 - 3" :y="3" :width="5" :height="289" :radius="3" :fillColor="COLORS.brown" :originX="1" :originY="0" :alpha="0.3" />
     <RoundRectangle :x="rowWidth + 13 - 3" :y="3 + (289 / quest.length * offset)" :width="5" :height="289 * (8 / quest.length)" :radius="3" :fillColor="COLORS.brown" :originX="1" :originY="0" />

@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { inject, reactive, ref } from 'vue'
+import { inject, onMounted, reactive, ref } from 'vue'
 import { refScene, Scene, Rectangle, Circle, Image, Container, RoundRectangle } from 'phavuer'
 import Title from './Title'
 import Controller from './Controller'
@@ -48,6 +48,9 @@ export default {
       log: ref(null),
       menu: ref(null)
     }
+    onMounted(() => {
+      refs.scene.value.input.setTopOnly(false)
+    })
     const titleScreen = ref(true)
     const transitionData = reactive({
       alpha: 0,
