@@ -1,8 +1,8 @@
 <template>
   <Container :x="(margin + width).byRight + (x ?? 0)" :y="(bottom + height + labelHeight).byBottom">
-    <RoundRectangle :y="labelHeight" :width="width" :height="height" :fillColor="COLORS.soy" :radius="{ tl: 0, tr: radius, bl: radius, br: radius }" :origin="0" @pointerdown="onTapBg" @wheel="$emit('wheel', $event)" />
+    <RoundRectangle :y="labelHeight" :width="width" :height="height" :fillColor="COLORS.soy" :radius="{ tl: 0, tr: radius, bl: radius, br: radius }" :origin="0" @pointerdown.stop @wheel="$emit('wheel', $event)" @pointermove="$emit('pointermove', $event)" />
     <RoundRectangle :x="padding" :y="padding + labelHeight" :width="width - padding.twice" :height="height - padding.twice" :lineWidth="2" :strokeColor="COLORS.brown" :radius="{ tl: 0, tr: radius, bl: radius, br: radius }" :origin="0" />
-    <RoundRectangle :width="labelWidth" :height="labelHeight" :fillColor="COLORS.soy" :radius="{ tl: radius, tr: radius, bl: 0, br: 0 }" :originX="0" @pointerdown="onTapBg" />
+    <RoundRectangle :width="labelWidth" :height="labelHeight" :fillColor="COLORS.soy" :radius="{ tl: radius, tr: radius, bl: 0, br: 0 }" :originX="0" @pointerdown.stop />
     <RoundRectangle :x="padding - 1" :y="padding - 1" :width="labelWidth - padding.twice + 2" :height="labelHeight + 2" :fillColor="COLORS.brown" :radius="{ tl: radius, tr: radius, bl: 0, br: 0 }" :originX="0" />
     <Rectangle :x="arrowX" :y="height + labelHeight" :width="20" :height="20" :fillColor="COLORS.soy" :rotation="Math.PI / 4" />
     <Rectangle :x="arrowX" :y="height + labelHeight - 5.5" :width="20" :height="20" :fillColor="COLORS.soy" :rotation="Math.PI / 4" :lineWidth="2" :strokeColor="COLORS.brown" :origin="0.5" />
@@ -21,7 +21,7 @@ import config from '@/data/config'
 export default {
   components: { Container, Rectangle, RoundRectangle, Text },
   props: ['x', 'arrowX', 'height', 'title'],
-  emits: ['wheel'],
+  emits: ['wheel', 'pointermove'],
   setup (props) {
     const margin = 15
     const padding = 4
@@ -39,8 +39,7 @@ export default {
       radius,
       bottom,
       labelWidth, labelHeight,
-      offsetX, offsetY,
-      onTapBg: (...args) => args[3].stopPropagation()
+      offsetX, offsetY
     }
   }
 }

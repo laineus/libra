@@ -1,5 +1,5 @@
 <template>
-  <MenuContainer ref="container" :arrowX="25 + (1 * 60)" :height="305" title="Quest" @wheel="onWheel">
+  <MenuContainer ref="container" :arrowX="25 + (1 * 60)" :height="305" title="Quest" @wheel="onWheel" @pointermove="onSwipe">
     <Container v-for="(v, i) in quest.slice(offset, offset + 8)" :key="i" :x="rowWidth.half" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerup="p => tapItem(p, i)">
       <Line v-if="i !== 8 - 1" :x="0" :y="rowHeight.half" :lineWidth="0.5" :x2="rowWidth" :strokeColor="COLORS.brown" :alpha="0.25" />
       <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="t(`quest.${v.key}.title`)" :size="13" :bold="true" />
@@ -26,8 +26,17 @@ export default {
       rowWidth: 207, rowHeight: 37,
       selectedIndex: null
     })
-    const onWheel = e => {
-      data.offset = Math.fix(data.offset + Math.sign(e.deltaY), 0, quest.length - 8)
+    const addOffset = v => {
+      data.offset = Math.fix(data.offset + v, 0, quest.length - 8)
+    }
+    const onWheel = pointer => addOffset(Math.sign(pointer.deltaY))
+    let scrollY = 0
+    const onSwipe = pointer => {
+      if (!pointer.isDown) return
+      scrollY += pointer.prevPosition.y - pointer.position.y
+      if (Math.abs(scrollY) < 15) return
+      addOffset(Math.sign(scrollY))
+      scrollY = 0
     }
     const tapItem = (pointer, i) => {
     }
@@ -38,7 +47,7 @@ export default {
       container,
       ...toRefs(data),
       tapItem,
-      onWheel
+      onWheel, onSwipe
     }
   }
 }
