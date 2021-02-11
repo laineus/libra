@@ -15,6 +15,7 @@ export default {
       const speakSnake = talk.getSpeakScripts(new Talker('コウモリ', snake.object))
       if (state.events.snakeFlog === SNAKE_FLOG_STEPS.NULL) {
         await speakSnake(t('events.snakeFlog.start'))
+        uiScene.log.push(t('ui.questStart', t('quest.snakeFlog')))
         state.events.snakeFlog = SNAKE_FLOG_STEPS.STARTED
       } else if (state.events.snakeFlog === SNAKE_FLOG_STEPS.STARTED) {
         if (bag.hasItem('sapphire', 2) && bag.hasItem('emerald', 2) && bag.hasItem('amethyst', 2) && bag.hasItem('ruby', 2)) {
@@ -28,6 +29,7 @@ export default {
             uiScene.log.push(...t('events.snakeFlog.logs'))
             await speakSnake(t('events.snakeFlog.complete2'))
             await field.dropItem('apple', snake.object)
+            uiScene.log.push(t('ui.questComplete', t('quest.snakeFlog')))
             state.events.snakeFlog = SNAKE_FLOG_STEPS.COMPLETED
           }
           return

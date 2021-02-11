@@ -16,6 +16,7 @@ export default {
       const speakLady1 = talk.getSpeakScripts(new Talker('カボチャ', lady1.object))
       if (state.events.beauty === BEAUTY_STEPS.NULL) {
         await speakLady1(t('events.lady1.start'))
+        uiScene.log.push(t('ui.questStart', t('quest.beauty')))
         state.events.beauty = BEAUTY_STEPS.STARTED
       } else if (state.events.beauty === BEAUTY_STEPS.STARTED) {
         if (!bag.hasItem('elixir')) return await speakLady1(t('events.lady1.started'))
@@ -58,6 +59,7 @@ export default {
         await speakLady2(t('events.lady2.complete1'))
         await field.dropItem('apple', lady2.object)
         await speakLady2(t('events.lady2.complete2'))
+        uiScene.log.push(t('ui.questComplete', t('quest.beauty')))
         state.events.beauty = BEAUTY_STEPS.COMPLETED
       } else if (state.events.beauty === BEAUTY_STEPS.COMPLETED) {
         await speakLady2(t('events.lady2.completed'))

@@ -15,6 +15,7 @@ export default {
       const speakFlog = talk.getSpeakScripts(new Talker('カエル', flog.object))
       if (state.events.clover === CLOVER_STEPS.NULL) {
         await speakFlog(t('events.clover.flog1'))
+        uiScene.log.push(t('ui.questStart', t('quest.clover')))
         state.events.clover = CLOVER_STEPS.STARTED
       } else if (state.events.clover === CLOVER_STEPS.STARTED) {
         if (!bag.hasItem('clover4')) return await speakFlog(t('events.clover.flog1'))
@@ -27,6 +28,7 @@ export default {
           await speakFlog(t('events.clover.flog2.end2'))
         }
         await field.addObject({ type: 'Substance', name: 'apple', x: flog.object.x, y: flog.object.y }).then(v => v.drop())
+        uiScene.log.push(t('ui.questComplete', t('quest.clover')))
         state.events.clover = CLOVER_STEPS.COMPLETED
       } else if (state.events.clover === CLOVER_STEPS.COMPLETED) {
         await speakFlog(t('events.clover.flog3'))

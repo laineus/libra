@@ -24,6 +24,7 @@ export default {
         if (accept) {
           await speakPenguin(t('events.painter.answer1'))
           await field.dropItem('art15', penguin.object)
+          uiScene.log.push(t('ui.questStart', t('quest.painter')))
           state.events.painter = PAINTER_STEPS.STARTED
         } else {
           await speakPenguin(t('events.painter.answer2'))
@@ -37,6 +38,7 @@ export default {
         }
       } else if (state.events.painter === PAINTER_STEPS.SOLVED) {
         await speakPenguin(t('events.painter.complete'))
+        uiScene.log.push(t('ui.questComplete', t('quest.painter')))
         state.events.painter = PAINTER_STEPS.COMPLETED
       } else if (state.events.painter === PAINTER_STEPS.COMPLETED) {
         await speakPenguin(t('events.painter.completed'))

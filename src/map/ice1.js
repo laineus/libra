@@ -19,6 +19,7 @@ export default {
           state.events.eel = EEL_STEPS.IGNORED
           return await speakFisher(t('events.eel.answer2'))
         }
+        uiScene.log.push(t('ui.questStart', t('quest.eel')))
         state.events.eel = EEL_STEPS.STARTED
         await speakFisher(t('events.eel.answer1'))
         await field.dropItem('uminoke', fisher.object)
@@ -43,6 +44,7 @@ export default {
         if (!bag.hasItem('antonLetter')) {
           await speakFisher(t('events.eel.end1'))
           await field.dropItem('apple', fisher.object)
+          uiScene.log.push(t('ui.questComplete', t('quest.eel')))
           state.events.eel = EEL_STEPS.COMPLETED1
           return
         }
@@ -56,6 +58,7 @@ export default {
         }
         await speakFisher(t('events.eel.end2'))
         await field.dropItem('apple', fisher.object)
+        uiScene.log.push(t('ui.questComplete', t('quest.eel')))
         state.events.eel = EEL_STEPS.COMPLETED2
       } else if (state.events.eel === EEL_STEPS.COMPLETED1) {
         await speakFisher(t('events.eel.completed1'))

@@ -17,6 +17,7 @@ export default {
         await field.dropItem('apple', penguin.object)
         const thankYou = await uiScene.setSelector(t('events.liveForEveryone.options')) === 0
         await speakPenguin(thankYou ? t('events.liveForEveryone.answer1') : t('events.liveForEveryone.answer2'))
+        uiScene.log.push(t('ui.questComplete', t('quest.liveForEveryone')))
         state.events.liveForEveryone = LIVE_FOR_EVERYONE_STEPS.COMPLETED
       } else if (state.events.liveForEveryone === LIVE_FOR_EVERYONE_STEPS.COMPLETED) {
         return await speakPenguin(t('events.liveForEveryone.completed'))

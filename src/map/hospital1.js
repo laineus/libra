@@ -20,6 +20,7 @@ export default {
       await speakGhost(t('events.enlightenment.complete'))
       const completeTransition = await uiScene.transition(1000, { color: config.COLORS.white })
       field.dropItem('apple', ghost.object)
+      uiScene.log.push(t('ui.questComplete', t('quest.enlightenment')))
       state.events.enlightenment = ENLIGHTENMENT_STEPS.COMPLETED
       await completeTransition()
     })

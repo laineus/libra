@@ -89,7 +89,9 @@ export default {
   },
   ui: {
     place: '場所',
-    client: '依頼主'
+    client: '依頼主',
+    questStart: '『#{title}』を開始',
+    questComplete: '『#{title}』を完了'
   },
   events: {
     libra: {

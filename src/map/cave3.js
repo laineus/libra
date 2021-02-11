@@ -33,12 +33,14 @@ export default {
         await talkBoth(t('events.curse.start1'), [tr, tl, tr])
         if (bag.hasItem('strawDoll')) {
           await talkBoth(t('events.curse.start2'), [tl, tl, tl, tr, tl, tr, tr, tr, tr, tl, tl, tl, tl])
+          uiScene.log.push(t('ui.questStart', t('quest.curse')))
           state.events.curse = CURSE_STEPS.STARTED
         }
       } else if (state.events.curse === CURSE_STEPS.STARTED) {
         await speakLeft(t('events.curse.started1'))
       } else if (state.events.curse === CURSE_STEPS.EXECUTED) {
         await speakLeft(t('events.curse.executed'))
+        uiScene.log.push(t('ui.questComplete', t('quest.curse')))
         state.events.curse = CURSE_STEPS.EXECUTED_END
       } else if (state.events.curse === CURSE_STEPS.EXECUTED_END) {
         await speakLeft(t('events.curse.completed'))
@@ -55,6 +57,7 @@ export default {
           await talkBoth(t('events.curse.answer2_2'), [tl, tr, tr])
           state.events.curse = CURSE_STEPS.COMPLETED
         }
+        uiScene.log.push(t('ui.questComplete', t('quest.curse')))
       } else if (state.events.curse === CURSE_STEPS.NOTICED_DID) {
         if (!timeEstimated) {
           return await talkBoth(t('events.curse.noticedDid1'), [tl, tr])

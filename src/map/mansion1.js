@@ -19,6 +19,7 @@ export default {
         if (accept) {
           await speakChild(t('events.child.answer1'))
           await field.dropItem('art16', child.object)
+          uiScene.log.push(t('ui.questStart', t('quest.appreciation')))
           state.events.appreciation = APPRECIATION_STEPS.STARTED
         } else {
           await speakChild(t('events.child.answer2'))
@@ -37,6 +38,7 @@ export default {
         field.dropItem('sapphire', child.object)
         await field.dropItem('apple', child.object)
         await speakChild(t('events.child.complete2'))
+        uiScene.log.push(t('ui.questComplete', t('quest.appreciation')))
         state.events.appreciation = APPRECIATION_STEPS.COMPLETED
       } else if (state.events.appreciation === APPRECIATION_STEPS.COMPLETED) {
         await speakChild(t('events.child.completed'))

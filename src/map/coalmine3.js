@@ -15,6 +15,7 @@ export default {
       const speakPenguin = talk.getSpeakScripts(new Talker('炭鉱ペンギン', penguin.object))
       if (state.events.matsutake === MATSUTAKE_STEPS.NULL) {
         await speakPenguin(t('events.matsutake.start'))
+        uiScene.log.push(t('ui.questStart', t('quest.matsutake')))
         state.events.matsutake = MATSUTAKE_STEPS.STARTED
       } else if (state.events.matsutake === MATSUTAKE_STEPS.STARTED) {
         if (!bag.hasItem('matsutake')) return await speakPenguin(t('events.matsutake.started'))
@@ -24,6 +25,7 @@ export default {
         uiScene.log.push(t('events.matsutake.log'))
         await speakPenguin(t('events.matsutake.complete'))
         await field.dropItem('apple', penguin.object)
+        uiScene.log.push(t('ui.questComplete', t('quest.matsutake')))
         state.events.matsutake = MATSUTAKE_STEPS.COMPLETED
       } else if (state.events.matsutake === MATSUTAKE_STEPS.COMPLETED) {
         await speakPenguin(t('events.matsutake.completed'))

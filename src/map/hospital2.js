@@ -19,6 +19,7 @@ export default {
         const accept = await uiScene.setSelector(t('events.forever.ghost.options')) === 0
         if (accept) {
           await speakGhost(t('events.forever.ghost.answer1'))
+          uiScene.log.push(t('ui.questStart', t('quest.forever')))
           state.events.forever = FOREVER_STEPS.STARTED
         } else {
           await speakGhost(t('events.forever.ghost.answer2'))
@@ -30,6 +31,7 @@ export default {
         await field.dropItem('apple', ghost.object)
         await speakGhost(t('events.forever.ghost.complete2'))
         const completeTransition = await uiScene.transition(1000, { color: config.COLORS.white })
+        uiScene.log.push(t('ui.questComplete', t('quest.forever')))
         state.events.forever = FOREVER_STEPS.COMPLETED
         await completeTransition()
       }

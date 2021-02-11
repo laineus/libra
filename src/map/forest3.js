@@ -19,6 +19,7 @@ export default {
         await speakTorrent(t('events.torrentFlog.start2'))
         await uiScene.setSelector(t('events.torrentFlog.options2'))
         await speakTorrent(t('events.torrentFlog.start3'))
+        uiScene.log.push(t('ui.questStart', t('quest.torrentFlog')))
         state.events.torrentFlog = TORRENT_FLOG_STEPS.STARTED
       } else if (state.events.torrentFlog <= TORRENT_FLOG_STEPS.FOUND) {
         if (bag.hasItem('hercules')) {
@@ -37,6 +38,7 @@ export default {
           await speakTorrent(t('events.torrentFlog.end1'))
         }
         await field.addObject({ type: 'Substance', name: 'apple', x: torrent.object.x, y: torrent.object.y + 5 }).then(v => v.drop())
+        uiScene.log.push(t('ui.questComplete', t('quest.torrentFlog')))
         state.events.torrentFlog = TORRENT_FLOG_STEPS.COMPLETED
       } else if (state.events.torrentFlog === TORRENT_FLOG_STEPS.COMPLETED) {
         await speakTorrent(t('events.torrentFlog.completed'))
