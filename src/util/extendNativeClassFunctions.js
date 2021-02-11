@@ -76,6 +76,10 @@ const extendNativeClassFunctions = (screenWidth, screenHeight, tileSize) => {
       }, {}).record
     }
   })
+  // Phaser
+  Object.defineProperty(Phaser.Input.Pointer.prototype, 'isMoved', {
+    get () { return Math.hypot(this.downX - this.upX, this.downY - this.upY) > 5 }
+  })
   // Math class methods
   Math.sum = (...args) => args.reduce((accumulator, current) => accumulator + current)
   Math.average = (...args) => Math.sum(...args) / args.length

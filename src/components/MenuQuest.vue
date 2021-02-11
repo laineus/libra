@@ -1,12 +1,12 @@
 <template>
   <MenuContainer ref="container" :arrowX="25 + (1 * 60)" :height="305" title="Quest" @wheel="onWheel" @pointermove.stop="onSwipe">
-    <Container v-for="(v, i) in quest.slice(offset, offset + 8)" :key="i" :visible="!selected" :x="rowWidth.half" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerdown.stop="tapDownItem(i)" @pointerup.stop="tapUpItem(i)">
+    <Container v-for="(v, i) in quest.slice(offset, offset + 8)" :key="i" :visible="!selected" :x="rowWidth.half" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerup.stop="p => tapItem(p, v)">
       <Line v-if="i !== 8 - 1" :x="0" :y="rowHeight.half" :lineWidth="0.5" :x2="rowWidth" :strokeColor="COLORS.brown" :alpha="0.25" />
       <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="v.started(state) ? t(`quest.${v.key}.title`) : '？？？'" :size="13" :bold="v.started(state)" />
       <Image :x="rowWidth.half - 12" :y="0" :originY="0.5" texture="check" frame="1" :tint="COLORS.brown" v-if="v.completed(state)" />
     </Container>
     <Container v-if="selected">
-      <Text :x="10" :y="10" text="← Back" :size="12" :bold="true" @pointerdown.stop="selected = null" />
+      <Text :x="10" :y="10" text="← Back" :size="12" :bold="true" @pointerup.stop="back" />
       <Text :x="10" :y="40" :text="t(`quest.${selected.key}.title`)" :size="14" :bold="true" />
       <Text :x="10" :y="65" :text="t(`quest.${selected.key}.desc`)" :size="13" :style="{ wordWrap: { width: 200, useAdvancedWrap: true } }" />
     </Container>
@@ -36,17 +36,15 @@ export default {
       rowWidth: 207, rowHeight: 37,
       selectedIndex: null
     })
-    let reservedItem = null
-    const tapDownItem = i => {
-      if (!quest[i].started(state)) return
-      reservedItem = quest[i]
+    const tapItem = (p, v) => {
+      if (p.isMoved || !v.started(state)) return
+      data.selected = v
     }
-    const tapUpItem = i => {
-      if (reservedItem === quest[i]) data.selected = quest[i]
-      reservedItem = null
+    const back = p => {
+      if (p.isMoved) return
+      data.selected = null
     }
     const addOffset = v => {
-      reservedItem = null
       data.offset = Math.fix(data.offset + v, 0, quest.length - 8)
     }
     const onWheel = pointer => addOffset(Math.sign(pointer.deltaY))
@@ -65,7 +63,7 @@ export default {
       quest,
       container,
       ...toRefs(data),
-      tapDownItem, tapUpItem,
+      tapItem, back,
       onWheel, onSwipe
     }
   }
