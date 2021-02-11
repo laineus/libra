@@ -21,8 +21,20 @@ export default {
       field.player.object.setPosition(field.positions.bed.x, field.positions.bed.y)
       amili.object.setPosition(field.positions.bed.x + 20, field.positions.bed.y)
       event.exec(async () => {
+        field.player.lookTo('rightDown')
+        amili.lookTo('leftDown')
         await sleep(2000)
-        await speakAmiliScripts(['TODO'])
+        await speakAmiliScripts(t('events.gameOver.amili1'))
+        await sleep(1200)
+        await speakAmiliScripts(t('events.gameOver.amili2'))
+        await sleep(500)
+        await Number(3).toArray().reduce(v => {
+          return v.then(() => {
+            amili.object.setPosition(amili.object.x - 1, amili.object.y)
+            return sleep(50)
+          })
+        }, Promise.resolve())
+        await sleep(500)
       })
     }
 
