@@ -1,7 +1,7 @@
 import { inject } from 'vue'
 import Talker from '@/util/Talker'
 export default {
-  name: t('places.home'),
+  name: t('place.home'),
   bgm: null,
   create ({ respawn }) {
     const bag = inject('bag')

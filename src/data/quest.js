@@ -23,7 +23,9 @@ export default [
   {
     key: 'clover',
     started: state => state.events.clover >= CLOVER_STEPS.STARTED,
-    completed: state => state.events.clover === CLOVER_STEPS.COMPLETED
+    completed: state => state.events.clover === CLOVER_STEPS.COMPLETED,
+    place: 'forest4',
+    chara: 'flog'
   },
   {
     key: 'snakeFlog',

@@ -2,17 +2,20 @@ export default {
   title: 'サンプルゲーム',
   name: {
     libra: 'リブラ',
-    amili: 'アミリ'
+    amili: 'アミリ',
+    flog: 'カエル'
   },
-  places: {
-    home: '部屋'
+  place: {
+    home: '部屋',
+    forest4: '森4'
   },
   quest: {
     torrentFlog: {
       title: '生きることに必死な二人'
     },
     clover: {
-      title: '不幸な四つ葉のクローバー'
+      title: '不幸な四つ葉のクローバー',
+      desc: 'カエルはプレゼントに送るための四つ葉のクローバーを探している'
     },
     snakeFlog: {
       title: 'ヘビとカエルの天秤'
@@ -47,6 +50,10 @@ export default {
     forever: {
       title: 'ずっと一緒に居て下さい'
     }
+  },
+  ui: {
+    place: '場所',
+    client: '依頼主'
   },
   events: {
     libra: {
