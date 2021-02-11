@@ -18,7 +18,9 @@ export default [
   {
     key: 'torrentFlog',
     started: state => state.events.torrentFlog >= TORRENT_FLOG_STEPS.STARTED,
-    completed: state => state.events.torrentFlog === TORRENT_FLOG_STEPS.COMPLETED
+    completed: state => state.events.torrentFlog === TORRENT_FLOG_STEPS.COMPLETED,
+    place: 'forest3',
+    chara: 'torrent'
   },
   {
     key: 'clover',
@@ -30,56 +32,78 @@ export default [
   {
     key: 'snakeFlog',
     started: state => state.events.snakeFlog >= SNAKE_FLOG_STEPS.STARTED,
-    completed: state => state.events.snakeFlog === SNAKE_FLOG_STEPS.COMPLETED
+    completed: state => state.events.snakeFlog === SNAKE_FLOG_STEPS.COMPLETED,
+    place: 'cave1',
+    chara: 'snake'
   },
   {
     key: 'curse',
     started: state => state.events.curse >= CURSE_STEPS.STARTED,
-    completed: state => state.events.curse >= CURSE_STEPS.EXECUTED_END
+    completed: state => state.events.curse >= CURSE_STEPS.EXECUTED_END,
+    place: 'cave3',
+    chara: 'bat'
   },
   {
     key: 'eel',
     started: state => state.events.eel >= EEL_STEPS.STARTED,
-    completed: state => state.events.eel >= EEL_STEPS.COMPLETED1
+    completed: state => state.events.eel >= EEL_STEPS.COMPLETED1,
+    place: 'ice1',
+    chara: 'penguin'
   },
   {
     key: 'pityPenguin',
     started: state => state.events.pityPenguin >= PITY_STEPS.STARTED,
-    completed: state => state.events.pityPenguin === PITY_STEPS.COMPLETED
+    completed: state => state.events.pityPenguin === PITY_STEPS.COMPLETED,
+    place: 'ice3',
+    chara: 'penguin'
   },
   {
     key: 'liveForEveryone',
     started: state => state.events.liveForEveryone >= LIVE_FOR_EVERYONE_STEPS.COMPLETED,
-    completed: state => state.events.liveForEveryone === LIVE_FOR_EVERYONE_STEPS.COMPLETED
+    completed: state => state.events.liveForEveryone === LIVE_FOR_EVERYONE_STEPS.COMPLETED,
+    place: 'ice2',
+    chara: 'penguin'
   },
   {
     key: 'matsutake',
     started: state => state.events.matsutake >= MATSUTAKE_STEPS.STARTED,
-    completed: state => state.events.matsutake === MATSUTAKE_STEPS.COMPLETED
+    completed: state => state.events.matsutake === MATSUTAKE_STEPS.COMPLETED,
+    place: 'coalmine3',
+    chara: 'minePenguin'
   },
   {
     key: 'painter',
     started: state => state.events.painter >= PAINTER_STEPS.STARTED,
-    completed: state => state.events.painter === PAINTER_STEPS.COMPLETED
+    completed: state => state.events.painter === PAINTER_STEPS.COMPLETED,
+    place: 'coalmine2',
+    chara: 'minePenguin'
   },
   {
     key: 'appreciation',
     started: state => state.events.appreciation >= APPRECIATION_STEPS.STARTED,
-    completed: state => state.events.appreciation === APPRECIATION_STEPS.COMPLETED
+    completed: state => state.events.appreciation === APPRECIATION_STEPS.COMPLETED,
+    place: 'mansion1',
+    chara: 'pumpkin'
   },
   {
     key: 'beauty',
     started: state => state.events.beauty >= BEAUTY_STEPS.STARTED,
-    completed: state => state.events.beauty === BEAUTY_STEPS.COMPLETED
+    completed: state => state.events.beauty === BEAUTY_STEPS.COMPLETED,
+    place: 'mansion3',
+    chara: 'pumpkin'
   },
   {
     key: 'enlightenment',
     started: state => state.events.enlightenment >= ENLIGHTENMENT_STEPS.COMPLETED,
-    completed: state => state.events.enlightenment === ENLIGHTENMENT_STEPS.COMPLETED
+    completed: state => state.events.enlightenment === ENLIGHTENMENT_STEPS.COMPLETED,
+    place: 'hospital1',
+    chara: 'ghost'
   },
   {
     key: 'forever',
     started: state => state.events.forever >= FOREVER_STEPS.STARTED,
-    completed: state => state.events.forever === FOREVER_STEPS.COMPLETED
+    completed: state => state.events.forever === FOREVER_STEPS.COMPLETED,
+    place: 'hospital2',
+    chara: 'ghost'
   }
 ]
