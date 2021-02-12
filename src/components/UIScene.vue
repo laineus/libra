@@ -31,7 +31,6 @@ import Menu from './Menu'
 import Log from './Log'
 import Text from './Text'
 import config from '@/data/config'
-import maps from '@/data/maps'
 export default {
   components: { Scene, Title, Controller, Rectangle, Circle, Image, Container, RoundRectangle, Talk, Selector, Menu, Log, Text },
   setup (props) {
@@ -94,7 +93,7 @@ export default {
     }
     const mapName = ref(null)
     const setMapName = name => {
-      mapName.value = maps[name]?.name
+      mapName.value = name
     }
     return {
       state: storage.state,

@@ -55,7 +55,7 @@ export default {
         fieldData.x = x
         fieldData.y = y
         fieldData.r = r
-        uiScene.value.setMapName(name)
+        uiScene.value.setMapName(t(`place.${name}`))
       })
       completeTransition()
     }

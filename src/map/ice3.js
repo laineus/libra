@@ -2,7 +2,6 @@ import { inject } from 'vue'
 import { EEL_STEPS, PITY_STEPS } from '@/data/eventSteps'
 import Talker from '@/util/Talker'
 export default {
-  name: '氷3',
   async create () {
     const state = inject('storage').state
     const uiScene = inject('uiScene').value
@@ -13,7 +12,7 @@ export default {
     // EEL
     const anton = field.getObjectById(3)
     anton?.setTapEvent(async () => {
-      const speakAnton = talk.getSpeakScripts(new Talker('アントン先生', anton.object))
+      const speakAnton = talk.getSpeakScripts(new Talker(t('name.anton'), anton.object))
       if (state.events.eel < EEL_STEPS.STARTED) {
         return await speakAnton(t('events.anton.start1'))
       } else if (state.events.eel === EEL_STEPS.STARTED) {

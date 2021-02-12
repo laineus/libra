@@ -3,7 +3,6 @@ import Talker from '@/util/Talker'
 import config from '@/data/config'
 import { FOREVER_STEPS } from '@/data/eventSteps'
 export default {
-  name: '病院2',
   async create () {
     const uiScene = inject('uiScene').value
     const field = inject('field').value

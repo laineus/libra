@@ -2,7 +2,6 @@ import { inject } from 'vue'
 import Talker from '@/util/Talker'
 import { APPRECIATION_STEPS, REGAIN_STEPS } from '@/data/eventSteps'
 export default {
-  name: '炭鉱1',
   async create () {
     const uiScene = inject('uiScene').value
     const field = inject('field').value

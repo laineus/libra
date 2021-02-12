@@ -2,7 +2,6 @@ import { inject, computed } from 'vue'
 import Talker from '@/util/Talker'
 import { CURSE_STEPS } from '@/data/eventSteps'
 export default {
-  name: '洞窟3',
   async create () {
     const uiScene = inject('uiScene').value
     const field = inject('field').value

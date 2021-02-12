@@ -10,6 +10,7 @@ export default {
     snake: 'ヘビ',
     signal: '信号',
     penguin: 'ペンギン',
+    anton: 'アントン先生',
     minePenguin: '炭鉱ペンギン',
     fallTorrent: '秋トレント',
     pumpkin: 'カボチャ',

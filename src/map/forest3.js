@@ -2,7 +2,6 @@ import { inject } from 'vue'
 import Talker from '@/util/Talker'
 import { TORRENT_FLOG_STEPS } from '@/data/eventSteps'
 export default {
-  name: '森2',
   async create () {
     const uiScene = inject('uiScene').value
     const field = inject('field').value
