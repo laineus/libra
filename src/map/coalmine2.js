@@ -12,7 +12,7 @@ export default {
 
     const penguin = field.getObjectById(2)
     penguin?.setTapEvent(async () => {
-      const speakPenguin = talk.getSpeakScripts(new Talker('炭鉱ペンギン', penguin.object))
+      const speakPenguin = talk.getSpeakScripts(new Talker(t('name.minePenguin'), penguin.object))
       if (state.events.painter < PAINTER_STEPS.STARTED) {
         if (state.events.painter === PAINTER_STEPS.NULL) {
           await speakPenguin(t('events.painter.start'))

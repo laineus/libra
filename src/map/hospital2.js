@@ -13,7 +13,7 @@ export default {
     const ghost = field.getObjectById(3)
     ghost?.setVisible(computed(() => state.events.forever < FOREVER_STEPS.COMPLETED))
     ghost?.setTapEvent(async () => {
-      const speakGhost = talk.getSpeakScripts(new Talker('幽霊', ghost.object))
+      const speakGhost = talk.getSpeakScripts(new Talker(t('name.ghost'), ghost.object))
       if (state.events.forever === FOREVER_STEPS.NULL) {
         await speakGhost(t('events.forever.ghost.start'))
         const accept = await uiScene.setSelector(t('events.forever.ghost.options')) === 0

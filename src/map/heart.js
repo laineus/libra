@@ -12,8 +12,8 @@ export default {
 
     const area = field.getObjectById(2)
     const kajitsu = field.getObjectById(3)
-    const tLibra = new Talker('リブラ', libra.object)
-    const tKajitsu = new Talker('カジツ', kajitsu.object)
+    const tLibra = new Talker(t('name.libra'), libra.object)
+    const tKajitsu = new Talker(t('name.kajitsu'), kajitsu.object)
     const speakLibra = talk.getSpeakScripts(tLibra)
     const speakKajitsu = talk.getSpeakScripts(tKajitsu)
 

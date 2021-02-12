@@ -13,7 +13,7 @@ export default {
     const ghost = field.getObjectById(3)
     ghost?.setVisible(computed(() => state.events.enlightenment === ENLIGHTENMENT_STEPS.NULL))
     ghost?.setTapEvent(async () => {
-      const speakGhost = talk.getSpeakScripts(new Talker('幽霊', ghost.object))
+      const speakGhost = talk.getSpeakScripts(new Talker(t('name.ghost'), ghost.object))
       await speakGhost(t('events.enlightenment.start1'))
       const answer1 = await uiScene.setSelector(t('events.enlightenment.options')) === 0
       await speakGhost(answer1 ? t('events.enlightenment.answer1') : t('events.enlightenment.answer2'))

@@ -3,6 +3,7 @@ export default {
   name: {
     libra: 'リブラ',
     amili: 'アミリ',
+    kajitsu: 'カジツ',
     flog: 'カエル',
     torrent: 'トレント',
     bat: 'コウモリ',

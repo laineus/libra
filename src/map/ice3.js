@@ -50,7 +50,7 @@ export default {
     // PITY
     const friend = field.getObjectById(4)
     friend?.setTapEvent(async () => {
-      const speakFriend = talk.getSpeakScripts(new Talker('ペンギン', friend.object))
+      const speakFriend = talk.getSpeakScripts(new Talker(t('name.penguin'), friend.object))
       if (state.events.pityPenguin === PITY_STEPS.NULL) {
         const scripts = t('events.pityPenguinFriend.start1').concat(t('events.pityPenguinFriend.start2'))
         await speakFriend(scripts)

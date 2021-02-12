@@ -12,7 +12,7 @@ export default {
 
     const flog = field.getObjectById(5)
     flog?.setTapEvent(async () => {
-      const speakFlog = talk.getSpeakScripts(new Talker('カエル', flog.object))
+      const speakFlog = talk.getSpeakScripts(new Talker(t('name.flog'), flog.object))
       if (state.events.strawDoll === STRAWDOLL_STEPS.NULL) {
         await speakFlog(t('events.strawDoll.start'))
         const receive = await uiScene.setSelector(t('events.strawDoll.options')) === 1

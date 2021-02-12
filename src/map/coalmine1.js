@@ -12,7 +12,7 @@ export default {
 
     const penguin = field.getObjectById(4)
     penguin?.setTapEvent(async () => {
-      const speakPenguin = talk.getSpeakScripts(new Talker('炭鉱ペンギン', penguin.object))
+      const speakPenguin = talk.getSpeakScripts(new Talker(t('name.minePenguin'), penguin.object))
       if (state.events.appreciation < APPRECIATION_STEPS.STARTED) {
         await speakPenguin(t('events.miner.greet'))
       } else if (state.events.appreciation === APPRECIATION_STEPS.STARTED) {

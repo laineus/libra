@@ -27,7 +27,7 @@ export default {
       mountApple()
     }
 
-    const tKajitsu = new Talker('カジツ', kajitsu.object)
+    const tKajitsu = new Talker(t('name.kajitsu'), kajitsu.object)
 
     // Auto start event
     if (state.events.intro === INTRO_STEPS.INTRO) {
@@ -119,7 +119,7 @@ export default {
 
     const torrent = field.getObjectById(24)
     if (torrent) {
-      const speakTorrent = talk.getSpeakScripts(new Talker('トレント', torrent.object))
+      const speakTorrent = talk.getSpeakScripts(new Talker(t('name.torrent'), torrent.object))
       torrent.setVisible(computed(() => state.events.curse >= CURSE_STEPS.STARTED))
       const execCurse = async () => {
         if (bag.hasItem('strawDoll')) {

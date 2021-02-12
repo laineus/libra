@@ -12,7 +12,7 @@ export default {
 
     const torrent = field.getObjectById(3)
     torrent?.setTapEvent(async () => {
-      const speakTorrent = talk.getSpeakScripts(new Talker('トレント', torrent.object))
+      const speakTorrent = talk.getSpeakScripts(new Talker(t('name.torrent'), torrent.object))
       if (state.events.torrentFlog === TORRENT_FLOG_STEPS.NULL) {
         await speakTorrent(t('events.torrentFlog.start1'))
         await uiScene.setSelector(t('events.torrentFlog.options1'))
@@ -47,7 +47,7 @@ export default {
 
     const flog = field.getObjectById(4)
     flog?.setTapEvent(async () => {
-      const speakFlog = talk.getSpeakScripts(new Talker('カエル', flog.object))
+      const speakFlog = talk.getSpeakScripts(new Talker(t('name.flog'), flog.object))
       if (state.events.torrentFlog === TORRENT_FLOG_STEPS.FOUND && bag.hasItem('hercules')) {
         await speakFlog(t('events.torrentFlog.flog.give1'))
         const accepted = await uiScene.setSelector(t('events.torrentFlog.flog.options1')) === 0

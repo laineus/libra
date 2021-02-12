@@ -14,8 +14,8 @@ export default {
     const rightBat = field.getObjectById(4)
     if (!leftBat || !rightBat) return
 
-    const tl = new Talker('コウモリ', leftBat.object)
-    const tr = new Talker('コウモリ', rightBat.object)
+    const tl = new Talker(t('name.bat'), leftBat.object)
+    const tr = new Talker(t('name.bat'), rightBat.object)
     const speakLeft = talk.getSpeakScripts(tl)
     const speakRight = talk.getSpeakScripts(tr)
     const talkBoth = (scripts, map) => {

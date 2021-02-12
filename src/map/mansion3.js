@@ -13,7 +13,7 @@ export default {
 
     const lady1 = field.getObjectById(2)
     lady1?.setTapEvent(async () => {
-      const speakLady1 = talk.getSpeakScripts(new Talker('カボチャ', lady1.object))
+      const speakLady1 = talk.getSpeakScripts(new Talker(t('name.pumpkin'), lady1.object))
       if (state.events.beauty === BEAUTY_STEPS.NULL) {
         await speakLady1(t('events.lady1.start'))
         uiScene.log.push(t('ui.questStart', t('quest.beauty')))
@@ -49,7 +49,7 @@ export default {
     let lady2MissionStarted = false
     const lady2 = field.getObjectById(3)
     lady2?.setTapEvent(async () => {
-      const speakLady2 = talk.getSpeakScripts(new Talker('カボチャ', lady2.object))
+      const speakLady2 = talk.getSpeakScripts(new Talker(t('name.pumpkin'), lady2.object))
       if (state.events.beauty < BEAUTY_STEPS.SOLVED) {
         await speakLady2(t('events.lady2.greet'))
       } else if (state.events.beauty === BEAUTY_STEPS.SOLVED) {

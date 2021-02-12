@@ -12,7 +12,7 @@ export default {
 
     const hachi = field.getObjectById(4)
     hachi?.setTapEvent(async () => {
-      const speakHachi = talk.getSpeakScripts(new Talker('ペンギン', hachi.object))
+      const speakHachi = talk.getSpeakScripts(new Talker(t('name.penguin'), hachi.object))
       if (state.events.pityPenguin < PITY_STEPS.FOUND) {
         await speakHachi(t('events.pityPenguin.greet'))
       } else if (state.events.pityPenguin === PITY_STEPS.FOUND) {

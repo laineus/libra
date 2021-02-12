@@ -12,7 +12,7 @@ export default {
 
     const child = field.getObjectById(3)
     child?.setTapEvent(async () => {
-      const speakChild = talk.getSpeakScripts(new Talker('カボチャ', child.object))
+      const speakChild = talk.getSpeakScripts(new Talker(t('name.pumpkin'), child.object))
       if (state.events.appreciation < APPRECIATION_STEPS.STARTED) {
         await speakChild(state.events.appreciation === APPRECIATION_STEPS.NULL ? t('events.child.start') : t('events.child.start').slice(-1))
         const accept = await uiScene.setSelector(t('events.child.options')) === 0

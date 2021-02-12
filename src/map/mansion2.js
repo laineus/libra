@@ -12,7 +12,7 @@ export default {
 
     const pumpkin = field.getObjectById(4)
     pumpkin?.setTapEvent(async () => {
-      const speakPumpkin = talk.getSpeakScripts(new Talker('カボチャ', pumpkin.object))
+      const speakPumpkin = talk.getSpeakScripts(new Talker(t('name.pumpkin'), pumpkin.object))
       if (state.events.painter < PAINTER_STEPS.SOLVED) {
         await speakPumpkin(t('events.collector.start'))
         if (!bag.hasItem('art15')) return

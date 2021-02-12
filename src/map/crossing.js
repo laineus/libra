@@ -18,8 +18,8 @@ export default {
 
     const area = field.getObjectById(4)
     const kajitsu = field.getObjectById(5)
-    const speakLibra = talk.getSpeakScripts(new Talker('リブラ', libra.object))
-    const speakKajitsu = talk.getSpeakScripts(new Talker('カジツ', kajitsu.object))
+    const speakLibra = talk.getSpeakScripts(new Talker(t('name.libra'), libra.object))
+    const speakKajitsu = talk.getSpeakScripts(new Talker(t('name.kajitsu'), kajitsu.object))
 
     kajitsu.setVisible(false)
 

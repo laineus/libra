@@ -8,7 +8,7 @@ export default {
 
     const torrent = field.getObjectById(2)
     torrent?.setTapEvent(async () => {
-      const speakTorrent = talk.getSpeakScripts(new Talker('トレント', torrent.object))
+      const speakTorrent = talk.getSpeakScripts(new Talker(t('name.torrent'), torrent.object))
       await speakTorrent(t('events.clover.torrent'))
     })
   }

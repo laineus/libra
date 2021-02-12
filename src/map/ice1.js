@@ -12,7 +12,7 @@ export default {
 
     const fisher = field.getObjectById(3)
     fisher?.setTapEvent(async () => {
-      const speakFisher = talk.getSpeakScripts(new Talker('ペンギン', fisher.object))
+      const speakFisher = talk.getSpeakScripts(new Talker(t('name.penguin'), fisher.object))
       const option2 = async () => {
         const ignore = await uiScene.setSelector(t('events.eel.startOptions2')) === 1
         if (ignore) {

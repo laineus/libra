@@ -12,7 +12,7 @@ export default {
 
     const flog = field.getObjectById(3)
     flog?.setTapEvent(async () => {
-      const speakFlog = talk.getSpeakScripts(new Talker('カエル', flog.object))
+      const speakFlog = talk.getSpeakScripts(new Talker(t('name.flog'), flog.object))
       if (state.events.clover === CLOVER_STEPS.NULL) {
         await speakFlog(t('events.clover.flog1'))
         uiScene.log.push(t('ui.questStart', t('quest.clover')))
