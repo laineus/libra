@@ -59,6 +59,42 @@
                  "width":160,
                  "x":416,
                  "y":544
+                }, 
+                {
+                 "height":0,
+                 "id":2,
+                 "name":"kajitsu",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Character",
+                 "visible":true,
+                 "width":0,
+                 "x":496,
+                 "y":504
+                }, 
+                {
+                 "height":0,
+                 "id":3,
+                 "name":"center",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Position",
+                 "visible":true,
+                 "width":0,
+                 "x":496,
+                 "y":312
+                }, 
+                {
+                 "height":0,
+                 "id":4,
+                 "name":"exit",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Position",
+                 "visible":true,
+                 "width":0,
+                 "x":496,
+                 "y":600
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -67,10 +103,10 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":2,
+ "nextobjectid":5,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"2019.12.11",
+ "tiledversion":"2020.08.05",
  "tileheight":32,
  "tilesets":[
         {
@@ -79,6 +115,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.2,
+ "version":1.4,
  "width":31
 }

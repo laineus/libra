@@ -22,6 +22,7 @@ import hospital2 from '@/map/hospital2'
 import mansion1 from '@/map/mansion1'
 import mansion2 from '@/map/mansion2'
 import mansion3 from '@/map/mansion3'
+import brain from '@/map/brain'
 export default {
   home,
   forest2,
@@ -46,5 +47,6 @@ export default {
   hospital2,
   mansion1,
   mansion2,
-  mansion3
+  mansion3,
+  brain
 }
