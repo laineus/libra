@@ -15,13 +15,13 @@
         <Text :tween="{ alpha: 1, duration: 300, yoyo: true, hold: 3000, onComplete: () => setMapName(null) }" :alpha="0" :text="mapName" :origin="0.5" color="soy" :bold="true" />
       </Container>
     </template>
-    <Rectangle :fillColor="transitionData.color" :origin="0" :width="config.WIDTH" :height="config.HEIGHT" :depth="config.DEPTH.TRANSITION" :alpha="transitionData.alpha" />
+    <Rectangle v-for="v in transitions" :key="v.id" :fillColor="v.color" :origin="0" :width="config.WIDTH" :height="config.HEIGHT" :depth="config.DEPTH.TRANSITION" :alpha="v.alpha" />
     <Text v-if="screenMessage" :text="screenMessage" :x="config.WIDTH.half" :y="config.HEIGHT.half" :size="17" color="white" :origin="0.5" :depth="config.DEPTH.TRANSITION" />
   </Scene>
 </template>
 
 <script>
-import { inject, onMounted, reactive, ref } from 'vue'
+import { inject, onMounted, reactive, ref, shallowReactive } from 'vue'
 import { refScene, Scene, Rectangle, Circle, Image, Container, RoundRectangle } from 'phavuer'
 import Title from './Title'
 import Controller from './Controller'
@@ -51,10 +51,6 @@ export default {
       refs.scene.value.input.setTopOnly(false)
     })
     const titleScreen = ref(true)
-    const transitionData = reactive({
-      alpha: 0,
-      color: 0x000000
-    })
     const screenMessage = ref(null)
     const setScreenMessage = text => screenMessage.value = text
     const nealestCheckable = ref(null)
@@ -76,20 +72,24 @@ export default {
       if (!field.value) return
       nealestCheckable.value = field.value.charas.concat(field.value.substances).map(v => v.ref.value).filter(v => v.checkable).findMin(v => v.distanceToPlayer)
     }
-    const transition = (duration = 500, { hold, color = 0x000000 } = {}) => {
-      hold = hold ?? duration.half
-      transitionData.color = color
-      const start = () => new Promise(resolve => {
-        const onComplete = () => sleep(hold.half).then(resolve)
-        transitionData.alpha = 0
-        refs.scene.value.add.tween({ targets: transitionData, duration, alpha: 1, onComplete })
+    const transitions = shallowReactive([])
+    const getTransitionTween = target => (duration, { alpha, destroy = false }) => {
+      return new Promise(resolve => {
+        const onComplete = () => {
+          if (destroy) transitions.delete(target)
+          resolve()
+        }
+        return refs.scene.value.add.tween({ targets: target, duration, alpha, onComplete })
       })
-      const complete = () => new Promise(resolve => {
-        sleep(hold.half).then(() => {
-          refs.scene.value.add.tween({ targets: transitionData, duration, alpha: 0, onComplete: resolve })
-        })
+    }
+    const transition = (duration = 500, { color = config.COLORS.black, hold, alpha = 1 } = {}) => {
+      const data = shallowReactive({ id: Symbol('id'), color, alpha: 0 })
+      transitions.push(data)
+      const tween = getTransitionTween(data)
+      return tween(duration, { alpha }).then(() => {
+        const nextTween = (...args) => tween(args[0] ?? duration, Object.assign({ alpha: 0, destroy: true }, args[1])).then(() => nextTween)
+        return sleep(hold ?? duration.half).then(() => nextTween)
       })
-      return start().then(() => complete)
     }
     const mapName = ref(null)
     const setMapName = name => {
@@ -103,7 +103,7 @@ export default {
       ...refs,
       titleScreen,
       transition,
-      transitionData,
+      transitions,
       nealestCheckable,
       selector, setSelector,
       screenMessage, setScreenMessage,
