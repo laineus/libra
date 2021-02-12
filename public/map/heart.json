@@ -1,4 +1,11 @@
 { "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "target":"."
+        }
+    },
  "height":29,
  "infinite":false,
  "layers":[
@@ -66,17 +73,6 @@
                  "y":832
                 }, 
                 {
-                 "height":376,
-                 "id":2,
-                 "name":"",
-                 "rotation":0,
-                 "type":"Area",
-                 "visible":true,
-                 "width":160,
-                 "x":416,
-                 "y":360
-                }, 
-                {
                  "height":0,
                  "id":3,
                  "name":"kajitsu",
@@ -87,6 +83,30 @@
                  "width":0,
                  "x":624,
                  "y":520
+                }, 
+                {
+                 "height":0,
+                 "id":4,
+                 "name":"center",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Position",
+                 "visible":true,
+                 "width":0,
+                 "x":496,
+                 "y":512
+                }, 
+                {
+                 "height":0,
+                 "id":5,
+                 "name":"relay",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Position",
+                 "visible":true,
+                 "width":0,
+                 "x":496,
+                 "y":592
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -95,7 +115,7 @@
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":4,
+ "nextobjectid":6,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2020.08.05",
