@@ -96,6 +96,9 @@ export default {
     questComplete: '『#{title}』を完了'
   },
   events: {
+    block: {
+      common: 'この先へはまだ行けません'
+    },
     libra: {
       exclamation: '！',
       question: '？',
@@ -146,6 +149,10 @@ export default {
       requestApple: {
         a: ['リブラ、またお腹が減ったわ。', 'またリンゴ持ってきて！'],
         b: ['ん～', 'またリンゴ食べたいなぁ', 'リブラ、持ってきてくれるよね？']
+      },
+      lvup: {
+        heart: '心の魅力が上がった',
+        body: '体の魅力が上がった'
       }
     },
     itemReactions: {

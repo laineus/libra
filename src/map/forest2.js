@@ -14,7 +14,7 @@ export default {
     const sumStatus = computed(() => state.status.heart + state.status.body)
     const gate = field.getObjectById(1)
     gate.setEvent(computed(() => {
-      if (state.events.intro < INTRO_STEPS.COMPLETED) return async () => uiScene.log.push('この先へはまだ行けません')
+      if (state.events.intro < INTRO_STEPS.COMPLETED) return async () => uiScene.log.push(t('events.block.common'))
       return false
     }))
     const kajitsu = field.getObjectById(2)

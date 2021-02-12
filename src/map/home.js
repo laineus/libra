@@ -51,7 +51,7 @@ export default {
       field.player.object.setPosition(position.x, position.y)
       amili.object.setPosition(position.x + 20, position.y)
       amili.lookTo(hangout ? 'up' : 'leftDown')
-      uiScene.log.push(hangout ? '心の魅力が上がった' : '体の魅力が上がった')
+      uiScene.log.push(hangout ? t('events.home.heart') : t('events.home.body'))
       await completeTransition()
     }
     const itemReaction = async () => {

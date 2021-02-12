@@ -11,7 +11,7 @@ export default {
 
     const gate = field.getObjectById(3)
     gate.setEvent(computed(() => {
-      if (state.events.main < MAIN_STEPS.HEART) return async () => uiScene.log.push('この先へはまだ行けません')
+      if (state.events.main < MAIN_STEPS.HEART) return async () => uiScene.log.push(t('events.block.common'))
       return false
     }))
 
