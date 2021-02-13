@@ -73,22 +73,23 @@ export default {
       nealestCheckable.value = field.value.charas.concat(field.value.substances).map(v => v.ref.value).filter(v => v.checkable).findMin(v => v.distanceToPlayer)
     }
     const transitions = shallowReactive([])
-    const getTransitionTween = target => (duration, { alpha, destroy = false }) => {
+    const getTransitionTween = target => (duration, { alpha, hold, destroy }) => {
       return new Promise(resolve => {
         const onComplete = () => {
           if (destroy) transitions.delete(target)
-          resolve()
+          sleep(hold).then(resolve)
         }
         return refs.scene.value.add.tween({ targets: target, duration, alpha, onComplete })
       })
     }
-    const transition = (duration = 500, { color = config.COLORS.black, hold, alpha = 1 } = {}) => {
+    const transition = (duration = 500, { color = config.COLORS.black, alpha = 1, hold } = {}) => {
+      hold = hold ?? duration.half
       const data = shallowReactive({ id: Symbol('id'), color, alpha: 0 })
       transitions.push(data)
       const tween = getTransitionTween(data)
-      return tween(duration, { alpha }).then(() => {
-        const nextTween = (...args) => tween(args[0] ?? duration, Object.assign({ alpha: 0, destroy: true }, args[1])).then(() => nextTween)
-        return sleep(hold ?? duration.half).then(() => nextTween)
+      return tween(duration, { alpha, hold, destroy: false }).then(() => {
+        const nextTween = (...args) => tween(args[0] ?? duration, Object.assign({ alpha: 0, hold: 0, destroy: true }, args[1])).then(() => nextTween)
+        return nextTween
       })
     }
     const mapName = ref(null)
