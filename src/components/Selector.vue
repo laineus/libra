@@ -1,5 +1,5 @@
 <template>
-  <SpeachBubble :width="bgWidth" :height="(bgHeight * options.length) + (2 * (options.length - 1))">
+  <SpeachBubble :width="bgWidth" :height="(bgHeight * options.length) + (2 * (options.length - 1))" :depth="config.DEPTH.TALK">
     <Container v-for="(v, i) in options" :key="i" :y="(bgHeight + 2) * i">
       <RoundRectangle :fillColor="COLORS.brown" :radius="4" :width="bgWidth" :height="bgHeight" @pointerdown.stop="select($event, i)" />
       <Rectangle :fillColor="COLORS.soy" :x="10" :y="14" :width="3" :height="3" :rotation="Math.PI / 4" />
@@ -35,7 +35,7 @@ export default {
       context.emit('select', i)
     }
     return {
-      COLORS: config.COLORS,
+      config, COLORS: config.COLORS,
       options,
       ...toRefs(data),
       select
