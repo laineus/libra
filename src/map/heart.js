@@ -11,6 +11,10 @@ export default {
     const libra = inject('player').value
     const event = inject('event')
 
+    const heartImage = field.images.find(v => v.name === 'heart').ref.value
+    heartImage.setOrigin(0.5).setPosition(heartImage.x + heartImage.width.half, heartImage.y + heartImage.height.half).setTint(0x550000)
+    const tween = heartImage.scene.add.tween({ targets: heartImage, loop: -1, yoyo: true, duration: 200, hold: 1200, scale: { from: 1, to: 0.93 } })
+
     const kajitsu = field.getObjectById(3)
     const amili = field.getObjectById(6)
     const speakLibra = talk.getSpeakScripts(new Talker(t('name.libra'), libra.object))
@@ -119,6 +123,45 @@ export default {
           await white(3000, { alpha: 1, destroy: false })
           await sleep(3000)
           uiScene.setScreenMessage(t('events.dream.last1.message'), 'black')
+        } else {
+          await speakAmili(t('events.dream.last2.amili1'))
+          white(3000)
+          const red = await uiScene.transition(1000, { color: 0x770022, alpha: 0.6, hold: 0 })
+          await (15).toArray().reduce(v => {
+            return v.then(async duration => {
+              await red(duration, { alpha: 0.2, destroy: false })
+              await red(duration, { alpha: 0.6, destroy: false })
+              return Math.max(duration - 200, 200)
+            })
+          }, Promise.resolve(1000))
+          tween.stop()
+          amili.lookTo('leftUp')
+          await speakAmili(t('events.dream.last2.amili2'))
+          await sleep(2000)
+          heartImage.scene.tweens.addCounter({
+            from: 0, to: 1, duration: 2000, onUpdate: tween => {
+              const r = 85 - (tween.getValue() * 34)
+              const b = tween.getValue() * 34
+              heartImage.setTint(Phaser.Display.Color.GetColor(r, 0, b))
+            }
+          })
+          heartImage.scene.add.tween({ targets: heartImage, duration: 2000, scale: 0.5 })
+          await red(2000)
+          await speakAmili(t('events.dream.last2.amili2'))
+          await sleep(1000)
+          amili.lookTo('left')
+          await speakAmili(t('events.dream.last2.amili3'))
+          await sleep(500)
+          await speakAmili(t('events.dream.last2.amili4'))
+          await sleep(500)
+          await speakAmili(t('events.dream.last2.amili5'))
+          await sleep(500)
+          await speakAmili(t('events.dream.last2.amili6'))
+          await sleep(2000)
+          const black = await uiScene.transition(3000, { color: config.COLORS.black, alpha: 1 })
+          await sleep(3000)
+          uiScene.setScreenMessage(t('events.dream.last2.message'))
+          black()
         }
       })
     }
