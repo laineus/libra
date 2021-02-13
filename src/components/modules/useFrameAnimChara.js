@@ -39,9 +39,9 @@ const getVelocityToDirectionKey = numOfDirection => r => {
     }
   }
 }
-export default (object, image, initR, numOfDirection, standingAnim = false) => {
+export default (object, initR, numOfDirection, standingAnim = false) => {
   const velocityToDirectionKey = getVelocityToDirectionKey(numOfDirection)
-  const frameAnim = useFrameAnim(WALK_ANIM, image)
+  const frameAnim = useFrameAnim(WALK_ANIM)
   let directionKey = velocityToDirectionKey(initR)
   const base = () => baseFrames[directionKey]
   const play = () => {

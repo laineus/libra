@@ -30,9 +30,8 @@ export default {
     const r = ref(0)
     const frame = ref(0)
     const object = computed(() => substance.value?.object)
-    const image = computed(() => substance.value?.image)
     const following = useFollowing(object)
-    const { base: getBaseFrame, play: playFrameAnim, lookTo } = useFrameAnimChara(object, image, props.initR, 8)
+    const { base: getBaseFrame, play: playFrameAnim, lookTo } = useFrameAnimChara(object, props.initR, 8)
     const gun = useGun(context, object)
     const getRadianToPointer = () => {
       const diffX = scene.input.manager.pointers[0]?.x + camera.value?.scrollX - object.value?.x
