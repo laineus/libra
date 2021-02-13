@@ -14,7 +14,7 @@
     "dayjs": "^1.10.4",
     "phaser": "3.50.1",
     "phaser-tiled-json-external-loader": "^0.1.1",
-    "phavuer": "^0.7.7",
+    "phavuer": "^0.7.8",
     "vue": "^3.0.5"
   },
   "devDependencies": {
