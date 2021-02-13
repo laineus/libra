@@ -100,6 +100,26 @@ export default {
         await white(500, { alpha: 0.85, destroy: false })
         await speakAmili(t('events.dream.amili7'))
         await white(500, { alpha: 0.9, destroy: false })
+        const options = async () => {
+          if (state.status.heart >= 5 && state.status.body < 5) {
+            await uiScene.setSelector(t('events.dream.options').slice(0, 1))
+            return 0
+          } else if (state.status.body >= 5 && state.status.heart < 5) {
+            await uiScene.setSelector(t('events.dream.options').slice(1))
+            return 1
+          } else {
+            return await uiScene.setSelector(t('events.dream.options'))
+          }
+        }
+        const awake = await options() === 0
+        if (awake) {
+          await sleep(1500)
+          await speakAmili(t('events.dream.last1.amili1'))
+          await sleep(500)
+          await white(3000, { alpha: 1, destroy: false })
+          await sleep(3000)
+          uiScene.setScreenMessage(t('events.dream.last1.message'), 'black')
+        }
       })
     }
   }

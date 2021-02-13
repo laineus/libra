@@ -16,12 +16,12 @@
       </Container>
     </template>
     <Transitions ref="transitions" />
-    <Text v-if="screenMessage" :text="screenMessage" :x="config.WIDTH.half" :y="config.HEIGHT.half" :size="17" color="white" :origin="0.5" :depth="config.DEPTH.TRANSITION" />
+    <Text v-if="screenMessage.text" :text="screenMessage.text" :x="config.WIDTH.half" :y="config.HEIGHT.half" :size="17" :color="screenMessage.color" :origin="0.5" :depth="config.DEPTH.TRANSITION" />
   </Scene>
 </template>
 
 <script>
-import { inject, onMounted, reactive, ref } from 'vue'
+import { inject, onMounted, reactive, ref, shallowReactive } from 'vue'
 import { refScene, Scene, Circle, Image, Container, RoundRectangle } from 'phavuer'
 import Title from './Title'
 import Controller from './Controller'
@@ -53,8 +53,11 @@ export default {
       refs.scene.value.input.setTopOnly(false)
     })
     const titleScreen = ref(true)
-    const screenMessage = ref(null)
-    const setScreenMessage = text => screenMessage.value = text
+    const screenMessage = shallowReactive({ text: null, color: null })
+    const setScreenMessage = (text, color = 'white') => {
+      screenMessage.text = text
+      screenMessage.color = color
+    }
     const nealestCheckable = ref(null)
     const selector = reactive({ list: null, resolver: null, x: 0, y: 0 })
     const setSelector = list => {
