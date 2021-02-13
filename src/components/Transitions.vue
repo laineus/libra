@@ -1,5 +1,5 @@
 <template>
-  <Rectangle v-for="v in transitions" :key="v.id" :fillColor="v.color" :origin="0" :width="config.WIDTH" :height="config.HEIGHT" :depth="config.DEPTH.TRANSITION" :alpha="v.alpha" />
+  <Rectangle v-for="v in transitions" :key="v.id" :fillColor="v.color" :origin="0" :width="config.WIDTH" :height="config.HEIGHT" :depth="v.depth" :alpha="v.alpha" />
 </template>
 
 <script>
@@ -11,7 +11,7 @@ export default {
   setup () {
     const scene = inject('scene')
     const transitions = shallowReactive([])
-    const getTransitionTween = target => (duration, { alpha, hold, destroy }) => {
+    const getTransitionTween = target => (duration, { alpha, hold, destroy, depth }) => {
       return new Promise(resolve => {
         const onComplete = () => {
           if (destroy) transitions.delete(target)
@@ -20,9 +20,9 @@ export default {
         return scene.add.tween({ targets: target, duration, alpha, onComplete })
       })
     }
-    const add = (duration = 500, { color = config.COLORS.black, alpha = 1, hold } = {}) => {
+    const add = (duration = 500, { alpha = 1, hold, color = config.COLORS.black, depth = config.DEPTH.TRANSITION } = {}) => {
       hold = hold ?? duration.half
-      const data = shallowReactive({ id: Symbol('id'), color, alpha: 0 })
+      const data = shallowReactive({ id: Symbol('id'), color, depth, alpha: 0 })
       transitions.push(data)
       const tween = getTransitionTween(data)
       return tween(duration, { alpha, hold, destroy: false }).then(() => {

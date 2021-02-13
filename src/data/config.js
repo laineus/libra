@@ -19,6 +19,7 @@ export default {
     DARKNESS: 11000,
     SPEACH_BUBBLE: 50000,
     UI_BG: 100000,
+    TALK: 110000,
     TRANSITION: 900000
   }
 }
