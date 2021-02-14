@@ -6,6 +6,7 @@
     </Container>
     <MenuSystemSave v-if="index === 0" :offsetX="offsetX" :offsetY="offsetY + 32" :y="32" />
     <MenuSystemConfig v-else-if="index === 1" :offsetX="offsetX" :offsetY="offsetY + 32" :y="32" />
+    <MenuSystemTips v-else-if="index === 2" :y="32" />
   </MenuContainer>
 </template>
 
@@ -17,8 +18,9 @@ import Text from '@/components/Text'
 import MenuContainer from '@/components/MenuContainer'
 import MenuSystemSave from '@/components/MenuSystemSave'
 import MenuSystemConfig from '@/components/MenuSystemConfig'
+import MenuSystemTips from '@/components/MenuSystemTips'
 export default {
-  components: { Container, RoundRectangle, Text, MenuContainer, MenuSystemSave, MenuSystemConfig },
+  components: { Container, RoundRectangle, Text, MenuContainer, MenuSystemSave, MenuSystemConfig, MenuSystemTips },
   setup () {
     const container = ref(null)
     const tabs = [
