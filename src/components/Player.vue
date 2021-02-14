@@ -62,8 +62,8 @@ export default {
         following.clearTargetPosition()
       }
     })
-    const damage = r => {
-      substance.value.damage(r)
+    const damage = (value, r) => {
+      substance.value.damage(value, r)
       state.status.hp = substance.value.hp
       if (substance.value.hp <= 0) {
         event.exec(async () => {

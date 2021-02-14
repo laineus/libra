@@ -64,14 +64,14 @@ export default {
           attackDelay.value = 0
           const angle = Math.atan2(diffY, diffX)
           substance.value?.attackAnim(angle)
-          attackTarget.value.damage(angle)
+          attackTarget.value.damage(itemData?.atk ?? 5, angle)
           lookTo(attackTarget.value.object)
         }
       }
     })
-    const damage = r => {
+    const damage = (value, r) => {
       setTemper('shot')
-      substance.value?.damage(r)
+      substance.value?.damage(value, r)
       substance.value?.setTapEvent(null)
     }
     const stopWalking = () => {

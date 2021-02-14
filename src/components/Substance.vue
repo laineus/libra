@@ -86,9 +86,9 @@ export default {
     }
     const damageEffectData = reactive({ value: false, diffX: 0, diffY: 0 })
     const damageEffectTimeline = { duration: 120, tweens: [{ scale: 0.6 }, { scale: 1, alpha: 0 }], onComplete: () => damageEffectData.value = false }
-    const damage = r => {
+    const damage = (value, r) => {
       if (data.hp <= 0) return
-      data.hp -= Math.randomInt(3, 7)
+      data.hp -= value
       damageEffectData.value = true
       damageEffectData.diffX = Math.cos(r) * -15
       damageEffectData.diffY = Math.sin(r) * -15
