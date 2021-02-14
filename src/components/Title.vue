@@ -2,7 +2,6 @@
   <Rectangle :fillColor="0x333333" :origin="0" :width="config.WIDTH" :height="config.HEIGHT" @pointerdown="selected = null" />
   <Image texture="main" :x="config.WIDTH.half" :y="config.HEIGHT.half" />
   <Image texture="logo" :x="config.WIDTH.half" :y="config.HEIGHT.half - 80" />
-  <Text :text="`${v.name} ${v.state?.map ?? 'empty'}`" color="white" v-for="(v, i) in list" :key="v.number" :x="40" :y="40 + (i * 30)" @pointerdown="load(v)" />
   <Container v-for="(v, i) in list" :key="i" :x="config.WIDTH.half" :y="380 + (i * 40)" :visible="!selected">
     <Image texture="nav" :frame="i" @pointerdown.stop="tapItem(i)" />
     <Text :text="v" :origin="0.5" />
@@ -10,7 +9,7 @@
   <Container v-if="selected === 1" :x="config.WIDTH.half" :y="375">
     <RoundRectangle :width="266" :height="276" :origin="0.5" :radius="5" :fillColor="config.COLORS.soy" @pointerdown.stop />
     <RoundRectangle :width="261" :height="271" :origin="0.5" :radius="5" :strokeColor="config.COLORS.brown" :lineWidth="1" />
-    <menu-system-save v-if="selected === 1" :x="-110" :y="-130" />
+    <menu-system-save v-if="selected === 1" :x="-110" :y="-130" :load="true" @load="$emit('close')" />
   </Container>
   <Container v-else-if="selected === 2" :x="config.WIDTH.half" :y="400">
     <RoundRectangle :width="266" :height="206" :origin="0.5" :radius="5" :fillColor="config.COLORS.soy" @pointerdown.stop />
@@ -33,7 +32,6 @@ export default {
   emits: ['close'],
   setup (_, context) {
     const gameScene = inject('gameScene')
-    const storage = inject('storage')
     const selected = ref(null)
     const list = ['はじめから', 'つづきから', '設定']
     return {
@@ -48,12 +46,6 @@ export default {
         } else {
           selected.value = i
         }
-      },
-      load: async data => {
-        if (!data.state) return
-        await storage.load(data.number)
-        await gameScene.value.setField(storage.state.map, storage.state.x, storage.state.y, -Math.PI.half)
-        context.emit('close')
       }
     }
   }
