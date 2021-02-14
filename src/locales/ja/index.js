@@ -108,6 +108,7 @@ export default {
     config: '設定',
     tips: 'Tips',
     unregistered: '未登録',
+    weight: '重さ',
     playTime: 'プレイ時間',
     charmOfHeart: '心の魅力',
     charmOfBody: '体の魅力',

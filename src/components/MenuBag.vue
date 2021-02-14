@@ -1,7 +1,8 @@
 <template>
   <MenuContainer ref="container" :arrowX="25 + (0 * 60)" :height="415" :title="t('ui.bag')" :visible="grab.mode !== 'dispose'">
     <Image v-for="v in bagItems" :key="v.id" :texture="itemData[v.key].texture" :frame="itemData[v.key].frame" :x="v.bagX" :y="v.bagY" :scale="v.scale" :origin="0.5" :visible="grab.item !== v" @pointerdown="grabItem(v, 'move')" />
-    <Text :text="`${weight}/100`" :origin="1" :x="212" :y="22" />
+    <Text :text="`${t('ui.weight')}:`" :originX="1" :originY="0.5" :x="153" :y="14" :size="13" />
+    <Text :text="`${weight}/100`" :originX="1" :originY="0.5" :x="212" :y="14" :size="14" />
   </MenuContainer>
   <Image v-if="grab.item" ref="grabRef" :texture="itemData[grab.item.key].texture" :frame="itemData[grab.item.key].frame" :x="grab.x" :y="grab.y" :scale="grab.item.scale" :origin="0.5" @pointerup="p => drop(p)" />
 </template>
