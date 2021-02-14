@@ -2,6 +2,7 @@ import { inject } from 'vue'
 import Talker from '@/util/Talker'
 import { APPRECIATION_STEPS } from '@/data/eventSteps'
 export default {
+  bgm: 'libra',
   async create () {
     const uiScene = inject('uiScene').value
     const field = inject('field').value

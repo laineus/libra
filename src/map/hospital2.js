@@ -3,6 +3,7 @@ import Talker from '@/util/Talker'
 import config from '@/data/config'
 import { FOREVER_STEPS } from '@/data/eventSteps'
 export default {
+  bgm: 'libra',
   async create () {
     const uiScene = inject('uiScene').value
     const field = inject('field').value

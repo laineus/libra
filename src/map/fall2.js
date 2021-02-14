@@ -2,6 +2,7 @@ import { computed, inject } from 'vue'
 import Talker from '@/util/Talker'
 import { FOREVER_STEPS } from '@/data/eventSteps'
 export default {
+  bgm: 'sunset',
   async create () {
     const field = inject('field').value
     const talk = inject('talk').value

@@ -3,6 +3,7 @@ import Talker from '@/util/Talker'
 import { MAIN_STEPS } from '@/data/eventSteps'
 import config from '@/data/config'
 export default {
+  bgm: null,
   async create () {
     const uiScene = inject('uiScene').value
     const field = inject('field').value

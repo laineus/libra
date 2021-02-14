@@ -2,6 +2,7 @@ import { inject } from 'vue'
 import { PITY_STEPS } from '@/data/eventSteps'
 import Talker from '@/util/Talker'
 export default {
+  bgm: '1203',
   async create () {
     const state = inject('storage').state
     const uiScene = inject('uiScene').value

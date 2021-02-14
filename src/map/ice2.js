@@ -2,6 +2,7 @@ import { inject } from 'vue'
 import Talker from '@/util/Talker'
 import { LIVE_FOR_EVERYONE_STEPS } from '@/data/eventSteps'
 export default {
+  bgm: '1203',
   async create () {
     const state = inject('storage').state
     const uiScene = inject('uiScene').value

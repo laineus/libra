@@ -1,6 +1,7 @@
 import { inject } from 'vue'
 import Talker from '@/util/Talker'
 export default {
+  bgm: 'toaru',
   async create () {
     const field = inject('field').value
     const talk = inject('talk').value

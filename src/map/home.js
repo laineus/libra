@@ -1,7 +1,7 @@
 import { inject } from 'vue'
 import Talker from '@/util/Talker'
 export default {
-  bgm: null,
+  bgm: 'happy',
   create ({ respawn }) {
     const bag = inject('bag')
     const event = inject('event')

@@ -25,6 +25,8 @@ import mansion3 from '@/map/mansion3'
 import brain from '@/map/brain'
 export default {
   home,
+  stomach: { bgm: 'wind' },
+  forest1: { bgm: 'toaru' },
   forest2,
   forest3,
   forest4,
@@ -32,6 +34,7 @@ export default {
   cave1,
   cave2,
   cave3,
+  base: { bgm: 'wind' },
   ice1,
   ice2,
   ice3,
@@ -39,7 +42,9 @@ export default {
   dark,
   crossing,
   heart,
+  fall1: { bgm: 'sunset' },
   fall2,
+  fall3: { bgm: 'sunset' },
   coalmine1,
   coalmine2,
   coalmine3,
@@ -48,5 +53,6 @@ export default {
   mansion1,
   mansion2,
   mansion3,
+  cemetery: { bgm: null },
   brain
 }
