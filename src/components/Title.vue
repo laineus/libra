@@ -4,10 +4,10 @@
   <Image texture="logo" :x="config.WIDTH.half" :y="config.HEIGHT.half - 80" />
   <Container v-for="(v, i) in list" :key="i" :x="config.WIDTH.half" :y="380 + (i * 40)">
     <Image texture="nav" :frame="i" :y="3" :tint="config.COLORS.brown" :alpha="0.3" />
-    <Image texture="nav" :frame="i" @pointerdown.stop="tapItem(i)" />
+    <Image texture="nav" :frame="i" :blendMode="Phaser.BlendModes[selected === i ? 'ADD' : 'NORMAL']" @pointerdown.stop="select(i)" />
     <Text :text="v" :origin="0.5" :style="{ shadow: { offsetX: 0, offsetY: 1, blur: 1, color: '#00000050', fill: true } }" />
   </Container>
-  <Container v-if="selected" :tween="tween">
+  <Container v-if="selected > 0" :tween="tween">
     <Rectangle :fillColor="config.COLORS.black" :origin="0" :alpha="0.3" :width="config.WIDTH" :height="config.HEIGHT" @pointerdown="select(null)" />
     <Container v-if="selected === 1" :x="config.WIDTH.half" :y="375">
       <RoundRectangle :width="266" :height="276" :origin="0.5" :radius="5" :fillColor="config.COLORS.soy" @pointerdown.stop />
@@ -39,29 +39,26 @@ export default {
     const selected = ref(null)
     const list = ['はじめから', 'つづきから', '設定']
     const tween = ref(null)
-    const select = i => {
+    const select = async i => {
       if (i === null) {
         tween.value = { alpha: { from: 1, to: 0 }, duration: 70, onComplete: () => selected.value = null }
+      } else if (i === 0) {
+        selected.value = 0
+        // await gameScene.value.setField('forest1', 300, 552, -Math.PI.half)
+        await gameScene.value.setField('forest3', 800, 452, -Math.PI.half)
+        context.emit('close')
       } else {
         selected.value = i
         tween.value = { alpha: { from: 0, to: 1 }, duration: 70 }
       }
     }
-    const tapItem = async i => {
-      if (i === 0) {
-        // await gameScene.value.setField('forest1', 300, 552, -Math.PI.half)
-        await gameScene.value.setField('forest3', 800, 452, -Math.PI.half)
-        context.emit('close')
-      } else {
-        select(i)
-      }
-    }
     return {
+      Phaser,
       config,
       selected,
       tween,
       list,
-      tapItem, select
+      select
     }
   }
 }
