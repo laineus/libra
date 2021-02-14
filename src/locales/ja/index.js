@@ -93,7 +93,16 @@ export default {
     place: '場所',
     client: '依頼主',
     questStart: '『#{title}』を開始',
-    questComplete: '『#{title}』を完了'
+    questComplete: '『#{title}』を完了',
+    status: 'ステータス',
+    bag: 'かばん',
+    quest: 'クエスト',
+    map: 'マップ',
+    system: 'システム',
+    save: 'セーブ',
+    config: '設定',
+    tips: 'Tips',
+    unregistered: '未登録'
   },
   events: {
     block: {
