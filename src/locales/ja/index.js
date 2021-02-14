@@ -90,6 +90,10 @@ export default {
     }
   },
   ui: {
+    ok: 'OK',
+    cancel: 'キャンセル',
+    newGame: 'はじめから',
+    continue: 'つづきから',
     location: '場所',
     client: '依頼主',
     questStart: '『#{title}』を開始',
@@ -106,7 +110,11 @@ export default {
     playTime: 'プレイ時間',
     charmOfHeart: '心の魅力',
     charmOfBody: '体の魅力',
-    sumOfCharm: '魅力合計'
+    sumOfCharm: '魅力合計',
+    bgmVolume: 'BGM音量',
+    seVolume: 'SE音量',
+    normalSave: '保存',
+    overwriteSave: '上書き保存'
   },
   events: {
     block: {

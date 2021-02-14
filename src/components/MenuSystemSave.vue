@@ -6,7 +6,7 @@
       <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="v.name" :size="13" :bold="true" @pointerdown="p => tapItem(p, i)" /><!-- TODO -->
       <Text v-if="v.exists" :x="-15" :y="0" :originY="0.5" :text="`${t(`place.${v.state.map}`)}\n${timeString(v.state.saved)}`" :lineSpacing="1" :size="11" />
     </Container>
-    <Selector v-if="!load && selectedIndex !== null" :x="tapX" :y="tapY" :list="[list[selectedIndex].exists ? '上書き保存' : '保存', 'キャンセル']" @select="tapSaveOption" />
+    <Selector v-if="!load && selectedIndex !== null" :x="tapX" :y="tapY" :list="[list[selectedIndex].exists ? t('ui.overwriteSave') : t('ui.normalSave'), t('ui.cancel')]" @select="tapSaveOption" />
   </Container>
 </template>
 

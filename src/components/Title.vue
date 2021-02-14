@@ -19,7 +19,7 @@
       <RoundRectangle :width="261" :height="201" :origin="0.5" :radius="5" :strokeColor="config.COLORS.brown" :lineWidth="1" />
       <menu-system-config :x="-110" :y="-94" />
       <RoundRectangle :width="101" :height="23" :origin="0.5" :radius="5" :strokeColor="config.COLORS.brown" :lineWidth="1" :y="72" @pointerdown="select(null)" />
-      <Text text="OK" :origin="0.5" :y="72" :size="14" />
+      <Text :text="t('ui.ok')" :origin="0.5" :y="72" :size="14" />
     </Container>
   </Container>
 </template>
@@ -37,7 +37,7 @@ export default {
   setup (_, context) {
     const gameScene = inject('gameScene')
     const selected = ref(null)
-    const list = ['はじめから', 'つづきから', '設定']
+    const list = [t('ui.newGame'), t('ui.continue'), t('ui.config')]
     const tween = ref(null)
     const select = async i => {
       if (i === null) {
@@ -53,6 +53,7 @@ export default {
       }
     }
     return {
+      t,
       Phaser,
       config,
       selected,
