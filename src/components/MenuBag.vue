@@ -3,6 +3,7 @@
     <Image v-for="v in bagItems" :key="v.id" :texture="itemData[v.key].texture" :frame="itemData[v.key].frame" :x="v.bagX" :y="v.bagY" :scale="v.scale" :origin="0.5" :visible="grab.item !== v" @pointerdown="grabItem(v, 'move')" />
     <Text :text="`${t('ui.weight')}:`" :originX="1" :originY="0.5" :x="153" :y="14" :size="13" />
     <Text :text="`${weight}/100`" :originX="1" :originY="0.5" :x="212" :y="14" :size="14" />
+    <Image v-if="grab.item && itemData[grab.item.key].eat" :tint="onEatArea ? config.COLORS.orange : config.COLORS.brown" texture="focus" :origin="1" :x="212" :y="398" />
   </MenuContainer>
   <Image v-if="grab.item" ref="grabRef" :texture="itemData[grab.item.key].texture" :frame="itemData[grab.item.key].frame" :x="grab.x" :y="grab.y" :scale="grab.item.scale" :origin="0.5" @pointerup="p => drop(p)" />
 </template>
@@ -12,6 +13,7 @@ import { Image, refObj, onPreUpdate } from 'phavuer'
 import { inject, computed, reactive, ref } from 'vue'
 import MenuContainer from '@/components/MenuContainer'
 import Text from '@/components/Text'
+import config from '@/data/config'
 import items from '@/data/items'
 const itemData = items.toObject(v => [v.key, v])
 const WIDTH = 220
@@ -34,6 +36,7 @@ export default {
       resolver: null,
       x: 0, y: 0
     })
+    const onEatArea = computed(() => Math.hypot(grab.x - 900, grab.y - 415) < 40)
     const onBagArea = computed(() => (grab.x - offsetX.value) >= 0)
     const weight = computed(() => storage.state.bagItems.reduce((sum, v) => sum + itemData[v.key].weight, 0))
     const grabRef = refObj(null)
@@ -63,8 +66,15 @@ export default {
     const drop = pointer => {
       const wHalf = grabRef.value.width.half
       const hHalf = grabRef.value.height.half
-      if (grab.mode === 'dispose') {
-        const data = itemData[grab.item.key]
+      const data = itemData[grab.item.key]
+      if (data.eat && onEatArea.value) {
+        storage.state.status.hp = Math.min(storage.state.status.hp + data.eat, 100)
+        storage.state.bagItems.delete(grab.item)
+        uiScene.log.push(t('ui.eat', t(`name.${data.key}`)))
+        uiScene.log.push(t('ui.hpRecover', data.eat))
+        grab.resolver(true)
+        context.emit('close')
+      } else if (grab.mode === 'dispose') {
         field.addObject({ type: data.type, name: data.key, x: grab.x + camera.scrollX, y: grab.y + camera.scrollY + hHalf * (grab.item.scale ?? 1), scale: grab.item.scale })
         storage.state.bagItems.delete(grab.item)
         grab.resolver()
@@ -73,8 +83,8 @@ export default {
         grab.item.bagX = Math.round(Math.fix(pointer.x - offsetX.value, wHalf, WIDTH - wHalf))
         grab.item.bagY = Math.round(Math.fix(pointer.y - offsetY.value, hHalf, HEIGHT - hHalf))
         grab.resolver()
-      } if (grab.mode === 'capture') {
-        const weightOver = (weight.value + itemData[grab.item.key].weight) > 20
+      } else if (grab.mode === 'capture') {
+        const weightOver = (weight.value + data.weight) > 100
         if (onBagArea.value && !weightOver) {
           storage.state.bagItems.push({
             id: Math.randomInt(1000000, 9999999),
@@ -95,13 +105,14 @@ export default {
       grab.resolver = null
     }
     return {
-      t,
+      t, config,
       itemData,
       weight,
       bagItems: storage.state.bagItems,
       container,
       controller, grab, grabRef,
-      grabItem, drop
+      grabItem, drop,
+      onEatArea
     }
   }
 }
