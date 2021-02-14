@@ -1,25 +1,26 @@
 <template>
   <MenuContainer ref="container" :arrowX="25 + (0 * 60)" :height="415" :title="t('ui.bag')" :visible="grab.mode !== 'dispose'">
-    <Image v-for="v in bagItems" :key="v.id" :texture="keyToTexture(v.key)" :frame="keyToFrame(v.key)" :x="v.bagX" :y="v.bagY" :scale="v.scale" :origin="0.5" :visible="grab.item !== v" @pointerdown="grabItem(v, 'move')" />
+    <Image v-for="v in bagItems" :key="v.id" :texture="itemData[v.key].texture" :frame="itemData[v.key].frame" :x="v.bagX" :y="v.bagY" :scale="v.scale" :origin="0.5" :visible="grab.item !== v" @pointerdown="grabItem(v, 'move')" />
+    <Text :text="`${weight}/100`" :origin="1" :x="212" :y="22" />
   </MenuContainer>
-  <Image v-if="grab.item" ref="grabRef" :texture="keyToTexture(grab.item.key)" :frame="keyToFrame(grab.item.key)" :x="grab.x" :y="grab.y" :scale="grab.item.scale" :origin="0.5" @pointerup="p => drop(p)" />
+  <Image v-if="grab.item" ref="grabRef" :texture="itemData[grab.item.key].texture" :frame="itemData[grab.item.key].frame" :x="grab.x" :y="grab.y" :scale="grab.item.scale" :origin="0.5" @pointerup="p => drop(p)" />
 </template>
 
 <script>
 import { Image, refObj, onPreUpdate } from 'phavuer'
 import { inject, computed, reactive, ref } from 'vue'
 import MenuContainer from '@/components/MenuContainer'
+import Text from '@/components/Text'
 import items from '@/data/items'
-const keyToItemData = key => items.find(v => v.key === key)
-const keyToTexture = key => keyToItemData(key).texture
-const keyToFrame = key => keyToItemData(key).type === 'Character' ? 1 : '__BASE'
+const itemData = items.toObject(v => [v.key, v])
 const WIDTH = 220
 const HEIGHT = 405
 export default {
-  components: { Image, MenuContainer },
+  components: { Image, MenuContainer, Text },
   emits: ['close'],
   setup (_, context) {
     const storage = inject('storage')
+    const uiScene = inject('uiScene').value
     const controller = inject('controller').value
     const camera = inject('camera').value
     const field = inject('field').value
@@ -33,6 +34,7 @@ export default {
       x: 0, y: 0
     })
     const onBagArea = computed(() => (grab.x - offsetX.value) >= 0)
+    const weight = computed(() => storage.state.bagItems.reduce((sum, v) => sum + itemData[v.key].weight, 0))
     const grabRef = refObj(null)
     const update = () => {
       if (grab.item) {
@@ -61,8 +63,8 @@ export default {
       const wHalf = grabRef.value.width.half
       const hHalf = grabRef.value.height.half
       if (grab.mode === 'dispose') {
-        const itemData = keyToItemData(grab.item.key)
-        field.addObject({ type: itemData.type, name: itemData.key, x: grab.x + camera.scrollX, y: grab.y + camera.scrollY + hHalf * (grab.item.scale ?? 1), scale: grab.item.scale })
+        const data = itemData[grab.item.key]
+        field.addObject({ type: data.type, name: data.key, x: grab.x + camera.scrollX, y: grab.y + camera.scrollY + hHalf * (grab.item.scale ?? 1), scale: grab.item.scale })
         storage.state.bagItems.delete(grab.item)
         grab.resolver()
         context.emit('close')
@@ -71,7 +73,8 @@ export default {
         grab.item.bagY = Math.round(Math.fix(pointer.y - offsetY.value, hHalf, HEIGHT - hHalf))
         grab.resolver()
       } if (grab.mode === 'capture') {
-        if (onBagArea.value) {
+        const weightOver = (weight.value + itemData[grab.item.key].weight) > 20
+        if (onBagArea.value && !weightOver) {
           storage.state.bagItems.push({
             id: Math.randomInt(1000000, 9999999),
             key: grab.item.key,
@@ -80,17 +83,20 @@ export default {
             bagY: Math.round(Math.fix(pointer.y - offsetY.value, hHalf, HEIGHT - hHalf))
           })
           grab.resolver(true)
+          sleep(30).then(() => context.emit('close'))
         } else {
+          if (onBagArea.value && weightOver) uiScene.log.push(t('ui.weightOver'))
           grab.resolver(false)
+          context.emit('close')
         }
-        context.emit('close')
       }
       grab.item = null
       grab.resolver = null
     }
     return {
       t,
-      keyToTexture, keyToFrame,
+      itemData,
+      weight,
       bagItems: storage.state.bagItems,
       container,
       controller, grab, grabRef,

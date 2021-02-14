@@ -15,7 +15,9 @@ const makeItem = (name, obj) => {
   return Object.assign({
     key: name,
     type: 'Substance',
-    texture: `item/${snakeCase(name)}`
+    texture: `item/${snakeCase(name)}`,
+    hp: 5,
+    weight: 1
   }, obj)
 }
 const makeCharacter = (name, obj) => {
@@ -23,13 +25,15 @@ const makeCharacter = (name, obj) => {
     key: name,
     type: 'Character',
     texture: `chara_sprite/${snakeCase(name)}`,
+    hp: 5,
+    weight: 1,
     speed: 120,
     standingAnim: false,
     temper: PLANT
   }, obj)
 }
 export default [
-  makeItem('apple', { hp: 25 }),
+  makeItem('apple', { hp: 25, weight: 30 }),
   makeItem('grass', { hp: 5, minScale: 0.6 }),
   makeItem('lily', { hp: 5 }),
   makeItem('cosmos', { hp: 5 }),
@@ -60,9 +64,9 @@ export default [
   makeItem('unadon', { hp: 5, eat: 100 }),
   makeItem('antonLetter', { hp: 5, texture: 'item/letter' }),
   makeItem('pityLetter', { hp: 5, texture: 'item/letter' }),
-  makeItem('bike1', { hp: 80 }),
-  makeItem('bike2', { hp: 80 }),
-  makeItem('bike3', { hp: 80 }),
+  makeItem('bike1', { hp: 80, weight: 5 }),
+  makeItem('bike2', { hp: 80, weight: 5 }),
+  makeItem('bike3', { hp: 80, weight: 5 }),
   makeItem('matsutake', { hp: 10 }),
   makeItem('coinGold', { hp: 20 }),
   makeItem('coinSilver', { hp: 20 }),
@@ -72,15 +76,15 @@ export default [
   makeCharacter('stagBeetle', { hp: 5, atk: 3, temper: BEAR, speed: 18 }),
   makeCharacter('beetle', { hp: 5, atk: 2, temper: CAT, speed: 18 }),
   makeCharacter('kajitsu', { hp: 5, atk: 5, damage: false }),
-  makeCharacter('torrent', { hp: 100, atk: 60, temper: ELEPHANT, speed: 50 }),
+  makeCharacter('torrent', { hp: 100, atk: 60, temper: ELEPHANT, speed: 50, weight: 5 }),
   makeCharacter('flog', { hp: 20, atk: 5, temper: CAT, speed: 30 }),
   makeCharacter('hercules', { hp: 5, atk: 6, temper: BEAR, speed: 18 }),
   makeCharacter('bat', { hp: 10, atk: 5, temper: CAT, speed: 120, standingAnim: true }),
-  makeCharacter('snake', { hp: 25, atk: 10, temper: SHARK, speed: 40 }),
-  makeCharacter('penguin', { hp: 20, atk: 5, temper: FISH, speed: 50 }),
-  makeCharacter('minePenguin', { hp: 15, atk: 15, temper: FISH, speed: 50 }),
-  makeCharacter('fallTorrent', { hp: 100, atk: 55, temper: ELEPHANT, speed: 50 }),
+  makeCharacter('snake', { hp: 25, atk: 10, temper: SHARK, speed: 40, weight: 2 }),
+  makeCharacter('penguin', { hp: 20, atk: 5, temper: FISH, speed: 50, weight: 2 }),
+  makeCharacter('minePenguin', { hp: 15, atk: 15, temper: FISH, speed: 50, weight: 2 }),
+  makeCharacter('fallTorrent', { hp: 100, atk: 55, temper: ELEPHANT, speed: 50, weight: 5 }),
   makeCharacter('ghost', { hp: 50, atk: 15, temper: CAT, speed: 60, standingAnim: true, damage: false }),
-  makeCharacter('pumpkin', { hp: 20, atk: 15, temper: FISH, speed: 50 }),
+  makeCharacter('pumpkin', { hp: 20, atk: 15, temper: FISH, speed: 50, weight: 2 }),
   makeCharacter('amili', { hp: 100, atk: 5, damage: false })
 ]

@@ -98,6 +98,7 @@ export default {
     client: '依頼主',
     questStart: '『#{title}』を開始',
     questComplete: '『#{title}』を完了',
+    weightOver: '荷物が重すぎてこれ以上持てません',
     status: 'ステータス',
     bag: 'かばん',
     quest: 'クエスト',
