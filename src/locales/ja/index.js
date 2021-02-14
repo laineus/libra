@@ -90,7 +90,7 @@ export default {
     }
   },
   ui: {
-    place: '場所',
+    location: '場所',
     client: '依頼主',
     questStart: '『#{title}』を開始',
     questComplete: '『#{title}』を完了',
@@ -102,7 +102,11 @@ export default {
     save: 'セーブ',
     config: '設定',
     tips: 'Tips',
-    unregistered: '未登録'
+    unregistered: '未登録',
+    playTime: 'プレイ時間',
+    charmOfHeart: '心の魅力',
+    charmOfBody: '体の魅力',
+    sumOfCharm: '魅力合計'
   },
   events: {
     block: {

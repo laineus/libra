@@ -8,7 +8,7 @@
     <Container v-if="selected">
       <Text :x="10" :y="10" text="← Back" :size="12" :bold="true" @pointerup.stop="back" />
       <Text :x="10" :y="40" :text="t(`quest.${selected.key}.title`)" :size="14" :bold="true" />
-      <Text :x="10" :y="70" :text="`${t('ui.place')}:\n${t('ui.client')}:`" :size="12" :bold="true" />
+      <Text :x="10" :y="70" :text="`${t('ui.location')}:\n${t('ui.client')}:`" :size="12" :bold="true" />
       <Text :x="65" :y="70" :text="`${t(`place.${selected.place}`)}\n${t(`name.${selected.chara}`)}`" :size="12" />
       <Text :x="10" :y="115" :text="t(`quest.${selected.key}.desc`)" :size="13" :style="{ wordWrap: { width: 200, useAdvancedWrap: true } }" />
     </Container>

@@ -30,12 +30,12 @@ export default {
   setup () {
     const storage = inject('storage')
     const LIST = [
-      { label: 'Libra', value: computed(() => `HP ${storage.state.status.hp}/100`) },
-      { label: 'Location', value: computed(() => maps[storage.state.map]?.name) },
-      { label: 'PlayTime', value: computed(() => secToMinSecString(storage.state.sec)) },
-      { label: 'Charm of Heart', value: computed(() => storage.state.status.heart) },
-      { label: 'Charm of Body', value: computed(() => storage.state.status.body) },
-      { label: 'Sum of Charm', value: computed(() => storage.state.status.heart + storage.state.status.body) }
+      { label: t('name.libra'), value: computed(() => `HP ${storage.state.status.hp}/100`) },
+      { label: t('ui.location'), value: computed(() => maps[storage.state.map]?.name) },
+      { label: t('ui.playTime'), value: computed(() => secToMinSecString(storage.state.sec)) },
+      { label: t('ui.charmOfHeart'), value: computed(() => storage.state.status.heart) },
+      { label: t('ui.charmOfBody'), value: computed(() => storage.state.status.body) },
+      { label: t('ui.sumOfCharm'), value: computed(() => storage.state.status.heart + storage.state.status.body) }
     ]
     const charmDiff = computed(() => Math.fix(storage.state.status.heart - storage.state.status.body, -6, 6))
     return {
