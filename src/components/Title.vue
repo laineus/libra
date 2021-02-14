@@ -3,8 +3,9 @@
   <Image texture="main" :x="config.WIDTH.half" :y="config.HEIGHT.half" />
   <Image texture="logo" :x="config.WIDTH.half" :y="config.HEIGHT.half - 80" />
   <Container v-for="(v, i) in list" :key="i" :x="config.WIDTH.half" :y="380 + (i * 40)">
+    <Image texture="nav" :frame="i" :y="3" :tint="config.COLORS.brown" :alpha="0.3" />
     <Image texture="nav" :frame="i" @pointerdown.stop="tapItem(i)" />
-    <Text :text="v" :origin="0.5" />
+    <Text :text="v" :origin="0.5" :style="{ shadow: { offsetX: 0, offsetY: 1, blur: 1, color: '#00000050', fill: true } }" />
   </Container>
   <Container v-if="selected" :tween="tween">
     <Rectangle :fillColor="config.COLORS.black" :origin="0" :alpha="0.3" :width="config.WIDTH" :height="config.HEIGHT" @pointerdown="select(null)" />
