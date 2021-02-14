@@ -1,13 +1,13 @@
 export default class {
-  constructor (sound) {
+  constructor (sound, bgmVolume, seVolume) {
     this.sound = sound
-    this.seVolume = 100
-    this.bgmVolume = 100
+    this.setBgmVolume(bgmVolume)
+    this.setSeVolume(seVolume)
     this.currentBgm = null
   }
   // SE
   setSeVolume (value) {
-    this.seVolume = Math.fix(value, 0, 100)
+    this.seVolume = Math.fix(value / 100, 0, 1)
     return this
   }
   se (name) {
@@ -15,7 +15,7 @@ export default class {
   }
   // BGM
   setBgmVolume (value) {
-    this.bgmVolume = Math.fix(value, 0, 100)
+    this.bgmVolume = Math.fix(value / 100, 0, 1)
     // Update volume for existing BGM
     this.sound.sounds.filter(sound => sound.key.startsWith('bgm')).forEach(bgm => {
       bgm.volume = this.bgmVolume

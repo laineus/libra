@@ -52,7 +52,7 @@ export default {
     provide('controller', computed(() => uiScene.value?.controller))
     provide('talk', computed(() => uiScene.value?.talk))
     provide('mobile', !game.device.os.desktop)
-    provide('audio', new AudioController(game.sound))
+    provide('audio', new AudioController(game.sound, setting.state.bgm, setting.state.se))
     provide('storage', sdm)
     provide('setting', setting)
     provide('bag', {
