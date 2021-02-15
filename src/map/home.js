@@ -77,6 +77,9 @@ export default {
       await appleEvent()
     })
 
+    // Load stored items
+    state.roomItems.forEach(v => field.addObject({ id: v.id, name: v.key, x: v.x, y: v.y }))
+    // Store items
     const items = computed(() => field.objects.filter(v => ['Character', 'Substance'].includes(v.type) && v.name !== 'amili'))
     const saveRoomObjects = (newLength, oldLength) => {
       const add = newLength > oldLength
