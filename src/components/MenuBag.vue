@@ -3,7 +3,7 @@
     <Image v-for="v in bagItems" :key="v.id" :texture="itemData[v.key].texture" :frame="itemData[v.key].frame" :x="v.bagX" :y="v.bagY" :scale="v.scale" :origin="0.5" :visible="grab.item !== v" @pointerdown="grabItem(v, 'move')" />
     <Text :text="`${t('ui.weight')}:`" :originX="1" :originY="0.5" :x="153" :y="14" :size="13" />
     <Text :text="`${weight}/100`" :originX="1" :originY="0.5" :x="212" :y="14" :size="14" />
-    <Image v-if="grab.item && itemData[grab.item.key].eat" :tint="onEatArea ? config.COLORS.orange : config.COLORS.brown" texture="focus" :origin="1" :x="212" :y="398" />
+    <Image v-if="grab.item && itemData[grab.item.key].eat" :tint="onEatArea ? config.COLORS.orange : config.COLORS.brown" texture="eat" :origin="1" :x="212" :y="398" />
   </MenuContainer>
   <Image v-if="grab.item" ref="grabRef" :texture="itemData[grab.item.key].texture" :frame="itemData[grab.item.key].frame" :x="grab.x" :y="grab.y" :scale="grab.item.scale" :origin="0.5" @pointerup="p => drop(p)" />
 </template>
@@ -36,7 +36,7 @@ export default {
       resolver: null,
       x: 0, y: 0
     })
-    const onEatArea = computed(() => Math.hypot(grab.x - 900, grab.y - 415) < 40)
+    const onEatArea = computed(() => Math.hypot(grab.x - 907, grab.y - 418) < 25)
     const onBagArea = computed(() => (grab.x - offsetX.value) >= 0)
     const weight = computed(() => storage.state.bagItems.reduce((sum, v) => sum + itemData[v.key].weight, 0))
     const grabRef = refObj(null)
