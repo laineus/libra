@@ -17,6 +17,7 @@ export default list => {
         type: itemData.type,
         x: Math.randomInt(x, x + width),
         y: Math.randomInt(y, y + height),
+        radian: (Math.random() * Math.PI * 2) - Math.PI,
         scale: itemData.minScale ? Math.randomInt(itemData.minScale * 10, 10) / 10 : 1
       })
     })

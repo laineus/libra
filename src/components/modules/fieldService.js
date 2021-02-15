@@ -59,7 +59,8 @@ const getImage = tilemap => {
 }
 const getObjects = tilemap => {
   return tilemap.objects.filter(l => l.visible).map(v => v.objects).flat().map(data => {
-    const result = mapProperties(Object.assign({}, data, { radian: (data.rotation + 90) * (Math.PI / 180) }), data.properties)
+    const fixedRotation = data.rotation > 90 ? data.rotation - 270 : data.rotation + 90
+    const result = mapProperties(Object.assign({}, data, { radian: fixedRotation * (Math.PI / 180) }), data.properties)
     delete result.properties
     return result
   })
