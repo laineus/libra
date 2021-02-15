@@ -75,7 +75,7 @@ export default {
         grab.resolver(true)
         context.emit('close')
       } else if (grab.mode === 'dispose') {
-        field.addObject({ id: Math.randomInt(1000000, 9999999), type: data.type, name: data.key, x: grab.x + camera.scrollX, y: grab.y + camera.scrollY + hHalf * (grab.item.scale ?? 1), scale: grab.item.scale })
+        field.addObject({ id: Math.randomInt(1000000, 9999999), name: data.key, x: grab.x + camera.scrollX, y: grab.y + camera.scrollY + hHalf * (grab.item.scale ?? 1), scale: grab.item.scale })
         storage.state.bagItems.delete(grab.item)
         grab.resolver()
         context.emit('close')

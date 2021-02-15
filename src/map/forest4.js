@@ -27,7 +27,7 @@ export default {
         } else {
           await speakFlog(t('events.clover.flog2.end2'))
         }
-        await field.addObject({ type: 'Substance', name: 'apple', x: flog.object.x, y: flog.object.y }).then(v => v.drop())
+        await field.dropItem('apple', flog.object)
         uiScene.log.push(t('ui.questComplete', t('quest.clover')))
         state.events.clover = CLOVER_STEPS.COMPLETED
       } else if (state.events.clover === CLOVER_STEPS.COMPLETED) {

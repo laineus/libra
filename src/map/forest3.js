@@ -37,7 +37,7 @@ export default {
         } else {
           await speakTorrent(t('events.torrentFlog.end1'))
         }
-        await field.addObject({ type: 'Substance', name: 'apple', x: torrent.object.x, y: torrent.object.y + 5 }).then(v => v.drop())
+        await field.dropItem('apple', torrent.object)
         uiScene.log.push(t('ui.questComplete', t('quest.torrentFlog')))
         state.events.torrentFlog = TORRENT_FLOG_STEPS.COMPLETED
       } else if (state.events.torrentFlog === TORRENT_FLOG_STEPS.COMPLETED) {

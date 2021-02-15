@@ -57,7 +57,8 @@ export default {
     lights.length ? scene.lights.enable() : scene.lights.disable()
     const pipeline = computed(() => lights.length ? 'Light2D' : 'TextureTintPipeline')
     const addObject = object => {
-      const obj = Object.assign({ ref: ref(null), id: Symbol('id') }, object)
+      const itemData = items.find(v => v.key === object.name)
+      const obj = Object.assign({ ref: ref(null), id: Symbol('id'), type: itemData.type }, object)
       objects.push(obj)
       return new Promise(resolve => {
         nextTick(() => resolve(obj.ref.value))
@@ -65,8 +66,7 @@ export default {
     }
     const delObject = itemOrId => objects.delete(typeof itemOrId === 'object' ? itemOrId : v => v.id === itemOrId)
     const dropItem = (name, gameObject, options) => {
-      const itemData = items.find(v => v.key === name)
-      return addObject(Object.assign({ type: itemData.type, name, x: gameObject.x, y: gameObject.y }, options)).then(v => v.drop?.())
+      return addObject(Object.assign({ name, x: gameObject.x, y: gameObject.y }, options)).then(v => v.drop?.())
     }
     const bullets = shallowReactive([])
     const addBullet = ({ x, y, r }) => bullets.push({ id: Symbol('bullet_id'), x, y, r })
