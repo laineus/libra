@@ -1,5 +1,5 @@
 import useFrameAnim from '@/components/modules/useFrameAnim'
-import { unref } from 'vue'
+import { reactive, unref } from 'vue'
 const WALK_ANIM = [
   { key: 'down', frames: [1, 0, 1, 2], duration: 10 },
   { key: 'left', frames: [4, 3, 4, 5], duration: 10 },
@@ -39,31 +39,47 @@ const getVelocityToDirectionKey = numOfDirection => r => {
     }
   }
 }
+const rForKey = {
+  left: Math.PI,
+  leftDown: Math.PI * 0.75,
+  down: Math.PI * 0.5,
+  rightDown: Math.PI * 0.25,
+  right: 0,
+  rightUp: Math.PI * -0.25,
+  up: Math.PI * -0.5,
+  leftUp: Math.PI * -0.75
+}
 export default (object, initR, numOfDirection, standingAnim = false) => {
   const velocityToDirectionKey = getVelocityToDirectionKey(numOfDirection)
   const frameAnim = useFrameAnim(WALK_ANIM)
-  let directionKey = velocityToDirectionKey(initR)
-  const base = () => baseFrames[directionKey]
+  const state = reactive({
+    r: initR,
+    directionKey: velocityToDirectionKey(initR)
+  })
   const play = () => {
     const walking = Math.hypot(unref(object).body.velocity.x, unref(object).body.velocity.y) > 1
     if (walking) {
-      const r = Math.atan2(unref(object).body.velocity.y, unref(object).body.velocity.x)
-      directionKey = velocityToDirectionKey(r)
-      return frameAnim.play(directionKey)
+      state.r = Math.atan2(unref(object).body.velocity.y, unref(object).body.velocity.x)
+      state.directionKey = velocityToDirectionKey(state.r)
+      return frameAnim.play(state.directionKey)
     } else if (standingAnim) {
-      return frameAnim.play(directionKey)
+      return frameAnim.play(state.directionKey)
     }
-    return baseFrames[directionKey]
+    return baseFrames[state.directionKey]
   }
   const lookTo = to => {
-    switch (typeof to) {
-      case 'string': return directionKey = to
-      case 'number': return directionKey = velocityToDirectionKey(to)
-      case 'object': return directionKey = velocityToDirectionKey(Math.atan2(to.y - unref(object).y, to.x - unref(object).x))
+    const getDirectionKey = to => {
+      switch (typeof to) {
+        case 'string': return to
+        case 'number': return velocityToDirectionKey(to)
+        case 'object': return velocityToDirectionKey(Math.atan2(to.y - unref(object).y, to.x - unref(object).x))
+      }
     }
+    state.directionKey = getDirectionKey(to)
+    state.r = rForKey[state.directionKey]
   }
   return {
-    base,
+    state,
     play,
     lookTo
   }

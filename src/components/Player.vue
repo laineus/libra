@@ -27,11 +27,11 @@ export default {
     const menuOpened = inject('menuOpened')
     const state = inject('storage').state
     const substance = ref(null)
-    const r = ref(0)
     const frame = ref(0)
     const object = computed(() => substance.value?.object)
     const following = useFollowing(object)
-    const { base: getBaseFrame, play: playFrameAnim, lookTo } = useFrameAnimChara(object, props.initR, 8)
+    const { state: frameState, play: playFrameAnim, lookTo } = useFrameAnimChara(object, props.initR, 8)
+    const r = computed(() => frameState.r)
     const gun = useGun(context, object)
     const getRadianToPointer = () => {
       const diffX = scene.input.manager.pointers[0]?.x + camera.value?.scrollX - object.value?.x
@@ -39,10 +39,9 @@ export default {
       return Math.atan2(diffY, diffX)
     }
     onPreUpdate(() => {
-      r.value = getRadianToPointer()
       frame.value = playFrameAnim()
       if (gun.mode.value) {
-        lookTo(r.value)
+        lookTo(getRadianToPointer())
       } else {
         following.walkToTargetPosition(event.state ? 100 : 200)
       }
@@ -75,7 +74,7 @@ export default {
     const stopWalking = () => {
       following.clearTargetPosition()
       object.value.body.velocity.normalize().scale(0)
-      frame.value = getBaseFrame()
+      frame.value = frameState.directionKey
     }
     return {
       object, substance,
