@@ -95,11 +95,12 @@ export default {
     if (respawn) state.status.hp = 100
     onMounted(() => {
       setupCamera(inject('camera').value, field.width, field.height, player.value.object)
-      if (event.create) event.create({ respawn })
+      event.create?.({ respawn })
       audio.setBgm(event.bgm || null)
     })
     onBeforeUnmount(() => {
       darkness.destroy()
+      event.destroy?.()
     })
     const update = (time) => {
       darkness.restore().removeArc(player.value.object.x, player.value.object.y, 300).refresh()

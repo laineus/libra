@@ -1,4 +1,4 @@
-import { inject } from 'vue'
+import { inject, watch, computed } from 'vue'
 import Talker from '@/util/Talker'
 export default {
   bgm: 'happy',
@@ -76,5 +76,23 @@ export default {
       }
       await appleEvent()
     })
+
+    const items = computed(() => field.objects.filter(v => ['Character', 'Substance'].includes(v.type) && v.name !== 'amili'))
+    const saveRoomObjects = (newLength, oldLength) => {
+      const add = newLength > oldLength
+      const baseArr = add ? items.value : state.roomItems
+      const targetArr = add ? state.roomItems : items.value
+      const targetSet = new Set(targetArr.map(v => v.id))
+      const item = baseArr.find(v => !targetSet.has(v.id))
+      if (add) {
+        state.roomItems.push({ id: item.id, key: item.name, x: item.x, y: item.y })
+      } else {
+        state.roomItems.delete(item)
+      }
+    }
+    this.stopWatch = watch(() => items.value.length, saveRoomObjects)
+  },
+  destroy () {
+    this.stopWatch()
   }
 }
