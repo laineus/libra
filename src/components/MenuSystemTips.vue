@@ -1,48 +1,55 @@
 <template>
   <Container>
     <template v-if="!selected">
-      <Container v-for="(v, i) in list" :key="i" :x="rowWidth.half" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerdown="p => tapItem(p, i)">
-        <Rectangle :visible="i === selectedIndex" :fillColor="COLORS.orange" :width="rowWidth" :height="rowHeight" :alpha="0.8" />
+      <Container v-for="(v, i) in list.slice(offset, offset + 7)" :key="i" :x="rowWidth.half" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerup="p => tapItem(p, v)" @wheel="onWheel" @pointermove.stop="onSwipe">
+        <Rectangle :visible="v === selected" :fillColor="COLORS.orange" :width="rowWidth" :height="rowHeight" :alpha="0.8" />
         <Line v-if="i !== list.length - 1" :x="0" :y="rowHeight.half" :lineWidth="0.5" :x2="rowWidth" :strokeColor="COLORS.brown" :alpha="0.25" />
         <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="v.title" :size="13" :bold="true" />
       </Container>
     </template>
     <Container v-if="selected">
-      <Text :x="10" :y="10" text="← Back" :size="12" :bold="true" @pointerdown.stop="selectedIndex = null" />
+      <Text :x="10" :y="10" text="← Back" :size="12" :bold="true" @pointerup.stop="selected = null" />
       <Text :x="10" :y="40" :text="selected.title" :size="14" :bold="true" />
       <Text :x="10" :y="70" :text="selected.desc" :size="13" :style="{ wordWrap: { width: 200, useAdvancedWrap: true } }" />
     </Container>
+    <ScrollBar ref="scrollBar" :visible="!selected" :x="rowWidth + 13 - 3" :y="3" :height="(rowHeight * 7) - (3).twice" :length="list.length" :limit="7" v-model="offset" />
   </Container>
 </template>
 
 <script>
-import { reactive, toRefs, computed } from 'vue'
+import { reactive, toRefs, ref } from 'vue'
 import { Container, Rectangle, Line } from 'phavuer'
 import config from '@/data/config'
 import Text from '@/components/Text'
+import ScrollBar from '@/components/ScrollBar'
 export default {
-  components: { Container, Rectangle, Text, Line },
+  components: { Container, Rectangle, Line, Text, ScrollBar },
   setup (props, context) {
     const keys = ['hp', 'charm', 'weight', 'use', 'dispose', 'store', 'amili', 'people', 'gun', 'murder']
     const list = keys.map(key => {
       return { title: t(`tips.${key}.title`), desc: t(`tips.${key}.desc`) }
     })
+    const refs = { scrollBar: ref(null) }
     const data = reactive({
-      rowWidth: 220,
+      selected: null,
+      rowWidth: 207,
       rowHeight: 37,
-      selectedIndex: null
+      offset: 0
     })
-    const selected = computed(() => list[data.selectedIndex])
-    const tapItem = async (pointer, i) => {
-      data.selectedIndex = i
+    const tapItem = async (pointer, v) => {
+      if (pointer.isMoved) return
+      data.selected = v
     }
+    const onWheel = pointer => refs.scrollBar.value.add(Math.sign(pointer.deltaY))
+    const onSwipe = pointer => refs.scrollBar.value.swipe(pointer)
     return {
       t,
       COLORS: config.COLORS,
       list,
+      ...refs,
       ...toRefs(data),
-      selected,
-      tapItem
+      tapItem,
+      onWheel, onSwipe
     }
   }
 }
