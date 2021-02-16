@@ -23,7 +23,10 @@ import Text from '@/components/Text'
 export default {
   components: { Container, Rectangle, Text, Line },
   setup (props, context) {
-    const list = [{ title: 'title1', desc: 'description1' }, { title: 'title2', desc: 'description2' }]
+    const keys = ['hp', 'charm', 'weight', 'use', 'dispose', 'store', 'amili', 'people', 'gun', 'murder']
+    const list = keys.map(key => {
+      return { title: t(`tips.${key}.title`), desc: t(`tips.${key}.desc`) }
+    })
     const data = reactive({
       rowWidth: 220,
       rowHeight: 37,
