@@ -12,31 +12,31 @@
       <Text :x="65" :y="70" :text="`${t(`place.${selected.place}`)}\n${t(`name.${selected.chara}`)}`" :size="12" />
       <Text :x="10" :y="115" :text="t(`quest.${selected.key}.desc`)" :size="13" :style="{ wordWrap: { width: 200, useAdvancedWrap: true } }" />
     </Container>
-    <Container :visible="!selected" :x="rowWidth + 13 - 3" :y="3">
-      <RoundRectangle :width="5" :height="289" :radius="3" :fillColor="COLORS.brown" :originX="1" :originY="0" :alpha="0.3" />
-      <RoundRectangle :y="289 / quest.length * offset" :width="5" :height="289 * (8 / quest.length)" :radius="3" :fillColor="COLORS.brown" :originX="1" :originY="0" />
-    </Container>
+    <ScrollBar ref="scrollBar" :visible="!selected" :x="rowWidth + 13 - 3" :y="3" :height="289" :length="quest.length" :limit="8" v-model="offset" />
   </MenuContainer>
 </template>
 
 <script>
 import { inject, reactive, ref, toRefs } from 'vue'
-import { Container, RoundRectangle, Line, Image } from 'phavuer'
+import { Container, Line, Image } from 'phavuer'
 import MenuContainer from '@/components/MenuContainer'
 import Text from '@/components/Text'
+import ScrollBar from '@/components/ScrollBar'
 import quest from '@/data/quest'
 import config from '@/data/config'
 export default {
-  components: { MenuContainer, Container, RoundRectangle, Text, Line, Image },
+  components: { MenuContainer, Container, Text, ScrollBar, Line, Image },
   emits: ['close'],
   setup (_, context) {
     const state = inject('storage').state
-    const container = ref(null)
+    const refs = {
+      scrollBar: ref(null),
+      container: ref(null)
+    }
     const data = reactive({
       selected: null,
       offset: 0,
-      rowWidth: 207, rowHeight: 37,
-      selectedIndex: null
+      rowWidth: 207, rowHeight: 37
     })
     const tapItem = (p, v) => {
       if (p.isMoved || !v.started(state)) return
@@ -46,24 +46,14 @@ export default {
       if (p.isMoved) return
       data.selected = null
     }
-    const addOffset = v => {
-      data.offset = Math.fix(data.offset + v, 0, quest.length - 8)
-    }
-    const onWheel = pointer => addOffset(Math.sign(pointer.deltaY))
-    let scrollY = 0
-    const onSwipe = pointer => {
-      if (!pointer.isDown) return
-      scrollY += pointer.prevPosition.y - pointer.position.y
-      if (Math.abs(scrollY) < 15) return
-      addOffset(Math.sign(scrollY))
-      scrollY = 0
-    }
+    const onWheel = pointer => refs.scrollBar.value.add(Math.sign(pointer.deltaY))
+    const onSwipe = pointer => refs.scrollBar.value.swipe(pointer)
     return {
       t,
       state,
       COLORS: config.COLORS,
       quest,
-      container,
+      ...refs,
       ...toRefs(data),
       tapItem, back,
       onWheel, onSwipe
