@@ -1,6 +1,6 @@
 <template>
   <Image ref="object" :texture="texture" :x="setting.x" :y="setting.y" :displayWidth="setting.width" :displayHeight="setting.height" :originX="0" :originY="1">
-    <StaticBody v-if="physics" :width="physics.width * object?.scaleX" :height="physics.height * object?.scaleY" :offsetX="physics.x" :offsetY="physics.y" />
+    <StaticBody v-if="physics && object" :width="physics.width * object.scaleX" :height="physics.height * object.scaleY" :offsetX="physics.x * object.scaleX" :offsetY="physics.y * object.scaleY" />
   </Image>
 </template>
 
