@@ -16,46 +16,111 @@
  "margin":0,
  "name":"forest_images",
  "spacing":0,
- "tilecount":2,
- "tiledversion":"2020.12.18",
- "tileheight":64,
+ "tilecount":12,
+ "tiledversion":"1.4.3",
+ "tileheight":277,
  "tiles":[
         {
          "id":0,
          "image":"..\/..\/img\/map\/images\/tree.png",
-         "imageheight":64,
-         "imagewidth":64,
+         "imageheight":107,
+         "imagewidth":90,
          "objectgroup":
             {
              "draworder":"index",
-             "id":2,
              "name":"",
              "objects":[
                     {
-                     "height":12.0659858601728,
+                     "height":32.7326525268395,
                      "id":1,
                      "name":"",
                      "rotation":0,
                      "type":"",
                      "visible":true,
-                     "width":11.7308195862791,
-                     "x":25.9753862267609,
-                     "y":40.3875360041895
+                     "width":15.7308195862791,
+                     "x":37,
+                     "y":69.8333333333333
                     }],
              "opacity":1,
              "type":"objectgroup",
              "visible":true,
              "x":0,
              "y":0
-            }
+            },
+         "properties":[
+                {
+                 "name":"depth",
+                 "type":"string",
+                 "value":"SUBSTANCE"
+                }]
         }, 
         {
-         "id":1,
-         "image":"..\/..\/img\/map\/images\/barrel.png",
-         "imageheight":51,
+         "id":2,
+         "image":"..\/..\/img\/map\/images\/grass1.png",
+         "imageheight":158,
+         "imagewidth":182
+        }, 
+        {
+         "id":3,
+         "image":"..\/..\/img\/map\/images\/grass2.png",
+         "imageheight":64,
+         "imagewidth":218
+        }, 
+        {
+         "id":4,
+         "image":"..\/..\/img\/map\/images\/grass3.png",
+         "imageheight":241,
          "imagewidth":60
+        }, 
+        {
+         "id":5,
+         "image":"..\/..\/img\/map\/images\/grass4.png",
+         "imageheight":189,
+         "imagewidth":172
+        }, 
+        {
+         "id":6,
+         "image":"..\/..\/img\/map\/images\/sand1.png",
+         "imageheight":93,
+         "imagewidth":101
+        }, 
+        {
+         "id":7,
+         "image":"..\/..\/img\/map\/images\/sand2.png",
+         "imageheight":183,
+         "imagewidth":188
+        }, 
+        {
+         "id":8,
+         "image":"..\/..\/img\/map\/images\/sand3.png",
+         "imageheight":190,
+         "imagewidth":193
+        }, 
+        {
+         "id":9,
+         "image":"..\/..\/img\/map\/images\/sand4.png",
+         "imageheight":258,
+         "imagewidth":102
+        }, 
+        {
+         "id":10,
+         "image":"..\/..\/img\/map\/images\/sand5.png",
+         "imageheight":163,
+         "imagewidth":45
+        }, 
+        {
+         "id":11,
+         "image":"..\/..\/img\/map\/images\/sand6.png",
+         "imageheight":277,
+         "imagewidth":61
+        }, 
+        {
+         "id":12,
+         "image":"..\/..\/img\/map\/images\/sand7.png",
+         "imageheight":52,
+         "imagewidth":31
         }],
- "tilewidth":64,
+ "tilewidth":218,
  "type":"tileset",
  "version":1.4
 }
