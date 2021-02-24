@@ -1,5 +1,5 @@
 <template>
-  <Image ref="object" :texture="texture" :x="setting.x" :y="setting.y" :displayWidth="setting.width" :displayHeight="setting.height" :originX="0" :originY="1" :depth="depth">
+  <Image ref="object" :texture="texture" :x="setting.x" :y="setting.y" :rotation="setting.radian ?? 0" :displayWidth="setting.width" :displayHeight="setting.height" :originX="0" :originY="1" :flipX="setting.flippedHorizontal" :flipY="setting.flippedVertical" :depth="depth">
     <StaticBody v-if="physics && object" :width="physics.width * object.scaleX" :height="physics.height * object.scaleY" :offsetX="physics.x * object.scaleX" :offsetY="physics.y * object.scaleY" />
   </Image>
 </template>
