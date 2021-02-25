@@ -51,7 +51,7 @@ export default [
   makeItem('ruby', { hp: 15, minScale: 0.6 }),
   makeItem('crystal', {
     hp: 10,
-    minScale: 0.6,
+    minScale: 0.7,
     drop: [{ key: 'rock', chance: 0.5 }, { key: 'sapphire', chance: 0.25 }, { key: 'emerald', chance: 0.25 }, { key: 'amethyst', chance: 0.25 }, { key: 'ruby', chance: 0.25 }]
   }),
   makeItem('fish', { hp: 5, minScale: 0.7, eat: 20 }),
@@ -59,7 +59,7 @@ export default [
   makeItem('unagi', { hp: 5, minScale: 0.7 }),
   makeItem('ice', {
     hp: 10,
-    minScale: 0.6,
+    minScale: 0.7,
     drop: [{ key: 'fish', chance: 0.5 }, { key: 'fish', chance: 0.5 }, { key: 'unagi', chance: 0.03 }]
   }),
   makeItem('unadon', { hp: 5, eat: 100 }),
