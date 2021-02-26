@@ -23,6 +23,7 @@
 <script>
 import { inject, onMounted, reactive, ref, shallowReactive } from 'vue'
 import { refScene, Scene, Circle, Image, Container, RoundRectangle } from 'phavuer'
+import dayjs from 'dayjs'
 import Title from './Title'
 import Controller from './Controller'
 import Talk from './Talk'
@@ -32,6 +33,14 @@ import Log from './Log'
 import Text from './Text'
 import Transitions from './Transitions'
 import config from '@/data/config'
+const downloadBySource = (src, name) => {
+  const link = document.createElement('a')
+  link.href = src
+  link.download = name
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
+}
 export default {
   components: { Scene, Title, Controller, Circle, Image, Container, RoundRectangle, Talk, Selector, Menu, Log, Text, Transitions },
   setup (props) {
@@ -51,6 +60,11 @@ export default {
     }
     onMounted(() => {
       refs.scene.value.input.setTopOnly(false)
+      refs.scene.value.input.keyboard.on('keydown-S', e => {
+        if (!e.shiftKey) return
+        const filename = `ScreenShot_${dayjs().format('YYYYMMDD_HHmmss')}.png`
+        refs.scene.value.game.renderer.snapshot(img => downloadBySource(img.src, filename))
+      })
     })
     const titleScreen = ref(true)
     const screenMessage = shallowReactive({ text: null, color: null })
