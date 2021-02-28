@@ -1,12 +1,4 @@
 { "columns":0,
- "editorsettings":
-    {
-     "export":
-        {
-         "format":"",
-         "target":"."
-        }
-    },
  "grid":
     {
      "height":1,
@@ -14,9 +6,9 @@
      "width":1
     },
  "margin":0,
- "name":"cave_images",
+ "name":"coalmine_images",
  "spacing":0,
- "tilecount":12,
+ "tilecount":17,
  "tiledversion":"1.4.3",
  "tileheight":303,
  "tiles":[
@@ -40,57 +32,87 @@
         }, 
         {
          "id":3,
-         "image":"..\/..\/img\/map\/images\/depression1.png",
+         "image":"..\/..\/img\/map\/images\/depression4.png",
          "imageheight":128,
          "imagewidth":170
         }, 
         {
          "id":4,
-         "image":"..\/..\/img\/map\/images\/depression2.png",
+         "image":"..\/..\/img\/map\/images\/depression5.png",
          "imageheight":180,
          "imagewidth":211
         }, 
         {
          "id":5,
-         "image":"..\/..\/img\/map\/images\/depression3.png",
+         "image":"..\/..\/img\/map\/images\/depression6.png",
          "imageheight":70,
          "imagewidth":100
         }, 
         {
          "id":6,
-         "image":"..\/..\/img\/map\/images\/moss.png",
-         "imageheight":96,
-         "imagewidth":169
-        }, 
-        {
-         "id":7,
          "image":"..\/..\/img\/map\/images\/stones1.png",
          "imageheight":35,
          "imagewidth":61
         }, 
         {
-         "id":8,
+         "id":7,
          "image":"..\/..\/img\/map\/images\/stones2.png",
          "imageheight":98,
          "imagewidth":33
         }, 
         {
-         "id":9,
+         "id":8,
          "image":"..\/..\/img\/map\/images\/stones3.png",
          "imageheight":29,
          "imagewidth":125
         }, 
         {
-         "id":10,
-         "image":"..\/..\/img\/map\/images\/cave_rim1.png",
+         "id":9,
+         "image":"..\/..\/img\/map\/images\/rim1.png",
          "imageheight":96,
          "imagewidth":343
         }, 
         {
-         "id":11,
-         "image":"..\/..\/img\/map\/images\/cave_rim2.png",
+         "id":10,
+         "image":"..\/..\/img\/map\/images\/rim2.png",
          "imageheight":211,
          "imagewidth":264
+        }, 
+        {
+         "id":11,
+         "image":"..\/..\/img\/map\/images\/rail1.png",
+         "imageheight":41,
+         "imagewidth":80
+        }, 
+        {
+         "id":12,
+         "image":"..\/..\/img\/map\/images\/rail2.png",
+         "imageheight":80,
+         "imagewidth":41
+        }, 
+        {
+         "id":13,
+         "image":"..\/..\/img\/map\/images\/rail3.png",
+         "imageheight":49,
+         "imagewidth":55
+        }, 
+        {
+         "id":14,
+         "image":"..\/..\/img\/map\/images\/rail4.png",
+         "imageheight":49,
+         "imagewidth":55
+        }, 
+        {
+         "id":15,
+         "image":"..\/..\/img\/map\/images\/rail5.png",
+         "imageheight":49,
+         "imagewidth":55
+        }, 
+        {
+         "id":16,
+         "image":"..\/..\/img\/map\/images\/rail6.png",
+         "imageheight":49,
+         "imagewidth":55
         }],
  "tilewidth":343,
  "type":"tileset",
