@@ -3,7 +3,8 @@
     <Title @close="titleScreen = false" v-if="titleScreen" />
     <template v-else>
       <Controller ref="controller" />
-      <Circle :radius="80" :fillColor="0x000000" :alpha="0.5" :x="(100).byRight" :y="(100).byBottom" @pointerdown="switchGun" />
+      <Circle v-if="mobile && player.gun.mode.value" :radius="50" :fillColor="0x000000" :alpha="0.5" :x="(70).byRight" :y="(190).byBottom" @pointerdown="shotGun" />
+      <Circle v-if="mobile" :radius="50" :fillColor="0x000000" :alpha="0.5" :x="player.gun.mode.value ? (175).byRight: (70).byRight" :y="(140).byBottom" @pointerdown="switchGun" />
       <Circle :visible="mobile && nealestCheckable" :radius="80" :fillColor="0x000000" :alpha="0.5" :x="(100).byRight" :y="(100).byBottom" @pointerdown="check" />
       <Talk ref="talk" />
       <Selector v-if="selector.list" :x="selector.x" :y="selector.y" :list="selector.list" @select="selector.resolver" />
@@ -96,10 +97,8 @@ export default {
     const setMapName = name => {
       mapName.value = name
     }
-    const switchGun = () => {
-      const gun = player.value?.gun
-      gun.setMode(!gun.mode.value)
-    }
+    const shotGun = () => player.value?.gun.shot()
+    const switchGun = () => player.value?.gun.setMode(!player.value?.gun.mode.value)
     return {
       state: storage.state,
       mobile,
@@ -116,7 +115,8 @@ export default {
         if (!nealestCheckable.value) return
         nealestCheckable.value.execTapEvent()
       },
-      switchGun
+      player,
+      shotGun, switchGun
     }
   }
 }

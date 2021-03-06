@@ -36,7 +36,6 @@ export default {
         if (controller.value.velocityX || controller.value.velocityY) {
           const x = Math.fix(field.value.player.object.x + controller.value.velocityX, 0, field.value.field.width)
           const y = Math.fix(field.value.player.object.y + controller.value.velocityY, 0, field.value.field.height)
-          field.value.player.lookTo(Math.atan2(controller.value.velocityY, controller.value.velocityX))
           field.value.player.setTargetPosition(x, y)
         } else if (controller.value.activePointer) {
           const worldX = controller.value.activePointer.x + camera.value.scrollX

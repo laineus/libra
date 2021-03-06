@@ -25,6 +25,8 @@ export default {
     const event = inject('event')
     const camera = inject('camera')
     const menuOpened = inject('menuOpened')
+    const field = inject('field')
+    const controller = inject('controller')
     const state = inject('storage').state
     const substance = ref(null)
     const frame = ref(0)
@@ -41,7 +43,11 @@ export default {
     onPreUpdate(() => {
       frame.value = playFrameAnim()
       if (gun.mode.value) {
-        lookTo(getRadianToPointer())
+        if (controller.value.velocityX || controller.value.velocityY) {
+          field.value.player.lookTo(Math.atan2(controller.value.velocityY, controller.value.velocityX))
+        } else if (controller.value.activePointer) {
+          lookTo(getRadianToPointer())
+        }
       } else {
         following.walkToTargetPosition(event.state ? 100 : 200)
       }
