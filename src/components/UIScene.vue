@@ -3,6 +3,7 @@
     <Title @close="titleScreen = false" v-if="titleScreen" />
     <template v-else>
       <Controller ref="controller" />
+      <Circle :radius="80" :fillColor="0x000000" :alpha="0.5" :x="(100).byRight" :y="(100).byBottom" @pointerdown="switchGun" />
       <Circle :visible="mobile && nealestCheckable" :radius="80" :fillColor="0x000000" :alpha="0.5" :x="(100).byRight" :y="(100).byBottom" @pointerdown="check" />
       <Talk ref="talk" />
       <Selector v-if="selector.list" :x="selector.x" :y="selector.y" :list="selector.list" @select="selector.resolver" />
@@ -95,6 +96,10 @@ export default {
     const setMapName = name => {
       mapName.value = name
     }
+    const switchGun = () => {
+      const gun = player.value?.gun
+      gun.setMode(!gun.mode.value)
+    }
     return {
       state: storage.state,
       mobile,
@@ -110,7 +115,8 @@ export default {
       check: () => {
         if (!nealestCheckable.value) return
         nealestCheckable.value.execTapEvent()
-      }
+      },
+      switchGun
     }
   }
 }
