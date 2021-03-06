@@ -27,6 +27,7 @@ export default {
     const menuOpened = inject('menuOpened')
     const field = inject('field')
     const controller = inject('controller')
+    const mobile = inject('mobile')
     const state = inject('storage').state
     const substance = ref(null)
     const frame = ref(0)
@@ -42,14 +43,26 @@ export default {
     }
     onPreUpdate(() => {
       frame.value = playFrameAnim()
-      if (gun.mode.value) {
-        if (controller.value.velocityX || controller.value.velocityY) {
-          field.value.player.lookTo(Math.atan2(controller.value.velocityY, controller.value.velocityX))
-        } else if (controller.value.activePointer) {
-          lookTo(getRadianToPointer())
+      if (!event.state && !menuOpened.value) {
+        if (mobile) {
+          if (controller.value.velocityX || controller.value.velocityY) {
+            const x = Math.fix(field.value.player.object.x + controller.value.velocityX, 0, field.value.field.width)
+            const y = Math.fix(field.value.player.object.y + controller.value.velocityY, 0, field.value.field.height)
+            field.value.player.setTargetPosition(x, y)
+            if (gun.mode.value) field.value.player.lookTo(Math.atan2(controller.value.velocityY, controller.value.velocityX))
+          }
+        } else {
+          if (controller.value.activePointer) {
+            const worldX = controller.value.activePointer.x + camera.value.scrollX
+            const worldY = controller.value.activePointer.y + camera.value.scrollY
+            if (field.value.isCollides(worldX.toTile, worldY.toTile)) return
+            field.value.player.setTargetPosition(worldX, worldY)
+          }
+          if (gun.mode.value) lookTo(getRadianToPointer())
         }
-      } else {
-        following.walkToTargetPosition(event.state ? 100 : 200)
+        if (!gun.mode.value) {
+          following.walkToTargetPosition(event.state ? 100 : 200)
+        }
       }
       state.x = Number(object.value.x)
       state.y = Number(object.value.y)
