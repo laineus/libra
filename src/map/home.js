@@ -1,5 +1,6 @@
 import { inject, watch, computed } from 'vue'
 import Talker from '@/util/Talker'
+import useItemReaction from '@/map/useItemReaction'
 export default {
   bgm: 'happy',
   create ({ respawn }) {
@@ -9,6 +10,7 @@ export default {
     const talk = inject('talk').value
     const uiScene = inject('uiScene').value
     const state = inject('storage').state
+    const getItemReaction = useItemReaction(state)
 
     let talked = false
     const amili = field.getObjectById(7)
@@ -55,11 +57,9 @@ export default {
       await completeTransition()
     }
     const itemReaction = async () => {
-      const keys = Object.keys(t('events.itemReactions'))
-      const doneList = state.events.itemReactions
-      const name = field.objects.map(v => v.name).find(name => !doneList.includes(name) && keys.includes(name))
-      if (!name) return false
-      await speakAmiliScripts(t(`events.itemReactions.${name}`))
+      const scripts = getItemReaction()
+      if (!scripts) return false
+      await speakAmiliScripts(scripts)
       talked = true
       return true
     }
