@@ -53,28 +53,33 @@ export default {
       field.player.object.setPosition(position.x, position.y)
       amili.object.setPosition(position.x + 20, position.y)
       amili.lookTo(hangout ? 'up' : 'leftDown')
-      uiScene.log.push(hangout ? t('events.home.heart') : t('events.home.body'))
+      uiScene.log.push(hangout ? t('events.home.lvup.heart') : t('events.home.lvup.body'))
+      if (!hangout) {
+        const tissue = field.objects.find(v => v.name === 'tissue' && v.x > 610 && v.y < 300)
+        tissue.name = 'tissueEmpty'
+        const stateTissue = state.roomItems.find(v => v.key === 'tissue' && v.x === tissue.x && tissue.y)
+        stateTissue.key = 'tissueEmpty'
+      }
       await completeTransition()
     }
     const itemReaction = async () => {
       const scripts = getItemReaction()
       if (!scripts) return false
       await speakAmiliScripts(scripts)
-      talked = true
       return true
     }
     const requestApple = async () => {
+      if ((state.status.heart + state.status.body) === 0) return
       await speakAmiliScripts(t(Math.chance(0.5) ? 'events.home.requestApple.a' : 'events.home.requestApple.b'))
     }
     amili.setTapEvent(async () => {
-      if (!talked) {
-        await itemReaction() ||
-        await speakAmiliScripts(t('events.home.welcomeback'))
-        talked = true
-      } else {
+      if (!talked) await speakAmiliScripts(t('events.home.welcomeback'))
+      const itemEvent = await itemReaction()
+      if (!itemEvent) {
         await requestApple()
+        await appleEvent()
       }
-      await appleEvent()
+      talked = true
     })
 
     // Load stored items

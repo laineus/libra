@@ -48,14 +48,14 @@ export default {
     const depth = ref(0)
     const alpha = ref(1)
     const tapEvent = useEvent()
-    const itemData = items.find(v => v.key === props.name)
-    const imageTexture = computed(() => props.texture || itemData?.texture)
+    const itemData = computed(() => items.find(v => v.key === props.name))
+    const imageTexture = computed(() => props.texture || itemData.value?.texture)
     const data = reactive({
       visible: true,
       tweens: null,
       capturable: Boolean(props.name),
       distanceToPlayer: null,
-      hp: itemData?.hp ?? 10
+      hp: itemData.value?.hp ?? 10
     })
     let onDestroy = null
     const setDestroyEvent = e => {
@@ -93,9 +93,9 @@ export default {
       damageEffectData.diffX = Math.cos(r) * -15
       damageEffectData.diffY = Math.sin(r) * -15
       if (data.hp >= 0) return
-      if (itemData?.drop) {
-        itemData.drop.filter(v => Math.chance(v.chance)).forEach(v => {
-          field.value.dropItem(v.key, object.value, { scale: itemData.minScale ? Math.randomInt(itemData.minScale * 10, 10) / 10 : 1 })
+      if (itemData.value?.drop) {
+        itemData.value.drop.filter(v => Math.chance(v.chance)).forEach(v => {
+          field.value.dropItem(v.key, object.value, { scale: itemData.value.minScale ? Math.randomInt(itemData.value.minScale * 10, 10) / 10 : 1 })
         })
       }
     }

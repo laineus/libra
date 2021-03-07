@@ -1,7 +1,7 @@
-export default state => {
-  const bagItemKeys = state.bagItems.map(v => v.key)
-  const bagItemKeysSet = new Set(bagItemKeys)
-  const has = (key, cnt = 1) => cnt > 1 ? bagItemKeys.count(key) >= cnt : bagItemKeysSet.has(key)
+export default state => () => {
+  const roomItemKeys = state.roomItems.map(v => v.key)
+  const roomItemKeysSet = new Set(roomItemKeys)
+  const has = (key, cnt = 1) => cnt > 1 ? roomItemKeys.count(key) >= cnt : roomItemKeysSet.has(key)
   const hasAll = (...keys) => keys.every(has)
   const hasSome = (...keys) => keys.some(has)
   const done = key => state.events.itemReactions.includes(key)
@@ -46,7 +46,7 @@ export default state => {
     { key: 'scalpel' },
     { key: 'skul' },
     { key: 'sofa' },
-    { key: 'tissue', test: () => state.bagItems.find(v => v.key === 'tissue' && v.x > 610 && v.y < 300) },
+    { key: 'tissue', test: () => state.roomItems.find(v => v.key === 'tissue' && v.x > 610 && v.y < 300) },
     { key: 'tissueEmpty' },
     { key: 'tv' },
     { key: 'insect', test: hasSome('ladybird', 'stagBeetle', 'beetle') },
@@ -60,10 +60,8 @@ export default state => {
     { key: 'penguin', test: hasSome('penguin', 'minePenguin') },
     { key: 'pumpkin' }
   ]
-  return () => {
-    const reaction = list.filter(v => !done(v.key)).find(v => v.test ? v.test() : has(v.key))
-    if (!reaction) return
-    state.events.itemReactions.push(reaction.key)
-    return reaction.scripts ?? t(`events.itemReactions.${reaction.key}`)
-  }
+  const reaction = list.filter(v => !done(v.key)).find(v => v.test ? v.test() : has(v.key))
+  if (!reaction) return
+  state.events.itemReactions.push(reaction.key)
+  return reaction.scripts ?? t(`events.itemReactions.${reaction.key}`)
 }
