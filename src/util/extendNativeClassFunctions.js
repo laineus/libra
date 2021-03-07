@@ -40,7 +40,7 @@ const extendNativeClassFunctions = (screenWidth, screenHeight, tileSize) => {
     value () { return this[Math.randomInt(0, this.length - 1)] }
   })
   Object.defineProperty(Array.prototype, 'count', {
-    value (callbackfn) { return this.filter(callbackfn).length }
+    value (callbackfn) { return this.filter(typeof callbackfn === 'function' ? callbackfn : v => v === callbackfn).length }
   })
   Object.defineProperty(Array.prototype, 'delete', {
     value (callbackfn) {
