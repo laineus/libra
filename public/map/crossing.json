@@ -150,12 +150,95 @@
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":14,
+         "name":"items",
+         "objects":[
+                {
+                 "height":0,
+                 "id":7,
+                 "name":"signal",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":266,
+                 "y":561
+                }, 
+                {
+                 "height":0,
+                 "id":8,
+                 "name":"signal",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":317,
+                 "y":255
+                }, 
+                {
+                 "height":0,
+                 "id":9,
+                 "name":"signal",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":427,
+                 "y":443
+                }, 
+                {
+                 "height":0,
+                 "id":10,
+                 "name":"signal",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":119,
+                 "y":454
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":14,
- "nextobjectid":7,
+ "nextlayerid":15,
+ "nextobjectid":11,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"2020.08.05",
+ "tiledversion":"1.4.3",
  "tileheight":32,
  "tilesets":[
         {
