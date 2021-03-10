@@ -540,6 +540,42 @@
                  "width":107,
                  "x":302.653403201658,
                  "y":606.664088506277
+                }, 
+                {
+                 "height":0,
+                 "id":37,
+                 "name":"candol2",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Substance",
+                 "visible":true,
+                 "width":0,
+                 "x":1007.13578256363,
+                 "y":290.111712541748
+                }, 
+                {
+                 "height":0,
+                 "id":38,
+                 "name":"candol2",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Substance",
+                 "visible":true,
+                 "width":0,
+                 "x":751.224231256478,
+                 "y":643.906483934124
+                }, 
+                {
+                 "height":0,
+                 "id":39,
+                 "name":"candol2",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Substance",
+                 "visible":true,
+                 "width":0,
+                 "x":337.284348727398,
+                 "y":509.464470805021
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -548,8 +584,14 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":37,
+ "nextobjectid":40,
  "orientation":"orthogonal",
+ "properties":[
+        {
+         "name":"darkness",
+         "type":"color",
+         "value":"#f0261d11"
+        }],
  "renderorder":"right-down",
  "tiledversion":"1.4.3",
  "tileheight":32,
