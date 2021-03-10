@@ -125,7 +125,7 @@ export default [
   makeCharacter('snake', { hp: 25, atk: 10, temper: SHARK, speed: 40, weight: 2 }),
   makeCharacter('penguin', { hp: 20, atk: 5, temper: FISH, speed: 50, weight: 2 }),
   makeCharacter('minePenguin', { hp: 15, atk: 15, temper: FISH, speed: 50, weight: 2 }),
-  makeCharacter('signal', { hp: 30, atk: 10, temper: BUG, speed: 40, weight: 2 }),
+  makeCharacter('signal', { hp: 30, atk: 10, temper: BUG, speed: 40, weight: 2, standingAnim: true }),
   makeCharacter('fallTorrent', { hp: 100, atk: 55, temper: ELEPHANT, speed: 50, weight: 5 }),
   makeCharacter('ghost', { hp: 50, atk: 15, temper: CAT, speed: 60, standingAnim: true, damage: false }),
   makeCharacter('pumpkin', { hp: 20, atk: 15, temper: FISH, speed: 50, weight: 2 }),
