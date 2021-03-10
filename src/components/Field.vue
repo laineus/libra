@@ -53,7 +53,8 @@ export default {
     const positions = computed(() => objects.filter(v => v.type === 'Position').toObject(v => [v.name, { x: v.x, y: v.y }]))
     const lightSubstances = computed(() => substances.value.filter(v => v.ref.value?.light))
     scene.lights.setAmbientColor(field.properties.ambient ?? 0xFFFFFF).enable()
-    const pipeline = computed(() => lightSubstances.value.length ? 'Light2D' : 'TextureTintPipeline')
+    // const pipeline = computed(() => lightSubstances.value.length ? 'Light2D' : 'TextureTintPipeline')
+    const pipeline = 'Light2D'
     const addObject = object => {
       const itemData = items.find(v => v.key === object.name)
       const obj = Object.assign({ ref: ref(null), id: Symbol('id'), type: itemData.type }, object)

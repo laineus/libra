@@ -1,18 +1,19 @@
 <template>
   <Substance ref="substance" :initX="initX" :initY="initY" :texture="gun.mode.value ? 'chara_sprite/libra_gun' : 'chara_sprite/libra'" :frame="frame">
     <Body :drag="500" />
+    <Light v-if="object" :x="object.x" :y="object.y" :intensity="0.1" :color="0xFF8800" :radius="10" /><!-- TODO: Tilemap will be invisible when removed all lights -->
   </Substance>
 </template>
 
 <script>
 import { computed, inject, onMounted, ref } from 'vue'
-import { onPreUpdate, Body } from 'phavuer'
+import { onPreUpdate, Body, Light } from 'phavuer'
 import Substance from './Substance'
 import useFollowing from './modules/useFollowing'
 import useFrameAnimChara from './modules/useFrameAnimChara'
 import useGun from './modules/useGun'
 export default {
-  components: { Body, Substance },
+  components: { Body, Light, Substance },
   props: {
     initX: { default: 0 },
     initY: { default: 0 },
