@@ -8,13 +8,14 @@
       </template>
       <slot />
     </Container>
+    <Light v-if="light" :x="initX" :y="initY" :intensity="0.3" :color="0xFF8800" :radius="120" />
     <TapArea v-if="tapEvent.event.value" :visible="interactive" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @tap="execTapEvent" />
     <GrabArea v-else-if="capturable" :visible="interactive" :name="name" :scale="scale" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @grab="alpha = 0.5" @capture="onBroken" @cancel="alpha = 1" />
   </div>
 </template>
 
 <script>
-import { refObj, Container, Image, onPreUpdate } from 'phavuer'
+import { refObj, Container, Image, onPreUpdate, Light } from 'phavuer'
 import { computed, inject, reactive, ref, toRefs, unref } from 'vue'
 import items from '@/data/items'
 import TapArea from './TapArea'
@@ -23,7 +24,7 @@ import Break from './Break'
 import useEvent from './modules/useEvent'
 const toAdditionalString = v => v < 0 ? `-=${Math.abs(v)}` : `+=${v}`
 export default {
-  components: { Container, Image, TapArea, GrabArea, Break },
+  components: { Container, Image, Light, TapArea, GrabArea, Break },
   props: {
     unique: { default: null },
     initX: { default: 0 },
@@ -49,6 +50,7 @@ export default {
     const alpha = ref(1)
     const tapEvent = useEvent()
     const itemData = computed(() => items.find(v => v.key === props.name))
+    const light = computed(() => itemData.value?.light)
     const depthAdjust = computed(() => itemData.value?.y ?? 0)
     const imageTexture = computed(() => props.texture || itemData.value?.texture)
     const data = reactive({
@@ -128,6 +130,7 @@ export default {
       object, image,
       imageTexture,
       imgWidth, imgHeight, depth, alpha,
+      light,
       tapEvent,
       execTapEvent: tapEvent.exec,
       setTapEvent,

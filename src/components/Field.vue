@@ -24,7 +24,7 @@ import Gate from './Gate'
 import Bullet from './Bullet'
 import ManualTile from './ManualTile'
 import Darkness from './modules/Darkness'
-import { inject, onBeforeUnmount, onMounted, ref, computed, shallowReactive, nextTick } from 'vue'
+import { inject, onBeforeUnmount, onMounted, ref, computed, shallowReactive, nextTick, watch } from 'vue'
 import { refObj, Image, TilemapLayer, Light } from 'phavuer'
 import setupCamera from './modules/setupCamera'
 import randomObjectByRandom from './modules/randomObjectByRandom'
@@ -52,10 +52,13 @@ export default {
     const areas = computed(() => objects.filter(v => v.type === 'Area'))
     const gates = computed(() => objects.filter(v => v.type === 'Gate'))
     const positions = computed(() => objects.filter(v => v.type === 'Position').toObject(v => [v.name, { x: v.x, y: v.y }]))
+    const lightSubstances = computed(() => substances.value.filter(v => v.ref.value?.light))
     const lights = objects.filter(v => v.type === 'Light')
     scene.lights.setAmbientColor(field.properties.ambient ?? 0xFFFFFF)
-    lights.length ? scene.lights.enable() : scene.lights.disable()
-    const pipeline = computed(() => lights.length ? 'Light2D' : 'TextureTintPipeline')
+    scene.lights.enable()
+    const pipeline = 'Light2D'
+    // lights.length ? scene.lights.enable() : scene.lights.disable()
+    // const pipeline = computed(() => lights.length ? 'Light2D' : 'TextureTintPipeline')
     const addObject = object => {
       const itemData = items.find(v => v.key === object.name)
       const obj = Object.assign({ ref: ref(null), id: Symbol('id'), type: itemData.type }, object)
@@ -88,12 +91,18 @@ export default {
     const event = maps[props.fieldKey] || {}
     scene.textures.remove('darkness')
     const darkness = new Darkness(scene, 'darkness', field.width, field.height)
-    darkness.fillBg(field.properties.darkness ?? 0x77000000).removeArcs(lights.map(l => {
-      return { x: l.x, y: l.y, radius: 120 }
-    })).save().refresh()
+    const resetDarkness = () => {
+      darkness.clear().fillBg(field.properties.darkness ?? 0x77000000).removeArcs(lights.map(l => {
+        return { x: l.x, y: l.y, radius: 120 }
+      })).removeArcs(lightSubstances.value.map(v => {
+        return { x: v.x, y: v.y, radius: 120 }
+      })).save().refresh()
+    }
+    watch(() => lightSubstances.value.length, resetDarkness)
     const respawn = state.status.hp <= 0
     if (respawn) state.status.hp = 100
     onMounted(() => {
+      resetDarkness()
       setupCamera(inject('camera').value, field.width, field.height, player.value.object)
       event.create?.({ respawn })
       audio.setBgm(event.bgm || null)

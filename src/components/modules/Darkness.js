@@ -24,6 +24,10 @@ export default class {
     this.texture.refresh()
     return this
   }
+  clear () {
+    this.context.clearRect(0, 0, this.width, this.height)
+    return this
+  }
   destroy () {
     this.texture.destroy()
   }
