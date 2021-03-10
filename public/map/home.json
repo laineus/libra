@@ -80,90 +80,6 @@
                 }, 
                 {
                  "height":0,
-                 "id":2,
-                 "name":"",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"color",
-                         "type":"color",
-                         "value":"#ffffb433"
-                        }, 
-                        {
-                         "name":"intensity",
-                         "type":"float",
-                         "value":0.5
-                        }, 
-                        {
-                         "name":"radius",
-                         "type":"int",
-                         "value":3000
-                        }],
-                 "rotation":0,
-                 "type":"Light",
-                 "visible":true,
-                 "width":0,
-                 "x":455,
-                 "y":194
-                }, 
-                {
-                 "height":0,
-                 "id":4,
-                 "name":"",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"color",
-                         "type":"color",
-                         "value":"#ffffb433"
-                        }, 
-                        {
-                         "name":"intensity",
-                         "type":"float",
-                         "value":0.3
-                        }, 
-                        {
-                         "name":"radius",
-                         "type":"int",
-                         "value":3000
-                        }],
-                 "rotation":0,
-                 "type":"Light",
-                 "visible":true,
-                 "width":0,
-                 "x":751,
-                 "y":358
-                }, 
-                {
-                 "height":0,
-                 "id":5,
-                 "name":"",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"color",
-                         "type":"color",
-                         "value":"#ffffb433"
-                        }, 
-                        {
-                         "name":"intensity",
-                         "type":"float",
-                         "value":0.5
-                        }, 
-                        {
-                         "name":"radius",
-                         "type":"int",
-                         "value":3000
-                        }],
-                 "rotation":0,
-                 "type":"Light",
-                 "visible":true,
-                 "width":0,
-                 "x":661,
-                 "y":130
-                }, 
-                {
-                 "height":0,
                  "id":7,
                  "name":"amili",
                  "point":true,
@@ -234,7 +150,7 @@
         {
          "name":"darkness",
          "type":"color",
-         "value":"#b43b2e1b"
+         "value":"#963b2e1b"
         }],
  "renderorder":"right-down",
  "tiledversion":"1.4.3",

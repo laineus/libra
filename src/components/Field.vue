@@ -9,7 +9,6 @@
     <Area v-for="v in areas" :key="v.id" :ref="v.ref" :x="v.x" :y="v.y" :width="v.width" :height="v.height" />
     <Gate v-for="v in gates" :key="v.id" :ref="v.ref" :x="v.x" :y="v.y" :width="v.width" :height="v.height" :to="{ key: v.name, x: v.fieldX.toPixel, y: v.fieldY.toPixel, r: player?.r }" />
     <Bullet v-for="v in bullets" :key="v.id" :initX="v.x" :initY="v.y" :r="v.r" @del="delBullet(v.id)" />
-    <Light v-for="v in lights" :key="v.id" :x="v.x" :y="v.y" :ref="v.ref" :intensity="v.intensity ?? 1" :color="v.color" :radius="v.radius" />
     <Image :depth="config.DEPTH.DARKNESS" texture="darkness" :x="0" :y="0" :origin="0" />
   </div>
 </template>
@@ -25,14 +24,14 @@ import Bullet from './Bullet'
 import ManualTile from './ManualTile'
 import Darkness from './modules/Darkness'
 import { inject, onBeforeUnmount, onMounted, ref, computed, shallowReactive, nextTick, watch } from 'vue'
-import { refObj, Image, TilemapLayer, Light } from 'phavuer'
+import { refObj, Image, TilemapLayer } from 'phavuer'
 import setupCamera from './modules/setupCamera'
 import randomObjectByRandom from './modules/randomObjectByRandom'
 import maps from '@/data/maps'
 import config from '@/data/config'
 import items from '@/data/items'
 export default {
-  components: { TilemapLayer, Image, Light, Player, Character, Substance, Area, Gate, Bullet, ManualTile },
+  components: { TilemapLayer, Image, Player, Character, Substance, Area, Gate, Bullet, ManualTile },
   props: [
     'fieldKey', 'playerX', 'playerY', 'playerR'
   ],
@@ -53,12 +52,8 @@ export default {
     const gates = computed(() => objects.filter(v => v.type === 'Gate'))
     const positions = computed(() => objects.filter(v => v.type === 'Position').toObject(v => [v.name, { x: v.x, y: v.y }]))
     const lightSubstances = computed(() => substances.value.filter(v => v.ref.value?.light))
-    const lights = objects.filter(v => v.type === 'Light')
-    scene.lights.setAmbientColor(field.properties.ambient ?? 0xFFFFFF)
-    scene.lights.enable()
-    const pipeline = 'Light2D'
-    // lights.length ? scene.lights.enable() : scene.lights.disable()
-    // const pipeline = computed(() => lights.length ? 'Light2D' : 'TextureTintPipeline')
+    scene.lights.setAmbientColor(field.properties.ambient ?? 0xFFFFFF).enable()
+    const pipeline = computed(() => lightSubstances.value.length ? 'Light2D' : 'TextureTintPipeline')
     const addObject = object => {
       const itemData = items.find(v => v.key === object.name)
       const obj = Object.assign({ ref: ref(null), id: Symbol('id'), type: itemData.type }, object)
@@ -92,11 +87,10 @@ export default {
     scene.textures.remove('darkness')
     const darkness = new Darkness(scene, 'darkness', field.width, field.height)
     const resetDarkness = () => {
-      darkness.clear().fillBg(field.properties.darkness ?? 0x77000000).removeArcs(lights.map(l => {
-        return { x: l.x, y: l.y, radius: 120 }
-      })).removeArcs(lightSubstances.value.map(v => {
+      const arcs = lightSubstances.value.map(v => {
         return { x: v.x, y: v.y, radius: 120 }
-      })).save().refresh()
+      })
+      darkness.clear().fillBg(field.properties.darkness ?? 0x77000000).removeArcs(arcs).save().refresh()
     }
     watch(() => lightSubstances.value.length, resetDarkness)
     const respawn = state.status.hp <= 0
@@ -120,7 +114,7 @@ export default {
       config,
       field,
       name: field.name, width: field.width, height: field.height,
-      layers, images, player, objects, charas, substances, areas, gates, lights, positions, manualTiles,
+      layers, images, player, objects, charas, substances, areas, gates, positions, manualTiles,
       pipeline,
       addObject, delObject, dropItem,
       bullets, addBullet, delBullet,
