@@ -393,12 +393,12 @@
                 {
                  "height":96,
                  "id":4,
-                 "name":"grass,stone1,stone2,stone3",
+                 "name":"grass,stone",
                  "properties":[
                         {
                          "name":"chance",
                          "type":"string",
-                         "value":"40,7,7,7"
+                         "value":"0.4,0.07"
                         }, 
                         {
                          "name":"count",
@@ -451,12 +451,12 @@
                 {
                  "height":256,
                  "id":7,
-                 "name":"grass,stone1,stone2,stone3",
+                 "name":"grass,stone",
                  "properties":[
                         {
                          "name":"chance",
                          "type":"string",
-                         "value":"40,7,7,7"
+                         "value":"0.4,0.07"
                         }, 
                         {
                          "name":"count",
@@ -473,12 +473,12 @@
                 {
                  "height":52,
                  "id":8,
-                 "name":"grass,stone1,stone2,stone3",
+                 "name":"grass,stone",
                  "properties":[
                         {
                          "name":"chance",
                          "type":"string",
-                         "value":"40,7,7,7"
+                         "value":"0.4,0.07"
                         }, 
                         {
                          "name":"count",

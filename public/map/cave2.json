@@ -474,6 +474,72 @@
                  "width":0,
                  "x":748.865599447196,
                  "y":345.539560059887
+                }, 
+                {
+                 "height":63.9259978118162,
+                 "id":34,
+                 "name":"rock",
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"string",
+                         "value":"0.5"
+                        }, 
+                        {
+                         "name":"count",
+                         "type":"int",
+                         "value":2
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":196.69641828861,
+                 "x":596.268858689393,
+                 "y":696.264572210066
+                }, 
+                {
+                 "height":60.333,
+                 "id":35,
+                 "name":"rock",
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"string",
+                         "value":"0.5"
+                        }, 
+                        {
+                         "name":"count",
+                         "type":"int",
+                         "value":1
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":107,
+                 "x":606.916906599102,
+                 "y":317.73169186917
+                }, 
+                {
+                 "height":60.333,
+                 "id":36,
+                 "name":"rock",
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"string",
+                         "value":"0.5"
+                        }, 
+                        {
+                         "name":"count",
+                         "type":"int",
+                         "value":1
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":107,
+                 "x":302.653403201658,
+                 "y":606.664088506277
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -482,7 +548,7 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":34,
+ "nextobjectid":37,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.4.3",

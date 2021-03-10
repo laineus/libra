@@ -384,6 +384,50 @@
                  "width":0,
                  "x":265.346078544282,
                  "y":706.410226880111
+                }, 
+                {
+                 "height":60.333,
+                 "id":26,
+                 "name":"rock",
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"string",
+                         "value":"0.5"
+                        }, 
+                        {
+                         "name":"count",
+                         "type":"int",
+                         "value":1
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":107,
+                 "x":512.571634227801,
+                 "y":633.788354313025
+                }, 
+                {
+                 "height":103.967688471726,
+                 "id":27,
+                 "name":"rock",
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"string",
+                         "value":"0.5"
+                        }, 
+                        {
+                         "name":"count",
+                         "type":"int",
+                         "value":1
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":65.7239433375561,
+                 "x":354.543303005874,
+                 "y":268.200423874237
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -392,7 +436,7 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":26,
+ "nextobjectid":28,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.4.3",
