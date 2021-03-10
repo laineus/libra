@@ -49,6 +49,7 @@ export default {
     const alpha = ref(1)
     const tapEvent = useEvent()
     const itemData = computed(() => items.find(v => v.key === props.name))
+    const depthAdjust = computed(() => itemData.value?.y ?? 0)
     const imageTexture = computed(() => props.texture || itemData.value?.texture)
     const data = reactive({
       visible: true,
@@ -101,7 +102,7 @@ export default {
     }
     const create = obj => context.emit('create', obj)
     onPreUpdate(() => {
-      if (depth.value !== object.value.y) depth.value = object.value.y
+      if (depth.value !== object.value.y + depthAdjust.value) depth.value = object.value.y + depthAdjust.value
       data.distanceToPlayer = Phaser.Math.Distance.Between(object.value.x, object.value.y, player.value.object.x, player.value.object.y)
     })
     const interactive = computed(() => !event.state && data.distanceToPlayer < 150 && !player.value?.gun.mode.value && unref(data.visible))

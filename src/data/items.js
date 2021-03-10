@@ -102,7 +102,7 @@ export default [
   makeItem('lamp', { hp: 10 }),
   makeItem('libra', { hp: 5 }),
   makeItem('logo', { hp: 10 }),
-  makeItem('pedestal', { hp: 20, weight: 2 }),
+  makeItem('pedestal', { hp: 20, weight: 2, y: -40 }),
   makeItem('pot', { hp: 5 }),
   makeItem('rack1', { hp: 30, weight: 3 }),
   makeItem('rack2', { hp: 30, weight: 3 }),
