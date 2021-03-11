@@ -3,8 +3,14 @@
     <Title @close="titleScreen = false" v-if="titleScreen" />
     <template v-else>
       <Controller ref="controller" />
-      <Circle v-if="mobile && player?.gun.mode.value" :radius="50" :fillColor="0x000000" :alpha="0.5" :x="(70).byRight" :y="(190).byBottom" @pointerdown="shotGun" />
-      <Circle v-if="mobile" :radius="50" :fillColor="0x000000" :alpha="0.5" :x="player?.gun.mode.value ? (175).byRight: (70).byRight" :y="(140).byBottom" @pointerdown="switchGun" />
+      <Container v-if="mobile" :x="player?.gun.mode.value ? (175).byRight : (70).byRight" :y="(140).byBottom">
+        <Circle :radius="50" :fillColor="0x000000" :alpha="0.5" @pointerdown="switchGun" />
+        <Image :texture="player?.gun.mode.value ? 'cancel' : 'gun'" :alpha="0.3" />
+      </Container>
+      <Container v-if="mobile && player?.gun.mode.value" :x="(70).byRight" :y="(190).byBottom">
+        <Circle :radius="50" :fillColor="0x000000" :alpha="0.5" @pointerdown="shotGun" />
+        <Image texture="shot" :alpha="0.3" />
+      </Container>
       <Circle :visible="mobile && nealestCheckable" :radius="80" :fillColor="0x000000" :alpha="0.5" :x="(100).byRight" :y="(100).byBottom" @pointerdown="check" />
       <Talk ref="talk" />
       <Selector v-if="selector.list" :x="selector.x" :y="selector.y" :list="selector.list" @select="selector.resolver" />
