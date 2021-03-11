@@ -13,6 +13,8 @@ export default {
     const getItemReaction = useItemReaction(state)
 
     let talked = false
+    let gave = false
+    let slept = false
     const amili = field.getObjectById(7)
     amili.setCapturable(false)
     const tAmili = new Talker(t('name.amili'), amili.object)
@@ -44,8 +46,11 @@ export default {
       if (result === 1) return
       if (!bag.hasItem('apple')) return await speakAmiliScripts(t('events.home.noApple'))
       bag.removeItem('apple')
-      await speakAmiliScripts(t('events.home.gaveApple'))
+      await speakAmiliScripts(gave ? t('events.home.gaveApple2') : t('events.home.gaveApple1'))
       const hangout = await uiScene.setSelector(t('events.home.reward')) === 0
+      if (slept && !hangout) await speakAmiliScripts(t('events.home.sleepTwice'))
+      gave = true
+      if (!hangout) slept = true
       const completeTransition = await uiScene.transition(700)
       state.status[hangout ? 'heart' : 'body'] += 1
       const position = field.positions[hangout ? 'entrance' : 'bed']
