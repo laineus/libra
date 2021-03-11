@@ -17,6 +17,7 @@ export default {
     { id: 4, key: 'matsutake', bagX: 40, bagY: 160 }
   ],
   roomItems: [],
+  stomach: [],
   places: [
     { key: 'home', x: 400, y: 400 },
     { key: 'forest3', x: 500, y: 480 },

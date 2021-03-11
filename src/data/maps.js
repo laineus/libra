@@ -1,4 +1,5 @@
 import home from '@/map/home'
+import stomach from '@/map/stomach'
 import forest2 from '@/map/forest2'
 import forest3 from '@/map/forest3'
 import forest4 from '@/map/forest4'
@@ -25,7 +26,7 @@ import mansion3 from '@/map/mansion3'
 import brain from '@/map/brain'
 export default {
   home,
-  stomach: { bgm: 'wind' },
+  stomach,
   forest1: { bgm: 'toaru' },
   forest2,
   forest3,

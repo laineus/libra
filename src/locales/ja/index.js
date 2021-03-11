@@ -47,7 +47,7 @@ export default {
     cemetery: '墓',
     brain: '脳'
   },
-  items: {
+  item: {
     apple: 'リンゴ',
     grass: '草',
     lily: '百合',

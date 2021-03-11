@@ -70,7 +70,8 @@ export default {
       if (data.eat && onEatArea.value) {
         storage.state.status.hp = Math.min(storage.state.status.hp + data.eat, 100)
         storage.state.bagItems.delete(grab.item)
-        uiScene.log.push(t('ui.eat', t(`name.${data.key}`)))
+        storage.state.stomach.push(data.key)
+        uiScene.log.push(t('ui.eat', t(`item.${data.key}`)))
         uiScene.log.push(t('ui.hpRecover', data.eat))
         grab.resolver(true)
         context.emit('close')
