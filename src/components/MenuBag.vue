@@ -5,11 +5,14 @@
     <Text :text="`${weight}/100`" :originX="1" :originY="0.5" :x="212" :y="14" :size="14" />
     <Image v-if="grab.item && itemData[grab.item.key].eat" :tint="onEatArea ? config.COLORS.orange : config.COLORS.brown" texture="eat" :origin="1" :x="212" :y="398" />
   </MenuContainer>
-  <Image v-if="grab.item" ref="grabRef" :texture="itemData[grab.item.key].texture" :frame="itemData[grab.item.key].frame" :x="grab.x" :y="grab.y" :scale="grab.item.scale" :origin="0.5" @pointerup="p => drop(p)" />
+  <Container v-if="grab.item" :x="grab.x" :y="grab.y">
+    <Image ref="grabRef" :texture="itemData[grab.item.key].texture" :frame="itemData[grab.item.key].frame" :scale="grab.item.scale" :origin="0.5" @pointerup="p => drop(p)" />
+    <Text v-if="grabRef" :text="grabItemName" :originX="0.5" :originY="1" :size="10" :y="-grabRef.height.half - 8" :style="{ stroke: config.COLORS.soy.toColorString, strokeThickness: 2 }" />
+  </Container>
 </template>
 
 <script>
-import { Image, refObj, onPreUpdate } from 'phavuer'
+import { Image, Container, refObj, onPreUpdate } from 'phavuer'
 import { inject, computed, reactive, ref } from 'vue'
 import MenuContainer from '@/components/MenuContainer'
 import Text from '@/components/Text'
@@ -19,7 +22,7 @@ const itemData = items.toObject(v => [v.key, v])
 const WIDTH = 220
 const HEIGHT = 405
 export default {
-  components: { Image, MenuContainer, Text },
+  components: { Image, Container, MenuContainer, Text },
   emits: ['close'],
   setup (_, context) {
     const storage = inject('storage')
@@ -36,6 +39,7 @@ export default {
       resolver: null,
       x: 0, y: 0
     })
+    const grabItemName = computed(() => itemData[grab.item.key].type === 'Character' ? t(`name.${grab.item.key}`) : t(`item.${grab.item.key}`))
     const onEatArea = computed(() => Math.hypot(grab.x - 907, grab.y - 418) < 25)
     const onBagArea = computed(() => (grab.x - offsetX.value) >= 0)
     const weight = computed(() => storage.state.bagItems.reduce((sum, v) => sum + itemData[v.key].weight, 0))
@@ -113,6 +117,7 @@ export default {
       container,
       controller, grab, grabRef,
       grabItem, drop,
+      grabItemName,
       onEatArea
     }
   }
