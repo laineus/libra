@@ -61,9 +61,13 @@ export default {
       uiScene.log.push(hangout ? t('events.home.lvup.heart') : t('events.home.lvup.body'))
       if (!hangout) {
         const tissue = field.objects.find(v => v.name === 'tissue' && v.x > 610 && v.y < 300)
-        tissue.name = 'tissueEmpty'
-        const stateTissue = state.roomItems.find(v => v.key === 'tissue' && v.x === tissue.x && tissue.y)
-        stateTissue.key = 'tissueEmpty'
+        if (tissue) {
+          tissue.name = 'tissueEmpty'
+          const stateTissue = state.roomItems.find(v => v.key === 'tissue' && v.x === tissue.x && tissue.y)
+          stateTissue.key = 'tissueEmpty'
+          const { x, y } = [field.positions.trash1, field.positions.trash2, field.positions.trash3].random()
+          field.addObject({ name: 'trash', x, y })
+        }
       }
       await completeTransition()
     }

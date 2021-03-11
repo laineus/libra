@@ -47,7 +47,6 @@ export default state => () => {
     { key: 'skul' },
     { key: 'sofa' },
     { key: 'tissue', test: () => state.roomItems.find(v => v.key === 'tissue' && v.x > 610 && v.y < 300) },
-    { key: 'tissueEmpty' },
     { key: 'tv' },
     { key: 'insect', test: hasSome('ladybird', 'stagBeetle', 'beetle') },
     { key: 'hercules' },

@@ -124,6 +124,42 @@
                  "width":0,
                  "x":453,
                  "y":508
+                }, 
+                {
+                 "height":0,
+                 "id":10,
+                 "name":"trash1",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Position",
+                 "visible":true,
+                 "width":0,
+                 "x":652,
+                 "y":251
+                }, 
+                {
+                 "height":0,
+                 "id":11,
+                 "name":"trash2",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Position",
+                 "visible":true,
+                 "width":0,
+                 "x":704,
+                 "y":273
+                }, 
+                {
+                 "height":0,
+                 "id":12,
+                 "name":"trash3",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Position",
+                 "visible":true,
+                 "width":0,
+                 "x":754,
+                 "y":232
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -144,7 +180,7 @@
          "y":0
         }],
  "nextlayerid":9,
- "nextobjectid":10,
+ "nextobjectid":13,
  "orientation":"orthogonal",
  "properties":[
         {
