@@ -5,7 +5,8 @@
       <Controller ref="controller" />
       <Container v-if="mobile" :x="player?.gun.mode.value ? (175).byRight : (70).byRight" :y="(140).byBottom">
         <Circle :radius="50" :fillColor="0x000000" :alpha="0.5" @pointerdown="switchGun" />
-        <Image :texture="player?.gun.mode.value ? 'cancel' : 'gun'" :alpha="0.3" />
+        <Image v-if="player?.gun.mode.value" texture="cancel" :alpha="0.3" />
+        <Image v-else texture="gun" :alpha="0.3" :x="-4" :y="4" />
       </Container>
       <Container v-if="mobile && player?.gun.mode.value" :x="(70).byRight" :y="(190).byBottom">
         <Circle :radius="50" :fillColor="0x000000" :alpha="0.5" @pointerdown="shotGun" />
