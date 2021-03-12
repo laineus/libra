@@ -76,7 +76,7 @@ export default (object, initR, numOfDirection, standingAnim = false) => {
       }
     }
     state.directionKey = getDirectionKey(to)
-    state.r = rForKey[state.directionKey]
+    state.r = typeof to === 'number' ? to : rForKey[state.directionKey]
   }
   return {
     state,

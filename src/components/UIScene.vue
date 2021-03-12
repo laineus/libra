@@ -99,7 +99,7 @@ export default {
     const setMapName = name => {
       mapName.value = name
     }
-    const shotGun = () => player.value?.gun.shot()
+    const shotGun = () => player.value?.shot()
     const switchGun = () => player.value?.gun.setMode(!player.value?.gun.mode.value)
     return {
       state: storage.state,

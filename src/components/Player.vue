@@ -37,6 +37,7 @@ export default {
     const { state: frameState, play: playFrameAnim, lookTo } = useFrameAnimChara(object, props.initR, 8)
     const r = computed(() => frameState.r)
     const gun = useGun(context, object)
+    const shot = () => gun.shot(r.value)
     const getRadianToPointer = () => {
       const diffX = scene.input.manager.pointers[0]?.x + camera.value?.scrollX - object.value?.x
       const diffY = scene.input.manager.pointers[0]?.y + camera.value?.scrollY - object.value?.y
@@ -75,7 +76,7 @@ export default {
     scene.input.on('pointerdown', pointer => {
       if (event.state || menuOpened.value) return
       if (pointer.button === 0) {
-        if (gun.mode.value) gun.shot(r.value)
+        if (gun.mode.value) shot()
       } else if (pointer.button === 2) {
         gun.setMode(!gun.mode.value)
         following.clearTargetPosition()
@@ -98,7 +99,7 @@ export default {
     }
     return {
       object, substance,
-      gun,
+      gun, shot,
       damage,
       r, frame, lookTo,
       stopWalking,
