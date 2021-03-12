@@ -36,7 +36,8 @@ export default {
     const following = useFollowing(object)
     const { state: frameState, play: playFrameAnim, lookTo } = useFrameAnimChara(object, props.initR, 8)
     const r = computed(() => frameState.r)
-    const gun = useGun(context, object)
+    const gunDiffY = -40
+    const gun = useGun(context, object, { y: gunDiffY })
     const shot = () => gun.shot(r.value)
     const gunSwitch = () => {
       gun.setMode(!gun.mode.value)
@@ -44,7 +45,7 @@ export default {
     }
     const getRadianToPointer = () => {
       const diffX = scene.input.manager.pointers[0]?.x + camera.value?.scrollX - object.value?.x
-      const diffY = scene.input.manager.pointers[0]?.y + camera.value?.scrollY - object.value?.y
+      const diffY = scene.input.manager.pointers[0]?.y + camera.value?.scrollY - (object.value?.y + gunDiffY)
       return Math.atan2(diffY, diffX)
     }
     onPreUpdate(() => {
