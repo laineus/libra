@@ -15,7 +15,7 @@
       <Selector v-if="selector.list" :x="selector.x" :y="selector.y" :list="selector.list" @select="selector.resolver" />
       <Log ref="log" />
       <Menu ref="menu" />
-      <Image v-for="v in 5" :key="v" texture="hp" :frame="Math.round(state.status.hp / 20) >= v ? 0 : 1" :x="40 + ((v - 1) * 42)" :y="(35).byBottom" />
+      <Image v-for="v in 5" :key="v" texture="hp" :frame="Math.round(state.status.hp / 20) >= v ? 0 : 1" :x="40 + ((v - 1) * 42)" :y="35" />
       <Container :x="config.WIDTH.half" :y="50" v-if="mapName">
         <RoundRectangle :tween="{ width: 166, alpha: 1, duration: 300, yoyo: true, hold: 3000 }" :width="10" :height="32" :alpha="0" :origin="0.5" :radius="5" :fillColor="config.COLORS.brown" />
         <RoundRectangle :tween="{ width: 161, alpha: 1, duration: 300, yoyo: true, hold: 3000 }" :width="5" :height="27" :alpha="0" :origin="0.5" :radius="5" :strokeColor="config.COLORS.soy" :lineWidth="1" />
