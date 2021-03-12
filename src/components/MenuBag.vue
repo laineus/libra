@@ -6,7 +6,7 @@
     <Image v-if="grab.item && itemData[grab.item.key].eat" :tint="onEatArea ? config.COLORS.orange : config.COLORS.brown" texture="eat" :origin="1" :x="222" :y="402" />
   </MenuContainer>
   <Container v-if="grab.item" :x="grab.x" :y="grab.y">
-    <Image ref="grabRef" :texture="itemData[grab.item.key].texture" :frame="itemData[grab.item.key].frame" :scale="grab.item.scale" :origin="0.5" @pointerup="p => drop(p)" />
+    <Image ref="grabRef" :texture="itemData[grab.item.key].texture" :frame="itemData[grab.item.key].frame" :scale="grab.item.scale" :origin="0.5" @pointerup="drop" />
     <Text v-if="grabRef" :text="grabItemName" :originX="0.5" :originY="1" :size="10" :y="-grabRef.height.half - 8" :style="{ stroke: config.COLORS.soy.toColorString, strokeThickness: 2 }" />
   </Container>
 </template>
@@ -67,7 +67,7 @@ export default {
       update()
       return promise
     }
-    const drop = pointer => {
+    const drop = () => {
       const wHalf = grabRef.value.width.half
       const hHalf = grabRef.value.height.half
       const data = itemData[grab.item.key]
@@ -92,8 +92,8 @@ export default {
         }
         grab.resolver()
       } else if (grab.mode === 'move') {
-        grab.item.bagX = Math.round(Math.fix(pointer.x - offsetX.value, wHalf, WIDTH - wHalf))
-        grab.item.bagY = Math.round(Math.fix(pointer.y - offsetY.value, hHalf, HEIGHT - hHalf))
+        grab.item.bagX = Math.round(Math.fix(grab.x - offsetX.value, wHalf, WIDTH - wHalf))
+        grab.item.bagY = Math.round(Math.fix(grab.y - offsetY.value, hHalf, HEIGHT - hHalf))
         grab.resolver()
       } else if (grab.mode === 'capture') {
         const weightOver = (weight.value + data.weight) > 100
@@ -102,8 +102,8 @@ export default {
             id: Math.randomInt(1000000, 9999999),
             key: grab.item.key,
             scale: grab.item.scale,
-            bagX: Math.round(Math.fix(pointer.x - offsetX.value, wHalf, WIDTH - wHalf)),
-            bagY: Math.round(Math.fix(pointer.y - offsetY.value, hHalf, HEIGHT - hHalf))
+            bagX: Math.round(Math.fix(grab.x - offsetX.value, wHalf, WIDTH - wHalf)),
+            bagY: Math.round(Math.fix(grab.y - offsetY.value, hHalf, HEIGHT - hHalf))
           })
           grab.resolver(true)
           sleep(30).then(() => context.emit('close'))
