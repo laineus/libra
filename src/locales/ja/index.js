@@ -14,7 +14,11 @@ export default {
     minePenguin: '炭鉱ペンギン',
     fallTorrent: '秋トレント',
     pumpkin: 'カボチャ',
-    ghost: '幽霊'
+    ghost: '幽霊',
+    beetle: 'カブトムシ',
+    stagBeetle: 'クワガタ',
+    hercules: 'ヘラクレス',
+    ladybird: 'テントウムシ'
   },
   place: {
     home: '部屋',
