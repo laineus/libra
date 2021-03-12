@@ -11,7 +11,6 @@
         <Circle :radius="50" :fillColor="0x000000" :alpha="0.5" @pointerdown="shotGun" />
         <Image texture="shot" :alpha="0.3" />
       </Container>
-      <Circle :visible="mobile && nealestCheckable" :radius="80" :fillColor="0x000000" :alpha="0.5" :x="(100).byRight" :y="(100).byBottom" @pointerdown="check" />
       <Talk ref="talk" />
       <Selector v-if="selector.list" :x="selector.x" :y="selector.y" :list="selector.list" @select="selector.resolver" />
       <Log ref="log" />
@@ -54,7 +53,6 @@ export default {
   setup (props) {
     const mobile = inject('mobile')
     const frames = inject('frames')
-    const field = inject('field')
     const storage = inject('storage')
     const camera = inject('camera')
     const player = inject('player')
@@ -80,7 +78,6 @@ export default {
       screenMessage.text = text
       screenMessage.color = color
     }
-    const nealestCheckable = ref(null)
     const selector = reactive({ list: null, resolver: null, x: 0, y: 0 })
     const setSelector = list => {
       return new Promise(resolve => {
@@ -96,8 +93,6 @@ export default {
     }
     const update = (scene, time) => {
       frames.total++
-      if (!field.value) return
-      nealestCheckable.value = field.value.charas.concat(field.value.substances).map(v => v.ref.value).filter(v => v.checkable).findMin(v => v.distanceToPlayer)
     }
     const mapName = ref(null)
     const setMapName = name => {
@@ -112,15 +107,10 @@ export default {
       update,
       ...refs,
       titleScreen,
-      nealestCheckable,
       selector, setSelector,
       screenMessage, setScreenMessage,
       mapName, setMapName,
       transition: (...args) => refs.transitions.value.add(...args),
-      check: () => {
-        if (!nealestCheckable.value) return
-        nealestCheckable.value.execTapEvent()
-      },
       player,
       shotGun, switchGun
     }
