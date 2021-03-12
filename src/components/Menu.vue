@@ -2,7 +2,7 @@
   <div>
     <Container v-for="(v, i) in menu" :key="i" :x="(235).byRight + (i * 50)" :y="(35).byBottom">
       <Circle :fillColor="COLORS.brown" :radius="20" :lineWidth="2" :strokeColor="COLORS.soy" @pointerdown="(...args) => tapButton(i, ...args)" />
-      <Image texture="menu_icons" :frame="i" :tint="COLORS.soy" :scale="0.8" />
+      <Image texture="menu_icons" :frame="i" :tint="COLORS.soy" />
     </Container>
     <template v-if="selected">
       <Container :depth="-1" :x="config.WIDTH.half" :y="config.HEIGHT.half" :width="config.WIDTH" :height="config.HEIGHT" @pointerdown="tapCloseArea" />
