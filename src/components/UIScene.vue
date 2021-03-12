@@ -4,12 +4,12 @@
     <template v-else>
       <Controller ref="controller" />
       <Container v-if="mobile" :x="player?.gun.mode.value ? (175).byRight : (70).byRight" :y="(140).byBottom">
-        <Circle :radius="50" :fillColor="0x000000" :alpha="0.5" @pointerdown="switchGun" />
+        <Circle :radius="50" :fillColor="0x000000" :alpha="0.5" @pointerdown="player?.gunSwitch()" />
         <Image v-if="player?.gun.mode.value" texture="cancel" :alpha="0.3" />
         <Image v-else texture="gun" :alpha="0.3" :x="-4" :y="4" />
       </Container>
       <Container v-if="mobile && player?.gun.mode.value" :x="(70).byRight" :y="(190).byBottom">
-        <Circle :radius="50" :fillColor="0x000000" :alpha="0.5" @pointerdown="shotGun" />
+        <Circle :radius="50" :fillColor="0x000000" :alpha="0.5" @pointerdown="player?.shot()" />
         <Image texture="shot" :alpha="0.3" />
       </Container>
       <Talk ref="talk" />
@@ -99,8 +99,6 @@ export default {
     const setMapName = name => {
       mapName.value = name
     }
-    const shotGun = () => player.value?.shot()
-    const switchGun = () => player.value?.gun.setMode(!player.value?.gun.mode.value)
     return {
       state: storage.state,
       mobile,
@@ -112,8 +110,7 @@ export default {
       screenMessage, setScreenMessage,
       mapName, setMapName,
       transition: (...args) => refs.transitions.value.add(...args),
-      player,
-      shotGun, switchGun
+      player
     }
   }
 }

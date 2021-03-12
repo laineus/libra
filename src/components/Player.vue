@@ -38,6 +38,10 @@ export default {
     const r = computed(() => frameState.r)
     const gun = useGun(context, object)
     const shot = () => gun.shot(r.value)
+    const gunSwitch = () => {
+      gun.setMode(!gun.mode.value)
+      following.clearTargetPosition()
+    }
     const getRadianToPointer = () => {
       const diffX = scene.input.manager.pointers[0]?.x + camera.value?.scrollX - object.value?.x
       const diffY = scene.input.manager.pointers[0]?.y + camera.value?.scrollY - object.value?.y
@@ -78,8 +82,7 @@ export default {
       if (pointer.button === 0) {
         if (gun.mode.value) shot()
       } else if (pointer.button === 2) {
-        gun.setMode(!gun.mode.value)
-        following.clearTargetPosition()
+        gunSwitch()
       }
     })
     const damage = (value, r) => {
@@ -99,7 +102,7 @@ export default {
     }
     return {
       object, substance,
-      gun, shot,
+      gun, shot, gunSwitch,
       damage,
       r, frame, lookTo,
       stopWalking,
