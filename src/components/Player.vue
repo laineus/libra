@@ -12,6 +12,7 @@ import Substance from './Substance'
 import useFollowing from './modules/useFollowing'
 import useFrameAnimChara from './modules/useFrameAnimChara'
 import useGun from './modules/useGun'
+import config from '@/data/config'
 export default {
   components: { Body, Light, Substance },
   props: {
@@ -60,8 +61,10 @@ export default {
           }
         } else {
           if (controller.value.activePointer) {
-            const worldX = controller.value.activePointer.x + camera.value.scrollX
-            const worldY = controller.value.activePointer.y + camera.value.scrollY
+            const { x, y } = controller.value.activePointer
+            if (x < 0 || y < 0 || x > config.WIDTH || y > config.HEIGHT) return
+            const worldX = x + camera.value.scrollX
+            const worldY = y + camera.value.scrollY
             if (field.value.isCollides(worldX.toTile, worldY.toTile)) return
             field.value.player.setTargetPosition(worldX, worldY)
           }
