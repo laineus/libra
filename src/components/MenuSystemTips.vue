@@ -10,7 +10,7 @@
     <Container v-if="selected">
       <Text :x="10" :y="10" text="← Back" :size="12" :bold="true" @pointerup.stop="selected = null" />
       <Text :x="10" :y="40" :text="selected.title" :size="14" :bold="true" />
-      <Text :x="10" :y="70" :text="selected.desc" :size="13" :style="{ wordWrap: { width: 200, useAdvancedWrap: true } }" :lineSpacing="5" />
+      <Text :x="10" :y="70" :text="selected.desc" :size="13" :style="{ wordWrap: { width: 210, useAdvancedWrap: true } }" :lineSpacing="5" />
     </Container>
     <ScrollBar ref="scrollBar" :visible="!selected" :x="rowWidth + 13 - 3" :y="3" :height="(rowHeight * 7) - (3).twice" :length="list.length" :limit="7" v-model="offset" />
   </Container>
@@ -32,7 +32,7 @@ export default {
     const refs = { scrollBar: ref(null) }
     const data = reactive({
       selected: null,
-      rowWidth: 207,
+      rowWidth: 217,
       rowHeight: 37,
       offset: 0
     })

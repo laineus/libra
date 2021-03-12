@@ -1,5 +1,5 @@
 <template>
-  <MenuContainer :x="-60" :arrowX="25 + (0 * 64)" :height="350" :title="t('ui.status')">
+  <MenuContainer :arrowX="20 + (0 * 50) + 4" :height="350" :title="t('ui.status')">
     <template v-for="(v, i) in LIST.slice(0, 3)" :key="i">
       <Text :x="10" :y="10 + (i * 20)" :size="14" :bold="true" :text="v.label" />
       <Text :x="115" :y="10 + (i * 20)" :size="14" :text="v.value.value" />

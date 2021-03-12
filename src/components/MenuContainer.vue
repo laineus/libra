@@ -25,11 +25,11 @@ export default {
   setup (props) {
     const margin = 15
     const padding = 4
-    const width = 230
+    const width = 240
     const radius = 8
     const labelWidth = 100
     const labelHeight = 26
-    const bottom = 85
+    const bottom = 80
     const offsetX = (margin + width).byRight + 5
     const offsetY = (bottom + props.height).byBottom + 5
     return {

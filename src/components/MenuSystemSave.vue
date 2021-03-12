@@ -26,7 +26,7 @@ export default {
     const gameScene = inject('gameScene')
     const list = ref([])
     const data = reactive({
-      rowWidth: 220, rowHeight: 37,
+      rowWidth: 230, rowHeight: 37,
       selectedIndex: null,
       tapX: 0, tapY: 0
     })

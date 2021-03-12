@@ -1,9 +1,9 @@
 <template>
-  <MenuContainer ref="container" :arrowX="25 + (0 * 60)" :height="415" :title="t('ui.bag')" :visible="grab.mode !== 'dispose'">
+  <MenuContainer ref="container" :arrowX="20 + (1 * 50)" :height="420" :title="t('ui.bag')" :visible="grab.mode !== 'dispose'">
     <Image v-for="v in bagItems" :key="v.id" :texture="itemData[v.key].texture" :frame="itemData[v.key].frame" :x="v.bagX" :y="v.bagY" :scale="v.scale" :origin="0.5" :visible="grab.item !== v" @pointerdown="grabItem(v, 'move')" />
-    <Text :text="`${t('ui.weight')}:`" :originX="1" :originY="0.5" :x="153" :y="14" :size="13" />
-    <Text :text="`${weight}/100`" :originX="1" :originY="0.5" :x="212" :y="14" :size="14" />
-    <Image v-if="grab.item && itemData[grab.item.key].eat" :tint="onEatArea ? config.COLORS.orange : config.COLORS.brown" texture="eat" :origin="1" :x="212" :y="398" />
+    <Text :text="`${t('ui.weight')}:`" :originX="1" :originY="0.5" :x="163" :y="14" :size="13" />
+    <Text :text="`${weight}/100`" :originX="1" :originY="0.5" :x="222" :y="14" :size="14" />
+    <Image v-if="grab.item && itemData[grab.item.key].eat" :tint="onEatArea ? config.COLORS.orange : config.COLORS.brown" texture="eat" :origin="1" :x="222" :y="402" />
   </MenuContainer>
   <Container v-if="grab.item" :x="grab.x" :y="grab.y">
     <Image ref="grabRef" :texture="itemData[grab.item.key].texture" :frame="itemData[grab.item.key].frame" :scale="grab.item.scale" :origin="0.5" @pointerup="p => drop(p)" />
@@ -19,8 +19,8 @@ import Text from '@/components/Text'
 import config from '@/data/config'
 import items from '@/data/items'
 const itemData = items.toObject(v => [v.key, v])
-const WIDTH = 220
-const HEIGHT = 405
+const WIDTH = 230
+const HEIGHT = 410
 export default {
   components: { Image, Container, MenuContainer, Text },
   emits: ['close'],
@@ -40,7 +40,7 @@ export default {
       x: 0, y: 0
     })
     const grabItemName = computed(() => itemData[grab.item.key].type === 'Character' ? t(`name.${grab.item.key}`) : t(`item.${grab.item.key}`))
-    const onEatArea = computed(() => Math.hypot(grab.x - 907, grab.y - 418) < 25)
+    const onEatArea = computed(() => Math.hypot(grab.x - 907, grab.y - 422) < 25)
     const onBagArea = computed(() => (grab.x - offsetX.value) >= 0)
     const weight = computed(() => storage.state.bagItems.reduce((sum, v) => sum + itemData[v.key].weight, 0))
     const grabRef = refObj(null)

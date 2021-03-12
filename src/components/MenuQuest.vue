@@ -1,5 +1,5 @@
 <template>
-  <MenuContainer ref="container" :arrowX="25 + (1 * 60)" :height="305" :title="t('ui.quest')" @wheel="onWheel" @pointermove.stop="onSwipe">
+  <MenuContainer ref="container" :arrowX="20 + (2 * 50)" :height="305" :title="t('ui.quest')" @wheel="onWheel" @pointermove.stop="onSwipe">
     <Container v-for="(v, i) in quest.slice(offset, offset + 8)" :key="i" :visible="!selected" :x="rowWidth.half" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerup.stop="p => tapItem(p, v)">
       <Line v-if="i !== 8 - 1" :x="0" :y="rowHeight.half" :lineWidth="0.5" :x2="rowWidth" :strokeColor="COLORS.brown" :alpha="0.25" />
       <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="v.started(state) ? t(`quest.${v.key}.title`) : '？？？'" :size="13" :bold="v.started(state)" />
@@ -10,7 +10,7 @@
       <Text :x="10" :y="40" :text="t(`quest.${selected.key}.title`)" :size="14" :bold="true" />
       <Text :x="10" :y="70" :text="`${t('ui.location')}:\n${t('ui.client')}:`" :size="12" :bold="true" :lineSpacing="3" />
       <Text :x="65" :y="70" :text="`${t(`place.${selected.place}`)}\n${t(`name.${selected.chara}`)}`" :size="12" :lineSpacing="3" />
-      <Text :x="10" :y="116" :text="t(`quest.${selected.key}.desc`)" :size="13" :style="{ wordWrap: { width: 200, useAdvancedWrap: true } }" :lineSpacing="5" />
+      <Text :x="10" :y="116" :text="t(`quest.${selected.key}.desc`)" :size="13" :style="{ wordWrap: { width: 210, useAdvancedWrap: true } }" :lineSpacing="5" />
     </Container>
     <ScrollBar ref="scrollBar" :visible="!selected" :x="rowWidth + 13 - 3" :y="3" :height="289" :length="quest.length" :limit="8" v-model="offset" />
   </MenuContainer>
@@ -36,7 +36,7 @@ export default {
     const data = reactive({
       selected: null,
       offset: 0,
-      rowWidth: 207, rowHeight: 37
+      rowWidth: 217, rowHeight: 37
     })
     const tapItem = (p, v) => {
       if (p.isMoved || !v.started(state)) return
