@@ -80,10 +80,17 @@ export default {
         grab.resolver(true)
         context.emit('close')
       } else if (grab.mode === 'dispose') {
-        field.addObject({ id: Math.randomInt(1000000, 9999999), name: data.key, x: grab.x + camera.scrollX, y: grab.y + camera.scrollY + hHalf * (grab.item.scale ?? 1), scale: grab.item.scale })
-        storage.state.bagItems.delete(grab.item)
+        const x = grab.x + camera.scrollX
+        const y = grab.y + camera.scrollY + hHalf * (grab.item.scale ?? 1)
+        const onCeil = field.field.tilemap.layers.some(l => l.tilemapLayer.depth >= config.DEPTH.CEIL && l.tilemapLayer.getTileAtWorldXY(x, y)?.collides)
+        if (onCeil) {
+          uiScene.log.push(t('ui.cantPutItem'))
+        } else {
+          field.addObject({ id: Math.randomInt(1000000, 9999999), name: data.key, x, y, scale: grab.item.scale })
+          storage.state.bagItems.delete(grab.item)
+          context.emit('close')
+        }
         grab.resolver()
-        context.emit('close')
       } else if (grab.mode === 'move') {
         grab.item.bagX = Math.round(Math.fix(pointer.x - offsetX.value, wHalf, WIDTH - wHalf))
         grab.item.bagY = Math.round(Math.fix(pointer.y - offsetY.value, hHalf, HEIGHT - hHalf))
@@ -106,6 +113,7 @@ export default {
           context.emit('close')
         }
       }
+      grab.mode = null
       grab.item = null
       grab.resolver = null
     }

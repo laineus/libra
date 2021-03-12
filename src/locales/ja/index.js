@@ -188,6 +188,7 @@ export default {
     eat: '『#{name}』を食べた',
     hpRecover: 'HPが#{value}回復した',
     weightOver: '荷物が重すぎてこれ以上持てません',
+    cantPutItem: 'ここには置けません',
     status: 'ステータス',
     bag: 'かばん',
     quest: 'クエスト',
