@@ -1,11 +1,11 @@
 <template>
   <div>
-    <TilemapLayer v-for="v in layers" :key="v.index" :ref="v.ref" :depth="config.DEPTH[v.depth] ?? v.index" :tilemap="field.tilemap" :layerIndex="v.index" :tileset="field.tilesets" :collisionByProperty="{ collides: true}" :pipeline="pipeline" @create="layerCreate" />
+    <TilemapLayer v-for="v in layers" :key="v.index" :ref="v.ref" :depth="config.DEPTH[v.depth] ?? v.index" :tilemap="field.tilemap" :layerIndex="v.index" :tileset="field.tilesets" :collisionByProperty="{ collides: true}" @create="layerCreate" />
     <ManualTile v-for="v in manualTiles" :key="v.id" :setting="v" :field="field" @create="layerCreate" />
-    <Image v-for="(v, i) in images" :key="i" :ref="v.ref" :texture="`tileset/${v.key}`" :x="v.x" :y="v.y" :origin="0" :pipeline="pipeline" @create="obj => obj.setDepth(obj.y + obj.height)" />
-    <Player ref="player" :initX="playerX" :initY="playerY" :initR="playerR" :pipeline="pipeline" @create="charaCreate" @shot="addBullet" />
-    <Character v-for="v in charas" :key="v.id" :ref="v.ref" :unique="v.unique && `${name}_${v.id}`" :initX="v.x" :initY="v.y" :initR="v.radian" :name="v.name" :scale="v.scale" :random="v.random" :pipeline="pipeline" @create="charaCreate" @del="delObject(v.id)" />
-    <Substance v-for="v in substances" :key="v.id" :ref="v.ref" :unique="v.unique && `${name}_${v.id}`" :initX="v.x" :initY="v.y" :name="v.name" :scale="v.scale" :pipeline="pipeline" @del="delObject(v.id)" />
+    <Image v-for="(v, i) in images" :key="i" :ref="v.ref" :texture="`tileset/${v.key}`" :x="v.x" :y="v.y" :origin="0" @create="obj => obj.setDepth(obj.y + obj.height)" />
+    <Player ref="player" :initX="playerX" :initY="playerY" :initR="playerR" @create="charaCreate" @shot="addBullet" />
+    <Character v-for="v in charas" :key="v.id" :ref="v.ref" :unique="v.unique && `${name}_${v.id}`" :initX="v.x" :initY="v.y" :initR="v.radian" :name="v.name" :scale="v.scale" :random="v.random" @create="charaCreate" @del="delObject(v.id)" />
+    <Substance v-for="v in substances" :key="v.id" :ref="v.ref" :unique="v.unique && `${name}_${v.id}`" :initX="v.x" :initY="v.y" :name="v.name" :scale="v.scale" @del="delObject(v.id)" />
     <Area v-for="v in areas" :key="v.id" :ref="v.ref" :x="v.x" :y="v.y" :width="v.width" :height="v.height" />
     <Gate v-for="v in gates" :key="v.id" :ref="v.ref" :x="v.x" :y="v.y" :width="v.width" :height="v.height" :to="{ key: v.name, x: v.fieldX.toPixel, y: v.fieldY.toPixel, r: player?.r }" />
     <Bullet v-for="v in bullets" :key="v.id" :initX="v.x" :initY="v.y" :r="v.r" @del="delBullet(v.id)" />
@@ -52,9 +52,6 @@ export default {
     const gates = computed(() => objects.filter(v => v.type === 'Gate'))
     const positions = computed(() => objects.filter(v => v.type === 'Position').toObject(v => [v.name, { x: v.x, y: v.y }]))
     const lightSubstances = computed(() => substances.value.filter(v => v.ref.value?.light))
-    scene.lights.setAmbientColor(field.properties.ambient ?? 0xFFFFFF).enable()
-    // const pipeline = computed(() => lightSubstances.value.length ? 'Light2D' : 'TextureTintPipeline')
-    const pipeline = 'Light2D'
     const addObject = object => {
       const itemData = items.find(v => v.key === object.name)
       const obj = Object.assign({ ref: ref(null), id: Symbol('id'), type: itemData.type }, object)
@@ -116,7 +113,6 @@ export default {
       field,
       name: field.name, width: field.width, height: field.height,
       layers, images, player, objects, charas, substances, areas, gates, positions, manualTiles,
-      pipeline,
       addObject, delObject, dropItem,
       bullets, addBullet, delBullet,
       isCollides, getObjectById,

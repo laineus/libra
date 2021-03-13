@@ -8,23 +8,24 @@
       </template>
       <slot />
     </Container>
-    <Light v-if="light" :x="initX" :y="initY" :intensity="0.3" :color="0xFF8800" :radius="120" />
+    <Image v-if="light" :blendMode="BlendModes.OVERLAY" :x="initX" :y="initY" :depth="config.DEPTH.LIGHT" :tint="0xFF8800" texture="light" />
     <TapArea v-if="tapEvent.event.value" :visible="interactive" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @tap="execTapEvent" />
     <GrabArea v-else-if="capturable" :visible="interactive" :name="name" :scale="scale" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @grab="alpha = 0.5" @capture="onBroken" @cancel="alpha = 1" />
   </div>
 </template>
 
 <script>
-import { refObj, Container, Image, onPreUpdate, Light } from 'phavuer'
+import { refObj, Container, Image, onPreUpdate } from 'phavuer'
 import { computed, inject, reactive, ref, toRefs, unref } from 'vue'
 import items from '@/data/items'
 import TapArea from './TapArea'
 import GrabArea from './GrabArea'
 import Break from './Break'
 import useEvent from './modules/useEvent'
+import config from '@/data/config'
 const toAdditionalString = v => v < 0 ? `-=${Math.abs(v)}` : `+=${v}`
 export default {
-  components: { Container, Image, Light, TapArea, GrabArea, Break },
+  components: { Container, Image, TapArea, GrabArea, Break },
   props: {
     unique: { default: null },
     initX: { default: 0 },
@@ -119,6 +120,8 @@ export default {
       })
     }
     return {
+      config,
+      BlendModes: Phaser.BlendModes,
       unref,
       ...toRefs(data),
       interactive,
