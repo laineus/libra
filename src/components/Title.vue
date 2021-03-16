@@ -1,7 +1,8 @@
 <template>
   <Rectangle :fillColor="0x333333" :origin="0" :width="config.WIDTH" :height="config.HEIGHT" />
   <Image texture="main" :x="config.WIDTH.half" :y="config.HEIGHT.half" />
-  <Image texture="logo" :x="config.WIDTH.half" :y="config.HEIGHT.half - 80" />
+  <Image v-if="setting.state.lang === 'ja'" texture="logo_ja" :x="config.WIDTH.half" :y="config.HEIGHT.half - 77" />
+  <Image v-else texture="logo_en" :x="config.WIDTH.half" :y="config.HEIGHT.half - 90" />
   <Container v-for="(v, i) in list" :key="i" :x="config.WIDTH.half" :y="380 + (i * 40)">
     <Image texture="nav" :frame="i" :y="3" :tint="config.COLORS.brown" :alpha="0.3" />
     <Image texture="nav" :frame="i" :blendMode="Phaser.BlendModes[selected === i ? 'ADD' : 'NORMAL']" @pointerdown.stop="select(i)" />
@@ -9,12 +10,12 @@
   </Container>
   <Container v-if="selected > 0" :tween="tween">
     <Rectangle :fillColor="config.COLORS.black" :origin="0" :alpha="0.3" :width="config.WIDTH" :height="config.HEIGHT" @pointerdown="select(null)" />
-    <Container v-if="selected === 1" :x="config.WIDTH.half" :y="375">
+    <Container v-if="selected === 1" :x="config.WIDTH.half" :y="355">
       <RoundRectangle :width="266" :height="276" :origin="0.5" :radius="5" :fillColor="config.COLORS.soy" @pointerdown.stop />
       <RoundRectangle :width="261" :height="271" :origin="0.5" :radius="5" :strokeColor="config.COLORS.brown" :lineWidth="1" />
       <menu-system-save v-if="selected === 1" :x="-110" :y="-130" :load="true" @load="$emit('close')" />
     </Container>
-    <Container v-else-if="selected === 2" :x="config.WIDTH.half" :y="400">
+    <Container v-else-if="selected === 2" :x="config.WIDTH.half" :y="390">
       <RoundRectangle :width="266" :height="206" :origin="0.5" :radius="5" :fillColor="config.COLORS.soy" @pointerdown.stop />
       <RoundRectangle :width="261" :height="201" :origin="0.5" :radius="5" :strokeColor="config.COLORS.brown" :lineWidth="1" />
       <menu-system-config :x="-110" :y="-94" />
@@ -36,6 +37,7 @@ export default {
   emits: ['close'],
   setup (_, context) {
     const gameScene = inject('gameScene')
+    const setting = inject('setting')
     const selected = ref(null)
     const list = [t('ui.newGame'), t('ui.continue'), t('ui.config')]
     const tween = ref(null)
@@ -56,6 +58,7 @@ export default {
       t,
       Phaser,
       config,
+      setting,
       selected,
       tween,
       list,
