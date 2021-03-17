@@ -42,6 +42,9 @@ const extendNativeClassFunctions = (screenWidth, screenHeight, tileSize) => {
   Object.defineProperty(Array.prototype, 'count', {
     value (callbackfn) { return this.filter(typeof callbackfn === 'function' ? callbackfn : v => v === callbackfn).length }
   })
+  Object.defineProperty(Array.prototype, 'sum', {
+    value (callbackfn) { return this.map(callbackfn).reduce((accumulator, current) => accumulator + current, 0) }
+  })
   Object.defineProperty(Array.prototype, 'delete', {
     value (callbackfn) {
       const i = this.findIndex(typeof callbackfn === 'function' ? callbackfn : v => v === callbackfn)
