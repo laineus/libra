@@ -23,6 +23,7 @@
       <Text :text="t('ui.ok')" :origin="0.5" :y="72" :size="14" />
     </Container>
   </Container>
+  <Credit />
 </template>
 
 <script>
@@ -32,8 +33,9 @@ import config from '@/data/config'
 import Text from '@/components/Text'
 import MenuSystemSave from '@/components/MenuSystemSave'
 import MenuSystemConfig from '@/components/MenuSystemConfig'
+import Credit from '@/components/Credit'
 export default {
-  components: { Rectangle, Text, Image, Container, RoundRectangle, MenuSystemSave, MenuSystemConfig },
+  components: { Rectangle, Text, Image, Container, RoundRectangle, MenuSystemSave, MenuSystemConfig, Credit },
   emits: ['close'],
   setup (_, context) {
     const gameScene = inject('gameScene')
@@ -47,7 +49,7 @@ export default {
       } else if (i === 0) {
         selected.value = 0
         // await gameScene.value.setField('forest1', 300, 552, -Math.PI.half)
-        await gameScene.value.setField('forest3', 800, 452, -Math.PI.half)
+        await gameScene.value.setField('hospital1', 250, 250, -Math.PI.half)
         context.emit('close')
       } else {
         selected.value = i
