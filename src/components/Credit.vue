@@ -17,19 +17,26 @@
       <Image texture="drive_l" :y="3600" />
     </Container>
   </Container>
-  <div>{{ Math.round(pos.y) }}</div>
 </template>
 
 <script>
-import { Container, Rectangle, Image } from 'phavuer'
+import { inject, reactive } from 'vue'
+import { Container, Rectangle, Image, onPreUpdate } from 'phavuer'
 import Text from '@/components/Text'
 import config from '@/data/config'
-import { reactive } from '@vue/reactivity'
 export default {
   components: { Container, Rectangle, Image, Text },
   setup () {
+    const audio = inject('audio')
+    const pos = reactive({ y: 0 })
+    audio.setBgm('happy_end')
+    // audio.currentBgm.setSeek(88)
+    onPreUpdate(() => {
+      const progress = Math.min(audio.currentBgm.seek / 90, 1)
+      pos.y = Math.round(3350 * -progress)
+    })
     return {
-      pos: reactive({ y: 0 }),
+      pos,
       config,
       list: [
         { title: 'Written by', names: ['Laineus'] },
