@@ -1,6 +1,6 @@
 <template>
   <Container>
-    <Rectangle :width="config.WIDTH" :height="config.HEIGHT" :fillColor="config.COLORS.black" :origin="0" @wheel="p => currentBgm.seek += (p.deltaY / 20)" />
+    <Rectangle :width="config.WIDTH" :height="config.HEIGHT" :fillColor="config.COLORS.black" :origin="0" :tween="data.blackTween" :alpha="0" @wheel="p => currentBgm.seek += (p.deltaY / 20)" />
     <Container :x="config.WIDTH.half" :y="data.creditY" :tween="data.creditTween">
       <Container v-for="(v, i) in list" :key="i" :y="list.slice(0, i).sum(v => v.names.length * 40) + (i * 180) + config.HEIGHT">
         <Text :text="`- ${v.title} -`" :originX="0.5" color="white" />
@@ -63,8 +63,12 @@ export default {
     const lyricsMap = LYRICS_MAP.map((v, i) => {
       return { start: v[0], end: v[1] ?? LYRICS_MAP[i + 1]?.[0] ?? v[0] + 3 }
     })
+    audio.setBgm('happy_end', { loop: false })
+    // audio.currentBgm.setSeek(210)
+    audio.currentBgm.pause()
     const data = reactive({
       seek: 0,
+      blackTween: Object.assign(tweens.alpha1, { onComplete: () => audio.currentBgm.resume() }),
       creditY: computed(() => {
         const progress = Math.min(data.seek / (FIRST_CHORUS - 10), 1)
         return Math.round(3350 * -progress)
@@ -84,8 +88,6 @@ export default {
       lyricsIndex: computed(() => lyricsMap.findIndex(v => data.seek >= v.start && data.seek < v.end)),
       lyrics: computed(() => lyrics[data.lyricsIndex])
     })
-    audio.setBgm('happy_end', { loop: false })
-    // audio.currentBgm.setSeek(210)
     audio.currentBgm.once('complete', async () => {
       await sleep(4000)
       data.logoTween = tweens.alpha1

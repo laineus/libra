@@ -24,7 +24,8 @@
       </Container>
     </template>
     <Transitions ref="transitions" />
-    <Text v-if="screenMessage.text" :text="screenMessage.text" :x="config.WIDTH.half" :y="config.HEIGHT.half" :size="17" :color="screenMessage.color" :origin="0.5" :depth="config.DEPTH.TRANSITION" />
+    <Text v-if="screenMessage.text" :text="screenMessage.text" :tween="screenMessage.tween" :x="config.WIDTH.half" :y="config.HEIGHT.half" :size="17" :color="screenMessage.color" :origin="0.5" :depth="config.DEPTH.TRANSITION" />
+    <Credit v-if="credit" :depth="config.DEPTH.TRANSITION" :endA="credit === 'a'" @completed="credit = null" />
   </Scene>
 </template>
 
@@ -40,6 +41,7 @@ import Menu from './Menu'
 import Log from './Log'
 import Text from './Text'
 import Transitions from './Transitions'
+import Credit from '@/components/Credit'
 import config from '@/data/config'
 const downloadBySource = (src, name) => {
   const link = document.createElement('a')
@@ -50,7 +52,7 @@ const downloadBySource = (src, name) => {
   document.body.removeChild(link)
 }
 export default {
-  components: { Scene, Title, Controller, Circle, Image, Container, RoundRectangle, Talk, Selector, Menu, Log, Text, Transitions },
+  components: { Scene, Title, Controller, Circle, Image, Container, RoundRectangle, Talk, Selector, Menu, Log, Text, Transitions, Credit },
   setup (props) {
     const mobile = inject('mobile')
     const frames = inject('frames')
@@ -74,10 +76,23 @@ export default {
       })
     })
     const titleScreen = ref(true)
-    const screenMessage = shallowReactive({ text: null, color: null })
+    const credit = ref(null)
+    const screenMessage = shallowReactive({ text: null, color: null, tween: null })
     const setScreenMessage = (text, color = 'white') => {
-      screenMessage.text = text
-      screenMessage.color = color
+      return new Promise(resolve => {
+        const clear = () => {
+          return new Promise(resolve => {
+            const onComplete = () => {
+              screenMessage.text = null
+              resolve()
+            }
+            screenMessage.tween = { alpha: { from: 1, to: 0 }, duration: 300, onComplete }
+          })
+        }
+        screenMessage.text = text
+        screenMessage.color = color
+        screenMessage.tween = { alpha: { from: 0, to: 1 }, duration: 300, onComplete: resolve(clear) }
+      })
     }
     const selector = reactive({ list: null, resolver: null, x: 0, y: 0 })
     const setSelector = list => {
@@ -106,6 +121,7 @@ export default {
       update,
       ...refs,
       titleScreen,
+      credit, startCredit: bool => credit.value = bool ? 'a' : 'b',
       selector, setSelector,
       screenMessage, setScreenMessage,
       mapName, setMapName,
