@@ -54,32 +54,32 @@ export default {
     if (state.events.main === MAIN_STEPS.BRAIN) {
       kajitsu.setVisible(true)
       event.exec(async () => {
-        // await sleep(1500)
-        // await libra.setTargetPosition(field.positions.relay.x, field.positions.relay.y)
-        // kajitsu.lookTo('left')
-        // await libra.setTargetPosition(field.positions.center.x, field.positions.center.y)
-        // await sleep(1000)
-        // await speakKajitsu(t('events.dream.kajitsu1'))
-        // libra.lookTo('right')
-        // await sleep(500)
-        // await speakKajitsu(t('events.dream.kajitsu2'))
-        // await speakLibra(t('events.libra.silence'))
-        // await speakKajitsu(t('events.dream.kajitsu3'))
-        // const cancel = await uiScene.setSelector(t('events.dream.yesno')) === 1
-        // if (cancel) {
-        //   await speakKajitsu(t('events.dream.cancel'))
-        //   const completeTransition = await uiScene.transition(1000)
-        //   kajitsu.setVisible(false)
-        //   libra.lookTo('up')
-        //   await completeTransition()
-        //   return
-        // }
-        // await speakKajitsu(t('events.dream.kajitsu4'))
-        // await sleep(500)
-        // libra.lookTo('up')
-        // await sleep(500)
-        // await speakLibra(t('events.libra.silence'))
-        // await sleep(500)
+        await sleep(1500)
+        await libra.setTargetPosition(field.positions.relay.x, field.positions.relay.y)
+        kajitsu.lookTo('left')
+        await libra.setTargetPosition(field.positions.center.x, field.positions.center.y)
+        await sleep(1000)
+        await speakKajitsu(t('events.dream.kajitsu1'))
+        libra.lookTo('right')
+        await sleep(500)
+        await speakKajitsu(t('events.dream.kajitsu2'))
+        await speakLibra(t('events.libra.silence'))
+        await speakKajitsu(t('events.dream.kajitsu3'))
+        const cancel = await uiScene.setSelector(t('events.dream.yesno')) === 1
+        if (cancel) {
+          await speakKajitsu(t('events.dream.cancel'))
+          const completeTransition = await uiScene.transition(1000)
+          kajitsu.setVisible(false)
+          libra.lookTo('up')
+          await completeTransition()
+          return
+        }
+        await speakKajitsu(t('events.dream.kajitsu4'))
+        await sleep(500)
+        libra.lookTo('up')
+        await sleep(500)
+        await speakLibra(t('events.libra.silence'))
+        await sleep(500)
         const white = await uiScene.transition(6000, { color: config.COLORS.white, alpha: 0.5, depth: config.DEPTH.TALK - 1, hold: 0 })
         const black = await uiScene.transition(700, { color: config.COLORS.black, alpha: 1 })
         const clear = await uiScene.setScreenMessage(t('events.dream.message'))
