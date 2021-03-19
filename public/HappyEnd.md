@@ -8,7 +8,7 @@ And try to live for someone else
 
 If the day I'll die is the end of the world
 There's no one to be sad
-And even if the day is tomorrow
+And even if the day comes tomorrow
 Just something will sparkle once
 
 A song I was listening when the sunset
