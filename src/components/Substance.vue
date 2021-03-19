@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Container ref="object" :visible="unref(visible)" :x="initX" :y="initY" :width="imgWidth" :height="imgWidth" :depth="depth" :tweens="tweens" @create="create">
+    <Container ref="object" :visible="unref(visible)" :x="initX" :y="initY" :width="imgWidth" :height="imgHeight" :depth="depth" :tweens="tweens" @create="create">
       <template v-if="imageTexture">
         <Image v-if="hp > 0" ref="image" :texture="imageTexture" :frame="frame" :originX="0.5" :originY="1" :scale="scale" :alpha="alpha" :pipeline="pipeline" />
         <Break v-else :texture="imageTexture" :scale="scale" :initialFrame="frame" @broken="onBroken" />
