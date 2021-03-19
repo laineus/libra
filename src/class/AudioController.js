@@ -22,7 +22,7 @@ export default class {
     })
     return this
   }
-  setBgm (name) {
+  setBgm (name, config) {
     if (!name) {
       this.currentBgm = null
       this.sound.stopAll()
@@ -31,14 +31,14 @@ export default class {
     const key = `bgm/${name}`
     if (this.currentBgm?.key === key) return
     this.currentBgm?.stop()
-    this.currentBgm = this.sound.add(key, { loop: true, volume: this.bgmVolume })
+    this.currentBgm = this.sound.add(key, Object.assign({ loop: true, volume: this.bgmVolume }, config))
     this.currentBgm.play()
   }
-  interruptBgm (name) {
+  interruptBgm (name, config) {
     const key = `bgm/${name}`
     if (this.currentBgm?.key === key) return () => null
     this.currentBgm?.pause()
-    const bgm = this.sound.add(key, { loop: true, volume: this.bgmVolume, duration: 200 })
+    const bgm = this.sound.add(key, Object.assign({ loop: true, volume: this.bgmVolume, duration: 200 }, config))
     bgm.play()
     const resolve = () => {
       this.currentBgm?.resume()
