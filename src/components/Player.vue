@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { computed, inject, onMounted, ref } from 'vue'
+import { computed, inject, onBeforeUnmount, onMounted, ref } from 'vue'
 import { onPreUpdate, Body, Light } from 'phavuer'
 import Substance from './Substance'
 import useFollowing from './modules/useFollowing'
@@ -81,13 +81,17 @@ export default {
       substance.value.setCapturable(false)
       substance.value.hp = state.status.hp
     })
-    scene.input.on('pointerdown', pointer => {
+    const onTapScreen = pointer => {
       if (event.state || menuOpened.value) return
       if (pointer.button === 0) {
         if (gun.mode.value) shot()
       } else if (pointer.button === 2) {
         gunSwitch()
       }
+    }
+    scene.input.on('pointerdown', onTapScreen)
+    onBeforeUnmount(() => {
+      scene.input.off('pointerdown', onTapScreen)
     })
     const damage = (value, r) => {
       substance.value.damage(value, r)
@@ -95,7 +99,7 @@ export default {
       if (substance.value.hp <= 0) {
         event.exec(async () => {
           await sleep(3000)
-          await gameScene.value.setField('home', 0, 0)
+          await gameScene.value.setField('home', 0, 0, 0, { respawn: true })
         })
       }
     }

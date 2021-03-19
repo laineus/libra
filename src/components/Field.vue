@@ -33,7 +33,7 @@ import items from '@/data/items'
 export default {
   components: { TilemapLayer, Image, Player, Character, Substance, Area, Gate, Bullet, ManualTile },
   props: [
-    'fieldKey', 'playerX', 'playerY', 'playerR'
+    'fieldKey', 'playerX', 'playerY', 'playerR', 'payload'
   ],
   setup (props) {
     const scene = inject('scene')
@@ -91,12 +91,11 @@ export default {
       darkness.clear().fillBg(field.properties.darkness ?? 0x77000000).removeArcs(arcs).save().refresh()
     }
     watch(() => lightSubstances.value.length, resetDarkness)
-    const respawn = state.status.hp <= 0
-    if (respawn) state.status.hp = 100
+    if (state.status.hp <= 0) state.status.hp = 100
     onMounted(() => {
       resetDarkness()
       setupCamera(inject('camera').value, field.width, field.height, player.value.object)
-      event.create?.({ respawn })
+      event.create?.(props.payload)
       audio.setBgm(event.bgm || null)
     })
     onBeforeUnmount(() => {
