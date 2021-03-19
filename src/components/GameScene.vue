@@ -12,7 +12,7 @@ import Field from './Field'
 export default {
   components: { Scene, Field },
   setup (props, context) {
-    const fieldData = reactive({ name: null, x: 0, y: 0, r: 0, payload: null })
+    const fieldData = reactive({ name: null, x: 0, y: 0, r: 0, payload: undefined })
     const scene = refScene(null)
     const frames = inject('frames')
     const uiScene = inject('uiScene')
@@ -29,7 +29,7 @@ export default {
       fps.value = Math.round(scene.game.loop.actualFps)
       field.value.play(time)
     }
-    const setField = async (name, x, y, r, payload = null) => {
+    const setField = async (name, x, y, r, payload) => {
       const completeTransition = await uiScene.value.transition(200)
       fieldData.name = null
       uiScene.value.setMapName(null)

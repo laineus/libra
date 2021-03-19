@@ -24,6 +24,7 @@
       </Container>
     </template>
     <Transitions ref="transitions" />
+    <Tutorial v-if="tutorial" :text="tutorial" @close="tutorial = null" />
     <Text v-if="screenMessage.text" :text="screenMessage.text" :tween="screenMessage.tween" :x="config.WIDTH.half" :y="config.HEIGHT.half" :size="17" :color="screenMessage.color" :origin="0.5" :depth="config.DEPTH.TRANSITION" />
     <Credit v-if="credit.resolve" :depth="config.DEPTH.TRANSITION" :endA="credit.endA" @completed="credit.resolve" />
   </Scene>
@@ -41,6 +42,7 @@ import Menu from './Menu'
 import Log from './Log'
 import Text from './Text'
 import Transitions from './Transitions'
+import Tutorial from '@/components/Tutorial'
 import Credit from '@/components/Credit'
 import config from '@/data/config'
 const downloadBySource = (src, name) => {
@@ -52,7 +54,7 @@ const downloadBySource = (src, name) => {
   document.body.removeChild(link)
 }
 export default {
-  components: { Scene, Title, Controller, Circle, Image, Container, RoundRectangle, Talk, Selector, Menu, Log, Text, Transitions, Credit },
+  components: { Scene, Title, Controller, Circle, Image, Container, RoundRectangle, Talk, Selector, Menu, Log, Text, Transitions, Tutorial, Credit },
   setup (props) {
     const mobile = inject('mobile')
     const frames = inject('frames')
@@ -67,6 +69,7 @@ export default {
       menu: ref(null),
       transitions: ref(null)
     }
+    const tutorial = ref(null)
     onMounted(() => {
       refs.scene.value.input.setTopOnly(false)
       refs.scene.value.input.keyboard.on('keydown-S', e => {
@@ -134,6 +137,7 @@ export default {
       selector, setSelector,
       screenMessage, setScreenMessage,
       mapName, setMapName,
+      tutorial,
       transition: (...args) => refs.transitions.value.add(...args),
       player
     }

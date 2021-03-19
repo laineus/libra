@@ -3,7 +3,7 @@ import Talker from '@/util/Talker'
 import useItemReaction from '@/map/useItemReaction'
 export default {
   bgm: 'happy',
-  create ({ respawn, ep }) {
+  create ({ respawn = false, ep = false } = {}) {
     const bag = inject('bag')
     const event = inject('event')
     const field = inject('field').value
