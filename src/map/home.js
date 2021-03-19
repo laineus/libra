@@ -3,7 +3,7 @@ import Talker from '@/util/Talker'
 import useItemReaction from '@/map/useItemReaction'
 export default {
   bgm: 'happy',
-  create ({ respawn }) {
+  create ({ respawn, ep }) {
     const bag = inject('bag')
     const event = inject('event')
     const field = inject('field').value
@@ -20,6 +20,12 @@ export default {
     const tAmili = new Talker(t('name.amili'), amili.object)
     const speakAmiliScripts = talk.getSpeakScripts(tAmili)
 
+    if (ep) {
+      field.player.object.setPosition(field.positions.bed.x, field.positions.bed.y)
+      amili.object.setPosition(field.positions.bed.x + 20, field.positions.bed.y)
+      field.player.lookTo('rightDown')
+      amili.lookTo('leftDown')
+    }
     if (respawn) {
       field.player.object.setPosition(field.positions.bed.x, field.positions.bed.y)
       amili.object.setPosition(field.positions.bed.x + 20, field.positions.bed.y)

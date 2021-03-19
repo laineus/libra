@@ -176,7 +176,7 @@ export default {
           await sleep(3000)
           sleep(3000).then(() => black(0))
           await uiScene.startCredit(false)
-          await gameScene.setField('home', 0, 0, 0, { respawn: true }) // TODO: respawn
+          await gameScene.setField('home', 0, 0, 0, { ep: true })
         }
       })
     }
