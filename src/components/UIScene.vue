@@ -25,7 +25,7 @@
     </template>
     <Transitions ref="transitions" />
     <Text v-if="screenMessage.text" :text="screenMessage.text" :tween="screenMessage.tween" :x="config.WIDTH.half" :y="config.HEIGHT.half" :size="17" :color="screenMessage.color" :origin="0.5" :depth="config.DEPTH.TRANSITION" />
-    <Credit v-if="credit" :depth="config.DEPTH.TRANSITION" :endA="credit === 'a'" @completed="credit = null" />
+    <Credit v-if="credit.resolve" :depth="config.DEPTH.TRANSITION" :endA="credit.endA" @completed="credit.resolve" />
   </Scene>
 </template>
 
@@ -76,7 +76,16 @@ export default {
       })
     })
     const titleScreen = ref(true)
-    const credit = ref(null)
+    const credit = reactive({ endA: false, resolve: null })
+    const startCredit = endA => {
+      return new Promise(resolve => {
+        credit.endA = endA
+        credit.resolve = () => {
+          sleep(200).then(() => credit.resolve = null)
+          resolve()
+        }
+      })
+    }
     const screenMessage = shallowReactive({ text: null, color: null, tween: null })
     const setScreenMessage = (text, color = 'white') => {
       return new Promise(resolve => {
@@ -121,7 +130,7 @@ export default {
       update,
       ...refs,
       titleScreen,
-      credit, startCredit: bool => credit.value = bool ? 'a' : 'b',
+      credit, startCredit,
       selector, setSelector,
       screenMessage, setScreenMessage,
       mapName, setMapName,

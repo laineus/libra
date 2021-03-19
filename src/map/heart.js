@@ -6,6 +6,7 @@ export default {
   bgm: null,
   async create () {
     const uiScene = inject('uiScene').value
+    const gameScene = inject('gameScene').value
     const field = inject('field').value
     const talk = inject('talk').value
     const state = inject('storage').state
@@ -129,7 +130,8 @@ export default {
           await clear()
           await sleep(3000)
           sleep(3000).then(() => white(0))
-          uiScene.startCredit(true)
+          await uiScene.startCredit(true)
+          await gameScene.backToTitle()
         } else {
           sleep(1000)
           await speakAmili(t('events.dream.last2.amili1'))
@@ -173,7 +175,8 @@ export default {
           await clear()
           await sleep(3000)
           sleep(3000).then(() => black(0))
-          uiScene.startCredit(false)
+          await uiScene.startCredit(false)
+          await gameScene.setField('home', 0, 0, 0, { respawn: true }) // TODO: respawn
         }
       })
     }
