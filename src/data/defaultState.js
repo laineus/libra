@@ -7,8 +7,8 @@ export default {
   sec: 0,
   status: {
     hp: 100,
-    heart: 0,
-    body: 0
+    heart: 6,
+    body: 6
   },
   bagItems: [
     { id: 1, key: 'apple', bagX: 30, bagY: 40 },
@@ -30,7 +30,7 @@ export default {
   ],
   events: {
     intro: 0,
-    main: 0,
+    main: 3,
     itemReactions: [],
     torrentFlog: 0,
     clover: 0,

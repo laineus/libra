@@ -17,7 +17,9 @@ const makeItem = (name, obj) => {
     type: 'Substance',
     texture: `item/${snakeCase(name)}`,
     hp: 5,
-    weight: 1
+    weight: 1,
+    damage: true,
+    capture: true
   }, obj)
 }
 const makeCharacter = (name, obj) => {
@@ -29,6 +31,8 @@ const makeCharacter = (name, obj) => {
     weight: 1,
     speed: 120,
     standingAnim: false,
+    damage: true,
+    capture: true,
     temper: PLANT
   }, obj)
 }
@@ -118,7 +122,7 @@ export default [
   makeCharacter('ladybird', { hp: 5, atk: 1, temper: BUG, speed: 18 }),
   makeCharacter('stagBeetle', { hp: 5, atk: 3, temper: BEAR, speed: 18 }),
   makeCharacter('beetle', { hp: 5, atk: 2, temper: CAT, speed: 18 }),
-  makeCharacter('kajitsu', { hp: 5, atk: 5, damage: false }),
+  makeCharacter('kajitsu', { hp: 5, atk: 5, damage: false, capture: false }),
   makeCharacter('torrent', { hp: 100, atk: 60, temper: ELEPHANT, speed: 50, weight: 5 }),
   makeCharacter('flog', { hp: 20, atk: 5, temper: CAT, speed: 30 }),
   makeCharacter('fallFlog', { hp: 20, atk: 5, temper: SHARK, speed: 30 }),
@@ -130,5 +134,5 @@ export default [
   makeCharacter('signal', { hp: 30, atk: 10, temper: BUG, speed: 40, weight: 2, standingAnim: true }),
   makeCharacter('ghost', { hp: 50, atk: 15, temper: CAT, speed: 60, standingAnim: true, damage: false }),
   makeCharacter('pumpkin', { hp: 20, atk: 15, temper: FISH, speed: 50, weight: 2 }),
-  makeCharacter('amili', { hp: 100, atk: 5, damage: false })
+  makeCharacter('amili', { hp: 100, atk: 5, damage: false, capture: false })
 ]

@@ -54,10 +54,10 @@ export default {
     const light = computed(() => itemData.value?.light)
     const depthAdjust = computed(() => itemData.value?.y ?? 0)
     const imageTexture = computed(() => props.texture || itemData.value?.texture)
+    const capturable = computed(() => itemData.value?.capture)
     const data = reactive({
       visible: true,
       tweens: null,
-      capturable: Boolean(props.name),
       distanceToPlayer: null,
       hp: itemData.value?.hp ?? 10
     })
@@ -121,6 +121,8 @@ export default {
     }
     return {
       config,
+      itemData,
+      capturable,
       BlendModes: Phaser.BlendModes,
       unref,
       ...toRefs(data),

@@ -90,6 +90,7 @@ export default {
       following.setTargetObject(null)
     }
     return {
+      itemData,
       object, image, substance,
       frame,
       lookTo,
