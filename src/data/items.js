@@ -134,5 +134,5 @@ export default [
   makeCharacter('signal', { hp: 30, atk: 10, temper: BUG, speed: 40, weight: 2, standingAnim: true }),
   makeCharacter('ghost', { hp: 50, atk: 15, temper: CAT, speed: 60, standingAnim: true, damage: false }),
   makeCharacter('pumpkin', { hp: 20, atk: 15, temper: FISH, speed: 50, weight: 2 }),
-  makeCharacter('amili', { hp: 100, atk: 5, damage: false, capture: false })
+  makeCharacter('amili', { hp: 100, atk: 5, temper: FISH, damage: false, capture: false })
 ]

@@ -17,6 +17,7 @@ export default {
     let slept = false
     const amili = field.getObjectById(7)
     amili.setCapturable(false)
+    amili.setRandomWalk()
     const tAmili = new Talker(t('name.amili'), amili.object)
     const speakAmiliScripts = talk.getSpeakScripts(tAmili)
 

@@ -17,8 +17,7 @@ export default {
   props: {
     initR: { default: 0 },
     name: { default: null },
-    speed: { default: 120 },
-    random: { default: null } // leave chase random null
+    speed: { default: 120 }
   },
   emits: ['del'],
   setup (props, context) {
@@ -31,8 +30,7 @@ export default {
     const image = computed(() => substance.value?.image)
     const following = useFollowing(object)
     const itemData = items.find(v => v.key === props.name)
-    const speed = itemData ? itemData.speed : props.speed
-    if (props.random) following.setRandomWalk(typeof props.random === 'number' ? props.random : 120)
+    const speed = itemData?.speed ?? props.speed
     const textureData = scene.textures.get(itemData.texture)
     const numOfDirection = Object.keys(textureData.frames).map(Number).count(Number.isInteger) / 3
     const { state: frameState, play: playFrameAnim, lookTo } = useFrameAnimChara(object, props.initR, numOfDirection, itemData?.standingAnim)
@@ -98,6 +96,7 @@ export default {
       startEvent,
       // Following
       stopWalking,
+      setRandomWalk: following.setRandomWalk,
       setTargetPosition: following.setTargetPosition,
       clearTargetPosition: following.clearTargetPosition,
       // Extend from Substance
