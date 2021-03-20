@@ -21,6 +21,8 @@ export default {
     const tAmili = new Talker(t('name.amili'), amili.object)
     const speakAmiliScripts = talk.getSpeakScripts(tAmili)
 
+    sleep(1000).then(() => uiScene.setTutorial('home'))
+
     if (ep) {
       field.player.object.setPosition(field.positions.bed.x, field.positions.bed.y)
       amili.object.setPosition(field.positions.bed.x + 20, field.positions.bed.y)

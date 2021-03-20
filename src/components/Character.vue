@@ -23,6 +23,7 @@ export default {
   setup (props, context) {
     const scene = inject('scene')
     const player = inject('player')
+    const uiScene = inject('uiScene').value
     const substance = ref(null)
     const attackTarget = ref(null)
     const frame = ref(0)
@@ -68,6 +69,7 @@ export default {
       }
     })
     const damage = (value, r) => {
+      if (substance.value?.tapEvent?.event.value) uiScene.setTutorial('kill')
       setTemper('shot')
       substance.value?.damage(value, r)
       substance.value?.setTapEvent(null)

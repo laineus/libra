@@ -29,6 +29,7 @@ export default {
   emits: ['close'],
   setup (_, context) {
     const state = inject('storage').state
+    const uiScene = inject('uiScene').value
     const refs = {
       scrollBar: ref(null),
       container: ref(null)
@@ -48,6 +49,9 @@ export default {
     }
     const onWheel = pointer => refs.scrollBar.value.add(Math.sign(pointer.deltaY))
     const onSwipe = pointer => refs.scrollBar.value.swipe(pointer)
+    if (state.status.body > 0 || state.status.heart > 0) {
+      uiScene.setTutorial('quest')
+    }
     return {
       t,
       state,

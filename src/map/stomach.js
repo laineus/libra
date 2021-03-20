@@ -4,6 +4,9 @@ export default {
   async create () {
     const field = inject('field').value
     const state = inject('storage').state
+    const uiScene = inject('uiScene').value
+
+    if (state.tutorial.includes('home')) sleep(1000).then(() => uiScene.setTutorial('map'))
 
     const area = field.getObjectById(7).object
     state.stomach.map(name => {

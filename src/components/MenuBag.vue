@@ -108,7 +108,11 @@ export default {
           })
           grab.resolver(true)
           sleep(30).then(() => context.emit('close'))
-          if (['gun', 'revolver', 'rifle'].includes(grab.item.key)) uiScene.setTutorial(mobile ? 'gunSp' : 'gunPc')
+          if (['gun', 'revolver', 'rifle'].includes(grab.item.key)) {
+            uiScene.setTutorial(mobile ? 'gunSp' : 'gunPc')
+          } else if (weight.value >= 35) {
+            uiScene.setTutorial('weight')
+          }
         } else {
           if (onBagArea.value && weightOver) uiScene.log.push(t('ui.weightOver'))
           grab.resolver(false)
