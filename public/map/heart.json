@@ -46,6 +46,19 @@
          "y":0
         }, 
         {
+         "id":5,
+         "image":"..\/img\/map\/images\/heart.png",
+         "name":"heart",
+         "offsetx":304,
+         "offsety":181.690181538017,
+         "opacity":1,
+         "tintcolor":"#810a0c",
+         "type":"imagelayer",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
          "draworder":"topdown",
          "id":4,
          "name":"events",
@@ -122,19 +135,6 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "id":5,
-         "image":"..\/img\/map\/images\/heart.png",
-         "name":"heart",
-         "offsetx":304,
-         "offsety":280,
-         "opacity":1,
-         "tintcolor":"#810a0c",
-         "type":"imagelayer",
          "visible":true,
          "x":0,
          "y":0

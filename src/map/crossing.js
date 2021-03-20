@@ -25,7 +25,7 @@ export default {
 
     const event = async () => {
       await speakLibra(t('events.libra.exclamation'))
-      await libra.setTargetPosition((27).toPixelCenter, (16).toPixelCenter)
+      await libra.setTargetPosition((27).toPixelCenter, (17).toPixel)
       await sleep(100)
       libra.lookTo('up')
       await sleep(1000)

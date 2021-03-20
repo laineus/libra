@@ -11,6 +11,7 @@ export default {
     const talk = inject('talk').value
     const state = inject('storage').state
     const libra = inject('player').value
+    const camera = inject('camera').value
     const event = inject('event')
 
     const heartImage = field.images.find(v => v.name === 'heart').ref.value
@@ -19,6 +20,7 @@ export default {
 
     const kajitsu = field.getObjectById(3)
     const amili = field.getObjectById(6)
+    amili.setRandomWalk()
     const speakLibra = talk.getSpeakScripts(new Talker(t('name.libra'), libra.object))
     const speakKajitsu = talk.getSpeakScripts(new Talker(t('name.kajitsu'), kajitsu.object))
     const speakAmili = talk.getSpeakScripts(new Talker(t('name.amili'), amili.object))
@@ -34,6 +36,8 @@ export default {
         kajitsu.lookTo('left')
         await libra.setTargetPosition(field.positions.center.x, field.positions.center.y)
         await sleep(1000)
+        const revert = await camera.move(0, -100, 1000)
+        await sleep(1000)
         await speakKajitsu(t('events.heart.start1'))
         await sleep(500)
         libra.lookTo('right')
@@ -45,6 +49,7 @@ export default {
         await speakLibra(t('events.libra.silence'))
         await speakKajitsu(t('events.heart.start4'))
         const completeTransition = await uiScene.transition(1000)
+        revert()
         libra.lookTo('up')
         kajitsu.setVisible(false)
         state.events.main = MAIN_STEPS.HEART
@@ -59,6 +64,8 @@ export default {
         kajitsu.lookTo('left')
         await libra.setTargetPosition(field.positions.center.x, field.positions.center.y)
         await sleep(1000)
+        const revert = await camera.move(0, -100, 1000)
+        await sleep(1000)
         await speakKajitsu(t('events.dream.kajitsu1'))
         libra.lookTo('right')
         await sleep(500)
@@ -69,6 +76,7 @@ export default {
         if (cancel) {
           await speakKajitsu(t('events.dream.cancel'))
           const completeTransition = await uiScene.transition(1000)
+          revert()
           kajitsu.setVisible(false)
           libra.lookTo('up')
           await completeTransition()
@@ -174,7 +182,10 @@ export default {
           await sleep(5000)
           await clear()
           await sleep(3000)
-          sleep(3000).then(() => black(0))
+          sleep(3000).then(() => {
+            black(0)
+            revert()
+          })
           await uiScene.startCredit(false)
           await gameScene.setField('home', 0, 0, 0, { ep: true })
         }
