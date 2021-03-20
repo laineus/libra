@@ -114,7 +114,7 @@ export default [
   makeItem('tissueEmpty', { hp: 5 }),
   makeItem('trash', { hp: 5 }),
   makeItem('tv', { hp: 20, weight: 3 }),
-  ...(17).toArray().map(i => makeItem(`art${i}`, { hp: 10 })),
+  ...(20).toArray().map(i => makeItem(`art${i}`, { hp: 10 })),
   makeCharacter('ladybird', { hp: 5, atk: 1, temper: BUG, speed: 18 }),
   makeCharacter('stagBeetle', { hp: 5, atk: 3, temper: BEAR, speed: 18 }),
   makeCharacter('beetle', { hp: 5, atk: 2, temper: CAT, speed: 18 }),
