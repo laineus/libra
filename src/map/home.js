@@ -50,6 +50,19 @@ export default {
       })
     }
 
+    const consumeTissue = chance => {
+      if (!Math.chance(chance)) return
+      if (Math.chance(0.3)) {
+        const tissue = field.objects.find(v => v.name === 'tissue' && v.x > 610 && v.y < 300)
+        if (!tissue) return
+        tissue.name = 'tissueEmpty'
+        const stateTissue = state.roomItems.find(v => v.key === 'tissue' && v.x === tissue.x && v.y === tissue.y)
+        stateTissue.key = 'tissueEmpty'
+      }
+      const { x, y } = [field.positions.trash1, field.positions.trash2, field.positions.trash3].random()
+      field.addObject({ name: 'trash', x: Math.randomInt(x - 20, x + 20), y: Math.randomInt(y - 20, y + 20) })
+    }
+
     const appleEvent = async () => {
       const result = await uiScene.setSelector(t('events.home.giveApple'))
       if (result === 1) return
@@ -68,16 +81,7 @@ export default {
       amili.object.setPosition(position.x + 20, position.y)
       amili.lookTo(hangout ? 'up' : 'leftDown')
       uiScene.log.push(hangout ? t('events.home.lvup.heart') : t('events.home.lvup.body'))
-      if (!hangout) {
-        const tissue = field.objects.find(v => v.name === 'tissue' && v.x > 610 && v.y < 300)
-        if (tissue) {
-          tissue.name = 'tissueEmpty'
-          const stateTissue = state.roomItems.find(v => v.key === 'tissue' && v.x === tissue.x && tissue.y)
-          stateTissue.key = 'tissueEmpty'
-          const { x, y } = [field.positions.trash1, field.positions.trash2, field.positions.trash3].random()
-          field.addObject({ name: 'trash', x, y })
-        }
-      }
+      if (!hangout) consumeTissue(1)
       await completeTransition()
     }
     const itemReaction = async () => {
