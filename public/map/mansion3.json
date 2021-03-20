@@ -128,8 +128,8 @@
                  "type":"Random",
                  "visible":true,
                  "width":0,
-                 "x":941.366315993078,
-                 "y":133.791612440191
+                 "x":948.598322508399,
+                 "y":134.996946859412
                 }, 
                 {
                  "height":0,
@@ -190,6 +190,18 @@
                  "width":0,
                  "x":261.557568970783,
                  "y":325.440293189453
+                }, 
+                {
+                 "height":0,
+                 "id":15,
+                 "name":"art20",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":838.912755777258,
+                 "y":134.997454952662
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -198,7 +210,7 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":15,
+ "nextobjectid":16,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.4.3",

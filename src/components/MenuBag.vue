@@ -110,7 +110,7 @@ export default {
           sleep(30).then(() => context.emit('close'))
           if (['gun', 'revolver', 'rifle'].includes(grab.item.key)) {
             uiScene.setTutorial(mobile ? 'gunSp' : 'gunPc')
-          } else if (weight.value >= 35) {
+          } else if (weight.value >= 60) {
             uiScene.setTutorial('weight')
           }
         } else {
