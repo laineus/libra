@@ -47,7 +47,7 @@ export default {
       } else if (i === 0) {
         selected.value = 0
         // await gameScene.value.setField('forest1', 300, 552, -Math.PI.half)
-        await gameScene.value.setField('cave1', 350, 350, -Math.PI.half)
+        await gameScene.value.setField('mansion3', 350, 350, -Math.PI.half)
         context.emit('close')
       } else {
         selected.value = i
