@@ -73,7 +73,7 @@
                         {
                          "name":"fieldY",
                          "type":"int",
-                         "value":15
+                         "value":17
                         }],
                  "rotation":0,
                  "type":"Gate",
@@ -92,7 +92,7 @@
  "nextobjectid":3,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"2019.12.11",
+ "tiledversion":"1.4.3",
  "tileheight":32,
  "tilesets":[
         {
@@ -105,6 +105,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.2,
+ "version":1.4,
  "width":39
 }

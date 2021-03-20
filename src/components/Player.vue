@@ -70,9 +70,9 @@ export default {
           }
           if (gun.mode.value) lookTo(getRadianToPointer())
         }
-        if (!gun.mode.value) {
-          following.walkToTargetPosition(event.state ? 100 : 200)
-        }
+      }
+      if (!gun.mode.value) {
+        following.walkToTargetPosition(event.state ? 100 : 200)
       }
       state.x = Number(object.value.x)
       state.y = Number(object.value.y)

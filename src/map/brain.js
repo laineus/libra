@@ -32,7 +32,7 @@ export default {
         await sleep(250)
         const completeTransition = await uiScene.transition(500)
         await sleep(500)
-        const clear = uiScene.setScreenMessage(t('events.brain.message'))
+        const clear = await uiScene.setScreenMessage(t('events.brain.message'))
         await sleep(2500)
         await clear()
         await sleep(500)

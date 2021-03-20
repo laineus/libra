@@ -24,7 +24,7 @@ export default {
       await speakLibra(t('events.libra.silence'))
       const completeTransition = await uiScene.transition(500)
       await sleep(500)
-      const clear = uiScene.setScreenMessage(t('events.dark.kajitsu1'))
+      const clear = await uiScene.setScreenMessage(t('events.dark.kajitsu1'))
       await sleep(2500)
       await clear()
       kajitsu.setVisible(true)
