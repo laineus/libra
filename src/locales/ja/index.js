@@ -12,7 +12,6 @@ export default {
     penguin: 'ペンギン',
     anton: 'アントン先生',
     minePenguin: '炭鉱ペンギン',
-    fallTorrent: '秋トレント',
     pumpkin: 'カボチャ',
     ghost: '幽霊',
     beetle: 'カブトムシ',

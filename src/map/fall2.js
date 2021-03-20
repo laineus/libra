@@ -10,7 +10,7 @@ export default {
 
     const torrent = field.getObjectById(3)
     if (torrent) {
-      const speakTorrent = talk.getSpeakScripts(new Talker(t('name.fallTorrent'), torrent.object))
+      const speakTorrent = talk.getSpeakScripts(new Talker(t('name.torrent'), torrent.object))
 
       let skipStart1 = false
       torrent.setVisible(computed(() => state.events.forever < FOREVER_STEPS.EXECUTED))

@@ -55,7 +55,7 @@ export default state => () => {
     { key: 'bat' },
     { key: 'ghost' },
     { key: 'art' },
-    { key: 'torrent', test: hasSome('torrent', 'fallTorrent') },
+    { key: 'torrent' },
     { key: 'penguin', test: hasSome('penguin', 'minePenguin') },
     { key: 'pumpkin' }
   ]

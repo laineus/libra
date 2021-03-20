@@ -347,7 +347,7 @@
                 {
                  "height":0,
                  "id":3,
-                 "name":"fallTorrent",
+                 "name":"torrent",
                  "point":true,
                  "properties":[
                         {
@@ -506,6 +506,60 @@
                  "width":0,
                  "x":588,
                  "y":172
+                }, 
+                {
+                 "height":0,
+                 "id":32,
+                 "name":"fallFlog",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"string",
+                         "value":"0.6"
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":723.818849449204,
+                 "y":214.116687066503
+                }, 
+                {
+                 "height":0,
+                 "id":33,
+                 "name":"fallFlog",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"string",
+                         "value":"0.6"
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":740.530395756834,
+                 "y":778.131374949
+                }, 
+                {
+                 "height":0,
+                 "id":34,
+                 "name":"torrent",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.25
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":831.39942880457,
+                 "y":344.675642594859
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -514,7 +568,7 @@
          "y":0
         }],
  "nextlayerid":9,
- "nextobjectid":32,
+ "nextobjectid":35,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.4.3",

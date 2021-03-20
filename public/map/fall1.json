@@ -612,6 +612,60 @@
                  "width":0,
                  "x":658,
                  "y":242
+                }, 
+                {
+                 "height":0,
+                 "id":43,
+                 "name":"fallFlog",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"string",
+                         "value":"0.6"
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":526.413708690331,
+                 "y":372.876376988984
+                }, 
+                {
+                 "height":0,
+                 "id":44,
+                 "name":"fallFlog",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"string",
+                         "value":"0.6"
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":882.578539371685,
+                 "y":534.769481844145
+                }, 
+                {
+                 "height":0,
+                 "id":45,
+                 "name":"torrent",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.5
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":342.586699306406,
+                 "y":794.84292125663
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -620,7 +674,7 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":43,
+ "nextobjectid":46,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.4.3",
