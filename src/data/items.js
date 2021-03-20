@@ -99,7 +99,7 @@ export default [
   makeItem('guitar1', { hp: 20, weight: 3 }),
   makeItem('guitar2', { hp: 20, weight: 3 }),
   makeItem('gun', { hp: 10 }),
-  makeItem('musket', { hp: 10 }),
+  makeItem('rifle', { hp: 10 }),
   makeItem('revolver', { hp: 10 }),
   makeItem('kitchen', { hp: 25, weight: 3 }),
   makeItem('knife', { hp: 20 }),

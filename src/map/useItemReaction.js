@@ -39,7 +39,7 @@ export default state => () => {
     { key: 'elixir' },
     { key: 'guitar', test: () => hasSome('guitar1', 'guitar2', 'guitar3') },
     { key: 'gun' },
-    { key: 'musket' },
+    { key: 'rifle' },
     { key: 'revolver' },
     { key: 'kitchen' },
     { key: 'knife' },
