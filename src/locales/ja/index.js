@@ -254,7 +254,8 @@ export default {
     }
   },
   tutorial: {
-    gun: 'You have got a Gun.'
+    gunPc: '銃を手に入れました。\n右クリックを押すと使うことができます。',
+    gunSp: '銃を手に入れました。\n画面右下のボタンを押すと使うことができます。'
   },
   events: {
     block: {

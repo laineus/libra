@@ -48,5 +48,6 @@ export default {
     beauty: 0,
     forever: 0
   },
-  killed: []
+  killed: [],
+  tutorial: []
 }

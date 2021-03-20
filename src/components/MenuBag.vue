@@ -30,6 +30,7 @@ export default {
     const controller = inject('controller').value
     const camera = inject('camera').value
     const field = inject('field').value
+    const mobile = inject('mobile')
     const container = ref(null)
     const offsetX = computed(() => container.value?.offsetX)
     const offsetY = computed(() => container.value?.offsetY)
@@ -107,6 +108,7 @@ export default {
           })
           grab.resolver(true)
           sleep(30).then(() => context.emit('close'))
+          if (['gun', 'revolver', 'rifle'].includes(grab.item.key)) uiScene.setTutorial(mobile ? 'gunSp' : 'gunPc')
         } else {
           if (onBagArea.value && weightOver) uiScene.log.push(t('ui.weightOver'))
           grab.resolver(false)

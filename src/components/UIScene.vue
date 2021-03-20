@@ -24,7 +24,7 @@
       </Container>
     </template>
     <Transitions ref="transitions" />
-    <Tutorial v-if="tutorial" :text="tutorial" @close="tutorial = null" />
+    <Tutorial v-if="tutorial" :name="tutorial" @close="tutorial = null" />
     <Text v-if="screenMessage.text" :text="screenMessage.text" :tween="screenMessage.tween" :x="config.WIDTH.half" :y="config.HEIGHT.half" :size="17" :color="screenMessage.color" :origin="0.5" :depth="config.DEPTH.TRANSITION" />
     <Credit v-if="credit.resolve" :depth="config.DEPTH.TRANSITION" :endA="credit.endA" @completed="credit.resolve" />
   </Scene>
@@ -70,6 +70,11 @@ export default {
       transitions: ref(null)
     }
     const tutorial = ref(null)
+    const setTutorial = key => {
+      if (storage.state.tutorial.includes(key)) return
+      storage.state.tutorial.push(key)
+      tutorial.value = key
+    }
     onMounted(() => {
       refs.scene.value.input.setTopOnly(false)
       refs.scene.value.input.keyboard.on('keydown-S', e => {
@@ -137,7 +142,7 @@ export default {
       selector, setSelector,
       screenMessage, setScreenMessage,
       mapName, setMapName,
-      tutorial,
+      tutorial, setTutorial,
       transition: (...args) => refs.transitions.value.add(...args),
       player
     }
