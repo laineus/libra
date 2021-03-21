@@ -41,7 +41,7 @@ export default {
     const gunDiffY = -40
     const gun = useGun(context, object, { y: gunDiffY })
     const shot = () => gun.shot(r.value)
-    const hasGun = computed(() => bag.hasItem('gun') || bag.hasItem('revolver') || bag.hasItem('rifle'))
+    const hasGun = computed(() => bag.hasItem('gun') || bag.hasItem('revolver'))
     const gunSwitch = () => {
       if (!hasGun.value && !gun.mode.value) return
       gun.setMode(!gun.mode.value)
