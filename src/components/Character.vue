@@ -100,6 +100,7 @@ export default {
       stopWalking,
       setRandomWalk: following.setRandomWalk,
       setTargetPosition: following.setTargetPosition,
+      setTargetObject: following.setTargetObject,
       clearTargetPosition: following.clearTargetPosition,
       // Extend from Substance
       hp: computed(() => substance.value?.hp),

@@ -1,16 +1,45 @@
 import { inject, watch, computed } from 'vue'
 import Talker from '@/util/Talker'
 import useItemReaction from '@/map/useItemReaction'
+const ABSENCE_ACTIONS = Object.freeze({
+  DEFAULT: 0,
+  SLEEP: 1,
+  KITCHEN: 2,
+  COOKIE: 3,
+  SOFA: 4,
+  TV: 5,
+  CD: 6
+})
+const USING_POSITION = {
+  kitchen: { x: 0, y: 20 },
+  tv: { x: 0, y: 70 },
+  audioSystem: { x: 0, y: 40 },
+  sofa: { x: 10, y: 4 }
+}
 export default {
   bgm: 'happy',
   create ({ respawn = false, ep = false } = {}) {
     const bag = inject('bag')
     const event = inject('event')
     const field = inject('field').value
+    const player = inject('player').value
     const talk = inject('talk').value
     const uiScene = inject('uiScene').value
     const state = inject('storage').state
     const getItemReaction = useItemReaction(state)
+
+    const getUsableItem = key => {
+      return state.roomItems.filter(v => {
+        return v.key === key && !field.isCollides((v.x + USING_POSITION[key].x).toTile, (v.y + USING_POSITION[key].y).toTile)
+      }).random()
+    }
+    const absenceAction = Object.values(ABSENCE_ACTIONS).filter(v => {
+      if ([ABSENCE_ACTIONS.KITCHEN, ABSENCE_ACTIONS.COOKIE].includes(v)) return getUsableItem('kitchen')
+      if (v === ABSENCE_ACTIONS.SOFA) return getUsableItem('sofa')
+      if (v === ABSENCE_ACTIONS.TV) return getUsableItem('tv')
+      if (v === ABSENCE_ACTIONS.CD) return getUsableItem('audioSystem')
+      return true
+    }).filter((v, _, list) => list.length <= 3 || v !== ABSENCE_ACTIONS.DEFAULT).random()
 
     let talked = false
     let gave = false
@@ -22,33 +51,6 @@ export default {
     const speakAmiliScripts = talk.getSpeakScripts(tAmili)
 
     sleep(1000).then(() => uiScene.setTutorial('home'))
-
-    if (ep) {
-      field.player.object.setPosition(field.positions.bed.x, field.positions.bed.y)
-      amili.object.setPosition(field.positions.bed.x + 20, field.positions.bed.y)
-      field.player.lookTo('rightDown')
-      amili.lookTo('leftDown')
-    }
-    if (respawn) {
-      field.player.object.setPosition(field.positions.bed.x, field.positions.bed.y)
-      amili.object.setPosition(field.positions.bed.x + 20, field.positions.bed.y)
-      event.exec(async () => {
-        field.player.lookTo('rightDown')
-        amili.lookTo('leftDown')
-        await sleep(2000)
-        await speakAmiliScripts(t('events.gameOver.amili1'))
-        await sleep(1200)
-        await speakAmiliScripts(t('events.gameOver.amili2'))
-        await sleep(500)
-        await Number(3).toArray().reduce(v => {
-          return v.then(() => {
-            amili.object.setPosition(amili.object.x - 1, amili.object.y)
-            return sleep(50)
-          })
-        }, Promise.resolve())
-        await sleep(500)
-      })
-    }
 
     const consumeTissue = chance => {
       if (!Math.chance(chance)) return
@@ -103,6 +105,55 @@ export default {
       }
       talked = true
     })
+
+    if (ep) {
+      field.player.object.setPosition(field.positions.bed.x, field.positions.bed.y)
+      amili.object.setPosition(field.positions.bed.x + 20, field.positions.bed.y)
+      field.player.lookTo('rightDown')
+      amili.lookTo('leftDown')
+    } else if (respawn) {
+      field.player.object.setPosition(field.positions.bed.x, field.positions.bed.y)
+      amili.object.setPosition(field.positions.bed.x + 20, field.positions.bed.y)
+      event.exec(async () => {
+        field.player.lookTo('rightDown')
+        amili.lookTo('leftDown')
+        await sleep(2000)
+        await speakAmiliScripts(t('events.gameOver.amili1'))
+        await sleep(1200)
+        await speakAmiliScripts(t('events.gameOver.amili2'))
+        await sleep(500)
+        await Number(3).toArray().reduce(v => {
+          return v.then(() => {
+            amili.object.setPosition(amili.object.x - 1, amili.object.y)
+            return sleep(50)
+          })
+        }, Promise.resolve())
+        await sleep(500)
+      })
+    } else if (absenceAction === ABSENCE_ACTIONS.DEFAULT) {
+      //
+    } else if (absenceAction === ABSENCE_ACTIONS.SLEEP) {
+      amili.object.setPosition(field.positions.bed.x + 20, field.positions.bed.y)
+      amili.lookTo('rightUp')
+    } else if (absenceAction === ABSENCE_ACTIONS.KITCHEN) {
+      const kitchen = getUsableItem('kitchen')
+      amili.object.setPosition(kitchen.x + USING_POSITION.kitchen.x, kitchen.y + USING_POSITION.kitchen.y)
+      amili.lookTo('up')
+    } else if (absenceAction === ABSENCE_ACTIONS.COOKIE) {
+      amili.setTargetObject(player.object)
+    } else if (absenceAction === ABSENCE_ACTIONS.SOFA) {
+      const sofa = getUsableItem('sofa')
+      amili.object.setPosition(sofa.x + USING_POSITION.sofa.x, sofa.y + USING_POSITION.sofa.y)
+    } else if (absenceAction === ABSENCE_ACTIONS.TV) {
+      const tv = getUsableItem('tv')
+      amili.object.setPosition(tv.x + USING_POSITION.tv.x, tv.y + USING_POSITION.tv.y)
+      amili.lookTo('up')
+    } else if (absenceAction === ABSENCE_ACTIONS.CD) {
+      const audioSystem = getUsableItem('audioSystem')
+      amili.object.setPosition(audioSystem.x + USING_POSITION.audioSystem.x, audioSystem.y + USING_POSITION.audioSystem.y)
+      amili.lookTo('up')
+    }
+    amili.setTargetObject(player.object)
 
     // Load stored items
     state.roomItems.forEach(v => field.addObject({ id: v.id, name: v.key, x: v.x, y: v.y }))
