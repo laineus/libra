@@ -23,6 +23,7 @@ import hospital2 from '@/map/hospital2'
 import mansion1 from '@/map/mansion1'
 import mansion2 from '@/map/mansion2'
 import mansion3 from '@/map/mansion3'
+import cemetery from '@/map/cemetery'
 import brain from '@/map/brain'
 export default {
   home,
@@ -54,6 +55,6 @@ export default {
   mansion1,
   mansion2,
   mansion3,
-  cemetery: { bgm: null },
+  cemetery,
   brain
 }

@@ -6,6 +6,14 @@ export default {
     const state = inject('storage').state
     const uiScene = inject('uiScene').value
 
+    if ((state.status.heart + state.status.body) < 1) {
+      field.getObjectById(4).setEvent(async () => uiScene.log.push(t('events.block.status', 1)))
+      field.getObjectById(5).setEvent(async () => uiScene.log.push(t('events.block.status', 1)))
+    }
+    if ((state.status.heart + state.status.body) < 3) {
+      field.getObjectById(6).setEvent(async () => uiScene.log.push(t('events.block.status', 3)))
+    }
+
     if (state.tutorial.includes('home')) sleep(1000).then(() => uiScene.setTutorial('map'))
 
     const area = field.getObjectById(7).object

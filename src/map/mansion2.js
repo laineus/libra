@@ -1,6 +1,6 @@
 import { inject } from 'vue'
 import Talker from '@/util/Talker'
-import { PAINTER_STEPS } from '@/data/eventSteps'
+import { MAIN_STEPS, PAINTER_STEPS } from '@/data/eventSteps'
 export default {
   bgm: 'libra',
   async create () {
@@ -9,6 +9,11 @@ export default {
     const talk = inject('talk').value
     const state = inject('storage').state
     const bag = inject('bag')
+
+    if (state.events.main < MAIN_STEPS.HEART) {
+      field.getObjectById(1).setEvent(async () => uiScene.log.push(t('events.block.common')))
+      field.getObjectById(2).setEvent(async () => uiScene.log.push(t('events.block.common')))
+    }
 
     const pumpkin = field.getObjectById(4)
     pumpkin?.setTapEvent(async () => {

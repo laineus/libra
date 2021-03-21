@@ -286,7 +286,8 @@ export default {
   },
   events: {
     block: {
-      common: 'この先へはまだ行けません'
+      common: 'この先へはまだ行けません',
+      status: '魅力合計が#{status}必要です'
     },
     libra: {
       exclamation: '！',

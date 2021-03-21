@@ -10,11 +10,9 @@ export default {
     const state = inject('storage').state
     const libra = inject('player').value
 
-    const gate = field.getObjectById(3)
-    gate.setEvent(computed(() => {
-      if (state.events.main < MAIN_STEPS.HEART) return async () => uiScene.log.push(t('events.block.common'))
-      return false
-    }))
+    if (state.events.main < MAIN_STEPS.HEART) {
+      field.getObjectById(3).setEvent(async () => uiScene.log.push(t('events.block.common')))
+    }
 
     const area = field.getObjectById(4)
     const kajitsu = field.getObjectById(5)
