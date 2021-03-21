@@ -17,6 +17,10 @@ export default {
     const heartImage = field.images.find(v => v.name === 'heart').ref.value
     heartImage.setOrigin(0.5).setPosition(heartImage.x + heartImage.width.half, heartImage.y + heartImage.height.half).setTint(0x550000)
     const tween = heartImage.scene.add.tween({ targets: heartImage, loop: -1, yoyo: true, duration: 200, hold: 1200, scale: { from: 1, to: 0.93 } })
+    if (state.events.main >= MAIN_STEPS.DEAD) {
+      tween.stop()
+      heartImage.setTint(0x330022).setScale(0.5).setDepth(heartImage.y + (heartImage.height.half * 0.5))
+    }
 
     const kajitsu = field.getObjectById(3)
     const amili = field.getObjectById(6)
@@ -187,6 +191,7 @@ export default {
             revert()
           })
           await uiScene.startCredit(false)
+          state.events.main = MAIN_STEPS.DEAD
           await gameScene.setField('home', 0, 0, 0, { ep: true })
         }
       })

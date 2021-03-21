@@ -3,7 +3,8 @@ export const MAIN_STEPS = {
   DARK: 1,
   CROSSING: 2,
   HEART: 3,
-  BRAIN: 4
+  BRAIN: 4,
+  DEAD: 5
 }
 export const INTRO_STEPS = {
   INTRO: 0,
