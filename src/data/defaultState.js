@@ -12,9 +12,16 @@ export default {
   },
   bagItems: [
     { id: 1, key: 'apple', bagX: 30, bagY: 40 },
+    { id: 11, key: 'apple', bagX: 55, bagY: 40 },
     { id: 2, key: 'lily', bagX: 40, bagY: 90 },
     { id: 3, key: 'elixir', bagX: 40, bagY: 130 },
-    { id: 4, key: 'matsutake', bagX: 40, bagY: 160 }
+    { id: 4, key: 'matsutake', bagX: 40, bagY: 160 },
+    { id: 5, key: 'kitchen', bagX: 60, bagY: 160 },
+    { id: 6, key: 'audioSystem', bagX: 40, bagY: 190 },
+    { id: 7, key: 'tv', bagX: 60, bagY: 250 },
+    { id: 8, key: 'sofa', bagX: 70, bagY: 360 },
+    { id: 9, key: 'sofa', bagX: 110, bagY: 260 },
+    { id: 10, key: 'tissue', bagX: 110, bagY: 160 }
   ],
   roomItems: [],
   lastAbsenceAction: 1,
@@ -50,5 +57,5 @@ export default {
     forever: 0
   },
   killed: [],
-  tutorial: []
+  tutorial: ['home', 'map']
 }
