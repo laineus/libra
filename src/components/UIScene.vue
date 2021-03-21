@@ -27,6 +27,7 @@
     <Tutorial v-if="tutorial" :name="tutorial" @close="tutorial = null" />
     <Text v-if="screenMessage.text" :text="screenMessage.text" :tween="screenMessage.tween" :x="config.WIDTH.half" :y="config.HEIGHT.half" :size="17" :color="screenMessage.color" :origin="0.5" :depth="config.DEPTH.TRANSITION" />
     <Credit v-if="credit.resolve" :depth="config.DEPTH.TRANSITION" :endA="credit.endA" @completed="credit.resolve" />
+    <Opening v-if="opening" :depth="config.DEPTH.TRANSITION" @unlock="opening" @completed="opening = null" />
   </Scene>
 </template>
 
@@ -44,6 +45,7 @@ import Text from './Text'
 import Transitions from './Transitions'
 import Tutorial from '@/components/Tutorial'
 import Credit from '@/components/Credit'
+import Opening from '@/components/Opening'
 import config from '@/data/config'
 const downloadBySource = (src, name) => {
   const link = document.createElement('a')
@@ -54,7 +56,7 @@ const downloadBySource = (src, name) => {
   document.body.removeChild(link)
 }
 export default {
-  components: { Scene, Title, Controller, Circle, Image, Container, RoundRectangle, Talk, Selector, Menu, Log, Text, Transitions, Tutorial, Credit },
+  components: { Scene, Title, Controller, Circle, Image, Container, RoundRectangle, Talk, Selector, Menu, Log, Text, Transitions, Tutorial, Credit, Opening },
   setup (props) {
     const mobile = inject('mobile')
     const frames = inject('frames')
@@ -92,6 +94,12 @@ export default {
           sleep(200).then(() => credit.resolve = null)
           resolve()
         }
+      })
+    }
+    const opening = ref(null)
+    const startOpening = () => {
+      return new Promise(resolve => {
+        opening.value = resolve
       })
     }
     const screenMessage = shallowReactive({ text: null, color: null, tween: null })
@@ -139,6 +147,7 @@ export default {
       ...refs,
       titleScreen,
       credit, startCredit,
+      opening, startOpening,
       selector, setSelector,
       screenMessage, setScreenMessage,
       mapName, setMapName,
