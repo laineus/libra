@@ -17,6 +17,7 @@ export default {
     { id: 4, key: 'matsutake', bagX: 40, bagY: 160 }
   ],
   roomItems: [],
+  lastAbsenceAction: 1,
   stomach: [],
   places: [
     { key: 'home', x: 400, y: 400 },

@@ -34,12 +34,14 @@ export default {
       }).random()
     }
     const absenceAction = Object.values(ABSENCE_ACTIONS).filter(v => {
+      if (v === state.lastAbsenceAction) return false
       if ([ABSENCE_ACTIONS.KITCHEN, ABSENCE_ACTIONS.COOKIE].includes(v)) return getUsableItem('kitchen')
       if (v === ABSENCE_ACTIONS.SOFA) return getUsableItem('sofa')
       if (v === ABSENCE_ACTIONS.TV) return getUsableItem('tv')
       if (v === ABSENCE_ACTIONS.CD) return getUsableItem('audioSystem')
       return true
     }).filter((v, _, list) => list.length <= 3 || v !== ABSENCE_ACTIONS.DEFAULT).random()
+    state.lastAbsenceAction = absenceAction
 
     let talked = false
     let gave = false
