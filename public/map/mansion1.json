@@ -283,6 +283,30 @@
                  "width":0,
                  "x":708.736638501476,
                  "y":800.342054362211
+                }, 
+                {
+                 "height":0,
+                 "id":17,
+                 "name":"guitar2",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":807.34,
+                 "y":618.336557059961
+                }, 
+                {
+                 "height":0,
+                 "id":18,
+                 "name":"chest",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":397.760358342665,
+                 "y":621.952560317622
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -291,7 +315,7 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":17,
+ "nextobjectid":19,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.4.3",
