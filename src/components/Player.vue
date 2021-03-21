@@ -31,6 +31,7 @@ export default {
     const controller = inject('controller')
     const mobile = inject('mobile')
     const state = inject('storage').state
+    const bag = inject('bag')
     const substance = ref(null)
     const frame = ref(0)
     const object = computed(() => substance.value?.object)
@@ -40,7 +41,9 @@ export default {
     const gunDiffY = -40
     const gun = useGun(context, object, { y: gunDiffY })
     const shot = () => gun.shot(r.value)
+    const hasGun = computed(() => bag.hasItem('gun') || bag.hasItem('revolver') || bag.hasItem('rifle'))
     const gunSwitch = () => {
+      if (!hasGun.value && !gun.mode.value) return
       gun.setMode(!gun.mode.value)
       following.clearTargetPosition()
     }
@@ -110,7 +113,7 @@ export default {
     }
     return {
       object, substance,
-      gun, shot, gunSwitch,
+      gun, shot, gunSwitch, hasGun,
       damage,
       r, frame, lookTo,
       stopWalking,

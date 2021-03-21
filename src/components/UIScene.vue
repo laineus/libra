@@ -3,7 +3,7 @@
     <Title @close="titleScreen = false" v-if="titleScreen" />
     <template v-else>
       <Controller ref="controller" />
-      <Container v-if="mobile" :x="player?.gun.mode.value ? (175).byRight : (70).byRight" :y="(140).byBottom">
+      <Container v-if="mobile && (player?.hasGun || player?.gun.mode.value)" :x="player?.gun.mode.value ? (175).byRight : (70).byRight" :y="(140).byBottom">
         <Circle :radius="50" :fillColor="0x000000" :alpha="0.5" @pointerdown="player?.gunSwitch()" />
         <Image v-if="player?.gun.mode.value" texture="cancel" :alpha="0.3" />
         <Image v-else texture="gun" :alpha="0.3" :x="-4" :y="4" />
