@@ -28,6 +28,24 @@ export default {
     const state = inject('storage').state
     const getItemReaction = useItemReaction(state)
 
+    // Load stored items
+    state.roomItems.forEach(v => field.addObject({ id: v.id, name: v.key, x: v.x, y: v.y }))
+    // Store items
+    const items = computed(() => field.objects.filter(v => ['Character', 'Substance'].includes(v.type) && v.name !== 'amili'))
+    const saveRoomObjects = (newLength, oldLength) => {
+      const add = newLength > oldLength
+      const baseArr = add ? items.value : state.roomItems
+      const targetArr = add ? state.roomItems : items.value
+      const targetSet = new Set(targetArr.map(v => v.id))
+      const item = baseArr.find(v => !targetSet.has(v.id))
+      if (add) {
+        state.roomItems.push({ id: item.id, key: item.name, x: item.x, y: item.y })
+      } else {
+        state.roomItems.delete(item)
+      }
+    }
+    this.stopWatch = watch(() => items.value.length, saveRoomObjects)
+
     const getUsableItem = key => {
       return state.roomItems.filter(v => {
         return v.key === key && !field.isCollides((v.x + USING_POSITION[key].x).toTile, (v.y + USING_POSITION[key].y).toTile)
@@ -43,7 +61,10 @@ export default {
     }).filter((v, _, list) => list.length <= 3 || v !== ABSENCE_ACTIONS.DEFAULT).random()
     state.lastAbsenceAction = absenceAction
 
-    let talked = false
+    let greetingEvent = async () => {
+      await speakAmiliScripts(t('events.home.welcomeback'))
+      return true
+    }
     let gave = false
     let slept = false
     const amili = field.getObjectById(7)
@@ -55,16 +76,17 @@ export default {
     sleep(1000).then(() => uiScene.setTutorial('home'))
 
     const consumeTissue = chance => {
-      if (!Math.chance(chance)) return
+      if (!Math.chance(chance)) return false
+      const tissue = field.objects.find(v => v.name === 'tissue' && v.x > 610 && v.y < 300)
+      if (!tissue) return false
       if (Math.chance(0.3)) {
-        const tissue = field.objects.find(v => v.name === 'tissue' && v.x > 610 && v.y < 300)
-        if (!tissue) return
         tissue.name = 'tissueEmpty'
         const stateTissue = state.roomItems.find(v => v.key === 'tissue' && v.x === tissue.x && v.y === tissue.y)
         stateTissue.key = 'tissueEmpty'
       }
       const { x, y } = [field.positions.trash1, field.positions.trash2, field.positions.trash3].random()
       field.addObject({ name: 'trash', x: Math.randomInt(x - 20, x + 20), y: Math.randomInt(y - 20, y + 20) })
+      return true
     }
 
     const appleEvent = async () => {
@@ -99,16 +121,21 @@ export default {
       await speakAmiliScripts(t(Math.chance(0.5) ? 'events.home.requestApple.a' : 'events.home.requestApple.b'))
     }
     amili.setTapEvent(async () => {
-      if (!talked) await speakAmiliScripts(t('events.home.welcomeback'))
+      const canContinue = greetingEvent ? await greetingEvent() : true
+      greetingEvent = null
+      if (!canContinue) return
       const itemEvent = await itemReaction()
       if (!itemEvent) {
         await requestApple()
         await appleEvent()
       }
-      talked = true
     })
 
     if (ep) {
+      greetingEvent = async () => {
+        await speakAmiliScripts(t(''))
+        return false
+      }
       field.player.object.setPosition(field.positions.bed.x, field.positions.bed.y)
       amili.object.setPosition(field.positions.bed.x + 20, field.positions.bed.y)
       field.player.lookTo('rightDown')
@@ -132,17 +159,37 @@ export default {
         }, Promise.resolve())
         await sleep(500)
       })
+      greetingEvent = null
     } else if (absenceAction === ABSENCE_ACTIONS.DEFAULT) {
-      //
+      // Nothing to do
     } else if (absenceAction === ABSENCE_ACTIONS.SLEEP) {
       amili.object.setPosition(field.positions.bed.x + 20, field.positions.bed.y)
       amili.lookTo('rightUp')
+      if (!state.events.itemReactions.includes('tissue')) return
+      const consumed = consumeTissue(0.3)
+      greetingEvent = async () => {
+        await speakAmiliScripts(consumed ? t('events.home.sleeping2') : t('events.home.sleeping1'))
+        return false
+      }
     } else if (absenceAction === ABSENCE_ACTIONS.KITCHEN) {
       const kitchen = getUsableItem('kitchen')
       amili.object.setPosition(kitchen.x + USING_POSITION.kitchen.x, kitchen.y + USING_POSITION.kitchen.y)
       amili.lookTo('up')
+      greetingEvent = async () => {
+        await speakAmiliScripts(t('events.home.cooking'))
+        const name = ['curry', 'steak', 'stir_fry', 'omurice'].random()
+        const pos = field.positions.dish
+        field.addObject({ name, x: pos.x, y: pos.y })
+        return false
+      }
     } else if (absenceAction === ABSENCE_ACTIONS.COOKIE) {
       amili.setTargetObject(player.object)
+      greetingEvent = async () => {
+        const key = ['cookie', 'lunchbox'].random()
+        await speakAmiliScripts(key === 'cookie' ? t('events.home.cookie') : t('events.home.lunchbox'))
+        await field.dropItem(key, amili.object)
+        return false
+      }
     } else if (absenceAction === ABSENCE_ACTIONS.SOFA) {
       const sofa = getUsableItem('sofa')
       amili.object.setPosition(sofa.x + USING_POSITION.sofa.x, sofa.y + USING_POSITION.sofa.y)
@@ -155,25 +202,6 @@ export default {
       amili.object.setPosition(audioSystem.x + USING_POSITION.audioSystem.x, audioSystem.y + USING_POSITION.audioSystem.y)
       amili.lookTo('up')
     }
-    amili.setTargetObject(player.object)
-
-    // Load stored items
-    state.roomItems.forEach(v => field.addObject({ id: v.id, name: v.key, x: v.x, y: v.y }))
-    // Store items
-    const items = computed(() => field.objects.filter(v => ['Character', 'Substance'].includes(v.type) && v.name !== 'amili'))
-    const saveRoomObjects = (newLength, oldLength) => {
-      const add = newLength > oldLength
-      const baseArr = add ? items.value : state.roomItems
-      const targetArr = add ? state.roomItems : items.value
-      const targetSet = new Set(targetArr.map(v => v.id))
-      const item = baseArr.find(v => !targetSet.has(v.id))
-      if (add) {
-        state.roomItems.push({ id: item.id, key: item.name, x: item.x, y: item.y })
-      } else {
-        state.roomItems.delete(item)
-      }
-    }
-    this.stopWatch = watch(() => items.value.length, saveRoomObjects)
   },
   destroy () {
     this.stopWatch()

@@ -183,6 +183,18 @@
                  "width":0,
                  "x":754,
                  "y":232
+                }, 
+                {
+                 "height":0,
+                 "id":17,
+                 "name":"dish",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Position",
+                 "visible":true,
+                 "width":0,
+                 "x":431.157894736842,
+                 "y":321.697266421869
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -203,7 +215,7 @@
          "y":0
         }],
  "nextlayerid":10,
- "nextobjectid":17,
+ "nextobjectid":18,
  "orientation":"orthogonal",
  "properties":[
         {
