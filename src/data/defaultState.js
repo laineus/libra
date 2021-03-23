@@ -23,7 +23,11 @@ export default {
     { id: 10, key: 'tissue', bagX: 110, bagY: 160 },
     { id: 11, key: 'apple', bagX: 55, bagY: 40 },
     { id: 12, key: 'tablemat1', bagX: 15, bagY: 140 },
-    { id: 13, key: 'tablemat2', bagX: 15, bagY: 160 }
+    { id: 13, key: 'tablemat2', bagX: 15, bagY: 160 },
+    { id: 14, key: 'trash', bagX: 130, bagY: 80 },
+    { id: 15, key: 'trash', bagX: 130, bagY: 90 },
+    { id: 16, key: 'trashCan1', bagX: 130, bagY: 100 },
+    { id: 17, key: 'trashCan1', bagX: 130, bagY: 110 }
   ],
   roomItems: [],
   lastAbsenceAction: 1,

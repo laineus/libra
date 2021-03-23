@@ -84,8 +84,17 @@ export default {
         const x = grab.x + camera.scrollX
         const y = grab.y + camera.scrollY + hHalf * (grab.item.scale ?? 1)
         const onCeil = field.field.tilemap.layers.some(l => l.tilemapLayer.depth >= config.DEPTH.CEIL && l.tilemapLayer.getTileAtWorldXY(x, y)?.collides)
+        const trashCan = field.objects.find(o => ['trashCan1', 'trashCan2'].includes(o.name) && Phaser.Math.Distance.Between(o.x, o.y, x, y) < 20)
         if (onCeil) {
           uiScene.log.push(t('ui.cantPutItem'))
+        } if (['tissueEmpty', 'trash'].includes(data.key) && trashCan) {
+          storage.state.bagItems.delete(grab.item)
+          if (trashCan.name === 'trashCan1') {
+            trashCan.name = 'trashCan2'
+            // roomItem
+          }
+          context.emit('close')
+          uiScene.log.push(t('ui.trash'))
         } else {
           field.addObject({ id: Math.randomInt(1000000, 9999999), name: data.key, x, y, scale: grab.item.scale })
           storage.state.bagItems.delete(grab.item)

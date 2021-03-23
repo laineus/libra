@@ -187,7 +187,7 @@ export default {
       greetingEvent = async () => {
         await speakAmiliScripts(t('events.home.cooking'))
         const { tableBegin, tableEnd } = field.positions
-        const tablemat = state.roomItems.filter(v => v.key.startsWith('tablemat')).filter(v => {
+        const tablemat = state.roomItems.filter(v => ['tablemat1', 'tablemat2'].includes(v.key)).filter(v => {
           return v.x > tableBegin.x && v.x < tableEnd.x && v.y > tableBegin.y && v.y < tableEnd.y
         }).random()
         const name = ['curry', 'steak', 'stirFry', 'omurice'].random()
