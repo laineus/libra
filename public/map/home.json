@@ -194,7 +194,31 @@
                  "visible":true,
                  "width":0,
                  "x":431.157894736842,
-                 "y":321.697266421869
+                 "y":325.7
+                }, 
+                {
+                 "height":0,
+                 "id":18,
+                 "name":"tableBegin",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Position",
+                 "visible":true,
+                 "width":0,
+                 "x":384,
+                 "y":303
+                }, 
+                {
+                 "height":0,
+                 "id":19,
+                 "name":"tableEnd",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Position",
+                 "visible":true,
+                 "width":0,
+                 "x":479,
+                 "y":368
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -215,7 +239,7 @@
          "y":0
         }],
  "nextlayerid":10,
- "nextobjectid":18,
+ "nextobjectid":20,
  "orientation":"orthogonal",
  "properties":[
         {
@@ -224,7 +248,7 @@
          "value":"#963b2e1b"
         }],
  "renderorder":"right-down",
- "tiledversion":"1.4.3",
+ "tiledversion":"2020.12.18",
  "tileheight":32,
  "tilesets":[
         {

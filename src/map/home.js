@@ -186,9 +186,13 @@ export default {
       amili.lookTo('up')
       greetingEvent = async () => {
         await speakAmiliScripts(t('events.home.cooking'))
-        const name = ['curry', 'steak', 'stir_fry', 'omurice'].random()
-        const pos = field.positions.dish
-        field.addObject({ name, x: pos.x, y: pos.y })
+        const { tableBegin, tableEnd } = field.positions
+        const tablemat = state.roomItems.filter(v => v.key.startsWith('tablemat')).filter(v => {
+          return v.x > tableBegin.x && v.x < tableEnd.x && v.y > tableBegin.y && v.y < tableEnd.y
+        }).random()
+        const name = ['curry', 'steak', 'stirFry', 'omurice'].random()
+        const pos = tablemat ?? field.positions.dish
+        field.addObject({ name, x: pos.x, y: pos.y - 2 })
         return false
       }
     } else if (absenceAction === ABSENCE_ACTIONS.COOKIE) {
