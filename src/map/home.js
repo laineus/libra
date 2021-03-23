@@ -1,6 +1,7 @@
 import { inject, watch, computed } from 'vue'
 import Talker from '@/util/Talker'
 import useItemReaction from '@/map/useItemReaction'
+import { MAIN_STEPS } from '@/data/eventSteps'
 const ABSENCE_ACTIONS = Object.freeze({
   DEFAULT: 0,
   SLEEP: 1,
@@ -90,8 +91,17 @@ export default {
     }
 
     const appleEvent = async () => {
-      const result = await uiScene.setSelector(t('events.home.giveApple'))
-      if (result === 1) return
+      const options = t('events.home.giveApple')
+      if (state.events.main === MAIN_STEPS.DEAD) options.splice(1, 0, t('events.home.followMe'))
+      const result = await uiScene.setSelector(options)
+      if (result === (options.length - 1)) return
+      if (result === 1) {
+        state.amiliFollowing = true
+        await speakAmiliScripts(t('events.home.letsGo'))
+        amili.setTapEvent(null)
+        amili.setTargetObject(player.object)
+        return
+      }
       if (!bag.hasItem('apple')) return await speakAmiliScripts(t('events.home.noApple'))
       bag.removeItem('apple')
       await speakAmiliScripts(gave ? t('events.home.gaveApple2') : t('events.home.gaveApple1'))
@@ -140,7 +150,18 @@ export default {
       }
     })
 
-    if (ep) {
+    if (state.amiliFollowing) {
+      greetingEvent = async () => {
+        await speakAmiliScripts(t('events.home.finishFollowing'))
+        return false
+      }
+      state.amiliFollowing = false
+      const position = field.positions.entrance
+      field.player.lookTo('up')
+      field.player.object.setPosition(position.x, position.y)
+      amili.object.setPosition(position.x + 20, position.y)
+      amili.lookTo('up')
+    } else if (ep) {
       greetingEvent = async () => {
         await speakAmiliScripts(t(''))
         return false

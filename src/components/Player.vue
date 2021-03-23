@@ -83,7 +83,7 @@ export default {
     onMounted(() => {
       substance.value.setCapturable(false)
       substance.value.hp = state.status.hp
-      if (state.amiliFollowing) {
+      if (state.amiliFollowing && field.value.name !== 'home') {
         field.value.addObject({ name: 'amili', x: props.initX, y: props.initY - 1, radian: props.initR }).then(amili => {
           amili.setTargetObject(object.value)
           amili.speed = 200
