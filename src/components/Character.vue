@@ -16,8 +16,7 @@ export default {
   components: { Substance, Body },
   props: {
     initR: { default: 0 },
-    name: { default: null },
-    speed: { default: 120 }
+    name: { default: null }
   },
   emits: ['del'],
   setup (props, context) {
@@ -31,7 +30,7 @@ export default {
     const image = computed(() => substance.value?.image)
     const following = useFollowing(object)
     const itemData = items.find(v => v.key === props.name)
-    const speed = itemData?.speed ?? props.speed
+    const speed = ref(itemData?.speed || 120)
     const textureData = scene.textures.get(itemData.texture)
     const numOfDirection = Object.keys(textureData.frames).map(Number).count(Number.isInteger) / 3
     const { state: frameState, play: playFrameAnim, lookTo } = useFrameAnimChara(object, props.initR, numOfDirection, itemData?.standingAnim)
@@ -52,7 +51,7 @@ export default {
     const attackDelay = ref(0)
     onPreUpdate(() => {
       frame.value = playFrameAnim()
-      following.walkToTargetPosition(speed)
+      following.walkToTargetPosition(speed.value)
       // Attack
       if (attackTarget.value?.hp > 0) {
         const diffX = attackTarget.value.object.x - object.value.x
@@ -96,6 +95,7 @@ export default {
       lookTo,
       damage,
       startEvent,
+      speed,
       // Following
       stopWalking,
       setRandomWalk: following.setRandomWalk,
