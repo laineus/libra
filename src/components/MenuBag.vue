@@ -90,8 +90,12 @@ export default {
         } if (['tissueEmpty', 'trash'].includes(data.key) && trashCan) {
           storage.state.bagItems.delete(grab.item)
           if (trashCan.name === 'trashCan1') {
-            trashCan.name = 'trashCan2'
-            // roomItem
+            const i = field.objects.findIndex(v => v === trashCan)
+            field.objects.splice(i, 1, Object.assign({}, trashCan, { name: 'trashCan2' }))
+            if (field.name === 'home') {
+              const stateTrashCan = storage.state.roomItems.find(v => v.key === 'trashCan1' && v.x === trashCan.x && v.y === trashCan.y)
+              stateTrashCan.key = 'trashCan2'
+            }
           }
           context.emit('close')
           uiScene.log.push(t('ui.trash'))

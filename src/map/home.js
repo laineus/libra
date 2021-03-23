@@ -85,7 +85,7 @@ export default {
         stateTissue.key = 'tissueEmpty'
       }
       const { x, y } = [field.positions.trash1, field.positions.trash2, field.positions.trash3].random()
-      field.addObject({ name: 'trash', x: Math.randomInt(x - 20, x + 20), y: Math.randomInt(y - 20, y + 20) })
+      field.addObject({ name: 'trash', x: Math.randomInt(x - 10, x + 10), y: Math.randomInt(y - 10, y + 10) })
       return true
     }
 
