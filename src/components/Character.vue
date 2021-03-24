@@ -19,7 +19,7 @@ export default {
     name: { default: null }
   },
   emits: ['del'],
-  setup (props, context) {
+  setup (props) {
     const scene = inject('scene')
     const player = inject('player')
     const uiScene = inject('uiScene').value
@@ -33,7 +33,7 @@ export default {
     const speed = ref(itemData?.speed || 120)
     const textureData = scene.textures.get(itemData.texture)
     const numOfDirection = Object.keys(textureData.frames).map(Number).count(Number.isInteger) / 3
-    const { state: frameState, play: playFrameAnim, lookTo } = useFrameAnimChara(object, props.initR, numOfDirection, itemData?.standingAnim)
+    const { play: playFrameAnim, lookTo } = useFrameAnimChara(object, props.initR, numOfDirection, itemData?.standingAnim)
     const setTemper = type => {
       if (!itemData) return
       if (itemData.temper[type] === TEMPER.RANDOM) {
