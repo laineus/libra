@@ -115,7 +115,6 @@ export default {
     const stopWalking = () => {
       following.clearTargetPosition()
       object.value.body.velocity.normalize().scale(0)
-      frame.value = frameState.directionKey
     }
     return {
       object, substance,

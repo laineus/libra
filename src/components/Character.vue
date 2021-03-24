@@ -77,7 +77,6 @@ export default {
       following.setRandomWalk(false)
       following.clearTargetPosition()
       object.value.body.velocity.normalize().scale(0)
-      frame.value = frameState.directionKey
     }
     const startEvent = () => {
       stopWalking()
