@@ -96,7 +96,7 @@ export default {
       damageEffectData.value = true
       damageEffectData.diffX = Math.cos(r) * -15
       damageEffectData.diffY = Math.sin(r) * -15
-      if (data.hp >= 0) return
+      if (data.hp > 0) return
       if (itemData.value?.drop) {
         itemData.value.drop.filter(v => Math.chance(v.chance)).forEach(v => {
           field.value.dropItem(v.key, object.value, { scale: itemData.value.minScale ? Math.randomInt(itemData.value.minScale * 10, 10) / 10 : 1 })
