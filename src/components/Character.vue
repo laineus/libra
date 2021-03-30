@@ -23,6 +23,7 @@ export default {
     const scene = inject('scene')
     const player = inject('player')
     const uiScene = inject('uiScene').value
+    const event = inject('event')
     const substance = ref(null)
     const attackTarget = ref(null)
     const frame = ref(0)
@@ -53,7 +54,7 @@ export default {
       frame.value = playFrameAnim()
       following.walkToTargetPosition(speed.value)
       // Attack
-      if (attackTarget.value?.hp > 0) {
+      if (!event.state && attackTarget.value?.hp > 0) {
         const diffX = attackTarget.value.object.x - object.value.x
         const diffY = attackTarget.value.object.y - object.value.y
         const distance = Math.hypot(diffX, diffY)
