@@ -27,7 +27,9 @@ export default {
         }
       })
       torrent.setDestroyEvent(() => {
-        state.events.forever = FOREVER_STEPS.EXECUTED
+        if (state.events.forever === FOREVER_STEPS.STARTED) {
+          state.events.forever = FOREVER_STEPS.EXECUTED
+        }
       })
     }
   }

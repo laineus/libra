@@ -11,7 +11,10 @@ export default {
     const state = inject('storage').state
 
     const ghost = field.getObjectById(3)
-    ghost?.setVisible(computed(() => state.events.forever < FOREVER_STEPS.COMPLETED))
+    ghost?.setVisible(computed(() => {
+      if (state.events.forever === FOREVER_STEPS.NULL && state.killed.includes('fall2_3')) return false // Killed before started
+      return state.events.forever < FOREVER_STEPS.COMPLETED
+    }))
     ghost?.setTapEvent(async () => {
       const speakGhost = talk.getSpeakScripts(new Talker(t('name.ghost'), ghost.object))
       if (state.events.forever === FOREVER_STEPS.NULL) {
