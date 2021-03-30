@@ -1,11 +1,4 @@
 { "compressionlevel":-1,
- "editorsettings":
-    {
-     "export":
-        {
-         "target":"."
-        }
-    },
  "height":20,
  "infinite":false,
  "layers":[
@@ -48,7 +41,7 @@
                  "visible":true,
                  "width":66,
                  "x":671,
-                 "y":253
+                 "y":252
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -248,7 +241,7 @@
          "value":"#963b2e1b"
         }],
  "renderorder":"right-down",
- "tiledversion":"2020.12.18",
+ "tiledversion":"1.5.0",
  "tileheight":32,
  "tilesets":[
         {
@@ -290,6 +283,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.4,
+ "version":1.5,
  "width":32
 }
