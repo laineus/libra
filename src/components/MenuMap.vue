@@ -4,7 +4,7 @@
       <Rectangle :visible="i === selectedIndex" :fillColor="COLORS.orange" :width="rowWidth" :height="rowHeight" :alpha="0.8" />
       <Line v-if="i !== places.length - 1" :x="0" :y="rowHeight.half" :lineWidth="0.5" :x2="rowWidth" :strokeColor="COLORS.brown" :alpha="0.25" />
       <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="v ? `${t(`place.${v.key}`)} (${v.x}, ${v.y})` : t('ui.unregistered')" :size="13" :bold="Boolean(v)" />
-      <Image v-if="v" texture="garbage" :scale="0.45" :tint="COLORS.brown" :x="100" @pointerdown="p => tapGarbage(p, i)" />
+      <Image v-if="v" texture="garbage" :scale="0.45" :tint="COLORS.brown" :x="100" @pointerdown.stop="p => tapGarbage(p, i)" />
     </Container>
     <template v-if="selectedIndex !== null">
       <Selector v-if="del" :x="tapX" :y="tapY" :list="['削除', 'キャンセル']" @select="submit" />
@@ -28,6 +28,7 @@ export default {
     const storage = inject('storage')
     const field = inject('field').value
     const player = inject('player').value
+    const onMistelyCircle = inject('onMistelyCircle')
     const container = ref(null)
     const places = storage.state.places
     const data = reactive({
@@ -58,7 +59,11 @@ export default {
         gameScene.setField(place.key, place.x, place.y)
         context.emit('close')
       } else {
-        places[data.selectedIndex] = { key: field.name, x: Math.round(player.object.x), y: Math.round(player.object.y) }
+        if (onMistelyCircle.value) {
+          places[data.selectedIndex] = { key: 'coalmine4', x: 223, y: 381 }
+        } else {
+          places[data.selectedIndex] = { key: field.name, x: Math.round(player.object.x), y: Math.round(player.object.y) }
+        }
         data.selectedIndex = null
       }
     }

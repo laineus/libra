@@ -1,8 +1,14 @@
 <template>
   <div>
     <Container v-for="(v, i) in menu" :key="i" :x="(235).byRight + (i * 50)" :y="(35).byBottom">
-      <Circle :fillColor="COLORS.brown" :radius="20" :lineWidth="2" :strokeColor="COLORS.soy" @pointerdown="(...args) => tapButton(i, ...args)" />
-      <Image texture="menu_icons" :frame="i" :tint="COLORS.soy" />
+      <template v-if="v.key === 'map' && onMistelyCircle">
+        <Circle :fillColor="COLORS.dark" :radius="20" :lineWidth="2" :strokeColor="0x9ee50c" @pointerdown="(...args) => tapButton(i, ...args)" />
+        <Image texture="menu_icons" :frame="5" :tint="0x9ee50c" />
+      </template>
+      <template v-else>
+        <Circle :fillColor="COLORS.brown" :radius="20" :lineWidth="2" :strokeColor="COLORS.soy" @pointerdown="(...args) => tapButton(i, ...args)" />
+        <Image texture="menu_icons" :frame="i" :tint="COLORS.soy" />
+      </template>
     </Container>
     <template v-if="selected">
       <Container :depth="-1" :x="config.WIDTH.half" :y="config.HEIGHT.half" :width="config.WIDTH" :height="config.HEIGHT" @pointerdown="tapCloseArea" />
@@ -16,7 +22,7 @@
 </template>
 
 <script>
-import { computed, nextTick, ref } from 'vue'
+import { computed, nextTick, ref, inject, provide } from 'vue'
 import { Container, Circle, Image } from 'phavuer'
 import config from '@/data/config'
 import MenuStatus from '@/components/MenuStatus'
@@ -27,6 +33,7 @@ import MenuSystem from '@/components/MenuSystem'
 export default {
   components: { Container, Circle, Image, MenuStatus, MenuBag, MenuQuest, MenuMap, MenuSystem },
   setup () {
+    const state = inject('storage').state
     const menu = [
       { key: 'status', ref: ref(null) },
       { key: 'bag', ref: ref(null) },
@@ -56,7 +63,12 @@ export default {
       pointer.isDown = false
       close()
     }
+    const onMistelyCircle = computed(() => {
+      return state.map === 'coalmine3' && Math.abs(935 - state.x) < 80 && Math.abs(650 - state.y) < 80
+    })
+    provide('onMistelyCircle', onMistelyCircle)
     return {
+      onMistelyCircle,
       config, COLORS: config.COLORS,
       menu,
       index, selected,
