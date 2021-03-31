@@ -18,5 +18,7 @@
   ["ghost.png", 3, 4],
   ["mine_penguin.png", 3, 4],
   ["fall_flog.png", 3, 4],
-  ["pumpkin.png", 3, 4]
+  ["pumpkin.png", 3, 4],
+  ["grey1.png", 3, 4],
+  ["grey2.png", 3, 4]
 ]
