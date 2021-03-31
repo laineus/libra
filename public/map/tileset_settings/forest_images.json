@@ -16,9 +16,9 @@
  "margin":0,
  "name":"forest_images",
  "spacing":0,
- "tilecount":12,
+ "tilecount":14,
  "tiledversion":"1.4.3",
- "tileheight":277,
+ "tileheight":269,
  "tiles":[
         {
          "id":0,
@@ -81,44 +81,68 @@
         {
          "id":6,
          "image":"..\/..\/img\/map\/images\/sand1.png",
-         "imageheight":93,
-         "imagewidth":101
+         "imageheight":89,
+         "imagewidth":97
         }, 
         {
          "id":7,
          "image":"..\/..\/img\/map\/images\/sand2.png",
-         "imageheight":183,
-         "imagewidth":188
+         "imageheight":178,
+         "imagewidth":185
         }, 
         {
          "id":8,
          "image":"..\/..\/img\/map\/images\/sand3.png",
-         "imageheight":190,
-         "imagewidth":193
+         "imageheight":187,
+         "imagewidth":188
         }, 
         {
          "id":9,
          "image":"..\/..\/img\/map\/images\/sand4.png",
-         "imageheight":258,
-         "imagewidth":102
+         "imageheight":253,
+         "imagewidth":98
         }, 
         {
          "id":10,
          "image":"..\/..\/img\/map\/images\/sand5.png",
-         "imageheight":163,
-         "imagewidth":45
+         "imageheight":161,
+         "imagewidth":40
         }, 
         {
          "id":11,
          "image":"..\/..\/img\/map\/images\/sand6.png",
-         "imageheight":277,
-         "imagewidth":61
+         "imageheight":269,
+         "imagewidth":56
         }, 
         {
          "id":12,
          "image":"..\/..\/img\/map\/images\/sand7.png",
-         "imageheight":52,
-         "imagewidth":31
+         "imageheight":47,
+         "imagewidth":28
+        }, 
+        {
+         "id":13,
+         "image":"..\/..\/img\/map\/images\/torii.png",
+         "imageheight":136,
+         "imagewidth":170,
+         "properties":[
+                {
+                 "name":"depth",
+                 "type":"string",
+                 "value":"SUBSTANCE"
+                }]
+        }, 
+        {
+         "id":14,
+         "image":"..\/..\/img\/map\/images\/money_box.png",
+         "imageheight":40,
+         "imagewidth":50,
+         "properties":[
+                {
+                 "name":"depth",
+                 "type":"string",
+                 "value":"SUBSTANCE"
+                }]
         }],
  "tilewidth":218,
  "type":"tileset",

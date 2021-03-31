@@ -1,4 +1,4 @@
-import { computed, inject } from 'vue'
+import { computed, inject, watch } from 'vue'
 import Talker from '@/util/Talker'
 import { INTRO_STEPS, CURSE_STEPS } from '@/data/eventSteps'
 export default {
@@ -11,6 +11,11 @@ export default {
     const talk = inject('talk').value
     const { exec } = inject('event')
     const bag = inject('bag')
+    const killed = computed(() => state.killed.count(v => v !== 'fall2_3') > 0)
+    if (!killed.value) {
+      field.delObject(48)
+      field.delObject(49)
+    }
 
     const sumStatus = computed(() => state.status.heart + state.status.body)
     const gate = field.getObjectById(1)
@@ -146,5 +151,20 @@ export default {
         }
       })
     }
+    // Store items
+    const items = computed(() => field.objects.filter(v => v.type === 'Substance'))
+    this.stopWatch = watch(() => items.value.length, (newLength, oldLength) => {
+      if (!killed.value) return
+      const add = newLength > oldLength
+      if (!add) return
+      const item = items.value[items.value.length - 1]
+      if (['coinSilver', 'coinGold'].includes(item.name) && item.x > 470 && item.x < 522 && item.y > 279 && item.y < 315) {
+        state.killed = state.killed.filter(v => v === 'fall2_3')
+        uiScene.log.push(t('ui.revive'))
+      }
+    })
+  },
+  destroy () {
+    this.stopWatch()
   }
 }

@@ -215,6 +215,7 @@ export default {
     weightOver: '荷物が重すぎてこれ以上持てません',
     cantPutItem: 'ここには置けません',
     trash: 'ゴミをゴミ箱に捨てた（えらい！）',
+    revive: '奇跡が起きた',
     status: 'ステータス',
     bag: 'かばん',
     quest: 'クエスト',
