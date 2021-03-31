@@ -1,4 +1,12 @@
 { "columns":0,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"",
+         "target":"."
+        }
+    },
  "grid":
     {
      "height":1,
@@ -8,9 +16,9 @@
  "margin":0,
  "name":"coalmine_images",
  "spacing":0,
- "tilecount":17,
+ "tilecount":19,
  "tiledversion":"1.4.3",
- "tileheight":303,
+ "tileheight":320,
  "tiles":[
         {
          "id":0,
@@ -82,12 +90,12 @@
          "id":11,
          "image":"..\/..\/img\/map\/images\/rail1.png",
          "imageheight":41,
-         "imagewidth":80
+         "imagewidth":320
         }, 
         {
          "id":12,
          "image":"..\/..\/img\/map\/images\/rail2.png",
-         "imageheight":80,
+         "imageheight":320,
          "imagewidth":41
         }, 
         {
@@ -113,6 +121,24 @@
          "image":"..\/..\/img\/map\/images\/rail6.png",
          "imageheight":49,
          "imagewidth":55
+        }, 
+        {
+         "id":17,
+         "image":"..\/..\/img\/map\/images\/mistely_circle.png",
+         "imageheight":201,
+         "imagewidth":201
+        }, 
+        {
+         "id":18,
+         "image":"..\/..\/img\/map\/images\/ufo.png",
+         "imageheight":128,
+         "imagewidth":128,
+         "properties":[
+                {
+                 "name":"depth",
+                 "type":"string",
+                 "value":"SUBSTANCE"
+                }]
         }],
  "tilewidth":343,
  "type":"tileset",
