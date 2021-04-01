@@ -133,6 +133,24 @@
                  "width":0,
                  "x":832,
                  "y":512
+                }, 
+                {
+                 "height":0,
+                 "id":31,
+                 "name":"pumpkin",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"unique",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"Character",
+                 "visible":true,
+                 "width":0,
+                 "x":308,
+                 "y":908
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -450,7 +468,7 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":31,
+ "nextobjectid":32,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.4.3",

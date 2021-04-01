@@ -28,7 +28,13 @@ export default {
     { id: 14, key: 'trash', bagX: 130, bagY: 80 },
     { id: 15, key: 'trash', bagX: 130, bagY: 90 },
     { id: 16, key: 'trashCan1', bagX: 130, bagY: 100 },
-    { id: 17, key: 'trashCan1', bagX: 130, bagY: 110 }
+    { id: 17, key: 'raptor1', bagX: 130, bagY: 150 },
+    { id: 18, key: 'raptor2', bagX: 130, bagY: 150 },
+    { id: 19, key: 'raptor3', bagX: 130, bagY: 150 },
+    { id: 20, key: 'raptor4', bagX: 130, bagY: 150 },
+    { id: 21, key: 'raptor5', bagX: 130, bagY: 150 },
+    { id: 22, key: 'raptor6', bagX: 130, bagY: 150 },
+    { id: 23, key: 'raptor7', bagX: 130, bagY: 150 }
   ],
   roomItems: [],
   lastAbsenceAction: 1,
@@ -62,6 +68,7 @@ export default {
     regain: 0,
     beauty: 0,
     forever: 0,
+    raptor: 0,
     cosmos: false,
     photosynthesis: 0,
     photosynthesisAte: []

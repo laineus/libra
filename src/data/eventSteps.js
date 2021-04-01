@@ -103,6 +103,11 @@ export const FOREVER_STEPS = {
   EXECUTED: 2,
   COMPLETED: 3
 }
+export const RAPTOR_STEPS = {
+  NULL: 0,
+  STARTED: 1,
+  COMPLETED: 2
+}
 export const PHOTOSYNTHESIS_STEPS = {
   NULL: 0,
   QUESTION1: 1,
