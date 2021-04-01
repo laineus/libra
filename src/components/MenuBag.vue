@@ -18,6 +18,7 @@ import MenuContainer from '@/components/MenuContainer'
 import Text from '@/components/Text'
 import config from '@/data/config'
 import items from '@/data/items'
+import makeRaptor from '@/components/modules/makeRaptor'
 const itemData = items.toObject(v => [v.key, v])
 const WIDTH = 230
 const HEIGHT = 410
@@ -109,6 +110,9 @@ export default {
       } else if (grab.mode === 'move') {
         grab.item.bagX = Math.round(Math.fix(grab.x - offsetX.value, wHalf, WIDTH - wHalf))
         grab.item.bagY = Math.round(Math.fix(grab.y - offsetY.value, height, HEIGHT))
+        if (grab.item.key.startsWith('raptor')) {
+          makeRaptor(storage.state.bagItems)
+        }
         grab.resolver()
       } else if (grab.mode === 'capture') {
         const weightOver = (weight.value + data.weight) > 100
