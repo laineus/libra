@@ -48,9 +48,10 @@ export default {
         const foods = ['omurice', 'steak', 'stirFry', 'curry']
         const options = foods.filter(v => bag.hasItem(v) && !ate.includes(v))
         if (!options.length) return
-        const optionTexts = options.map(key => t('events.photosynthesis.option', t(`item.${key}`)))
+        const optionTexts = [...options.map(key => t('events.photosynthesis.option', t(`item.${key}`))), t('events.photosynthesis.cancel')]
         const i = await uiScene.setSelector(optionTexts)
         const key = options[i]
+        if (!key) return
         state.events.photosynthesisAte.push(key)
         uiScene.log.push(t('events.photosynthesis.log', t(`item.${key}`)))
         bag.removeItem(key)

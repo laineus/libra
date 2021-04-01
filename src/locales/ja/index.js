@@ -1594,6 +1594,7 @@ export default {
         '地球ノ料理ヲモット持ッテキテクレ。'
       ],
       option: '#{name}を渡す',
+      cancel: 'やめておく',
       log: '#{name}を渡した',
       omurice: [
         'コレハ、オムライストイウノカ。',
