@@ -150,7 +150,15 @@ export default {
     art19: '『魔女たちの工房』',
     art20: '『マッドパンプキン』',
     art21: '『リリア』',
-    art22: '『深海』'
+    art22: '『深海』',
+    raptor1: '化石（頭）',
+    raptor2: '化石（胴）',
+    raptor3: '化石（右手）',
+    raptor4: '化石（左手）',
+    raptor5: '化石（右足）',
+    raptor6: '化石（左足）',
+    raptor7: '化石（尻尾）',
+    raptor: '恐竜の化石'
   },
   quest: {
     torrentFlog: {

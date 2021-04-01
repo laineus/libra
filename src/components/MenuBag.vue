@@ -7,7 +7,7 @@
   </MenuContainer>
   <Container v-if="grab.item" :x="grab.x" :y="grab.y">
     <Image ref="grabRef" :texture="itemData[grab.item.key].texture" :frame="itemData[grab.item.key].frame" :scale="grab.item.scale" :originX="0.5" :originY="1" @pointerup="drop" />
-    <Text v-if="grabRef" :text="grabItemName" :originX="0.5" :originY="1" :size="10" :y="-grabRef.height.half - 8" :style="{ stroke: config.COLORS.soy.toColorString, strokeThickness: 2 }" />
+    <Text v-if="grabRef" :text="grabItemName" :originX="0.5" :originY="1" :size="10" :y="-grabRef.height - 8" :style="{ stroke: config.COLORS.soy.toColorString, strokeThickness: 2 }" />
   </Container>
 </template>
 
