@@ -111,7 +111,7 @@ export default {
         grab.item.bagX = Math.round(Math.fix(grab.x - offsetX.value, wHalf, WIDTH - wHalf))
         grab.item.bagY = Math.round(Math.fix(grab.y - offsetY.value, height, HEIGHT))
         if (grab.item.key.startsWith('raptor')) {
-          makeRaptor(storage.state.bagItems)
+          makeRaptor(storage.state.bagItems, uiScene)
         }
         grab.resolver()
       } else if (grab.mode === 'capture') {

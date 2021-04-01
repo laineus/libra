@@ -229,6 +229,7 @@ export default {
     cantPutItem: 'ここには置けません',
     trash: 'ゴミをゴミ箱に捨てた（えらい！）',
     revive: '奇跡が起きた',
+    raptor: '恐竜の化石が完成した！',
     status: 'ステータス',
     bag: 'かばん',
     quest: 'クエスト',

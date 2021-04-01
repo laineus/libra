@@ -6,7 +6,7 @@ const MAP = {
   raptor5: { minX: 5, minY: 18, maxX: 23, maxY: 34 }, // rightLeg
   raptor7: { minX: -48, minY: 0, maxX: -30, maxY: 15 } // tail
 }
-export default items => {
+export default (items, uiScene) => {
   const completedParts = items.filter(v => v.key === 'raptor2').map(body => {
     const validParts = Object.entries(MAP).map(([key, v]) => {
       return items.find(item => {
@@ -27,4 +27,5 @@ export default items => {
     bagX: completedParts[0].bagX,
     bagY: completedParts[0].bagY
   })
+  uiScene.log.push(t('ui.raptor'))
 }
