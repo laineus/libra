@@ -103,3 +103,10 @@ export const FOREVER_STEPS = {
   EXECUTED: 2,
   COMPLETED: 3
 }
+export const PHOTOSYNTHESIS_STEPS = {
+  NULL: 0,
+  QUESTION1: 1,
+  QUESTION2: 2,
+  STARTED: 3,
+  COMPLETED: 4
+}

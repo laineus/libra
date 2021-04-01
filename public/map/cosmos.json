@@ -1,4 +1,11 @@
 { "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "target":"."
+        }
+    },
  "height":32,
  "infinite":false,
  "layers":[
@@ -111,12 +118,102 @@
                          "type":"bool",
                          "value":true
                         }],
-                 "rotation":0,
+                 "rotation":180,
                  "type":"Character",
                  "visible":true,
                  "width":0,
                  "x":523.271,
                  "y":943.5445
+                }, 
+                {
+                 "height":0,
+                 "id":6,
+                 "name":"grey2",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"unique",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":-90,
+                 "type":"Character",
+                 "visible":true,
+                 "width":0,
+                 "x":244,
+                 "y":600
+                }, 
+                {
+                 "height":0,
+                 "id":7,
+                 "name":"grey1",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"unique",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"Character",
+                 "visible":true,
+                 "width":0,
+                 "x":792,
+                 "y":180
+                }, 
+                {
+                 "height":0,
+                 "id":8,
+                 "name":"grey1,grey2",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"string",
+                         "value":"0.6,0.3"
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":998,
+                 "y":546
+                }, 
+                {
+                 "height":0,
+                 "id":9,
+                 "name":"grey1,grey2",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"string",
+                         "value":"0.6,0.3"
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":616,
+                 "y":402
+                }, 
+                {
+                 "height":0,
+                 "id":10,
+                 "name":"grey1,grey2",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"string",
+                         "value":"0.6,0.3"
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":204,
+                 "y":150
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -125,7 +222,7 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":6,
+ "nextobjectid":11,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.4.3",

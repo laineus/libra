@@ -18,6 +18,8 @@ import fall2 from '@/map/fall2'
 import coalmine1 from '@/map/coalmine1'
 import coalmine2 from '@/map/coalmine2'
 import coalmine3 from '@/map/coalmine3'
+import coalmine4 from '@/map/coalmine4'
+import cosmos from '@/map/cosmos'
 import hospital1 from '@/map/hospital1'
 import hospital2 from '@/map/hospital2'
 import mansion1 from '@/map/mansion1'
@@ -36,7 +38,6 @@ export default {
   cave1,
   cave2,
   cave3,
-  cosmos: {},
   base: { bgm: 'wind' },
   ice1,
   ice2,
@@ -51,7 +52,8 @@ export default {
   coalmine1,
   coalmine2,
   coalmine3,
-  coalmine4: {},
+  coalmine4,
+  cosmos,
   hospital1,
   hospital2,
   mansion1,

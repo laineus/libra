@@ -31,5 +31,11 @@ export default {
         await speakPenguin(t('events.matsutake.completed'))
       }
     })
+
+    const mistely = field.getObjectById(23)
+    mistely?.setTapEvent(async () => {
+      const speakPenguin = talk.getSpeakScripts(new Talker(t('name.minePenguin'), mistely.object))
+      await speakPenguin(state.events.cosmos ? t('events.cosmos.minePenguin2') : t('events.cosmos.minePenguin1'))
+    })
   }
 }

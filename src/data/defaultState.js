@@ -20,7 +20,7 @@ export default {
     { id: 6, key: 'audioSystem', bagX: 40, bagY: 190 },
     { id: 7, key: 'tv', bagX: 60, bagY: 250 },
     { id: 8, key: 'sofa', bagX: 70, bagY: 360 },
-    { id: 9, key: 'sofa', bagX: 110, bagY: 260 },
+    { id: 9, key: 'curry', bagX: 110, bagY: 260 },
     { id: 10, key: 'tissue', bagX: 110, bagY: 160 },
     { id: 11, key: 'apple', bagX: 55, bagY: 40 },
     { id: 12, key: 'tablemat1', bagX: 15, bagY: 140 },
@@ -61,7 +61,10 @@ export default {
     appreciation: 0,
     regain: 0,
     beauty: 0,
-    forever: 0
+    forever: 0,
+    cosmos: false,
+    photosynthesis: 0,
+    photosynthesisAte: []
   },
   killed: [],
   tutorial: ['home', 'map']
