@@ -61,10 +61,15 @@ export default [
   makeItem('emerald', { hp: 15, minScale: 0.6 }),
   makeItem('amethyst', { hp: 15, minScale: 0.6 }),
   makeItem('ruby', { hp: 15, minScale: 0.6 }),
-  makeItem('crystal', {
+  makeItem('crystal1', {
     hp: 10,
     minScale: 0.7,
     drop: [{ key: 'rock', chance: 0.5 }, { key: 'sapphire', chance: 0.25 }, { key: 'emerald', chance: 0.25 }, { key: 'amethyst', chance: 0.25 }, { key: 'ruby', chance: 0.25 }]
+  }),
+  makeItem('crystal2', {
+    hp: 10,
+    minScale: 0.7,
+    drop: [{ key: 'raptor1', chance: 0.1 }, { key: 'raptor2', chance: 0.1 }, { key: 'raptor3', chance: 0.1 }, { key: 'raptor4', chance: 0.1 }, { key: 'raptor5', chance: 0.1 }, { key: 'raptor6', chance: 0.1 }, { key: 'raptor7', chance: 0.1 }]
   }),
   makeItem('fish', { hp: 5, minScale: 0.7, eat: 20 }),
   makeItem('uminoke', { hp: 5, texture: 'item/unagi' }),

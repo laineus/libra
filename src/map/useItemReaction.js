@@ -18,7 +18,7 @@ export default state => () => {
     { key: 'stoneRock', test: () => hasSome('stone', 'rock') },
     { key: 'gem', test: () => hasSome('sapphire', 'emerald', 'amethyst', 'ruby') },
     { key: 'gemAll', test: () => hasAll('sapphire', 'emerald', 'amethyst', 'ruby') },
-    { key: 'crystal' },
+    { key: 'crystal', test: () => hasSome('crystal1', 'crystal2') },
     { key: 'fish' },
     { key: 'unagi', test: () => hasSome('uminoke', 'unagi') },
     { key: 'icePenguin', test: () => hasAll('ice', 'penguin'), scripts: [...t('events.itemReactions.ice'), ...t('events.itemReactions.icePenguin')] },

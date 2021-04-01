@@ -361,7 +361,7 @@
                 {
                  "height":0,
                  "id":18,
-                 "name":"crystal",
+                 "name":"crystal1",
                  "point":true,
                  "properties":[
                         {
@@ -379,7 +379,7 @@
                 {
                  "height":0,
                  "id":19,
-                 "name":"crystal",
+                 "name":"crystal1",
                  "point":true,
                  "properties":[
                         {
@@ -397,7 +397,7 @@
                 {
                  "height":0,
                  "id":20,
-                 "name":"crystal",
+                 "name":"crystal1",
                  "point":true,
                  "properties":[
                         {
@@ -415,7 +415,7 @@
                 {
                  "height":0,
                  "id":21,
-                 "name":"crystal",
+                 "name":"crystal1",
                  "point":true,
                  "properties":[
                         {
@@ -519,6 +519,42 @@
                  "width":0,
                  "x":1112,
                  "y":598
+                }, 
+                {
+                 "height":0,
+                 "id":31,
+                 "name":"crystal2",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":480,
+                 "y":732
+                }, 
+                {
+                 "height":0,
+                 "id":32,
+                 "name":"crystal2",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":848,
+                 "y":246
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -527,7 +563,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":31,
+ "nextobjectid":33,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.4.3",
