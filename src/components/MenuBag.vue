@@ -1,12 +1,12 @@
 <template>
   <MenuContainer ref="container" :arrowX="20 + (1 * 50)" :height="420" :title="t('ui.bag')" :visible="grab.mode !== 'dispose'">
-    <Image v-for="v in bagItems" :key="v.id" :texture="itemData[v.key].texture" :frame="itemData[v.key].frame" :x="v.bagX" :y="v.bagY" :scale="v.scale" :origin="0.5" :visible="grab.item !== v" @pointerdown="grabItem(v, 'move')" />
+    <Image v-for="v in bagItems" :key="v.id" :texture="itemData[v.key].texture" :frame="itemData[v.key].frame" :x="v.bagX" :y="v.bagY" :scale="v.scale" :originX="0.5" :originY="1" :visible="grab.item !== v" @pointerdown="grabItem(v, 'move')" />
     <Text :text="`${t('ui.weight')}:`" :originX="1" :originY="0.5" :x="163" :y="14" :size="13" />
     <Text :text="`${weight}/100`" :originX="1" :originY="0.5" :x="222" :y="14" :size="14" />
     <Image v-if="grab.item && itemData[grab.item.key].eat" :tint="onEatArea ? config.COLORS.orange : config.COLORS.brown" texture="eat" :origin="1" :x="222" :y="402" />
   </MenuContainer>
   <Container v-if="grab.item" :x="grab.x" :y="grab.y">
-    <Image ref="grabRef" :texture="itemData[grab.item.key].texture" :frame="itemData[grab.item.key].frame" :scale="grab.item.scale" :origin="0.5" @pointerup="drop" />
+    <Image ref="grabRef" :texture="itemData[grab.item.key].texture" :frame="itemData[grab.item.key].frame" :scale="grab.item.scale" :originX="0.5" :originY="1" @pointerup="drop" />
     <Text v-if="grabRef" :text="grabItemName" :originX="0.5" :originY="1" :size="10" :y="-grabRef.height.half - 8" :style="{ stroke: config.COLORS.soy.toColorString, strokeThickness: 2 }" />
   </Container>
 </template>
@@ -53,7 +53,7 @@ export default {
         if (grab.mode === 'move') {
           if (!onBagArea.value) grab.mode = 'dispose'
         } else if (grab.mode === 'dispose') {
-          if (Phaser.Math.Distance.Between(grab.x, grab.y, (160).byRight, (40).byBottom) < 20) grab.mode = 'move'
+          if (Phaser.Math.Distance.Between(grab.x, grab.y, (180).byRight, (35).byBottom) < 20) grab.mode = 'move'
         }
       }
     }
@@ -69,8 +69,9 @@ export default {
       return promise
     }
     const drop = () => {
-      const wHalf = grabRef.value.width.half
-      const hHalf = grabRef.value.height.half
+      const width = grabRef.value.width
+      const height = grabRef.value.height
+      const wHalf = width.half
       const data = itemData[grab.item.key]
       if (data.eat && onEatArea.value) {
         storage.state.status.hp = Math.min(storage.state.status.hp + data.eat, 100)
@@ -82,7 +83,7 @@ export default {
         context.emit('close')
       } else if (grab.mode === 'dispose') {
         const x = grab.x + camera.scrollX
-        const y = grab.y + camera.scrollY + hHalf * (grab.item.scale ?? 1)
+        const y = grab.y + camera.scrollY
         const onCeil = field.field.tilemap.layers.some(l => l.tilemapLayer.depth >= config.DEPTH.CEIL && l.tilemapLayer.getTileAtWorldXY(x, y)?.collides)
         const trashCan = field.objects.find(o => ['trashCan1', 'trashCan2'].includes(o.name) && Phaser.Math.Distance.Between(o.x, o.y, x, y) < 20)
         if (onCeil) {
@@ -107,7 +108,7 @@ export default {
         grab.resolver()
       } else if (grab.mode === 'move') {
         grab.item.bagX = Math.round(Math.fix(grab.x - offsetX.value, wHalf, WIDTH - wHalf))
-        grab.item.bagY = Math.round(Math.fix(grab.y - offsetY.value, hHalf, HEIGHT - hHalf))
+        grab.item.bagY = Math.round(Math.fix(grab.y - offsetY.value, height, HEIGHT))
         grab.resolver()
       } else if (grab.mode === 'capture') {
         const weightOver = (weight.value + data.weight) > 100
@@ -117,7 +118,7 @@ export default {
             key: grab.item.key,
             scale: grab.item.scale,
             bagX: Math.round(Math.fix(grab.x - offsetX.value, wHalf, WIDTH - wHalf)),
-            bagY: Math.round(Math.fix(grab.y - offsetY.value, hHalf, HEIGHT - hHalf))
+            bagY: Math.round(Math.fix(grab.y - offsetY.value, height, HEIGHT))
           })
           grab.resolver(true)
           sleep(30).then(() => context.emit('close'))
