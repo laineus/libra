@@ -371,8 +371,8 @@
                  "type":"Random",
                  "visible":true,
                  "width":0,
-                 "x":166,
-                 "y":496
+                 "x":157.744788667511,
+                 "y":497.179315904641
                 }, 
                 {
                  "height":0,
@@ -427,6 +427,42 @@
                  "width":0,
                  "x":258,
                  "y":544
+                }, 
+                {
+                 "height":0,
+                 "id":41,
+                 "name":"crystal2",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":1074.35678912818,
+                 "y":737.072440400783
+                }, 
+                {
+                 "height":0,
+                 "id":42,
+                 "name":"crystal2",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":909.252562478406,
+                 "y":336.105032822757
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -576,6 +612,24 @@
                  "width":0,
                  "x":337.284348727398,
                  "y":509.464470805021
+                }, 
+                {
+                 "height":0,
+                 "id":40,
+                 "name":"crystal2",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":221.711390072556,
+                 "y":476.443625475066
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -584,7 +638,7 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":40,
+ "nextobjectid":43,
  "orientation":"orthogonal",
  "properties":[
         {

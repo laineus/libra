@@ -493,6 +493,60 @@
                  "width":0,
                  "x":984,
                  "y":503
+                }, 
+                {
+                 "height":0,
+                 "id":30,
+                 "name":"crystal2",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":819,
+                 "y":418
+                }, 
+                {
+                 "height":0,
+                 "id":31,
+                 "name":"crystal2",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":1074,
+                 "y":215
+                }, 
+                {
+                 "height":0,
+                 "id":32,
+                 "name":"crystal2",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":673,
+                 "y":274
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -501,7 +555,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":30,
+ "nextobjectid":33,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.4.3",

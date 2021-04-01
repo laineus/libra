@@ -452,6 +452,24 @@
                  "width":0,
                  "x":222.890705977197,
                  "y":548.381895658183
+                }, 
+                {
+                 "height":0,
+                 "id":30,
+                 "name":"crystal2",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":836.134976390648,
+                 "y":636.830588506277
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -460,7 +478,7 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":30,
+ "nextobjectid":31,
  "orientation":"orthogonal",
  "properties":[
         {

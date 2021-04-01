@@ -517,6 +517,78 @@
                  "width":0,
                  "x":903,
                  "y":703
+                }, 
+                {
+                 "height":0,
+                 "id":32,
+                 "name":"crystal2",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":736,
+                 "y":352
+                }, 
+                {
+                 "height":0,
+                 "id":33,
+                 "name":"crystal2",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":636,
+                 "y":747
+                }, 
+                {
+                 "height":0,
+                 "id":34,
+                 "name":"crystal2",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":357,
+                 "y":623
+                }, 
+                {
+                 "height":0,
+                 "id":35,
+                 "name":"crystal2",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":1092,
+                 "y":521
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -525,7 +597,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":32,
+ "nextobjectid":36,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.4.3",
