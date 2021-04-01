@@ -12,7 +12,9 @@ import {
   ENLIGHTENMENT_STEPS,
   APPRECIATION_STEPS,
   BEAUTY_STEPS,
-  FOREVER_STEPS
+  FOREVER_STEPS,
+  RAPTOR_STEPS,
+  PHOTOSYNTHESIS_STEPS
 } from '@/data/eventSteps'
 export default [
   {
@@ -105,5 +107,19 @@ export default [
     completed: state => state.events.forever === FOREVER_STEPS.COMPLETED,
     place: 'hospital2',
     chara: 'ghost'
+  },
+  {
+    key: 'raptor',
+    started: state => state.events.raptor >= RAPTOR_STEPS.STARTED,
+    completed: state => state.events.raptor === RAPTOR_STEPS.COMPLETED,
+    place: 'mansion2',
+    chara: 'pumpkin'
+  },
+  {
+    key: 'photosynthesis',
+    started: state => state.events.photosynthesis >= PHOTOSYNTHESIS_STEPS.STARTED,
+    completed: state => state.events.photosynthesis === PHOTOSYNTHESIS_STEPS.COMPLETED,
+    place: 'cosmos',
+    chara: 'grey1'
   }
 ]
