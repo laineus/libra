@@ -34,7 +34,7 @@ export default {
     const speed = ref(itemData?.speed || 120)
     const textureData = scene.textures.get(itemData.texture)
     const numOfDirection = Object.keys(textureData.frames).map(Number).count(Number.isInteger) / 3
-    const { play: playFrameAnim, lookTo } = useFrameAnimChara(object, props.initR, numOfDirection, itemData?.standingAnim)
+    const { play: playFrameAnim, lookTo } = useFrameAnimChara(object, props.initR ?? Math.PI * Math.random(), numOfDirection, itemData?.standingAnim)
     const setTemper = type => {
       if (!itemData) return
       if (itemData.temper[type] === TEMPER.RANDOM) {

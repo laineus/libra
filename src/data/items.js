@@ -77,7 +77,7 @@ export default [
   makeItem('ice', {
     hp: 10,
     minScale: 0.7,
-    drop: [{ key: 'fish', chance: 0.5 }, { key: 'fish', chance: 0.5 }, { key: 'unagi', chance: 0.03 }]
+    drop: [{ key: 'fish', chance: 0.5 }, { key: 'fish', chance: 0.5 }, { key: 'unagi', chance: 0.05 }, { key: 'pinkPenguin', chance: 0.03 }]
   }),
   makeItem('unadon', { hp: 5, eat: 100 }),
   makeItem('antonLetter', { hp: 5, texture: 'item/letter' }),
@@ -134,6 +134,7 @@ export default [
   makeItem('tablemat1', { hp: 5, y: -18 }),
   makeItem('tablemat2', { hp: 5, y: -18 }),
   makeItem('tv', { hp: 20, weight: 3 }),
+  makeItem('star', { hp: 5, light: true }),
   ...(23).toArray().map(i => makeItem(`art${i}`, { hp: 10 })),
   makeCharacter('ladybird', { hp: 5, atk: 1, temper: BUG, speed: 18 }),
   makeCharacter('stagBeetle', { hp: 5, atk: 3, temper: BEAR, speed: 18 }),
@@ -146,6 +147,7 @@ export default [
   makeCharacter('bat', { hp: 10, atk: 5, temper: CAT, speed: 120, standingAnim: true }),
   makeCharacter('snake', { hp: 25, atk: 10, temper: SHARK, speed: 40, weight: 2 }),
   makeCharacter('penguin', { hp: 20, atk: 5, temper: FISH, speed: 50, weight: 2 }),
+  makeCharacter('pinkPenguin', { hp: 20, atk: 5, temper: FISH, speed: 50, weight: 2 }),
   makeCharacter('minePenguin', { hp: 15, atk: 15, temper: FISH, speed: 50, weight: 2 }),
   makeCharacter('signal', { hp: 30, atk: 10, temper: BUG, speed: 40, weight: 2, standingAnim: true }),
   makeCharacter('ghost', { hp: 50, atk: 15, temper: CAT, speed: 60, standingAnim: true, damage: false }),

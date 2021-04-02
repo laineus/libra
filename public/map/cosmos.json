@@ -1,11 +1,4 @@
 { "compressionlevel":-1,
- "editorsettings":
-    {
-     "export":
-        {
-         "target":"."
-        }
-    },
  "height":32,
  "infinite":false,
  "layers":[
@@ -214,6 +207,28 @@
                  "width":0,
                  "x":204,
                  "y":150
+                }, 
+                {
+                 "height":809.653777627967,
+                 "id":11,
+                 "name":"star",
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":1
+                        }, 
+                        {
+                         "name":"count",
+                         "type":"int",
+                         "value":8
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":1051.26787692011,
+                 "x":51.2813598497616,
+                 "y":32.5439399046564
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -222,10 +237,10 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":11,
+ "nextobjectid":12,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.4.3",
+ "tiledversion":"1.5.0",
  "tileheight":32,
  "tilesets":[
         {
@@ -238,6 +253,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.4,
+ "version":1.5,
  "width":36
 }
