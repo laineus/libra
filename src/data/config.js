@@ -15,8 +15,8 @@ export default {
   },
   DEPTH: {
     GROUND: 0, // + y
-    LIGHT: 9000,
     CEIL: 10000,
+    LIGHT: 10500,
     DARKNESS: 11000,
     SPEACH_BUBBLE: 50000,
     UI_BG: 100000,
