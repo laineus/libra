@@ -209,26 +209,64 @@
                  "y":150
                 }, 
                 {
-                 "height":809.653777627967,
-                 "id":11,
+                 "height":0,
+                 "id":12,
                  "name":"star",
-                 "properties":[
-                        {
-                         "name":"chance",
-                         "type":"float",
-                         "value":1
-                        }, 
-                        {
-                         "name":"count",
-                         "type":"int",
-                         "value":8
-                        }],
+                 "point":true,
                  "rotation":0,
-                 "type":"Random",
+                 "type":"Substance",
                  "visible":true,
-                 "width":1051.26787692011,
-                 "x":51.2813598497616,
-                 "y":32.5439399046564
+                 "width":0,
+                 "x":396.444358838542,
+                 "y":306.701979101459
+                }, 
+                {
+                 "height":0,
+                 "id":13,
+                 "name":"star",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Substance",
+                 "visible":true,
+                 "width":0,
+                 "x":109.465979679299,
+                 "y":518.730678480281
+                }, 
+                {
+                 "height":0,
+                 "id":14,
+                 "name":"star",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Substance",
+                 "visible":true,
+                 "width":0,
+                 "x":607.486878220253,
+                 "y":67.0602398035345
+                }, 
+                {
+                 "height":0,
+                 "id":15,
+                 "name":"star",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Substance",
+                 "visible":true,
+                 "width":0,
+                 "x":1025.62719699523,
+                 "y":251.475899263254
+                }, 
+                {
+                 "height":0,
+                 "id":16,
+                 "name":"star",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Substance",
+                 "visible":true,
+                 "width":0,
+                 "x":1006.88977705013,
+                 "y":756.400057783984
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -237,7 +275,7 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":12,
+ "nextobjectid":17,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.5.0",
