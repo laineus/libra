@@ -8,7 +8,7 @@
       </template>
       <slot />
     </Container>
-    <Image v-if="light" :blendMode="BlendModes.OVERLAY" :x="initX" :y="initY" :depth="config.DEPTH.LIGHT" :tint="0xFF8800" texture="light" />
+    <Image v-if="light" :blendMode="BlendModes.OVERLAY" :x="initX" :y="initY" :depth="config.DEPTH.LIGHT" :tint="light" texture="light" />
     <TapArea v-if="tapEvent.event.value" :visible="interactive" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @tap="execTapEvent" />
     <GrabArea v-else-if="capturable" :visible="interactive" :name="name" :scale="scale" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @grab="alpha = 0.5" @capture="onBroken" @cancel="alpha = 1" />
   </div>
