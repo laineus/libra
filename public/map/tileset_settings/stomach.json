@@ -14,10 +14,35 @@
  "name":"stomach",
  "spacing":0,
  "tilecount":64,
- "tiledversion":"2020.12.18",
+ "tiledversion":"1.4.3",
  "tileheight":32,
  "tiles":[
         {
+         "animation":[
+                {
+                 "duration":300,
+                 "tileid":1
+                }, 
+                {
+                 "duration":300,
+                 "tileid":3
+                }, 
+                {
+                 "duration":300,
+                 "tileid":4
+                }],
+         "id":1
+        }, 
+        {
+         "animation":[
+                {
+                 "duration":300,
+                 "tileid":8
+                }, 
+                {
+                 "duration":300,
+                 "tileid":24
+                }],
          "id":8,
          "properties":[
                 {
@@ -27,6 +52,15 @@
                 }]
         }, 
         {
+         "animation":[
+                {
+                 "duration":300,
+                 "tileid":9
+                }, 
+                {
+                 "duration":300,
+                 "tileid":25
+                }],
          "id":9,
          "properties":[
                 {
@@ -36,6 +70,15 @@
                 }]
         }, 
         {
+         "animation":[
+                {
+                 "duration":300,
+                 "tileid":10
+                }, 
+                {
+                 "duration":300,
+                 "tileid":26
+                }],
          "id":10,
          "properties":[
                 {
@@ -54,6 +97,15 @@
                 }]
         }, 
         {
+         "animation":[
+                {
+                 "duration":300,
+                 "tileid":16
+                }, 
+                {
+                 "duration":300,
+                 "tileid":32
+                }],
          "id":16,
          "properties":[
                 {
@@ -63,6 +115,15 @@
                 }]
         }, 
         {
+         "animation":[
+                {
+                 "duration":300,
+                 "tileid":17
+                }, 
+                {
+                 "duration":300,
+                 "tileid":33
+                }],
          "id":17,
          "properties":[
                 {
@@ -72,6 +133,15 @@
                 }]
         }, 
         {
+         "animation":[
+                {
+                 "duration":300,
+                 "tileid":18
+                }, 
+                {
+                 "duration":300,
+                 "tileid":34
+                }],
          "id":18,
          "properties":[
                 {
