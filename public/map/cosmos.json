@@ -277,6 +277,12 @@
  "nextlayerid":6,
  "nextobjectid":17,
  "orientation":"orthogonal",
+ "properties":[
+        {
+         "name":"darkness",
+         "type":"color",
+         "value":"#d21c1a1e"
+        }],
  "renderorder":"right-down",
  "tiledversion":"1.5.0",
  "tileheight":32,

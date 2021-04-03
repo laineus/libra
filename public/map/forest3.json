@@ -1,11 +1,4 @@
 { "compressionlevel":-1,
- "editorsettings":
-    {
-     "export":
-        {
-         "target":"."
-        }
-    },
  "height":35,
  "infinite":false,
  "layers":[
@@ -1023,6 +1016,18 @@
                  "width":0,
                  "x":492,
                  "y":287
+                }, 
+                {
+                 "height":0,
+                 "id":298,
+                 "name":"moss",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":763,
+                 "y":443
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1122,10 +1127,10 @@
          "y":0
         }],
  "nextlayerid":13,
- "nextobjectid":298,
+ "nextobjectid":299,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.4.3",
+ "tiledversion":"1.5.0",
  "tileheight":32,
  "tilesets":[
         {
@@ -1142,6 +1147,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.4,
+ "version":1.5,
  "width":40
 }

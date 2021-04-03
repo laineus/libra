@@ -46,6 +46,7 @@ export default [
   makeItem('clover3', { hp: 5 }),
   makeItem('clover4', { hp: 5 }),
   makeItem('gardenia', { hp: 5, y: 2 }),
+  makeItem('moss', { hp: 5, minScale: 0.5, light: 0x225500 }),
   makeItem('strawDoll', { hp: 15 }),
   makeItem('stone', { hp: 15, minScale: 0.6 }),
   makeItem('raptor', { hp: 30, y: -60 }),

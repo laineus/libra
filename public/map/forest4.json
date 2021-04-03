@@ -1,11 +1,4 @@
 { "compressionlevel":-1,
- "editorsettings":
-    {
-     "export":
-        {
-         "target":"."
-        }
-    },
  "height":38,
  "infinite":false,
  "layers":[
@@ -939,6 +932,54 @@
                  "width":96,
                  "x":0,
                  "y":416
+                }, 
+                {
+                 "height":0,
+                 "id":63,
+                 "name":"moss",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":250.612991765782,
+                 "y":437.987191216834
+                }, 
+                {
+                 "height":0,
+                 "id":64,
+                 "name":"moss",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":121.793229643184,
+                 "y":432.131747483989
+                }, 
+                {
+                 "height":0,
+                 "id":65,
+                 "name":"moss",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":129.990850869167,
+                 "y":899.39615736505
+                }, 
+                {
+                 "height":0,
+                 "id":66,
+                 "name":"moss",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":156.925892040256,
+                 "y":939.213174748399
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1020,10 +1061,10 @@
          "y":0
         }],
  "nextlayerid":10,
- "nextobjectid":63,
+ "nextobjectid":67,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.4.3",
+ "tiledversion":"1.5.0",
  "tileheight":32,
  "tilesets":[
         {
@@ -1040,6 +1081,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.4,
+ "version":1.5,
  "width":38
 }
