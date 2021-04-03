@@ -321,7 +321,7 @@ export default {
       silence: '………。'
     },
     gameOver: {
-      amili1: ['リブラ、目覚めた？', 'もう怖くないよ'],
+      amili1: ['リブラ、目さめた？', 'もう怖くないよ'],
       amili2: ['しばらくこうしてよっか']
     },
     forest2Kajitsu: {

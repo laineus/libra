@@ -34,6 +34,7 @@ export default {
   components: { Container, Circle, Image, MenuStatus, MenuBag, MenuQuest, MenuMap, MenuSystem },
   setup () {
     const state = inject('storage').state
+    const event = inject('event')
     const menu = [
       { key: 'status', ref: ref(null) },
       { key: 'bag', ref: ref(null) },
@@ -44,6 +45,7 @@ export default {
     const index = ref(null)
     const selected = computed(() => menu[index.value])
     const select = indexOrName => {
+      if (event.state) return
       index.value = typeof indexOrName === 'string' ? menu.findIndex(v => v.key === indexOrName) : indexOrName
       return new Promise(resolve => {
         nextTick(() => {
@@ -72,7 +74,7 @@ export default {
       config, COLORS: config.COLORS,
       menu,
       index, selected,
-      select,
+      select, close,
       tapButton, tapCloseArea
     }
   }
