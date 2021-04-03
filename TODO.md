@@ -6,9 +6,3 @@
 実績
 模様替えモード
 シェア
-
-cave deeper
-fall dear
-cosmos hello
-hospital madp
-coalmine mary
