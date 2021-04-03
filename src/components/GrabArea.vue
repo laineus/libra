@@ -31,9 +31,11 @@ export default {
       menu.value.select('bag').then(menuBag => {
         data.grabbing = true
         context.emit('grab')
-        menuBag.grabItem({ key: props.name, scale: props.scale }, 'capture').then(bool => {
+        const mode = 'capture'
+        // const mode = 'move'
+        menuBag.grabItem({ key: props.name, scale: props.scale }, mode).then(pos => {
           data.grabbing = false
-          context.emit(bool ? 'capture' : 'cancel')
+          context.emit(pos ? mode : 'cancel')
         })
       })
     }

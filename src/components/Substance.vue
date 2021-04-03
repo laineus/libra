@@ -10,7 +10,7 @@
     </Container>
     <Image v-if="light" :blendMode="BlendModes.OVERLAY" :x="initX" :y="initY" :depth="config.DEPTH.LIGHT" :tint="light" texture="light" />
     <TapArea v-if="tapEvent.event.value" :visible="interactive" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @tap="execTapEvent" />
-    <GrabArea v-else-if="capturable" :visible="interactive" :name="name" :scale="scale" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @grab="alpha = 0.5" @capture="onBroken" @cancel="alpha = 1" />
+    <GrabArea v-else-if="capturable" :visible="interactive" :name="name" :scale="scale" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @grab="alpha = 0.5" @capture="onBroken" @move="move" @cancel="alpha = 1" />
   </div>
 </template>
 
@@ -108,6 +108,11 @@ export default {
         })
       }
     }
+    const move = pos => {
+      alpha.value = 1
+      object.value.x = pos.x
+      object.value.y = pos.y
+    }
     const create = obj => context.emit('create', obj)
     onPreUpdate(() => {
       if (depth.value !== object.value.y + depthAdjust.value) depth.value = object.value.y + depthAdjust.value
@@ -141,6 +146,7 @@ export default {
       imageTexture,
       imgWidth, imgHeight, depth, alpha,
       light,
+      move,
       tapEvent,
       execTapEvent: tapEvent.exec,
       setTapEvent,

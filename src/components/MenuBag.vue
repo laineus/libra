@@ -1,5 +1,5 @@
 <template>
-  <MenuContainer ref="container" :arrowX="20 + (1 * 50)" :height="420" :title="t('ui.bag')" :visible="grab.mode !== 'dispose'">
+  <MenuContainer ref="container" :arrowX="20 + (1 * 50)" :height="420" :title="t('ui.bag')" :visible="showBag">
     <Image v-for="v in bagItems" :key="v.id" :texture="itemData[v.key].texture" :frame="itemData[v.key].frame" :x="v.bagX" :y="v.bagY" :scale="v.scale" :originX="0.5" :originY="1" :visible="grab.item !== v" @pointerdown="grabItem(v, 'move')" />
     <Text :text="`${t('ui.weight')}:`" :originX="1" :originY="0.5" :x="163" :y="14" :size="13" />
     <Text :text="`${weight}/100`" :originX="1" :originY="0.5" :x="222" :y="14" :size="14" />
@@ -41,17 +41,23 @@ export default {
       resolver: null,
       x: 0, y: 0
     })
+    const grabbingBagItem = computed(() => 'bagX' in grab.item)
     const grabItemName = computed(() => itemData[grab.item.key].type === 'Character' ? t(`name.${grab.item.key}`) : t(`item.${grab.item.key}`))
     const onEatArea = computed(() => Math.hypot(grab.x - 907, grab.y - 422) < 25)
     const onBagArea = computed(() => (grab.x - offsetX.value) >= 0)
     const weight = computed(() => storage.state.bagItems.reduce((sum, v) => sum + itemData[v.key].weight, 0))
     const grabRef = refObj(null)
+    const showBag = computed(() => {
+      if (grab.mode === 'dispose') return false
+      if (grab.mode === 'move' && !grabbingBagItem.value) return false
+      return true
+    })
     const update = () => {
       if (grab.item) {
         if (!controller.activePointer) return drop()
         grab.x = controller.activePointer.x
         grab.y = controller.activePointer.y
-        if (grab.mode === 'move') {
+        if (grab.mode === 'move' && grabbingBagItem.value) {
           if (!onBagArea.value) grab.mode = 'dispose'
         } else if (grab.mode === 'dispose') {
           if (Phaser.Math.Distance.Between(grab.x, grab.y, (180).byRight, (35).byBottom) < 20) grab.mode = 'move'
@@ -108,12 +114,16 @@ export default {
         }
         grab.resolver()
       } else if (grab.mode === 'move') {
-        grab.item.bagX = Math.round(Math.fix(grab.x - offsetX.value, wHalf, WIDTH - wHalf))
-        grab.item.bagY = Math.round(Math.fix(grab.y - offsetY.value, height, HEIGHT))
+        if (grabbingBagItem.value) {
+          grab.item.bagX = Math.round(Math.fix(grab.x - offsetX.value, wHalf, WIDTH - wHalf))
+          grab.item.bagY = Math.round(Math.fix(grab.y - offsetY.value, height, HEIGHT))
+        } else {
+          context.emit('close')
+        }
         if (grab.item.key.startsWith('raptor')) {
           makeRaptor(storage.state.bagItems, uiScene)
         }
-        grab.resolver()
+        grab.resolver({ x: grab.x + camera.scrollX, y: grab.y + camera.scrollY })
       } else if (grab.mode === 'capture') {
         const weightOver = (weight.value + data.weight) > 100
         if (onBagArea.value && !weightOver) {
@@ -145,6 +155,7 @@ export default {
       t, config,
       itemData,
       weight,
+      showBag,
       bagItems: storage.state.bagItems,
       container,
       controller, grab, grabRef,
