@@ -1,6 +1,5 @@
 
 - cave3のコウモリ攻撃
-- lightの調整
 - ED SS
 - chara shadow
 

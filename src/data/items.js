@@ -77,6 +77,7 @@ export default [
   makeItem('ice', {
     hp: 10,
     minScale: 0.7,
+    light: 0x003366,
     drop: [{ key: 'fish', chance: 0.5 }, { key: 'fish', chance: 0.5 }, { key: 'unagi', chance: 0.05 }, { key: 'pinkPenguin', chance: 0.03 }]
   }),
   makeItem('unadon', { hp: 5, eat: 100 }),
@@ -93,8 +94,8 @@ export default [
   makeItem('book1', { hp: 5 }),
   makeItem('book2', { hp: 5 }),
   makeItem('book3', { hp: 5 }),
-  makeItem('candol1', { hp: 5, light: 0xFF8800 }),
-  makeItem('candol2', { hp: 5, light: 0xFF8800 }),
+  makeItem('candol1', { hp: 5, light: 0xBB5500 }),
+  makeItem('candol2', { hp: 5, light: 0xBB5500 }),
   makeItem('chest', { hp: 15, y: -46 }),
   makeItem('coffin', { hp: 15 }),
   makeItem('cookies', { hp: 5 }),
@@ -116,7 +117,7 @@ export default [
   makeItem('revolver', { hp: 10 }),
   makeItem('kitchen', { hp: 25, weight: 3, y: -50 }),
   makeItem('knife', { hp: 20 }),
-  makeItem('lamp', { hp: 10, light: 0xFF8800 }),
+  makeItem('lamp', { hp: 10, light: 0xAA6600 }),
   makeItem('libra', { hp: 5 }),
   makeItem('logo', { hp: 10 }),
   makeItem('pedestal', { hp: 20, weight: 2, y: -40 }),
