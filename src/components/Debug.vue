@@ -4,12 +4,17 @@
       <option value="" />
       <option v-for="v in mapList" :key="v.name" :value="v">{{ v.name }}</option>
     </select>
+    <select v-model="selectedItem" @change="changeItem">
+      <option value="" />
+      <option v-for="v in items" :key="v.key" :value="v">{{ v.key }}</option>
+    </select>
   </div>
 </template>
 
 <script>
 import assets from '../assets.json'
 import { ref, inject } from 'vue'
+import items from '@/data/items'
 export default {
   setup () {
     const game = inject('game')
@@ -29,10 +34,26 @@ export default {
       const { name, x, y } = selectedMap.value
       gameScene.value.setField(name, x, y)
     }
+    const selectedItem = ref(null)
+    const changeItem = () => {
+      if (!selectedItem.value) return
+      storage.state.bagItems.push({
+        id: Math.randomInt(1000000, 9999999),
+        key: selectedItem.value.key,
+        scale: selectedItem.value.minScale ? Math.randomInt(selectedItem.value.minScale * 10, 10) / 10 : 1,
+        bagX: Math.randomInt(30, 200),
+        bagY: Math.randomInt(60, 410)
+      })
+      uiScene.value.menu.select('bag')
+      selectedItem.value = null
+    }
     return {
       selectedMap,
       mapList,
-      changeMap
+      changeMap,
+      items,
+      selectedItem,
+      changeItem
     }
   }
 }
