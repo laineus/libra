@@ -1,6 +1,5 @@
 
 - ED SS
-- chara shadow
 
 # 機能
 実績

@@ -1,19 +1,20 @@
 <template>
   <Substance ref="substance" :name="name" :frame="frame" @del="$emit('del')" @startEvent="startEvent">
     <Body :drag="500" :offsetX="Math.max(substance?.imgWidth - 30, 0).half" :width="Math.min(substance?.imgWidth, 30)" :height="Math.min(substance?.imgHeight, 30)" />
+    <Image v-if="itemData.shadow" texture="shadow" :tint="0x000000" :scale="itemData.shadow" :alpha="0.5" :y="itemData.y ?? -2" />
   </Substance>
 </template>
 
 <script>
 import { computed, inject, onMounted, ref } from 'vue'
-import { onPreUpdate, Body } from 'phavuer'
+import { onPreUpdate, Body, Image } from 'phavuer'
 import Substance from './Substance'
 import useFollowing from './modules/useFollowing'
 import useFrameAnimChara from './modules/useFrameAnimChara'
 import items from '@/data/items'
 import { TEMPER } from '@/data/constants'
 export default {
-  components: { Substance, Body },
+  components: { Substance, Body, Image },
   props: {
     initR: { default: 0 },
     name: { default: null }

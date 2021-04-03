@@ -33,6 +33,7 @@ const makeCharacter = (name, obj) => {
     standingAnim: false,
     damage: true,
     capture: true,
+    shadow: 0.5,
     temper: PLANT
   }, obj)
 }
@@ -138,16 +139,16 @@ export default [
   makeItem('tv', { hp: 20, weight: 3 }),
   makeItem('star', { hp: 5, light: 0x887766 }),
   ...(23).toArray().map(i => makeItem(`art${i}`, { hp: 10 })),
-  makeCharacter('ladybird', { hp: 5, atk: 1, temper: BUG, speed: 18 }),
-  makeCharacter('stagBeetle', { hp: 5, atk: 3, temper: BEAR, speed: 18 }),
-  makeCharacter('beetle', { hp: 5, atk: 2, temper: CAT, speed: 18 }),
+  makeCharacter('ladybird', { hp: 5, atk: 1, temper: BUG, speed: 18, shadow: false }),
+  makeCharacter('stagBeetle', { hp: 5, atk: 3, temper: BEAR, speed: 18, shadow: false }),
+  makeCharacter('beetle', { hp: 5, atk: 2, temper: CAT, speed: 18, shadow: false }),
   makeCharacter('kajitsu', { hp: 5, atk: 5, damage: false, capture: false }),
-  makeCharacter('torrent', { hp: 100, atk: 60, temper: ELEPHANT, speed: 50, weight: 5 }),
-  makeCharacter('flog', { hp: 20, atk: 5, temper: CAT, speed: 30 }),
-  makeCharacter('fallFlog', { hp: 20, atk: 5, temper: SHARK, speed: 30 }),
+  makeCharacter('torrent', { hp: 100, atk: 60, temper: ELEPHANT, speed: 50, weight: 5, shadow: 0.8, y: -12 }),
+  makeCharacter('flog', { hp: 20, atk: 5, temper: CAT, speed: 30, shadow: 0.4 }),
+  makeCharacter('fallFlog', { hp: 20, atk: 5, temper: SHARK, speed: 30, shadow: 0.4 }),
   makeCharacter('hercules', { hp: 5, atk: 6, temper: BEAR, speed: 18 }),
   makeCharacter('bat', { hp: 10, atk: 5, temper: CAT, speed: 120, standingAnim: true }),
-  makeCharacter('snake', { hp: 25, atk: 10, temper: SHARK, speed: 40, weight: 2 }),
+  makeCharacter('snake', { hp: 25, atk: 10, temper: SHARK, speed: 40, weight: 2, y: -6 }),
   makeCharacter('penguin', { hp: 20, atk: 5, temper: FISH, speed: 50, weight: 2 }),
   makeCharacter('pinkPenguin', { hp: 20, atk: 5, temper: FISH, speed: 50, weight: 2 }),
   makeCharacter('minePenguin', { hp: 15, atk: 15, temper: FISH, speed: 50, weight: 2 }),
@@ -156,5 +157,5 @@ export default [
   makeCharacter('pumpkin', { hp: 20, atk: 15, temper: FISH, speed: 50, weight: 2 }),
   makeCharacter('grey1', { hp: 50, atk: 35, temper: ELEPHANT, speed: 50, weight: 2 }),
   makeCharacter('grey2', { hp: 50, atk: 35, temper: FISH, speed: 50, weight: 2 }),
-  makeCharacter('amili', { hp: 100, atk: 5, temper: FISH, damage: false, capture: false })
+  makeCharacter('amili', { hp: 100, atk: 5, temper: FISH, damage: false, capture: false, y: -3 })
 ]
