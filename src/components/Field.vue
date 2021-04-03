@@ -39,8 +39,8 @@ export default {
     const scene = inject('scene')
     const audio = inject('audio')
     const state = inject('storage').state
-    const menu = inject('menu').value
-    menu.close()
+    const menu = inject('menu')
+    menu.value?.close()
     const player = ref(null)
     const field = fieldService(scene, props.fieldKey)
     console.log(field)
