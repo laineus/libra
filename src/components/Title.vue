@@ -38,6 +38,7 @@ export default {
   setup (_, context) {
     const gameScene = inject('gameScene')
     const setting = inject('setting')
+    const audio = inject('audio')
     const selected = ref(null)
     const list = [t('ui.newGame'), t('ui.continue'), t('ui.config')]
     const tween = ref(null)
@@ -54,6 +55,7 @@ export default {
         tween.value = { alpha: { from: 0, to: 1 }, duration: 70 }
       }
     }
+    audio.setBgm('happy')
     return {
       t,
       Phaser,
