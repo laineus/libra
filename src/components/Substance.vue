@@ -114,7 +114,7 @@ export default {
       tapEvent.setEvent(async () => {
         context.emit('startEvent')
         const fixCamera = await camera.value.look((object.value.x + player.value.object.x).half, (object.value.y + player.value.object.y).half, 500)
-        const result = await event()
+        const result = await unref(event)()
         await fixCamera()
         return result
       })
