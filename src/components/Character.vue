@@ -96,6 +96,7 @@ export default {
       damage,
       startEvent,
       speed,
+      setTemper,
       // Following
       stopWalking,
       setRandomWalk: following.setRandomWalk,
@@ -108,6 +109,7 @@ export default {
       distanceToPlayer: computed(() => substance.value?.distanceToPlayer),
       execTapEvent: computed(() => substance.value?.execTapEvent),
       setDestroyEvent: computed(() => substance.value?.setDestroyEvent),
+      setDamageEvent: computed(() => substance.value?.setDamageEvent),
       setTapEvent,
       setVisible: computed(() => substance.value?.setVisible),
       setCapturable: computed(() => substance.value?.setCapturable)

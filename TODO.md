@@ -1,5 +1,4 @@
 
-- cave3のコウモリ攻撃
 - ED SS
 - chara shadow
 

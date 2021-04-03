@@ -13,6 +13,18 @@ export default {
     const leftBat = field.getObjectById(3)
     const rightBat = field.getObjectById(4)
     if (!leftBat || !rightBat) return
+    leftBat.setDamageEvent(() => {
+      rightBat.setTapEvent(null)
+      rightBat.setTemper('shot')
+      leftBat.setDamageEvent(null)
+      rightBat.setDamageEvent(null)
+    })
+    rightBat.setDamageEvent(() => {
+      leftBat.setTapEvent(null)
+      leftBat.setTemper('shot')
+      leftBat.setDamageEvent(null)
+      rightBat.setDamageEvent(null)
+    })
 
     const tl = new Talker(t('name.bat'), leftBat.object)
     const tr = new Talker(t('name.bat'), rightBat.object)

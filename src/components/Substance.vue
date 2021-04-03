@@ -90,8 +90,13 @@ export default {
     }
     const damageEffectData = reactive({ value: false, diffX: 0, diffY: 0 })
     const damageEffectTimeline = { duration: 120, tweens: [{ scale: 0.6 }, { scale: 1, alpha: 0 }], onComplete: () => damageEffectData.value = false }
+    let onDamage = null
+    const setDamageEvent = e => {
+      onDamage = e
+    }
     const damage = (value, r) => {
       if (data.hp <= 0) return
+      onDamage?.()
       data.hp -= value
       damageEffectData.value = true
       damageEffectData.diffX = Math.cos(r) * -15
@@ -140,6 +145,7 @@ export default {
       execTapEvent: tapEvent.exec,
       setTapEvent,
       setDestroyEvent,
+      setDamageEvent,
       onBroken,
       setVisible, setCapturable,
       destroy: () => context.emit('del')
