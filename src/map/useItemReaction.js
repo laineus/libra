@@ -61,6 +61,7 @@ export default state => () => {
     { key: 'art' },
     { key: 'torrent' },
     { key: 'penguin', test: () => hasSome('penguin', 'minePenguin') },
+    { key: 'pinkPenguin' },
     { key: 'pumpkin' }
   ]
   const reaction = list.filter(v => !done(v.key)).find(v => v.test ? v.test() : has(v.key))
