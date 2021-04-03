@@ -1,5 +1,4 @@
 <template>
-  <Rectangle :fillColor="0x333333" :origin="0" :width="config.WIDTH" :height="config.HEIGHT" />
   <Image texture="main" :x="config.WIDTH.half" :y="config.HEIGHT.half" />
   <Image v-if="setting.state.lang === 'ja'" texture="logo_ja" :x="config.WIDTH.half" :y="config.HEIGHT.half - 77" />
   <Image v-else texture="logo_en" :x="config.WIDTH.half" :y="config.HEIGHT.half - 90" />
@@ -23,6 +22,10 @@
       <Text :text="t('ui.ok')" :origin="0.5" :y="72" :size="14" />
     </Container>
   </Container>
+  <template v-if="!creditEnd">
+    <Rectangle :fillColor="0x111111" :origin="0" :width="config.WIDTH" :height="config.HEIGHT" :tween="bgTween" @pointerdown.stop="creditEnd = true" />
+    <Image texture="logo_laineus" :x="config.WIDTH.half" :y="config.HEIGHT.half" :tween="logoTween" />
+  </template>
 </template>
 
 <script>
@@ -55,7 +58,25 @@ export default {
         tween.value = { alpha: { from: 0, to: 1 }, duration: 70 }
       }
     }
-    audio.setBgm('happy')
+    const creditEnd = ref(false)
+    const bgTween = ref(null)
+    const logoTween = {
+      duration: 250,
+      hold: 1600,
+      alpha: { from: 0, to: 1 },
+      yoyo: true,
+      onComplete: () => {
+        audio.setBgm('happy')
+        bgTween.value = {
+          delay: 300,
+          duration: 1000,
+          alpha: 0,
+          onComplete: () => {
+            creditEnd.value = true
+          }
+        }
+      }
+    }
     return {
       t,
       Phaser,
@@ -64,7 +85,10 @@ export default {
       selected,
       tween,
       list,
-      select
+      select,
+      creditEnd,
+      bgTween,
+      logoTween
     }
   }
 }
