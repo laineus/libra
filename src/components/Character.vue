@@ -1,7 +1,7 @@
 <template>
   <Substance ref="substance" :name="name" :frame="frame" @del="$emit('del')" @startEvent="startEvent">
     <Body :drag="500" :offsetX="Math.max(substance?.imgWidth - 30, 0).half" :width="Math.min(substance?.imgWidth, 30)" :height="Math.min(substance?.imgHeight, 30)" />
-    <Image v-if="itemData.shadow" texture="shadow" :tint="0x000000" :scale="itemData.shadow" :alpha="0.5" :y="itemData.y ?? -2" />
+    <Image v-if="itemData.shadow && hp > 0" texture="shadow" :tint="0x000000" :scale="itemData.shadow" :alpha="0.5" :y="itemData.y ?? -2" />
   </Substance>
 </template>
 

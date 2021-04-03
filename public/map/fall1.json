@@ -1,11 +1,4 @@
 { "compressionlevel":-1,
- "editorsettings":
-    {
-     "export":
-        {
-         "target":"."
-        }
-    },
  "height":32,
  "infinite":false,
  "layers":[
@@ -400,94 +393,6 @@
          "name":"items",
          "objects":[
                 {
-                 "height":125.3333,
-                 "id":31,
-                 "name":"grass",
-                 "properties":[
-                        {
-                         "name":"chance",
-                         "type":"float",
-                         "value":0.4
-                        }, 
-                        {
-                         "name":"count",
-                         "type":"int",
-                         "value":3
-                        }],
-                 "rotation":0,
-                 "type":"Random",
-                 "visible":true,
-                 "width":233.333,
-                 "x":179.3335,
-                 "y":727.33335
-                }, 
-                {
-                 "height":75.3333,
-                 "id":32,
-                 "name":"grass",
-                 "properties":[
-                        {
-                         "name":"chance",
-                         "type":"float",
-                         "value":0.4
-                        }, 
-                        {
-                         "name":"count",
-                         "type":"int",
-                         "value":1
-                        }],
-                 "rotation":0,
-                 "type":"Random",
-                 "visible":true,
-                 "width":63.333,
-                 "x":657.3335,
-                 "y":299.33335
-                }, 
-                {
-                 "height":53.3333,
-                 "id":33,
-                 "name":"grass",
-                 "properties":[
-                        {
-                         "name":"chance",
-                         "type":"float",
-                         "value":0.4
-                        }, 
-                        {
-                         "name":"count",
-                         "type":"int",
-                         "value":1
-                        }],
-                 "rotation":0,
-                 "type":"Random",
-                 "visible":true,
-                 "width":109.333,
-                 "x":455.3335,
-                 "y":595.33335
-                }, 
-                {
-                 "height":53.3333,
-                 "id":34,
-                 "name":"grass",
-                 "properties":[
-                        {
-                         "name":"chance",
-                         "type":"float",
-                         "value":0.4
-                        }, 
-                        {
-                         "name":"count",
-                         "type":"int",
-                         "value":1
-                        }],
-                 "rotation":0,
-                 "type":"Random",
-                 "visible":true,
-                 "width":109.333,
-                 "x":901.3335,
-                 "y":433.33335
-                }, 
-                {
                  "height":0,
                  "id":35,
                  "name":"ladybird",
@@ -677,7 +582,7 @@
  "nextobjectid":46,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.4.3",
+ "tiledversion":"1.5.0",
  "tileheight":32,
  "tilesets":[
         {
@@ -694,6 +599,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.4,
+ "version":1.5,
  "width":40
 }

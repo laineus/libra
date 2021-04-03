@@ -1,11 +1,4 @@
 { "compressionlevel":-1,
- "editorsettings":
-    {
-     "export":
-        {
-         "target":"."
-        }
-    },
  "height":32,
  "infinite":false,
  "layers":[
@@ -374,50 +367,6 @@
          "name":"items",
          "objects":[
                 {
-                 "height":125.333,
-                 "id":24,
-                 "name":"grass",
-                 "properties":[
-                        {
-                         "name":"chance",
-                         "type":"float",
-                         "value":0.4
-                        }, 
-                        {
-                         "name":"count",
-                         "type":"int",
-                         "value":3
-                        }],
-                 "rotation":0,
-                 "type":"Random",
-                 "visible":true,
-                 "width":159.333,
-                 "x":793.3335,
-                 "y":715.3335
-                }, 
-                {
-                 "height":67.333,
-                 "id":25,
-                 "name":"grass",
-                 "properties":[
-                        {
-                         "name":"chance",
-                         "type":"float",
-                         "value":0.4
-                        }, 
-                        {
-                         "name":"count",
-                         "type":"int",
-                         "value":3
-                        }],
-                 "rotation":0,
-                 "type":"Random",
-                 "visible":true,
-                 "width":191.333,
-                 "x":336.3335,
-                 "y":145.3335
-                }, 
-                {
                  "height":0,
                  "id":27,
                  "name":"kinoko",
@@ -571,7 +520,7 @@
  "nextobjectid":35,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.4.3",
+ "tiledversion":"1.5.0",
  "tileheight":32,
  "tilesets":[
         {
@@ -588,6 +537,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.4,
+ "version":1.5,
  "width":40
 }
