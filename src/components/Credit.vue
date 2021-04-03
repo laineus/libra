@@ -17,7 +17,9 @@
       <Image texture="drive_l" :y="3600" />
     </Container>
     <Container :x="config.WIDTH.half" :y="config.HEIGHT.half">
-      <Image v-if="data.ssTexture" :texture="data.ssTexture" :origin="0.5" :tween="data.ssTween" :alpha="0" />
+      <Container>
+        <Image v-if="data.ssTexture" :texture="data.ssTexture" :origin="0.5" :tween="data.ssTween" :alpha="0" />
+      </Container>
       <Container :tween="data.ssTexture ? tweens.alpha1 : tweens.alpha0" :alpha="0">
         <Image :texture="endA ? 'ed_a' : 'ed_b'" :origin="0.5" />
         <Image :texture="endA ? 'ed_tear' : 'ed_zzz'" :x="-0.5" :y="endA ? -13 : -30" :origin="0.5" :frame="animFrame" />
