@@ -9,6 +9,7 @@ export default {
     const field = inject('field').value
     const camera = inject('camera').value
     const talk = inject('talk').value
+    const audio = inject('audio')
     const { exec } = inject('event')
     const bag = inject('bag')
     const killed = computed(() => state.killed.count(v => v !== 'fall2_3') > 0)
@@ -28,7 +29,7 @@ export default {
     kajitsu.setVisible(computed(() => state.events.intro < INTRO_STEPS.COMPLETED))
     const area = field.getObjectById(5)
     const mountApple = () => field.addObject({ name: 'apple', x: field.positions.apple.x, y: field.positions.apple.y })
-    if (sumStatus.value > 0 ? Math.chance(0.01) : !bag.hasItem('apple', 1, { room: true, bag: true })) {
+    if (sumStatus.value > 0 && Math.chance(0.01) && !bag.hasItem('apple', 1, { room: true, bag: true })) {
       mountApple()
     }
 
@@ -36,6 +37,7 @@ export default {
 
     // Auto start event
     if (state.events.intro === INTRO_STEPS.INTRO) {
+      audio.setBgm(null)
       exec(async () => {
         await sleep(1000)
         const revert = await camera.move(0, -100, 2000)

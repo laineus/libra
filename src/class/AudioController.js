@@ -38,12 +38,14 @@ export default class {
     const key = `bgm/${name}`
     if (this.currentBgm?.key === key) return () => null
     this.currentBgm?.pause()
-    const bgm = this.sound.add(key, Object.assign({ loop: true, volume: this.bgmVolume, duration: 200 }, config))
-    bgm.play()
-    const resolve = () => {
-      this.currentBgm?.resume()
-      if (bgm.isPlaying) bgm.stop()
+    if (name) {
+      const bgm = this.sound.add(key, Object.assign({ loop: true, volume: this.bgmVolume, duration: 200 }, config))
+      bgm.play()
+      return () => {
+        this.currentBgm?.resume()
+        if (bgm.isPlaying) bgm.stop()
+      }
     }
-    return resolve
+    return () => this.currentBgm?.resume()
   }
 }

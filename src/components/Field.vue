@@ -95,8 +95,8 @@ export default {
     onMounted(() => {
       resetDarkness()
       setupCamera(inject('camera').value, field.width, field.height, player.value.object)
-      event.create?.(props.payload)
       audio.setBgm(event.bgm || null)
+      event.create?.(props.payload)
     })
     onBeforeUnmount(() => {
       darkness.destroy()
