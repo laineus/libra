@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { inject } from 'vue'
+import { inject, onMounted } from 'vue'
 import { refObj, Container, Image, onPreUpdate } from 'phavuer'
 import tappedNearest from '@/components/modules/tappedNearest'
 export default {
@@ -23,6 +23,9 @@ export default {
       if (!tappedNearest(scene.input._temp, pointer, tapArea.value)) return
       context.emit('tap')
     }
+    onMounted(() => {
+      tapArea.value.tapDistance = 25
+    })
     onPreUpdate(() => {
       if (props.follow) tapArea.value.setPosition(props.follow.x, props.follow.y - tapArea.value.height.half + 10)
     })
