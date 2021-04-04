@@ -15,12 +15,12 @@
     "phaser": "^3.53.1",
     "phaser-tiled-json-external-loader": "^0.1.1",
     "phavuer": "^0.7.9",
-    "vue": "^3.0.5"
+    "vue": "^3.0.11"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
-    "@vue/compiler-sfc": "^3.0.4",
+    "@vue/compiler-sfc": "^3.0.11",
     "auto-tile-webpack-plugin": "^0.11.0",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.0.1",
