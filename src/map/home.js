@@ -205,13 +205,15 @@ export default {
       const kitchen = getUsableItem('kitchen')
       amili.object.setPosition(kitchen.x + USING_POSITION.kitchen.x, kitchen.y + USING_POSITION.kitchen.y)
       amili.lookTo('up')
+      const unagi = field.objects.find(v => v.name === 'unagi')
+      if (unagi) field.objects.delete(unagi)
       greetingEvent = async () => {
         await speakAmiliScripts(t('events.home.cooking'))
         const { tableBegin, tableEnd } = field.positions
         const tablemat = state.roomItems.filter(v => ['tablemat1', 'tablemat2'].includes(v.key)).filter(v => {
           return v.x > tableBegin.x && v.x < tableEnd.x && v.y > tableBegin.y && v.y < tableEnd.y
         }).random()
-        const name = ['curry', 'steak', 'stirFry', 'omurice'].random()
+        const name = unagi ? 'unadon' : ['curry', 'steak', 'stirFry', 'omurice'].random()
         const pos = tablemat ?? field.positions.dish
         field.addObject({ name, x: pos.x, y: pos.y - 2 })
         return false
