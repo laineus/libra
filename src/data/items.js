@@ -1,4 +1,5 @@
 import { TEMPER } from '@/data/constants'
+import setting from '@/data/setting'
 const PLANT = { normal: TEMPER.STOP, shot: TEMPER.STOP }
 const BEAR = { normal: TEMPER.ESCAPE, shot: TEMPER.ATTACK }
 const BUG = { normal: TEMPER.RANDOM, shot: TEMPER.RANDOM }
@@ -121,7 +122,7 @@ export default [
   makeItem('knife', { hp: 20 }),
   makeItem('lamp', { hp: 10, light: 0xAA6600 }),
   makeItem('libra', { hp: 5 }),
-  makeItem('logo', { hp: 10 }),
+  makeItem('logo', { hp: 10, texture: setting.state.lang === 'ja' ? 'item/logo' : 'item/logo_en' }),
   makeItem('pedestal', { hp: 20, weight: 2, y: -40 }),
   makeItem('pot', { hp: 5, y: -5 }),
   makeItem('rack', { hp: 30, weight: 3, y: -32 }),
