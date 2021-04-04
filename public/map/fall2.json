@@ -282,6 +282,12 @@
          "id":3,
          "name":"fall_ceil",
          "opacity":1,
+         "properties":[
+                {
+                 "name":"depth",
+                 "type":"string",
+                 "value":"CEIL"
+                }],
          "type":"tilelayer",
          "visible":true,
          "width":40,

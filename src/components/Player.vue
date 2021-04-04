@@ -1,6 +1,6 @@
 <template>
   <Substance ref="substance" :initX="initX" :initY="initY" :texture="gun.mode.value ? 'chara_sprite/libra_gun' : 'chara_sprite/libra'" :frame="frame">
-    <Body :drag="500" />
+    <Body :drag="500" :width="20" :height="12" :offsetX="5" :offsetY="15" />
     <Light v-if="object" :x="object.x" :y="object.y" :intensity="0.1" :color="0xFF8800" :radius="10" /><!-- TODO: Tilemap will be invisible when removed all lights -->
     <Image v-if="hp > 0" texture="shadow" :tint="0x000000" :scale="0.5" :alpha="0.5" :y="-3" />
   </Substance>
