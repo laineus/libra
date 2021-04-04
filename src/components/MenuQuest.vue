@@ -3,7 +3,7 @@
     <Container v-for="(v, i) in quest.slice(offset, offset + 8)" :key="i" :visible="!selected" :x="rowWidth.half" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerup.stop="p => tapItem(p, v)">
       <Line v-if="i !== 8 - 1" :x="0" :y="rowHeight.half" :lineWidth="0.5" :x2="rowWidth" :strokeColor="COLORS.brown" :alpha="0.25" />
       <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="v.started(state) ? t(`quest.${v.key}.title`) : '？？？'" :size="13" :bold="v.started(state)" />
-      <Image :x="rowWidth.half - 12" :y="0" :originY="0.5" texture="check" frame="1" :tint="COLORS.brown" v-if="v.completed(state)" />
+      <Image :x="rowWidth.half - 12" :y="0" :originY="0.5" texture="check" frame="3" :scale="0.9" :tint="COLORS.brown" v-if="v.completed(state)" />
     </Container>
     <Container v-if="selected">
       <Text :x="10" :y="10" text="← Back" :size="12" :bold="true" @pointerup.stop="back" />
