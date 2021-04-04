@@ -1,10 +1,11 @@
 <template>
-  <Rectangle ref="object" :fillColor="0xDDBB33" :width="15" :height="2" :x="initX" :y="initY" :rotation="r" />
+  <Rectangle ref="object" :fillColor="0xDDBB33" :width="15" :height="2" :x="initX" :y="initY" :rotation="r" :depth="config.DEPTH.BULLET" />
 </template>
 
 <script>
 import { refObj, Rectangle, onPreUpdate } from 'phavuer'
 import { onMounted, inject } from 'vue'
+import config from '@/data/config'
 export default {
   components: { Rectangle },
   props: {
@@ -22,6 +23,8 @@ export default {
       object.value.body.setVelocity(Math.cos(props.r), Math.sin(props.r))
       object.value.body.velocity.normalize().scale(360)
     })
+    const ceilLayers = field.value.field.tilemap.layers.filter(l => l.tilemapLayer.depth >= config.DEPTH.CEIL)
+    const onCeil = (x, y) => ceilLayers.some(l => l.tilemapLayer.getTileAtWorldXY(x, y)?.collides)
     onPreUpdate(() => {
       const obj = object.value
       const found = field.value.charas.concat(field.value.substances).map(v => v.ref.value).filter(v => v?.hp > 0 && v?.itemData?.damage).find(v => {
@@ -30,11 +33,12 @@ export default {
       if (found) {
         context.emit('del')
         found.damage(5, props.r)
-      } else if (field.value?.isCollides(obj.x.toTile, obj.y.toTile)) {
+      } else if (onCeil(obj.x, obj.y)) {
         context.emit('del')
       }
     })
     return {
+      config,
       object
     }
   }
