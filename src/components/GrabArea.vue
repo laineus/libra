@@ -35,7 +35,7 @@ export default {
         // const mode = 'move'
         menuBag.grabItem({ key: props.name, scale: props.scale }, mode).then(pos => {
           data.grabbing = false
-          context.emit(pos ? mode : 'cancel')
+          context.emit(pos ? mode : 'cancel', pos)
         })
       })
     }

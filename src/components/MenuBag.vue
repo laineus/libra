@@ -75,6 +75,7 @@ export default {
       update()
       return promise
     }
+    const onCeil = (x, y) => field.field.tilemap.layers.some(l => l.tilemapLayer.depth >= config.DEPTH.CEIL && l.tilemapLayer.getTileAtWorldXY(x, y)?.collides)
     const drop = () => {
       const width = grabRef.value.width
       const height = grabRef.value.height
@@ -91,9 +92,8 @@ export default {
       } else if (grab.mode === 'dispose') {
         const x = grab.x + camera.scrollX
         const y = grab.y + camera.scrollY
-        const onCeil = field.field.tilemap.layers.some(l => l.tilemapLayer.depth >= config.DEPTH.CEIL && l.tilemapLayer.getTileAtWorldXY(x, y)?.collides)
         const trashCan = field.objects.find(o => ['trashCan1', 'trashCan2'].includes(o.name) && Phaser.Math.Distance.Between(o.x, o.y, x, y) < 20)
-        if (onCeil) {
+        if (onCeil(x, y)) {
           uiScene.log.push(t('ui.cantPutItem'))
         } if (['tissueEmpty', 'trash'].includes(data.key) && trashCan) {
           storage.state.bagItems.delete(grab.item)
@@ -114,16 +114,21 @@ export default {
         }
         grab.resolver()
       } else if (grab.mode === 'move') {
+        const x = grab.x + camera.scrollX
+        const y = grab.y + camera.scrollY
         if (grabbingBagItem.value) {
           grab.item.bagX = Math.round(Math.fix(grab.x - offsetX.value, wHalf, WIDTH - wHalf))
           grab.item.bagY = Math.round(Math.fix(grab.y - offsetY.value, height, HEIGHT))
-        } else {
-          context.emit('close')
         }
         if (grab.item.key.startsWith('raptor')) {
           makeRaptor(storage.state.bagItems, uiScene)
         }
-        grab.resolver({ x: grab.x + camera.scrollX, y: grab.y + camera.scrollY })
+        if (grabbingBagItem.value) {
+          grab.resolver({ x, y })
+        } else {
+          context.emit('close')
+          grab.resolver(onCeil(x, y) ? null : { x, y })
+        }
       } else if (grab.mode === 'capture') {
         const weightOver = (weight.value + data.weight) > 100
         if (onBagArea.value && !weightOver) {
