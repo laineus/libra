@@ -16,7 +16,7 @@ export default {
     name: { default: null },
     scale: { default: null }
   },
-  emits: ['grab', 'capture', 'cancel'],
+  emits: ['grab', 'capture', 'cancel', 'move'],
   setup (props, context) {
     const scene = inject('scene')
     const menu = inject('menu')

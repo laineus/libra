@@ -112,6 +112,7 @@ export default {
       alpha.value = 1
       object.value.x = pos.x
       object.value.y = pos.y
+      field.value.updateRoomItems()
     }
     const create = obj => context.emit('create', obj)
     onPreUpdate(() => {

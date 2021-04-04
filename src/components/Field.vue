@@ -43,6 +43,7 @@ export default {
     menu.value?.close()
     const player = ref(null)
     const field = fieldService(scene, props.fieldKey)
+    const isRoom = field.name === 'home'
     console.log(field)
     const layers = field.layers.map(v => Object.assign({ ref: refObj(null) }, v))
     const images = field.images.map(v => Object.assign({ ref: refObj(null) }, v))
@@ -66,6 +67,16 @@ export default {
     const dropItem = (name, gameObject, options) => {
       return addObject(Object.assign({ name, x: gameObject.x, y: gameObject.y }, options)).then(v => v.drop?.())
     }
+    // Room items
+    if (isRoom) state.roomItems.forEach(v => addObject({ id: v.id, name: v.key, x: v.x, y: v.y, scale: v.scale }))
+    const updateRoomItems = () => {
+      if (!isRoom) return
+      state.roomItems = objects.filter(v => ['Character', 'Substance'].includes(v.type) && v.name !== 'amili').map(item => {
+        return { id: item.id, key: item.name, x: item.ref.value?.object.x ?? item.x, y: item.ref.value?.object.y ?? item.y, scale: item.scale }
+      })
+    }
+    const unwatchItems = watch(() => objects.length, updateRoomItems)
+
     const bullets = shallowReactive([])
     const addBullet = ({ x, y, r }) => bullets.push({ id: Symbol('bullet_id'), x, y, r })
     const delBullet = itemOrId => bullets.delete(typeof itemOrId === 'object' ? itemOrId : v => v.id === itemOrId)
@@ -92,7 +103,7 @@ export default {
       })
       darkness.clear().fillBg(field.properties.darkness ?? 0x77000000).removeArcs(arcs).save().refresh()
     }
-    watch(() => lightSubstances.value.length, resetDarkness)
+    const unwatchLights = watch(() => lightSubstances.value.length, resetDarkness) // TODO: unwatch
     if (state.status.hp <= 0) state.status.hp = 100
     onMounted(() => {
       resetDarkness()
@@ -103,6 +114,8 @@ export default {
     onBeforeUnmount(() => {
       darkness.destroy()
       event.destroy?.()
+      unwatchItems()
+      unwatchLights()
     })
     const update = (time) => {
       darkness.restore().removeArc(player.value.object.x, player.value.object.y, 300).refresh()
@@ -114,7 +127,7 @@ export default {
       field,
       name: field.name, width: field.width, height: field.height,
       layers, images, player, objects, charas, substances, areas, gates, positions, manualTiles,
-      addObject, delObject, dropItem,
+      addObject, delObject, dropItem, updateRoomItems,
       bullets, addBullet, delBullet,
       isCollides, getObjectById,
       layerCreate, charaCreate,

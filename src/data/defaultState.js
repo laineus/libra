@@ -12,7 +12,7 @@ export default {
   },
   amiliFollowing: false,
   bagItems: [
-    { id: 1, key: 'gun', bagX: 30, bagY: 40 }
+    { id: 1, key: 'gun', bagX: 30, bagY: 40, scale: 0.5 }
   ],
   roomItems: [],
   lastAbsenceAction: 1,
