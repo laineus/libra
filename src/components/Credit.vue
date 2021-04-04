@@ -20,7 +20,7 @@
       <Container>
         <Image v-if="data.ssTexture" :texture="data.ssTexture" :origin="0.5" :tween="data.ssTween" :alpha="0" />
       </Container>
-      <Container :tween="data.ssTexture ? tweens.alpha1 : tweens.alpha0" :alpha="0">
+      <Container :tween="data.bedTween" :alpha="0">
         <Image :texture="endA ? 'ed_a' : 'ed_b'" :origin="0.5" />
         <Image :texture="endA ? 'ed_tear' : 'ed_zzz'" :x="-0.5" :y="endA ? -13 : -30" :origin="0.5" :frame="animFrame" />
       </Container>
@@ -54,6 +54,8 @@ export default {
   emits: ['completed'],
   setup (props, context) {
     const FIRST_CHORUS = 99
+    const OUTRO = 5
+    const SS = 7
     const setting = inject('setting')
     const audio = inject('audio')
     const tweens = {
@@ -76,16 +78,18 @@ export default {
         return Math.round(3350 * -progress)
       }),
       creditTween: computed(() => data.seek >= FIRST_CHORUS - 2 ? tweens.alpha0 : null),
-      ssProgress: computed(() => Math.max((data.seek - FIRST_CHORUS) / (audio.currentBgm.duration - FIRST_CHORUS), 0)),
+      ssProgress: computed(() => Math.max((data.seek - FIRST_CHORUS) / (audio.currentBgm.duration - OUTRO - FIRST_CHORUS), 0)),
       ssTween: computed(() => {
-        const currentProgress = ((7 * data.ssProgress) % 1)
+        const currentProgress = ((SS * data.ssProgress) % 1)
         return currentProgress < 0.06 || currentProgress > 0.94 ? tweens.alpha0 : tweens.alpha1
       }),
       ssTexture: computed(() => {
         if (!data.ssProgress) return null
-        const i = Math.floor(7 * data.ssProgress)
-        return `ed_ss${i + 1}`
+        const n = Math.floor(SS * data.ssProgress) + 1
+        if (n > SS) return null
+        return `ed_ss${n}`
       }),
+      bedTween: computed(() => data.seek > FIRST_CHORUS && data.seek < (audio.currentBgm.duration - 2) ? tweens.alpha1 : tweens.alpha0),
       logoTween: null,
       lyricsIndex: computed(() => lyricsMap.findIndex(v => data.seek >= v.start && data.seek < v.end)),
       lyrics: computed(() => lyrics[data.lyricsIndex])
