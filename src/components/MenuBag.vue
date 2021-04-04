@@ -4,6 +4,8 @@
     <Text :text="`${t('ui.weight')}:`" :originX="1" :originY="0.5" :x="163" :y="14" :size="13" />
     <Text :text="`${weight}/100`" :originX="1" :originY="0.5" :x="222" :y="14" :size="14" />
     <Image v-if="grab.item && itemData[grab.item.key].eat" :tint="onEatArea ? config.COLORS.orange : config.COLORS.brown" texture="eat" :origin="1" :x="222" :y="402" />
+    <Text :text="t('ui.redecorate')" :origin="1" :x="212" :y="-11" :size="13" color="soy" :bold="true" :style="{ stroke: config.COLORS.brown.toColorString, strokeThickness: 2 }" @pointerdown.stop="$emit('update:redecorate', !redecorate)" />
+    <Image :x="236" :y="-10" :origin="1" texture="check" :frame="redecorate ? 1 : 0" :tint="config.COLORS.soy" @pointerdown.stop="$emit('update:redecorate', !redecorate)" />
   </MenuContainer>
   <Container v-if="grab.item" :x="grab.x" :y="grab.y">
     <Image ref="grabRef" :texture="itemData[grab.item.key].texture" :frame="itemData[grab.item.key].frame" :scale="grab.item.scale" :originX="0.5" :originY="1" @pointerup="drop" />
@@ -24,7 +26,8 @@ const WIDTH = 230
 const HEIGHT = 410
 export default {
   components: { Image, Container, MenuContainer, Text },
-  emits: ['close'],
+  props: ['redecorate'],
+  emits: ['close', 'update:redecorate'],
   setup (_, context) {
     const storage = inject('storage')
     const uiScene = inject('uiScene').value

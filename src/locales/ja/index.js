@@ -257,7 +257,8 @@ export default {
     bgmVolume: 'BGM音量',
     seVolume: 'SE音量',
     normalSave: '保存',
-    overwriteSave: '上書き保存'
+    overwriteSave: '上書き保存',
+    redecorate: '模様替えモード'
   },
   tips: {
     amili: {

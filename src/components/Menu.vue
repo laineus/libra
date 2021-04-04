@@ -13,7 +13,7 @@
     <template v-if="selected">
       <Container :depth="-1" :x="config.WIDTH.half" :y="config.HEIGHT.half" :width="config.WIDTH" :height="config.HEIGHT" @pointerdown="tapCloseArea" />
       <MenuStatus v-if="selected.key === 'status'" :ref="menu[0].ref" @close="index = null" />
-      <MenuBag v-else-if="selected.key === 'bag'" :ref="menu[1].ref" @close="index = null" />
+      <MenuBag v-else-if="selected.key === 'bag'" :ref="menu[1].ref" @close="index = null" v-model:redecorate="redecorate" />
       <MenuQuest v-else-if="selected.key === 'quest'" :ref="menu[2].ref" @close="index = null" />
       <MenuMap v-else-if="selected.key === 'map'" :ref="menu[3].ref" @close="index = null" />
       <MenuSystem v-else-if="selected.key === 'system'" :ref="menu[4].ref" @close="index = null" />
@@ -69,13 +69,15 @@ export default {
       return state.map === 'coalmine3' && Math.abs(935 - state.x) < 80 && Math.abs(650 - state.y) < 80
     })
     provide('onMistelyCircle', onMistelyCircle)
+    const redecorate = ref(false)
     return {
       onMistelyCircle,
       config, COLORS: config.COLORS,
       menu,
       index, selected,
       select, close,
-      tapButton, tapCloseArea
+      tapButton, tapCloseArea,
+      redecorate
     }
   }
 }
