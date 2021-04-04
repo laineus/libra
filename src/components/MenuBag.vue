@@ -4,8 +4,10 @@
     <Text :text="`${t('ui.weight')}:`" :originX="1" :originY="0.5" :x="163" :y="14" :size="13" />
     <Text :text="`${weight}/100`" :originX="1" :originY="0.5" :x="222" :y="14" :size="14" />
     <Image v-if="grab.item && itemData[grab.item.key].eat" :tint="onEatArea ? config.COLORS.orange : config.COLORS.brown" texture="eat" :origin="1" :x="222" :y="402" />
-    <Text :text="t('ui.redecorate')" :origin="1" :x="212" :y="-11" :size="13" color="soy" :bold="true" :style="{ stroke: config.COLORS.brown.toColorString, strokeThickness: 2 }" @pointerdown.stop="$emit('update:redecorate', !redecorate)" />
-    <Image :x="236" :y="-10" :origin="1" texture="check" :frame="redecorate ? 1 : 0" :tint="config.COLORS.soy" @pointerdown.stop="$emit('update:redecorate', !redecorate)" />
+    <template v-if="field.name === 'home'">
+      <Text :text="t('ui.redecorate')" :origin="1" :x="212" :y="-11" :size="13" color="soy" :bold="true" :style="{ stroke: config.COLORS.brown.toColorString, strokeThickness: 2 }" @pointerdown.stop="$emit('update:redecorate', !redecorate)" />
+      <Image :x="236" :y="-10" :origin="1" texture="check" :frame="redecorate ? 1 : 0" :tint="config.COLORS.soy" @pointerdown.stop="$emit('update:redecorate', !redecorate)" />
+    </template>
   </MenuContainer>
   <Container v-if="grab.item" :x="grab.x" :y="grab.y">
     <Image ref="grabRef" :texture="itemData[grab.item.key].texture" :frame="itemData[grab.item.key].frame" :scale="grab.item.scale" :originX="0.5" :originY="1" @pointerup="drop" />
@@ -55,6 +57,7 @@ export default {
       if (grab.mode === 'move' && !grabbingBagItem.value) return false
       return true
     })
+    if (field.name !== 'home') context.emit('update:redecorate', false)
     const update = () => {
       if (grab.item) {
         if (!controller.activePointer) return drop()
@@ -160,6 +163,7 @@ export default {
       grab.resolver = null
     }
     return {
+      field,
       t, config,
       itemData,
       weight,
