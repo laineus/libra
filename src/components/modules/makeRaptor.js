@@ -6,26 +6,42 @@ const MAP = {
   raptor5: { minX: 5, minY: 18, maxX: 23, maxY: 34 }, // rightLeg
   raptor7: { minX: -48, minY: 0, maxX: -30, maxY: 15 } // tail
 }
-export default (items, uiScene) => {
-  const completedParts = items.filter(v => v.key === 'raptor2').map(body => {
+export default (isField, { state, uiScene, field }) => {
+  const items = isField ? field.objects : state.bagItems
+  const keyX = isField ? 'x' : 'bagX'
+  const keyY = isField ? 'y' : 'bagY'
+  const keyName = isField ? 'name' : 'key'
+  const completedParts = items.filter(v => v[keyName] === 'raptor2').map(body => {
+    const baseX = isField ? (body.ref.value?.object.x ?? body.x) : body.bagX
+    const baseY = isField ? (body.ref.value?.object.y ?? body.y) : body.bagY
+    const getDiff = tgt => {
+      const tgtX = isField ? (tgt.ref.value?.object.x ?? tgt.x) : tgt.bagX
+      const tgtY = isField ? (tgt.ref.value?.object.y ?? tgt.y) : tgt.bagY
+      return [tgtX - baseX, tgtY - baseY]
+    }
     const validParts = Object.entries(MAP).map(([key, v]) => {
       return items.find(item => {
-        if (item.key !== key) return false
-        const diffX = item.bagX - body.bagX
-        const diffY = item.bagY - body.bagY
+        if (item[keyName] !== key) return false
+        const [diffX, diffY] = getDiff(item)
         return diffX >= v.minX && diffX <= v.maxX && diffY >= v.minY && diffY <= v.maxY
       })
     }).filter(Boolean)
     return validParts.length === Object.keys(MAP).length ? [body, ...validParts] : false
   }).find(Boolean)
-  if (!completedParts) return
+  if (!completedParts) return false
   completedParts.forEach(v => items.delete(v))
-  items.push({
+  const raptor = {
     id: Math.randomInt(1000000, 9999999),
-    key: 'raptor',
+    [keyName]: 'raptor',
     scale: 1,
-    bagX: completedParts[0].bagX,
-    bagY: completedParts[0].bagY
-  })
+    [keyX]: completedParts[0][keyX],
+    [keyY]: completedParts[0][keyY]
+  }
+  if (isField) {
+    field.addObject(raptor)
+  } else {
+    items.push(raptor)
+  }
   uiScene.log.push(t('ui.raptor'))
+  return true
 }

@@ -17,7 +17,7 @@
 
 <script>
 import { Image, Container, refObj, onPreUpdate } from 'phavuer'
-import { inject, computed, reactive, ref } from 'vue'
+import { inject, computed, reactive, ref, nextTick } from 'vue'
 import MenuContainer from '@/components/MenuContainer'
 import Text from '@/components/Text'
 import config from '@/data/config'
@@ -31,7 +31,7 @@ export default {
   props: ['redecorate'],
   emits: ['close', 'update:redecorate'],
   setup (_, context) {
-    const storage = inject('storage')
+    const state = inject('storage').state
     const uiScene = inject('uiScene').value
     const controller = inject('controller').value
     const camera = inject('camera').value
@@ -50,7 +50,7 @@ export default {
     const grabItemName = computed(() => itemData[grab.item.key].type === 'Character' ? t(`name.${grab.item.key}`) : t(`item.${grab.item.key}`))
     const onEatArea = computed(() => Math.hypot(grab.x - 907, grab.y - 422) < 25)
     const onBagArea = computed(() => (grab.x - offsetX.value) >= 0)
-    const weight = computed(() => storage.state.bagItems.reduce((sum, v) => sum + itemData[v.key].weight, 0))
+    const weight = computed(() => state.bagItems.reduce((sum, v) => sum + itemData[v.key].weight, 0))
     const grabRef = refObj(null)
     const showBag = computed(() => {
       if (grab.mode === 'dispose') return false
@@ -88,9 +88,9 @@ export default {
       const wHalf = width.half
       const data = itemData[grab.item.key]
       if (data.eat && onEatArea.value) {
-        storage.state.status.hp = Math.min(storage.state.status.hp + data.eat, 100)
-        storage.state.bagItems.delete(grab.item)
-        storage.state.stomach.push(data.key)
+        state.status.hp = Math.min(state.status.hp + data.eat, 100)
+        state.bagItems.delete(grab.item)
+        state.stomach.push(data.key)
         uiScene.log.push(t('ui.eat', t(`item.${data.key}`)))
         uiScene.log.push(t('ui.hpRecover', data.eat))
         grab.resolver(true)
@@ -101,13 +101,13 @@ export default {
         const trashCan = field.objects.find(o => ['trashCan1', 'trashCan2'].includes(o.name) && Phaser.Math.Distance.Between(o.x, o.y, x, y) < 20)
         if (onCeil(x, y)) {
           uiScene.log.push(t('ui.cantPutItem'))
-        } if (['tissueEmpty', 'trash'].includes(data.key) && trashCan) {
-          storage.state.bagItems.delete(grab.item)
+        } else if (['tissueEmpty', 'trash'].includes(data.key) && trashCan) {
+          state.bagItems.delete(grab.item)
           if (trashCan.name === 'trashCan1') {
             const i = field.objects.findIndex(v => v === trashCan)
             field.objects.splice(i, 1, Object.assign({}, trashCan, { name: 'trashCan2' }))
             if (field.name === 'home') {
-              const stateTrashCan = storage.state.roomItems.find(v => v.key === 'trashCan1' && v.x === trashCan.x && v.y === trashCan.y)
+              const stateTrashCan = state.roomItems.find(v => v.key === 'trashCan1' && v.x === trashCan.x && v.y === trashCan.y)
               stateTrashCan.key = 'trashCan2'
             }
           }
@@ -115,7 +115,8 @@ export default {
           uiScene.log.push(t('ui.trash'))
         } else {
           field.addObject({ id: Math.randomInt(1000000, 9999999), name: data.key, x, y, scale: grab.item.scale })
-          storage.state.bagItems.delete(grab.item)
+          state.bagItems.delete(grab.item)
+          if (grab.item.key.startsWith('raptor')) makeRaptor(true, { state, uiScene, field })
           context.emit('close')
         }
         grab.resolver()
@@ -125,20 +126,21 @@ export default {
         if (grabbingBagItem.value) {
           grab.item.bagX = Math.round(Math.fix(grab.x - offsetX.value, wHalf, WIDTH - wHalf))
           grab.item.bagY = Math.round(Math.fix(grab.y - offsetY.value, height, HEIGHT))
-        }
-        if (grab.item.key.startsWith('raptor')) {
-          makeRaptor(storage.state.bagItems, uiScene)
-        }
-        if (grabbingBagItem.value) {
-          grab.resolver({ x, y })
+          grab.resolver(true)
         } else {
           context.emit('close')
-          grab.resolver(onCeil(x, y) ? null : { x, y })
+          grab.resolver(onCeil(x, y) ? false : { x, y })
         }
+        // Raptor
+        const isRaptor = grab.item.key.startsWith('raptor')
+        const isField = !grabbingBagItem.value
+        nextTick(() => {
+          if (isRaptor) makeRaptor(isField, { state, uiScene, field })
+        })
       } else if (grab.mode === 'capture') {
         const weightOver = (weight.value + data.weight) > 100
         if (onBagArea.value && !weightOver) {
-          storage.state.bagItems.push({
+          state.bagItems.push({
             id: Math.randomInt(1000000, 9999999),
             key: grab.item.key,
             scale: grab.item.scale,
@@ -168,7 +170,7 @@ export default {
       itemData,
       weight,
       showBag,
-      bagItems: storage.state.bagItems,
+      bagItems: state.bagItems,
       container,
       controller, grab, grabRef,
       grabItem, drop,
