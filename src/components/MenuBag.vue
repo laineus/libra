@@ -99,6 +99,7 @@ export default {
         const x = grab.x + camera.scrollX
         const y = grab.y + camera.scrollY
         const trashCan = field.objects.find(o => ['trashCan1', 'trashCan2'].includes(o.name) && Phaser.Math.Distance.Between(o.x, o.y, x, y) < 20)
+        const vendingMachine = field.objects.find(o => o.name === 'vendingMachine' && Phaser.Math.Distance.Between(o.x, o.y - 30, x, y) < 28)
         if (onCeil(x, y)) {
           uiScene.log.push(t('ui.cantPutItem'))
         } else if (['tissueEmpty', 'trash'].includes(data.key) && trashCan) {
@@ -113,6 +114,11 @@ export default {
           }
           context.emit('close')
           uiScene.log.push(t('ui.trash'))
+        } else if (['coinGold', 'coinSilver'].includes(data.key) && vendingMachine) {
+          state.bagItems.delete(grab.item)
+          field.dropItem(['coke', 'tea'].random(), vendingMachine.ref.value.object)
+          context.emit('close')
+          uiScene.log.push(t('ui.vendingMachine'))
         } else {
           field.addObject({ id: Math.randomInt(1000000, 9999999), name: data.key, x, y, scale: grab.item.scale })
           state.bagItems.delete(grab.item)
