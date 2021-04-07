@@ -5,6 +5,7 @@ import { ENLIGHTENMENT_STEPS } from '@/data/eventSteps'
 export default {
   bgm: 'libra',
   async create () {
+    const gameScene = inject('gameScene').value
     const uiScene = inject('uiScene').value
     const field = inject('field').value
     const talk = inject('talk').value
@@ -23,6 +24,11 @@ export default {
       uiScene.log.push(t('ui.questComplete', t('quest.enlightenment')))
       state.events.enlightenment = ENLIGHTENMENT_STEPS.COMPLETED
       await completeTransition()
+    })
+
+    const button = field.getObjectById(29)
+    button.setTapEvent(async () => {
+      gameScene.setField('hospital1night', state.x, state.y, state.r, { transition: 0 })
     })
   }
 }
