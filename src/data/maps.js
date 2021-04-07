@@ -56,6 +56,8 @@ export default {
   cosmos,
   hospital1,
   hospital2,
+  hospital1night: {},
+  hospital2night: {},
   mansion1,
   mansion2,
   mansion3,

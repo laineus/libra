@@ -30,7 +30,7 @@ export default {
       field.value.play(time)
     }
     const setField = async (name, x, y, r, payload) => {
-      const completeTransition = await uiScene.value.transition(200)
+      const completeTransition = await uiScene.value.transition(payload?.transition ?? 200)
       fieldData.name = null
       uiScene.value.setMapName(null)
       nextTick(() => {
