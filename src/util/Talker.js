@@ -4,9 +4,9 @@ export default class {
     this.gameObject = gameObject
   }
   get x () {
-    return this.gameObject.x
+    return this.gameObject?.x || 0
   }
   get y () {
-    return this.gameObject.y
+    return this.gameObject?.y || 0
   }
 }

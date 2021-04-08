@@ -74,9 +74,11 @@ export const PAINTER_STEPS = {
   SOLVED: 3,
   COMPLETED: 4
 }
-export const ENLIGHTENMENT_STEPS = {
+export const BOGUS_STEPS = {
   NULL: 0,
-  COMPLETED: 1
+  STARTED: 1,
+  SOLVED: 2,
+  COMPLETED: 3
 }
 export const APPRECIATION_STEPS = {
   NULL: 0,

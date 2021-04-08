@@ -41,7 +41,7 @@ export default {
     pityPenguin: 0,
     painter: 0,
     matsutake: 0,
-    enlightenment: 0,
+    bogusDoctor: 0,
     appreciation: 0,
     regain: 0,
     beauty: 0,

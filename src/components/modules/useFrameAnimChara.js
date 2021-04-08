@@ -39,7 +39,7 @@ const getVelocityToDirectionKey = numOfDirection => r => {
     }
   }
 }
-const rForKey = {
+export const rForKey = {
   left: Math.PI,
   leftDown: Math.PI * 0.75,
   down: Math.PI * 0.5,

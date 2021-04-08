@@ -9,6 +9,7 @@
 import { ref, reactive, provide, inject, nextTick, onMounted } from 'vue'
 import { refScene, Scene } from 'phavuer'
 import Field from './Field'
+import { rForKey } from '@/components/modules/useFrameAnimChara'
 export default {
   components: { Scene, Field },
   setup (props, context) {
@@ -38,7 +39,7 @@ export default {
         fieldData.name = name
         fieldData.x = x
         fieldData.y = y
-        fieldData.r = r
+        fieldData.r = typeof r === 'number' ? r : rForKey[r]
         fieldData.payload = payload
         uiScene.value.setMapName(t(`place.${name}`))
       })

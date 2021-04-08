@@ -54,7 +54,7 @@ export default {
     const light = computed(() => itemData.value?.light)
     const depthAdjust = computed(() => itemData.value?.y ?? 0)
     const imageTexture = computed(() => props.texture || itemData.value?.texture)
-    const capturable = computed(() => itemData.value?.capture)
+    const capturable = computed(() => !props.unique && itemData.value?.capture)
     const data = reactive({
       visible: true,
       tweens: null,
@@ -122,13 +122,17 @@ export default {
     const interactive = computed(() => !event.state && data.distanceToPlayer < 150 && !player.value?.gun.mode.value && unref(data.visible))
     const setTapEvent = event => {
       if (!event) return tapEvent.setEvent(null)
-      tapEvent.setEvent(async () => {
-        context.emit('startEvent')
-        const fixCamera = await camera.value.look((object.value.x + player.value.object.x).half, (object.value.y + player.value.object.y).half, 500)
-        const result = await unref(event)()
-        await fixCamera()
-        return result
-      })
+      tapEvent.setEvent(computed(() => {
+        const e = unref(event)
+        if (!e) return null
+        return async () => {
+          context.emit('startEvent')
+          const fixCamera = await camera.value.look((object.value.x + player.value.object.x).half, (object.value.y + player.value.object.y).half, 500)
+          const result = await e()
+          await fixCamera()
+          return result
+        }
+      }))
     }
     return {
       config,

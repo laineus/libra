@@ -391,8 +391,8 @@
                  "type":"Character",
                  "visible":true,
                  "width":0,
-                 "x":736,
-                 "y":192
+                 "x":284,
+                 "y":242
                 }, 
                 {
                  "height":0,
@@ -630,56 +630,8 @@
                  "type":"Random",
                  "visible":true,
                  "width":0,
-                 "x":280,
-                 "y":228
-                }, 
-                {
-                 "height":0,
-                 "id":24,
-                 "name":"art6",
-                 "point":true,
-                 "rotation":0,
-                 "type":"Random",
-                 "visible":true,
-                 "width":0,
-                 "x":285.957446808511,
-                 "y":106.460348162476
-                }, 
-                {
-                 "height":0,
-                 "id":25,
-                 "name":"art5",
-                 "point":true,
-                 "rotation":0,
-                 "type":"Random",
-                 "visible":true,
-                 "width":0,
-                 "x":703.133462282399,
-                 "y":107.698259187621
-                }, 
-                {
-                 "height":0,
-                 "id":26,
-                 "name":"art21",
-                 "point":true,
-                 "rotation":0,
-                 "type":"Random",
-                 "visible":true,
-                 "width":0,
-                 "x":528.588007736944,
-                 "y":649.903288201161
-                }, 
-                {
-                 "height":0,
-                 "id":27,
-                 "name":"art22",
-                 "point":true,
-                 "rotation":0,
-                 "type":"Random",
-                 "visible":true,
-                 "width":0,
-                 "x":688.278529980658,
-                 "y":651.141199226306
+                 "x":692,
+                 "y":234
                 }],
          "opacity":1,
          "type":"objectgroup",

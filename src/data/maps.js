@@ -22,6 +22,8 @@ import coalmine4 from '@/map/coalmine4'
 import cosmos from '@/map/cosmos'
 import hospital1 from '@/map/hospital1'
 import hospital2 from '@/map/hospital2'
+import hospital1night from '@/map/hospital1night'
+import hospital2night from '@/map/hospital2night'
 import mansion1 from '@/map/mansion1'
 import mansion2 from '@/map/mansion2'
 import mansion3 from '@/map/mansion3'
@@ -56,8 +58,8 @@ export default {
   cosmos,
   hospital1,
   hospital2,
-  hospital1night: {},
-  hospital2night: {},
+  hospital1night,
+  hospital2night,
   mansion1,
   mansion2,
   mansion3,

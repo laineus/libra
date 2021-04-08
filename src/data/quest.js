@@ -9,7 +9,7 @@ import {
   PITY_STEPS,
   MATSUTAKE_STEPS,
   PAINTER_STEPS,
-  ENLIGHTENMENT_STEPS,
+  BOGUS_STEPS,
   APPRECIATION_STEPS,
   BEAUTY_STEPS,
   FOREVER_STEPS,
@@ -95,17 +95,17 @@ export default [
     chara: 'pumpkin'
   },
   {
-    key: 'enlightenment',
-    started: state => state.events.enlightenment >= ENLIGHTENMENT_STEPS.COMPLETED,
-    completed: state => state.events.enlightenment === ENLIGHTENMENT_STEPS.COMPLETED,
-    place: 'hospital1',
-    chara: 'ghost'
+    key: 'bogusDoctor',
+    started: state => state.events.bogusDoctor >= BOGUS_STEPS.STARTED,
+    completed: state => state.events.bogusDoctor === BOGUS_STEPS.COMPLETED,
+    place: 'hospital2',
+    chara: 'doctorPenguin'
   },
   {
     key: 'forever',
     started: state => state.events.forever >= FOREVER_STEPS.STARTED,
     completed: state => state.events.forever === FOREVER_STEPS.COMPLETED,
-    place: 'hospital2',
+    place: 'hospital1night',
     chara: 'ghost'
   },
   {

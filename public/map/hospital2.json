@@ -81,114 +81,6 @@
          "objects":[
                 {
                  "height":0,
-                 "id":38,
-                 "name":"coffin",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"chance",
-                         "type":"float",
-                         "value":0.8
-                        }],
-                 "rotation":0,
-                 "type":"Random",
-                 "visible":true,
-                 "width":0,
-                 "x":1003.46390928726,
-                 "y":272.533090712743
-                }, 
-                {
-                 "height":0,
-                 "id":39,
-                 "name":"coffin",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"chance",
-                         "type":"float",
-                         "value":0.8
-                        }],
-                 "rotation":0,
-                 "type":"Random",
-                 "visible":true,
-                 "width":0,
-                 "x":1153.33333333333,
-                 "y":294.733234701224
-                }, 
-                {
-                 "height":0,
-                 "id":40,
-                 "name":"coffin",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"chance",
-                         "type":"float",
-                         "value":0.8
-                        }],
-                 "rotation":0,
-                 "type":"Random",
-                 "visible":true,
-                 "width":0,
-                 "x":1173.80318934485,
-                 "y":401.132082793376
-                }, 
-                {
-                 "height":0,
-                 "id":41,
-                 "name":"coffin",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"chance",
-                         "type":"float",
-                         "value":0.8
-                        }],
-                 "rotation":0,
-                 "type":"Random",
-                 "visible":true,
-                 "width":0,
-                 "x":979.466909287257,
-                 "y":369.465802735781
-                }, 
-                {
-                 "height":0,
-                 "id":42,
-                 "name":"coffin",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"chance",
-                         "type":"float",
-                         "value":0.8
-                        }],
-                 "rotation":0,
-                 "type":"Random",
-                 "visible":true,
-                 "width":0,
-                 "x":994.200477321814,
-                 "y":465.866090712743
-                }, 
-                {
-                 "height":0,
-                 "id":43,
-                 "name":"coffin",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"chance",
-                         "type":"float",
-                         "value":0.8
-                        }],
-                 "rotation":0,
-                 "type":"Random",
-                 "visible":true,
-                 "width":0,
-                 "x":1136.93304535637,
-                 "y":499.2656587473
-                }, 
-                {
-                 "height":0,
                  "id":44,
                  "name":"tv",
                  "point":true,
@@ -463,7 +355,7 @@
                  "name":"",
                  "point":true,
                  "rotation":0,
-                 "type":"",
+                 "type":"Substance",
                  "visible":true,
                  "width":0,
                  "x":999,
@@ -527,7 +419,7 @@
                 {
                  "height":0,
                  "id":3,
-                 "name":"ghost",
+                 "name":"doctorPenguin",
                  "point":true,
                  "properties":[
                         {

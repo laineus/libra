@@ -1,43 +1,62 @@
 import { computed, inject } from 'vue'
 import Talker from '@/util/Talker'
-import config from '@/data/config'
-import { FOREVER_STEPS } from '@/data/eventSteps'
+import { BOGUS_STEPS } from '@/data/eventSteps'
 export default {
   bgm: 'libra',
   async create () {
+    const gameScene = inject('gameScene').value
     const uiScene = inject('uiScene').value
     const field = inject('field').value
     const talk = inject('talk').value
     const state = inject('storage').state
+    const event = inject('event')
 
-    const ghost = field.getObjectById(3)
-    ghost?.setVisible(computed(() => {
-      if (state.events.forever === FOREVER_STEPS.NULL && state.killed.includes('fall2_3')) return false // Killed before started
-      return state.events.forever < FOREVER_STEPS.COMPLETED
-    }))
-    ghost?.setTapEvent(async () => {
-      const speakGhost = talk.getSpeakScripts(new Talker(t('name.ghost'), ghost.object))
-      if (state.events.forever === FOREVER_STEPS.NULL) {
-        await speakGhost(t('events.forever.ghost.start'))
-        const accept = await uiScene.setSelector(t('events.forever.ghost.options')) === 0
-        if (accept) {
-          await speakGhost(t('events.forever.ghost.answer1'))
-          uiScene.log.push(t('ui.questStart', t('quest.forever')))
-          state.events.forever = FOREVER_STEPS.STARTED
-        } else {
-          await speakGhost(t('events.forever.ghost.answer2'))
+    const libra = inject('player')
+
+    const doctor = field.getObjectById(3)
+    const speakDoctor = talk.getSpeakScripts(new Talker(t('name.doctorPenguin'), doctor?.object))
+    doctor?.setTapEvent(computed(() => {
+      if (state.events.bogusDoctor === BOGUS_STEPS.NULL) {
+        return async () => {
+          await speakDoctor(t('events.bogusDoctor.talk1'))
+          const cancel = await uiScene.setSelector(t('events.bogusDoctor.options1')) === 1
+          if (cancel) return await speakDoctor(t('events.bogusDoctor.cancel'))
+          await speakDoctor(t('events.bogusDoctor.talk2'))
+          await speakDoctor(t('events.bogusDoctor.talk3'))
+          await uiScene.setSelector(t('events.bogusDoctor.options2'))
+          state.events.bogusDoctor = BOGUS_STEPS.STARTED
+          await gameScene.setField('hospital2night', (5).toPixelCenter, (24).toPixelCenter, 'up', { transition: 0 })
+          // hospital2night
+          await sleep(300)
+          const speakLibra = talk.getSpeakScripts(new Talker(t('name.libra'), libra.value.object))
+          const speakPatient = talk.getSpeakScripts(new Talker(t('name.patient'), { x: 815, y: 640 }))
+          await speakLibra(t('events.libra.exclamation'))
+          await sleep(1000)
+          await speakPatient(t('events.bogusDoctor.patient0'))
         }
-      } else if (state.events.forever === FOREVER_STEPS.STARTED) {
-        await speakGhost(t('events.forever.ghost.started'))
-      } else if (state.events.forever === FOREVER_STEPS.EXECUTED) {
-        await speakGhost(t('events.forever.ghost.complete1'))
-        await field.dropItem('apple', ghost.object)
-        await speakGhost(t('events.forever.ghost.complete2'))
-        const completeTransition = await uiScene.transition(1000, { color: config.COLORS.white })
-        uiScene.log.push(t('ui.questComplete', t('quest.forever')))
-        state.events.forever = FOREVER_STEPS.COMPLETED
-        await completeTransition()
+      } else if (state.events.bogusDoctor === BOGUS_STEPS.COMPLETED) {
+        return async () => {
+          await speakDoctor(t('events.bogusDoctor.completed'))
+        }
       }
-    })
+    }))
+    if (state.events.bogusDoctor === BOGUS_STEPS.SOLVED) {
+      event.exec(async () => {
+        if (!doctor) return
+        const speakLibra = talk.getSpeakScripts(new Talker(t('name.libra'), libra.value.object))
+        libra.value.object.setPosition(doctor.object.x, doctor.object.y + 70)
+        libra.value.lookTo('up')
+        doctor.startEvent()
+        await sleep(1000)
+        await speakLibra(t('events.libra.exclamation'))
+        await sleep(1000)
+        await speakDoctor(t('events.bogusDoctor.talk3'))
+        const answer1 = await uiScene.setSelector(t('events.bogusDoctor.options2')) === 0
+        await speakDoctor(answer1 ? t('events.bogusDoctor.answer1') : t('events.bogusDoctor.answer2'))
+        await speakDoctor(t('events.bogusDoctor.complete'))
+        await field.dropItem('apple', doctor.object)
+        state.events.bogusDoctor = BOGUS_STEPS.COMPLETED
+      })
+    }
   }
 }

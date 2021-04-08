@@ -395,108 +395,72 @@
                  "id":38,
                  "name":"coffin",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"chance",
-                         "type":"float",
-                         "value":0.8
-                        }],
                  "rotation":0,
                  "type":"Random",
                  "visible":true,
                  "width":0,
-                 "x":1003.46390928726,
-                 "y":272.533090712743
+                 "x":990.130575953927,
+                 "y":260.533090712743
                 }, 
                 {
                  "height":0,
                  "id":39,
                  "name":"coffin",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"chance",
-                         "type":"float",
-                         "value":0.8
-                        }],
                  "rotation":0,
                  "type":"Random",
                  "visible":true,
                  "width":0,
-                 "x":1153.33333333333,
-                 "y":294.733234701224
+                 "x":1169.33333333333,
+                 "y":269.399901367891
                 }, 
                 {
                  "height":0,
                  "id":40,
                  "name":"coffin",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"chance",
-                         "type":"float",
-                         "value":0.8
-                        }],
                  "rotation":0,
                  "type":"Random",
                  "visible":true,
                  "width":0,
-                 "x":1173.80318934485,
-                 "y":401.132082793376
+                 "x":1181.80318934485,
+                 "y":397.132082793376
                 }, 
                 {
                  "height":0,
                  "id":41,
                  "name":"coffin",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"chance",
-                         "type":"float",
-                         "value":0.8
-                        }],
                  "rotation":0,
                  "type":"Random",
                  "visible":true,
                  "width":0,
-                 "x":979.466909287257,
-                 "y":369.465802735781
+                 "x":967.466909287257,
+                 "y":370.799136069114
                 }, 
                 {
                  "height":0,
                  "id":42,
                  "name":"coffin",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"chance",
-                         "type":"float",
-                         "value":0.8
-                        }],
                  "rotation":0,
                  "type":"Random",
                  "visible":true,
                  "width":0,
-                 "x":994.200477321814,
-                 "y":465.866090712743
+                 "x":971.533810655147,
+                 "y":475.199424046076
                 }, 
                 {
                  "height":0,
                  "id":43,
                  "name":"coffin",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"chance",
-                         "type":"float",
-                         "value":0.8
-                        }],
                  "rotation":0,
                  "type":"Random",
                  "visible":true,
                  "width":0,
-                 "x":1136.93304535637,
-                 "y":499.2656587473
+                 "x":1164.93304535637,
+                 "y":497.932325413967
                 }, 
                 {
                  "height":0,
@@ -518,24 +482,6 @@
                 }, 
                 {
                  "height":0,
-                 "id":45,
-                 "name":"elixir",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"chance",
-                         "type":"float",
-                         "value":0.4
-                        }],
-                 "rotation":0,
-                 "type":"Random",
-                 "visible":true,
-                 "width":0,
-                 "x":970.666333333333,
-                 "y":514.666666666667
-                }, 
-                {
-                 "height":0,
                  "id":46,
                  "name":"medicine1",
                  "point":true,
@@ -551,24 +497,6 @@
                  "width":0,
                  "x":574.666333333333,
                  "y":859.999666666667
-                }, 
-                {
-                 "height":0,
-                 "id":47,
-                 "name":"medicine2",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"chance",
-                         "type":"float",
-                         "value":0.6
-                        }],
-                 "rotation":0,
-                 "type":"Random",
-                 "visible":true,
-                 "width":0,
-                 "x":1189.33333333333,
-                 "y":510.666666666667
                 }, 
                 {
                  "height":0,
@@ -743,30 +671,6 @@
                  "width":0,
                  "x":500.359971202304,
                  "y":656.947444204464
-                }, 
-                {
-                 "height":0,
-                 "id":60,
-                 "name":"art9",
-                 "point":true,
-                 "rotation":0,
-                 "type":"Random",
-                 "visible":true,
-                 "width":0,
-                 "x":625.275374121959,
-                 "y":712.84129084801
-                }, 
-                {
-                 "height":0,
-                 "id":61,
-                 "name":"art7",
-                 "point":true,
-                 "rotation":0,
-                 "type":"Random",
-                 "visible":true,
-                 "width":0,
-                 "x":994.694085309987,
-                 "y":169.658963656724
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -812,12 +716,12 @@
                          "type":"bool",
                          "value":true
                         }],
-                 "rotation":0,
+                 "rotation":-90,
                  "type":"Character",
                  "visible":true,
                  "width":0,
-                 "x":1088,
-                 "y":320
+                 "x":892,
+                 "y":848
                 }, 
                 {
                  "height":0,
@@ -825,11 +729,95 @@
                  "name":"",
                  "point":true,
                  "rotation":0,
-                 "type":"",
+                 "type":"Substance",
                  "visible":true,
                  "width":0,
                  "x":999,
                  "y":800
+                }, 
+                {
+                 "height":0,
+                 "id":90,
+                 "name":"ghost",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"unique",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"Character",
+                 "visible":true,
+                 "width":0,
+                 "x":1020,
+                 "y":488
+                }, 
+                {
+                 "height":0,
+                 "id":91,
+                 "name":"ghost",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"unique",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"Character",
+                 "visible":true,
+                 "width":0,
+                 "x":1120,
+                 "y":404
+                }, 
+                {
+                 "height":0,
+                 "id":92,
+                 "name":"ghost",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"unique",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"Character",
+                 "visible":true,
+                 "width":0,
+                 "x":1002.66666666667,
+                 "y":316
+                }, 
+                {
+                 "height":0,
+                 "id":93,
+                 "name":"ghost",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"unique",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"Character",
+                 "visible":true,
+                 "width":0,
+                 "x":1112,
+                 "y":281.333333333333
+                }, 
+                {
+                 "height":0,
+                 "id":94,
+                 "name":"amili",
+                 "point":true,
+                 "rotation":180,
+                 "type":"Character",
+                 "visible":true,
+                 "width":0,
+                 "x":558.666666666667,
+                 "y":245.333333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -838,7 +826,7 @@
          "y":0
         }],
  "nextlayerid":22,
- "nextobjectid":90,
+ "nextobjectid":95,
  "orientation":"orthogonal",
  "properties":[
         {
