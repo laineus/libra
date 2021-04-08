@@ -63,7 +63,7 @@ export default {
       alpha1: { alpha: 1, duration: 1000 }
     }
     const ja = setting.state.lang === 'ja'
-    const lyrics = t('happyend.lyrics').map(v => ja ? v.split('').join('\n') : v)
+    const lyrics = t('happyend.lyrics').map(v => ja ? v.split('').join('\n').replace('ー', '｜') : v)
     const lyricsMap = LYRICS_MAP.map((v, i) => {
       return { start: v[0], end: v[1] ?? LYRICS_MAP[i + 1]?.[0] ?? v[0] + 3 }
     })
