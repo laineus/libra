@@ -1,5 +1,5 @@
 import { inject } from 'vue'
-import initHospitalButton from './initHospitalButton'
+import { initHospitalButton } from '@/map/hospitalFunctions'
 export default {
   bgm: 'libra',
   async create () {

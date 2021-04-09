@@ -80,9 +80,9 @@ export default {
       following.clearTargetPosition()
       object.value.body.velocity.normalize().scale(0)
     }
-    const startEvent = () => {
+    const startEvent = options => {
       stopWalking()
-      lookTo(player.value.object)
+      if (options.look !== false) lookTo(player.value.object)
     }
     const setTapEvent = (...arg) => {
       substance.value?.setTapEvent(...arg)

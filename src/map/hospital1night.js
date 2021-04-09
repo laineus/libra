@@ -2,6 +2,7 @@ import { computed, inject } from 'vue'
 import Talker from '@/util/Talker'
 import config from '@/data/config'
 import { FOREVER_STEPS } from '@/data/eventSteps'
+import { lockInHospital, initHospitalButton } from '@/map/hospitalFunctions'
 export default {
   bgm: null,
   async create () {
@@ -9,6 +10,9 @@ export default {
     const field = inject('field').value
     const talk = inject('talk').value
     const state = inject('storage').state
+
+    initHospitalButton(field.getObjectById(54))
+    lockInHospital()
 
     const ghost = field.getObjectById(3)
     ghost?.setVisible(computed(() => {

@@ -98,7 +98,7 @@ export default {
     }
     const damage = (value, r) => {
       if (data.hp <= 0) return
-      onDamage?.()
+      onDamage?.(value, r)
       data.hp -= value
       damageEffectData.value = true
       damageEffectData.diffX = Math.cos(r) * -15
@@ -122,13 +122,14 @@ export default {
       data.distanceToPlayer = Phaser.Math.Distance.Between(object.value.x, object.value.y, player.value.object.x, player.value.object.y)
     })
     const interactive = computed(() => !event.state && data.distanceToPlayer < 150 && !player.value?.gun.mode.value && unref(data.visible))
-    const setTapEvent = event => {
+    const setTapEvent = (event, options = {}) => {
       if (!event) return tapEvent.setEvent(null)
       tapEvent.setEvent(computed(() => {
         const e = unref(event)
         if (!e) return null
         return async () => {
-          context.emit('startEvent')
+          context.emit('startEvent', options)
+          if (options.focus === false) return await e()
           const fixCamera = await camera.value.look((object.value.x + player.value.object.x).half, (object.value.y + player.value.object.y).half, 500)
           const result = await e()
           await fixCamera()

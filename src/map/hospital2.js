@@ -1,6 +1,7 @@
 import { computed, inject } from 'vue'
 import Talker from '@/util/Talker'
 import { BOGUS_STEPS } from '@/data/eventSteps'
+import { initHospitalButton } from '@/map/hospitalFunctions'
 export default {
   bgm: 'libra',
   async create () {
@@ -12,6 +13,8 @@ export default {
     const event = inject('event')
 
     const libra = inject('player')
+
+    initHospitalButton(field.getObjectById(63))
 
     const doctor = field.getObjectById(3)
     const speakDoctor = talk.getSpeakScripts(new Talker(t('name.doctorPenguin'), doctor?.object))

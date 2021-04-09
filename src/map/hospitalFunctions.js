@@ -1,7 +1,8 @@
+
 import { inject } from 'vue'
 import { BOGUS_STEPS } from '@/data/eventSteps'
 const NIGHT = 'night'
-export default button => {
+export const initHospitalButton = button => {
   const gameScene = inject('gameScene').value
   const uiScene = inject('uiScene').value
   const state = inject('storage').state
@@ -18,4 +19,18 @@ export default button => {
       await sleep(100)
     }
   })
+}
+
+export const lockInHospital = () => {
+  const gameScene = inject('gameScene').value
+  const state = inject('storage').state
+  const player = inject('player').value
+  if (state.events.bogusDoctor === BOGUS_STEPS.STARTED) {
+    player.substance.setDamageEvent((v) => {
+      if ((player.substance.hp - v) <= 0) {
+        player.substance.hp = 100 + v
+        gameScene.setField('hospital2night', (5).toPixelCenter, (24).toPixelCenter, 'up')
+      }
+    })
+  }
 }

@@ -1,7 +1,7 @@
 import { inject } from 'vue'
 import Talker from '@/util/Talker'
 import { BOGUS_STEPS } from '@/data/eventSteps'
-import initHospitalButton from './initHospitalButton'
+import { initHospitalButton, lockInHospital } from '@/map/hospitalFunctions'
 export default {
   bgm: null,
   async create () {
@@ -9,6 +9,7 @@ export default {
     const talk = inject('talk').value
     const state = inject('storage').state
     initHospitalButton(field.getObjectById(89))
+    lockInHospital()
 
     const list = [
       { chara: field.getObjectById(90), script: t('events.bogusDoctor.patient1'), talked: false },
@@ -21,16 +22,17 @@ export default {
     if (state.events.bogusDoctor !== BOGUS_STEPS.STARTED) {
       list.forEach(v => v.chara.setVisible(false))
     } else {
+      field.objects.filter(v => v.type === 'Character' && !v.unique).forEach(v => v.ref.value.setVisible(false))
       list.forEach(v => {
         v.chara?.setTapEvent(async () => {
-          const speak = talk.getSpeakScripts(new Talker(t('name.doctorPenguin'), v.chara.object))
+          const speak = talk.getSpeakScripts(new Talker(t('name.patient'), v.chara.object))
           await speak(v.script)
           v.talked = true
           if (list.every(v => v.talked)) ghost5.setVisible(true)
         })
       })
       ghost5?.setTapEvent(async () => {
-        const speak = talk.getSpeakScripts(new Talker(t('name.doctorPenguin'), ghost5.object))
+        const speak = talk.getSpeakScripts(new Talker(t('name.patient'), ghost5.object))
         await speak(t('events.bogusDoctor.patient5'))
         state.events.bogusDoctor = BOGUS_STEPS.SOLVED
       })
@@ -41,6 +43,6 @@ export default {
     amili.setRandomWalk(false)
     amili.setTapEvent(async () => {
       amili.substance.hp = 0
-    })
+    }, { focus: false, look: false })
   }
 }
