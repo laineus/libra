@@ -11,6 +11,21 @@ export default {
     initHospitalButton(field.getObjectById(89))
     lockInHospital()
 
+    const hands = Array.range(96, 101).map(id => field.objects.find(v => v.id === id))
+    hands.forEach(v => field.delObject(v))
+    if (state.events.bogusDoctor === BOGUS_STEPS.STARTED) {
+      const handArea = field.getObjectById(102)
+      handArea.setEvent(async () => {
+        hands.reduce((prev, hand) => {
+          return prev.then(() => {
+            field.objects.push(hand)
+            return sleep(300)
+          })
+        }, Promise.resolve())
+        handArea.setEvent(null)
+      })
+    }
+
     const list = [
       { chara: field.getObjectById(90), script: t('events.bogusDoctor.patient1'), talked: false },
       { chara: field.getObjectById(91), script: t('events.bogusDoctor.patient2'), talked: false },
