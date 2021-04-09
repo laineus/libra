@@ -28,6 +28,7 @@
     <Text v-if="screenMessage.text" :text="screenMessage.text" :tween="screenMessage.tween" :x="config.WIDTH.half" :y="config.HEIGHT.half" :size="17" :color="screenMessage.color" :origin="0.5" :depth="config.DEPTH.TRANSITION" />
     <Credit v-if="credit.resolve" :depth="config.DEPTH.TRANSITION" :endA="credit.endA" @completed="credit.resolve" />
     <Opening v-if="opening" :depth="config.DEPTH.TRANSITION" @unlock="opening" @completed="opening = null" />
+    <Image v-for="(image, i) in images" :key="i" :texture="image.texture" :x="image.x" :y="image.y" :depth="image.depth" />
   </Scene>
 </template>
 
@@ -153,7 +154,8 @@ export default {
       mapName, setMapName,
       tutorial, setTutorial,
       transition: (...args) => refs.transitions.value.add(...args),
-      player
+      player,
+      images: shallowReactive([])
     }
   }
 }

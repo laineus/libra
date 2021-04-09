@@ -2,9 +2,11 @@ import { inject } from 'vue'
 import Talker from '@/util/Talker'
 import { BOGUS_STEPS } from '@/data/eventSteps'
 import { initHospitalButton, lockInHospital } from '@/map/hospitalFunctions'
+import config from '@/data/config'
 export default {
   bgm: null,
   async create () {
+    const uiScene = inject('uiScene').value
     const field = inject('field').value
     const talk = inject('talk').value
     const state = inject('storage').state
@@ -21,7 +23,12 @@ export default {
             field.objects.push(hand)
             return sleep(300)
           })
-        }, Promise.resolve())
+        }, Promise.resolve()).then(() => {
+          hands.forEach(v => field.delObject(v))
+          const img = { texture: 'face', x: config.WIDTH.half, y: config.HEIGHT.half, depth: config.DEPTH.TRANSITION }
+          uiScene.images.push(img)
+          sleep(800).then(() => uiScene.images.delete(img))
+        })
         handArea.setEvent(null)
       })
     }
@@ -58,6 +65,7 @@ export default {
     amili.setRandomWalk(false)
     amili.setTapEvent(async () => {
       amili.substance.hp = 0
+      await sleep(500)
     }, { focus: false, look: false })
   }
 }
