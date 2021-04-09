@@ -12,6 +12,7 @@ import UIScene from '@/components/UIScene'
 import Debug from '@/components/Debug'
 import AudioController from '@/class/AudioController'
 import SaveDataManager from '@/class/SaveDataManager'
+import AchieveManager from '@/class/AchieveManager'
 import setting from '@/data/setting'
 import { inject, provide, ref, computed, reactive } from 'vue'
 export default {
@@ -40,6 +41,7 @@ export default {
     })
     const frames = reactive({ total: 0, game: 0 })
     const sdm = new SaveDataManager()
+    const achieve = new AchieveManager()
     setInterval(() => sdm.state.sec++, 1000)
     provide('event', eventManager)
     provide('frames', frames)
@@ -55,6 +57,7 @@ export default {
     provide('mobile', !game.device.os.desktop)
     provide('audio', new AudioController(game.sound, setting.state.bgm, setting.state.se))
     provide('storage', sdm)
+    provide('achieve', achieve)
     provide('setting', setting)
     provide('bag', {
       hasItem: (key, count = 1, { bag = false, room = false, field = false } = { bag: true }) => {
