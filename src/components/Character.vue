@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { computed, inject, onMounted, ref } from 'vue'
+import { computed, inject, onMounted, ref, unref } from 'vue'
 import { onPreUpdate, Body, Image } from 'phavuer'
 import Substance from './Substance'
 import useFollowing from './modules/useFollowing'
@@ -52,6 +52,7 @@ export default {
     })
     const attackDelay = ref(0)
     onPreUpdate(() => {
+      if (!unref(substance.value.visible)) return
       frame.value = playFrameAnim()
       following.walkToTargetPosition(speed.value)
       // Attack

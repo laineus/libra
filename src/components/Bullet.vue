@@ -4,7 +4,7 @@
 
 <script>
 import { refObj, Rectangle, onPreUpdate } from 'phavuer'
-import { onMounted, inject } from 'vue'
+import { unref, onMounted, inject } from 'vue'
 import config from '@/data/config'
 export default {
   components: { Rectangle },
@@ -27,7 +27,7 @@ export default {
     const onCeil = (x, y) => ceilLayers.some(l => l.tilemapLayer.getTileAtWorldXY(x, y)?.collides)
     onPreUpdate(() => {
       const obj = object.value
-      const found = field.value.charas.concat(field.value.substances).map(v => v.ref.value).filter(v => v?.hp > 0 && v?.itemData?.damage).find(v => {
+      const found = field.value.charas.concat(field.value.substances).map(v => v.ref.value).filter(v => unref(v.visible) && v?.hp > 0 && v?.itemData?.damage).find(v => {
         return Math.abs(obj.x - v.object.x) < (v.object.width.half * v.image.scaleX) && Math.abs(obj.y - (v.object.y - v.object.height.half)) < (v.object.height.half * v.image.scaleY)
       })
       if (found) {
