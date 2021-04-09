@@ -57,6 +57,7 @@ export default state => () => {
     { key: 'fallFlog' },
     { key: 'grey', test: () => hasSome('grey1', 'grey2') },
     { key: 'bat' },
+    { key: 'pig' },
     { key: 'ghost' },
     { key: 'art' },
     { key: 'torrent' },
