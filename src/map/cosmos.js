@@ -43,6 +43,7 @@ export default {
         }
       }
       if (state.events.photosynthesis === STEPS.STARTED) {
+        uiScene.log.push(t('ui.questStart', t('quest.photosynthesis')))
         const ate = state.events.photosynthesisAte
         await speak(ate.length ? t('events.photosynthesis.started') : t('events.photosynthesis.start'))
         const foods = ['omurice', 'steak', 'stirFry', 'curry']
@@ -60,6 +61,7 @@ export default {
           await speak(t('events.photosynthesis.complete'))
           await field.dropItem('apple', hangry.object)
           await speak(t('events.photosynthesis.completed'))
+          uiScene.log.push(t('ui.questComplete', t('quest.photosynthesis')))
           state.events.photosynthesis = STEPS.COMPLETED
         }
       } else if (state.events.photosynthesis === STEPS.COMPLETED) {

@@ -43,6 +43,7 @@ export default {
       const speak = talk.getSpeakScripts(new Talker(t('name.pumpkin'), mania.object))
       if (state.events.raptor === RAPTOR_STEPS.NULL) {
         await speak(t('events.raptor.start'))
+        uiScene.log.push(t('ui.questStart', t('quest.raptor')))
         state.events.raptor = RAPTOR_STEPS.STARTED
       } else if (state.events.raptor === RAPTOR_STEPS.STARTED) {
         if (bag.hasItem('raptor')) {
@@ -54,6 +55,7 @@ export default {
             await speak(t('events.raptor.gave'))
             await field.dropItem('apple', mania.object)
             state.events.raptor = RAPTOR_STEPS.COMPLETED
+            uiScene.log.push(t('ui.questComplete', t('quest.raptor')))
           } else {
             return await speak(t('events.raptor.cancel'))
           }

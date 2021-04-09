@@ -24,6 +24,7 @@ export default {
           await speakDoctor(t('events.bogusDoctor.talk1'))
           const cancel = await uiScene.setSelector(t('events.bogusDoctor.options1')) === 1
           if (cancel) return await speakDoctor(t('events.bogusDoctor.cancel'))
+          uiScene.log.push(t('ui.questStart', t('quest.bogusDoctor')))
           await speakDoctor(t('events.bogusDoctor.talk2'))
           await speakDoctor(t('events.bogusDoctor.talk3'))
           await uiScene.setSelector(t('events.bogusDoctor.options2'))
@@ -58,6 +59,7 @@ export default {
         await speakDoctor(answer1 ? t('events.bogusDoctor.answer1') : t('events.bogusDoctor.answer2'))
         await speakDoctor(t('events.bogusDoctor.complete'))
         await field.dropItem('apple', doctor.object)
+        uiScene.log.push(t('ui.questComplete', t('quest.bogusDoctor')))
         state.events.bogusDoctor = BOGUS_STEPS.COMPLETED
       })
     }
