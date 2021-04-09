@@ -68,8 +68,8 @@ export default {
       onDestroy = e
     }
     const onBroken = () => {
-      onDestroy?.()
       if (props.unique) state.killed.push(props.unique)
+      onDestroy?.()
       context.emit('del')
     }
     if (props.unique && state.killed.includes(props.unique)) context.emit('del')

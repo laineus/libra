@@ -31,6 +31,7 @@ export default {
       })
       doctor.setDestroyEvent(() => {
         if (state.events.forever === FOREVER_STEPS.STARTED) {
+          state.killed.delete('hospital1_23')
           state.events.forever = FOREVER_STEPS.EXECUTED
         }
       })

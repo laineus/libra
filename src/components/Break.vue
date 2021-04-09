@@ -69,7 +69,7 @@ export default {
           alpha: 0,
           y: '+=6',
           duration: 300,
-          onComplete: () => context.emit('broken')
+          onComplete: i === 0 ? () => context.emit('broken') : undefined
         }
       ]
     }))
