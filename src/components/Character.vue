@@ -82,7 +82,7 @@ export default {
     }
     const startEvent = options => {
       stopWalking()
-      if (options.look !== false) lookTo(player.value.object)
+      if (options?.look !== false) lookTo(player.value.object)
     }
     const setTapEvent = (...arg) => {
       substance.value?.setTapEvent(...arg)

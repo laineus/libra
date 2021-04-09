@@ -1700,7 +1700,8 @@ export default {
         '恨んでなんかいません。',
         'さあ、部屋の明かりをつけて。',
         'いつまでも心優しい先生でいてくださいね。'
-      ]
+      ],
+      lockMap: '逃げられないよ' // There is no escape
     }
   },
   happyend: {

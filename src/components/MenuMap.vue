@@ -1,25 +1,29 @@
 <template>
   <MenuContainer ref="container" :arrowX="20 + (3 * 50)" :height="305" :title="t('ui.map')">
-    <Container v-for="(v, i) in places" :key="i" :x="rowWidth.half" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerdown="p => tapItem(p, i)">
-      <Rectangle :visible="i === selectedIndex" :fillColor="COLORS.orange" :width="rowWidth" :height="rowHeight" :alpha="0.8" />
-      <Line v-if="i !== places.length - 1" :x="0" :y="rowHeight.half" :lineWidth="0.5" :x2="rowWidth" :strokeColor="COLORS.brown" :alpha="0.25" />
-      <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="v ? `${t(`place.${v.key}`)} (${v.x}, ${v.y})` : t('ui.unregistered')" :size="13" :bold="Boolean(v)" />
-      <Image v-if="v" texture="garbage" :scale="0.45" :tint="COLORS.brown" :x="100" @pointerdown.stop="p => tapGarbage(p, i)" />
-    </Container>
-    <template v-if="selectedIndex !== null">
-      <Selector v-if="del" :x="tapX" :y="tapY" :list="['削除', 'キャンセル']" @select="submit" />
-      <Selector v-else :x="tapX" :y="tapY" :list="[places[selectedIndex] ? '登録した場所へ移動' : '現在地を登録', 'キャンセル']" @select="submit" />
+    <Text :text="t('events.bogusDoctor.lockMap')" :x="10" :y="10" v-if="lockInHospital" />
+    <template v-else>
+      <Container v-for="(v, i) in places" :key="i" :x="rowWidth.half" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerdown="p => tapItem(p, i)">
+        <Rectangle :visible="i === selectedIndex" :fillColor="COLORS.orange" :width="rowWidth" :height="rowHeight" :alpha="0.8" />
+        <Line v-if="i !== places.length - 1" :x="0" :y="rowHeight.half" :lineWidth="0.5" :x2="rowWidth" :strokeColor="COLORS.brown" :alpha="0.25" />
+        <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="v ? `${t(`place.${v.key}`)} (${v.x}, ${v.y})` : t('ui.unregistered')" :size="13" :bold="Boolean(v)" />
+        <Image v-if="v" texture="garbage" :scale="0.45" :tint="COLORS.brown" :x="100" @pointerdown.stop="p => tapGarbage(p, i)" />
+      </Container>
+      <template v-if="selectedIndex !== null">
+        <Selector v-if="del" :x="tapX" :y="tapY" :list="['削除', 'キャンセル']" @select="submit" />
+        <Selector v-else :x="tapX" :y="tapY" :list="[places[selectedIndex] ? '登録した場所へ移動' : '現在地を登録', 'キャンセル']" @select="submit" />
+      </template>
     </template>
   </MenuContainer>
 </template>
 
 <script>
 import MenuContainer from '@/components/MenuContainer'
-import { inject, reactive, ref, toRefs } from 'vue'
+import { computed, inject, reactive, ref, toRefs } from 'vue'
 import { Container, Rectangle, Line, Image } from 'phavuer'
 import config from '@/data/config'
 import Text from '@/components/Text'
 import Selector from '@/components/Selector'
+import { BOGUS_STEPS } from '@/data/eventSteps'
 export default {
   components: { MenuContainer, Container, Rectangle, Text, Line, Image, Selector },
   emits: ['close'],
@@ -75,7 +79,8 @@ export default {
       ...toRefs(data),
       submit,
       tapItem: onTap(false),
-      tapGarbage: onTap(true)
+      tapGarbage: onTap(true),
+      lockInHospital: computed(() => [BOGUS_STEPS.STARTED, BOGUS_STEPS.SOLVED].includes(storage.state.events.bogusDoctor))
     }
   }
 }
