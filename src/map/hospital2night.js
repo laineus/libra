@@ -10,12 +10,14 @@ export default {
     const field = inject('field').value
     const talk = inject('talk').value
     const state = inject('storage').state
+    const player = inject('player').value
     initHospitalButton(field.getObjectById(89))
     lockInHospital()
 
     const hands = Array.range(96, 101).map(id => field.objects.find(v => v.id === id))
     hands.forEach(v => field.delObject(v))
     if (state.events.bogusDoctor === BOGUS_STEPS.STARTED) {
+      player.speed = 100
       const handArea = field.getObjectById(102)
       handArea.setEvent(async () => {
         hands.reduce((prev, hand) => {

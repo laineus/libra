@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { computed, inject, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, inject, onBeforeUnmount, onMounted, reactive, ref, toRefs } from 'vue'
 import { onPreUpdate, Body, Light, Image } from 'phavuer'
 import Substance from './Substance'
 import useFollowing from './modules/useFollowing'
@@ -34,7 +34,10 @@ export default {
     const state = inject('storage').state
     const bag = inject('bag')
     const substance = ref(null)
-    const frame = ref(0)
+    const data = reactive({
+      frame: 0,
+      speed: 200
+    })
     const object = computed(() => substance.value?.object)
     const following = useFollowing(object)
     const { state: frameState, play: playFrameAnim, lookTo } = useFrameAnimChara(object, props.initR, 8)
@@ -54,7 +57,7 @@ export default {
       return Math.atan2(diffY, diffX)
     }
     onPreUpdate(() => {
-      frame.value = playFrameAnim()
+      data.frame = playFrameAnim()
       if (!event.state && !menuOpened.value) {
         if (mobile) {
           if (controller.value.velocityX || controller.value.velocityY) {
@@ -76,7 +79,7 @@ export default {
         }
       }
       if (!gun.mode.value) {
-        following.walkToTargetPosition(event.state ? 100 : 200)
+        following.walkToTargetPosition(event.state ? 100 : data.speed)
       }
       state.x = Number(object.value.x)
       state.y = Number(object.value.y)
@@ -121,7 +124,8 @@ export default {
       object, substance,
       gun, shot, gunSwitch, hasGun,
       damage,
-      r, frame, lookTo,
+      ...toRefs(data),
+      r, lookTo,
       stopWalking,
       hp: computed(() => substance.value?.hp),
       // Following
