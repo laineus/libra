@@ -1,4 +1,11 @@
 { "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "target":"."
+        }
+    },
  "height":32,
  "infinite":false,
  "layers":[
@@ -350,12 +357,12 @@
                  "point":true,
                  "properties":[
                         {
-                         "name":"unique",
-                         "type":"bool",
-                         "value":true
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.6
                         }],
                  "rotation":0,
-                 "type":"Character",
+                 "type":"Random",
                  "visible":true,
                  "width":0,
                  "x":320,
@@ -526,7 +533,7 @@
  "nextobjectid":35,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.5.0",
+ "tiledversion":"1.4.3",
  "tileheight":32,
  "tilesets":[
         {
@@ -543,6 +550,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.5,
+ "version":1.4,
  "width":40
 }

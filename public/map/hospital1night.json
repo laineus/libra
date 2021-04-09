@@ -405,6 +405,24 @@
                  "width":0,
                  "x":956,
                  "y":735
+                }, 
+                {
+                 "height":0,
+                 "id":55,
+                 "name":"ghost",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"unique",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"Character",
+                 "visible":true,
+                 "width":0,
+                 "x":233,
+                 "y":214
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -640,7 +658,7 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":55,
+ "nextobjectid":56,
  "orientation":"orthogonal",
  "properties":[
         {

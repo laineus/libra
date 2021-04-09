@@ -12,7 +12,7 @@ export default {
     const audio = inject('audio')
     const { exec } = inject('event')
     const bag = inject('bag')
-    const killed = computed(() => state.killed.count(v => v !== 'fall2_3') > 0)
+    const killed = computed(() => state.killed.count(v => v !== 'hospital1_23') > 0)
     if (!killed.value) {
       field.delObject(48)
       field.delObject(49)
@@ -161,7 +161,7 @@ export default {
       if (!add) return
       const item = items.value[items.value.length - 1]
       if (['coinSilver', 'coinGold'].includes(item.name) && item.x > 470 && item.x < 522 && item.y > 279 && item.y < 315) {
-        state.killed = state.killed.filter(v => v === 'fall2_3')
+        state.killed = state.killed.filter(v => v === 'hospital1_23')
         uiScene.log.push(t('ui.revive'))
       }
     })

@@ -365,16 +365,16 @@
                 {
                  "height":0,
                  "id":23,
-                 "name":"ghost",
+                 "name":"doctorPenguin",
                  "point":true,
                  "properties":[
                         {
-                         "name":"chance",
-                         "type":"float",
-                         "value":0.6
+                         "name":"unique",
+                         "type":"bool",
+                         "value":true
                         }],
                  "rotation":0,
-                 "type":"Random",
+                 "type":"Character",
                  "visible":true,
                  "width":0,
                  "x":280,

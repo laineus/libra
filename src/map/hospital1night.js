@@ -1,6 +1,5 @@
 import { computed, inject } from 'vue'
 import Talker from '@/util/Talker'
-import config from '@/data/config'
 import { FOREVER_STEPS } from '@/data/eventSteps'
 import { lockInHospital, initHospitalButton } from '@/map/hospitalFunctions'
 export default {
@@ -16,8 +15,8 @@ export default {
 
     const ghost = field.getObjectById(3)
     ghost?.setVisible(computed(() => {
-      if (state.events.forever === FOREVER_STEPS.NULL && state.killed.includes('fall2_3')) return false // Killed before started
-      return state.events.forever < FOREVER_STEPS.COMPLETED
+      if (state.events.forever === FOREVER_STEPS.NULL && state.killed.includes('hospital1_23')) return false // Killed before started
+      return true
     }))
     ghost?.setTapEvent(async () => {
       const speakGhost = talk.getSpeakScripts(new Talker(t('name.ghost'), ghost.object))
@@ -34,14 +33,19 @@ export default {
       } else if (state.events.forever === FOREVER_STEPS.STARTED) {
         await speakGhost(t('events.forever.ghost.started'))
       } else if (state.events.forever === FOREVER_STEPS.EXECUTED) {
-        await speakGhost(t('events.forever.ghost.complete1'))
+        await speakGhost(t('events.forever.ghost.complete'))
         await field.dropItem('apple', ghost.object)
-        await speakGhost(t('events.forever.ghost.complete2'))
-        const completeTransition = await uiScene.transition(1000, { color: config.COLORS.white })
         uiScene.log.push(t('ui.questComplete', t('quest.forever')))
         state.events.forever = FOREVER_STEPS.COMPLETED
-        await completeTransition()
+      } else if (state.events.forever === FOREVER_STEPS.COMPLETED) {
+        await speakGhost(t('events.forever.ghost.completed'))
       }
+    })
+    const doctor = field.getObjectById(55)
+    doctor?.setVisible(computed(() => state.events.forever >= FOREVER_STEPS.EXECUTED))
+    doctor?.setTapEvent(async () => {
+      const speak = talk.getSpeakScripts(new Talker(t('name.doctorPenguin'), doctor.object))
+      await speak(t('events.forever.doctor.completed'))
     })
   }
 }
