@@ -14,6 +14,7 @@ export default {
     minePenguin: '炭鉱ペンギン',
     doctorPenguin: '医者ペンギン',
     pumpkin: 'カボチャ',
+    pig: 'ぶた',
     ghost: '幽霊',
     patient: '患者',
     beetle: 'カブトムシ',

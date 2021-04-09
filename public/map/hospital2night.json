@@ -1,11 +1,4 @@
 { "compressionlevel":-1,
- "editorsettings":
-    {
-     "export":
-        {
-         "target":"."
-        }
-    },
  "height":32,
  "infinite":false,
  "layers":[
@@ -554,24 +547,6 @@
                 }, 
                 {
                  "height":0,
-                 "id":46,
-                 "name":"medicine1",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"chance",
-                         "type":"float",
-                         "value":0.6
-                        }],
-                 "rotation":0,
-                 "type":"Random",
-                 "visible":true,
-                 "width":0,
-                 "x":574.666333333333,
-                 "y":859.999666666667
-                }, 
-                {
-                 "height":0,
                  "id":48,
                  "name":"pedestal",
                  "point":true,
@@ -743,6 +718,42 @@
                  "width":0,
                  "x":500.359971202304,
                  "y":656.947444204464
+                }, 
+                {
+                 "height":0,
+                 "id":103,
+                 "name":"ghost",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.6
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":1069.94604499644,
+                 "y":354.368319250738
+                }, 
+                {
+                 "height":0,
+                 "id":104,
+                 "name":"ghost",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.6
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":173.763616003258,
+                 "y":343.422579659982
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -909,7 +920,7 @@
          "y":0
         }],
  "nextlayerid":22,
- "nextobjectid":103,
+ "nextobjectid":105,
  "orientation":"orthogonal",
  "properties":[
         {
@@ -918,7 +929,7 @@
          "value":"#fa420e00"
         }],
  "renderorder":"right-down",
- "tiledversion":"1.4.3",
+ "tiledversion":"1.5.0",
  "tileheight":32,
  "tilesets":[
         {
@@ -935,6 +946,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.4,
+ "version":1.5,
  "width":42
 }

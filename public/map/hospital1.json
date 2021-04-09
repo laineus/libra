@@ -1,11 +1,4 @@
 { "compressionlevel":-1,
- "editorsettings":
-    {
-     "export":
-        {
-         "target":"."
-        }
-    },
  "height":32,
  "infinite":false,
  "layers":[
@@ -126,16 +119,16 @@
                 {
                  "height":0,
                  "id":3,
-                 "name":"ghost",
+                 "name":"pig",
                  "point":true,
                  "properties":[
                         {
-                         "name":"unique",
-                         "type":"bool",
-                         "value":true
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.8
                         }],
                  "rotation":0,
-                 "type":"Character",
+                 "type":"Random",
                  "visible":true,
                  "width":0,
                  "x":736,
@@ -152,6 +145,42 @@
                  "width":0,
                  "x":956,
                  "y":735
+                }, 
+                {
+                 "height":0,
+                 "id":30,
+                 "name":"doctorPenguin",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.6
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":607.814313346228,
+                 "y":803.404255319149
+                }, 
+                {
+                 "height":0,
+                 "id":31,
+                 "name":"pig",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.6
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":626.382978723404,
+                 "y":261.199226305609
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -209,7 +238,7 @@
                 {
                  "height":0,
                  "id":8,
-                 "name":"lamp",
+                 "name":"tissue",
                  "point":true,
                  "rotation":0,
                  "type":"Substance",
@@ -245,7 +274,7 @@
                 {
                  "height":0,
                  "id":11,
-                 "name":"scalpel",
+                 "name":"tissue",
                  "point":true,
                  "properties":[
                         {
@@ -274,18 +303,6 @@
                 }, 
                 {
                  "height":0,
-                 "id":13,
-                 "name":"lamp",
-                 "point":true,
-                 "rotation":0,
-                 "type":"Substance",
-                 "visible":true,
-                 "width":0,
-                 "x":799,
-                 "y":195
-                }, 
-                {
-                 "height":0,
                  "id":14,
                  "name":"medicine2",
                  "point":true,
@@ -301,24 +318,6 @@
                  "width":0,
                  "x":786,
                  "y":265
-                }, 
-                {
-                 "height":0,
-                 "id":15,
-                 "name":"revolver",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"chance",
-                         "type":"float",
-                         "value":0.4
-                        }],
-                 "rotation":0,
-                 "type":"Random",
-                 "visible":true,
-                 "width":0,
-                 "x":165,
-                 "y":260
                 }, 
                 {
                  "height":0,
@@ -349,18 +348,6 @@
                  "width":0,
                  "x":853.5,
                  "y":929.5
-                }, 
-                {
-                 "height":0,
-                 "id":22,
-                 "name":"lamp",
-                 "point":true,
-                 "rotation":0,
-                 "type":"Substance",
-                 "visible":true,
-                 "width":0,
-                 "x":853.5,
-                 "y":896.5
                 }, 
                 {
                  "height":0,
@@ -427,6 +414,54 @@
                  "width":0,
                  "x":688.278529980658,
                  "y":651.141199226306
+                }, 
+                {
+                 "height":0,
+                 "id":32,
+                 "name":"pot",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Substance",
+                 "visible":true,
+                 "width":0,
+                 "x":799.198333333333,
+                 "y":193.101
+                }, 
+                {
+                 "height":0,
+                 "id":33,
+                 "name":"lily",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Substance",
+                 "visible":true,
+                 "width":0,
+                 "x":799.333333333333,
+                 "y":182
+                }, 
+                {
+                 "height":0,
+                 "id":34,
+                 "name":"pot",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Substance",
+                 "visible":true,
+                 "width":0,
+                 "x":852.531666666667,
+                 "y":891.767666666667
+                }, 
+                {
+                 "height":0,
+                 "id":35,
+                 "name":"lily",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Substance",
+                 "visible":true,
+                 "width":0,
+                 "x":852.666666666667,
+                 "y":880.666666666667
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -435,10 +470,10 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":30,
+ "nextobjectid":36,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.4.3",
+ "tiledversion":"1.5.0",
  "tileheight":32,
  "tilesets":[
         {
@@ -455,6 +490,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.4,
+ "version":1.5,
  "width":38
 }

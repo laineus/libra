@@ -1,11 +1,4 @@
 { "compressionlevel":-1,
- "editorsettings":
-    {
-     "export":
-        {
-         "target":"."
-        }
-    },
  "height":32,
  "infinite":false,
  "layers":[
@@ -160,26 +153,8 @@
                  "type":"Substance",
                  "visible":true,
                  "width":0,
-                 "x":377.666333333333,
-                 "y":503.999666666667
-                }, 
-                {
-                 "height":0,
-                 "id":49,
-                 "name":"text",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"chance",
-                         "type":"float",
-                         "value":0.8
-                        }],
-                 "rotation":0,
-                 "type":"Random",
-                 "visible":true,
-                 "width":0,
-                 "x":378.666333333333,
-                 "y":471.999666666667
+                 "x":378.999666666666,
+                 "y":509.333
                 }, 
                 {
                  "height":0,
@@ -191,25 +166,7 @@
                  "visible":true,
                  "width":0,
                  "x":608.333333333333,
-                 "y":503.999666666667
-                }, 
-                {
-                 "height":0,
-                 "id":51,
-                 "name":"lamp",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"chance",
-                         "type":"float",
-                         "value":0.8
-                        }],
-                 "rotation":0,
-                 "type":"Random",
-                 "visible":true,
-                 "width":0,
-                 "x":609.333333333333,
-                 "y":471.999666666667
+                 "y":509.333
                 }, 
                 {
                  "height":0,
@@ -250,8 +207,8 @@
                  "type":"Substance",
                  "visible":true,
                  "width":0,
-                 "x":384.629312239068,
-                 "y":550.666666666667
+                 "x":377.962645572401,
+                 "y":475.333333333334
                 }, 
                 {
                  "height":0,
@@ -262,8 +219,8 @@
                  "type":"Substance",
                  "visible":true,
                  "width":0,
-                 "x":384.764107788498,
-                 "y":539.565570004595
+                 "x":378.097441121831,
+                 "y":464.232236671262
                 }, 
                 {
                  "height":0,
@@ -274,8 +231,8 @@
                  "type":"Substance",
                  "visible":true,
                  "width":0,
-                 "x":606.924387547193,
-                 "y":552.540443878468
+                 "x":607.59105421386,
+                 "y":474.540443878468
                 }, 
                 {
                  "height":0,
@@ -286,19 +243,19 @@
                  "type":"Substance",
                  "visible":true,
                  "width":0,
-                 "x":607.059387547193,
-                 "y":541.439443878468
+                 "x":607.72605421386,
+                 "y":463.439443878468
                 }, 
                 {
                  "height":0,
                  "id":58,
-                 "name":"ghost",
+                 "name":"doctorPenguin",
                  "point":true,
                  "properties":[
                         {
                          "name":"chance",
                          "type":"float",
-                         "value":0.6
+                         "value":0.7
                         }],
                  "rotation":0,
                  "type":"Random",
@@ -310,7 +267,7 @@
                 {
                  "height":0,
                  "id":59,
-                 "name":"ghost",
+                 "name":"pig",
                  "point":true,
                  "properties":[
                         {
@@ -322,8 +279,8 @@
                  "type":"Random",
                  "visible":true,
                  "width":0,
-                 "x":500.359971202304,
-                 "y":656.947444204464
+                 "x":457.945230288123,
+                 "y":518.757481871165
                 }, 
                 {
                  "height":0,
@@ -360,6 +317,42 @@
                  "width":0,
                  "x":999,
                  "y":800
+                }, 
+                {
+                 "height":0,
+                 "id":64,
+                 "name":"pig",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.6
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":465.193932607146,
+                 "y":857.872340425532
+                }, 
+                {
+                 "height":0,
+                 "id":65,
+                 "name":"pig",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.4
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":548.655196986664,
+                 "y":571.914893617021
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -441,10 +434,10 @@
          "y":0
         }],
  "nextlayerid":21,
- "nextobjectid":64,
+ "nextobjectid":66,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.4.3",
+ "tiledversion":"1.5.0",
  "tileheight":32,
  "tilesets":[
         {
@@ -461,6 +454,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.4,
+ "version":1.5,
  "width":42
 }
