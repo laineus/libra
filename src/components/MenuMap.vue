@@ -1,5 +1,5 @@
 <template>
-  <MenuContainer ref="container" :arrowX="20 + (3 * 50)" :height="305" :title="t('ui.map')">
+  <MenuContainer ref="container" :arrowX="20 + (3 * 50)" :height="320" :title="t('ui.map')">
     <Text :text="t('events.bogusDoctor.lockMap')" :x="10" :y="10" v-if="lockInHospital" />
     <template v-else>
       <Container v-for="(v, i) in places" :key="i" :x="rowWidth.half" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerdown="p => tapItem(p, i)">

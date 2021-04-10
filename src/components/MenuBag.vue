@@ -1,12 +1,12 @@
 <template>
-  <MenuContainer ref="container" :arrowX="20 + (1 * 50)" :height="420" :title="t('ui.bag')" :visible="showBag">
+  <MenuContainer ref="container" :arrowX="20 + (1 * 50)" :height="400" :title="t('ui.bag')" :visible="showBag">
     <Image v-for="v in bagItems" :key="v.id" :texture="itemData[v.key].texture" :frame="itemData[v.key].frame" :x="v.bagX" :y="v.bagY" :scale="v.scale" :originX="0.5" :originY="1" :visible="grab.item !== v" @pointerdown="grabItem(v, 'move')" />
-    <Text :text="`${t('ui.weight')}:`" :originX="1" :originY="0.5" :x="163" :y="14" :size="13" />
-    <Text :text="`${weight}/100`" :originX="1" :originY="0.5" :x="222" :y="14" :size="14" />
-    <Image v-if="grab.item && itemData[grab.item.key].eat" :tint="onEatArea ? config.COLORS.orange : config.COLORS.brown" texture="eat" :origin="1" :x="222" :y="402" />
+    <Text :text="`${t('ui.weight')}:`" :originX="1" :originY="0.5" :x="153" :y="-3" :size="12" />
+    <Text :text="`${weight}/100`" :originX="1" :originY="0.5" :x="211" :y="-3" :size="13" />
+    <Image v-if="grab.item && itemData[grab.item.key].eat" :tint="onEatArea ? config.COLORS.orange : config.COLORS.brown" texture="eat" :origin="1" :x="219" :y="402" />
     <template v-if="field.name === 'home'">
-      <Text :text="t('ui.redecorate')" :origin="1" :x="212" :y="-11" :size="13" color="soy" :bold="true" :style="{ stroke: config.COLORS.brown.toColorString, strokeThickness: 2 }" @pointerdown.stop="switchRedecorate" />
-      <Image :x="236" :y="-10" :origin="1" texture="check" :frame="redecorate ? 1 : 0" :tint="config.COLORS.soy" @pointerdown.stop="switchRedecorate" />
+      <Text :text="t('ui.redecorate')" :origin="1" :x="212" :y="-31" :size="13" color="soy" :bold="true" :style="{ stroke: config.COLORS.brown.toColorString, strokeThickness: 2 }" @pointerdown.stop="switchRedecorate" />
+      <Image :x="236" :y="-30" :origin="1" texture="check" :frame="redecorate ? 1 : 0" :tint="config.COLORS.soy" @pointerdown.stop="switchRedecorate" />
     </template>
   </MenuContainer>
   <Container v-if="grab.item" :x="grab.x" :y="grab.y">
@@ -25,7 +25,7 @@ import items from '@/data/items'
 import makeRaptor from '@/components/modules/makeRaptor'
 const itemData = items.toObject(v => [v.key, v])
 const WIDTH = 230
-const HEIGHT = 410
+const HEIGHT = 390
 export default {
   components: { Image, Container, MenuContainer, Text },
   props: ['redecorate'],
@@ -51,7 +51,7 @@ export default {
     })
     const grabbingBagItem = computed(() => 'bagX' in grab.item)
     const grabItemName = computed(() => itemData[grab.item.key].type === 'Character' ? t(`name.${grab.item.key}`) : t(`item.${grab.item.key}`))
-    const onEatArea = computed(() => Math.hypot(grab.x - 907, grab.y - 422) < 25)
+    const onEatArea = computed(() => Math.hypot(grab.x - 904, grab.y - 422) < 25)
     const onBagArea = computed(() => (grab.x - offsetX.value) >= 0)
     const weight = computed(() => state.bagItems.reduce((sum, v) => sum + itemData[v.key].weight, 0))
     const grabRef = refObj(null)
