@@ -13,6 +13,7 @@ export default {
     const libra = inject('player').value
     const camera = inject('camera').value
     const event = inject('event')
+    const achieve = inject('achieve')
 
     const heartImage = field.images.find(v => v.name === 'heart').ref.value
     heartImage.setOrigin(0.5).setPosition(heartImage.x + heartImage.width.half, heartImage.y + heartImage.height.half).setTint(0x550000)
@@ -143,6 +144,7 @@ export default {
           await sleep(3000)
           sleep(3000).then(() => white(0))
           await uiScene.startCredit(true)
+          achieve.activate('awaken')
           await gameScene.backToTitle()
         } else {
           sleep(1000)
@@ -191,6 +193,7 @@ export default {
             revert()
           })
           await uiScene.startCredit(false)
+          achieve.activate('rest')
           state.events.main = MAIN_STEPS.DEAD
           await gameScene.setField('home', 0, 0, 0, { ep: true })
         }

@@ -27,6 +27,7 @@ export default {
     const talk = inject('talk').value
     const uiScene = inject('uiScene').value
     const state = inject('storage').state
+    const achieve = inject('achieve')
     const getItemReaction = useItemReaction(state)
 
     const getUsableItem = key => {
@@ -66,6 +67,7 @@ export default {
         tissue.name = 'tissueEmpty'
         const stateTissue = state.roomItems.find(v => v.key === 'tissue' && v.x === tissue.x && v.y === tissue.y)
         stateTissue.key = 'tissueEmpty'
+        achieve.activate('tissue')
       }
       const { x, y } = [field.positions.trash1, field.positions.trash2, field.positions.trash3].random()
       field.addObject({ name: 'trash', x: Math.randomInt(x - 10, x + 10), y: Math.randomInt(y - 10, y + 10) })

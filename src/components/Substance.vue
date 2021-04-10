@@ -45,6 +45,7 @@ export default {
     const camera = inject('camera')
     const player = inject('player')
     const state = inject('storage').state
+    const achieve = inject('achieve')
     const object = refObj(null)
     const image = refObj(null)
     const imgWidth = computed(() => image.value?.width ?? 30)
@@ -68,7 +69,10 @@ export default {
       onDestroy = e
     }
     const onBroken = () => {
-      if (props.unique) state.killed.push(props.unique)
+      if (props.unique) {
+        state.killed.push(props.unique)
+        achieve.activate('murder')
+      }
       onDestroy?.()
       context.emit('del')
     }

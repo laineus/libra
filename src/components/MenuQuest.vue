@@ -30,6 +30,7 @@ export default {
   setup (_, context) {
     const state = inject('storage').state
     const uiScene = inject('uiScene').value
+    const achieve = inject('achieve')
     const refs = {
       scrollBar: ref(null),
       container: ref(null)
@@ -51,6 +52,9 @@ export default {
     const onSwipe = pointer => refs.scrollBar.value.swipe(pointer)
     if (state.status.body > 0 || state.status.heart > 0) {
       uiScene.setTutorial('quest')
+    }
+    if (quest.every(q => q.started(state))) {
+      achieve.activate('quest')
     }
     return {
       t,

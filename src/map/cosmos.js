@@ -9,7 +9,9 @@ export default {
     const talk = inject('talk').value
     const state = inject('storage').state
     const bag = inject('bag')
+    const ahieve = inject('ahieve')
     state.events.cosmos = true
+    ahieve.activate('cosmos')
 
     const guide = field.getObjectById(3)
     guide?.setRandomWalk()

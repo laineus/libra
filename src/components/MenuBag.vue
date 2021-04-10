@@ -37,6 +37,8 @@ export default {
     const camera = inject('camera').value
     const field = inject('field').value
     const mobile = inject('mobile')
+    const achieve = inject('achieve')
+    const bag = inject('bag')
     const container = ref(null)
     const offsetX = computed(() => container.value?.offsetX)
     const offsetY = computed(() => container.value?.offsetY)
@@ -114,15 +116,17 @@ export default {
           }
           context.emit('close')
           uiScene.log.push(t('ui.trash'))
+          achieve.activate('trash')
         } else if (['coinGold', 'coinSilver'].includes(data.key) && vendingMachine) {
           state.bagItems.delete(grab.item)
           field.dropItem(['coke', 'tea'].random(), vendingMachine.ref.value.object)
           context.emit('close')
           uiScene.log.push(t('ui.vendingMachine'))
+          achieve.activate('drink')
         } else {
           field.addObject({ id: Math.randomInt(1000000, 9999999), name: data.key, x, y, scale: grab.item.scale })
           state.bagItems.delete(grab.item)
-          if (grab.item.key.startsWith('raptor')) makeRaptor(true, { state, uiScene, field })
+          if (grab.item.key.startsWith('raptor')) makeRaptor(true, { state, uiScene, field, achieve })
           context.emit('close')
         }
         grab.resolver()
@@ -141,7 +145,7 @@ export default {
         const isRaptor = grab.item.key.startsWith('raptor')
         const isField = !grabbingBagItem.value
         nextTick(() => {
-          if (isRaptor) makeRaptor(isField, { state, uiScene, field })
+          if (isRaptor) makeRaptor(isField, { state, uiScene, field, achieve })
         })
       } else if (grab.mode === 'capture') {
         const weightOver = (weight.value + data.weight) > 100
@@ -159,6 +163,14 @@ export default {
             uiScene.setTutorial(mobile ? 'gunSp' : 'gunPc')
           } else if (weight.value >= 60) {
             uiScene.setTutorial('weight')
+          }
+          if (grab.item.key === 'pinkPenguin') {
+            achieve.activate('pink')
+          } else if (grab.item.key.startsWith('art')) {
+            const names = (23).toArray().map(i => `art${i}`)
+            if (names.every(name => bag.hasItem(name, 1, { bag: true, room: true }))) {
+              achieve.activate('art')
+            }
           }
         } else {
           if (onBagArea.value && weightOver) uiScene.log.push(t('ui.weightOver'))

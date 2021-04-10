@@ -21,14 +21,10 @@ export default class AchieveManager {
     if (!achievements.includes(name)) {
       achievements.push(name)
       setLocalStorageAchievements(achievements)
-    }
-    if (this.steam) {
-      this.steam.activateAchievement(name, () => null)
-    }
-    if (this.gtag) {
-      this.gtag('event', 'archive', {
-        event_category: name
-      })
+      if (this.steam) {
+        this.steam.activateAchievement(name, () => null)
+      }
+      console.log('Activate achievement', achievements)
     }
   }
 }
