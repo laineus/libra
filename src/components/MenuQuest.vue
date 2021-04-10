@@ -1,5 +1,6 @@
 <template>
-  <MenuContainer ref="container" :arrowX="20 + (2 * 50)" :height="320" :title="t('ui.quest')" @wheel="onWheel" @pointermove.stop="onSwipe">
+  <MenuContainer ref="container" :height="320" :title="t('ui.quest')" @wheel="onWheel" @pointermove.stop="onSwipe">
+    <Image texture="menu_arrow" :x="118" :y="320 - 4" />
     <Container v-for="(v, i) in quest.slice(offset, offset + 8)" :key="i" :visible="!selected" :x="rowWidth.half" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerup.stop="p => tapItem(p, v)">
       <Line v-if="i !== 8 - 1" :x="0" :y="rowHeight.half" :lineWidth="0.5" :x2="rowWidth" :strokeColor="COLORS.brown" :alpha="0.25" />
       <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="v.started(state) ? t(`quest.${v.key}.title`) : '？？？'" :size="13" :bold="v.started(state)" />

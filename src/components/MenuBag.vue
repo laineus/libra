@@ -1,5 +1,6 @@
 <template>
-  <MenuContainer ref="container" :arrowX="20 + (1 * 50)" :height="400" :title="t('ui.bag')" :visible="showBag">
+  <MenuContainer ref="container" :height="400" :title="t('ui.bag')" :visible="showBag">
+    <Image texture="menu_arrow" :x="68" :y="400 - 4" />
     <Image v-for="v in bagItems" :key="v.id" :texture="itemData[v.key].texture" :frame="itemData[v.key].frame" :x="v.bagX" :y="v.bagY" :scale="v.scale" :originX="0.5" :originY="1" :visible="grab.item !== v" @pointerdown="grabItem(v, 'move')" />
     <Text :text="`${t('ui.weight')}:`" :originX="1" :originY="0.5" :x="153" :y="-3" :size="12" />
     <Text :text="`${weight}/100`" :originX="1" :originY="0.5" :x="211" :y="-3" :size="13" />

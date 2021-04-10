@@ -15,13 +15,13 @@ import Text from '@/components/Text'
 import config from '@/data/config'
 export default {
   components: { Container, Image, Text },
-  props: ['arrowX', 'height', 'title'],
+  props: ['height', 'title'],
   emits: ['wheel', 'pointermove'],
   setup (props) {
     const labelSpace = 45
     const width = 240
     const padding = 5
-    const right = 15
+    const right = 18
     const bottom = 80
     const left = (right + width).byRight
     const top = (bottom + props.height + labelSpace).byBottom
