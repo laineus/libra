@@ -40,8 +40,12 @@ export default {
         fieldData.x = x
         fieldData.y = y
         fieldData.r = typeof r === 'number' ? r : rForKey[r]
+        storage.state.x = fieldData.x
+        storage.state.y = fieldData.y
+        storage.state.r = fieldData.r
         fieldData.payload = payload
         uiScene.value.setMapName(t(`place.${name}`))
+        if (payload?.autosave !== false) storage.save(0)
       })
       completeTransition()
     }

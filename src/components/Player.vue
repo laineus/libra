@@ -83,6 +83,7 @@ export default {
       }
       state.x = Number(object.value.x)
       state.y = Number(object.value.y)
+      state.r = r.value
     })
     onMounted(() => {
       substance.value.setCapturable(false)

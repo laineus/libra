@@ -50,7 +50,7 @@ export default {
         if (!list.value[i].state) return
         data.selectedIndex = i
         await storage.load(list.value[i].number)
-        await gameScene.value.setField(storage.state.map, storage.state.x, storage.state.y, -Math.PI.half)
+        await gameScene.value.setField(storage.state.map, storage.state.x, storage.state.y, storage.state.r, { autosave: false })
         context.emit('load')
       } else {
         if (!i) return
