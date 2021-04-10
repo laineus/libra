@@ -1,6 +1,7 @@
 [
   ["hp.png", 1, 2],
   ["menu_icons.png", 6, 1],
+  ["menu_icon_bg.png", 6, 1],
   ["check.png", 1, 4],
   ["speach_bubbles.png", 1, 2],
   ["libra.png", 1, 7],

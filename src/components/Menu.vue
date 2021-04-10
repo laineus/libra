@@ -2,11 +2,11 @@
   <div>
     <Container v-for="(v, i) in menu" :key="i" :x="(235).byRight + (i * 50)" :y="(35).byBottom">
       <template v-if="v.key === 'map' && onMistelyCircle">
-        <Circle :fillColor="COLORS.dark" :radius="20" :lineWidth="2" :strokeColor="0x9ee50c" @pointerdown.stop="(...args) => tapButton(i, ...args)" />
+        <Image texture="menu_icon_bg" :frame="5" @pointerdown.stop="(...args) => tapButton(i, ...args)" />
         <Image texture="menu_icons" :frame="5" :tint="0x9ee50c" />
       </template>
       <template v-else>
-        <Circle :fillColor="COLORS.brown" :radius="20" :lineWidth="2" :strokeColor="COLORS.soy" @pointerdown.stop="(...args) => tapButton(i, ...args)" />
+        <Image texture="menu_icon_bg" :frame="i" @pointerdown.stop="(...args) => tapButton(i, ...args)" />
         <Image texture="menu_icons" :frame="i" :tint="COLORS.soy" />
       </template>
     </Container>
@@ -23,7 +23,7 @@
 
 <script>
 import { computed, nextTick, ref, inject, provide } from 'vue'
-import { Container, Circle, Image } from 'phavuer'
+import { Container, Image } from 'phavuer'
 import config from '@/data/config'
 import MenuStatus from '@/components/MenuStatus'
 import MenuBag from '@/components/MenuBag'
@@ -31,7 +31,7 @@ import MenuQuest from '@/components/MenuQuest'
 import MenuMap from '@/components/MenuMap'
 import MenuSystem from '@/components/MenuSystem'
 export default {
-  components: { Container, Circle, Image, MenuStatus, MenuBag, MenuQuest, MenuMap, MenuSystem },
+  components: { Container, Image, MenuStatus, MenuBag, MenuQuest, MenuMap, MenuSystem },
   setup () {
     const state = inject('storage').state
     const event = inject('event')
