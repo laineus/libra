@@ -125,7 +125,7 @@ export default {
       return new Promise(resolve => {
         selector.list = list
         selector.x = player.value?.object.x - camera.value?.scrollX
-        selector.y = player.value?.object.y - camera.value?.scrollY - 50
+        selector.y = player.value?.object.y - camera.value?.scrollY - 65
         selector.resolver = result => {
           selector.list = null
           selector.resolver = null
