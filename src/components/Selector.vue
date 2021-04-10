@@ -1,21 +1,23 @@
 <template>
-  <SpeachBubble :width="bgWidth" :height="(bgHeight * options.length) + (2 * (options.length - 1))" :depth="config.DEPTH.TALK">
-    <Container v-for="(v, i) in options" :key="i" :y="(bgHeight + 2) * i">
-      <RoundRectangle :fillColor="COLORS.brown" :radius="4" :width="bgWidth" :height="bgHeight" @pointerdown.stop="select($event, i)" />
-      <Rectangle :fillColor="COLORS.soy" :x="10" :y="14" :width="3" :height="3" :rotation="Math.PI / 4" />
-      <Text :ref="v.ref" :text="v.text" :size="14" color="soy" :x="18" :y="5" :lineSpacing="3" />
+  <Container :depth="config.DEPTH.TALK">
+    <Container :x="-bgWidth.half" :y="-sumHeight">
+      <Image texture="select_bg" :origin="0.5" :x="bgWidth.half" :y="sumHeight.half" :scaleX="(bgWidth + 40) / 162" :scaleY="(sumHeight + 30) / 84" />
+      <Image texture="select_arrow" :origin="0.5" :x="bgWidth.half" :y="sumHeight" />
+      <Container v-for="(v, i) in options" :key="i" :y="(bgHeight + 2) * i">
+        <RoundRectangle :fillColor="COLORS.brown" :radius="4" :width="bgWidth" :height="bgHeight" @pointerdown.stop="select($event, i)" />
+        <Text :ref="v.ref" :originX="0.5" :x="bgWidth.half" :text="v.text" :size="14" color="soy" :y="5" :lineSpacing="3" />
+      </Container>
     </Container>
-  </SpeachBubble>
+  </Container>
 </template>
 
 <script>
-import { refObj, Container, RoundRectangle, Rectangle } from 'phavuer'
+import { refObj, Container, RoundRectangle, Image } from 'phavuer'
 import { reactive, toRefs, onMounted, inject } from 'vue'
 import config from '@/data/config'
-import SpeachBubble from '@/components/SpeachBubble'
 import Text from '@/components/Text'
 export default {
-  components: { SpeachBubble, Container, RoundRectangle, Rectangle, Text },
+  components: { Container, RoundRectangle, Image, Text },
   props: ['list'],
   emits: ['select'],
   setup (props, context) {
@@ -36,11 +38,13 @@ export default {
       audio.se('click')
       context.emit('select', i)
     }
+    const sumHeight = (data.bgHeight + 2) * options.length
     return {
       config, COLORS: config.COLORS,
       options,
       ...toRefs(data),
-      select
+      select,
+      sumHeight
     }
   }
 }
