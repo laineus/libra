@@ -145,7 +145,7 @@ export default {
       amili.lookTo('up')
     } else if (ep) {
       greetingEvent = async () => {
-        await speakAmiliScripts(t(''))
+        await speakAmiliScripts(t('events.home.goodmorning'))
         return false
       }
       field.player.object.setPosition(field.positions.bed.x, field.positions.bed.y)
