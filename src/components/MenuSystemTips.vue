@@ -8,7 +8,7 @@
       </Container>
     </template>
     <Container v-if="selected">
-      <Text :x="10" :y="10" text="← Back" :size="12" :bold="true" @pointerup.stop="selected = null" />
+      <Text :x="10" :y="10" text="← Back" :size="12" :bold="true" @pointerup.stop="back" />
       <Text :x="10" :y="40" :text="selected.title" :size="14" :bold="true" />
       <Text :x="10" :y="70" :text="selected.desc" :size="13" :style="{ wordWrap: { width: 210, useAdvancedWrap: true } }" :lineSpacing="5" />
     </Container>
@@ -17,14 +17,15 @@
 </template>
 
 <script>
-import { reactive, toRefs, ref } from 'vue'
+import { reactive, toRefs, ref, inject } from 'vue'
 import { Container, Rectangle, Line } from 'phavuer'
 import config from '@/data/config'
 import Text from '@/components/Text'
 import ScrollBar from '@/components/ScrollBar'
 export default {
   components: { Container, Rectangle, Line, Text, ScrollBar },
-  setup (props, context) {
+  setup () {
+    const audio = inject('audio')
     const keys = ['hp', 'charm', 'weight', 'use', 'dispose', 'store', 'amili', 'people', 'gun', 'murder']
     const list = keys.map(key => {
       return { title: t(`tips.${key}.title`), desc: t(`tips.${key}.desc`) }
@@ -38,7 +39,12 @@ export default {
     })
     const tapItem = async (pointer, v) => {
       if (pointer.isMoved) return
+      audio.se('click')
       data.selected = v
+    }
+    const back = () => {
+      data.selected = null
+      audio.se('cancel')
     }
     const onWheel = pointer => refs.scrollBar.value.add(Math.sign(pointer.deltaY))
     const onSwipe = pointer => refs.scrollBar.value.swipe(pointer)
@@ -49,6 +55,7 @@ export default {
       ...refs,
       ...toRefs(data),
       tapItem,
+      back,
       onWheel, onSwipe
     }
   }

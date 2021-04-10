@@ -45,6 +45,7 @@ export default {
     const camera = inject('camera')
     const player = inject('player')
     const state = inject('storage').state
+    const audio = inject('audio')
     const achieve = inject('achieve')
     const object = refObj(null)
     const image = refObj(null)
@@ -132,6 +133,7 @@ export default {
         const e = unref(event)
         if (!e) return null
         return async () => {
+          audio.se('click')
           context.emit('startEvent', options)
           if (options.focus === false) return await e()
           const fixCamera = await camera.value.look((object.value.x + player.value.object.x).half, (object.value.y + player.value.object.y).half, 500)

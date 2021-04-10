@@ -24,6 +24,7 @@ export default {
   setup (props, context) {
     const storage = inject('storage')
     const gameScene = inject('gameScene')
+    const audio = inject('audio')
     const list = ref([])
     const data = reactive({
       rowWidth: 230, rowHeight: 37,
@@ -48,12 +49,14 @@ export default {
       if (data.selectedIndex !== null) return
       if (props.load) {
         if (!list.value[i].state) return
+        audio.se('click')
         data.selectedIndex = i
         await storage.load(list.value[i].number)
         await gameScene.value.setField(storage.state.map, storage.state.x, storage.state.y, storage.state.r, { autosave: false })
         context.emit('load')
       } else {
         if (!i) return
+        audio.se('click')
         if (data.selectedIndex) {
           data.selectedIndex = null
           return

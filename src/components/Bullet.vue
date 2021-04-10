@@ -17,7 +17,9 @@ export default {
   setup (props, context) {
     const scene = inject('scene')
     const field = inject('field')
+    const audio = inject('audio')
     const object = refObj(null)
+    audio.se('shot')
     onMounted(() => {
       scene.physics.world.enable(object.value)
       object.value.body.setVelocity(Math.cos(props.r), Math.sin(props.r))
@@ -33,6 +35,7 @@ export default {
       if (found) {
         context.emit('del')
         found.damage(5, props.r)
+        audio.se('damage')
       } else if (onCeil(obj.x, obj.y)) {
         context.emit('del')
       }

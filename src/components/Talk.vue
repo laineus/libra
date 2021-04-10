@@ -19,6 +19,7 @@ export default {
   setup () {
     // inject
     const camera = inject('camera')
+    const audio = inject('audio')
     // refs
     const bg = refObj()
     const txt = refObj()
@@ -35,6 +36,7 @@ export default {
     const setTalk = array => {
       if (resolver) resolver()
       list.value.splice(0)
+      if (array.length) audio.se('talk')
       return new Promise(resolve => {
         list.value.push(...array)
         resolver = resolve
@@ -49,7 +51,8 @@ export default {
     const next = (pointer) => {
       pointer.isDown = false
       list.value.splice(0, 1)
-      if (!list.value.length && resolver) resolver()
+      if (!list.value.length && resolver) return resolver()
+      audio.se('talk')
     }
     onUpdated(() => {
       if (!current.value) return

@@ -11,12 +11,14 @@ export default {
     const talk = inject('talk').value
     const state = inject('storage').state
     const player = inject('player').value
+    const audio = inject('audio')
     initHospitalButton(field.getObjectById(89))
     lockInHospital()
 
     const hands = Array.range(96, 101).map(id => field.objects.find(v => v.id === id))
     hands.forEach(v => field.delObject(v))
     if (state.events.bogusDoctor === BOGUS_STEPS.STARTED) {
+      audio.se('break')
       player.speed = 100
       const handArea = field.getObjectById(102)
       handArea.setEvent(async () => {
@@ -27,6 +29,7 @@ export default {
           })
         }, Promise.resolve()).then(() => {
           hands.forEach(v => field.delObject(v))
+          audio.se('impact')
           const img = { texture: 'face', x: config.WIDTH.half, y: config.HEIGHT.half, depth: config.DEPTH.TRANSITION }
           uiScene.images.push(img)
           sleep(800).then(() => uiScene.images.delete(img))
@@ -66,6 +69,7 @@ export default {
     amili.setVisible(state.events.bogusDoctor === BOGUS_STEPS.STARTED)
     amili.setRandomWalk(false)
     amili.setTapEvent(async () => {
+      audio.se('glass')
       amili.substance.hp = 0
       await sleep(500)
     }, { focus: false, look: false })

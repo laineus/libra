@@ -44,6 +44,8 @@ export default {
   setup (props, context) {
     const splitCount = 3
     const scene = inject('scene')
+    const audio = inject('audio')
+    audio.se('break')
     const texture = scene.textures.get(props.texture)
     const baseFrame = texture.get(props.initialFrame)
     const frames = splitFrame(texture, props.initialFrame, splitCount)

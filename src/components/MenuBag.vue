@@ -5,8 +5,8 @@
     <Text :text="`${weight}/100`" :originX="1" :originY="0.5" :x="222" :y="14" :size="14" />
     <Image v-if="grab.item && itemData[grab.item.key].eat" :tint="onEatArea ? config.COLORS.orange : config.COLORS.brown" texture="eat" :origin="1" :x="222" :y="402" />
     <template v-if="field.name === 'home'">
-      <Text :text="t('ui.redecorate')" :origin="1" :x="212" :y="-11" :size="13" color="soy" :bold="true" :style="{ stroke: config.COLORS.brown.toColorString, strokeThickness: 2 }" @pointerdown.stop="$emit('update:redecorate', !redecorate)" />
-      <Image :x="236" :y="-10" :origin="1" texture="check" :frame="redecorate ? 1 : 0" :tint="config.COLORS.soy" @pointerdown.stop="$emit('update:redecorate', !redecorate)" />
+      <Text :text="t('ui.redecorate')" :origin="1" :x="212" :y="-11" :size="13" color="soy" :bold="true" :style="{ stroke: config.COLORS.brown.toColorString, strokeThickness: 2 }" @pointerdown.stop="switchRedecorate" />
+      <Image :x="236" :y="-10" :origin="1" texture="check" :frame="redecorate ? 1 : 0" :tint="config.COLORS.soy" @pointerdown.stop="switchRedecorate" />
     </template>
   </MenuContainer>
   <Container v-if="grab.item" :x="grab.x" :y="grab.y">
@@ -30,13 +30,14 @@ export default {
   components: { Image, Container, MenuContainer, Text },
   props: ['redecorate'],
   emits: ['close', 'update:redecorate'],
-  setup (_, context) {
+  setup (props, context) {
     const state = inject('storage').state
     const uiScene = inject('uiScene').value
     const controller = inject('controller').value
     const camera = inject('camera').value
     const field = inject('field').value
     const mobile = inject('mobile')
+    const audio = inject('audio')
     const achieve = inject('achieve')
     const bag = inject('bag')
     const container = ref(null)
@@ -95,6 +96,7 @@ export default {
         state.stomach.push(data.key)
         uiScene.log.push(t('ui.eat', t(`item.${data.key}`)))
         uiScene.log.push(t('ui.hpRecover', data.eat))
+        audio.se('effect')
         grab.resolver(true)
         context.emit('close')
       } else if (grab.mode === 'dispose') {
@@ -129,6 +131,7 @@ export default {
           if (grab.item.key.startsWith('raptor')) makeRaptor(true, { state, uiScene, field, achieve })
           context.emit('close')
         }
+        audio.se('drop')
         grab.resolver()
       } else if (grab.mode === 'move') {
         const x = grab.x + camera.scrollX
@@ -157,6 +160,7 @@ export default {
             bagX: Math.round(Math.fix(grab.x - offsetX.value, wHalf, WIDTH - wHalf)),
             bagY: Math.round(Math.fix(grab.y - offsetY.value, height, HEIGHT))
           })
+          audio.se('capture')
           grab.resolver(true)
           sleep(30).then(() => context.emit('close'))
           if (['gun', 'revolver', 'rifle'].includes(grab.item.key)) {
@@ -182,6 +186,10 @@ export default {
       grab.item = null
       grab.resolver = null
     }
+    const switchRedecorate = () => {
+      context.emit('update:redecorate', !props.redecorate)
+      audio.se('click')
+    }
     return {
       field,
       t, config,
@@ -193,7 +201,8 @@ export default {
       controller, grab, grabRef,
       grabItem, drop,
       grabItemName,
-      onEatArea
+      onEatArea,
+      switchRedecorate
     }
   }
 }

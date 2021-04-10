@@ -10,7 +10,7 @@
 
 <script>
 import { refObj, Container, RoundRectangle, Rectangle } from 'phavuer'
-import { reactive, toRefs, onMounted } from 'vue'
+import { reactive, toRefs, onMounted, inject } from 'vue'
 import config from '@/data/config'
 import SpeachBubble from '@/components/SpeachBubble'
 import Text from '@/components/Text'
@@ -19,6 +19,7 @@ export default {
   props: ['list'],
   emits: ['select'],
   setup (props, context) {
+    const audio = inject('audio')
     // data
     const options = props.list.map(text => {
       return { ref: refObj(null), text }
@@ -32,6 +33,7 @@ export default {
     })
     const select = (pointer, i) => {
       pointer.isDown = false
+      audio.se('click')
       context.emit('select', i)
     }
     return {

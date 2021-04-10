@@ -30,6 +30,7 @@ export default {
   setup (_, context) {
     const state = inject('storage').state
     const uiScene = inject('uiScene').value
+    const audio = inject('audio')
     const achieve = inject('achieve')
     const refs = {
       scrollBar: ref(null),
@@ -42,10 +43,12 @@ export default {
     })
     const tapItem = (p, v) => {
       if (p.isMoved || !v.started(state)) return
+      audio.se('click')
       data.selected = v
     }
     const back = p => {
       if (p.isMoved) return
+      audio.se('cancel')
       data.selected = null
     }
     const onWheel = pointer => refs.scrollBar.value.add(Math.sign(pointer.deltaY))

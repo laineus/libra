@@ -47,13 +47,16 @@ export default {
     const tween = ref(null)
     const select = async i => {
       if (i === null) {
+        audio.se('cancel')
         tween.value = { alpha: { from: 1, to: 0 }, duration: 70, onComplete: () => selected.value = null }
       } else if (i === 0) {
+        audio.se('click')
         selected.value = 0
         // await gameScene.value.setField('forest1', 300, 552, -Math.PI.half)
         await gameScene.value.setField('hospital2', 1072, 484, -Math.PI.half, { autosave: false })
         context.emit('close')
       } else {
+        audio.se('click')
         selected.value = i
         tween.value = { alpha: { from: 0, to: 1 }, duration: 70 }
       }

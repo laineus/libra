@@ -32,6 +32,7 @@ export default {
     const storage = inject('storage')
     const field = inject('field').value
     const player = inject('player').value
+    const audio = inject('audio')
     const onMistelyCircle = inject('onMistelyCircle')
     const container = ref(null)
     const places = storage.state.places
@@ -61,6 +62,7 @@ export default {
       const place = places[data.selectedIndex]
       if (place) {
         gameScene.setField(place.key, place.x, place.y)
+        sleep(200).then(() => audio.se('effect'))
         context.emit('close')
       } else {
         if (onMistelyCircle.value) {

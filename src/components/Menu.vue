@@ -2,11 +2,11 @@
   <div>
     <Container v-for="(v, i) in menu" :key="i" :x="(235).byRight + (i * 50)" :y="(35).byBottom">
       <template v-if="v.key === 'map' && onMistelyCircle">
-        <Circle :fillColor="COLORS.dark" :radius="20" :lineWidth="2" :strokeColor="0x9ee50c" @pointerdown="(...args) => tapButton(i, ...args)" />
+        <Circle :fillColor="COLORS.dark" :radius="20" :lineWidth="2" :strokeColor="0x9ee50c" @pointerdown.stop="(...args) => tapButton(i, ...args)" />
         <Image texture="menu_icons" :frame="5" :tint="0x9ee50c" />
       </template>
       <template v-else>
-        <Circle :fillColor="COLORS.brown" :radius="20" :lineWidth="2" :strokeColor="COLORS.soy" @pointerdown="(...args) => tapButton(i, ...args)" />
+        <Circle :fillColor="COLORS.brown" :radius="20" :lineWidth="2" :strokeColor="COLORS.soy" @pointerdown.stop="(...args) => tapButton(i, ...args)" />
         <Image texture="menu_icons" :frame="i" :tint="COLORS.soy" />
       </template>
     </Container>
@@ -35,6 +35,7 @@ export default {
   setup () {
     const state = inject('storage').state
     const event = inject('event')
+    const audio = inject('audio')
     const menu = [
       { key: 'status', ref: ref(null) },
       { key: 'bag', ref: ref(null) },
@@ -46,6 +47,7 @@ export default {
     const selected = computed(() => menu[index.value])
     const select = indexOrName => {
       if (event.state) return
+      audio.se('click')
       index.value = typeof indexOrName === 'string' ? menu.findIndex(v => v.key === indexOrName) : indexOrName
       return new Promise(resolve => {
         nextTick(() => {
@@ -54,10 +56,11 @@ export default {
       })
     }
     const close = () => {
+      if (index.value === null) return
       index.value = null
+      audio.se('cancel')
     }
-    const tapButton = (i, pointer, _x, _y, e) => {
-      e.stopPropagation()
+    const tapButton = (i, pointer) => {
       pointer.isDown = false
       index.value === i ? close() : select(i)
     }

@@ -37,6 +37,7 @@ export default {
       setLang: v => {
         setting.state.lang = v
         setting.save()
+        audio.se('click')
       },
       model: {
         get bgm () {
@@ -56,6 +57,7 @@ export default {
         audio.setBgmVolume(setting.state.bgm)
         audio.setSeVolume(setting.state.se)
         setting.save()
+        audio.se('click')
       }
     }
   }

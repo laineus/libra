@@ -33,6 +33,7 @@ export default {
     const mobile = inject('mobile')
     const state = inject('storage').state
     const bag = inject('bag')
+    const audio = inject('audio')
     const substance = ref(null)
     const data = reactive({
       frame: 0,
@@ -48,6 +49,7 @@ export default {
     const hasGun = computed(() => bag.hasItem('gun') || bag.hasItem('revolver'))
     const gunSwitch = () => {
       if (!hasGun.value && !gun.mode.value) return
+      audio.se('gun')
       gun.setMode(!gun.mode.value)
       following.clearTargetPosition()
     }
@@ -108,6 +110,7 @@ export default {
       scene.input.off('pointerdown', onTapScreen)
     })
     const damage = (value, r) => {
+      audio.se('hit')
       substance.value.damage(value, r)
       state.status.hp = substance.value.hp
       if (substance.value.hp <= 0) {
