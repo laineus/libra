@@ -45,7 +45,7 @@ export default {
         bagY: Math.randomInt(60, 410)
       })
       uiScene.value.menu.select('bag')
-      selectedItem.value = null
+      // selectedItem.value = null
     }
     return {
       selectedMap,

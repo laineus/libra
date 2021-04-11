@@ -3,9 +3,8 @@
   <Image v-if="setting.state.lang === 'ja'" texture="logo_ja" :x="config.WIDTH.half" :y="config.HEIGHT.half - 77" />
   <Image v-else texture="logo_en" :x="config.WIDTH.half" :y="config.HEIGHT.half - 90" />
   <Container v-for="(v, i) in list" :key="i" :x="config.WIDTH.half" :y="380 + (i * 40)">
-    <Image texture="nav" :frame="i" :y="3" :tint="config.COLORS.brown" :alpha="0.3" />
-    <Image texture="nav" :frame="i" :blendMode="Phaser.BlendModes[selected === i ? 'ADD' : 'NORMAL']" @pointerdown.stop="select(i)" />
-    <Text :text="v" :origin="0.5" :style="{ shadow: { offsetX: 0, offsetY: 1, blur: 1, color: '#00000050', fill: true } }" />
+    <Image texture="nav" :frame="i" :blendMode="Phaser.BlendModes.OVERLAY" :alpha="0.87" @pointerdown.stop="select(i)" />
+    <Text :text="t(`ui.${v}`).split('').join(' ')" :size="14" :origin="0.5" :style="{ shadow: { offsetX: 0, offsetY: 1, blur: 1, color: '#00000030', fill: true } }" />
   </Container>
   <Container v-if="selected > 0" :tween="tween">
     <Rectangle :fillColor="config.COLORS.black" :origin="0" :alpha="0.3" :width="config.WIDTH" :height="config.HEIGHT" @pointerdown="select(null)" />
@@ -43,7 +42,7 @@ export default {
     const setting = inject('setting')
     const audio = inject('audio')
     const selected = ref(null)
-    const list = [t('ui.newGame'), t('ui.continue'), t('ui.config')]
+    const list = ['newGame', 'continue', 'config']
     const tween = ref(null)
     const select = async i => {
       if (i === null) {
