@@ -1,10 +1,19 @@
 import 'phaser'
 import { createPhavuerApp } from 'phavuer'
 import registerTiledJSONExternalLoader from 'phaser-tiled-json-external-loader'
+import * as Sentry from '@sentry/browser'
+import { Integrations } from '@sentry/tracing'
 import '@/util/extendNativeClassFunctions'
 import assets from '@/assets.json'
 import App from '@/components/App'
 import config from '@/data/config'
+
+Sentry.init({
+  dsn: 'https://b94535c9911b4e8b95b711ef70ce5ae5@o569163.ingest.sentry.io/5714684',
+  integrations: [new Integrations.BrowserTracing()],
+  release: `dream-libra@${APP_VERSION}`,
+  tracesSampleRate: 1.0
+})
 
 registerTiledJSONExternalLoader(Phaser)
 

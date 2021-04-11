@@ -3,6 +3,7 @@
 const webpack = require('webpack')
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
+const ESLintPlugin = require('eslint-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 // const AutoTileWebpackPlugin = require('auto-tile-webpack-plugin')
 // const TileExtrudeWebpackPlugin = require('tile-extrude-webpack-plugin')
@@ -35,15 +36,6 @@ module.exports = (_env, argv) => ({
         }
       },
       {
-        test: /\.(js|vue)$/,
-        exclude: '/node_modules/',
-        loader: 'eslint-loader',
-        enforce: 'pre',
-        options: {
-          emitWarning: true
-        }
-      },
-      {
         test: /\.vue$/,
         loader: 'vue-loader'
       },
@@ -66,11 +58,13 @@ module.exports = (_env, argv) => ({
     contentBase: path.resolve(__dirname, 'public')
   },
   plugins: [
+    new ESLintPlugin({ extensions: ['js', 'vue'] }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/index.html')
     }),
     new webpack.DefinePlugin({
       'ENV': JSON.stringify(argv.mode),
+      'APP_VERSION': JSON.stringify(process.env.npm_package_version),
       'typeof CANVAS_RENDERER': JSON.stringify(true),
       'typeof WEBGL_RENDERER': JSON.stringify(true),
       '__VUE_OPTIONS_API__': JSON.stringify(false),
@@ -85,5 +79,6 @@ module.exports = (_env, argv) => ({
     new VueLoaderPlugin()
   ],
   externals: {},
+  devtool: 'eval-source-map',
   performance: { hints: false }
 })

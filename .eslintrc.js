@@ -30,6 +30,7 @@ module.exports = {
     t: true,
     sleep: true,
     l: true,
-    ENV: true
+    ENV: true,
+    APP_VERSION: true
   }
 }
