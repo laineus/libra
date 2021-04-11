@@ -1,3 +1,4 @@
+import { createApp } from 'vue'
 import 'phaser'
 import { createPhavuerApp } from 'phavuer'
 import registerTiledJSONExternalLoader from 'phaser-tiled-json-external-loader'
@@ -23,13 +24,15 @@ location.query = location.search.substr(1).split('&').filter(Boolean).reduce((ob
   return obj
 }, {})
 
+const vueApp = createApp(App)
+
 const option = {
   type: Phaser.AUTO,
   width: config.WIDTH,
   height: config.HEIGHT,
   scene: {
     create () {
-      createPhavuerApp(this.game, App)
+      createPhavuerApp(this.game, vueApp)
     },
     preload () {
       Object.entries(assets).forEach(([method, list]) => {
