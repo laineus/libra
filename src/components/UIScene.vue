@@ -17,9 +17,8 @@
       <Log ref="log" />
       <Menu ref="menu" />
       <Image v-for="v in 5" :key="v" texture="hp" :frame="Math.round(state.status.hp / 20) >= v ? 0 : 1" :x="32 + ((v - 1) * 42)" :y="27" />
-      <Container :x="config.WIDTH.half" :y="50" v-if="mapName">
-        <RoundRectangle :tween="{ width: 166, alpha: 1, duration: 300, yoyo: true, hold: 3000 }" :width="10" :height="32" :alpha="0" :origin="0.5" :radius="5" :fillColor="config.COLORS.brown" />
-        <RoundRectangle :tween="{ width: 161, alpha: 1, duration: 300, yoyo: true, hold: 3000 }" :width="5" :height="27" :alpha="0" :origin="0.5" :radius="5" :strokeColor="config.COLORS.soy" :lineWidth="1" />
+      <Container :x="config.WIDTH.half" :y="55" v-if="mapName">
+        <Image texture="menu_label" :tween="{ scaleX: 1.3, alpha: 1, duration: 300, yoyo: true, hold: 3000 }" :origin="0.5" :scaleX="0.2" :scaleY="1" :alpha="0" @pointerdown.stop="select($event, i)" />
         <Text :tween="{ alpha: 1, duration: 300, yoyo: true, hold: 3000, onComplete: () => setMapName(null) }" :alpha="0" :text="mapName" :origin="0.5" color="soy" :bold="true" />
       </Container>
     </template>
@@ -34,7 +33,7 @@
 
 <script>
 import { inject, onMounted, reactive, ref, shallowReactive } from 'vue'
-import { refScene, Scene, Circle, Image, Container, RoundRectangle } from 'phavuer'
+import { refScene, Scene, Circle, Image, Container } from 'phavuer'
 import dayjs from 'dayjs'
 import Title from './Title'
 import Controller from './Controller'
@@ -57,7 +56,7 @@ const downloadBySource = (src, name) => {
   document.body.removeChild(link)
 }
 export default {
-  components: { Scene, Title, Controller, Circle, Image, Container, RoundRectangle, Talk, Selector, Menu, Log, Text, Transitions, Tutorial, Credit, Opening },
+  components: { Scene, Title, Controller, Circle, Image, Container, Talk, Selector, Menu, Log, Text, Transitions, Tutorial, Credit, Opening },
   setup (props) {
     const mobile = inject('mobile')
     const frames = inject('frames')
