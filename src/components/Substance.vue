@@ -83,7 +83,7 @@ export default {
     const drop = () => {
       return new Promise(resolve => {
         const x = toAdditionalString(Math.randomInt(-12, 12))
-        const y = toAdditionalString(Math.randomInt(10, 25))
+        const y = toAdditionalString(Math.randomInt(20, 35))
         data.tweens = [
           { x, y: '-=5', duration: 100 },
           { x, y, duration: 100, onComplete: resolve }

@@ -43,9 +43,11 @@ export default {
         } else {
           state.events.photosynthesis = state.events.photosynthesis === STEPS.QUESTION1 ? STEPS.STARTED : STEPS.QUESTION2
         }
+        if (state.events.photosynthesis === STEPS.STARTED) { // First time only
+          uiScene.log.push(t('ui.questStart', t('quest.photosynthesis')))
+        }
       }
       if (state.events.photosynthesis === STEPS.STARTED) {
-        uiScene.log.push(t('ui.questStart', t('quest.photosynthesis')))
         const ate = state.events.photosynthesisAte
         await speak(ate.length ? t('events.photosynthesis.started') : t('events.photosynthesis.start'))
         const foods = ['omurice', 'steak', 'stirFry', 'curry']
