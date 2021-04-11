@@ -14,9 +14,9 @@
     </Container>
     <Container v-else-if="selected === 2" :x="config.WIDTH.half" :y="390">
       <Image texture="title_menu_bg" :x="0" :y="0" :scaleY="0.75" @pointerdown.stop />
-      <menu-system-config :x="-113" :y="-94" />
-      <RoundRectangle :width="101" :height="23" :origin="0.5" :radius="7" :strokeColor="config.COLORS.brown" :lineWidth="1" :y="72" @pointerdown="select(null)" />
-      <Text :text="t('ui.ok')" :origin="0.5" :y="72" :size="14" />
+      <menu-system-config :x="-113" :y="-96" :backToTitle="false" />
+      <RoundRectangle :width="101" :height="23" :origin="0.5" :radius="7" :strokeColor="config.COLORS.brown" :lineWidth="1" :y="75" @pointerdown="select(null)" />
+      <Text :text="t('ui.ok')" :origin="0.5" :y="75" :size="14" />
     </Container>
   </Container>
   <template v-if="!creditEnd">
@@ -77,6 +77,7 @@ export default {
         }
       }
     }
+    audio.setBgm(null)
     return {
       t,
       Phaser,
