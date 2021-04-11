@@ -7,17 +7,15 @@
     <Text :text="t(`ui.${v}`).split('').join(' ')" :size="14" :origin="0.5" :style="{ shadow: { offsetX: 0, offsetY: 1, blur: 1, color: '#00000030', fill: true } }" />
   </Container>
   <Container v-if="selected > 0" :tween="tween">
-    <Rectangle :fillColor="config.COLORS.black" :origin="0" :alpha="0.3" :width="config.WIDTH" :height="config.HEIGHT" @pointerdown="select(null)" />
+    <Rectangle :fillColor="config.COLORS.black" :origin="0" :alpha="0.5" :width="config.WIDTH" :height="config.HEIGHT" @pointerdown="select(null)" />
     <Container v-if="selected === 1" :x="config.WIDTH.half" :y="355">
-      <RoundRectangle :width="266" :height="276" :origin="0.5" :radius="5" :fillColor="config.COLORS.soy" @pointerdown.stop />
-      <RoundRectangle :width="261" :height="271" :origin="0.5" :radius="5" :strokeColor="config.COLORS.brown" :lineWidth="1" />
-      <menu-system-save v-if="selected === 1" :x="-110" :y="-130" :load="true" @load="$emit('close')" />
+      <Image texture="title_menu_bg" :x="0" :y="0" @pointerdown.stop />
+      <menu-system-save v-if="selected === 1" :x="-115" :y="-128" :load="true" @load="$emit('close')" />
     </Container>
     <Container v-else-if="selected === 2" :x="config.WIDTH.half" :y="390">
-      <RoundRectangle :width="266" :height="206" :origin="0.5" :radius="5" :fillColor="config.COLORS.soy" @pointerdown.stop />
-      <RoundRectangle :width="261" :height="201" :origin="0.5" :radius="5" :strokeColor="config.COLORS.brown" :lineWidth="1" />
-      <menu-system-config :x="-110" :y="-94" />
-      <RoundRectangle :width="101" :height="23" :origin="0.5" :radius="5" :strokeColor="config.COLORS.brown" :lineWidth="1" :y="72" @pointerdown="select(null)" />
+      <Image texture="title_menu_bg" :x="0" :y="0" :scaleY="0.75" @pointerdown.stop />
+      <menu-system-config :x="-113" :y="-94" />
+      <RoundRectangle :width="101" :height="23" :origin="0.5" :radius="7" :strokeColor="config.COLORS.brown" :lineWidth="1" :y="72" @pointerdown="select(null)" />
       <Text :text="t('ui.ok')" :origin="0.5" :y="72" :size="14" />
     </Container>
   </Container>
