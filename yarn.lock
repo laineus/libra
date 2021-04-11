@@ -5707,10 +5707,10 @@ phaser-tiled-json-external-loader@^0.1.1:
   resolved "https://registry.yarnpkg.com/phaser-tiled-json-external-loader/-/phaser-tiled-json-external-loader-0.1.1.tgz#2549b04cbfb47c75beffa38277e459a03154c411"
   integrity sha512-KgVg/BhHYxmESUkwRQ1vNNqYkr5/HQ2meDZqSQP0dKpsqVwDp0JHf0X2d1fUSCYEQamozhKBxagYxWZLDVBrew==
 
-phaser@^3.53.1:
-  version "3.53.1"
-  resolved "https://registry.yarnpkg.com/phaser/-/phaser-3.53.1.tgz#1ba603ce5e4e6d5028cdd411a5a5c0ef0f75fc86"
-  integrity sha512-yvzKotQLhdsaEfS7EdQodosUV9pvcNPcqgjh7mPzVPPZXeaUfwWu4spwgGxU4ohTckVMd2JXbOrTymXF5Qs1Dg==
+phaser@^3.54.0:
+  version "3.54.0"
+  resolved "https://registry.yarnpkg.com/phaser/-/phaser-3.54.0.tgz#46b191e46059aab2a9a57f78525c60b595767eee"
+  integrity sha512-/1XVI6J2siS0OGwJez7vLbRjars1zb//EvJdYMVyd3wNTUf5DHrvYUj1f6TsEISr4vjnbrNtS66QIuPbGU8x6A==
   dependencies:
     eventemitter3 "^4.0.7"
     path "^0.12.7"

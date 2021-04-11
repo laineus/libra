@@ -39,9 +39,6 @@ const option = {
       gravity: { y: 0 }
     }
   },
-  audio: {
-    disableWebAudio: true
-  },
   input: {
     activePointers: 3
   }

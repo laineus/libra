@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "dayjs": "^1.10.4",
-    "phaser": "^3.53.1",
+    "phaser": "^3.54.0",
     "phaser-tiled-json-external-loader": "^0.1.1",
     "phavuer": "^0.7.9",
     "vue": "^3.0.11"
