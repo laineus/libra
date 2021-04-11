@@ -4,7 +4,7 @@
   <Image v-else texture="logo_en" :x="config.WIDTH.half" :y="config.HEIGHT.half - 90" />
   <Container v-for="(v, i) in list" :key="i" :x="config.WIDTH.half" :y="380 + (i * 40)">
     <Image texture="nav" :frame="i" :blendMode="Phaser.BlendModes.OVERLAY" :alpha="0.87" @pointerdown.stop="select(i)" />
-    <Text :text="t(`ui.${v}`).split('').join(' ')" :size="14" :origin="0.5" :style="{ shadow: { offsetX: 0, offsetY: 1, blur: 1, color: '#00000030', fill: true } }" />
+    <Text :text="t(`ui.${v}`).split('').join(' ')" :size="13" :origin="0.5" :bold="true" :style="{ shadow: { offsetX: 0, offsetY: 1, blur: 1, color: '#00000020', fill: true } }" />
   </Container>
   <Container v-if="selected > 0" :tween="tween">
     <Rectangle :fillColor="config.COLORS.black" :origin="0" :alpha="0.5" :width="config.WIDTH" :height="config.HEIGHT" @pointerdown="select(null)" />

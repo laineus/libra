@@ -1,6 +1,6 @@
 <template>
   <Container>
-    <Image texture="speach" :y="(-(height + 30)).half" :scaleX="(width + 30) / 162" :scaleY="(height + 30) / 84" />
+    <Image texture="speach" :y="(-(height + 30)).half" :scaleX="(width + 38) / 195" :scaleY="(height + 35) / 97" />
     <Image texture="menu_arrow" :y="-10 - (height * 0.15)" />
     <Container :x="-width.half" :y="-(height + 17)">
       <slot />
