@@ -27,9 +27,9 @@ export default {
       setState (bool) {
         eventManager.state = bool
       },
-      exec (event) {
+      exec (event, options) {
         eventManager.setState(true)
-        uiScene.value?.menu.close()
+        if (options?.closeMenu !== false) uiScene.value?.menu.close()
         gameScene.value?.field?.player.stopWalking()
         const promise = event()
         if (!promise || typeof promise.then !== 'function') throw new Error('Event must returns Promise instance')

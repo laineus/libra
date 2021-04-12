@@ -1,6 +1,6 @@
 <template>
   <Container :depth="config.DEPTH.TRANSITION" :tween="data.tween">
-    <Rectangle :fillColor="config.COLORS.black" :origin="0" :width="config.WIDTH" :height="config.HEIGHT" :alpha="0.6" @pointerdown="tap" />
+    <Rectangle :fillColor="config.COLORS.black" :origin="0" :width="config.WIDTH" :height="config.HEIGHT" :alpha="0.6" @pointerdown.stop="tap" />
     <Text :text="text" :x="config.WIDTH.half" :y="config.HEIGHT.half" :size="14" color="white" :origin="0.5" :style="{ align: 'center' }" :lineSpacing="5" />
   </Container>
 </template>
@@ -25,7 +25,7 @@ export default {
       return new Promise(resolve => {
         data.resolve = resolve
       })
-    })
+    }, { closeMenu: false })
     const tap = () => {
       if (!data.skipAllowed) return
       data.resolve()
