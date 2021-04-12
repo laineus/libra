@@ -5,6 +5,7 @@ export default state => () => {
   const hasAll = (...keys) => keys.every(has)
   const hasSome = (...keys) => keys.some(has)
   const done = key => state.events.itemReactions.includes(key)
+  const artNames = (23).toArray().map(i => `art${i}`)
   const list = [
     { key: 'grass' },
     { key: 'lily' },
@@ -49,7 +50,12 @@ export default state => () => {
     { key: 'skul' },
     { key: 'sofa' },
     { key: 'tissue', test: () => state.roomItems.find(v => v.key === 'tissue' && v.x > 610 && v.y < 300) },
+    { key: 'trashCan2' },
     { key: 'tv' },
+    { key: 'star' },
+    { key: 'vendingMachine' },
+    { key: 'tea' },
+    { key: 'coke' },
     { key: 'insect', test: () => hasSome('ladybird', 'stagBeetle', 'beetle') },
     { key: 'hercules' },
     { key: 'snake' },
@@ -59,7 +65,9 @@ export default state => () => {
     { key: 'bat' },
     { key: 'pig' },
     { key: 'ghost' },
-    { key: 'art' },
+    { key: 'artAll', test: () => artNames.count(name => has(name)) >= 23 },
+    { key: 'artMany', test: () => !done('artAll') && artNames.count(name => has(name)) >= 10 },
+    { key: 'art', test: () => !done('artAll') && !done('artMany') && hasSome(...artNames) },
     { key: 'torrent' },
     { key: 'penguin', test: () => hasSome('penguin', 'minePenguin') },
     { key: 'pinkPenguin' },
