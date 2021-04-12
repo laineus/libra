@@ -11,7 +11,8 @@ export default {
     gray: 0xAAAAAA,
     ghost: 0x555555,
     dark: 0x151515,
-    black: 0x000000
+    black: 0x000000,
+    red: 0xAA0000
   },
   DEPTH: {
     GROUND: 0, // + y

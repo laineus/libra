@@ -3,7 +3,7 @@
   <Image v-if="setting.state.lang === 'ja'" texture="logo_ja" :x="config.WIDTH.half" :y="config.HEIGHT.half - 77" />
   <Image v-else texture="logo_en" :x="config.WIDTH.half" :y="config.HEIGHT.half - 90" />
   <Container v-for="(v, i) in list" :key="i" :x="config.WIDTH.half" :y="380 + (i * 40)">
-    <Image texture="nav" :frame="i" :blendMode="Phaser.BlendModes.OVERLAY" :alpha="0.87" @pointerdown.stop="select(i)" />
+    <Image texture="nav" :frame="i" :blendMode="Phaser.BlendModes.OVERLAY" :alpha="selected === i ? 1 : 0.87" @pointerdown.stop="select(i)" />
     <Text :text="t(`ui.${v}`).split('').join(' ')" :size="13" :origin="0.5" :bold="true" :style="{ shadow: { offsetX: 0, offsetY: 1, blur: 1, color: '#00000020', fill: true } }" />
   </Container>
   <Container v-if="selected > 0" :tween="tween">

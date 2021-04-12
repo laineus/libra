@@ -3,7 +3,7 @@
     <Image texture="menu_arrow" :x="68" :y="400 - 4" />
     <Image v-for="v in bagItems" :key="v.id" :texture="itemData[v.key].texture" :frame="itemData[v.key].frame" :x="v.bagX" :y="v.bagY" :scale="v.scale" :originX="0.5" :originY="1" :visible="grab.item !== v" @pointerdown="grabItem(v, 'move')" />
     <Text :text="`${t('ui.weight')}:`" :originX="1" :originY="0.5" :x="153" :y="-3" :size="12" />
-    <Text :text="`${weight}/100`" :originX="1" :originY="0.5" :x="211" :y="-3" :size="13" />
+    <Text :text="`${weight}/100`" :originX="1" :originY="0.5" :x="211" :y="-3" :size="13" :bold="warning" :color="warning ? 'red' : undefined" />
     <Image v-if="grab.item && itemData[grab.item.key].eat" :tint="onEatArea ? config.COLORS.orange : config.COLORS.brown" texture="eat" :origin="1" :x="219" :y="382" />
     <template v-if="field.name === 'home'">
       <Text :text="t('ui.redecorate')" :origin="1" :x="212" :y="-31" :size="13" color="soy" :bold="true" :style="{ stroke: config.COLORS.brown.toColorString, strokeThickness: 2 }" @pointerdown.stop="switchRedecorate" />
@@ -194,11 +194,12 @@ export default {
       context.emit('update:redecorate', !props.redecorate)
       audio.se('click')
     }
+    const warning = computed(() => weight.value > 70)
     return {
       field,
       t, config,
       itemData,
-      weight,
+      weight, warning,
       showBag,
       bagItems: state.bagItems,
       container,
