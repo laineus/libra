@@ -186,6 +186,9 @@ export default {
       grab.mode = null
       grab.item = null
       grab.resolver = null
+      nextTick(() => {
+        container.value.container.sort('y')
+      })
     }
     const switchRedecorate = () => {
       context.emit('update:redecorate', !props.redecorate)
