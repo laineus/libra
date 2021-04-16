@@ -51,7 +51,7 @@ export default {
       if (state.events.torrentFlog === TORRENT_FLOG_STEPS.FOUND && bag.hasItem('hercules')) {
         await speakFlog(t('events.torrentFlog.flog.give1'))
         const accepted = await uiScene.setSelector(t('events.torrentFlog.flog.options1')) === 0
-        if (accepted) await speakFlog(t('events.torrentFlog.flog.give2'))
+        if (!accepted) await speakFlog(t('events.torrentFlog.flog.give2'))
         bag.removeItem('hercules')
         uiScene.log.push(accepted ? t('events.torrentFlog.flog.log1') : t('events.torrentFlog.flog.log2'))
         await speakFlog(t('events.torrentFlog.flog.give3'))

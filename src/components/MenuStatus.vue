@@ -21,7 +21,6 @@ import { Image, Line } from 'phavuer'
 import MenuContainer from '@/components/MenuContainer'
 import Text from '@/components/Text'
 import config from '@/data/config'
-import maps from '@/data/maps'
 const secToMinSecString = sec => {
   const s = sec % 60
   const m = Math.floor(sec / 60) % 60
@@ -34,7 +33,7 @@ export default {
     const storage = inject('storage')
     const LIST = [
       { label: t('name.libra'), value: computed(() => `HP ${storage.state.status.hp}/100`) },
-      { label: t('ui.location'), value: computed(() => maps[storage.state.map]?.name) },
+      { label: t('ui.location'), value: computed(() => t(`place.${storage.state.map}`)) },
       { label: t('ui.playTime'), value: computed(() => secToMinSecString(storage.state.sec)) },
       { label: t('ui.charmOfHeart'), value: computed(() => storage.state.status.heart) },
       { label: t('ui.charmOfBody'), value: computed(() => storage.state.status.body) },

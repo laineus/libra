@@ -2,8 +2,8 @@ export default state => () => {
   const roomItemKeys = state.roomItems.map(v => v.key)
   const roomItemKeysSet = new Set(roomItemKeys)
   const has = (key, cnt = 1) => cnt > 1 ? roomItemKeys.count(key) >= cnt : roomItemKeysSet.has(key)
-  const hasAll = (...keys) => keys.every(has)
-  const hasSome = (...keys) => keys.some(has)
+  const hasAll = (...keys) => keys.every(key => has(key))
+  const hasSome = (...keys) => keys.some(key => has(key))
   const done = key => state.events.itemReactions.includes(key)
   const artNames = (23).toArray().map(i => `art${i}`)
   const list = [

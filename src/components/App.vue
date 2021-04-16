@@ -2,7 +2,7 @@
   <div>
     <GameScene ref="gameScene" />
     <UIScene ref="uiScene" />
-    <Debug />
+    <Debug v-if="env === 'development'" />
   </div>
 </template>
 
@@ -70,6 +70,7 @@ export default {
       removeItem: (key, count = 1) => count.toArray().forEach(() => sdm.state.bagItems.delete(v => v.key === key))
     })
     return {
+      env: ENV,
       gameScene, uiScene
     }
   }
