@@ -8,6 +8,14 @@
       <option value="" />
       <option v-for="v in items" :key="v.key" :value="v">{{ v.key }}</option>
     </select>
+    <button @click="stateModal = true">State</button>
+    <div class="modal" v-if="stateModal" @click="stateModal = false">
+      <div class="modal-content" @click.stop>
+        <textarea v-model="json" />
+        <button @click="importState">Import</button>
+        <button @click="exportState">Export</button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -21,6 +29,8 @@ export default {
     const gameScene = inject('gameScene')
     const uiScene = inject('uiScene')
     const storage = inject('storage')
+    const json = ref(null)
+    const stateModal = ref(null)
     window.assets = assets
     window.game = game
     window.state = storage.state
@@ -47,7 +57,18 @@ export default {
       uiScene.value.menu.select('bag')
       // selectedItem.value = null
     }
+    const importState = () => {
+      Object.assign(storage.state, JSON.parse(json.value))
+      gameScene.value.setField(storage.state.map, storage.state.x, storage.state.y)
+    }
+    const exportState = () => {
+      json.value = JSON.stringify(storage.state)
+    }
     return {
+      importState,
+      exportState,
+      json,
+      stateModal,
       selectedMap,
       mapList,
       changeMap,
@@ -64,5 +85,31 @@ export default {
   position: fixed;
   top: 10px;
   left: 10px;
+}
+button {
+  padding: 0 8px;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+}
+.modal-content {
+  padding: 10px;
+  background: #FFF;
+}
+.modal-content textarea {
+  display: block;
+  width: 400px;
+  height: 200px;
+}
+.modal-content button {
+  margin: 8px 8px 0 0;
 }
 </style>
