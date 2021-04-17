@@ -1,7 +1,7 @@
 <template>
   <MenuContainer ref="container" :height="400" :title="t('ui.bag')" :visible="showBag">
     <Image texture="menu_arrow" :x="68" :y="400 - 4" />
-    <Image v-for="v in bagItems" :key="v.id" :texture="itemData[v.key].texture" :frame="itemData[v.key].frame" :x="v.bagX" :y="v.bagY" :scale="v.scale" :originX="0.5" :originY="1" :visible="grab.item !== v" @pointerdown="grabItem(v, 'move')" />
+    <Image v-for="v in bagItems" :key="v.id" :texture="itemData[v.key].texture" :frame="itemData[v.key].frame" :x="v.bagX" :y="v.bagY" :scale="v.scale" :originX="0.5" :originY="1" :visible="grab.item !== v" @pointerdown="grabItem(v, 'move')" @create="createdItem" />
     <Text :text="`${t('ui.weight')}:`" :originX="1" :originY="0.5" :x="153" :y="-3" :size="12" />
     <Text :text="`${weight}/100`" :originX="1" :originY="0.5" :x="211" :y="-3" :size="13" :bold="warning" :color="warning ? 'red' : undefined" />
     <Image v-if="grab.item && itemData[grab.item.key].eat" :tint="onEatArea ? config.COLORS.orange : config.COLORS.brown" texture="eat" :origin="1" :x="219" :y="382" />
@@ -67,15 +67,16 @@ export default {
         container.value?.container.sort('y')
       })
     }
+    const thumbAdjust = mobile ? -50 : 0
     const update = () => {
       if (grab.item) {
         if (!controller.activePointer) return drop()
         grab.x = controller.activePointer.x
-        grab.y = controller.activePointer.y + (mobile ? -25 : 0)
+        grab.y = controller.activePointer.y + thumbAdjust
         if (grab.mode === 'move' && grabbingBagItem.value) {
           if (!onBagArea.value) grab.mode = 'dispose'
         } else if (grab.mode === 'dispose') {
-          if (Phaser.Math.Distance.Between(grab.x, grab.y, (180).byRight, (35).byBottom) < 20) grab.mode = 'move'
+          if (Phaser.Math.Distance.Between(grab.x, grab.y - thumbAdjust, (180).byRight, (35).byBottom) < 20) grab.mode = 'move'
         }
       }
     }
@@ -199,7 +200,15 @@ export default {
       audio.se('click')
     }
     const warning = computed(() => weight.value > 70)
+    const createdItem = (item) => {
+      nextTick(() => {
+        if (item.input.hitArea.width < 50) item.input.hitArea.width = 50
+        if (item.input.hitArea.height < 50) item.input.hitArea.height = 50
+        l(item.input)
+      })
+    }
     return {
+      createdItem,
       field,
       t, config,
       itemData,
