@@ -30,10 +30,10 @@ export default {
     const menuOpened = inject('menuOpened')
     const field = inject('field')
     const controller = inject('controller')
-    const mobile = inject('mobile')
     const state = inject('storage').state
     const bag = inject('bag')
     const audio = inject('audio')
+    const mobile = inject('mobile')
     const substance = ref(null)
     const data = reactive({
       frame: 0,
@@ -61,14 +61,12 @@ export default {
     onPreUpdate(() => {
       data.frame = playFrameAnim()
       if (!event.state && !menuOpened.value) {
-        if (mobile) {
-          if (controller.value.velocityX || controller.value.velocityY) {
-            const x = Math.fix(field.value.player.object.x + controller.value.velocityX, 0, field.value.field.width)
-            const y = Math.fix(field.value.player.object.y + controller.value.velocityY, 0, field.value.field.height)
-            field.value.player.setTargetPosition(x, y)
-            if (gun.mode.value) field.value.player.lookTo(Math.atan2(controller.value.velocityY, controller.value.velocityX))
-          }
-        } else {
+        if (controller.value.velocityX || controller.value.velocityY) {
+          const x = Math.fix(field.value.player.object.x + controller.value.velocityX, 0, field.value.field.width)
+          const y = Math.fix(field.value.player.object.y + controller.value.velocityY, 0, field.value.field.height)
+          field.value.player.setTargetPosition(x, y)
+          if (gun.mode.value) field.value.player.lookTo(Math.atan2(controller.value.velocityY, controller.value.velocityX))
+        } else if (!mobile) {
           if (controller.value.activePointer) {
             const { x, y } = controller.value.activePointer
             if (x < 0 || y < 0 || x > config.WIDTH || y > config.HEIGHT) return
