@@ -62,6 +62,11 @@ export default {
       return true
     })
     if (field.name !== 'home') context.emit('update:redecorate', false)
+    const sortItems = () => {
+      nextTick(() => {
+        container.value.container.sort('y')
+      })
+    }
     const update = () => {
       if (grab.item) {
         if (!controller.activePointer) return drop()
@@ -151,6 +156,7 @@ export default {
         nextTick(() => {
           if (isRaptor) makeRaptor(isField, { state, uiScene, field, achieve })
         })
+        sortItems()
       } else if (grab.mode === 'capture') {
         const weightOver = (weight.value + data.weight) > 100
         if (onBagArea.value && !weightOver) {
@@ -177,6 +183,7 @@ export default {
               achieve.activate('art')
             }
           }
+          sortItems()
         } else {
           if (onBagArea.value && weightOver) uiScene.log.push(t('ui.weightOver'))
           grab.resolver(false)
@@ -186,9 +193,6 @@ export default {
       grab.mode = null
       grab.item = null
       grab.resolver = null
-      nextTick(() => {
-        container.value.container.sort('y')
-      })
     }
     const switchRedecorate = () => {
       context.emit('update:redecorate', !props.redecorate)
