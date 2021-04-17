@@ -383,6 +383,7 @@ export default {
       letsGo: '行こっか。',
       finishFollowing: '楽しかったね。',
       noApple: 'ないじゃん',
+      iloveyou: 'リブラ、大好き！',
       gaveApple1: ['ありがとう！', '今日はどうしたい？'],
       gaveApple2: ['ありがとう！', '次はどうしたい？'],
       reward: ['散歩がしたい', '一緒に寝たい'],
