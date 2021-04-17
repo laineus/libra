@@ -71,7 +71,7 @@ export default {
       if (grab.item) {
         if (!controller.activePointer) return drop()
         grab.x = controller.activePointer.x
-        grab.y = controller.activePointer.y
+        grab.y = controller.activePointer.y + (mobile ? -25 : 0)
         if (grab.mode === 'move' && grabbingBagItem.value) {
           if (!onBagArea.value) grab.mode = 'dispose'
         } else if (grab.mode === 'dispose') {
