@@ -4,12 +4,12 @@
     <template v-else>
       <Controller ref="controller" />
       <template v-if="mobile && !event.state">
-        <Container v-if="grabbableList?.[0]" :x="(70).byRight" :y="(125).byBottom">
-          <Circle :radius="40" :fillColor="0x000000" :alpha="0.5" @pointerdown="p => grabbableList[0].ref.value?.execGrabEvent(p)" />
+        <Container v-if="nearestGrabbable" :x="(70).byRight" :y="(125).byBottom">
+          <Circle :radius="40" :fillColor="0x000000" :alpha="0.5" @pointerdown="p => nearestGrabbable.execGrabEvent(p)" />
           <Image texture="hand" :alpha="0.3" :scale="0.8" />
         </Container>
-        <Container v-if="checkableList?.[0]" :x="(165).byRight" :y="(125).byBottom">
-          <Circle :radius="40" :fillColor="0x000000" :alpha="0.5" @pointerdown="() => checkableList[0].ref.value?.execTapEvent()" />
+        <Container v-if="nearestCheckable" :x="(165).byRight" :y="(125).byBottom">
+          <Circle :radius="40" :fillColor="0x000000" :alpha="0.5" @pointerdown="() => nearestCheckable.execTapEvent()" />
           <Image texture="talk" :alpha="0.3" :scale="0.8" />
         </Container>
         <Container v-if="player?.hasGun" :x="(70).byRight" :y="(player?.gun.mode.value ? 125 : 220).byBottom">
@@ -89,11 +89,11 @@ export default {
       storage.state.tutorial.push(key)
       tutorial.value = key
     }
-    const checkableList = computed(() => {
-      return field.value?.objects.filter(v => v.ref.value?.checkable)
+    const nearestCheckable = computed(() => {
+      return field.value?.objects.map(v => v.ref.value).filter(v => v?.checkable).findMin(v => v.distanceToPlayer)
     })
-    const grabbableList = computed(() => {
-      return field.value?.objects.filter(v => v.ref.value?.grabbable)
+    const nearestGrabbable = computed(() => {
+      return field.value?.objects.map(v => v.ref.value).filter(v => v?.grabbable).findMin(v => v.distanceToPlayer)
     })
     onMounted(() => {
       refs.scene.value.input.setTopOnly(false)
@@ -159,7 +159,7 @@ export default {
     }
     return {
       state: storage.state,
-      checkableList, grabbableList,
+      nearestCheckable, nearestGrabbable,
       event,
       mobile,
       config,
