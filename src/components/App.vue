@@ -2,7 +2,8 @@
   <div>
     <GameScene ref="gameScene" />
     <UIScene ref="uiScene" />
-    <Debug v-if="env === 'development'" />
+    <!-- <Debug v-if="env === 'development'" /> -->
+    <Debug />
   </div>
 </template>
 
