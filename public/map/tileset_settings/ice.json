@@ -6,9 +6,82 @@
  "name":"ice",
  "spacing":0,
  "tilecount":64,
- "tiledversion":"2020.12.18",
+ "tiledversion":"1.5.0",
  "tileheight":32,
+ "tiles":[
+        {
+         "id":8,
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
+        }, 
+        {
+         "id":9,
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
+        }, 
+        {
+         "id":10,
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
+        }, 
+        {
+         "id":11,
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
+        }, 
+        {
+         "id":16,
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
+        }, 
+        {
+         "id":17,
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
+        }, 
+        {
+         "id":18,
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
+        }, 
+        {
+         "id":19,
+         "properties":[
+                {
+                 "name":"collides",
+                 "type":"bool",
+                 "value":true
+                }]
+        }],
  "tilewidth":32,
  "type":"tileset",
- "version":1.4
+ "version":1.5
 }
