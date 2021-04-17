@@ -64,7 +64,7 @@ export default {
     if (field.name !== 'home') context.emit('update:redecorate', false)
     const sortItems = () => {
       nextTick(() => {
-        container.value.container.sort('y')
+        container.value?.container.sort('y')
       })
     }
     const update = () => {

@@ -27,7 +27,7 @@ export default {
     const handTween = reactive({ x: 13, y: 3, yoyo: true, repeat: -1, duration: 700, onStop: v => v.seek(0) })
     const grab = (pointer) => {
       if (pointer.button !== 0) return
-      if (!tappedNearest(scene.input._temp, pointer, container.value)) return
+      if (scene.input._temp.length && !tappedNearest(scene.input._temp, pointer, container.value)) return
       menu.value.select('bag').then(menuBag => {
         data.grabbing = true
         context.emit('grab')

@@ -3,15 +3,25 @@
     <Title @close="titleScreen = false" v-if="titleScreen" />
     <template v-else>
       <Controller ref="controller" />
-      <Container v-if="mobile && (player?.hasGun || player?.gun.mode.value)" :x="player?.gun.mode.value ? (175).byRight : (70).byRight" :y="(140).byBottom">
-        <Circle :radius="50" :fillColor="0x000000" :alpha="0.5" @pointerdown="player?.gunSwitch()" />
-        <Image v-if="player?.gun.mode.value" texture="cancel" :alpha="0.3" />
-        <Image v-else texture="gun" :alpha="0.3" :x="-4" :y="4" />
-      </Container>
-      <Container v-if="mobile && player?.gun.mode.value" :x="(70).byRight" :y="(190).byBottom">
-        <Circle :radius="50" :fillColor="0x000000" :alpha="0.5" @pointerdown="player?.shot()" />
-        <Image texture="shot" :alpha="0.3" />
-      </Container>
+      <template v-if="mobile && !event.state">
+        <Container v-if="grabbableList?.[0]" :x="(70).byRight" :y="(125).byBottom">
+          <Circle :radius="40" :fillColor="0x000000" :alpha="0.5" @pointerdown="p => grabbableList[0].ref.value?.execGrabEvent(p)" />
+          <Image texture="hand" :alpha="0.3" :scale="0.8" />
+        </Container>
+        <Container v-if="checkableList?.[0]" :x="(165).byRight" :y="(125).byBottom">
+          <Circle :radius="40" :fillColor="0x000000" :alpha="0.5" @pointerdown="() => checkableList[0].ref.value?.execTapEvent()" />
+          <Image texture="talk" :alpha="0.3" :scale="0.8" />
+        </Container>
+        <Container v-if="player?.hasGun" :x="(70).byRight" :y="(player?.gun.mode.value ? 125 : 220).byBottom">
+          <Circle :radius="40" :fillColor="0x000000" :alpha="0.5" @pointerdown="player?.gunSwitch()" />
+          <Image v-if="player?.gun.mode.value" texture="cancel" :alpha="0.3" :scale="0.8" />
+          <Image v-else texture="gun" :alpha="0.3" :x="-4" :y="4" :scale="0.8" />
+        </Container>
+        <Container v-if="player?.hasGun && player?.gun.mode.value" :x="(70).byRight" :y="(220).byBottom">
+          <Circle :radius="40" :fillColor="0x000000" :alpha="0.5" @pointerdown="player?.shot()" />
+          <Image texture="shot" :alpha="0.3" :scale="0.8" />
+        </Container>
+      </template>
       <Talk ref="talk" />
       <Selector v-if="selector.list" :x="selector.x" :y="selector.y" :list="selector.list" @select="selector.resolver" />
       <Log ref="log" />
@@ -32,7 +42,7 @@
 </template>
 
 <script>
-import { inject, onMounted, reactive, ref, shallowReactive } from 'vue'
+import { computed, inject, onMounted, reactive, ref, shallowReactive } from 'vue'
 import { refScene, Scene, Circle, Image, Container } from 'phavuer'
 import dayjs from 'dayjs'
 import Title from './Title'
@@ -63,6 +73,8 @@ export default {
     const storage = inject('storage')
     const camera = inject('camera')
     const player = inject('player')
+    const field = inject('field')
+    const event = inject('event')
     const refs = {
       scene: refScene(null),
       controller: ref(null),
@@ -77,6 +89,12 @@ export default {
       storage.state.tutorial.push(key)
       tutorial.value = key
     }
+    const checkableList = computed(() => {
+      return field.value?.objects.filter(v => v.ref.value?.checkable)
+    })
+    const grabbableList = computed(() => {
+      return field.value?.objects.filter(v => v.ref.value?.grabbable)
+    })
     onMounted(() => {
       refs.scene.value.input.setTopOnly(false)
       refs.scene.value.input.keyboard.on('keydown-S', e => {
@@ -141,6 +159,8 @@ export default {
     }
     return {
       state: storage.state,
+      checkableList, grabbableList,
+      event,
       mobile,
       config,
       update,

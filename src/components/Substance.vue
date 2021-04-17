@@ -11,7 +11,7 @@
     <template v-if="hp > 0 && unref(visible)">
       <Image v-if="light" :blendMode="BlendModes.OVERLAY" :x="initX" :y="initY" :depth="config.DEPTH.LIGHT" :tint="light" texture="light" />
       <TapArea v-if="tapEvent.event.value" :visible="interactive" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @tap="execTapEvent" />
-      <GrabArea v-else-if="capturable" :visible="interactive" :name="name" :scale="scale" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @grab="alpha = 0.5" @capture="onBroken" @move="move" @cancel="alpha = 1" />
+      <GrabArea ref="grabArea" v-else-if="capturable" :visible="interactive" :name="name" :scale="scale" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @grab="alpha = 0.5" @capture="onBroken" @move="move" @cancel="alpha = 1" />
     </template>
   </div>
 </template>
@@ -49,6 +49,7 @@ export default {
     const achieve = inject('achieve')
     const object = refObj(null)
     const image = refObj(null)
+    const grabArea = ref(null)
     const imgWidth = computed(() => image.value?.width ?? 30)
     const imgHeight = computed(() => image.value?.height ?? 30)
     const depth = ref(0)
@@ -147,12 +148,13 @@ export default {
       config,
       itemData,
       capturable,
+      grabArea,
       BlendModes: Phaser.BlendModes,
       unref,
       ...toRefs(data),
       interactive,
       checkable: computed(() => interactive.value && tapEvent.event.value),
-      grabbable: computed(() => interactive.value && !tapEvent.event.value && data.capturable),
+      grabbable: computed(() => interactive.value && !tapEvent.event.value && capturable.value),
       create,
       drop, damage, attackAnim,
       damageEffectData, damageEffectTimeline,
@@ -163,6 +165,7 @@ export default {
       move,
       tapEvent,
       execTapEvent: tapEvent.exec,
+      execGrabEvent: pointer => grabArea.value.grab(pointer),
       setTapEvent,
       setDestroyEvent,
       setDamageEvent,
