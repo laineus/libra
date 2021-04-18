@@ -5,7 +5,6 @@ import registerTiledJSONExternalLoader from 'phaser-tiled-json-external-loader'
 import * as Sentry from '@sentry/browser'
 import { Integrations } from '@sentry/tracing'
 import '@/util/extendNativeClassFunctions'
-import assets from '@/assets.json'
 import App from '@/components/App'
 import config from '@/data/config'
 
@@ -26,20 +25,10 @@ location.query = location.search.substr(1).split('&').filter(Boolean).reduce((ob
 
 const vueApp = createApp(App)
 
-const option = {
+const game = new Phaser.Game({
   type: Phaser.AUTO,
   width: config.WIDTH,
   height: config.HEIGHT,
-  scene: {
-    create () {
-      createPhavuerApp(this.game, vueApp)
-    },
-    preload () {
-      Object.entries(assets).forEach(([method, list]) => {
-        list.forEach(args => this.load[method](...args))
-      })
-    }
-  },
   render: {
     roundPixels: true
   },
@@ -53,9 +42,12 @@ const option = {
   },
   input: {
     activePointers: 3
+  },
+  callbacks: {
+    postBoot () {
+      window.addEventListener('resize', () => game.scale.refresh())
+      createPhavuerApp(game, vueApp)
+    }
   }
   // fps: { target: 30, forceSetTimeOut: true }
-}
-
-const game = new Phaser.Game(option)
-window.addEventListener('resize', () => game.scale.refresh())
+})

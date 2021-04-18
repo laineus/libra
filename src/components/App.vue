@@ -1,13 +1,17 @@
 <template>
   <div>
-    <GameScene ref="gameScene" />
-    <UIScene ref="uiScene" />
-    <!-- <Debug v-if="env === 'development'" /> -->
-    <Debug />
+    <BootScene ref="bootScene" @create="loaded = true" v-if="!loaded" />
+    <template v-else>
+      <GameScene ref="gameScene" />
+      <UIScene ref="uiScene" />
+      <!-- <Debug v-if="env === 'development'" /> -->
+      <Debug />
+    </template>
   </div>
 </template>
 
 <script>
+import BootScene from '@/components/BootScene'
 import GameScene from '@/components/GameScene'
 import UIScene from '@/components/UIScene'
 import Debug from '@/components/Debug'
@@ -17,12 +21,13 @@ import AchieveManager from '@/class/AchieveManager'
 import setting from '@/data/setting'
 import { inject, provide, ref, computed, reactive } from 'vue'
 export default {
-  components: { GameScene, UIScene, Debug },
+  components: { BootScene, GameScene, UIScene, Debug },
   setup () {
     const game = inject('game')
     Phaser.BlendModes.OVERLAY = game.renderer.addBlendMode([WebGLRenderingContext.SRC_ALPHA, WebGLRenderingContext.ONE], WebGLRenderingContext.FUNC_ADD)
     const gameScene = ref(null)
     const uiScene = ref(null)
+    const loaded = ref(false)
     const eventManager = reactive({
       state: false,
       setState (bool) {
@@ -72,6 +77,7 @@ export default {
     })
     return {
       env: ENV,
+      loaded,
       gameScene, uiScene
     }
   }
