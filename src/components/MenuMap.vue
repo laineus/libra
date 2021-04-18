@@ -1,5 +1,5 @@
 <template>
-  <MenuContainer ref="container" :height="320" :title="t('ui.map')">
+  <MenuContainer ref="container" :height="390" :title="t('ui.map')">
     <Image texture="menu_arrow" :x="168" :y="320 - 6" />
     <Text :text="t('events.bogusDoctor.lockMap')" :x="10" :y="10" v-if="lockInHospital" />
     <template v-else>

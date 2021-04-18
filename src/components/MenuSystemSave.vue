@@ -24,6 +24,7 @@ export default {
   setup (props, context) {
     const storage = inject('storage')
     const gameScene = inject('gameScene')
+    const uiScene = inject('uiScene').value
     const audio = inject('audio')
     const list = ref([])
     const data = reactive({
@@ -41,6 +42,8 @@ export default {
     const tapSaveOption = i => {
       if (i === 1) return data.selectedIndex = null
       const row = list.value[data.selectedIndex]
+      audio.se('capture')
+      uiScene.log.push(t('ui.saved'))
       storage.save(row.number)
       data.selectedIndex = null
       loadData()

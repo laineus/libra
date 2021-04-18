@@ -28,6 +28,7 @@ export default {
     const uiScene = inject('uiScene').value
     const state = inject('storage').state
     const achieve = inject('achieve')
+    const audio = inject('audio')
     const getItemReaction = useItemReaction(state)
 
     const getUsableItem = key => {
@@ -100,6 +101,7 @@ export default {
         field.player.object.setPosition(position.x, position.y)
         amili.object.setPosition(position.x + 20, position.y)
         amili.lookTo(hangout ? 'up' : 'leftDown')
+        audio.se('effect')
         uiScene.log.push(hangout ? t('events.home.lvup.heart') : t('events.home.lvup.body'))
         if (!hangout) consumeTissue(1)
       }
