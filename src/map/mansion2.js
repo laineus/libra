@@ -16,7 +16,7 @@ export default {
     }
 
     if (state.events.painter >= PAINTER_STEPS.SOLVED) {
-      field.addObject({ name: 'art15', x: field.position.art15.x, y: field.position.art15.y })
+      field.addObject({ name: 'art15', x: field.positions.art15.x, y: field.positions.art15.y })
     }
 
     const pumpkin = field.getObjectById(4)
@@ -35,8 +35,7 @@ export default {
         field.dropItem('coinGold', pumpkin.object)
         field.dropItem('coinSilver', pumpkin.object)
         field.dropItem('coinSilver', pumpkin.object)
-        field.dropItem('coinSilver', pumpkin.object)
-        await field.dropItem('apple', pumpkin.object)
+        await field.dropItem('coinSilver', pumpkin.object)
         state.events.painter = PAINTER_STEPS.SOLVED
       } else {
         await speakPumpkin(t('events.collector.solved'))

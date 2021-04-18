@@ -39,6 +39,7 @@ export default {
       } else if (state.events.painter === PAINTER_STEPS.SOLVED) {
         await speakPenguin(t('events.painter.complete'))
         uiScene.log.push(t('ui.questComplete', t('quest.painter')))
+        await field.dropItem('apple', penguin.object)
         state.events.painter = PAINTER_STEPS.COMPLETED
       } else if (state.events.painter === PAINTER_STEPS.COMPLETED) {
         await speakPenguin(t('events.painter.completed'))

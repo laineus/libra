@@ -215,8 +215,8 @@ export default {
     } else if (absenceAction === ABSENCE_ACTIONS.COOKIE) {
       amili.setTargetObject(player.object)
       greetingEvent = async () => {
-        const key = ['cookie', 'lunchbox'].random()
-        await speakAmiliScripts(key === 'cookie' ? t('events.home.cookie') : t('events.home.lunchbox'))
+        const key = ['cookies', 'lunchbox'].random()
+        await speakAmiliScripts(key === 'cookies' ? t('events.home.cookie') : t('events.home.lunchbox'))
         await field.dropItem(key, amili.object)
         amili.setTargetObject(null)
         return false
