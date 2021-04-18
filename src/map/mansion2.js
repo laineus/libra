@@ -15,6 +15,10 @@ export default {
       field.getObjectById(2).setEvent(async () => uiScene.log.push(t('events.block.common')))
     }
 
+    if (state.events.painter >= PAINTER_STEPS.SOLVED) {
+      field.addObject({ name: 'art15', x: field.position.art15.x, y: field.position.art15.y })
+    }
+
     const pumpkin = field.getObjectById(4)
     pumpkin?.setTapEvent(async () => {
       const speakPumpkin = talk.getSpeakScripts(new Talker(t('name.pumpkin'), pumpkin.object))

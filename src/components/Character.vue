@@ -99,6 +99,7 @@ export default {
       startEvent,
       speed,
       setTemper,
+      attackTarget,
       // Following
       stopWalking,
       setRandomWalk: following.setRandomWalk,

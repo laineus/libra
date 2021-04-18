@@ -31,6 +31,12 @@ export default {
     const audio = inject('audio')
     const getItemReaction = useItemReaction(state)
 
+    field.charas.filter(v => v.name !== 'amili').forEach(v => {
+      v.ref.value.setTargetObject(null)
+      v.ref.value.setRandomWalk(100)
+      v.ref.value.attackTarget = null
+    })
+
     const getUsableItem = key => {
       return state.roomItems.filter(v => {
         return v.key === key && !field.isCollides((v.x + USING_POSITION[key].x).toTile, (v.y + USING_POSITION[key].y).toTile)
@@ -212,6 +218,7 @@ export default {
         const key = ['cookie', 'lunchbox'].random()
         await speakAmiliScripts(key === 'cookie' ? t('events.home.cookie') : t('events.home.lunchbox'))
         await field.dropItem(key, amili.object)
+        amili.setTargetObject(null)
         return false
       }
     } else if (absenceAction === ABSENCE_ACTIONS.SOFA) {

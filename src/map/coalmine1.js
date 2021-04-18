@@ -46,7 +46,7 @@ export default {
           await field.dropItem('art16', penguin.object)
           state.events.regain = REGAIN_STEPS.COMPLETED
         } else if (state.events.regain === REGAIN_STEPS.COMPLETED) {
-          await speakPenguin(t('events.miner.regain.greet'))
+          await speakPenguin(t('events.miner.greet'))
         }
       }
     })
