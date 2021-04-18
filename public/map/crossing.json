@@ -1,11 +1,4 @@
 { "compressionlevel":-1,
- "editorsettings":
-    {
-     "export":
-        {
-         "target":"."
-        }
-    },
  "height":32,
  "infinite":false,
  "layers":[
@@ -227,6 +220,30 @@
                  "width":0,
                  "x":119,
                  "y":454
+                }, 
+                {
+                 "height":0,
+                 "id":11,
+                 "name":"vendingMachine",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Rnadom",
+                 "visible":true,
+                 "width":0,
+                 "x":524.324765401877,
+                 "y":351.986944104447
+                }, 
+                {
+                 "height":0,
+                 "id":12,
+                 "name":"vendingMachine",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Rnadom",
+                 "visible":true,
+                 "width":0,
+                 "x":196.360669114647,
+                 "y":348.853529171767
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -235,10 +252,10 @@
          "y":0
         }],
  "nextlayerid":15,
- "nextobjectid":11,
+ "nextobjectid":13,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.4.3",
+ "tiledversion":"1.5.0",
  "tileheight":32,
  "tilesets":[
         {
@@ -255,6 +272,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.4,
+ "version":1.5,
  "width":40
 }

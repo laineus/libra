@@ -43,7 +43,7 @@ export default {
           bag.removeItem('ruby')
           uiScene.log.push(...t('events.miner.regain.logs'))
           await speakPenguin(t('events.miner.regain.complete'))
-          await field.dropItem('apple', penguin.object)
+          await field.dropItem('art16', penguin.object)
           state.events.regain = REGAIN_STEPS.COMPLETED
         } else if (state.events.regain === REGAIN_STEPS.COMPLETED) {
           await speakPenguin(t('events.miner.regain.greet'))

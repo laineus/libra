@@ -321,7 +321,7 @@
                         {
                          "name":"fieldY",
                          "type":"int",
-                         "value":14
+                         "value":4
                         }],
                  "rotation":0,
                  "type":"Gate",
