@@ -14,24 +14,25 @@ export default {
     flog?.setTapEvent(async () => {
       const speakFlog = talk.getSpeakScripts(new Talker(t('name.flog'), flog.object))
       if (state.events.clover === CLOVER_STEPS.NULL) {
-        await speakFlog(t('events.clover.flog1'))
+        await speakFlog(t('events.clover.greet'))
+        const sorry = await uiScene.setSelector(t('events.clover.options1')) === 1
+        if (sorry) return
         uiScene.log.push(t('ui.questStart', t('quest.clover')))
         state.events.clover = CLOVER_STEPS.STARTED
+        await speakFlog(t('events.clover.start1'))
+        await speakFlog(t('events.clover.start2'))
       } else if (state.events.clover === CLOVER_STEPS.STARTED) {
-        if (!bag.hasItem('clover4')) return await speakFlog(t('events.clover.flog1'))
-        const give = await uiScene.setSelector(t('events.clover.flog2.options')) === 0
-        if (give) {
-          bag.removeItem('clover4')
-          uiScene.log.push(t('events.clover.flog2.log'))
-          await speakFlog(t('events.clover.flog2.end1'))
-        } else {
-          await speakFlog(t('events.clover.flog2.end2'))
-        }
-        await field.dropItem('apple', flog.object)
+        if (!bag.hasItem('clover4')) return await speakFlog(t('events.clover.start2'))
+        const give = await uiScene.setSelector(t('events.clover.options2')) === 0
+        if (!give) return
+        bag.removeItem('clover4')
+        uiScene.log.push(t('events.clover.log'))
+        await speakFlog(t('events.clover.complete'))
+        field.dropItem('apple', flog.object)
         uiScene.log.push(t('ui.questComplete', t('quest.clover')))
         state.events.clover = CLOVER_STEPS.COMPLETED
       } else if (state.events.clover === CLOVER_STEPS.COMPLETED) {
-        await speakFlog(t('events.clover.flog3'))
+        await speakFlog(t('events.clover.completed'))
       }
     })
   }
