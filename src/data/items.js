@@ -89,7 +89,7 @@ export default [
   makeItem('bike1', { hp: 80, weight: 5 }),
   makeItem('bike2', { hp: 80, weight: 5 }),
   makeItem('bike3', { hp: 80, weight: 5 }),
-  makeItem('matsutake', { hp: 10 }),
+  makeItem('matsutake', { hp: 10, eat: 100 }),
   makeItem('coinGold', { hp: 20 }),
   makeItem('coinSilver', { hp: 20 }),
   makeItem('audioSystem', { hp: 20, weight: 3 }),

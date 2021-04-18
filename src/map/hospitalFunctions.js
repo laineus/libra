@@ -20,6 +20,13 @@ export const initHospitalButton = button => {
   })
 }
 
+export const hideChara = () => {
+  const state = inject('storage').state
+  if (state.events.bogusDoctor !== BOGUS_STEPS.STARTED) return
+  const field = inject('field').value
+  field.objects.filter(v => v.type === 'Character' && !v.unique).forEach(v => v.ref.value.setVisible(false))
+}
+
 export const lockInHospital = () => {
   const gameScene = inject('gameScene').value
   const state = inject('storage').state

@@ -1,7 +1,7 @@
 import { inject } from 'vue'
 import Talker from '@/util/Talker'
 import { BOGUS_STEPS } from '@/data/eventSteps'
-import { initHospitalButton, lockInHospital } from '@/map/hospitalFunctions'
+import { initHospitalButton, lockInHospital, hideChara } from '@/map/hospitalFunctions'
 import config from '@/data/config'
 export default {
   bgm: null,
@@ -14,6 +14,7 @@ export default {
     const audio = inject('audio')
     initHospitalButton(field.getObjectById(89))
     lockInHospital()
+    hideChara()
 
     const hands = Array.range(96, 101).map(id => field.objects.find(v => v.id === id))
     hands.forEach(v => field.delObject(v))
@@ -49,7 +50,6 @@ export default {
     if (state.events.bogusDoctor !== BOGUS_STEPS.STARTED) {
       list.forEach(v => v.chara.setVisible(false))
     } else {
-      field.objects.filter(v => v.type === 'Character' && !v.unique).forEach(v => v.ref.value.setVisible(false))
       list.forEach(v => {
         v.chara?.setTapEvent(async () => {
           const speak = talk.getSpeakScripts(new Talker(t('name.patient'), v.chara.object))

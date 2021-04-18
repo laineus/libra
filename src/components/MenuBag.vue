@@ -67,7 +67,7 @@ export default {
         container.value?.container.sort('y')
       })
     }
-    const thumbAdjust = mobile ? -50 : 0
+    const thumbAdjust = mobile ? -60 : 0
     const update = () => {
       if (grab.item) {
         if (!controller.activePointer) return drop()
