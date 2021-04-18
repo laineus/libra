@@ -18,7 +18,7 @@
 
 <script>
 import { Image, Container, refObj, onPreUpdate } from 'phavuer'
-import { inject, computed, reactive, ref, nextTick } from 'vue'
+import { inject, computed, reactive, ref, nextTick, onBeforeUnmount } from 'vue'
 import MenuContainer from '@/components/MenuContainer'
 import Text from '@/components/Text'
 import config from '@/data/config'
@@ -205,9 +205,11 @@ export default {
       nextTick(() => {
         if (item.input.hitArea.width < 50) item.input.hitArea.width = 50
         if (item.input.hitArea.height < 50) item.input.hitArea.height = 50
-        l(item.input)
       })
     }
+    onBeforeUnmount(() => {
+      grab.resolver?.(false)
+    })
     return {
       createdItem,
       field,
