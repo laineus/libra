@@ -104,6 +104,7 @@ export default {
     })
     const { play: playAnim, frame: animFrame } = useFrameAnim(props.endA ? { frames: (8).toArray(), duration: 27 } : { frames: (16).toArray(), duration: 13 })
     onPreUpdate(() => {
+      if (!audio.currentBgm) return
       data.seek = audio.currentBgm.seek
       playAnim()
     })

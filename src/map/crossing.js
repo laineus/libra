@@ -39,7 +39,7 @@ export default {
       await sleep(500)
       libra.lookTo('right')
       await speakKajitsu(t('events.crossing.start2'))
-      await speakLibra(t('events.libra.exclamation'))
+      // await speakLibra(t('events.libra.exclamation'))
       await speakKajitsu(t('events.crossing.start3'))
       await speakLibra(t('events.libra.silence'))
       await speakKajitsu(t('events.crossing.start4'))

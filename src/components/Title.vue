@@ -20,7 +20,7 @@
     </Container>
   </Container>
   <template v-if="!creditEnd">
-    <Rectangle :fillColor="0x111111" :origin="0" :width="config.WIDTH" :height="config.HEIGHT" :tween="bgTween" @pointerdown.stop="creditEnd = true" />
+    <Rectangle :fillColor="0x111111" :origin="0" :width="config.WIDTH" :height="config.HEIGHT" :tween="bgTween" @pointerdown.stop="skipCredit" />
     <Image texture="logo_laineus" :x="config.WIDTH.half" :y="config.HEIGHT.half" :tween="logoTween" />
   </template>
 </template>
@@ -77,6 +77,10 @@ export default {
       }
     }
     audio.setBgm(null)
+    const skipCredit = () => {
+      audio.setBgm('happy')
+      creditEnd.value = true
+    }
     return {
       t,
       Phaser,
@@ -88,7 +92,8 @@ export default {
       select,
       creditEnd,
       bgTween,
-      logoTween
+      logoTween,
+      skipCredit
     }
   }
 }

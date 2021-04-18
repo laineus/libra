@@ -14,6 +14,7 @@ export default {
     const camera = inject('camera').value
     const event = inject('event')
     const achieve = inject('achieve')
+    const audio = inject('audio')
 
     const heartImage = field.images.find(v => v.name === 'heart').ref.value
     heartImage.setOrigin(0.5).setPosition(heartImage.x + heartImage.width.half, heartImage.y + heartImage.height.half).setTint(0x550000)
@@ -108,6 +109,7 @@ export default {
         await speakAmili(t('events.dream.amili1'))
         await white(500, { alpha: 0.6, destroy: false })
         await speakAmili(t('events.dream.amili2'))
+        audio.setBgm('happy', { duration: 300 })
         await speakLibra(t('events.libra.exclamation'))
         await white(500, { alpha: 0.65, destroy: false })
         await speakAmili(t('events.dream.amili3'))
@@ -138,6 +140,7 @@ export default {
           await sleep(500)
           await white(3000, { alpha: 1, destroy: false })
           await sleep(3000)
+          uiScene.scene.add.tween({ targets: audio.currentBgm, volume: 0, duration: 1000 })
           const clear = await uiScene.setScreenMessage(t('events.dream.last1.message'), 'black')
           await sleep(5000)
           await clear()
@@ -148,6 +151,8 @@ export default {
           await gameScene.backToTitle()
         } else {
           sleep(1000)
+          libra.lookTo('up')
+          uiScene.scene.add.tween({ targets: audio.currentBgm, volume: 0, duration: 600 })
           await speakAmili(t('events.dream.last2.amili1'))
           white(3000)
           const red = await uiScene.transition(1000, { color: 0x770022, alpha: 0.6, hold: 0 })
@@ -178,6 +183,7 @@ export default {
           await sleep(1500)
           await speakAmili(t('events.dream.last2.amili4'))
           await sleep(1500)
+          libra.lookTo('right')
           await speakAmili(t('events.dream.last2.amili5'))
           await sleep(1500)
           await speakAmili(t('events.dream.last2.amili6'))
