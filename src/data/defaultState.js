@@ -54,5 +54,5 @@ export default {
     photosynthesisAte: []
   },
   killed: [],
-  tutorial: ['home', 'map']
+  tutorial: []
 }
