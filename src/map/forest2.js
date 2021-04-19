@@ -12,6 +12,7 @@ export default {
     const audio = inject('audio')
     const { exec } = inject('event')
     const bag = inject('bag')
+    const mobile = inject('mobile')
     const killed = computed(() => state.killed.length > 0)
     if (!killed.value) {
       field.delObject(48)
@@ -33,7 +34,8 @@ export default {
       mountApple()
     }
 
-    const tKajitsu = new Talker(t('name.kajitsu'), kajitsu.object)
+    const speakKajitsu = talk.getSpeakScripts(new Talker(t('name.kajitsu'), kajitsu.object))
+    const env = mobile ? 'sp' : 'pc'
 
     // Auto start event
     if (state.events.intro === INTRO_STEPS.INTRO) {
@@ -42,14 +44,8 @@ export default {
         await sleep(1000)
         const revert = await camera.move(0, -100, 2000)
         await sleep(500)
-        const walk = t('events.forest2Kajitsu.walk')
-        await talk.setTalk([
-          { chara: tKajitsu, text: walk.shift() },
-          { chara: tKajitsu, text: walk.shift() },
-          { chara: tKajitsu, text: walk.shift() },
-          { chara: tKajitsu, text: walk.shift() },
-          { chara: tKajitsu, text: walk.shift() }
-        ])
+        await speakKajitsu(t('events.forest2Kajitsu.greet'))
+        await speakKajitsu(t(`events.forest2Kajitsu.walk.${env}`))
         await revert()
         state.events.intro = INTRO_STEPS.WALK
       })
@@ -59,12 +55,8 @@ export default {
     const areaEvent = computed(() => {
       if (state.events.intro !== INTRO_STEPS.WALK) return
       return async () => {
-        const talking = t('events.forest2Kajitsu.talk')
-        await talk.setTalk([
-          { chara: tKajitsu, text: talking.shift() },
-          { chara: tKajitsu, text: talking.shift() },
-          { chara: tKajitsu, text: talking.shift() }
-        ])
+        await speakKajitsu(t('events.forest2Kajitsu.talk1'))
+        await speakKajitsu(t(`events.forest2Kajitsu.talk2.${env}`))
         state.events.intro = INTRO_STEPS.TALK
       }
     })
@@ -76,44 +68,19 @@ export default {
         return async () => {
           mountApple()
           state.events.intro = INTRO_STEPS.APPLE
-          const apl = t('events.forest2Kajitsu.apple')
-          await talk.setTalk([
-            { chara: tKajitsu, text: apl.shift() },
-            { chara: tKajitsu, text: apl.shift() }
-          ])
+          await speakKajitsu(t('events.forest2Kajitsu.apple1'))
           const revert = await camera.move(100, -200, 2000)
           await sleep(500)
-          await talk.setTalk([
-            { chara: tKajitsu, text: apl.shift() },
-            { chara: tKajitsu, text: apl.shift() },
-            { chara: tKajitsu, text: apl.shift() },
-            { chara: tKajitsu, text: apl.shift() }
-          ])
+          await speakKajitsu(t(`events.forest2Kajitsu.apple2.${env}`))
           await revert()
         }
       } else if (state.events.intro === INTRO_STEPS.APPLE && !bag.hasItem('apple')) {
         return async () => {
-          const apl = t('events.forest2Kajitsu.apple').slice(2)
-          await talk.setTalk([
-            { chara: tKajitsu, text: apl.shift() },
-            { chara: tKajitsu, text: apl.shift() },
-            { chara: tKajitsu, text: apl.shift() },
-            { chara: tKajitsu, text: apl.shift() }
-          ])
+          await speakKajitsu(t(`events.forest2Kajitsu.apple2.${env}`))
         }
       } else if (state.events.intro === INTRO_STEPS.APPLE) {
         return async () => {
-          const completed = t('events.forest2Kajitsu.completed')
-          await talk.setTalk([
-            { chara: tKajitsu, text: completed.shift() },
-            { chara: tKajitsu, text: completed.shift() },
-            { chara: tKajitsu, text: completed.shift() },
-            { chara: tKajitsu, text: completed.shift() },
-            { chara: tKajitsu, text: completed.shift() },
-            { chara: tKajitsu, text: completed.shift() },
-            { chara: tKajitsu, text: completed.shift() },
-            { chara: tKajitsu, text: completed.shift() }
-          ])
+          await speakKajitsu(t('events.forest2Kajitsu.completed'))
           const completeTransition = await uiScene.transition(1000)
           state.events.intro = INTRO_STEPS.COMPLETED
           await completeTransition()
