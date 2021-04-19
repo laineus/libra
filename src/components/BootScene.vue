@@ -2,8 +2,8 @@
   <Scene name="BootScene" :autoStart="true" @preload="preload">
     <Container :x="config.WIDTH.half" :y="config.HEIGHT.half">
       <Text :text="`Loading ${Math.round(progress * 100)}%`" :origin="0.5" :y="-14" color="white" :size="13" />
-      <Rectangle :width="200" :height="3" :fillColor="0x555555" :originY="0" />
-      <Rectangle :width="200" :height="3" :fillColor="config.COLORS.white" :originX="0" :originY="0" :x="-100" :scaleX="progress" />
+      <Rectangle :width="200" :height="2" :fillColor="0x555555" :originY="0" />
+      <Rectangle :width="200" :height="2" :fillColor="config.COLORS.orange" :originX="0" :originY="0" :x="-100" :scaleX="progress" />
     </Container>
   </Scene>
 </template>
