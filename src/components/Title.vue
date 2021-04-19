@@ -8,13 +8,13 @@
   </Container>
   <Container v-if="selected > 0" :tween="tween">
     <Rectangle :fillColor="config.COLORS.black" :origin="0" :alpha="0.5" :width="config.WIDTH" :height="config.HEIGHT" @pointerdown="select(null)" />
-    <Container v-if="selected === 1" :x="config.WIDTH.half" :y="355">
-      <Image texture="title_menu_bg" :x="0" :y="0" @pointerdown.stop />
+    <Container v-if="selected === 1" :x="config.WIDTH.half" :y="340">
+      <OrganicWindow :width="250" :height="275" @pointerdown.stop />
       <menu-system-save v-if="selected === 1" :x="-115" :y="-128" :load="true" @load="$emit('close')" />
     </Container>
-    <Container v-else-if="selected === 2" :x="config.WIDTH.half" :y="390">
-      <Image texture="title_menu_bg" :x="0" :y="0" :scaleY="0.75" @pointerdown.stop />
-      <menu-system-config :x="-113" :y="-96" :backToTitle="false" />
+    <Container v-else-if="selected === 2" :x="config.WIDTH.half" :y="375">
+      <OrganicWindow :width="250" :height="200" @pointerdown.stop />
+      <menu-system-config :x="-113" :y="-94" :backToTitle="false" />
       <RoundRectangle :width="101" :height="23" :origin="0.5" :radius="7" :strokeColor="config.COLORS.brown" :lineWidth="1" :y="75" @pointerdown="select(null)" />
       <Text :text="t('ui.ok')" :origin="0.5" :y="75" :size="14" />
     </Container>
@@ -32,8 +32,9 @@ import config from '@/data/config'
 import Text from '@/components/Text'
 import MenuSystemSave from '@/components/MenuSystemSave'
 import MenuSystemConfig from '@/components/MenuSystemConfig'
+import OrganicWindow from '@/components/OrganicWindow'
 export default {
-  components: { Rectangle, Text, Image, Container, RoundRectangle, MenuSystemSave, MenuSystemConfig },
+  components: { Rectangle, Text, Image, Container, RoundRectangle, MenuSystemSave, MenuSystemConfig, OrganicWindow },
   emits: ['close'],
   setup (_, context) {
     const gameScene = inject('gameScene')
