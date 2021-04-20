@@ -1,6 +1,6 @@
 <template>
   <MenuContainer ref="container" :height="390" :title="t('ui.map')">
-    <Image texture="menu_arrow" :x="168" :y="320 - 6" />
+    <Image texture="menu_arrow" :x="168" :y="387" :rotation="-0.1" :tint="COLORS.soy" />
     <Text :text="t('events.bogusDoctor.lockMap')" :x="10" :y="10" v-if="lockInHospital" />
     <template v-else>
       <Container v-for="(v, i) in places" :key="i" :x="rowWidth.half + 10" :y="(i * rowHeight) + rowHeight.half + 5" :width="rowWidth" :height="rowHeight" @pointerdown="p => tapItem(p, i)">

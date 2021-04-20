@@ -1,6 +1,6 @@
 <template>
   <MenuContainer :height="360" :title="t('ui.status')">
-    <Image texture="menu_arrow" :x="25" :y="360 - 13" :rotation="0.25" />
+    <Image texture="menu_arrow" :x="25" :y="357" :rotation="0.22" :tint="COLORS.soy" />
     <template v-for="(v, i) in LIST.slice(0, 3)" :key="i">
       <Text :x="15" :y="15 + (i * 24)" :size="14" :bold="true" :text="v.label" />
       <Text :x="220" :y="15 + (i * 24)" :size="14" :text="v.value.value" :originX="1" />
