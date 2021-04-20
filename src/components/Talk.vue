@@ -2,8 +2,8 @@
   <Container :x="0" :y="0" v-if="current" :depth="config.DEPTH.TALK">
     <Rectangle :origin="0" :width="config.WIDTH" :height="config.HEIGHT" @pointerdown="next" />
     <SpeachBubble :x="x" :y="y" :width="bgWidth" :height="bgHeight">
-      <Text ref="name" v-if="current.chara" :text="current.chara.name" :size="15" :bold="true" color="soy" :style="{ stroke: COLORS.brown.toColorString, strokeThickness: 3 }" :originX="0" :originY="1" :x="-4" :y="3" />
-      <Text ref="txt" :text="current.text" :size="14" :x="bgWidth.half" :y="5" :originX="0.5" :lineSpacing="3" :padding="{ top: 2 }" :style="{ wordWrap: { width: 180, useAdvancedWrap: true } }" />
+      <Text ref="name" v-if="current.chara" :text="current.chara.name" :size="15" :bold="true" color="soy" :style="{ stroke: COLORS.brown.toColorString, strokeThickness: 3 }" :originX="0" :originY="1" :x="-2" :y="7" :rotation="-0.05" />
+      <Text ref="txt" :text="current.text" :size="14" :x="bgWidth.half" :y="6" :originX="0.5" :lineSpacing="3" :padding="{ top: 2 }" :style="{ wordWrap: { width: 180, useAdvancedWrap: true } }" />
     </SpeachBubble>
   </Container>
 </template>
@@ -56,7 +56,7 @@ export default {
     }
     onUpdated(() => {
       if (!current.value) return
-      data.bgWidth = Math.max(txt.value.width + 14, 70)
+      data.bgWidth = Math.max(txt.value.width + 24, 70)
       data.bgHeight = txt.value.height + 10
     })
     return {

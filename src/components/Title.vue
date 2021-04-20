@@ -9,7 +9,7 @@
   <Container v-if="selected > 0" :tween="tween">
     <Rectangle :fillColor="config.COLORS.black" :origin="0" :alpha="0.5" :width="config.WIDTH" :height="config.HEIGHT" @pointerdown="select(null)" />
     <OrganicWindow v-if="selected === 1" :x="config.WIDTH.half" :y="340" :width="250" :height="275" @pointerdown.stop>
-      <menu-system-save v-if="selected === 1" :x="-115" :y="-128" :load="true" @load="$emit('close')" />
+      <menu-system-save v-if="selected === 1" :x="-120" :y="-128" :load="true" @load="$emit('close')" />
     </OrganicWindow>
     <OrganicWindow v-else-if="selected === 2" :x="config.WIDTH.half" :y="375" :width="250" :height="210" @pointerdown.stop>
       <menu-system-config :x="-120" :y="-98" :backToTitle="false" />

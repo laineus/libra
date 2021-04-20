@@ -1,8 +1,9 @@
 <template>
   <Container>
-    <Image texture="speach" :y="(-(height + 30)).half" :scaleX="(width + 38) / 195" :scaleY="(height + 35) / 97" />
-    <Image texture="menu_arrow" :y="-10 - (height * 0.15)" />
-    <Container :x="-width.half" :y="-(height + 17)">
+    <OrganicRectangle :x="-1" :y="-height.half + 1" :fillColor="COLORS.brown" :width="width" :height="height" :rotation="Math.PI * -0.03" />
+    <OrganicRectangle :y="-height.half" :fillColor="COLORS.soy" :width="width" :height="height" />
+    <Image texture="menu_arrow" :y="4 + (height * 0.05)" :scale="0.7" :tint="COLORS.soy" />
+    <Container :x="-width.half" :y="-height">
       <slot />
     </Container>
   </Container>
@@ -10,21 +11,14 @@
 
 <script>
 import { Container, Image } from 'phavuer'
+import OrganicRectangle from '@/components/OrganicRectangle'
 import config from '@/data/config'
 export default {
-  components: { Container, Image },
-  props: ['width', 'height', 'title'],
-  setup (props) {
-    const arrowHeight = 8
-    const padding = 2
-    const radius = 5
-    const bottom = 85
+  components: { Container, OrganicRectangle, Image },
+  props: ['width', 'height'],
+  setup () {
     return {
-      COLORS: config.COLORS,
-      arrowHeight,
-      padding,
-      radius,
-      bottom
+      COLORS: config.COLORS
     }
   }
 }

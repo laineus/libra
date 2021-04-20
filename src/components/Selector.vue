@@ -2,8 +2,8 @@
   <Container :depth="config.DEPTH.TALK">
     <OrganicRectangle :fillColor="config.COLORS.brown" :width="bgWidth + 24 + 2" :height="sumHeight + 2" :y="-sumHeight.half" />
     <OrganicRectangle :fillColor="config.COLORS.soy" :width="bgWidth + 24" :height="sumHeight" :y="-sumHeight.half" />
-    <Image texture="menu_arrow" :origin="0.5" :scale="0.7" :rotation="-0.07" :tint="config.COLORS.brown" :y="8.5" />
-    <Image texture="menu_arrow" :origin="0.5" :scale="0.7" :rotation="-0.07" :tint="config.COLORS.soy" :y="7" />
+    <Image texture="menu_arrow" :origin="0.5" :scale="0.7" :rotation="-0.07" :tint="config.COLORS.brown" :y="(bgWidth * 0.039) + 4" />
+    <Image texture="menu_arrow" :origin="0.5" :scale="0.7" :rotation="-0.07" :tint="config.COLORS.soy" :y="(bgWidth * 0.039) + 2.5" />
     <Container v-for="(v, i) in options" :key="i" :y="-sumHeight + (bgHeight + 5) * i + 2.5">
       <Image texture="menu_label" :originX="0.5" :originY="0" :y="-1" :rotation="-0.015" :scaleX="(bgWidth + 15) / 138" :scaleY="0.9" @pointerdown.stop="select($event, i)" />
       <Text :ref="v.ref" :originX="0.5" :originY="0" :text="v.text" :size="14" color="soy" :y="5" :lineSpacing="3" />
