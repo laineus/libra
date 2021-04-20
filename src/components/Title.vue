@@ -8,16 +8,14 @@
   </Container>
   <Container v-if="selected > 0" :tween="tween">
     <Rectangle :fillColor="config.COLORS.black" :origin="0" :alpha="0.5" :width="config.WIDTH" :height="config.HEIGHT" @pointerdown="select(null)" />
-    <Container v-if="selected === 1" :x="config.WIDTH.half" :y="340">
-      <OrganicWindow :width="250" :height="275" @pointerdown.stop />
+    <OrganicWindow v-if="selected === 1" :x="config.WIDTH.half" :y="340" :width="250" :height="275" @pointerdown.stop>
       <menu-system-save v-if="selected === 1" :x="-115" :y="-128" :load="true" @load="$emit('close')" />
-    </Container>
-    <Container v-else-if="selected === 2" :x="config.WIDTH.half" :y="375">
-      <OrganicWindow :width="250" :height="200" @pointerdown.stop />
+    </OrganicWindow>
+    <OrganicWindow v-else-if="selected === 2" :x="config.WIDTH.half" :y="375" :width="250" :height="200" @pointerdown.stop>
       <menu-system-config :x="-113" :y="-94" :backToTitle="false" />
       <RoundRectangle :width="101" :height="23" :origin="0.5" :radius="7" :strokeColor="config.COLORS.brown" :lineWidth="1" :y="75" @pointerdown="select(null)" />
       <Text :text="t('ui.ok')" :origin="0.5" :y="75" :size="14" />
-    </Container>
+    </OrganicWindow>
   </Container>
   <template v-if="!creditEnd">
     <Rectangle :fillColor="0x111111" :origin="0" :width="config.WIDTH" :height="config.HEIGHT" :tween="bgTween" @pointerdown.stop="skipCredit" />
