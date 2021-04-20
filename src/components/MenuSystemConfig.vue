@@ -2,20 +2,20 @@
   <Container>
     <!-- BGM -->
     <Text :text="t('ui.bgmVolume')" :x="11" :y="14" :size="14" :bold="true" />
-    <Text :text="`${setting.state.bgm}%`" :x="217" :y="14" :originX="1" :size="14" />
-    <Slider :x="11" :y="34" :width="207" :height="9" :max="100" :bgColor="COLORS.soy" v-model="model.bgm" @commit="commit" />
+    <Text :text="`${setting.state.bgm}%`" :x="227" :y="14" :originX="1" :size="14" />
+    <Slider :x="11" :y="38" :width="217" :height="9" :max="100" :bgColor="COLORS.soy" v-model="model.bgm" @commit="commit" />
     <!-- SE -->
-    <Text :text="t('ui.seVolume')" :x="11" :y="54" :size="14" :bold="true" />
-    <Text :text="`${setting.state.se}%`" :x="217" :y="54" :originX="1" :size="14" />
-    <Slider :x="11" :y="77" :width="207" :height="9" :max="100" :bgColor="COLORS.soy" v-model="model.se" @commit="commit" />
+    <Text :text="t('ui.seVolume')" :x="11" :y="59" :size="14" :bold="true" />
+    <Text :text="`${setting.state.se}%`" :x="227" :y="59" :originX="1" :size="14" />
+    <Slider :x="11" :y="83" :width="217" :height="9" :max="100" :bgColor="COLORS.soy" v-model="model.se" @commit="commit" />
     <!-- LANG -->
-    <Text text="Lang" :x="11" :y="100" :size="14" :bold="true" /><!-- Must not be translated -->
-    <Circle :x="18" :y="131" :lineWidth="1" :strokeColor="COLORS.brown" :radius="7" @pointerdown="setLang('ja')" />
-    <Circle v-if="setting.state.lang === 'ja'" :x="18" :y="131" :fillColor="COLORS.brown" :radius="4" />
-    <Text text="日本語" :x="31" :y="132" :originY="0.5" :size="13" :bold="true" @pointerdown="setLang('ja')" />
-    <Circle :x="98" :y="131" :lineWidth="1" :strokeColor="COLORS.brown" :radius="7" @pointerdown="setLang('en')" />
-    <Circle v-if="setting.state.lang === 'en'" :x="98" :y="131" :fillColor="COLORS.brown" :radius="4" />
-    <Text text="English" :x="111" :y="132" :originY="0.5" :size="13" :bold="true" @pointerdown="setLang('en')" />
+    <Text text="Lang" :x="11" :y="105" :size="14" :bold="true" /><!-- Must not be translated -->
+    <Circle :x="18" :y="136" :lineWidth="1" :strokeColor="COLORS.brown" :radius="7" @pointerdown="setLang('ja')" />
+    <Circle v-if="setting.state.lang === 'ja'" :x="18" :y="136" :fillColor="COLORS.brown" :radius="4" />
+    <Text text="日本語" :x="31" :y="137" :originY="0.5" :size="13" :bold="true" @pointerdown="setLang('ja')" />
+    <Circle :x="98" :y="136" :lineWidth="1" :strokeColor="COLORS.brown" :radius="7" @pointerdown="setLang('en')" />
+    <Circle v-if="setting.state.lang === 'en'" :x="98" :y="136" :fillColor="COLORS.brown" :radius="4" />
+    <Text text="English" :x="111" :y="137" :originY="0.5" :size="13" :bold="true" @pointerdown="setLang('en')" />
     <!-- Back to title -->
     <Text v-if="backToTitle" :text="'Back to Title →'" :x="220" :y="186" :originX="1" :originY="0.5" :size="13" :bold="true" @pointerdown="confirmBackToTitle" />
     <Selector v-if="confirm" :x="tapX" :y="tapY" :list="[t('ui.ok'), t('ui.cancel')]" @select="submitBackToTitle" />

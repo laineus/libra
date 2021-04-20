@@ -28,7 +28,7 @@ export default {
     const audio = inject('audio')
     const list = ref([])
     const data = reactive({
-      rowWidth: 230, rowHeight: 37,
+      rowWidth: 240, rowHeight: 37,
       selectedIndex: null,
       tapX: 0, tapY: 0
     })

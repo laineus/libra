@@ -33,7 +33,7 @@ export default {
     const refs = { scrollBar: ref(null) }
     const data = reactive({
       selected: null,
-      rowWidth: 217,
+      rowWidth: 227,
       rowHeight: 37,
       offset: 0
     })

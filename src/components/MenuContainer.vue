@@ -1,8 +1,8 @@
 <template>
   <OrganicWindow ref="object" :x="left + width.half" :y="top + height.half" :width="width" :height="height" @pointerdown.stop @wheel="$emit('wheel', $event)" @pointermove="$emit('pointermove', $event)">
-    <Image texture="menu_label" :origin="0" :x="-width.half - 20" :y="-height.half - 16" :rotation="-0.07" :scaleX="0.78" />
-    <Text :text="title" :x="-width.half - 8" :y="-height.half - 9" :rotation="-0.07" :size="14" :bold="true" color="soy" />
-    <Container ref="container" :x="-width.half + padding" :y="-height.half + padding + labelSpace">
+    <Image texture="menu_label" :origin="0" :x="-width.half - 20" :y="-height.half - 15" :rotation="-0.07" :scaleX="0.78" />
+    <Text :text="title" :x="-width.half - 8" :y="-height.half - 8" :rotation="-0.07" :size="14" :bold="true" color="soy" />
+    <Container ref="container" :x="-width.half" :y="-height.half + labelSpace">
       <slot />
     </Container>
   </OrganicWindow>
@@ -25,18 +25,16 @@ export default {
     })
     const labelSpace = 12
     const width = 240
-    const padding = 5
     const right = 16
     const bottom = 96
     const left = (right + width).byRight
     const top = (bottom + props.height).byBottom
-    const offsetX = left + padding
-    const offsetY = top + padding + labelSpace
+    const offsetX = left
+    const offsetY = top + labelSpace
     return {
       ...toRefs(refs),
       COLORS: config.COLORS,
       width, labelSpace,
-      padding,
       left, top,
       offsetX, offsetY
     }

@@ -2,15 +2,15 @@
   <MenuContainer :height="360" :title="t('ui.status')">
     <Image texture="menu_arrow" :x="25" :y="360 - 13" :rotation="0.25" />
     <template v-for="(v, i) in LIST.slice(0, 3)" :key="i">
-      <Text :x="10" :y="10 + (i * 24)" :size="14" :bold="true" :text="v.label" />
-      <Text :x="215" :y="10 + (i * 24)" :size="14" :text="v.value.value" :originX="1" />
-      <Line :x="10" :y="10 + (i * 24) + 20" :lineWidth="0.5" :x2="210" :originX="0" :originY="0.5" :strokeColor="COLORS.brown" :alpha="0.25" />
+      <Text :x="15" :y="15 + (i * 24)" :size="14" :bold="true" :text="v.label" />
+      <Text :x="220" :y="15 + (i * 24)" :size="14" :text="v.value.value" :originX="1" />
+      <Line :x="15" :y="15 + (i * 24) + 20" :lineWidth="0.5" :x2="210" :originX="0" :originY="0.5" :strokeColor="COLORS.brown" :alpha="0.25" />
     </template>
-    <Image texture="libra" :tint="COLORS.brown" :x="115" :y="165" :frame="Math.abs(charmDiff)" :flipX="charmDiff < 0" :scale="0.9" />
+    <Image texture="libra" :tint="COLORS.brown" :x="115" :y="170" :frame="Math.abs(charmDiff)" :flipX="charmDiff < 0" :scale="0.9" />
     <template v-for="(v, i) in LIST.slice(3)" :key="i">
-      <Text :x="10" :y="256 + (i * 24)" :size="14" :bold="true" :text="v.label" />
-      <Text :x="215" :y="256 + (i * 24)" :size="14" :text="v.value.value" :originX="1" />
-      <Line :x="10" :y="256 + (i * 24) + 20" :lineWidth="0.5" :x2="210" :originX="0" :originY="0.5" :strokeColor="COLORS.brown" :alpha="0.25" />
+      <Text :x="15" :y="260 + (i * 24)" :size="14" :bold="true" :text="v.label" />
+      <Text :x="220" :y="260 + (i * 24)" :size="14" :text="v.value.value" :originX="1" />
+      <Line :x="15" :y="260 + (i * 24) + 20" :lineWidth="0.5" :x2="210" :originX="0" :originY="0.5" :strokeColor="COLORS.brown" :alpha="0.25" />
     </template>
   </MenuContainer>
 </template>
