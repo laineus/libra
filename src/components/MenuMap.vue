@@ -10,8 +10,8 @@
         <Image v-if="v" texture="garbage" :scale="0.45" :tint="COLORS.brown" :x="100" @pointerdown.stop="p => tapGarbage(p, i)" />
       </Container>
       <template v-if="selectedIndex !== null">
-        <Selector v-if="del" :x="tapX" :y="tapY" :list="['削除', 'キャンセル']" @select="submit" />
-        <Selector v-else :x="tapX" :y="tapY" :list="[places[selectedIndex] ? '登録した場所へ移動' : '現在地を登録', 'キャンセル']" @select="submit" />
+        <Selector v-if="del" :x="tapX" :y="tapY" :list="[t('ui.delete'), t('ui.cancel')]" @select="submit" />
+        <Selector v-else :x="tapX" :y="tapY" :list="[places[selectedIndex] ? t('ui.moveToRegisteredPlace') : t('ui.registerPlace'), t('ui.cancel')]" @select="submit" />
       </template>
     </template>
   </MenuContainer>

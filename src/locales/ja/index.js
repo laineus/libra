@@ -238,6 +238,7 @@ export default {
   ui: {
     ok: 'OK',
     cancel: 'キャンセル',
+    delete: '削除',
     newGame: 'はじめから',
     continue: 'つづきから',
     location: '場所',
@@ -273,6 +274,8 @@ export default {
     seVolume: 'SE音量',
     normalSave: '保存',
     overwriteSave: '上書き保存',
+    registerPlace: '現在地を登録',
+    moveToRegisteredPlace: '登録した場所へ移動',
     redecorate: '模様替えモード'
   },
   tips: {
