@@ -1,6 +1,6 @@
 <template>
   <Container>
-    <Container v-for="(v, i) in list" :key="i" :x="rowWidth.half" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerdown="p => tapItem(p, i)">
+    <Container v-for="(v, i) in list" :key="i" :x="rowWidth.half + 10" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerdown="p => tapItem(p, i)">
       <Rectangle :visible="i === selectedIndex" :fillColor="COLORS.orange" :width="rowWidth" :height="rowHeight" :alpha="0.8" />
       <Line v-if="i !== list.length - 1" :x="0" :y="rowHeight.half" :lineWidth="0.5" :x2="rowWidth" :strokeColor="COLORS.brown" :alpha="0.25" />
       <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="v.name" :size="13" :bold="true" @pointerdown="p => tapItem(p, i)" /><!-- TODO -->
@@ -28,7 +28,7 @@ export default {
     const audio = inject('audio')
     const list = ref([])
     const data = reactive({
-      rowWidth: 240, rowHeight: 37,
+      rowWidth: 220, rowHeight: 37,
       selectedIndex: null,
       tapX: 0, tapY: 0
     })

@@ -17,7 +17,7 @@
     <Circle v-if="setting.state.lang === 'en'" :x="98" :y="136" :fillColor="COLORS.brown" :radius="4" />
     <Text text="English" :x="111" :y="137" :originY="0.5" :size="13" :bold="true" @pointerdown="setLang('en')" />
     <!-- Back to title -->
-    <Text v-if="backToTitle" :text="'Back to Title →'" :x="220" :y="186" :originX="1" :originY="0.5" :size="13" :bold="true" @pointerdown="confirmBackToTitle" />
+    <Text v-if="backToTitle" :text="'Back to Title →'" :x="230" :y="186" :originX="1" :originY="0.5" :size="13" :bold="true" @pointerdown="confirmBackToTitle" />
     <Selector v-if="confirm" :x="tapX" :y="tapY" :list="[t('ui.ok'), t('ui.cancel')]" @select="submitBackToTitle" />
   </Container>
 </template>

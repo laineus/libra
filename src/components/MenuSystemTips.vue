@@ -1,7 +1,7 @@
 <template>
   <Container>
     <template v-if="!selected">
-      <Container v-for="(v, i) in list.slice(offset, offset + 7)" :key="i" :x="rowWidth.half" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerup="p => tapItem(p, v)" @wheel="onWheel" @pointermove.stop="onSwipe">
+      <Container v-for="(v, i) in list.slice(offset, offset + 7)" :key="i" :x="rowWidth.half + 10" :y="(i * rowHeight) + rowHeight.half" :width="rowWidth" :height="rowHeight" @pointerup="p => tapItem(p, v)" @wheel="onWheel" @pointermove.stop="onSwipe">
         <Rectangle :visible="v === selected" :fillColor="COLORS.orange" :width="rowWidth" :height="rowHeight" :alpha="0.8" />
         <Line v-if="i !== 7 - 1" :x="0" :y="rowHeight.half" :lineWidth="0.5" :x2="rowWidth" :strokeColor="COLORS.brown" :alpha="0.25" />
         <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="v.title" :size="13" :bold="true" />
@@ -12,7 +12,7 @@
       <Text :x="10" :y="40" :text="selected.title" :size="14" :bold="true" />
       <Text :x="10" :y="70" :text="selected.desc" :size="13" :style="{ wordWrap: { width: 210, useAdvancedWrap: true } }" :lineSpacing="5" />
     </Container>
-    <ScrollBar ref="scrollBar" :visible="!selected" :x="rowWidth + 13 - 3" :y="3" :height="(rowHeight * 7) - (3).twice" :length="list.length" :limit="7" v-model="offset" />
+    <ScrollBar ref="scrollBar" :visible="!selected" :x="rowWidth + 21" :y="3" :height="(rowHeight * 7) - (3).twice" :length="list.length" :limit="7" v-model="offset" />
   </Container>
 </template>
 
@@ -33,7 +33,7 @@ export default {
     const refs = { scrollBar: ref(null) }
     const data = reactive({
       selected: null,
-      rowWidth: 227,
+      rowWidth: 215,
       rowHeight: 37,
       offset: 0
     })
