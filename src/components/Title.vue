@@ -50,7 +50,7 @@ export default {
       } else if (i === 0) {
         audio.se('click')
         selected.value = 0
-        await gameScene.value.setField('forest1', 300, 552, -Math.PI.half, { autosave: false })
+        await gameScene.value.setField('forest2', (12).toPixelCenter, (23).toPixelCenter, -Math.PI.half, { autosave: false })
         context.emit('close')
       } else {
         audio.se('click')

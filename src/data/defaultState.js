@@ -11,15 +11,13 @@ export default {
     body: 0
   },
   amiliFollowing: false,
-  bagItems: [
-    { id: 1, key: 'gun', bagX: 30, bagY: 40, scale: 0.5 }
-  ],
+  bagItems: [],
   roomItems: [],
   lastAbsenceAction: 1,
   stomach: [],
   places: [
-    { key: 'home', x: 400, y: 400 },
-    { key: 'forest3', x: 500, y: 480 },
+    null,
+    null,
     null,
     null,
     null,
