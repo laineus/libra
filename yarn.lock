@@ -5770,10 +5770,10 @@ phaser@^3.54.0:
     eventemitter3 "^4.0.7"
     path "^0.12.7"
 
-phavuer@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/phavuer/-/phavuer-0.8.0.tgz#d0a5df89388effa64a5c33b9eea0a1fc4bf03116"
-  integrity sha512-hP9RYbuGQ6inc14zyCazj9Mcat3D/cQBD0w04V2TbfJ2P5OWQPWQoE3DFNw4rzEza860u3XGarDwFbKDhbHyrw==
+phavuer@^0.8.2:
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/phavuer/-/phavuer-0.8.2.tgz#c114073e5bdf8eac4614acd8a269d92739e80061"
+  integrity sha512-yPf1tidd+0UlWiND0t5W3h2UYgEX0TyUzq2z81nNk2VvJuu4gcBRJ7pthhScDIhVBqV2+3RG4O6V03m3LVx0Lg==
 
 phin@^2.9.1:
   version "2.9.3"
