@@ -459,6 +459,30 @@
                  "width":0,
                  "x":350,
                  "y":277
+                }, 
+                {
+                 "height":0,
+                 "id":32,
+                 "name":"trashCan1",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":182,
+                 "y":238
+                }, 
+                {
+                 "height":0,
+                 "id":33,
+                 "name":"trashCan1",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":144,
+                 "y":826
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -467,7 +491,7 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":32,
+ "nextobjectid":34,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.5.0",

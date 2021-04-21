@@ -306,6 +306,18 @@
                  "width":0,
                  "x":397.760358342665,
                  "y":621.952560317622
+                }, 
+                {
+                 "height":0,
+                 "id":19,
+                 "name":"trashCan1",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":443.563066273033,
+                 "y":625.568563575282
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -314,7 +326,7 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":19,
+ "nextobjectid":20,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.5.0",
