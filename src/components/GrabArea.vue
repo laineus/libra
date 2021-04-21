@@ -1,6 +1,6 @@
 <template>
   <Container ref="container" :depth="100000" :x="data.x" :y="data.y" @pointerdown="grab">
-    <Image texture="hand_catch" :x="10" :alpha="data.grabbing ? 1 : 0.5" :tint="data.grabbing ? 0xFF0000 : config.COLORS.white" :tween="data.grabbing ? null : handTween" />
+    <Image v-if="!noImage" texture="hand_catch" :x="10" :alpha="data.grabbing ? 1 : 0.5" :tint="data.grabbing ? 0xFF0000 : config.COLORS.white" :tween="data.grabbing ? null : handTween" />
   </Container>
 </template>
 
@@ -14,7 +14,8 @@ export default {
   props: {
     follow: { default: null },
     name: { default: null },
-    scale: { default: null }
+    scale: { default: null },
+    noImage: { default: false }
   },
   emits: ['grab', 'capture', 'cancel', 'move'],
   setup (props, context) {

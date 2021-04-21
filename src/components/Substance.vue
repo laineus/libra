@@ -11,7 +11,7 @@
     <template v-if="hp > 0 && unref(visible)">
       <Image v-if="light" :blendMode="BlendModes.OVERLAY" :x="initX" :y="initY" :depth="config.DEPTH.LIGHT" :tint="light" texture="light" />
       <TapArea v-if="tapEvent.event.value" :visible="interactive" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @tap="execTapEvent" />
-      <GrabArea ref="grabArea" v-else-if="capturable" :visible="interactive" :name="name" :scale="scale" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @grab="alpha = 0.5" @capture="onBroken" @move="move" @cancel="alpha = 1" />
+      <GrabArea ref="grabArea" v-else-if="capturable" :visible="interactive || inHome" :noImage="inHome" :name="name" :scale="scale" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @grab="alpha = 0.5" @capture="onBroken" @move="move" @cancel="alpha = 1" />
     </template>
   </div>
 </template>
@@ -50,6 +50,7 @@ export default {
     const object = refObj(null)
     const image = refObj(null)
     const grabArea = ref(null)
+    const inHome = computed(() => field.value?.name === 'home')
     const imgWidth = computed(() => image.value?.width ?? 30)
     const imgHeight = computed(() => image.value?.height ?? 30)
     const depth = ref(0)
@@ -147,6 +148,7 @@ export default {
     return {
       config,
       itemData,
+      inHome,
       capturable,
       grabArea,
       BlendModes: Phaser.BlendModes,
