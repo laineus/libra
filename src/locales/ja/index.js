@@ -1,5 +1,5 @@
 export default {
-  title: 'サンプルゲーム',
+  title: 'リブラの見た夢',
   name: {
     libra: 'リブラ',
     amili: 'アミリ',
