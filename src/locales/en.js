@@ -346,85 +346,86 @@ export default {
     },
     forest2Kajitsu: {
       greet: [
-        'はじめまして。',
-        '私はカジツと申します。',
-        '私からこのゲームの基本操作について簡単に説明させていただきます。'
+        'My name is Kajitsu.',
+        'I was looking forward to meeting you.',
+        'Allow me to instruct you on how to play this game.'
       ],
       walk: {
         pc: [
-          '移動はマップ上を左クリック、またはWASDで行います。',
-          'まずは私のところまで歩いて来て下さい。'
+          'You can tap ground or use WASD keys to walk.',
+          'Now, please come here.'
         ],
         sp: [
-          '移動は画面左下のコントローラーで行います。',
-          'まずは私のところまで歩いて来て下さい。'
+          'You can use the controller placed left bottom of the screen to walk.',
+          'Now, please come here.'
         ]
       },
       talk1: [
-        '大丈夫ですね。',
-        'では次に私に話しかけてみて下さい。'
+        'Good.',
+        'Then please talk to me next.'
       ],
       talk2: {
         pc: [
-          '私を左クリックすれば話しかけられます。'
+          'You can click me to talk.'
         ],
         sp: [
-          '右下のボタンか私をタップすることで話しかけられます。'
+          'You can tap me or the button placed right bottom of the screen to talk.'
         ]
       },
       apple1: [
-        '大丈夫ですね。',
-        'ではあちらを見て下さい。'
+        'Great.',
+        'Please look over there.'
       ],
       apple2: {
         pc: [
-          'あそこに落ちているリンゴを拾ってみて下さい。',
-          '近付いてからリンゴを左クリックし続けると掴みます。',
-          'するとかばんウィンドウが開くので、そこへドロップすると拾う事ができます。',
-          '拾ったら私のところへ戻って来て下さい。'
+          `Try to pick up the apple that's fallen over there.`,
+          'You can keep left-clicking to grab it when you get close to it.',
+          'Then the bag window will open, and you can drop it there to pick it up.' ,
+          'Please pick it up and come back to me.'
         ],
         sp: [
-          'あそこに落ちているリンゴを拾ってみて下さい。',
-          '近付いてから、リンゴまたは右下のボタンを押し続けると掴みます。',
-          'するとかばんウィンドウが開くので、そこへドロップすると拾う事ができます。',
-          '拾ったら私のところへ戻って来て下さい。'
+          `Try to pick up the apple that's fallen over there.`,
+          'You can keep left-clicking to grab it when you get close to it.',
+          'Also you can use the button that will show up on right bottom of the screen.',
+          'Then the bag window will open, and you can drop it there to pick it up.' ,
+          'Please pick it up and come back to me.'
         ]
       },
       completed: [
-        '拾えたようですね。',
-        '基本的な操作はこんなところです。',
-        'ところで、',
-        '今日のあなたは、恋人へリンゴを持って帰るためにこの森へ来ましたね。',
-        'あなたの部屋は森を抜けて北へ進んだ先にあります。',
-        'さあ、彼女が待っていますよ。',
-        '私はこれで失礼します。'
+        'You have picked it up.',
+        'These are the basic operations.',
+        'By the way,',
+        'Today, you came to this forest to bring an apple back to your girlfriend.',
+        'Your home is located at north of this forest.',
+        `So, she's waiting for you.`,
+        'I will take my leave now.'
       ]
     },
     home: {
-      welcomeback: 'おかえり、リブラ！',
-      goodmorning: 'おはよう、リブラ。',
-      sleeping1: ['ふぁ〜。', 'ごめん、寝ちゃってた。'],
-      sleeping2: ['わ！', 'リブラ帰ってたんだ。びっくりした。'],
-      cookie: ['みてみて、リブラにクッキー焼いたんだ。', 'どうぞ♪'],
-      lunchbox: ['みてみて、リブラにお弁当作ったよ。', 'どうぞ♪'],
-      cooking: ['あ、ご飯できてるよ。', '召し上がれ♪'],
-      giveApple: ['リンゴを渡す', 'なんでもない'],
-      followMe: 'ついて来て',
-      letsGo: '行こっか。',
-      finishFollowing: '楽しかったね。',
-      noApple: 'ないじゃん',
-      iloveyou: 'リブラ、大好き！',
-      gaveApple1: ['ありがとう！', '今日はどうしたい？'],
-      gaveApple2: ['ありがとう！', '次はどうしたい？'],
-      reward: ['散歩がしたい', '一緒に寝たい'],
-      sleepTwice: ['また！？', 'うん、…いいよ。'],
+      welcomeback: 'Welcome home, Libra.',
+      goodmorning: 'Good morning, Libra.',
+      sleeping1: ['Yawn...', 'I was sleeping.'],
+      sleeping2: ['Whoa!', `You're home. I'm surprised.`],
+      cookie: ['Look at this, I baked cookies for you, Libra.', 'Here you go.'],
+      lunchbox: ['Look at this, I made lunch box for you, Libra.', 'Here you go.'],
+      cooking: ['Dinner is ready.', 'Enjoy the meal.'],
+      giveApple: ['Give her an apple', 'Nothing'],
+      followMe: 'Follow me',
+      letsGo: `Let's go.`,
+      finishFollowing: 'That was fun.',
+      noApple: `You don't have any apples`,
+      iloveyou: 'Libra, I love you!',
+      gaveApple1: ['Thank you!', 'What do you want to do today?'],
+      gaveApple2: ['Thank you!', 'What do you want to do next?'],
+      reward: ['I want to go for a walk with you.', 'I want to sleep with you.'],
+      sleepTwice: ['Again!?', '...Sure, why not?'],
       requestApple: {
-        a: ['リブラ、またお腹が減っちゃった。', 'またリンゴ持ってきて！'],
-        b: ['ん～', 'またリンゴ食べたいなぁ', 'リブラ、持ってきてくれるよね？']
+        a: [`Libra, I'm still hungry.`, 'Bring me another apple.'],
+        b: ['Hmmm', 'I want to eat apples again', `Libra, you'll bring me some, won't you?`]
       },
       lvup: {
-        heart: '心の魅力が上がった',
-        body: '体の魅力が上がった'
+        heart: 'Heart charm has increased.',
+        body: 'Body charm has increased.'
       }
     },
     itemReactions: {
