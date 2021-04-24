@@ -176,64 +176,64 @@ export default {
   },
   quest: {
     torrentFlog: {
-      title: '生きることに必死な二人',
-      desc: 'トレントはカエルに見せると約束したヘラクレスという虫を無くしてしまった。'
+      title: 'Desperate to live',
+      desc: 'Torrent has lost the rare bug called Hercules, which he promised to show to Frog.'
     },
     clover: {
-      title: '恋人のクローバー',
-      desc: 'カエルは四つ葉のクローバーに生まれ変わった恋人を探している。'
+      title: 'Lover is a Clover',
+      desc: 'Frog is looking for his lover, who has been reborn as a four-leaf clover.'
     },
     snakeFlog: {
-      title: 'ヘビとカエルの天秤',
-      desc: 'ヘビは宝石と引き換えにリンゴをくれるらしい。'
+      title: 'The Snake and the Frog',
+      desc: 'The Snake will give you an apple in exchange for a jems.'
     },
     curse: {
-      title: '呪いのかけ方',
-      desc: 'コウモリたちは「呪い」が実在するかについて賭けをしている。'
+      title: 'How to cast a Curse',
+      desc: 'The bats are making a bet about whether the Curse is real.'
     },
     eel: {
-      title: 'ウミノケ',
-      desc: '漁師が釣り上げてしまったウミノケという妖怪は、アントン先生が供養してくれるらしい。'
+      title: 'Uminoke',
+      desc: 'The fishermen have caught a cursed monster called Uminoke, and Dr.Anton is able to purify it.'
     },
     pityPenguin: {
-      title: '気の毒な男',
-      desc: '女に騙された気の毒なペンギンは、その事実を受け入れられずに待ち続けている。'
+      title: 'The Poor Penguin',
+      desc: `The poor penguin, tricked by the woman, can't accept the fact and is still waiting her.`
     },
     liveForEveryone: {
-      title: '人のために生きるペンギン',
-      desc: '人のために生きるペンギンは、「人のため」とは何なのか、分からなくなってしまった。'
+      title: 'The penguin who lives for others',
+      desc: `The Penguin who lives for others have lost sight of what "for others" really means.`
     },
     matsutake: {
-      title: '夢の高級キノコ',
-      desc: '炭鉱夫は一度でいいから松茸を食べてみたい。'
+      title: 'Finest Mushrooms',
+      desc: 'The coal miner wants to try a matsutake mushroom once.'
     },
     painter: {
-      title: '炭坑の絵描き',
-      desc: '売れない絵描きは、亡き母についた嘘を現実にするために絵を売りたい。'
+      title: 'The Unsuccessful Painter',
+      desc: 'The unsuccessful painter wants to sell his paintings to make the lie he once told his late mother a reality.'
     },
     appreciation: {
-      title: 'お屋敷の子ども',
-      desc: 'お屋敷の子どもは、頑張っている炭鉱夫にお礼がしたくて絵を描いた。'
+      title: 'The Child of the Mansion',
+      desc: 'The child in the mansion paints a picture to thank a coal miners.'
     },
     beauty: {
-      title: '不老不死の薬',
-      desc: 'カボチャの婦人は、自身の美貌を永遠のものとするべく、不老不死の薬を探している。'
+      title: 'Elixir of Immortality',
+      desc: 'The pumpkin lady is looking for an Elixir of Immortality to make her beauty last forever.'
     },
     bogusDoctor: {
-      title: '犠牲の上の英雄',
-      desc: '病院の医者は独学で医者になったが、過去の失敗で命を落とした患者たちのことで苦悩している。'
+      title: 'The Hero on a Sacrifice',
+      desc: 'The doctor at the hospital is a self-taught physician, but he is tormented by the patients who lost their lives due to his past mistakes.'
     },
     forever: {
-      title: 'ずっと一緒に居て下さい',
-      desc: '病死してしまった女は、一緒に逝くはずだった夫を待っている。'
+      title: 'Stay with me forever',
+      desc: 'A woman who has died of illness is waiting for her husband, who was supposed to pass away with her.'
     },
     raptor: {
-      title: '太古のロマン',
-      desc: '豪邸の男は、最近恐竜映画を観て恐竜にはまっている。'
+      title: 'Ancient Romance',
+      desc: 'The man in the mansion has recently seen a dinosaur movie and is hooked on dinosaurs.'
     },
     photosynthesis: {
-      title: '光合成の味',
-      desc: '宇宙人グレイは、研究のため地球の料理を食べたがっている。'
+      title: 'A Taste of Photosynthesis',
+      desc: `Alien Gray wants to eat Earth's food for research.`
     }
   },
   ui: {
