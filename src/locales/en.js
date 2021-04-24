@@ -317,32 +317,32 @@ export default {
       desc: 'Once you have a gun, you can use it. It can destroy items and kill creatures.'
     },
     murder: {
-      title: 'kill',
+      title: 'Murder',
       desc: 'Killing an inhabitant who can talk to you will not revive them again. You will not be able to complete related quests.'
     }
   },
   tutorial: {
-    gunPc: '- 銃 -\n\n銃を手に入れました。\n右クリックを押すと使うことができます。',
-    gunSp: '- 銃 -\n\n銃を手に入れました。\n画面右下のボタンを押すと使うことができます。',
-    weight: '- 荷物の制限 -\n\n持ち運べる荷物の重さに注意しましょう。\n特にリンゴは非常に重たいので、頻繁に自宅に持ち帰りましょう。',
-    home: '- 自宅 -\n\n自宅では、恋人のアミリにリンゴを渡したり、アイテムを保管することができます。',
-    map: '- 瞬間移動 -\n\n画面右下の地図のアイコンで現在地を保存すると、別の場所からその場所へ瞬時に移動することができます。\n再度訪れたい場所は忘れずに保存しましょう。',
-    quest: '- クエスト -\n\nこの世界にはあなたの助けを必要とする住人がいるようです。\n彼らの悩みに応えることでリンゴをもらえるかもしれません。',
-    kill: '- 殺害 -\n\n友好的な住人を攻撃しました。\n殺害してしまうと復活しませんので注意してください。'
+    gunPc: `- Gun -\n\nYou've got a gun.\nYou can use it by clicking right mouse button.`,
+    gunSp: `- Gun -\n\nYou've got a gun.\nYou can use it by tapping the gun icon displayed on the screen.`,
+    weight: `- Limit for items' weight -\n\nPay attention to the weight of the items you can carry.\nEspecially Apples are very heavy, so bring them home often.`,
+    home: '- Home -\n\nAt home, you can give apples to your girlfriend Amili and can store items.',
+    map: `- Teleport -\n\nYou can save current location with the map menu, then can teleport to there from another place.\nDon't forget to save the places you want to visit again.`,
+    quest: '- Quest -\n\nThere are inhabitants who need your help in this world.\nYou might receive an apple if you help them.',
+    kill: `- Murder -\n\nYou've shot the friendly inhabitant.\nThey will not revive if you kill them.`
   },
   events: {
     block: {
-      common: 'この先へはまだ行けません',
-      status: '魅力合計が#{status}必要です'
+      common: 'Can not go to the area.',
+      status: 'You need a total of #{status} charms.'
     },
     libra: {
       exclamation: '！',
       question: '？',
-      silence: '………。'
+      silence: '......'
     },
     gameOver: {
-      amili1: ['リブラ、目さめた？', 'もう怖くないよ'],
-      amili2: ['しばらくこうしてよっか']
+      amili1: ['Libra, are you awake?', 'There is nothing to be afraid anymore.'],
+      amili2: [`Let's do this for a while.`]
     },
     forest2Kajitsu: {
       greet: [
