@@ -592,54 +592,52 @@ export default {
     },
     clover: {
       greet: [
-        'やあ、地面によく注意して歩いてくれよな。',
-        '僕は今四つ葉のクローバーを探しているんだから。'
+        'Hey, Can you watch the ground and walk carefully?',
+        `Cause I'm looking for a four-leaf clover now.`
       ],
-      options1: ['誰かにプレゼント？', 'ごめんなさい'],
+      options1: ['Is it present for someone?', 'Sorry'],
       start1: [
-        'プレゼントなもんか。',
-        'いいか、それはもっと大事なものなんだ。',
-        '説明するからよく聞いてくれよ。',
-        '結構前のことなんだけどさ、僕の恋人のカエルが死んでしまったんだ。',
-        'とても悲しんでいたんだけど、ある日彼女が僕の元に戻ってきたんだ。',
-        '彼女はテントウムシに生まれ変わっていたんだ。',
-        'すごく嬉しかった。',
-        'だけど、カエルとテントウムシじゃ付き合っていくのは難しかったのさ。',
-        'だから彼女と相談して、もう一度生まれ変わってもらうことになった。',
-        'つまり、僕はテントウムシになった彼女を殺したんだ。',
-        'とても辛かったけどね。',
-        '何度生まれ変わっても必ず君を見つけるよ、って約束したんだ。',
-        'しばらく彼女は現れなかったけど、最近やっとまた彼女が戻ってきたんだ。'
+        'It must no be any gift.',
+        `It's something more important.`,
+        `I'll explain it to you, so listen.`,
+        'It was quite a while ago, my girlfriend, a frog, died.',
+        'I was very sad, but then one day she came back to me.',
+        'She had been reborn as a ladybird.',
+        'I was so happy.',
+        'But frog and ladybug are hard to get along with.',
+        'So I talked to her and we decided to make her reborn again.',
+        'I mean, I killed her, a ladybird.',
+        'It was very painful, though.',
+        'I promised her that no matter how many times she was reborn, I would always find you.',
+        `She didn't show up for a while, but recently she finally came back again.`
       ],
       start2: [
-        '彼女はクローバーに生まれ変わったらしい。',
-        'それも四つ葉のクローバーさ。',
-        'だけど、彼女の僕を呼ぶ声は聞こえるものの、まだ見つけられていないんだ。',
-        'だからさ、もし彼女を見つけたら、僕のところへ連れてきてほしいんだ。',
-        '摘んでしまって構わない。'
+        `She's been reborn as a clover next.`,
+        `It's also a four-leaf clover.`,
+        `But I haven't been able to find her yet, although I can hear her calling me.`,
+        'So, if you find her, I want you to bring her to me.',
+        `I don't mind if you pluck her.`
       ],
-      options2: ['四つ葉のクローバーを渡す', 'なんでもない'],
-      log: ['四つ葉のクローバーを渡した'],
+      options2: ['Give him the four-leaf clover', 'Nothing'],
+      log: ['Gave the four-leaf clover'],
       complete: [
-        'ああ、彼女を連れて来てくれたんだね！',
-        'うん、間違いない。彼女だ。',
-        'ああ、とても綺麗だよ、サリー。',
-        '君は次は何に生まれ変わるんだい？',
-        'また何度だって君を見つけるよ。',
-        'あ、そうだ、これは彼女を見つけてくれたお礼だ。',
-        '本当にありがとう。'
+        'Oh, you found her!',
+        `Yeah, I'm sure. It's her.`,
+        'Oh, you look so beautiful, Sally.',
+        'What are you going to be reborn next?',
+        `I'll find you again and again.`,
+        'Now, this is to thank you for finding her.',
+        'Thank you so much.'
       ],
       completed: [
-        '彼女を見つけてくれてありがとう。',
-        '今度こそカエルに生まれ変わって戻ってきてくれるといいな。'
+        'Thank you for finding her.',
+        `I hope she'll be reborn as a frog and come back next.`
       ],
       torrent: [
-        '「四つ葉のクローバーが幸せ」なんて誰が決めたんでしょうね。',
-        'もしもクローバーの葉は4枚なのが普通で、3枚が珍しいとすると、きっと「幸せの三つ葉のクローバー」なんて言われていたでしょう。',
-        'ところで、珍しいものというのは、縁起が良いとされるか忌み嫌われるかのどちらかです。',
-        'しかし、縁起が良いとされるはずの四つ葉のクローバーも見つけらると必ず引っこ抜かれてしまいます。',
-        '「幸せ」とか言っておきながら四つ葉のクローバー当人からすると不幸極まりないのです。',
-        '世間から浮いた存在というものは、どのような形であれ最後には淘汰されるようにできているのでしょうか…？'
+        'Who decided that "four-leaf clovers are symbols of happy"?',
+        'If clovers normally had four leaves and three was rare, it would probably have been called "happy three-leaf clover."',
+        'By the way, when a four-leaf clovers are found, they are always pulled out.',
+        'How the "happy" works for the four-leaf clover itself?'
       ]
     },
     snakeFlog: {
