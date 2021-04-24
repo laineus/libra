@@ -502,93 +502,91 @@ export default {
     },
     torrentFlog: {
       start1: [
-        'あー、困りました…。',
-        '実は私が先日捕まえたカブトムシが逃げ出してしまったのです。'
+        `Oh, I'm in trouble...`,
+        `Actually, I'm looking for a beetle.`
       ],
-      options1: ['それは困りましたね', '大切なものだったんですか？'],
+      options1: [`That's troubling`, 'Beetles are everywhere'],
       start2: [
-        'ええ、ただのカブトムシではありません。',
-        'この地では非常に珍しいヘラクレスという黄金色のカブトムシなのです。',
-        'あのカブトムシを探しださなければ私は嘘つきになってしまうのです。'
+        `Yes, it's not just any beetle.`,
+        `It's a golden beetle called hercules, which is very rare in this region.`,
+        `And if I can't find that beetle, I'll be a liar.`
       ],
-      options2: ['嘘つきに？', '何故ですか？'],
+      options2: [`You'll be a liar?`, 'Why?'],
       start3: [
-        'はい。あれは先週のことでした。',
-        '私は友人のカエル殿と話をしていたのです。',
-        '「ところでカエル殿、この森には黄金色のカブトムシが住んでいるのですが、ご存知ですかな？」',
-        '「…ううむ、トレントさんや、そりゃあとんだ嘘でございますな。そんなものがこの世に居るものですか」',
-        '「いえいえ、嘘なんかじゃあ御座いませんよ。ほんとうに居るのです」',
-        '「そうんなことを言って私をからかおうったってそうはいきませんよトレントさん。」',
-        '「もしほんとうにそのようなカブトムシが居るのでしたらさっそく連れてきてくだあさいよ」',
-        '「からかおうなんてつもりはちっとも御座いませんよ。」',
-        '「ですが黄金色のものは大変珍しいものでして、そう容易く連れてくるのはかないませんのです」',
-        '「そんなら信じるには至りませんな。このままじゃあトレントさんは大ぼら吹きになっちまいますよ？」',
-        '「なんとかしてその黄金色のカブトムシを私のところへ持ってきてくだあさい」',
-        'そんなわけで私は慌ててヘラクレスを探しました。',
-        'そして先日ついにそれ見つけたのです。',
-        'しかし、カエル殿と約束した今日、ヘラクレスの姿がどうにも見当たらなくなってしまいました。',
-        'はあ困りました…。このままでは私は大ぼら吹きになってしまいます…。',
-        'そこでお願いなのですが、もしヘラクレスを見かけたら、どうか私の元へ持ってきて頂きたいのです。',
-        'お礼はします。どうかお願いします。'
+        'Yes, that was last week.',
+        'I was talking to my friend, Mister Frog.',
+        '"By the way, Mr.Frog, do you know that there are golden beetles living in this forest?"',
+        `"Umm, Mr.Torrent, that's an outrageous lie. How can there be such a beetle in the world?"`
+        `"No, no, it's not a lie. It does surely exist."`,
+        `"You can't make fun of me, Mr.Torrent."`,
+        '"If there really is such a beetle, then bring it to me."',
+        `"I'm not trying to make fun of you."`,
+        '"But the golden ones are very rare, so not easy to catch it."',
+        `"Then I can't believe you. You're going to be liar, aren't you?"`,
+        '"You had better bring the golden beetle to me someways to prove that."',
+        `That's why I rushed to find a golden beetle, hercules.`,
+        `I don't want to be a liar...`,
+        `So I'm asking you, if you see a hercules, please bring it to me.`,
+        'Please do me a favor.'
       ],
       started: [
-        'ヘラクレスを見かけたら、どうか私の元へ持ってきて頂きたいのです。',
-        'お礼はします。どうかお願いします。'
+        `If you see a hercules, please bring it to me.`,
+        'Please do me a favor.'
       ],
       found: [
-        'おお！ヘラクレスを持ってきて下さったのですね？',
-        'ではそのヘラクレスをこのエリアの南に住むカエル殿のところへ持って行ってくれませんか？',
-        '私は長い距離を歩くのが苦手でして…。'
+        'Oh! You found a hercules!',
+        'Then could you please take it to Mr.Frog who lives in the south of this area?',
+        `I'm not very good at walking long distances...`
       ],
-      options3: ['カエルはあなたを騙していました', 'カエルにヘラクレスを届けました'],
+      options3: ['The frog was deceiving you.', 'I delivered the hercules to the frog.'],
       report: [
-        'そうですか。',
-        '残念なことですが、生きていればあそういう偽りも必要な時があります。',
-        'カエル殿も、私も、生きるのに必死なんです。',
-        'ですから、カエル殿の行いばかり責めるのは酷だとは思いませんか？'
+        'I see.',
+        `It's unfortunate, but there are times in life when such deceiving is necessary.`,
+        'Mr.Frog, and everyone are desperate to live.',
+        `So don't you think it's severe to only blame Mr.Flog?`
       ],
-      options4: ['あなたの言うとおり仕方ない', '生きる為でも人を騙してはいけない'],
+      options4: [`You're right. He should not be blamed.`, 'No one is allowed to deceive others to live.'],
       end1: [
-        'そうですか。これで私の疑いは晴れましたね。',
-        'どうもありがとうございました。これはお礼です。'
+        "Great. Now there's no reason of I'm going to be liar.",
+        'Thank you very much. Here is my gratitude.'
       ],
       end2: [
-        'そうですか、どう考えるかは人それぞれですね。',
-        'さあ、これはお礼です。この度は大変助かりました。では。'
+        'Okay, everyone has different opinions.',
+        'Here is my gratitude. Thank you very much.'
       ],
       end3: [
-        'そうですか。では、そう答えたあなたには正直に白状しましょう。',
-        '実は、この度の話は何もかも嘘なのです。',
-        '高価なヘラクレスを手に入れるため、私とカエル殿の共謀であなたを騙しました。',
-        '本当に申し訳ありません。',
-        'ですが、私も生きるのに必死なんです。',
-        'お詫びにこれをお受け取り下さい。では。'
+        `Is that so? Then I'll make a confession to you for answering so.`,
+        `Actually, everything I told you is a lie.`,
+        'Mr.Frog and I deceived you to get a hercules, a expensive thing.',
+        'I am really sorry.',
+        `But I'm also desperate to live.`,
+        'Please accept this as an apology.'
       ],
-      completed: '皆、生きるのに必死なんです。',
+      completed: 'Everyone is desperate to live.',
       flog: {
-        greeting: 'こんにちはお嬢さん。',
+        greeting: 'Good morning.',
         give1: [
-          'こんにちはお嬢さん。',
-          'え？トレントさんから預かり物？',
-          'やあやあ！それはヘラクレスじゃあありませんか！',
-          'さあ、それを早くこちらへ下さいな！'
+          'Good morning.',
+          'What? Does Mr.Torrent give me something?',
+          `Well, well, well! That's a hercules, isn't it!`,
+          'Now, give it to me quickly!'
         ],
-        options1: ['ヘラクレスを渡す', '渡さない'],
-        give2: ['まあまあそんなこと仰らずに！'],
-        log1: 'ヘラクレスを渡した',
-        log2: 'ヘラクレスを奪われた',
+        options1: ['Give him the hercules', `Don't give it`],
+        give2: [`Don't say that.`],
+        log1: 'Gave him the hercules',
+        log2: 'He took the hercules.',
         give3: [
-          'おお、これがヘラクレス…！',
-          'こいつを売れば私も食に苦しみやしませんねえ、ケケケ',
-          'トレントさんはお人よしだあ。'
+          'Wow, this is the hercules.',
+          `I won't have to worry about my livelihood if I sell this one, hehehe.`,
+          'Mr.Torrent is a softy.'
         ],
-        options2: ['最初から売るつもりで？', 'トレントを騙したの？'],
+        options2: [`Is that for your livelihood?`, 'Did you deceive Torrent?'],
         give4: [
-          'お嬢さん。',
-          '私はヘラクレスを手に入れた。トレントさんは疑いを晴らした。',
-          'ただそれだけのことじゃあないですか。',
-          'なあにもおかしなことはしておりません。',
-          'ですがこの話はトレントさんには内緒でお願いしますよ。それじゃあ。'
+          'Hey, miss.',
+          `I've got a hercules. And Mr.Torrent is now cleared of suspicion.`,
+          `That's all, isn't it?`,
+          `I didn't do anything to be blamed.`,
+          `But please don't tell Mr.Torrent about this. See you then.`
         ]
       }
     },
