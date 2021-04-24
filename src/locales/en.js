@@ -281,44 +281,44 @@ export default {
   },
   tips: {
     amili: {
-      title: 'アミリ',
-      desc: 'あなたの恋人のアミリはリンゴを欲しがっています。世界を探索してリンゴを持ち帰りましょう。'
+      title: 'Amili',
+      desc: `Amili, your girlfriend, wants apples. Let's explore the world and bring back apples.`
     },
     people: {
-      title: '住人',
-      desc: 'フィールドには、会話ができる生き物がいます。彼らの頼みごとを聞くとリンゴがもらえます。'
+      title: 'Inhabitants',
+      desc: 'There are creatures who can talk to you in this world. If you do what they want, you might get an apple.'
     },
     hp: {
-      title: '体力',
-      desc: '画面に表示されているハートはあなたの体力です。生き物の攻撃を受けて無くなると、自宅へ強制移動します。'
+      title: 'HP',
+      desc: 'The heart displayed on the screen is your HP. When it runs out after being attacked by a creature, you will be forced to move to your home.'
     },
     charm: {
-      title: '魅力',
-      desc: '魅力は、恋人のアミリと散歩したり寝たりすると上昇します。魅力が上がると、この世界のより深くへ進むことができます。'
+      title: 'Charm',
+      desc: 'Charm increases when you walk or sleep with your girlfriend Amili. As your charm increases, you will be able to go deeper into this world.'
     },
     weight: {
-      title: 'アイテムの重さ',
-      desc: 'かばんに入るアイテムの重さには上限があります。リンゴは非常に重たいので、早めにアミリに渡しに帰りましょう。'
+      title: `Item's weight`,
+      desc: 'There is a limit to how much items you can carry with your bag. Apples are very heavy, so you had better back home to give them to Amili as soon as possible.'
     },
     use: {
-      title: 'アイテムの使用',
-      desc: '使用できるアイテムをつかむと、かばんの下部にアイコンが表示されます。アイコンにドロップすることでアイテムを使用できます。'
+      title: 'Eat items',
+      desc: 'When you grab an item that you can eat, an icon will appear at the bottom of your bag. You can drop it on the icon to eat.'
     },
     dispose: {
-      title: 'アイテムの破棄',
-      desc: '取得したアイテムはかばんからフィールドにドロップすることで捨てられます。その後マップ移動をするとアイテムは消滅します。'
+      title: 'Dispose items',
+      desc: 'You can dispose items by dropping them from the bag onto the field. The items will disappear when you leave the area.'
     },
     store: {
-      title: 'アイテムの保管',
-      desc: '自宅に置いたアイテムは、マップを移動しても消滅しません。'
+      title: 'Store items',
+      desc: 'Items placed in your home will not disappear even if you get out the home.'
     },
     gun: {
-      title: '銃',
-      desc: '銃を手に入れると、フィールドで使うことができます。アイテムの破壊、生き物の殺害ができます。'
+      title: 'Gun',
+      desc: 'Once you have a gun, you can use it. It can destroy items and kill creatures.'
     },
     murder: {
-      title: '殺害',
-      desc: '会話のできる住人を殺害すると、二度と復活しません。関連するイベントのクリアが不能になります。'
+      title: 'kill',
+      desc: 'Killing an inhabitant who can talk to you will not revive them again. You will not be able to complete related quests.'
     }
   },
   tutorial: {
