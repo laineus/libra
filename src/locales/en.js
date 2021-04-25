@@ -691,7 +691,7 @@ export default {
       options: [`It's creepy`, `I'll take it back`],
       answer1: ['Yeah.'],
       answer2_1: [
-        'Really? That would be helpful.' ,
+        'Really? That would be helpful.',
         'Then take it quickly.'
       ],
       answer2_2: [
@@ -720,7 +720,7 @@ export default {
         `Oh, yeah, right. Try to curse me with it.`, // Right
         'If anything happens to me, you win.', // Right
         'Hey, you,', // Right
-        'Now, go to the forest and put a curse on me with the doll.' , // Right
+        'Now, go to the forest and put a curse on me with the doll.', // Right
         `When you've done that, come and report back to us. Then I'll reward you.` // Left
       ],
       started1: [
@@ -777,46 +777,45 @@ export default {
     },
     curser: {
       start: [
-        '呪いのかけ方ですか？',
-        '簡単ですよ。呪いをかけたい相手に「貴方に呪いをかけた」と知らせればよいのです。',
-        '呪いの儀式なんてものをやる必要はありません。',
-        '信じられませんか？',
-        '「病は気から」と言う言葉がありますよね。',
-        'これ、ただのことわざではないんです。',
-        '3匹のヘビがグルになってある兎に暗示をかけたことがあります。',
-        'こんな話です。',
-        '兎に最初に会ったヘビは言いました。',
-        '「やあ、兎さん。調子はどうだい？」',
-        '「これはヘビさん！お陰様で私はとても元気ですよ！」',
-        '「そうかい？どうやら顔色が優れないように見えますよ？」',
-        '「え？そうですか？」',
-        '2匹目に会ったヘビも言いました。',
-        '「やあ、兎さん。おや、顔色が悪いね。大丈夫かい？」',
-        '「え？そうですかねぇ…？」',
-        '最後に3匹目に会ったヘビが聞きました。',
-        '「やあ兎さん。調子はどうだい？」',
-        '「うーん…。実はちょっと具合が悪いんです…。」',
-        '確かに元気だったはずの兎が、他人の言葉だけで「自分は具合が悪い」と錯覚してしまったのです。',
-        'このように、暗示というのは案外単純なものなんです。',
-        '儀式はせずに相手に「呪いをかけた」とだけ伝えてみてはどうでしょう？',
-        'まあ、どうしても実際に呪いの儀式をしたいのであれば、',
-        '呪いの人形を持って来てくれればお手伝いしますよ。',
-        'おすすめはしませんが。'
+        'A way to curse?',
+        `It's easy. Only you have to do is let them know that you've put a curse on them.`,
+        `You don't have to do an actual curse ritual.`,
+        `Can't you believe it?`,
+        `There is a saying, "Disease is from your mind." isn't there?`,
+        `It's not just a saying.`,
+        'Three snakes in its group once try mind control to a rabbit.'
+        `Here's the story.`,
+        'The first snake to met the rabbit said...',
+        '"Hey, Rabbit. How are you doing?"',
+        `"Hi, Mr.Snake. I'm doing very well!"`,
+        `"Is that so? You don't look so good, do you?"`,
+        '"What? Am I look so?"',
+        'The second snake also said that,',
+        `"Hello, Rabbit. Oh, you don't look so good. Are you okay?"'`
+        `"Really? I think I'm okay."`,
+        'The last one asked,',
+        '"Hey, Rabbit. How are you doing?"',
+        `"Hmm... Actually, I'm a little sick..."`,
+        'The rabbit, who should have been fine, turn into sick by just words of others.',
+        `Mind control is simple, isn't it?`,
+        `So why don't you just tell them that you have cursed them without any ritual?`,
+        'Well, if you really want to actually do the curse ritual,',
+        'I can help you if you bring me a straw doll.',
+        `But I don't recommend it, though.`
       ],
-      options: ['呪いの儀式をする', '呪いの儀式はしない'],
-      failed: ['おや、呪いの人形がなければ儀式は出来ませんよ？'],
+      options: ['Do the curse ritual', `Don't the curse ritual`],
+      failed: ['You need a straw doll to do the curse ritual.'],
       exec1: [
-        '分かりました。',
-        'では、始めます。',
-        '呪いの人形を貸して下さい。'
+        'Okay.',
+        `Now Let's begin.`
       ],
       exec2: [
-        '儀式は終わりました…。',
-        'では…。'
+        `I've done the curse ritual.`,
+        'See you then.'
       ],
-      cancel: ['では。'],
-      greet: ['調子はどうですか？'],
-      options2: ['元気です', '呪いの儀式をしたい']
+      cancel: ['See you then.'],
+      greet: ['How are you doing miss?'],
+      options2: ['Good', 'I want to do the curse ritual']
     },
     eel: {
       start1: [
