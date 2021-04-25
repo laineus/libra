@@ -193,7 +193,7 @@ export default {
     },
     eel: {
       title: 'Uminoke',
-      desc: 'The fishermen have caught a cursed monster called Uminoke, and Dr.Anton is able to purify it.'
+      desc: 'The fishermen have caught a cursed monster called Uminoke, and Dr.Anton is able to exorcise it.'
     },
     pityPenguin: {
       title: 'The Poor Penguin',
@@ -819,107 +819,109 @@ export default {
     },
     eel: {
       start1: [
-        'なあニンゲンのお嬢さんや、ワシは今日漁に行って来たんだが、困ったことにウミノケを釣ってしまったんだ。',
-        'すまんがこれをアントン先生のところへ持っていって供養してもらってくれないか？'
+        'Hey, miss, I went fishing today, and I caught a Uminoke.',
+        `So could you please take this to Dr.Anton to exorcise and dispose it?`
       ],
-      startOptions1: ['ウミノケ？', 'いやです'],
+      startOptions1: ['Uminoke?', 'No thank you'],
       start2: [
-        'ウミノケを知らんか。',
-        'あれは数年前のことだ。漁で普段見たことのねえ魚が釣れたんだ。',
-        '黒くて蛇みたいなにょろにょろした形で少々気味が悪かったよ。',
-        '家に帰って試しに食ってみたんだが、やけに脂が乗っていてそりゃあ美味かった。',
-        'あまりに美味いもんで、焼いたり刺身にしたりしてその日のうちに一匹丸々平らげたよ。',
-        'しかし、あとからどうにも腹が痛くて吐き気もして仕方なくなったんだ。',
-        'まあただの食当たりかとも思ったんだが、',
-        '今度は皮膚が青紫色になったり、体が金縛りのようになったり、呼吸がし辛くなったりとそりゃあ酷いことになった。',
-        'こりゃあいくらなんでも様子がおかしいってんで慌ててアントン先生という方に相談しに行ったんだ。',
-        '事情を話すとアントン先生はこう聞いてきた。',
-        '「あんた、その魚はどんな姿をしていました？」',
-        '「ええと、蛇のような姿でまっ黒でした」',
-        '「あんたなあ、そりゃあきっとウミノケですよ」',
-        '「な、なんですかそれは？」',
-        '「ウミノケってのは海の妖怪で、魚なんかじゃあないですよ」',
-        '「そんなもんを食っちまっては呪われても当然ということです」',
-        'ワシは顔が真っ青になりましたよ。',
-        '「そ、そんな！ど、どうすれば？」',
-        '「まあ慌てなさんな。ちゃんと祓ってやります」',
-        'そうしてワシは祓ってもらった後すっかり楽になったんです。',
-        'でも、もしまた漁であの妖怪が釣れたらと思いゾッとして聞きました。',
-        '「また、ウミノケが釣れたらどうしましょう先生？」',
-        '「ああ、そんときは必ずウチへ持ってきなさい。ちゃあんと供養しますからね」',
-        'それからというもの、ウミノケを釣ってしまう度に先生のとこへ持って行ってるんだ。',
-        'で、最初に言った通り今日もヤツが釣れてしまったんだ。',
-        'だから、悪いがお嬢さん、お礼を出すからアントン先生のとこへ持って行ってくれねえか？'
+        `Don't you know Uminoke?`,
+        `That was a few years ago. I was fishing and caught a fish I'd never seen before.`,
+        'It was black, snakelike, and a little creepy.',
+        'I went home and tried it, but it was so delicious.',
+        'It was so good that I grilled it or try it as raw and ate the whole fish that day.',
+        'But later, I had a stomachache and felt nauseous.',
+        'Well, I thought it was just a food poisoning,',
+        'But then my skin turned purple, my body felt like paralysis, and I had trouble breathing.',
+        'I went to see Dr.Anton to consult him.',
+        'I told him about the all, then he asked me that,',
+        '"What did the fish look like?"',
+        '"Well, it looked like a snake and it was black"',
+        'Ooh... it must be a Uminoke',
+        `What's that?`,
+        'Uminoke is a sea monster, not a fish.',
+        `It's only natural that you'd be cursed if you ate such a thing.`,
+        'I got freaked out.',
+        '"Oh, no! What should I do?"',
+        `"Well, don't panic. I'll exorcise you properly"`,
+        'And so, after the exorcism, I was completely relieved.',
+        'But I was terrified to think that if I caught that monster again...',
+        '"What should I do if I catch the monster again, doctor?"',
+        `"In that case, be sure to bring it to me. I'll exorcise and dispose it"`,
+        'Since then, every time I catch a Uminoke, I bring it to the doctor.',
+        'And as I said, I caught one today.',
+        'So, miss, could you please take it to Dr.Anton?',
+        `I'm going to give you a reward then`
       ],
-      startOptions2: ['いいですよ', 'いやです'],
-      answer1: ['たのんだぞ。'],
-      lost: ['おいおい、ちゃんと持って行ってくれよ。'],
-      answer2: ['そうか。'],
-      start3: ['悪いがお嬢さん、お礼を出すからアントン先生のとこへ持って行ってくれねえか？'],
+      startOptions2: ['Leave it to me', 'No thanks'],
+      answer1: ['Thank you. Leave it to you.'],
+      lost: ['Hey, make sure you take it.'],
+      answer2: ['Okay.'],
+      start3: ['So, miss, could you please take it to Dr.Anton?'],
       end1: [
-        '供養は終わったようだな。御苦労さん。',
-        'お礼を持って行ってくれ。じゃあな。'
+        'Did you done the exorcism? Great! Thank you so much.',
+        'Please take my thanks with you. See you then.'
       ],
-      endOptions: ['うな重と手紙を渡す', '手紙のみを渡す'],
-      log1: 'アントンの手紙を渡した',
-      log2: 'うな重を渡した',
+      endOptions: ['Give him the Unajyu and the letter', 'Give him the letter only'],
+      log1: 'Give him the letter',
+      log2: 'Gave him the Unajyu',
       end2: [
-        'アントン先生…。正直驚いよ…。',
-        'まあ、確かにあんな美味いんじゃあ仕方ねえかもな…。',
-        'しかし、無知というのは損なもんだなあ。',
-        'ワシが無知ゆえに腹を下し、妖怪の話なんぞに騙され、その後も美味いものをずっと食い損ねていただなんてよ。',
-        '今は怒りよりも自分の無知を恥じているよ。',
-        'とにかく、今回はありがとうな。これを貰ってくれ。じゃあな。'
+        `Oh, Dr.Anton... I'm really surprised...`,
+        'But it tasted so good that he did such a thing.',
+        `Ignorance is disadvantage, isn't it?`,
+        'I had food poisoning, was fooled by stories of monsters, and missed out on delicious fish for a long time afterwards.',
+        `Because I'm ignorance.`,
+        `I'm more ashamed of my ignorance than angry for him now.`,
+        'Anyway, thank you for today. Please take this. See you then.'
       ],
-      completed1: ['この前は助かったよ。'],
-      completed2: ['世の中無知なやつほど損をしていくのかなぁ…。']
+      completed1: ['Thanks for the help.'],
+      completed2: ['I realize that the more ignorant, the more lose...']
     },
     anton: {
       start1: [
-        'おや、ニンゲンのお嬢さん。今日はどうしました？'
+        'Hey miss. How can I help you today?'
       ],
-      startOptions1: ['ウミノケを渡す', 'なんでもない'],
-      giveLog: 'ウミノケを渡した',
+      startOptions1: ['Give him the Uminoke', 'Nothing'],
+      giveLog: 'Gave the Uminoke',
       start2: [
-        'おや、これはウナギじゃあないですか。',
-        'もしかしてこれを譲ってくれるのですか？'
+        `Oh, this is an eel, isn't it?`,
+        'Are you going to give me this, by any chance?'
       ],
-      startOptions2: ['え、ウミノケでは？', 'ウナギ？？'],
+      startOptions2: ['This is Uminoke', 'Eel?'],
       start3: [
-        'えっ？',
-        'あっ！ああ、なるほど…あなたはあの方の使いで…',
-        'ええと…。',
-        '…正直に白状します。',
-        '実はこの魚、ウナギと言うとても美味しい魚なんです。',
-        '私はこれが大好物でして。',
-        'あなたにお使いを頼んだであろう彼には嘘を吐いたんです。',
-        'ウミノケなんて妖怪はおりません。',
-        'ウナギの血液にはイクシオトキシンという毒がありますからね。',
-        '彼が話した症状はまさにその毒によるもので、決して呪いなどではありません。',
-        'しかし、ウナギの毒も火に通せばすっかり無害なのです。',
-        '彼はきっと刺身で食べてしまったのでしょう。',
-        'あの時、私には悪い考えが浮かんでしまいました…。',
-        '私は、「それは海ノ怪であるから食べずに持って来い」と嘘を…。',
-        '結果として滅多に味わえない至高の魚を彼は私に持って来るようになったのです。',
-        'ああ、どうかそんな目で見ないでください。',
-        '彼には申し訳ないながら、人を騙してでも食べたい味なのですよ…。',
-        'どうか内密にお願いします。'
+        'What?',
+        `Oh! I see, I see... you're his messenger...`,
+        'Okay...',
+        `I'll tell you everything`,
+        'Actually, this fish is a very tasty fish called eel.',
+        'I really like this fish.',
+        'And I lied to him who would have asked you.',
+        'There is no such a monster as Uminoke.',
+        'Eel blood has a poison called ixotoxin.',
+        'His symptoms are caused by that very poison, and are not any curse.',
+        'However, even the strong poison is completely harmless once it is heating.',
+        'He must have eaten it as raw.',
+        'At that time, I came up with a bad idea...',
+        `I lied and said, "It is a sea monster, so don't eat it and bring it to me next time."`,
+        'As a result, he began to bring me the supreme fish.',
+        `Oh, please don't look at me like that.`,
+        `I'm so sorry for him, but It tastes so good that it makes me do bad things.`,
+        'Please, please keep this to yourself.'
       ],
-      startOptions3: ['代わりに調理したウナギを食べさせて', '正直に謝った方がいい'],
-      answer1_1: ['分かりました。'],
+      startOptions3: ['Let me eat cooked eel instead', 'You should apologize for him'],
+      answer1_1: ['Yes, sure.'],
       answer1_2: [
-        '出来ました。お持ち下さい。',
-        'では。'
+        `It's ready. Please take it.`,
+        'See you then.'
       ],
       answer2_1: [
-        'そうですね。確かにそうするべきです。',
-        'ちょっと待っていて下さい。'
+        'Yes, I should. Surely I should.',
+        'Please wait for a minutes.'
       ],
       answer2_2: [
-        '出来ました。調理したウナギと、こちらは謝罪の手紙です。',
-        'どうかこれを彼に届けてください。'
+        `It's done. Here is the cooked eel and the letter of apology for him.`,
+        'Please give this to him.'
       ],
-      solved: ['では。']
+      solved: ['See you then.']
     },
     liveForEveryone: {
       start: [
