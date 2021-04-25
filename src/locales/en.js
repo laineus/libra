@@ -925,40 +925,37 @@ export default {
     },
     liveForEveryone: {
       start: [
-        '私にはその人の「欲しいもの」や「してほしいこと」が見えます。',
-        'ほんとうですよ。',
-        'あなたは今リンゴが欲しいのではないですか？',
-        '当たっていますね？',
-        '天から授かったこの能力で、私は誰かのために生きることを誓っていたのです。',
-        'これまで私は、その人の望みが私に叶えられる場合、いつも見返りを求めずに叶えてきました。',
-        'いいえ。見返りを求めていないつもりだったのです。',
-        '先日、ある旅のお方とすれ違ったのですが、彼は喉が渇いていたらしく飲み物を望んでいたのです。',
-        'ですから私はお茶の入った水筒を差し上げたのです。',
-        'するとそのお方は水筒のお茶を飲み干し、無言で去って行ってしまったのです。',
-        '私はお礼の一言を言わなかった彼に疑問を感じたのです。',
-        'そのとき気付いてしまったのです。',
-        '私はお礼を見返りにお茶を差し上げていたのではないかと。',
-        'そのお方の喉の渇きを潤せたときに私の使命は果たせていたはずなのです。',
-        'なのに私の心は無意識にお礼を待っていたのです。',
-        'このような心をもって「誰かのため」などという生き方は務まりません。',
-        '私は「誰かのため」がどういうものなのか、ここ数日考えていました。',
-        '例えば、己の命と引き換えに誰かの命を救ったとしたら、それは「誰かのため」といえるでしょうか？',
-        'もしかしたらそれは、死後も残る栄誉という見返りを求めた行動といえるのかもしれません。',
-        '「全ての行いは己のためのもの」、今の未熟な私にはどう転んでもその結論に至ってしまうのです。',
-        '私はまた一から修行を積み直すつもりです。',
-        'ほんとうの「誰かのため」の生き方が何たるかを悟らねばなりません。',
-        'ここまで聞いてくださってありがとうございました。',
-        'さあ、これはほんのお礼です。'
+        'I can see what the person wants and what they want me to do.',
+        `It's not a lie.`,
+        'You want apples, right?',
+        'With this ability that was given from God, I had vowed to live a life for others.',
+        `So I have always granted a person's wishes without anything in return.`,
+        'But, I realize that I wanted something returns in fact.',
+        'One day, I passed a traveling man who was thirsty and wanted a drink.',
+        'So I gave him a canteen full of tea.',
+        'Then he drank it down and went away without a word.',
+        `I wondered why he didn't say thank you.`,
+        'At the moment, I realized that.',
+        '"Without returns"? No. my heart was unconsciously waiting for a "thank you".'
+        `I can't say "live a life for others" with this kind of mind.`,
+        'So I have been thinking about what "for others" means for the past few days.',
+        `For example, if I save someone's life in exchange for my own life, is that "for others"?`,
+        `The action is might for eternal honor after my life.`
+        `Now I'm completely not sure what "for others" is.`,
+        'I am going to start my austere training all over again.',
+        'I have to realize what is the truth.',
+        'Thank you for listening to me so far.',
+        'Now, this is just a thank you.'
       ],
-      options: ['ありがとう', '見返りのために話を聞いたのではない'],
+      options: ['Thank you', `I didn't hear you for anything in return.`],
       answer1: [
-        'いいえ、こちらこそありがとう。またどこかでお会いしましょう。では。'
+        `Thank you too. Well then, I'll see you somewhere else.`
       ],
       answer2: [
-        'ふふ。そうですね。ではこれは長話に時間を取らせてしまったお詫びということにしましょう。',
-        'それでは、またどこかで。'
+        `Okay, Then let's call this an apology for taking up so much of your time with my long story.`,
+        `Well then, I'll see you somewhere else.`
       ],
-      completed: ['日々、修行あるのみです。']
+      completed: ['I am going to start my austere training again.']
     },
     pityPenguin: {
       greet: ['何か用ですか？'],
