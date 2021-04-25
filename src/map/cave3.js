@@ -44,7 +44,8 @@ export default {
       if (state.events.curse === CURSE_STEPS.NULL) {
         await talkBoth(t('events.curse.start1'), [tr, tl, tr])
         if (bag.hasItem('strawDoll')) {
-          await talkBoth(t('events.curse.start2'), [tl, tl, tl, tr, tl, tr, tr, tr, tr, tl, tl, tl, tl])
+          await talkBoth(t('events.curse.start2'), [tl, tl, tl, tr, tl, tr, tr, tr, tr, tl])
+          await speakLeft(t('events.curse.started1'))
           uiScene.log.push(t('ui.questStart', t('quest.curse')))
           state.events.curse = CURSE_STEPS.STARTED
         }

@@ -705,76 +705,74 @@ export default {
       ]
     },
     curse: {
+      // This conversation is attended 2 NPC, so the Array length and order can not be changed.
       start1: [
-        '何度でも言うさ。呪いなんてもんこの世には存在しねえ。',
-        'いいや、ある。賭けたっていい。',
-        '証明のしようがないんじゃあ賭けすら成立しないじゃないか。'
+        `I'll say it again. There is no such thing as a curse in this world.`, // Right bat
+        'There is! You can bet on it.', // Left bat
+        `How to bet if there's no way to prove it?` // Right
       ],
       start2: [
-        'ん？',
-        'なあ、あんた、その持っている人形…、',
-        'それは藁人形じゃあないか。',
-        'へえ、よく呪いの儀式だかに使うやつか。',
-        '丁度良い。その藁人形を使って試してみようじゃないか。',
-        'お、おおそうだな。ぜひそれで俺を呪ってみろ。',
-        '俺の身に何か起きたらお前の勝ちだ。',
-        'なああんた。そういうわけだ。',
-        '今から森に行ってその人形で俺に呪いをかけてきてくれ。',
-        'やってきたら報告しに来てくれ。そうしたらお礼を出す。',
-        '森の北の方のエリアにリンゴのなる木があるだろ？',
-        'そこにいるトレントが詳しいから彼を頼ってくれ。',
-        '頼んだぞ。'
+        'Hmm?', // Left
+        `Hey, you, the doll you have...`, // Left
+        `It's a straw doll, isn't it?`, // Left
+        `Yeah, it's often used in curse rituals.`, // Right
+        `Just right. Let's try it out using the straw doll.`, // Left
+        `Oh, yeah, right. Try to curse me with it.`, // Right
+        'If anything happens to me, you win.', // Right
+        'Hey, you,', // Right
+        'Now, go to the forest and put a curse on me with the doll.' , // Right
+        `When you've done that, come and report back to us. Then I'll reward you.` // Left
       ],
       started1: [
-        '森の北の方のエリアにリンゴのなる木があるだろ？',
-        'そこにいるトレントが詳しいから彼を頼ってくれ。',
-        '頼んだぞ。'
+        'In the northern area of the forest, there is a tree that grows apples, right?', // Left
+        'Torrent there knows a lot about it, you can ask him.', // Left
+        `We're counting on you.` // Left
       ],
       started2: [
-        '…ふん、呪いの人形だなんて馬鹿馬鹿しいな。'
+        `A cursed doll? That's silly.`
       ],
       executed: [
-        'ああ、あんたはこの前の…。',
-        '実は儀式のことなんだが、あれはやっぱり中止だ。',
-        'どういうわけか、あいつ、突然病を患ってぽっくり逝っちまったんだ。',
-        'だから呪いの儀式はしなくていい。',
-        'やっぱりあいつの言うとおり呪いなんてもんはないのかもな。',
-        'そりゃあ生きてりゃ突然病気になったりもする。',
-        'それを全部呪いだ祟りだーなんて得体のしれないものに責任を押し付けてちゃいかんな。'
+        `Oh, it's you...`,
+        `Actually, it's about the ritual, I wanna cancel it.`,
+        'Somehow, that bastard suddenly got sick and passed away.',
+        `So there's no need to do the curse ritual now.`,
+        `Maybe he's right, there is no such thing as a curse.`,
+        'When we live, we can suddenly get sick like him.',
+        `We can't put all the blame on a curse or some mysterious things.`
       ],
-      noticeOptions: ['儀式をしてきた', '儀式はしなかった'],
+      noticeOptions: [`I've done the ritual.`, `I didn't do the ritual.`],
       answer1_1: [
-        'そうか、この先どうなるか楽しみだな。',
-        'ほら、これはお礼だ。'
+        `Well, I can't wait to see what happens next.`,
+        'Here, this is a thank you.'
       ],
       answer1_2: [
-        'そうか…。',
-        'ん？どうした？',
-        'いいや…。'
+        'Oh, you did...', // Right
+        'Ah? What?', // Left
+        'Nothing...' // Right
       ],
       answer2_1: [
-        'なんだ？やらなかったのか。',
-        'そうかそうか、やらなかったのか！',
-        'まあ、賭けにはならんかったが、とりあえずこれはお礼だ。'
+        `You didn't do it?`, // Left
+        `Oh, yeah, yeah, you didn't do it!`, // Right
+        `Well, it wasn't a good bet, but here's a thank you anyway.` // Right
       ],
       answer2_2: [
-        'ん？なんでやらなかったのにお礼なんだ？',
-        'いや…、まあ細かい事は気にするな。',
-        'じゃ、じゃあな譲さん。'
+        `Hmm? Why are you thanking her even she didn't do it?`, // Left
+        `No..., well, don't care about the details.`, // Right
+        'Well, see you later, miss.' // Right
       ],
       noticedDid1: [
-        'どうなるか楽しみだな。',
-        '…。'
+        `Good. I'm looking forward about what happens for him`,
+        '......'
       ],
       noticedDid2: [
-        'ああ、譲ちゃん、どうやら賭けは俺の負けのようだ。',
-        'あれからどうにも体調が悪くて仕方ねえんだ。',
-        '病気なんて滅多にしない俺が突然意味も無くこれだ。',
-        'さすがに何かあるのかもしれねえな。',
-        'ほらな、言った通りだろ。賭けは俺の勝ちさ。'
+        `Hey, it looks the bet is my lose.`, // Right
+        `I'm rarely sick,`, // Right
+        `but suddenly I've been feeling really sick since then.`, // Right
+        'I think something might be wrong by the curse.', // Right
+        'See, I told you so. I won the bet.' // Left
       ],
       completed: [
-        'まあ何にせよ、誰かに恨まれない生き方を目指すのが一番ってこったな。'
+        'Anyway, the best thing to do is to live your life of no one curse you.'
       ]
     },
     curser: {
