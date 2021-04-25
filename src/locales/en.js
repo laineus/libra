@@ -682,27 +682,26 @@ export default {
     },
     strawDoll: {
       start: [
-        'なぁあんた、この藁人形見てくれよ。',
-        'これ、森で拾って持って帰って来たんだが、',
-        '後からやっぱり気味悪いからってんで捨てて来たんだ。',
-        'だけどな、次の日起きてみると捨てて来たはずのこれが家にあったんだ。',
-        '何回捨ててきても必ずうちへ戻って来るんだ。',
-        '気味悪いだろ？'
+        'Hey you, look at this straw doll.',
+        `I found it in the forest and brought it home, but later I threw it away because it was creepy.`,
+        `But when I woke up the next day, I found this doll in my house that I had thrown away.`,
+        'No matter how many times I throw it away, it always comes back to my house.',
+        `It's creepy, isn't it?`
       ],
-      options: ['気味悪いですね', '私が引き取ります'],
-      answer1: ['あぁ。'],
+      options: [`It's creepy`, `I'll take it back`],
+      answer1: ['Yeah.'],
       answer2_1: [
-        '本当か？それは助かるな。',
-        'じゃあ早速持って行ってくれ。'
+        'Really? That would be helpful.' ,
+        'Then take it quickly.'
       ],
       answer2_2: [
-        'でも捨てないでくれよ。',
-        'また俺のところに戻ってきたらかなわんからな。'
+        `But please don't throw it away.`,
+        `I don't want it coming back to me.`
       ],
-      received: ['気味悪いよな、藁人形って…。'],
+      received: [`I don't wanna see the doll again.`],
       disposed: [
-        'おい姉ちゃん、例の藁人形、また俺のところへ戻って来たぞ。',
-        '貰ったんならちゃんと持っていてくれよ…。'
+        'Hey! that straw doll is coming back to me again.',
+        `Don't throw it away.`
       ]
     },
     curse: {
