@@ -670,16 +670,15 @@ export default {
         `So if you bring me gems too, I'll trade you this apple.`
       ],
       started: [
-        'そういうわけで、あんたも宝石を持ってきたらこのリンゴと交換してやるぜ。',
-        'そうだな、この洞窟で捕れる4色の宝石をそれぞれ2つずつ集めてきてくれ。',
-        '宝石は岩の塊を破壊すれば出てくることがある。',
-        '岩の塊を破壊するには銃を手に入れて撃つといい。'
+        `So if you bring me gems too, I'll trade you this apple.`,
+        'Well, I want you to bring me two of each of the four colored gems.',
+        'Destroy chunks of rock with a gun to get gems.'
       ],
-      options: ['宝石を2つづつ渡す', '渡さない'],
-      complete1: 'お、持ってきたか。有り難く頂くよ。',
-      logs: ['サファイヤを2個あげた', 'エメラルドを2個あげた', 'アメジストを2個あげた', 'ルビーを2個あげた'],
-      complete2: 'ほら、約束してたリンゴだ。',
-      completed: 'よう。もう用は済んだはずだぜ。'
+      options: ['Give him two gems each', 'Nothing'],
+      complete1: 'Good, you brought it.',
+      logs: ['Gave him two sapphires', 'Gave him two emeralds', 'Gave him two amethysts', 'Gave him two rubies'],
+      complete2: 'Okay, take it.',
+      completed: 'What? I have nothing to tell you anymore.'
     },
     strawDoll: {
       start: [
