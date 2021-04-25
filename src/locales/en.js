@@ -958,112 +958,109 @@ export default {
       completed: ['I am going to start my austere training again.']
     },
     pityPenguin: {
-      greet: ['何か用ですか？'],
-      options: ['手紙とクチナシを渡す', '手紙のみを渡す', 'なんでもない'],
-      log1: '時音の手紙を渡した',
-      log2: 'クチナシを渡した',
+      greet: ['Can I help you?'],
+      options: ['Give the letter and gardenia', 'Give the letter only', 'Nothing'],
+      log1: 'Gave the letter',
+      log2: 'Gave a gardenia',
       solve1: [
-        'これは…。',
-        '僕は、もう彼女とは…会えないんですね…。'
+        'Oh, this is...',
+        `I won't be able to...see her again...will I?`
       ],
-      reactions: ['怨んでいないんですか？', 'そんな女は忘れましょう'],
+      reactions: [`You don't hold a grudge?`, 'Forget such a woman'],
       answer1: [
-        '怨んでなんていませんよ。',
-        '僕は彼女を愛していたんですから。'
+        `I don't.`,
+        'Because I really loved her.'
       ],
       answer2: [
-        '僕は彼女を愛していました。'
+        'I really loved her.'
       ],
       solve2: [
-        '騙す気だったかなんて関係ありません。',
-        '持って行かれたお金が惜しいとも思いません。',
-        '彼女ともう会えないのがただ悲しいだけです。',
-        'でも、そんなことを言っていたって仕方がありませんね…。',
-        '少しずつ気持ちを切り替えていくことにします。',
-        'この度はありがとうございました。これをお持ち下さい。'
+        `I don't care if she deceived me.`,
+        `I don't even miss the money.`,
+        `I'm just sad that I can't see her again.`,
+        `But I can't help saying that...`,
+        `I'm going to change my mind little by little.`,
+        'Thank you very much. Please take this with you.'
       ],
       solve3: [
-        'これは…。',
-        'これは、彼女が書いたものではありませんね…？',
-        '…。',
-        'はあ、僕は何をずっとくよくよしていたんだ…。',
-        '友にまでここまで心配させてしまって…。',
-        '本当は騙されていた事に心のどこかで気付いていたんだ。',
-        'どうしてもそれを認めたくなかっただけなんです。',
-        'もう彼女とは…会えないんですね…。',
-        'でも、もう大丈夫です。',
-        '僕には心配してくれる友人もいますしね。',
-        'この度はありがとうございました。これをお持ち下さい。'
+        'This is...',
+        `This isn't letter she wrote, is it...?`,
+        '....',
+        'Huh, what have I been dwelling on...' ,
+        `I've made my friend worry about me so much...`,
+        'In fact, I already realized that I was being deceived.' ,
+        `I just didn't want to admit it.`,
+        `I can't... see her again...`,
+        `But, okay, I'm okay now.`,
+        'Because I have such a good friend.' ,
+        'Thank you very much. Please take this.'
       ],
       solved: [
-        '僕は、もう大丈夫です。'
+        `I'm okay now. Don't worry about me.`
       ]
     },
     pityPenguinFriend: {
       start1: [
-        '北の穴にはハチという男が住んでいたんだが、',
-        'こいつがまあ～、いつまで経っても女に恵まれない奴でな。',
-        '天涯孤独と開き直って独り寂しく暮らしてたんだわ。',
-        'しかし、数ヶ月前のことなんだが、あいつの元に一人の女が訪れたらしい。',
-        'それがたいそう美しい女だったらしく、そんな者が自分などに何の用だと思って用件を聞くと、',
-        '「時音と申します。突然で不審とお思いかもしれませんがどうか聞いてください」',
-        '「この度用事でこの地を訪れました。そして表であなたをお見かけし、私の心は一目で貴方の虜となりました」',
-        'なんて言い出したらしい。',
-        '挙句の果てには今すぐめとってくれと家に上がり込もうとしたそうだ。',
-        'もちろんそんなうまい話はこの世にないさ。',
-        'いくらハチといえど疑ったそうだ。',
-        '「そんな口から出まかせで僕を騙そうだなんて気分が良くないなあ」',
-        '「きっと家に上げたら夜中に僕が寝た隙に何もかも盗り去ってしまうんだろう？」',
-        'そう言うと女は、「そんなつもりはありません！なんなら私の足首と部屋の柱を紐で繋いでくれたって構いません！」',
-        'と抜かしたそうだ。',
-        'そこまで言うんならとハチはそいつを部屋に上げて本当に紐で足首と柱を繋いだらしい。',
-        'すると女はニコニコと嬉しそうにハチを見るばかりで、ハチもすっかり混乱してしまった。',
-        'そんなハチだったが、その晩にはちゃっかりその女と夜を共にしたわけだ。',
-        'そうなってしまうともう大変さ。',
-        '今まで女縁の無かったハチは一晩ですっかりその女にぞっこんだ。',
-        '「ほんとうにボクと結婚してくれるのかい？」',
-        '「何度でも申し上げます。私はあなたのものです」',
-        '相変わらず女はニコニコ嬉しそうな顔だ。',
-        '「でも貴女は用事でここに訪れていたんだろう？一度帰ってご家族に挨拶をせねばならんよ」',
-        '「分かりました。確かに両親も心配していると思うので、一度挨拶に帰ります」',
-        '早速帰る準備を始めた女にハチは札の束を差し出した。',
-        '「これは往復の旅の費用と、ご実家への支度金だよ」',
-        '女の実家の方に相手が貧しい男と思われてはいけないと考え、支度金はかなり渡したそうだ。',
-        '「必ず戻ってきます」',
-        'そうして一度実家へ帰っていった女だが、いつまで待てど戻ってくる気配が無い。',
-        'ハチは街の外れでずぅっと帰りを待っているが、やっぱり戻ってくるわけはねえ。',
-        '最初はちゃんと怪しいと思って疑ってたのに、',
-        'たった一晩でこれだ。',
-        '男ってのはなんでこうも馬鹿なんだろうな？',
-        '「悪い女に騙されたんだ、諦めろ」と誰が声をかけても聞きやしねえ。',
-        'なんと、未だにずぅっと待っているんだ、あいつは。',
-        '俺はその姿が気の毒でならねえ。何とか諦めさせてやりたいのさ。',
-        'そこで思いついたんだ。',
-        'あの女のフリをして手紙を出して、結婚はできないとハッキリ伝えれば諦めるんじゃないかってな。',
-        'でもただ手紙を出しても疑わしい。',
-        'そこでクチナシの花を添えようと思うんだ。',
-        'その女が住む地にはクチナシが沢山咲いていると話していたらしいんだ。',
-        'それを添えればさすがに信じるだろう。',
-        'どうだ、姉ちゃん。ひとつ協力してくれないか？'
+        'There is a man named Hachi who lived in the northern area',
+        `This guy, well, he's never been with a woman.`,
+        'He was supposed to live his lonely life.',
+        'But a few months ago, he was visited by a beautiful woman.',
+        'So He asked her what she wanted, she said,',
+        '"My name is Tokine. You must suspicious me, a sudden visitor, but please listen to me."',
+        '"I have come to this place on business."',
+        '"And when I saw you from over there, my heart was instantly captivated by you"',
+        `That's what she said.`,
+        'Furthermore, she got into his house and asked him to marry her right now.',
+        `Of course, there's no such a good deal in this world.`,
+        'Even him, he was suspicious of her. So he said,',
+        `"Don't trying to trick me with that kind of nonsense."`,
+        `"If I let you in, you'll probably steal everything while I'm sleeping, won't you?"`,
+        'The woman replied,',
+        `"I'll never do like that! If you can't trust me, you can tie my ankles to the pillars in your room."`,
+        'Cause she insist, Hachi took her up to his room and tied her ankle to the pillar.',
+        'The woman just looked at Hachi smiling and happy, so Hachi was completely confused.',
+        'But he ended up spending the night with the woman that night.',
+        'After that, Hachi is simple.',
+        'He was completely smitten by the woman after the night.',
+        '"Are you sure you want to marry me?"',
+        '"I will tell you again and again. I am yours."',
+        'The woman is still smiling and looked happy.',
+        `"But you're here on business, aren't you? You should go back and greet your family"`,
+        `"Indeed, I'm sure my parents are worried about me, so I'll go back to greet them as you said."`,
+        'Hachi held out a bundle of bills to the woman and said.',
+        `"This is the cost of the round trip and the betrothal money for your parents' home"`,
+        `"I'll be back for sure."`,
+        `The woman went back to her parents' home, but no matter how long he waited, she didn't coming back.`,
+        'At first, he suspected her, but just one night makes him fool.',
+        'How can men be so stupid?',
+        `'"Face it! You've been deceived by a bad woman", he doesn't care who says it to him.`,
+        `And, he's still waiting for her.`,
+        `I'm sorry to see him like that. I just want to make him give up somehow.`,
+        'And I got the idea.',
+        `If I pretend to be that woman and send him a letter and tell him clearly that she can't marry him, he might give up.`,
+        `But even if I just send a letter, he doesn't believe it.`,
+        'The woman once told him that her hometown has a lot of gardenias.',
+        'So if I add gardenia, he must believe it.',
+        'What do you think? Can you help him with me?'
       ],
       start2: [
-        '森に行ってクチナシを一輪採ってきほしいんだ。',
-        'それまでに手紙は用意しておく。'
+        'I want you to go the forest and get a gardenia.',
+        `I'll prepare the letter by then.`
       ],
-      options: ['クチナシを渡す', 'なんでもない'],
+      options: ['Give a gardenia', 'Nothing'],
       found1: [
-        'よし、よくやった。',
-        'じゃあこの手紙と一緒に渡してきてくれ。'
+        'Great.',
+        'Then go give it to him along with this letter.'
       ],
       found2: [
-        'ハチはこの北へ抜けた先だ。',
-        '手紙とクチナシを渡してきてくれ。'
+        'Hachi is living in northern area.',
+        'Please give the letter and gardenia to him.'
       ],
       lost: [
-        'おいおい、手紙なくさないでくれよ。'
+        `Hey, don't lose the letter.`
       ],
-      solved: ['届けてきてくれたようだな。あんたのおかげで助かったよ。'],
-      completed: ['女に騙されるのは恥ずかしい事なんかじゃあないさ。']
+      solved: [`I see you've brought it to me. Thanks to you, He's helped.`],
+      completed: ['There is no shame in being deceived by a woman.']
     },
     dark: {
       kajitsu1: ['それが懐かしいですか？'],
