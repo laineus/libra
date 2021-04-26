@@ -1063,46 +1063,46 @@ export default {
       completed: ['There is no shame in being deceived by a woman.']
     },
     dark: {
-      kajitsu1: ['それが懐かしいですか？'],
-      kajitsu2: ['ここがどこだか思い出しましたか？'],
+      kajitsu1: ['Do you miss it?'],
+      kajitsu2: ['Do you remember what this world is?'],
       kajitsu3: [
-        '思い出せませんか…。',
-        'あなたがこの世界に来て一ヶ月ほど経ちました。',
-        'だけどあなたは何故ここへ来たのかを忘れている。'
+        `Can't you remember...?`,
+        `It's been about a month since you came to this world.`,
+        `But you have forgotten why you came here.`
       ],
-      kajitsu4: ['このままではアミリさんが危ないですよ。'],
-      kajitsu5: ['私はこの先で待っています。必ず来てください。']
+      kajitsu4: [`If you don't do something, Amili will be in danger.`],
+      kajitsu5: [`I'll be waiting for you just up ahead. Please be sure to come.`]
     },
     crossing: {
-      start1: ['思い出しましたか？'],
-      start2: ['そうです。貴方はここで死んだのです。'],
+      start1: ['Do you remember?'],
+      start2: ['Yes, You died here.'],
       start3: [
-        'ですがこの世界は死後の世界と言うわけではありません。',
-        'この世界はアミリさんの心の中です。',
-        '一緒に事故に遭ったアミリさんは、現在昏睡状態に陥っています。',
-        '貴方は霊体としてアミリさんの心の中に入ってしまったのです。'
+        'But this world is not the afterlife.',
+        `This world is in Amili's mind.`,
+        'Amili was in an accident with you, and she is currently in a coma.'
+        `You have been entered Amili's mind as a spirit.`
       ],
-      start4: ['こちらへ来て下さい。']
+      start4: ['Please come this way.']
     },
     heart: {
-      start1: ['アミリさんの心臓です。'],
+      start1: [`This is Amili's heart.`],
       start2: [
-        'アミリさんは生きています。',
-        'しかし、ここに貴方が居るばかりにアミリさんは目を覚ませずにいるのです。'
+        'Amiri is alive.',
+        'However, Amili has not been able to wake up because of your presence here.'
       ],
       start3: [
-        'アミリさんが目覚めるためには貴方がここから出ていかなければいけません。',
-        'ここを出ると貴方は成仏し、天国へ行きます。',
-        'ここから出て行く方法は単純です。',
-        'ここから強く出たい、と願うだけです。',
-        'しかし、今の貴方にはそれだけの決意がありません。',
-        '躊躇いがあります。'
+        'You have to get out of here for Amili to wake up.',
+        'After you leave here, you will go to heaven.',
+        'The way to get out of here is simple.',
+        'You just have to wish get out of here strongly.',
+        `But you don't have the determination to do that now.`,
+        'So you would be hesitant.'
       ],
       start4: [
-        'そうですね…、',
-        '交差点から北へ向かって下さい。',
-        'アミリさんの脳内に辿りつきます。',
-        'そこにヒントがあるでしょう。'
+        'So...',
+        'You should keep going toward the northernmost.' ,
+        `You will reach Amili's brain.`,
+        'There will be a clue there.'
       ]
     },
     matsutake: {
