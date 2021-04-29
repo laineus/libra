@@ -1345,86 +1345,78 @@ export default {
     forever: {
       ghost: {
         start: [
-          'あなた、私が見えるんですね！？',
-          'ああ、では是非お願いしたい事があります。',
-          '私の話を聞いて頂けますでしょうか？'
+          `You can see me, can't you!?`,
+          'Oh, then I would like to ask you a favor.',
+          'Could you please listen to me?'
         ],
-        options: ['はい', 'いいえ'],
+        options: ['Sure', 'No thank you'],
         answer1: [
-          'よかった。',
-          '私は見ての通り死んでいます。',
-          '生きていた頃はこの病院に入院していました。',
-          'そして私の主治医は、私の夫でもありました。',
-          '夫はどんなに仕事で疲れていようと、毎晩ここで私の手を握ってくれていました。',
-          '私の病は治せるものではなく、長く生きられない事を夫も私も分かっていました。',
-          'ですが夫はいつだって「ずっとそばに居るよ」と私を励ましてくれていたんです。',
-          'やがて病状は悪化し、いよいよ自分の死が目前に迫りました。',
-          '覚悟を決めていたつもりでしたが、私はもう怖くてたまりませんでした。',
-          '私の手を握る夫にこう聞きました。',
-          '「…ずっと、…そばに居てくれますか？」と。',
-          '夫は「約束するよ」と答えてくれました。',
-          'それを聞くと私はとても安心したのです。',
-          '私が死んだのはその晩のことでした。',
-          'それから気付いた時には私はこの姿で病院を彷徨っていました。',
-          '私は天国には行かなかったのです。',
-          '夫が居なかったからです。',
-          'ずっとそばに居ると約束したはずの夫が居ないんです。',
-          '約束を忘れてしまったのでしょうか？',
-          '私はここでずっと待っているというのに…。',
-          'そこでお願いです。',
-          '夫を私の元へ連れて来て下さい。',
-          '今でもこの病院で、この場所で働いているはずです。',
-          'ですが、まだ生きています。',
-          '生きていては私と一緒に天国へ行く事はできません。',
-          'わかりますね？',
-          'あなただけが頼りなんです。',
-          'では、よろしくお願いします。'
+          'Thank you.',
+          `As you can see, I'm dead.`,
+          'When I was alive, I was admitted to this hospital.',
+          'And my doctor was also my husband.',
+          'He was here every night to hold my hand, no matter how tired he was from work.',
+          'My husband and I both knew that my disease could not be cured and that I would not live long.',
+          'But my husband always encouraged me, saying that he would always be there for me.',
+          'Eventually, my condition worsened and my own death became imminent.',
+          'I thought I was prepared for it, but I was so scared.',
+          'I asked my husband, who was holding my hand, "Will you...always...stay by my side?"',
+          'He replied, "I promise."',
+          'I was so relieved to hear that.',
+          'It was that night that I died.',
+          'The next thing I knew, I was wandering around the hospital like this.',
+          `I did't go to heaven.`,
+          `Because my husband isn't here.`,
+          `He had promised me that he would always be there for me, but he wasn't.`,
+          'Did he forget his promise?',
+          `I've been waiting for him here...`,
+          'So I ask you.'
         ],
-        answer2: ['そうですか…。'],
+        answer2: ['I see...'],
         started: [
-          '夫を私の元へ連れて来て下さい。',
-          '今でもこの病院で、この場所で働いているはずです。',
-          'ですが、まだ生きています。',
-          '生きていては私と一緒に天国へ行く事はできません。',
-          'わかりますね？',
-          'あなただけが頼りなんです。',
-          'では、よろしくお願いします。'
+          'Please bring my husband to here.',
+          'He is still working in this hospital, in this place.',
+          'But he is still alive.',
+          `He can't go to heaven with me if he's still alive.`,
+          'Do you understand that meaning?',
+          'You are the only one who can help me.',
+          'So, please do me a favor.'
         ],
         complete: [
-          'あ！あなたは！',
-          '夫をこちらへ連れて来てくれたんですね。',
-          'これで私達はずっと一緒です。',
-          '本当にありがとうございました。',
-          'これはお礼です。'
+          'Ah! You are!',
+          'You brought my husband here.',
+          'Now we are together forever.',
+          'Thank you so much.',
+          'This is my way of thanking you.'
         ],
         completed: [
-          'これで私達はずっと一緒です。',
-          '本当に、どうもありがとうございました。'
+          'Now we are together forever.',
+          'Thank you so much.'
         ]
       },
       doctor: {
         greet: [
-          '私は以前、この病室で妻を亡くしました…。',
-          'でも今では私も前向きに頑張っています。'
+          'I lost my wife in this hospital room before...' ,
+          'But now I am trying to stay positive.'
         ],
         start1: [
-          'え？',
-          '私の妻の幽霊に会ったって？',
-          '悪い冗談はやめてくださいよ。',
-          '…え？',
-          '私に妻の元へ行くように頼まれたって？',
-          'ちょ、ちょっと待って下さい。',
-          '私は、御覧の通りまだ生きているんですよ？',
-          '………。',
-          'か、勘弁して下さい。',
-          '私はまだ死にたくありません。',
-          '別の方と再婚をして長生きをしたいんです。'
+          'What?',
+          'You met the ghost of my wife?',
+          `Please don't make bad jokes.`,
+          '...What?',
+          'Did she ask you to bring me to her?',
+          'Wait, wait, please.',
+          `As you can see, I'm still alive, right?`,
+          '..........',
+          `'Please don't do like that.`,
+          `I don't want to die yet.`,
+          'I want to remarry another person and live a long life.'
         ],
-        start2: ['…とにかく、そんなおっかない事は言わないでください。'],
+        start2: [`...Anyway, please don't do such horrible things.`],
         completed: [
-          'どうして私を殺したんですか。',
-          'あなたも、妻も、私の人生をなんだと思っているんですか。',
-          'こんなのあんまりです。'
+          'Why did you kill me?',
+          'What do you, and my wife, think my life is?',
+          'This is horrible.'
         ]
       }
     },

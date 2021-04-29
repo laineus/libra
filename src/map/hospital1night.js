@@ -26,6 +26,7 @@ export default {
         const accept = await uiScene.setSelector(t('events.forever.ghost.options')) === 0
         if (accept) {
           await speakGhost(t('events.forever.ghost.answer1'))
+          await speakGhost(t('events.forever.ghost.started'))
           uiScene.log.push(t('ui.questStart', t('quest.forever')))
           state.events.forever = FOREVER_STEPS.STARTED
         } else {
