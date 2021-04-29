@@ -1094,7 +1094,7 @@ export default {
         'You have to get out of here for Amili to wake up.',
         'After you leave here, you will go to heaven.',
         'The way to get out of here is simple.',
-        'You just have to wish get out of here strongly.',
+        'You just have to make a strong wish to get out of here.',
         `But you don't have the determination to do that now.`,
         'So you would be hesitant.'
       ],
@@ -1455,86 +1455,86 @@ export default {
       ]
     },
     brain: {
-      message: 'アミリさんの頭の中は、アミリさんでいっぱいですね。',
+      message: `Amili's head is filled up with herself, isn't it?`,
       kajitsu1: [
-        'どうです？ショックですか？',
-        '人間というのはそういうものです。',
-        '残念ながら、この世界に貴方の居場所はありません。'
+        'What do you think? Are you disappointed?',
+        'But, this is just the way people are.',
+        'So unfortunately, there is no place for you in this world.'
       ],
       kajitsu2: [
-        'これで決心はつきましたね？',
-        '今の貴方ならこの世界を出ていくことが出来るでしょう。'
+        `Now you have made up your mind, haven't you?`,
+        'I think now you can leave this world.'
       ],
       kajitsu3: [
-        '心臓の部屋で待っています。',
-        '準備が出来たら来てください。'
+        'I will be waiting for you in the heart room.',
+        'Come there when you are ready.'
       ],
       kajitsu4: [
-        'ここから出て行き、アミリさんを解放してあげましょう。'
+        `Let's get out of here to liberate her.`
       ]
     },
     dream: {
-      kajitsu1: ['来ましたね。'],
+      kajitsu1: ['You came.'],
       kajitsu2: [
-        'あなたはこれからこのアミリさんの心の中から出て、死後の世界へと旅立ちます。',
-        'そうすれば、生死を彷徨っているアミリさんはじきに目覚めるでしょう。'
+        `You will now leave Amili's mind and go to the afterlife.`,
+        'Then, Amili, who is wandering between life and death, will soon wake up.'
       ],
-      kajitsu3: ['心の準備はいいですか？'],
-      yesno: ['はい', 'いいえ'],
-      cancel: ['では、準備が出来たらまた来てください。'],
-      kajitsu4: ['では、ここから出ていきたいと強く願って下さい。'],
-      message: 'よかった。目、覚ませそうだね。',
+      kajitsu3: ['Are you ready?'],
+      yesno: ['Yes', 'No'],
+      cancel: ['Okay, please come back again when you are ready.'],
+      kajitsu4: [`Then, let's do it.`, 'Please make a strong wish to get out of here.'],
+      message: 'Good. You gonna wake up.',
       amili1: [
-        'リブラ、今まで騙していてごめん。',
-        '今まで話した事、全部嘘なの…。'
+        `Libra, I'm sorry I ever lied you.`,
+        `Everything I've ever told you is a lie...`
       ],
       amili2: [
-        'この世界は私の心の中なんかじゃない。',
-        'この世界は…、',
-        '貴方の心の中なの。'
+        'This world is not inside my mind.',
+        'This world is...',
+        'This world is inside your mind.'
       ],
       amili3: [
-        '本当に死んだのは私で、生死を彷徨っているのは貴方。',
-        '思い出せそう？'
+        'Who really died is me, and you are the one who is wandering between life and death.',
+        'Can you remember?'
       ],
       amili4: [
-        'これは貴方の心臓。',
-        '私は亡霊として貴方の心の中にいるの。',
-        '貴方は、貴方自身の心に閉じこもっているせいで目覚められずにいた。',
-        'だから、貴方がここから出る気になるように嘘をついたの。'
+        'This is your heart.',
+        `I'm in your heart as a spirit.`,
+        'You had not been able to wake up because you were shutting up in your own mind.',
+        'So I lied to you to make you think leave here.'
       ],
       amili5: [
-        'リブラの頭の中、私のことでいっぱいだったね。',
-        '…嬉しい。',
-        'ふふ。私のことばっか考えてるから、目覚められなかったんだよ？'
+        `Libra's head was full of me...`,
+        `...I'm glad.`,
+        `You couldn't wake up because you were thinking about me all the time, hehe.`
       ],
       amili6: [
-        'でも…、もう大丈夫だね。',
-        '私の分までちゃんと生きて。'
+        `But..., you're okay now.`,
+        'Live a happy life for me.'
       ],
       amili7: [
-        '私はここで…、あなたの心の中で、ずっと待ってるから。',
-        'さようなら。'
+        `I'll be waiting for you..., in your heart.`,
+        'Good bye.'
       ],
-      options: ['今までありがとう', '出たくないと強く願う'],
+      options: ['Thank you for everything', 'Make a strong wish to stay here'],
       last1: {
         amili1: [
-          '…リブラ。',
-          '…またね。'
+          '...Libra',
+          '...Good bye.'
         ],
-        message: 'しばらくの間、お別れだね。'
+        message: `I'll be leaving you for a while.`
       },
       last2: {
-        amili1: ['え、なに？'],
-        amili2: ['！！'],
-        amili3: ['…リブラ！'],
-        amili4: ['…死んじゃったの？'],
-        amili5: ['なんで…。'],
+        amili1: ['What!?'],
+        amili2: ['!!'],
+        amili3: ['Libra!!'],
+        amili4: [`...You died?`],
+        amili5: ['Why...'],
         amili6: [
-          '…どうして？',
-          'そこまでして、私と…？'
+          '...Why?',
+          'Did you die to stay with me?'
         ],
-        message: 'これからは、ずっと一緒だね。'
+        message: `From now on, we'll be together forever.`
       }
     },
     cosmos: {
