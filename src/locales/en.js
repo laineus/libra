@@ -1283,7 +1283,7 @@ export default {
       start: [
         `Women's charm is beauty.`,
         'And I am the most beautiful woman in the world.',
-        'Even more than the bitch in the next room.',
+        'Even more than the poor lady in the next room.',
         'But you see, I will grow old in time.',
         `And when I do, I'll be outnumbered by younger women.`,
         `I don't want that.`,
@@ -1317,32 +1317,30 @@ export default {
       ]
     },
     lady2: {
-      greet: ['隣の部屋の勘違い女、気に入らないわ。'],
+      greet: ['The deluded woman in the next room, I never like her.'],
       start: [
-        '隣の部屋の勘違い女、不老不死の薬とやらを手に入れたらしいの。',
-        'あー、気に入らないわ。',
-        'ねえ、あなた、',
-        'あの女を殺してきてちょうだい。',
-        '不老不死だなんて言ったって、',
-        '鉄砲なんかで殺されてしまえばそれまででしょう？',
-        '馬鹿な女ね。'
+        `The deluded woman in the next room, she's got some kind of Elixir.`,
+        `I don't like it.`,
+        `Hey, you, Why don't you go kill the bitch for me?`,
+        `Even if she's immortal, get shot with a gun, that's over, isn't it?`,
+        'So stupid.',
+        'Go on, then.'
       ],
       started: [
-        '何よその顔は？',
-        'さっさと行きなさいよ。',
-        '私は、あの女があなたにあげたお礼よりも、',
-        'あなたがもっと欲しがっているものをお礼としてあげるわ。'
+        `What's that look on your face?`,
+        'Get a move on.',
+        `I'll give you what you want more than she gave you.`
       ],
       complete1: [
-        'よくやったわ。',
-        'お礼をあげるわ。'
+        'Well done.',
+        'Take this.'
       ],
       complete2: [
-        '永遠の若さなんてものはありえないのよ。',
-        '私たちは有限だからこそ美しいのに。',
-        'それに気付かないなんて哀れな女ね。'
+        'There is no such thing as eternal youth.',
+        'We are beautiful because we are finite.',
+        `She was a pathetic bitch who doesn't realize that.`
       ],
-      completed: ['うるさいのが消えてせいせいしたわ。']
+      completed: [`I'm comfortable the noisy bitch is gone.`]
     },
     forever: {
       ghost: {
