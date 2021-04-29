@@ -1201,49 +1201,47 @@ export default {
     },
     collector: {
       start: [
-        '俺は絵画を集めるのが趣味なんだ。',
-        'いい絵があったら俺のところへ持ってきてくれ。',
-        '高く買ってやる。'
+        'My hobby is to collect paintings.',
+        'If you have any good paintings, bring them to me.',
+        `I'll give you a good price.`
       ],
-      options: ['この絵を買ってほしい', 'なんでもない'],
-      solve1: ['見せてみろ。'],
-      log: '『恋』を渡した',
+      options: ['Dou you buy this paint?', 'Nothing'],
+      solve1: ['Let me see.'],
+      log: 'Gave a painting "Love"',
       solve2: [
-        'ふむ。悪くないな。',
-        'よし、買ってやろう。',
-        'ほらよ。'
+        'Okay, not bad.',
+        `I'll buy it.`,
+        'Take this money.'
       ],
-      solved: ['この前の絵描きによろしく言っておいてくれ。']
+      solved: ['Give my regards to the painter.']
     },
     child: {
       start: [
-        'ねえ、お姉ちゃん。',
-        '森の奥の炭鉱で働いてるおじちゃんたちのこと知ってる？',
-        '毎日ずうっと働いてるんだよ。',
-        'それでね、僕たちの生活はそのおじちゃんたちのおかげなんだって。',
-        'だから僕ね、おじちゃんたちにお礼言いに行こうと思ったんだけど、',
-        'ママが行っちゃいけないって言うんだ。',
-        'だからねお姉ちゃん、',
-        '代わりに「いつもありがとう」って伝えてきてほしいんだ。'
+        'Hi.',
+        'Do you know about the people who work in the coal mine?',
+        'They work hard every day for a long time.',
+        'We owe our comfortable lives to them.',
+        `So I wanted to go and thank them, but my mom said I couldn't go.`,
+        'So, I want you to go and tell them "Thank you for everything" instead of me.',
       ],
-      options: ['いいよ', 'やだ'],
+      options: ['Sure', 'No thank you'],
       answer1: [
-        'ほんとに！？',
-        'じゃあさ、この絵も持って行ってね！',
-        '頑張ってるおじちゃんたちを描いたんだ！',
-        '喜んでくれるかなぁ？',
-        'じゃ！頼んだよ！'
+        'Thank you!',
+        'Then take this picture with you.',
+        `I drew this picture of they're working hard.`,
+        `Do you think they'll like it?`,
+        `Then, I'm counting on you!`
       ],
-      answer2: ['いじわる。'],
-      started: ['僕の絵、炭鉱のおじちゃんたちにちゃんと届けてね！'],
-      lost: ['ちょっと！ちゃんと持って行ってよ！'],
+      answer2: [`You're mean!`],
+      started: ['Get my painting to them in the mines!'],
+      lost: [`Hey, dont throw away my painting!`],
       complete1: [
-        'あ、お姉ちゃん！',
-        '絵を渡してきてくれたんだね！',
-        'ありがとう！これ、お礼だよ！'
+        `It's you!`,
+        'Were they happy with my painting?',
+        'Please take my thanks with you.'
       ],
-      complete2: ['じゃあね！'],
-      completed: ['この前はありがとう！']
+      complete2: ['Bye!'],
+      completed: ['Thank you!']
     },
     miner: {
       greet: ['あ？なんか用かい？'],
