@@ -1422,36 +1422,36 @@ export default {
     },
     raptor: {
       start: [
-        'この前恐竜の映画を観たんだ。',
-        'かなりよかったぜ。',
-        'お前、本物の恐竜に会ってみたいって思うか？',
-        '俺は思わないぜ。',
-        '会っちまったらソイツはただの動物になっちまうだろ。',
-        '残された化石からその姿を想像するしか無い、',
-        'それがロマンってもんだろ？'
+        'I watched a dinosaur movie the other day.',
+        'It was pretty good.',
+        'Do you ever want to meet a real dinosaur?',
+        `I don't think so.`,
+        'If I did, it will become just animal.',
+        'I can only imagine what they looked like from fossils.',
+        `That's what romance is all about, right?`
       ],
       advice: [
-        'おい、お前化石をたくさん持ってるな。',
-        'ひょっとして恐竜の化石なんじゃないか？',
-        'ちょっと組み立ててみろよ。',
-        '恐竜の化石だったら俺に譲ってくれ。'
+        `Hey, you've got a lot of fossils.`,
+        'Are they dinosaur fossils, by any chance?',
+        `Why don't you try assembling them?`,
+        `If it's a dinosaur fossil, give it to me.`
       ],
       give: [
-        'おい！それは恐竜の化石じゃないか！',
-        '頼む！俺に譲ってくれ！'
+        `Hey! It's a dinosaur fossil, isn't it!?`,
+        'Please! Just give it to me!'
       ],
-      options: ['いいよ', 'いやだ'],
+      options: ['Sure', 'No'],
       cancel: [
-        'そうか…、残念だ。'
+        'Oh..., I see...'
       ],
-      log: '恐竜の化石を渡した',
+      log: 'Gave the dinosaur Fossil',
       gave: [
-        'なんてこった！ついに恐竜の化石を手に入れちまったぜ！',
-        'おい、これはお礼だ。',
-        '感謝してるぜ。'
+        'Oh, my God! I finally got my hands on a dinosaur fossil!',
+        'Hey, this is for you.',
+        'I appreciate it.'
       ],
       completed: [
-        'へへへ、ついに恐竜の化石を手に入れちまったぜ。'
+        'God... I finally got my hands on a dinosaur fossil.'
       ]
     },
     brain: {
