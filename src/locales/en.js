@@ -1281,43 +1281,39 @@ export default {
     },
     lady1: {
       start: [
-        '女の魅力は「美しさ」よ。',
-        'そして、この世で一番美しいのは私。',
-        'そう、隣の部屋の性悪女よりもね。',
-        'でもね、私にも時が経てば老いが来るの。',
-        'そうしたらやがて若い女たちに負けてしまうわ。',
-        'そんなの御免よ。',
-        '私は大金持ちなんだから、いつまでも一番であるべきだわ。',
-        'そこで調べさせたの。',
-        '外の森を西に抜けた先に今は使われていない病院があるのを知ってる？',
-        'その病院では、どうやら不老不死の薬が開発されていたらしいの。',
-        '今も病院のどこかに隠されているという噂よ。',
-        'だからあなた、それを探してきてちょうだい。',
-        'お礼はたっぷりとあげるわ。'
+        `Women's charm is beauty.`,
+        'And I am the most beautiful woman in the world.',
+        'Even more than the bitch in the next room.',
+        'But you see, I will grow old in time.',
+        `And when I do, I'll be outnumbered by younger women.`,
+        `I don't want that.`,
+        `I'm a wealthy lady and I should always be the best.`,
+        'So I got my aide to investigate something.',
+        'Did you know the hospital through the forest to the west?'
       ],
       started: [
-        '病院では、どうやら不老不死の薬が開発されていたらしいの。',
-        '今も病院のどこかに隠されているという噂よ。',
-        'だからあなた、それを探してきてちょうだい。',
-        'お礼はたっぷりとあげるわ。'
+        'Apparently, an Elixir of Immortality was being developed there.',
+        `It's rumored that it's still hidden somewhere in the hospital.`,
+        'So I want you to go and find it for me.',
+        `You'll be rewarded handsomely.`
       ],
-      options: ['不老不死の薬を1個渡す', '渡さない'],
-      log: '不老不死の薬を1個あげた',
+      options: ['Give the elixir', 'Nothing'],
+      log: 'Gave the elixir',
       solve1: [
-        'これが不老不死の薬ね！？',
-        'さっそく使ってみるわ。',
-        '………。'
+        'Is this the Elixir?',
+        `Good. I'll try it right away.`,
+        '.........'
       ],
       solve2: [
-        '！！',
-        'お肌のつやがいつにも増して良くなった気がするわ！',
-        'この若さが永遠に続くのね！！',
-        'あなた、よくやったわ！',
-        'これはお礼よ！'
+        '!!',
+        'I feel like my skin is glowing better than ever!',
+        'Will this youth last forever!? Great!',
+        'You have done a great job!',
+        'This is for you.'
       ],
       solved: [
-        'あなた、よくやったわ！',
-        '私は永遠の一番よ！'
+        'You have done a great job!',
+        `I'm the best forever!`
       ]
     },
     lady2: {

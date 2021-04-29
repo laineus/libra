@@ -17,6 +17,7 @@ export default {
       const speakLady1 = talk.getSpeakScripts(new Talker(t('name.pumpkin'), lady1.object))
       if (state.events.beauty === BEAUTY_STEPS.NULL) {
         await speakLady1(t('events.lady1.start'))
+        await speakLady1(t('events.lady1.started'))
         uiScene.log.push(t('ui.questStart', t('quest.beauty')))
         state.events.beauty = BEAUTY_STEPS.STARTED
       } else if (state.events.beauty === BEAUTY_STEPS.STARTED) {
