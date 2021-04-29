@@ -1244,38 +1244,38 @@ export default {
       completed: ['Thank you!']
     },
     miner: {
-      greet: ['あ？なんか用かい？'],
-      options: ['絵を渡す', 'なんでもない'],
-      log: '『頑張る炭坑夫』を渡した',
+      greet: ['Huh? What do you want?'],
+      options: ['Give the painting by the child', 'Nothing'],
+      log: 'Gave "Working coal minor"',
       solve: [
-        'お屋敷のガキがお礼だって？',
-        'ケッ、イイ御身分だぜ。',
-        '絵なんて貰ったって俺たちの腹は膨れねえんだよ。',
-        '…ん？',
-        'お、この絵を収めてるフレームは中々高く売れそうだな。',
-        'よしよし、久しぶりに腹いっぱい食えそうだ。',
-        '姉ちゃん、ガキにまた描いてくれるよう頼んどいてくれよ。',
-        'じゃあな。'
+        'A kid from the mansion wants to thank me?',
+        'Damn, Thanks for being so condescending.',
+        `We can't fill our stomachs with any beautiful pictures.`,
+        '...hmm?',
+        'Oh, the frame that holds this painting looks like it will sell for a good price.',
+        'Good, good, I think I can eat a full meal after a long time.',
+        'Sis, ask the kid to draw me again.',
+        'See you later'
       ],
       regain: {
-        options1: ['さっき前の絵、自分が買い取る', 'なんでもない'],
+        options1: ['I want to buy the painting', 'Nothing'],
         start: [
-          'あんたが買い取るって？',
-          'まあいいだろう。',
-          'じゃあ宝石を4種類集めてこい。',
-          'それと交換だ。'
+          'You wanna buy this?',
+          'Sure.',
+          'Then bring me four kinds of gems.',
+          `I'll trade you for them.`
         ],
-        options2: ['宝石4種を渡す', 'なんでもない'],
+        options2: ['Give the gems', 'Nothing'],
         logs: [
-          'サファイヤを1個あげた',
-          'エメラルドを1個あげた',
-          'アメジストを1個あげた',
-          'ルビーを1個あげた'
+          'Gave a sapphire',
+          'Gave a emerald',
+          'Gave a amethyst',
+          'Gave a ruby'
         ],
         complete: [
-          'よし、持ってきたな。',
-          'ありがとうよ。',
-          'じゃあな。'
+          'Good.',
+          'Okay, Take it then.',
+          'Good bye, sis.'
         ]
       }
     },
