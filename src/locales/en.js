@@ -1539,38 +1539,34 @@ export default {
     },
     cosmos: {
       minePenguin1: [
-        'おい、そこの地面を見てみろ。',
-        '不思議な模様が描かれているだろ？',
-        'あれにはきっと何か秘密があるに違いない。',
-        '俺はその謎を解けなかったんだが、あんたも何か試しみるといい。'
+        'Hey, look at the ground there.' ,
+        'Can you see the strange pattern?' ,
+        'There must be some secret in that.' ,
+        `I couldn't solve it, but you should try something.`
       ],
       minePenguin2: [
-        '宇宙に行っただって？',
-        'そいつはすげえな。',
-        'その話を信じられるかはともかく、',
-        'こんなタコ部屋から宇宙に旅立てるなんて、夢のある話をありがとうな。'
+        `You went to space?`,
+        `That's amazing.`,
+        'Whether you believe the story or not, Thank you for telling me the dreamy story.'
       ],
       guide1: [
-        'ワレワレハ、宇宙人ダ。',
-        '宇宙ニ行キタイナラ、ソコノUFOニ乗ルンダ。'
+        'I am an alien.',
+        'If you go to space, get in the UFO.'
       ],
       guide2: [
-        '宇宙ニツイタゾ。',
-        '人間ハ宇宙ニ来ルト、スグニ迷子ニナルカラナ。',
-        'アマリ遠クヘハ行ケナイヨウニシテオイタゾ。',
-        'デモ、本当ハモット広インダゾ。'
+        `We've arrived in space.`,
+        'When humans walk in space, they are easily lost.',
+        `I made sure you can't get going too far.`,
+        `But the truth is, it's much bigger.`
       ],
       evolution: [
-        '君タチハ本当ニ自分ガネズミヤ猿カラ進化シタト思ッテイルノカイ？',
-        '少シ考エレバソンナ訳ナイコトハ分カルハズダ。',
-        '君タチハ別ノ星ノ生命体ニヨッテ作ラレタノダ。',
-        '君タチハ奴隷トシテ作ラレ、反乱ヲ考エナイヨウニ、テロメア、ツマリ寿命ヲ100年ニ設定サレテイル。',
-        '地球ノ他ノ生物ヲヨク見テミロ。',
-        '成体ニナッテカラモ老ケテ姿ヲ変エルノハ君タチ人間ダケダ。',
-        '言ッテオクガ、オ前タチヲ奴隷ニシタ宇宙人トハ、我々グレイ星人ノコトデハナイゾ。',
-        'トコロデ、君タチ人間ハ東洋人ト西洋人デナゼ瞳ノ色ガ違ウカ知ッテイルカ？',
-        '東洋人ハ霊長類ヲ、西洋人ハ爬虫類ヲ加工シテ作ラレタカラダ。',
-        'ダカラ、君タチノ言ウ「猿カラ進化シタ」トイウノモアナガチ間違ッテハイナイノカモナ。'
+        `Do you really think you've evolved from monkeys?`,
+        'Why do you think such a stupid thing?',
+        'Humans were created as a slave by aliens from another planet.',
+        'And your telomeres and life expectancy were set to 100 years to prevent rebelling.',
+        'Look at the other animals on Earth.',
+        `It's only humans that change appearance when get old.`,
+        'Oh, the aliens who enslaved humans are not us Grey aliens.'
       ]
     },
     photosynthesis: {
