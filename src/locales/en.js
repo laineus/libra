@@ -516,7 +516,7 @@ export default {
         'Yes, that was last week.',
         'I was talking to my friend, Mister Frog.',
         '"By the way, Mr.Frog, do you know that there are golden beetles living in this forest?"',
-        `"Umm, Mr.Torrent, that's an outrageous lie. How can there be such a beetle in the world?"`
+        `"Umm, Mr.Torrent, that's an outrageous lie. How can there be such a beetle in the world?"`,
         `"No, no, it's not a lie. It does surely exist."`,
         `"You can't make fun of me, Mr.Torrent."`,
         '"If there really is such a beetle, then bring it to me."',
@@ -661,7 +661,7 @@ export default {
         `"In other words. I'm saying I'll trade you a stone for a feast."`,
         `"If you still don't like to trade them, I'll give up and eat this frog myself now."`,
         'Then the bat bastard said hurriedly.',
-        '"Wait, I get it! I understand perfectly!"'
+        '"Wait, I get it! I understand perfectly!"',
         `"I don't need such a stone. Take it and give me the flog meat right now."`,
         `Ever since then, he's been brought gems to me every day. He's been wanted to fill up his family.`,
         'He and his families became fat day by day.',
@@ -783,7 +783,7 @@ export default {
         `Can't you believe it?`,
         `There is a saying, "Disease is from your mind." isn't there?`,
         `It's not just a saying.`,
-        'Three snakes in its group once try mind control to a rabbit.'
+        'Three snakes in its group once try mind control to a rabbit.',
         `Here's the story.`,
         'The first snake to met the rabbit said...',
         '"Hey, Rabbit. How are you doing?"',
@@ -791,7 +791,7 @@ export default {
         `"Is that so? You don't look so good, do you?"`,
         '"What? Am I look so?"',
         'The second snake also said that,',
-        `"Hello, Rabbit. Oh, you don't look so good. Are you okay?"'`
+        `"Hello, Rabbit. Oh, you don't look so good. Are you okay?"'`,
         `"Really? I think I'm okay."`,
         'The last one asked,',
         '"Hey, Rabbit. How are you doing?"',
@@ -936,11 +936,11 @@ export default {
         'Then he drank it down and went away without a word.',
         `I wondered why he didn't say thank you.`,
         'At the moment, I realized that.',
-        '"Without returns"? No. my heart was unconsciously waiting for a "thank you".'
+        '"Without returns"? No. my heart was unconsciously waiting for a "thank you".',
         `I can't say "live a life for others" with this kind of mind.`,
         'So I have been thinking about what "for others" means for the past few days.',
         `For example, if I save someone's life in exchange for my own life, is that "for others"?`,
-        `The action is might for eternal honor after my life.`
+        `The action is might for eternal honor after my life.`,
         `Now I'm completely not sure what "for others" is.`,
         'I am going to start my austere training all over again.',
         'I have to realize what is the truth.',
@@ -986,13 +986,13 @@ export default {
         'This is...',
         `This isn't letter she wrote, is it...?`,
         '....',
-        'Huh, what have I been dwelling on...' ,
+        'Huh, what have I been dwelling on...',
         `I've made my friend worry about me so much...`,
-        'In fact, I already realized that I was being deceived.' ,
+        'In fact, I already realized that I was being deceived.',
         `I just didn't want to admit it.`,
         `I can't... see her again...`,
         `But, okay, I'm okay now.`,
-        'Because I have such a good friend.' ,
+        'Because I have such a good friend.',
         'Thank you very much. Please take this.'
       ],
       solved: [
@@ -1079,7 +1079,7 @@ export default {
       start3: [
         'But this world is not the afterlife.',
         `This world is in Amili's mind.`,
-        'Amili was in an accident with you, and she is currently in a coma.'
+        'Amili was in an accident with you, and she is currently in a coma.',
         `You have been entered Amili's mind as a spirit.`
       ],
       start4: ['Please come this way.']
@@ -1100,7 +1100,7 @@ export default {
       ],
       start4: [
         'So...',
-        'You should keep going toward the northernmost.' ,
+        'You should keep going toward the northernmost.',
         `You will reach Amili's brain.`,
         'There will be a clue there.'
       ]
@@ -1130,15 +1130,15 @@ export default {
         '..........',
         `What!? it's so delicious!!!'`,
         `It's too much delicious!!!`,
-        'This smell...!' ,
-        'I feel like a noblemaaaaaaan!!!' ,
+        'This smell...!',
+        'I feel like a noblemaaaaaaan!!!',
         '..........',
         'Huh.',
         'Okay, I thought it was just mushrooms, even though they are high grade.',
-        'But, it was even better than I expected.' ,
+        'But, it was even better than I expected.',
         `One of my friends said, "They think they taste good because they're high grade, but they're just mushrooms"`,
         `But he's just a poor man with a poor tongue.`,
-        'Anyway, I got to eat such delicious food. I have no regrets about my life now.' ,
+        'Anyway, I got to eat such delicious food. I have no regrets about my life now.',
         'Thank you, sis.',
         'Accept the apple.'
       ],
@@ -1222,7 +1222,7 @@ export default {
         'They work hard every day for a long time.',
         'We owe our comfortable lives to them.',
         `So I wanted to go and thank them, but my mom said I couldn't go.`,
-        'So, I want you to go and tell them "Thank you for everything" instead of me.',
+        'So, I want you to go and tell them "Thank you for everything" instead of me.'
       ],
       options: ['Sure', 'No thank you'],
       answer1: [
@@ -1396,7 +1396,7 @@ export default {
       },
       doctor: {
         greet: [
-          'I lost my wife in this hospital room before...' ,
+          'I lost my wife in this hospital room before...',
           'But now I am trying to stay positive.'
         ],
         start1: [
@@ -1539,9 +1539,9 @@ export default {
     },
     cosmos: {
       minePenguin1: [
-        'Hey, look at the ground there.' ,
-        'Can you see the strange pattern?' ,
-        'There must be some secret in that.' ,
+        'Hey, look at the ground there.',
+        'Can you see the strange pattern?',
+        'There must be some secret in that.',
         `I couldn't solve it, but you should try something.`
       ],
       minePenguin2: [
