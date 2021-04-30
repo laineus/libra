@@ -1572,83 +1572,83 @@ export default {
     },
     photosynthesis: {
       greeting: [
-        'ヤア、オ前ハ人間ダナ。',
-        '我々グレイ星人ハ、人間ニトッテ最モ身近ナ宇宙人ダロウ。',
-        '我々カラ見テモ人間ハ、最モ身近ナ研究対象ダ。',
-        '我々カラ見テ人間ノ興味深イトコロハ、食事ト生殖ダ。',
-        '我々ハ食事モ、有性生殖モ行ワナイカラサ。'
+        `Hey, you're human, right?`,
+        'We Grey aliens are probably the most familiar aliens to humans.',
+        'Also from our point of view, humans are the closest thing as a research subject.',
+        'And the interesting thing about humans for us is eating and reproducing.',
+        `Because we don't eat and we don't reproduce sexually.`
       ],
-      questions: ['じゃあどうやって栄養を得るの？', 'じゃあどうやって子供つくるの？'],
+      questions: ['So how do you get nutrition?', 'So how do you make descendants?'],
       answer1: [
-        '我々ハ光合成ヲスルノダ。',
-        'オ前ニトッテ我々グレイ星人ハ何色ノイメージダ？',
-        '緑色カ？灰色カ？',
-        'ドチラモ正シイ。',
-        '我々ハ普段ハ緑色デ、長ク光合成ヲシテイナイ時ニ灰色ニナル。',
-        'ツマリ私ハ今、腹ガ減ッテイルトイウコトダ。'
+        'We do photosynthesize.',
+        'What color do you think we Grey aliens are?',
+        'Green? Gray?',
+        'Both are correct.',
+        `We're usually green, and we turn gray when we're not photosynthesizing for a long time.`,
+        `That means I'm hungry now.`
       ],
       answer2: [
-        'ソレハ秘密ダ。',
-        '我々モ、オ前タチノ生殖ニツイテ研究シタイノダガ、何故ダカ誰モ協力シテクレナイノダ。'
+        `It's a secret.`,
+        `We want to study human's reproduction too, but no one will help us for some reason.`
       ],
       start: [
-        'トコロデ、人間ヨ。',
-        '我々ノ研究ニ協力シテホシイ。',
-        '食事ニツイテ知リタイ。',
-        '地球ノ料理ヲ持ッテキテクレ。',
-        'オ前ノオススメヲ頼ム。'
+        'By the way, you human.',
+        `We'd like your cooperation in our research.`,
+        'I want to know what human eat.',
+        'Can you bring me some food of the earth?',
+        'I want your recommendation.'
       ],
       started: [
-        'ヨシ、次ダ。',
-        '地球ノ料理ヲモット持ッテキテクレ。'
+        'Okay, next.',
+        'Please bring me more Earth food.'
       ],
-      option: '#{name}を渡す',
-      cancel: 'やめておく',
-      log: '#{name}を渡した',
+      option: 'Give #{name}',
+      cancel: 'Nothing',
+      log: 'Gave #{name}',
       omurice: [
-        'コレハ、オムライストイウノカ。',
-        '食ベテミルトシヨウ。',
-        '…',
-        'フムフム',
-        'コノトロトロシタ黄色ト、上ニカカッテイル甘酸ッパイ赤イ液体ガウマイナ。',
-        'マア、シカシ、光合成ノ方ガヨッポド美味シイゾ。'
+        'Omu-rice?',
+        'Okay, Let me try.',
+        '...',
+        'Hmmm...',
+        'This tender yellow color thing and the sweet and sour red liquid is delicious.',
+        'Well, but photosynthesis is much more delicious.'
       ],
       steak: [
-        'コレハ、ステーキトイウノカ。',
-        '食ベテミルトシヨウ。',
-        '…',
-        'フムフム',
-        'ジューシーダナ。',
-        'シカシ我々ノ顎デハ食ベルノガ大変ダ。',
-        'ヤハリ、光合成ノ方ガヨッポド美味シイゾ。'
+        'Steak?',
+        'Okay, Let me try.',
+        '...',
+        'Hmmm...',
+        `It's juicy.`,
+        `But it's hard to eat with our jaws.`,
+        'After all, photosynthesis is much more delicious.'
       ],
       curry: [
-        'コレハ、カレートイウノカ。',
-        '食ベテミルトシヨウ。',
-        '…',
-        'フムフム',
-        '味ハイイナ。',
-        'ン。',
-        'コレハ口ノ中ガヒリヒリスルゾ。',
-        'モウイラナイ。',
-        'ヤハリ、光合成ノ方ガヨッポド美味シイゾ。'
+        'Curry rice?',
+        'Okay, Let me try.',
+        '...',
+        'Hmmm...',
+        'I like the taste.',
+        'Hmm?',
+        'This is making my mouth tingle.',
+        `I don't want any more.`,
+        'After all, photosynthesis is much more delicious.'
       ],
       stirFry: [
-        'コレハ、野菜炒メトイウノカ。',
-        '食ベテミルトシヨウ。',
-        '…',
-        'フムフム',
-        'シャキシャキトシタ食感ガイイナ。',
-        'マア、シカシ、光合成ノ方ガヨッポド美味シイゾ。'
+        'Stir fry?',
+        'Okay, Let me try.',
+        '...',
+        'Hmmm...',
+        'I like the crispy texture.',
+        'Well, but photosynthesis is much more delicious.'
       ],
       complete: [
-        'ヨシ、モウオ腹イッパイダ。',
-        '協力ノオ礼ニ、コレヲヤロウ。',
-        '地球カラ採取シタモノダ。'
+        `Okay, I'm full.`,
+        'As a thank you for your cooperation, I give you this.',
+        `It's from Earth.`
       ],
       completed: [
-        'オ前タチノ料理ヨリ、光合成ノ方ガヨッポド美味シイゾ。',
-        'オ前タチモ光合成ヲスレバイイノニ。'
+        'Photosynthesis tastes so much better than humans food.',
+        `Why don't you do photosynthesis too?`
       ]
     },
     bogusDoctor: {
