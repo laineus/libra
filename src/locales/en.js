@@ -32,6 +32,7 @@ export default {
     forest2: 'Forest 2',
     forest3: 'Forest 3',
     forest4: 'Forest 4',
+    forest5: 'Forest 5',
     stomach: 'Stomach',
     cave1: 'Cave 1',
     cave2: 'Cave 2',

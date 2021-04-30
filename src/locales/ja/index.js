@@ -31,6 +31,7 @@ export default {
     forest2: '森2',
     forest3: '森3',
     forest4: '森4',
+    forest5: '森5',
     stomach: '胃',
     cave1: '洞窟1',
     cave2: '洞窟2',
