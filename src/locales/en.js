@@ -1728,7 +1728,7 @@ export default {
       patient1: [
         `Doctor, you lied to me about being a doctor, didn't you?`,
         `...It's terrible.`,
-        'My body is covered in so many scars...'
+        `I'm wounded all over my body....`
       ],
       patient2: [
         `It's cold. It's cold.`,
