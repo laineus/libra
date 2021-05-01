@@ -29,7 +29,7 @@ export default {
     const grab = (pointer) => {
       if (pointer.button !== 0) return
       if (scene.input._temp.length && !tappedNearest(scene.input._temp, pointer, container.value)) return
-      menu.value.select('bag').then(menuBag => {
+      menu.value.select('bag')?.then(menuBag => {
         data.grabbing = true
         context.emit('grab')
         const mode = menu.value.redecorate ? 'move' : 'capture'
