@@ -33,7 +33,7 @@ export default {
         const completeTransition = await uiScene.transition(500)
         await sleep(500)
         const clear = await uiScene.setScreenMessage(t('events.brain.message'))
-        await sleep(2500)
+        await sleep(3500)
         await clear()
         await sleep(500)
         kajitsu.setVisible(true)

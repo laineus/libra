@@ -6,6 +6,7 @@ export default {
     amili: 'Amili',
     kajitsu: 'Kajitsu',
     flog: 'Flog',
+    fallFlog: 'Fall Flog',
     torrent: 'Torrent',
     bat: 'Bat',
     snake: 'Snake',
@@ -23,8 +24,8 @@ export default {
     stagBeetle: 'Stag Beetle',
     hercules: 'Hercules',
     ladybird: 'Ladybird',
-    grey1: 'Gray',
-    grey2: 'Gray'
+    grey1: 'Grey',
+    grey2: 'Grey'
   },
   place: {
     home: 'Home',
@@ -214,7 +215,7 @@ export default {
     },
     appreciation: {
       title: 'The Child of the Mansion',
-      desc: 'The child in the mansion paints a picture to thank a coal miners.'
+      desc: 'The child in the mansion paints a painting to thank a coal miners.'
     },
     beauty: {
       title: 'Elixir of Immortality',
@@ -234,7 +235,7 @@ export default {
     },
     photosynthesis: {
       title: 'A Taste of Photosynthesis',
-      desc: `Alien Gray wants to eat Earth's food for research.`
+      desc: `Alien Grey wants to eat Earth's food for research.`
     }
   },
   ui: {
@@ -465,11 +466,11 @@ export default {
       book: [`What's wrong with you collecting books?`, `You're not going to read them anyway!`],
       candol: ['Why did you bring a candle?', `...don't use them for anything weird, okay?`],
       chest: [`It's a chest of drawers.`, 'Indeed. We need to organize our house.'],
-      coffin: [`Wait, you brought back a coffin!', 'I cringe that...`, `It's empty inside, right...?`],
+      coffin: ['Wait, you brought back a coffin!', 'I cringe that...', `It's empty inside, right...?`],
       wine: ['Wine?', 'What are you going to do, get me drunk?'],
       medicine: ['Medicine?', 'It is not the weird one, right?'],
       elixir: ['Elixir of immortality...?', `It's kind of fake.`, `Libra, I'll always love you, even when you get older.`],
-      guitar: [`It's a guitar.`, 'I wonder if I could learn to play it if I practiced.'],
+      guitar: [`It's a guitar.`, `I wonder if I'll be able to play it if I practice.`],
       gun: ['You got a .45 caliber handgun.', `It's the best one of automatic pistols.`, `It's a perfected gun.`],
       rifle: ['You got a bolt-action rifle.', `The mechanism is simple, so it's highly accurate and reliable.`],
       revolver: ['You got a revolver gun.', `It is very reliable because it doesn't have problems like bullet jamming.`],
@@ -494,7 +495,7 @@ export default {
       pig: [`It's a pig! Hello.`, 'Oh..., is it okay if I cook with pork in front of the pig...?'],
       ghost: [`...libra, ...I'm seeing things I shouldn't.`],
       art: ['Did you put the picture?', 'I like it!'],
-      artMany: [`You've got a lot of pictures.`, 'Do you collect them?'],
+      artMany: [`You've got a lot of pictures.`, 'Are you collecting them?'],
       artAll: ['So many pictures!', `It's like a museum.`, 'You must have worked hard to collect them.'],
       torrent: ['You brought a big one...'],
       penguin: [`It's a penguin!`, `Isn't our room too hot for her?`],
@@ -1137,7 +1138,7 @@ export default {
         'I feel like a noblemaaaaaaan!!!',
         '..........',
         'Huh.',
-        'Okay, I thought it was just mushrooms, even though they are high grade.',
+        'Okay, I thought they were just mushrooms, even though they are high grade.',
         'But, it was even better than I expected.',
         `One of my friends said, "They think it taste good because it's high grade, but it's just a mushroom."`,
         `But he's just a poor man with a poor tongue.`,
@@ -1197,7 +1198,7 @@ export default {
         'Please try to take it there.',
         'Then, please take care of it.'
       ],
-      answer2: ['…Okay'],
+      answer2: ['…Okay.'],
       started: [
         'The mansion is located at the end of the forest.',
         'Please try to take it there.'
@@ -1210,7 +1211,7 @@ export default {
         '...Oh...thank God...',
         `...Ugh, I'm sorry.`,
         `I'm so happy, I'm crying...`,
-        `Please receive all the earnings.'`,
+        'Please receive all the earnings.',
         'Thank you so much.'
       ],
       completed: ['Again, Thank you so much.']
@@ -1243,8 +1244,8 @@ export default {
       options: ['Sure', 'No thank you'],
       answer1: [
         'Thank you!',
-        'Then take this picture with you.',
-        `I drew this picture of they're working hard.`,
+        'Then take this painting with you.',
+        `I drew this painting of they're working hard.`,
         `Do you think they'll like it?`,
         `Then, I'm counting on you!`
       ],
@@ -1266,7 +1267,7 @@ export default {
       solve: [
         'A kid from the mansion wants to thank me?',
         'Damn, Thanks for being so condescending.',
-        `We can't fill our stomachs with any beautiful pictures.`,
+        `We can't fill our stomachs with any beautiful paintings.`,
         '...hmm?',
         'Oh, the frame that holds this painting looks like it will sell for a good price.',
         'Good, good, I think I can eat a full meal after a long time.',
@@ -1352,7 +1353,7 @@ export default {
         'Take this.'
       ],
       complete2: [
-        'There is no such thing as eternal youth.',
+        'Eternal youth is nonsense.',
         'We are beautiful because we are finite.',
         `She was a pathetic bitch who doesn't realize that.`
       ],
@@ -1379,7 +1380,7 @@ export default {
           'I asked my husband, who was holding my hand, "Will you...always...stay by my side?"',
           'He replied, "I promise."',
           'I was so relieved to hear that.',
-          'It was that night that I died.',
+          'It was the night that I died.',
           'The next thing I knew, I was wandering around the hospital like this.',
           `I did't go to heaven.`,
           `Because my husband isn't here.`,
@@ -1388,7 +1389,7 @@ export default {
           `I've been waiting for him here...`,
           'So I ask you.'
         ],
-        answer2: ['I see...'],
+        answer2: ['.........'],
         started: [
           'Please bring my husband to here.',
           'He is still working in this hospital, in this place.',
@@ -1424,7 +1425,7 @@ export default {
           'Wait, wait, please.',
           `As you can see, I'm still alive, right?`,
           '..........',
-          `'Please don't do like that.`,
+          `Please don't do like that.`,
           `I don't want to die yet.`,
           'I want to remarry another person and live a long life.'
         ],
@@ -1567,12 +1568,12 @@ export default {
       ],
       guide1: [
         'I am an alien.',
-        'If you go to space, get in the UFO.'
+        'If you want to go to space, get in the UFO.'
       ],
       guide2: [
         `We've arrived in space.`,
         'When humans walk in space, they are easily lost.',
-        `I made sure you can't get going too far.`,
+        `So I made sure you can't get going too far.`,
         `But the truth is, it's much bigger.`
       ],
       evolution: [
@@ -1597,9 +1598,9 @@ export default {
       answer1: [
         'We do photosynthesize.',
         'What color do you think we Grey aliens are?',
-        'Green? Gray?',
+        'Green? Grey?',
         'Both are correct.',
-        `We're usually green, and we turn gray when we're not photosynthesizing for a long time.`,
+        `We're usually green, and we turn grey when we're not photosynthesizing for a long time.`,
         `That means I'm hungry now.`
       ],
       answer2: [
