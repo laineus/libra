@@ -1679,94 +1679,94 @@ export default {
         `I've always been agonised over.`
       ],
       talk3: [
-        'もし彼らの何十倍、何百倍もの命を救えば、彼らも浮かばれるのではないか？',
-        '私は許されるのではないか？',
-        'そう思って、毎日必死で患者たちを救ってきました。',
-        'ですが、今でも分からないのです。',
-        '私は許されたのでしょうか？'
+        'If I save tens or hundreds of lives, will they who passed away saved?',
+        'And will I be forgiven?',
+        `That's what I've been thinking, and I've been trying my best to save patients every day.`,
+        `But even now, I still don't understand.`,
+        'Have I been forgiven?'
       ],
-      options2: ['あなたは偉大な医者だ', '彼らはあなたを恨んでいる'],
+      options2: [`You're a great doctor`, 'They have a grudge against you'],
       answer1: [
-        'そんなふうに言っていただけるなんて。',
-        'ああ、少し肩の荷が下りた気分です。'
+        'Thank you for saying that.',
+        'I feel a little relieved.'
       ],
       answer2: [
-        'そうですよね。',
-        '自分の犠牲の上にたくさんの人が助かろうと、本人からすればとんでもない。',
-        'この罪滅ぼしは私の自己満足です。',
-        'あらためて、決心がつきました。',
-        '私は一生をかけてこの罪滅ぼしを続けていきます。'
+        `Yeah... you're right.`,
+        `From their point of view, Even if many people can be saved, it's outrageous that their lives would sacrifice instead.`,
+        'This atonement is for my own self-satisfaction.',
+        `Once again, I've made up my mind.`,
+        'I will continue to atone for my sins for the rest of my life.'
       ],
       complete: [
-        '話を聞いてくれて感謝しています。',
-        'お礼にこれを。'
+        'Thank you for listening to me.',
+        `Here's something to thank you for.`
       ],
       completed: [
-        'さて、こうしてはいられません。',
-        '患者たちが待っていますから。'
+        `Now, I can't stay like this.`,
+        'I have patients waiting for me.'
       ],
       patient0: [
-        '先生、こっちだ。',
-        'こっちに来てくれ。'
+        'Doctor, over here.',
+        'Come here please.'
       ],
       patient1: [
-        '先生、医者だなんて、嘘だったんですね。',
-        '…酷いです。',
-        '私の体、こんなに傷だらけになってしまって…。'
+        `Doctor, you lied to me about being a doctor, didn't you?`,
+        `...It's terrible.`,
+        'My body is covered in so many scars...'
       ],
       patient2: [
-        '寒い。寒いよ。',
-        '先生、どうして体がこんなに寒いんですか？',
-        '先生…、助けて。'
+        `It's cold. It's cold.`,
+        'Doctor, why is my body so cold?',
+        'Doctor..., help me.'
       ],
       patient3: [
-        '痛い！！',
-        '痛いよ先生！！',
-        'こんなに痛いの、もう、耐えられないよ！！',
-        'なんとかしてよ！！'
+        'It hurts!',
+        'It hurts, doctor!!!' ,
+        `It hurts so much, I can't stand it anymore!!!`,
+        'Do something about it, please!'
       ],
       patient4: [
-        '先生、手術したら助かるって嘘だったのかよ。',
-        'どうなってるんだよ、これ。',
-        '俺、死んでるじゃねえかよ…。なあ。'
+        `Doctor, you said I'm gonna be recovered by the surgery, didn't you?`,
+        `What's going on, this.`,
+        `I'm dead, aren't I...? Hey...`
       ],
       patient5: [
-        '先生、あなたが本当のお医者さんじゃなくても、私は感謝しています。',
-        'あなたは私の命を救うために、必死に頑張ってくれました。',
-        '恨んでなんかいません。',
-        'さあ、部屋の明かりをつけて。',
-        'いつまでも心優しい先生でいてくださいね。'
+        `Doctor, even if you're not a real doctor, I'm grateful.`,
+        'You have worked so hard to save my life.',
+        `I don't hold any grudge.`,
+        'Now, turn on the light in the room.',
+        'Please be a warm-hearted doctor forever.'
       ],
-      lockMap: '逃げられないよ' // There is no escape
+      lockMap: 'There is no escape'
     }
   },
   happyend: {
-    title: 'ハッピーエンド',
+    title: 'Happy end',
     lyrics: [
-      '夜風の音が 神さまの声なら',
-      '聞きに行くのさ 日が昇るまで',
-      'そして優しい 心を手に入れて',
-      '誰かのために 生きてみるのさ',
-      '僕の死ぬ日が 世界の終わりなら',
-      '悲しむ人は 居るわけなくて',
-      '明日その日が 訪れたとしても',
-      '光がひとつ 輝くだけさ',
-      '日が落ちるころ 聴いていた歌',
-      '綺麗事流れ続けた',
-      'あなたが降らす雨が涙でも',
-      '僕の心には虹がかかるなら',
-      'ご機嫌な曲で終わるハッピーエンド',
-      'そんな毎日も幸せなのさ',
-      'いつか愛した あの子が泣いていた',
-      '僕は悲しいフリをしたのさ',
-      '大好きな歌詞 大好きな音',
-      '嘘つきも優しく見えた',
-      'あなたが降らす雨が涙でも',
-      '僕の心には虹がかかるなら',
-      'ご機嫌な曲で終わるハッピーエンド',
-      'そんな毎日も幸せなのさ',
-      '明日の朝が世界の終わりでも',
-      'そんな悲しい顔しないでよ'
+      `If the Sound of Night Wind is the god's voice`,
+      `I'm going to hear it until the sun comes up`,
+      `Then I'll get a kind heart`,
+      'And try to live for someone else',
+      `If the day I'll die is the end of the world`,
+      `There's no one to be sad`,
+      'And even if the day comes tomorrow',
+      'Just something will sparkle once',
+      'A song I was listening when the sunset',
+      'It was singing fancy words',
+      'Even if the rain you make fall is tears',
+      'If it makes a rainbow on my heart',
+      `It's a Happy End with a cheerful tune`,
+      `I'm contented even life like that`,
+      'A girl who I once loved was crying',
+      `So I pretended I'm sad`,
+      'Lyrics and sounds I love',
+      'Even a liar looked kind to me',
+      'Even if the rain you make fall is tears',
+      'If it makes a rainbow on my heart',
+      `It's a Happy End with a cheerful tune`,
+      `I'm contented even life like that`,
+      'Even if tomorrow is the end of the world',
+      `Please don't look so sad`
     ]
   }
 }
