@@ -18,12 +18,23 @@ export default {
         uiScene.log.push(t('ui.questStart', t('quest.matsutake')))
         state.events.matsutake = MATSUTAKE_STEPS.STARTED
       } else if (state.events.matsutake === MATSUTAKE_STEPS.STARTED) {
-        if (!bag.hasItem('matsutake')) return await speakPenguin(t('events.matsutake.started'))
-        const cancel = await uiScene.setSelector(t('events.matsutake.options')) === 1
-        if (cancel) return
-        bag.removeItem('matsutake')
-        uiScene.log.push(t('events.matsutake.log'))
-        await speakPenguin(t('events.matsutake.complete'))
+        const options = t('events.matsutake.options').filter((_, i) => {
+          if (i === 0) return bag.hasItem('matsutake')
+          if (i === 1) return bag.hasItem('kinoko')
+          return true
+        })
+        if (options.length === 1) return await speakPenguin(t('events.matsutake.started')) // Don't have both
+        const selectedIndex = await uiScene.setSelector(options)
+        if (selectedIndex === (options.length - 1)) return // Cancelled
+        if (selectedIndex === 0 && bag.hasItem('matsutake')) {
+          bag.removeItem('matsutake')
+          uiScene.log.push(t('events.matsutake.log1'))
+          await speakPenguin(t('events.matsutake.complete1'))
+        } else {
+          bag.removeItem('kinoko')
+          uiScene.log.push(t('events.matsutake.log2'))
+          await speakPenguin(t('events.matsutake.complete2'))
+        }
         await field.dropItem('apple', penguin.object)
         uiScene.log.push(t('ui.questComplete', t('quest.matsutake')))
         state.events.matsutake = MATSUTAKE_STEPS.COMPLETED

@@ -1124,9 +1124,10 @@ export default {
         'Please grant me my last wish.'
       ],
       started: ['Can you pick up a Matsutake mushroom for me?', 'Please grant me my last wish.'],
-      options: ['Give a Matsutake mushroom', 'Nothing'],
-      log: 'Gave a Matsutake mushroom.',
-      complete: [
+      options: ['Give a Matsutake mushroom', 'Give a mushroom', 'Nothing'],
+      log1: 'Gave a Matsutake mushroom.',
+      log2: 'Gave a mushroom.',
+      complete1: [
         'Oh! Is this the Matsutake mushroom!?',
         `Then let's eat this right away.`,
         '..........',
@@ -1138,13 +1139,26 @@ export default {
         'Huh.',
         'Okay, I thought it was just mushrooms, even though they are high grade.',
         'But, it was even better than I expected.',
-        `One of my friends said, "They think they taste good because they're high grade, but they're just mushrooms"`,
+        `One of my friends said, "They think it taste good because it's high grade, but it's just a mushroom."`,
         `But he's just a poor man with a poor tongue.`,
         'Anyway, I got to eat such delicious food. I have no regrets about my life now.',
         'Thank you, sis.',
         'Accept the apple.'
       ],
-      completed: ['I got to eat such delicious food. I have no regrets about my life now.']
+      complete2: [
+        'Oh, is this the matsutake mushroom?',
+        'Looks like a ordinary mushroom.',
+        'Anyway, let me try it.',
+        '..........',
+        'Hmmm..., hmmm?',
+        'Tasty is tasty, but not that surprising.',
+        `One of my friends said, "They think it taste good because it's high grade, but it's just a mushroom."`,
+        `Maybe he's right.`,
+        `Oh, I'm sorry you had to go out of your way to find it.`,
+        'Anyway, thanks for doing me a favor.',
+        'Accept the apple.'
+      ],
+      completed: ['Thank you again.', 'I have no regrets about my life now.']
     },
     painter: {
       start: [
