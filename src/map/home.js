@@ -100,24 +100,24 @@ export default {
       if (slept && !hangout) await speakAmiliScripts(t('events.home.sleepTwice'))
       gave = true
       if (!hangout) slept = true
-      const execAction = () => {
+      const execAction = opening => {
         state.status[hangout ? 'heart' : 'body'] += 1
         const position = field.positions[hangout ? 'entrance' : 'bed']
         field.player.lookTo(hangout ? 'up' : 'rightDown')
         field.player.object.setPosition(position.x, position.y)
         amili.object.setPosition(position.x + 20, position.y)
         amili.lookTo(hangout ? 'up' : 'leftDown')
-        audio.se('effect')
+        if (!opening) audio.se('effect')
         uiScene.log.push(hangout ? t('events.home.lvup.heart') : t('events.home.lvup.body'))
         if (!hangout) consumeTissue(1)
       }
       if ((state.status.heart + state.status.body) === 0) {
         await sleep(1000)
-        sleep(2500).then(execAction)
+        sleep(2500).then(() => execAction(true))
         await uiScene.startOpening()
       } else {
         const completeTransition = await uiScene.transition(700)
-        execAction()
+        execAction(false)
         await completeTransition()
       }
     }

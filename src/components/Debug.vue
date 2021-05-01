@@ -33,7 +33,7 @@ export default {
     const stateModal = ref(null)
     window.assets = assets
     window.game = game
-    window.state = storage.state
+    window.storage = storage
     const selectedMap = ref(null)
     const mapList = assets.tilemapTiledJSONExternal.map(v => {
       return { name: v[0], x: 400, y: 400 }
