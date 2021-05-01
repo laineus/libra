@@ -9,7 +9,7 @@
     <Text :text="`${setting.state.se}%`" :x="227" :y="59" :originX="1" :size="14" />
     <Slider :x="11" :y="83" :width="217" :height="9" :max="100" :bgColor="COLORS.soy" v-model="model.se" @commit="commit" />
     <!-- LANG -->
-    <Text text="Lang" :x="11" :y="105" :size="14" :bold="true" /><!-- Must not be translated -->
+    <Text text="Language" :x="11" :y="105" :size="14" :bold="true" /><!-- Must not be translated -->
     <Circle :x="18" :y="136" :lineWidth="1" :strokeColor="COLORS.brown" :radius="7" @pointerdown="setLang('ja')" />
     <Circle v-if="setting.state.lang === 'ja'" :x="18" :y="136" :fillColor="COLORS.brown" :radius="4" />
     <Text text="日本語" :x="31" :y="137" :originY="0.5" :size="13" :bold="true" @pointerdown="setLang('ja')" />

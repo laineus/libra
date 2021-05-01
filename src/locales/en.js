@@ -252,7 +252,7 @@ export default {
     hpRecover: 'HP #{value} recovered',
     weightOver: `It's overweight`,
     cantPutItem: `Can't put it here`,
-    saved: 'Save successfully',
+    saved: 'Saved successfully',
     nothingHappened: 'Nothing happened',
     trash: 'Threw out the trash (Great!)',
     vendingMachine: 'Thank you for your purchase!',
@@ -333,7 +333,7 @@ export default {
   },
   events: {
     block: {
-      common: 'Can not go to the area.',
+      common: 'Can not yet go there.',
       status: 'You need a total of #{status} charms.'
     },
     libra: {
@@ -398,8 +398,8 @@ export default {
         'By the way,',
         'Today, you came to this forest to bring an apple back to your girlfriend.',
         'Your home is located at north of this forest.',
-        `So, she's waiting for you.`,
-        'I will take my leave now.'
+        `She's waiting for you.`,
+        'Then, I will take my leave now.'
       ]
     },
     home: {
