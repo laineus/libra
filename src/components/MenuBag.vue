@@ -92,6 +92,24 @@ export default {
       return promise
     }
     const onCeil = (x, y) => field.field.tilemap.layers.some(l => l.tilemapLayer.depth >= config.DEPTH.CEIL && l.tilemapLayer.getTileAtWorldXY(x, y)?.collides)
+    const trashCan = (x, y) => {
+      if (!['tissueEmpty', 'trash'].includes(grab.item.key)) return false
+      const trashCan = field.substances.find(o => ['trashCan1', 'trashCan2'].includes(o.name) && Phaser.Math.Distance.Between(o.ref.value.object.x, o.ref.value.object.y, x, y) < 20)
+      if (!trashCan) return false
+      state.bagItems.delete(grab.item)
+      if (trashCan.name === 'trashCan1') {
+        const i = field.objects.findIndex(v => v === trashCan)
+        field.objects.splice(i, 1, Object.assign({}, trashCan, { name: 'trashCan2' }))
+        if (field.name === 'home') {
+          const stateTrashCan = state.roomItems.find(v => v.key === 'trashCan1' && v.x === trashCan.x && v.y === trashCan.y)
+          stateTrashCan.key = 'trashCan2'
+        }
+      }
+      uiScene.log.push(t('ui.trash'))
+      achieve.activate('trash')
+      audio.se('drop')
+      return true
+    }
     const drop = () => {
       const width = grabRef.value.width
       const height = grabRef.value.height
@@ -109,23 +127,12 @@ export default {
       } else if (grab.mode === 'dispose') {
         const x = grab.x + camera.scrollX
         const y = grab.y + camera.scrollY
-        const trashCan = field.substances.find(o => ['trashCan1', 'trashCan2'].includes(o.name) && Phaser.Math.Distance.Between(o.x, o.y, x, y) < 20)
-        const vendingMachine = field.substances.find(o => o.name === 'vendingMachine' && Phaser.Math.Distance.Between(o.x, o.y - 30, x, y) < 28)
+        const vendingMachine = field.substances.find(o => o.name === 'vendingMachine' && Phaser.Math.Distance.Between(o.ref.value.object.x, o.ref.value.object.y - 30, x, y) < 28)
         if (onCeil(x, y)) {
           uiScene.log.push(t('ui.cantPutItem'))
-        } else if (['tissueEmpty', 'trash'].includes(data.key) && trashCan) {
+        } else if (trashCan(x, y)) {
           state.bagItems.delete(grab.item)
-          if (trashCan.name === 'trashCan1') {
-            const i = field.objects.findIndex(v => v === trashCan)
-            field.objects.splice(i, 1, Object.assign({}, trashCan, { name: 'trashCan2' }))
-            if (field.name === 'home') {
-              const stateTrashCan = state.roomItems.find(v => v.key === 'trashCan1' && v.x === trashCan.x && v.y === trashCan.y)
-              stateTrashCan.key = 'trashCan2'
-            }
-          }
           context.emit('close')
-          uiScene.log.push(t('ui.trash'))
-          achieve.activate('trash')
         } else if (['coinGold', 'coinSilver'].includes(data.key) && vendingMachine) {
           state.bagItems.delete(grab.item)
           field.dropItem(['coke', 'tea'].random(), vendingMachine.ref.value.object)
@@ -148,8 +155,12 @@ export default {
           grab.item.bagY = Math.round(Math.fix(grab.y - offsetY.value, height, HEIGHT))
           grab.resolver(true)
         } else {
+          if (trashCan(x, y)) {
+            grab.resolver({ x, y, delete: true })
+          } else {
+            grab.resolver(onCeil(x, y) ? false : { x, y })
+          }
           context.emit('close')
-          grab.resolver(onCeil(x, y) ? false : { x, y })
         }
         // Raptor
         const isRaptor = grab.item.key.startsWith('raptor')
