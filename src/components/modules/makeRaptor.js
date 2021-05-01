@@ -6,7 +6,7 @@ const MAP = {
   raptor5: { minX: 5, minY: 18, maxX: 23, maxY: 34 }, // rightLeg
   raptor7: { minX: -48, minY: 0, maxX: -30, maxY: 15 } // tail
 }
-export default (isField, { state, uiScene, field, chieve }) => {
+export default (isField, { state, uiScene, field, achieve }) => {
   const items = isField ? field.objects : state.bagItems
   const keyX = isField ? 'x' : 'bagX'
   const keyY = isField ? 'y' : 'bagY'
@@ -43,6 +43,6 @@ export default (isField, { state, uiScene, field, chieve }) => {
     items.push(raptor)
   }
   uiScene.log.push(t('ui.raptor'))
-  chieve.activate('raptor')
+  achieve.activate('raptor')
   return true
 }

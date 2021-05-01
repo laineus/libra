@@ -57,7 +57,7 @@ export default {
     }
     onUpdated(() => {
       if (!current.value) return
-      data.bgWidth = Math.max(txt.value.width + 24, 70)
+      data.bgWidth = Math.max(txt.value.width + 24, 100)
       data.bgHeight = txt.value.height + 10
     })
     return {

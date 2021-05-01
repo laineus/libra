@@ -291,7 +291,7 @@ export default {
     },
     hp: {
       title: 'HP',
-      desc: 'The heart displayed on the screen is your HP. When it runs out after being attacked by a creature, you will be forced to move to your home.'
+      desc: 'The heart displayed on the screen is your HP. When attacked by creatures and it runs out, you will be forced to move to your home.'
     },
     charm: {
       title: 'Charm',
@@ -303,7 +303,7 @@ export default {
     },
     use: {
       title: 'Eat items',
-      desc: 'When you grab an item that you can eat, an icon will appear at the bottom of your bag. You can drop it on the icon to eat.'
+      desc: 'When you grab an item that you can eat, the icon will appear at the bottom of your bag. You can drop it on the icon to eat.'
     },
     dispose: {
       title: 'Dispose items',
@@ -319,7 +319,7 @@ export default {
     },
     murder: {
       title: 'Murder',
-      desc: 'Killing an inhabitant who can talk to you will not revive them again. You will not be able to complete related quests.'
+      desc: 'If you kill inhabitants who can talk to you, they will not revive again. And you will not be able to complete related quests.'
     }
   },
   tutorial: {
@@ -414,7 +414,7 @@ export default {
       followMe: 'Follow me',
       letsGo: `Let's go.`,
       finishFollowing: 'That was fun.',
-      noApple: `You don't have any apples`,
+      noApple: `You don't have any apples.`,
       iloveyou: 'Libra, I love you!',
       gaveApple1: ['Thank you!', 'What do you want to do today?'],
       gaveApple2: ['Thank you!', 'What do you want to do next?'],
@@ -422,11 +422,11 @@ export default {
       sleepTwice: ['Again!?', '...Sure, why not?'],
       requestApple: {
         a: [`Libra, I'm still hungry.`, 'Bring me another apple.'],
-        b: ['Hmmm', 'I want to eat apples again', `Libra, you'll bring me some, won't you?`]
+        b: ['Hmmm.', 'I want to eat apples again.', `Libra, you'll bring me some, won't you?`]
       },
       lvup: {
-        heart: 'Heart charm has increased.',
-        body: 'Body charm has increased.'
+        heart: 'Heart charm has increased',
+        body: 'Body charm has increased'
       }
     },
     itemReactions: {
@@ -486,7 +486,7 @@ export default {
       vendingMachine: ['Wow! We got a vending machine!', 'Once I thought that if I had a vending machine in my room, I could have a drink whenever.'],
       insect: [`Why you got a bug in our room!?`, 'I hate bugs!!'],
       hercules: [`I hate bugs, even the rare ones!`, `...but well, it's kinda cool.`],
-      snake: [`libra! There's a snake in my room!`],
+      snake: [`libra! There's a snake in our room!`],
       flog: ['Hello, frog.'],
       fallFlog: ['Hello, orange frog.'],
       bat: ['Did you caught a bat?', `Okay, it's better than bugs...`],
@@ -655,18 +655,18 @@ export default {
         '"I know the value of gems even me."',
         '"The gem should be worth enough to feed my family, right?"',
         'Bullshit. So I told him.',
-        `"Yeah. You're right, gems are worth that much"`,
+        `"Yeah. You're right, gems are worth that much."`,
         '"But how are you going to exchange the gem for money or food?"',
         `"You can't, right? So it is just a stone to you."`,
         `"But what about this frog meat? Isn't it a feast for you?"`,
-        `"In other words. I'm saying I'll trade you a stone for a feast."`,
+        `"In other words, I'm saying I'll trade you a stone for a feast."`,
         `"If you still don't like to trade them, I'll give up and eat this frog myself now."`,
         'Then the bat bastard said hurriedly.',
         '"Wait, I get it! I understand perfectly!"',
         `"I don't need such a stone. Take it and give me the flog meat right now."`,
         `Ever since then, he's been brought gems to me every day. He's been wanted to fill up his family.`,
         'He and his families became fat day by day.',
-        'Then, I ate all of them.',
+        'Then, I ate all of them, haha.',
         `What I want to say is, worldly values don't always apply.`,
         `So if you bring me gems too, I'll trade you this apple.`
       ],
@@ -677,14 +677,14 @@ export default {
       ],
       options: ['Give him two gems each', 'Nothing'],
       complete1: 'Good, you brought it.',
-      logs: ['Gave him two sapphires', 'Gave him two emeralds', 'Gave him two amethysts', 'Gave him two rubies'],
+      logs: ['Gave him 2 sapphires', 'Gave him 2 emeralds', 'Gave him 2 amethysts', 'Gave him 2 rubies'],
       complete2: 'Okay, take it.',
       completed: 'What? I have nothing to tell you anymore.'
     },
     strawDoll: {
       start: [
         'Hey you, look at this straw doll.',
-        `I found it in the forest and brought it home, but later I threw it away because it was creepy.`,
+        `I found this in the forest and brought it home, but later I threw it away because it was creepy.`,
         `But when I woke up the next day, I found this doll in my house that I had thrown away.`,
         'No matter how many times I throw it away, it always comes back to my house.',
         `It's creepy, isn't it?`
@@ -833,14 +833,14 @@ export default {
         'But later, I had a stomachache and felt nauseous.',
         'Well, I thought it was just a food poisoning,',
         'But then my skin turned purple, my body felt like paralysis, and I had trouble breathing.',
-        'I went to see Dr.Anton to consult him.',
+        'So I went to see Dr.Anton to consult him.',
         'I told him about the all, then he asked me that,',
         '"What did the fish look like?"',
         '"Well, it looked like a snake and it was black"',
-        'Ooh... it must be a Uminoke',
-        `What's that?`,
-        'Uminoke is a sea monster, not a fish.',
-        `It's only natural that you'd be cursed if you ate such a thing.`,
+        '"Ooh... it must be a Uminoke."',
+        `"What is that?"`,
+        '"Uminoke is a sea monster, not a fish."',
+        `"It's only natural that you'd be cursed if you ate such a thing."`,
         'I got freaked out.',
         '"Oh, no! What should I do?"',
         `"Well, don't panic. I'll exorcise you properly"`,
@@ -851,7 +851,7 @@ export default {
         'Since then, every time I catch a Uminoke, I bring it to the doctor.',
         'And as I said, I caught one today.',
         'So, miss, could you please take it to Dr.Anton?',
-        `I'm going to give you a reward then`
+        `I'm going to give you a reward then.`
       ],
       startOptions2: ['Leave it to me', 'No thanks'],
       answer1: ['Thank you. Leave it to you.'],
@@ -905,7 +905,7 @@ export default {
         `I lied and said, "It is a sea monster, so don't eat it and bring it to me next time."`,
         'As a result, he began to bring me the supreme fish.',
         `Oh, please don't look at me like that.`,
-        `I'm so sorry for him, but It tastes so good that it makes me do bad things.`,
+        `I'm so sorry for him, but It tastes so good that it made me doing such a bad thing.`,
         'Please, please keep this to yourself.'
       ],
       startOptions3: ['Let me eat cooked eel instead', 'You should apologize for him'],
@@ -926,9 +926,9 @@ export default {
     },
     liveForEveryone: {
       start: [
-        'I can see what the person wants and what they want me to do.',
-        `It's not a lie.`,
-        'You want apples, right?',
+        'I am able to see what the person wants and what they want me to do.',
+        `I'm not saying a lie.`,
+        'For example, You want apples, right?',
         'With this ability that was given from God, I had vowed to live a life for others.',
         `So I have always granted a person's wishes without anything in return.`,
         'But, I realize that I wanted something returns in fact.',
@@ -1002,14 +1002,14 @@ export default {
     },
     pityPenguinFriend: {
       start1: [
-        'There is a man named Hachi who lived in the northern area',
+        'There is a man named Hachi who lived in the northern area.',
         `This guy, well, he's never been with a woman.`,
         'He was supposed to live his lonely life.',
         'But a few months ago, he was visited by a beautiful woman.',
-        'So He asked her what she wanted, she said,',
+        'So he asked her what she wanted, and she said,',
         '"My name is Tokine. You must suspicious me, a sudden visitor, but please listen to me."',
         '"I have come to this place on business."',
-        '"And when I saw you from over there, my heart was instantly captivated by you"',
+        '"And when I saw you from over there, my heart was instantly captivated by you."',
         `That's what she said.`,
         'Furthermore, she got into his house and asked him to marry her right now.',
         `Of course, there's no such a good deal in this world.`,
@@ -1019,7 +1019,7 @@ export default {
         'The woman replied,',
         `"I'll never do like that! If you can't trust me, you can tie my ankles to the pillars in your room."`,
         'Cause she insist, Hachi took her up to his room and tied her ankle to the pillar.',
-        'The woman just looked at Hachi smiling and happy, so Hachi was completely confused.',
+        'But the woman just looked at him, smiling and happy, so Hachi was completely confused.',
         'But he ended up spending the night with the woman that night.',
         'After that, Hachi is simple.',
         'He was completely smitten by the woman after the night.',
@@ -1030,7 +1030,7 @@ export default {
         `"Indeed, I'm sure my parents are worried about me, so I'll go back to greet them as you said."`,
         'Hachi held out a bundle of bills to the woman and said.',
         `"This is the cost of the round trip and the betrothal money for your parents' home"`,
-        `"I'll be back for sure."`,
+        `"Thank you. I'll be back for sure."`,
         `The woman went back to her parents' home, but no matter how long he waited, she didn't coming back.`,
         'At first, he suspected her, but just one night makes him fool.',
         'How can men be so stupid?',

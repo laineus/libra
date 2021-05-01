@@ -9,8 +9,8 @@
     </template>
     <Container v-if="selected">
       <Text :x="10" :y="10" text="← Back" :size="12" :bold="true" @pointerup.stop="back" />
-      <Text :x="10" :y="40" :text="selected.title" :size="14" :bold="true" />
-      <Text :x="10" :y="70" :text="selected.desc" :size="13" :style="{ wordWrap: { width: 210, useAdvancedWrap: true } }" :lineSpacing="5" />
+      <Text :x="10" :y="40" :text="selected.title" :size="adjustFontSize(14)" :bold="true" />
+      <Text :x="10" :y="70" :text="selected.desc" :size="adjustFontSize(13)" :style="{ wordWrap: { width: 210, useAdvancedWrap: true } }" :lineSpacing="5" />
     </Container>
     <ScrollBar ref="scrollBar" :visible="!selected" :x="rowWidth + 21" :y="3" :height="(rowHeight * 7) - (3).twice" :length="list.length" :limit="7" v-model="offset" />
   </Container>
@@ -19,6 +19,7 @@
 <script>
 import { reactive, toRefs, ref, inject } from 'vue'
 import { Container, Rectangle, Line } from 'phavuer'
+import adjustFontSize from '@/util/adjustFontSize'
 import config from '@/data/config'
 import Text from '@/components/Text'
 import ScrollBar from '@/components/ScrollBar'
@@ -51,6 +52,7 @@ export default {
     return {
       t,
       COLORS: config.COLORS,
+      adjustFontSize,
       list,
       ...refs,
       ...toRefs(data),
