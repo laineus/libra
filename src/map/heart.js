@@ -153,6 +153,7 @@ export default {
           sleep(1000)
           libra.lookTo('up')
           uiScene.scene.add.tween({ targets: audio.currentBgm, volume: 0, duration: 600 })
+          amili.lookTo('leftUp')
           await speakAmili(t('events.dream.last2.amili1'))
           white(3000)
           const red = await uiScene.transition(1000, { color: 0x770022, alpha: 0.6, hold: 0 })
@@ -164,7 +165,6 @@ export default {
             })
           }, Promise.resolve(1000))
           tween.stop()
-          amili.lookTo('leftUp')
           await speakAmili(t('events.dream.last2.amili2'))
           await sleep(2000)
           heartImage.scene.tweens.addCounter({

@@ -22,7 +22,8 @@
       </Container>
       <Container :tween="data.bedTween" :alpha="0">
         <Image :texture="endA ? 'ed_a' : 'ed_b'" :origin="0.5" />
-        <Image :texture="endA ? 'ed_tear' : 'ed_zzz'" :x="-0.5" :y="endA ? -13 : -30" :origin="0.5" :frame="animFrame" />
+        <Image v-if="endA" texture="ed_tear" :x="-0.5" :y="-13" :origin="0.5" :frame="animFrame" />
+        <Image v-else texture="ed_zzz" :x="-0.5" :y="-30" :origin="0.5" :frame="animFrame" :tint="config.COLORS.gray" />
       </Container>
     </Container>
     <Image :texture="ja ? 'logo_ja' : 'logo_en'" :x="config.WIDTH.half" :y="config.HEIGHT.half - 20" :origin="0.5" :scale="0.8" :tween="data.logoTween" :alpha="0" />

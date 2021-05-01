@@ -8,10 +8,10 @@
     </Container>
     <Container v-if="selected">
       <Text :x="10" :y="10" text="← Back" :size="12" :bold="true" @pointerup.stop="back" />
-      <Text :x="10" :y="40" :text="t(`quest.${selected.key}.title`)" :size="14" :bold="true" />
-      <Text :x="10" :y="70" :text="`${t('ui.location')}:\n${t('ui.client')}:`" :size="12" :bold="true" :lineSpacing="3" />
-      <Text :x="65" :y="70" :text="`${t(`place.${selected.place}`)}\n${t(`name.${selected.chara}`)}`" :size="12" :lineSpacing="3" />
-      <Text :x="10" :y="116" :text="t(`quest.${selected.key}.desc`)" :size="13" :style="{ wordWrap: { width: 210, useAdvancedWrap: true } }" :lineSpacing="5" />
+      <Text :x="10" :y="40" :text="t(`quest.${selected.key}.title`)" :size="adjustFontSize(14)" :bold="true" />
+      <Text :x="10" :y="70" :text="`${t('ui.location')}:\n${t('ui.client')}:`" :size="adjustFontSize(12)" :bold="true" :lineSpacing="3" />
+      <Text :x="78" :y="70" :text="`${t(`place.${selected.place}`)}\n${t(`name.${selected.chara}`)}`" :size="adjustFontSize(12)" :lineSpacing="3" />
+      <Text :x="10" :y="116" :text="t(`quest.${selected.key}.desc`)" :size="adjustFontSize(13)" :style="{ wordWrap: { width: 210, useAdvancedWrap: true } }" :lineSpacing="5" />
     </Container>
     <ScrollBar ref="scrollBar" :visible="!selected" :x="rowWidth + 21" :y="3" :height="289" :length="quest.length" :limit="8" v-model="offset" />
   </MenuContainer>
@@ -20,6 +20,7 @@
 <script>
 import { inject, reactive, ref, toRefs } from 'vue'
 import { Container, Line, Image } from 'phavuer'
+import adjustFontSize from '@/util/adjustFontSize'
 import MenuContainer from '@/components/MenuContainer'
 import Text from '@/components/Text'
 import ScrollBar from '@/components/ScrollBar'
@@ -64,6 +65,7 @@ export default {
       t,
       state,
       COLORS: config.COLORS,
+      adjustFontSize,
       quest,
       ...refs,
       ...toRefs(data),

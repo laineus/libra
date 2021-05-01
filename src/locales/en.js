@@ -202,7 +202,7 @@ export default {
       desc: `The poor penguin, tricked by the woman, can't accept the fact and is still waiting her.`
     },
     liveForEveryone: {
-      title: 'The penguin who lives for others',
+      title: 'Live a life for others',
       desc: `The Penguin who lives for others have lost sight of what "for others" really means.`
     },
     matsutake: {
