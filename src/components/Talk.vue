@@ -30,7 +30,7 @@ export default {
     let resolver = null
     const data = reactive({
       x: computed(() => current.value?.chara.x - camera.value?.scrollX),
-      y: computed(() => current.value?.chara.y - camera.value?.scrollY - 55),
+      y: computed(() => current.value?.chara.y - camera.value?.scrollY - 75),
       bgWidth: 0,
       bgHeight: 0
     })
