@@ -201,10 +201,11 @@ export default {
       audio.se('click')
     }
     const warning = computed(() => weight.value > 70)
+    const minItemSize = mobile ? 50 : 25
     const createdItem = (item) => {
       nextTick(() => {
-        if (item.input.hitArea.width < 50) item.input.hitArea.width = 50
-        if (item.input.hitArea.height < 50) item.input.hitArea.height = 50
+        if (item.input.hitArea.width < minItemSize) item.input.hitArea.width = minItemSize
+        if (item.input.hitArea.height < minItemSize) item.input.hitArea.height = minItemSize
       })
     }
     onBeforeUnmount(() => {
