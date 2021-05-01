@@ -35,7 +35,6 @@ export default {
     const loadData = () => {
       storage.getList().then(v => {
         list.value = v
-        console.log(list.value)
       })
     }
     loadData()

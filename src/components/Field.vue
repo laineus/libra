@@ -44,7 +44,7 @@ export default {
     const player = ref(null)
     const field = fieldService(scene, props.fieldKey)
     const isRoom = field.name === 'home'
-    console.log(field)
+    if (ENV === 'development') console.log(field)
     const layers = field.layers.map(v => Object.assign({ ref: refObj(null) }, v))
     const images = field.images.map(v => Object.assign({ ref: refObj(null) }, v))
     const objects = shallowReactive(field.objects.map(v => Object.assign({ ref: ref(null) }, v)))
@@ -131,6 +131,7 @@ export default {
       bullets, addBullet, delBullet,
       isCollides, getObjectById,
       layerCreate, charaCreate,
+      resetDarkness,
       play: update
     }
   }

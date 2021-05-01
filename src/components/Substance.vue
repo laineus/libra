@@ -9,7 +9,7 @@
       <slot />
     </Container>
     <template v-if="hp > 0 && unref(visible)">
-      <Image v-if="light" :blendMode="BlendModes.OVERLAY" :x="initX" :y="initY" :depth="config.DEPTH.LIGHT" :tint="light" texture="light" />
+      <Image ref="lightObject" v-if="light" :blendMode="BlendModes.OVERLAY" :x="initX" :y="initY" :depth="config.DEPTH.LIGHT" :tint="light" texture="light" />
       <TapArea v-if="tapEvent.event.value" :visible="interactive" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @tap="execTapEvent" />
       <GrabArea ref="grabArea" v-else-if="capturable" :visible="interactive || inHome" :noImage="inHome" :name="name" :scale="scale" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @grab="alpha = 0.5" @capture="onBroken" @move="move" @cancel="alpha = 1" />
     </template>
@@ -48,6 +48,7 @@ export default {
     const audio = inject('audio')
     const achieve = inject('achieve')
     const object = refObj(null)
+    const lightObject = refObj(null)
     const image = refObj(null)
     const grabArea = ref(null)
     const inHome = computed(() => field.value?.name === 'home')
@@ -123,6 +124,11 @@ export default {
       object.value.x = pos.x
       object.value.y = pos.y
       field.value.updateRoomItems()
+      if (light.value) {
+        field.value.resetDarkness()
+        lightObject.value.x = pos.x
+        lightObject.value.y = pos.y
+      }
     }
     const create = obj => context.emit('create', obj)
     onPreUpdate(() => {
@@ -161,7 +167,7 @@ export default {
       create,
       drop, damage, attackAnim,
       damageEffectData, damageEffectTimeline,
-      object, image,
+      object, lightObject, image,
       imageTexture,
       imgWidth, imgHeight, depth, alpha,
       light,
