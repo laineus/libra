@@ -598,7 +598,7 @@ export default {
       ],
       options1: ['Is it present for someone?', 'Sorry'],
       start1: [
-        'It must no be any gift.',
+        'It must not be any gift.',
         `It's something more important.`,
         `I'll explain it to you, so listen.`,
         'It was quite a while ago, my girlfriend, a frog, died.',
@@ -610,7 +610,7 @@ export default {
         'I mean, I killed her, a ladybird.',
         'It was very painful, though.',
         'I promised her that no matter how many times she was reborn, I would always find you.',
-        `She didn't show up for a while, but recently she finally came back again.`
+        `She didn't show up for a while, but recently, she finally came back again.`
       ],
       start2: [
         `She's been reborn as a clover next.`,
@@ -632,7 +632,7 @@ export default {
       ],
       completed: [
         'Thank you for finding her.',
-        `I hope she'll be reborn as a frog and come back next.`
+        `I hope she'll be reborn as a frog next and come back.`
       ],
       torrent: [
         'Who decided that "four-leaf clovers are symbols of happy"?',

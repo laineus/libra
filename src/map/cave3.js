@@ -9,6 +9,7 @@ export default {
     const talk = inject('talk').value
     const state = inject('storage').state
     const bag = inject('bag')
+    const libra = inject('player').value
 
     const leftBat = field.getObjectById(3)
     const rightBat = field.getObjectById(4)
@@ -43,6 +44,8 @@ export default {
     const event = async () => {
       if (state.events.curse === CURSE_STEPS.NULL) {
         await talkBoth(t('events.curse.start1'), [tr, tl, tr])
+        leftBat.lookTo(libra.object)
+        rightBat.lookTo(libra.object)
         if (bag.hasItem('strawDoll')) {
           await talkBoth(t('events.curse.start2'), [tl, tl, tl, tr, tl, tr, tr, tr, tr, tl])
           await speakLeft(t('events.curse.started1'))
@@ -81,12 +84,12 @@ export default {
         await speakLeft(t('events.curse.completed'))
       }
     }
-    leftBat.setTapEvent(event)
+    leftBat.setTapEvent(event, { look: state.events.curse > CURSE_STEPS.NULL })
     rightBat.setTapEvent(async () => {
       if (state.events.curse === CURSE_STEPS.STARTED) {
         return await speakRight(t('events.curse.started2'))
       }
       await event()
-    })
+    }, { look: state.events.curse > CURSE_STEPS.NULL })
   }
 }

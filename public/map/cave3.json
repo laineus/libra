@@ -1,11 +1,4 @@
 { "compressionlevel":-1,
- "editorsettings":
-    {
-     "export":
-        {
-         "target":"."
-        }
-    },
  "height":32,
  "infinite":false,
  "layers":[
@@ -277,7 +270,7 @@
                          "type":"bool",
                          "value":true
                         }],
-                 "rotation":0,
+                 "rotation":-90,
                  "type":"Character",
                  "visible":true,
                  "width":0,
@@ -295,7 +288,7 @@
                          "type":"bool",
                          "value":true
                         }],
-                 "rotation":0,
+                 "rotation":90,
                  "type":"Character",
                  "visible":true,
                  "width":0,
@@ -487,7 +480,7 @@
          "value":"#f0261d11"
         }],
  "renderorder":"right-down",
- "tiledversion":"1.4.3",
+ "tiledversion":"1.5.0",
  "tileheight":32,
  "tilesets":[
         {
@@ -504,6 +497,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.4,
+ "version":1.5,
  "width":36
 }
