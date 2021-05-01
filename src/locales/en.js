@@ -1721,7 +1721,7 @@ export default {
       ],
       patient3: [
         'It hurts!',
-        'It hurts, doctor!!!' ,
+        'It hurts, doctor!!!',
         `It hurts so much, I can't stand it anymore!!!`,
         'Do something about it, please!'
       ],
