@@ -1,11 +1,4 @@
 { "compressionlevel":-1,
- "editorsettings":
-    {
-     "export":
-        {
-         "target":"."
-        }
-    },
  "height":31,
  "infinite":false,
  "layers":[
@@ -186,6 +179,30 @@
                  "width":149.785439817201,
                  "x":69.690199239894,
                  "y":675.195209029137
+                }, 
+                {
+                 "height":0,
+                 "id":8,
+                 "name":"logo",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Substance",
+                 "visible":true,
+                 "width":0,
+                 "x":736.352509179927,
+                 "y":111.758465932273
+                }, 
+                {
+                 "height":0,
+                 "id":9,
+                 "name":"art0",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Substance",
+                 "visible":true,
+                 "width":0,
+                 "x":300.807833537332,
+                 "y":109.669522643819
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -194,7 +211,7 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":8,
+ "nextobjectid":10,
  "orientation":"orthogonal",
  "properties":[
         {
@@ -203,7 +220,7 @@
          "value":"#dc321a20"
         }],
  "renderorder":"right-down",
- "tiledversion":"1.4.3",
+ "tiledversion":"1.5.0",
  "tileheight":32,
  "tilesets":[
         {
@@ -216,6 +233,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.4,
+ "version":1.5,
  "width":40
 }
