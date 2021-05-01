@@ -426,7 +426,8 @@ export default {
       },
       lvup: {
         heart: 'Heart charm has increased',
-        body: 'Body charm has increased'
+        body: 'Body charm has increased',
+        newArea: 'New area has unlocked'
       }
     },
     itemReactions: {
@@ -443,7 +444,7 @@ export default {
       clover3: ['Clover? So cute.'],
       clover4: ['You found a four-leaf clover!', 'Ehehe, this will make you happy!', `...Libra, I'm so happy to be with you.`],
       gardenia: ['It smells so good.', 'Oh, it smells like gardenias.'],
-      StrawDoll: ['Libra, that doll...,', 'I have a bad feeling about it...', 'Go throw it away somewhere.'],
+      strawDoll: ['Libra, that doll...,', 'I have a bad feeling about it...', 'Go throw it away somewhere.'],
       stoneRock: [`You always bring back a lot of stuff, but you don't need the stone indeed...`],
       gem: ['You found a gem!', `It's beautiful.`],
       gemAll: ['Lots of gems!'],
@@ -1427,7 +1428,7 @@ export default {
         'It was pretty good.',
         'Do you ever want to meet a real dinosaur?',
         `I don't think so.`,
-        'If I did, it will become just animal.',
+        'If I did, they will become just animals.',
         'I can only imagine what they looked like from fossils.',
         `That's what romance is all about, right?`
       ],

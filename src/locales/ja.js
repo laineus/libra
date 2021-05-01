@@ -424,7 +424,8 @@ export default {
       },
       lvup: {
         heart: '心の魅力が上がった',
-        body: '体の魅力が上がった'
+        body: '体の魅力が上がった',
+        newArea: '新しいエリアが解放された'
       }
     },
     itemReactions: {

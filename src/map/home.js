@@ -109,6 +109,9 @@ export default {
         amili.lookTo(hangout ? 'up' : 'leftDown')
         if (!opening) audio.se('effect')
         uiScene.log.push(hangout ? t('events.home.lvup.heart') : t('events.home.lvup.body'))
+        if ([1, 3, 10].includes(state.status.heart + state.status.body)) {
+          uiScene.log.push(t('events.home.lvup.newArea'))
+        }
         if (!hangout) consumeTissue(1)
       }
       if ((state.status.heart + state.status.body) === 0) {
