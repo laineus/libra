@@ -1,13 +1,14 @@
 <template>
   <Container :depth="config.DEPTH.TRANSITION" :tween="data.tween">
     <Rectangle :fillColor="config.COLORS.black" :origin="0" :width="config.WIDTH" :height="config.HEIGHT" :alpha="0.6" @pointerdown.stop="tap" />
-    <Text :text="text" :x="config.WIDTH.half" :y="config.HEIGHT.half" :size="14" color="white" :origin="0.5" :style="{ align: 'center' }" :lineSpacing="5" />
+    <Text :text="text" :x="config.WIDTH.half" :y="config.HEIGHT.half" :size="adjustFontSize(15)" color="white" :origin="0.5" :style="{ align: 'center' }" :lineSpacing="5" />
   </Container>
 </template>
 
 <script>
 import { computed, inject, reactive } from 'vue'
 import { Rectangle, Container } from 'phavuer'
+import adjustFontSize from '@/util/adjustFontSize'
 import config from '@/data/config'
 import Text from '@/components/Text'
 export default {
@@ -37,6 +38,7 @@ export default {
     const text = computed(() => t(`tutorial.${props.name}`))
     return {
       config,
+      adjustFontSize,
       tap,
       data,
       text

@@ -2,7 +2,7 @@
   <Container :x="15" :y="70">
     <Container v-for="(v, i) in list" :key="v.id" :y="i * 27">
       <Rectangle :originX="0" :originY="0.5" :width="(v.refText.value?.width ?? 0) + 14" :height="22" :fillColor="config.COLORS.black" :alpha="0.5" />
-      <Text :ref="v.refText" :originX="0" :originY="0.5" :text="v.text" :x="7" :size="12" color="white" />
+      <Text :ref="v.refText" :originX="0" :originY="0.5" :text="v.text" :x="7" :size="adjustFontSize(12)" color="white" />
     </Container>
   </Container>
 </template>
@@ -10,6 +10,7 @@
 <script>
 import { onBeforeUnmount, shallowReactive } from 'vue'
 import { refObj, Container, Rectangle } from 'phavuer'
+import adjustFontSize from '@/util/adjustFontSize'
 import config from '@/data/config'
 import Text from '@/components/Text'
 export default {
@@ -32,6 +33,7 @@ export default {
     onBeforeUnmount(() => clearInterval(timer))
     return {
       config,
+      adjustFontSize,
       list,
       push
     }
