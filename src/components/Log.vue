@@ -21,14 +21,14 @@ export default {
     const push = (...textList) => {
       textList.forEach(text => {
         list.splice(10)
-        list.unshift({ id: lastId, text, refText: refObj(null), time: 100 })
+        list.push({ id: lastId, text, refText: refObj(null), time: 100 })
         lastId++
       })
     }
     const timer = setInterval(() => {
       list.forEach(v => v.time -= 1)
       const i = list.findIndex(v => v.time <= 0)
-      if (i !== -1) list.splice(i)
+      if (i !== -1) list.splice(i, 1)
     }, 100)
     onBeforeUnmount(() => clearInterval(timer))
     return {

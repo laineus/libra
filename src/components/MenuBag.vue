@@ -135,7 +135,7 @@ export default {
         } else {
           field.addObject({ id: Math.randomInt(1000000, 9999999), name: data.key, x, y, scale: grab.item.scale })
           state.bagItems.delete(grab.item)
-          if (grab.item.key.startsWith('raptor')) makeRaptor(true, { state, uiScene, field, achieve })
+          if (grab.item.key.startsWith('raptor')) makeRaptor(true, { state, uiScene, field, achieve, audio })
           context.emit('close')
         }
         audio.se('drop')
@@ -155,7 +155,7 @@ export default {
         const isRaptor = grab.item.key.startsWith('raptor')
         const isField = !grabbingBagItem.value
         nextTick(() => {
-          if (isRaptor) makeRaptor(isField, { state, uiScene, field, achieve })
+          if (isRaptor) makeRaptor(isField, { state, uiScene, field, achieve, audio })
         })
         sortItems()
       } else if (grab.mode === 'capture') {
