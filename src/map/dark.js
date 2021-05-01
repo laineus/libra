@@ -43,7 +43,7 @@ export default {
       await speakKajitsu(t('events.dark.kajitsu5'))
       await kajitsu.setTargetPosition((19).toPixelCenter, (15).toPixelCenter)
       libra.lookTo('right')
-      await kajitsu.setTargetPosition((19).toPixelCenter, (14).toPixel)
+      await kajitsu.setTargetPosition((19).toPixel, (14).toPixel)
       libra.lookTo('up')
       await kajitsu.setTargetPosition((16).toPixelCenter, (5).toPixel)
       kajitsu.setVisible(false)

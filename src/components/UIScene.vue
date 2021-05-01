@@ -34,7 +34,7 @@
     </template>
     <Transitions ref="transitions" />
     <Tutorial v-if="tutorial" :name="tutorial" @close="tutorial = null" />
-    <Text v-if="screenMessage.text" :text="screenMessage.text" :tween="screenMessage.tween" :x="config.WIDTH.half" :y="config.HEIGHT.half" :size="17" :color="screenMessage.color" :origin="0.5" :depth="config.DEPTH.TRANSITION" />
+    <Text v-if="screenMessage.text" :text="screenMessage.text" :tween="screenMessage.tween" :x="config.WIDTH.half" :y="config.HEIGHT.half" :size="adjustFontSize(17)" :color="screenMessage.color" :origin="0.5" :depth="config.DEPTH.TRANSITION" />
     <Credit v-if="credit.resolve" :depth="config.DEPTH.TRANSITION" :endA="credit.endA" @completed="credit.resolve" />
     <Opening v-if="opening" :depth="config.DEPTH.TRANSITION" @unlock="opening" @completed="opening = null" />
     <Image v-for="(image, i) in images" :key="i" :texture="image.texture" :x="image.x" :y="image.y" :depth="image.depth" />
@@ -45,6 +45,7 @@
 import { computed, inject, onMounted, reactive, ref, shallowReactive } from 'vue'
 import { refScene, Scene, Circle, Image, Container } from 'phavuer'
 import dayjs from 'dayjs'
+import adjustFontSize from '@/util/adjustFontSize'
 import Title from './Title'
 import Controller from './Controller'
 import Talk from './Talk'
@@ -158,6 +159,7 @@ export default {
       mapName.value = name
     }
     return {
+      adjustFontSize,
       state: storage.state,
       nearestCheckable, nearestGrabbable,
       event,

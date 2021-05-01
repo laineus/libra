@@ -245,8 +245,8 @@ export default {
     continue: 'Continue',
     location: 'Location',
     client: 'Client',
-    questStart: '"#{title}" Begin',
-    questComplete: '"#{title}" Complete',
+    questStart: 'Started "#{title}"',
+    questComplete: 'Completed "#{title}"',
     pickup: '"#{name}" picked up',
     eat: 'Ate "#{name}"',
     hpRecover: 'HP #{value} recovered',
@@ -1089,7 +1089,7 @@ export default {
     heart: {
       start1: [`This is Amili's heart.`],
       start2: [
-        'Amiri is alive.',
+        'Amili is alive.',
         'However, Amili has not been able to wake up because of your presence here.'
       ],
       start3: [
