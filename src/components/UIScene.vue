@@ -26,7 +26,7 @@
       <Selector v-if="selector.list" :x="selector.x" :y="selector.y" :list="selector.list" @select="selector.resolver" />
       <Log ref="log" />
       <Menu ref="menu" />
-      <Image v-for="v in 5" :key="v" texture="hp" :frame="Math.round(state.status.hp / 20) >= v ? 0 : 1" :x="32 + ((v - 1) * 42)" :y="27" />
+      <Image v-for="v in 5" :key="v" texture="hp" :frame="Math.round(storage.state.status.hp / 20) >= v ? 0 : 1" :x="32 + ((v - 1) * 42)" :y="27" />
       <Container :x="config.WIDTH.half" :y="55" v-if="mapName">
         <Image texture="menu_label" :tween="{ scaleX: 1.1, alpha: 1, duration: 300, yoyo: true, hold: 3000 }" :origin="0.5" :scaleX="0.2" :scaleY="1" :alpha="0" />
         <Text :tween="{ alpha: 1, duration: 300, yoyo: true, hold: 3000, onComplete: () => setMapName(null) }" :alpha="0" :text="mapName" :origin="0.5" color="soy" :bold="true" />
@@ -160,7 +160,7 @@ export default {
     }
     return {
       adjustFontSize,
-      state: storage.state,
+      storage,
       nearestCheckable, nearestGrabbable,
       event,
       mobile,
