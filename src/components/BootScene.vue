@@ -14,6 +14,8 @@ import { Scene, Rectangle, Container } from 'phavuer'
 import assets from '@/assets.json'
 import config from '@/data/config'
 import Text from '@/components/Text'
+assets.audio.filter(v => Array.isArray(v[1])).forEach(v => v[1].reverse()) // [m4a, ogg] -> [ogg, m4a]
+if (window.ASSET_PATH) assets.tilemapTiledJSONExternal.forEach(v => v.push('/')) // bugfix
 export default {
   components: { Scene, Rectangle, Container, Text },
   setup () {
@@ -26,6 +28,8 @@ export default {
       scene.load.on('complete', function () {
         // console.log('complete')
       })
+      if (window.ASSET_HOST) scene.load.setBaseURL(window.ASSET_HOST)
+      if (window.ASSET_PATH) scene.load.setPath(window.ASSET_PATH)
       Object.entries(assets).forEach(([method, list]) => {
         list.forEach(args => scene.load[method](...args))
       })
