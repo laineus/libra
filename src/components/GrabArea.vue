@@ -33,7 +33,7 @@ export default {
         data.grabbing = true
         context.emit('grab')
         const mode = menu.value.redecorate ? 'move' : 'capture'
-        menuBag.grabItem({ key: props.name, scale: props.scale }, mode).then(pos => {
+        menuBag.grabItem({ key: props.name, scale: props.scale }, mode, pointer).then(pos => {
           data.grabbing = false
           if (!pos) {
             context.emit('cancel')

@@ -1,7 +1,7 @@
 <template>
   <MenuContainer ref="container" :height="395" :title="t('ui.bag')" :visible="showBag">
     <Image texture="menu_arrow" :x="68" :y="399" :rotation="-0.05" :tint="config.COLORS.soy" />
-    <Image v-for="v in bagItems" :key="v.id" :texture="itemData[v.key].texture" :frame="itemData[v.key].frame" :x="v.bagX" :y="v.bagY" :scale="v.scale" :originX="0.5" :originY="1" :visible="grab.item !== v" @pointerdown="grabItem(v, 'move')" @create="createdItem" />
+    <Image v-for="v in bagItems" :key="v.id" :texture="itemData[v.key].texture" :frame="itemData[v.key].frame" :x="v.bagX" :y="v.bagY" :scale="v.scale" :originX="0.5" :originY="1" :visible="grab.item !== v" @pointerdown="grabItem(v, 'move', $event)" @create="createdItem" />
     <Text :text="`${t('ui.weight')}:`" :originX="1" :originY="0.5" :x="163" :y="-3" :size="12" />
     <Text :text="`${weight}/100`" :originX="1" :originY="0.5" :x="221" :y="-3" :size="13" :bold="warning" :color="warning ? 'red' : undefined" />
     <Image v-if="grab.item && itemData[grab.item.key].eat" :tint="onEatArea ? config.COLORS.orange : config.COLORS.brown" texture="eat" :origin="1" :x="229" :y="375" />
@@ -47,6 +47,7 @@ export default {
     const grab = reactive({
       item: null,
       mode: null,
+      pointer: null,
       resolver: null,
       x: 0, y: 0
     })
@@ -70,9 +71,9 @@ export default {
     const thumbAdjust = mobile ? -60 : 0
     const update = () => {
       if (grab.item) {
-        if (!controller.activePointer) return drop()
-        grab.x = controller.activePointer.x
-        grab.y = controller.activePointer.y + thumbAdjust
+        if (!grab.pointer.active) return drop()
+        grab.x = grab.pointer.x
+        grab.y = grab.pointer.y
         if (grab.mode === 'move' && grabbingBagItem.value) {
           if (!onBagArea.value) grab.mode = 'dispose'
         } else if (grab.mode === 'dispose') {
@@ -81,9 +82,10 @@ export default {
       }
     }
     onPreUpdate(update)
-    const grabItem = (item, mode) => {
+    const grabItem = (item, mode, pointer) => {
       grab.item = item
       grab.mode = mode
+      grab.pointer = pointer
       if (grab.resolver) grab.resolver()
       const promise = new Promise(resolve => {
         grab.resolver = resolve
@@ -205,6 +207,7 @@ export default {
       }
       grab.mode = null
       grab.item = null
+      grab.pointer = null
       grab.resolver = null
     }
     const switchRedecorate = () => {
