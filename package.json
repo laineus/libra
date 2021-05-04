@@ -8,7 +8,8 @@
     "dev": "webpack serve --mode development --host 0.0.0.0",
     "build": "webpack --mode production",
     "lint": "eslint src",
-    "tile": "autotile --config autotile.config.js && tile-extrude --config extrude.config.js"
+    "tile": "autotile --config autotile.config.js && tile-extrude --config extrude.config.js",
+    "nwbuild": "nwbuild -p linux64,win64,osx64 -v0.53.0 -o nw/ nw/public/"
   },
   "dependencies": {
     "@sentry/browser": "^6.2.5",
@@ -35,6 +36,8 @@
     "eslint-plugin-vue": "^7.4.0",
     "eslint-webpack-plugin": "^2.5.3",
     "html-webpack-plugin": "^5.0.0-beta.4",
+    "nw": "^0.53.0",
+    "nw-builder": "^3.5.7",
     "phaser-assets-webpack-plugin": "^2.0.0",
     "style-loader": "^2.0.0",
     "tile-extrude-webpack-plugin": "^1.2.0",

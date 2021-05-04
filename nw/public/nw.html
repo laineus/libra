@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>The Dream Libra had - リブラの見た夢</title>
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700&display=auto&subset=japanese&text=abcdefghijklmnopqrstuvwxyz023456789" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p:500,800&display=auto&subset=japanese" rel="stylesheet">
+  <link href="https://libra.laineus.com/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body class="fullscreen">
+  <div class="fontLoader">.</div>
+  <div class="container">
+    <div class="content" id="game"></div>
+  </div>
+  <script>
+    if (!navigator.onLine) alert('Please check your internet connection.')
+    window.ASSET_HOST = 'https://libra.laineus.com'
+    const greenworks = require('./greenworks.js')
+    const fullscreenShotcut = new nw.Shortcut({
+      key: 'F11',
+      active: () => nw.Window.get().toggleFullscreen()
+    })
+    nw.App.registerGlobalHotKey(fullscreenShotcut)
+  </script>
+  <script src="https://libra.laineus.com/js/vendor.bundle.js"></script>
+  <script src="https://libra.laineus.com/js/app.bundle.js"></script>
+</body>
+</html>
