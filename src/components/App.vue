@@ -48,6 +48,15 @@ export default {
     const frames = reactive({ total: 0, game: 0 })
     const sdm = new SaveDataManager()
     const achieve = new AchieveManager()
+    if (typeof greenworks !== 'undefined') {
+      try {
+        greenworks.init()
+        sdm.initSteam(greenworks)
+        achieve.initSteam(greenworks)
+      } catch (e) {
+        alert(e)
+      }
+    }
     setInterval(() => sdm.state.sec++, 1000)
     provide('event', eventManager)
     provide('frames', frames)

@@ -2,7 +2,6 @@ import dayjs from 'dayjs'
 import defaultState from '@/data/defaultState'
 import AppStorage from '@/class/AppStorage'
 import { reactive } from 'vue'
-const appStorage = new AppStorage()
 const STORAGE_KEY = 'libra_data'
 // const SHIFT = 11
 const SHIFT = 0
@@ -19,6 +18,7 @@ const useObfuscator = shift => {
 const { encrypt, decrypt } = useObfuscator(SHIFT)
 export default class SaveDataManager {
   constructor () {
+    this.appStorage = new AppStorage()
     this.lastNumber = null
     this.init()
   }
@@ -26,11 +26,14 @@ export default class SaveDataManager {
     this.lastSnapshot = null
     this.setState(this.getDefaultState())
   }
+  initSteam (greenworks) {
+    this.appStorage.initSteam(greenworks)
+  }
   getDefaultState () {
     return Object.assign({}, defaultState)
   }
   loadSetting () {
-    appStorage.getItem(`${STORAGE_KEY}_last_saved_number`).then(savedNumber => {
+    this.appStorage.getItem(`${STORAGE_KEY}_last_saved_number`).then(savedNumber => {
       if (savedNumber) this.lastNumber = Number(savedNumber)
     })
   }
@@ -53,7 +56,7 @@ export default class SaveDataManager {
     }
   }
   async getSavedState (number) {
-    const string = await appStorage.getItem(`${STORAGE_KEY}_${number}`)
+    const string = await this.appStorage.getItem(`${STORAGE_KEY}_${number}`)
     if (!string) return null
     const json = decrypt(string, -SHIFT)
     try {
@@ -67,16 +70,16 @@ export default class SaveDataManager {
     }
   }
   async getSnapshot (number) {
-    return appStorage.getItem(`${STORAGE_KEY}_${number}_ss`)
+    return this.appStorage.getItem(`${STORAGE_KEY}_${number}_ss`)
   }
   async save (number) {
     const promises = []
     this.state.saved = dayjs().unix()
     const str = encrypt(JSON.stringify(this.state), SHIFT)
-    promises.push(appStorage.setItem(`${STORAGE_KEY}_${number}`, str))
-    if (this.lastSnapshot) promises.push(appStorage.setItem(`${STORAGE_KEY}_${number}_ss`, this.lastSnapshot))
+    promises.push(this.appStorage.setItem(`${STORAGE_KEY}_${number}`, str))
+    if (this.lastSnapshot) promises.push(this.appStorage.setItem(`${STORAGE_KEY}_${number}_ss`, this.lastSnapshot))
     if (number > 0) this.lastNumber = number
-    promises.push(appStorage.setItem(`${STORAGE_KEY}_last_saved_number`, String(number)))
+    promises.push(this.appStorage.setItem(`${STORAGE_KEY}_last_saved_number`, String(number)))
     return Promise.all(promises)
   }
   async load (number) {
@@ -87,8 +90,8 @@ export default class SaveDataManager {
     return true
   }
   delete (number) {
-    appStorage.removeItem(`${STORAGE_KEY}_${number}`)
-    appStorage.removeItem(`${STORAGE_KEY}_${number}_ss`)
+    this.appStorage.removeItem(`${STORAGE_KEY}_${number}`)
+    this.appStorage.removeItem(`${STORAGE_KEY}_${number}_ss`)
     return true
   }
   fixState (data) {
