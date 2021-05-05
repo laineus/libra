@@ -21,11 +21,11 @@
     if (!navigator.onLine) alert('Please check your internet connection.')
     window.ASSET_HOST = 'https://libra.laineus.com'
     const greenworks = require('./greenworks.js')
-    const fullscreenShotcut = new nw.Shortcut({
+    const fullscreenShortcut = new nw.Shortcut({
       key: 'F11',
       active: () => nw.Window.get().toggleFullscreen()
     })
-    nw.App.registerGlobalHotKey(fullscreenShotcut)
+    nw.App.registerGlobalHotKey(fullscreenShortcut)
   </script>
   <script src="https://libra.laineus.com/js/vendor.bundle.js"></script>
   <script src="https://libra.laineus.com/js/app.bundle.js?v=2"></script>

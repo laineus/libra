@@ -98,8 +98,8 @@ export default {
     })
     onMounted(() => {
       refs.scene.value.input.setTopOnly(false)
-      refs.scene.value.input.keyboard.on('keydown-S', e => {
-        if (!e.shiftKey) return
+      refs.scene.value.input.keyboard.on('keydown-F12', (e) => {
+        e.preventDefault()
         const filename = `ScreenShot_${dayjs().format('YYYYMMDD_HHmmss')}.png`
         refs.scene.value.game.renderer.snapshot(img => downloadBySource(img.src, filename))
       })
