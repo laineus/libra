@@ -3,19 +3,6 @@ import defaultState from '@/data/defaultState'
 import AppStorage from '@/class/AppStorage'
 import { reactive } from 'vue'
 const STORAGE_KEY = 'libra_data'
-// const SHIFT = 11
-const SHIFT = 0
-const useObfuscator = shift => {
-  return {
-    encrypt: str => {
-      return Array.from(str).map(v => v.charCodeAt() + shift).join(',')
-    },
-    decrypt: str => {
-      return String.fromCharCode(...str.split(',').map(v => Number(v) + shift))
-    }
-  }
-}
-const { encrypt, decrypt } = useObfuscator(SHIFT)
 export default class SaveDataManager {
   constructor () {
     this.appStorage = new AppStorage()
@@ -56,9 +43,8 @@ export default class SaveDataManager {
     }
   }
   async getSavedState (number) {
-    const string = await this.appStorage.getItem(`${STORAGE_KEY}_${number}`)
-    if (!string) return null
-    const json = decrypt(string, -SHIFT)
+    const json = await this.appStorage.getItem(`${STORAGE_KEY}_${number}`)
+    if (!json) return null
     try {
       const state = JSON.parse(json)
       this.fixState(state)
@@ -75,7 +61,7 @@ export default class SaveDataManager {
   async save (number) {
     const promises = []
     this.state.saved = dayjs().unix()
-    const str = encrypt(JSON.stringify(this.state), SHIFT)
+    const str = JSON.stringify(this.state)
     promises.push(this.appStorage.setItem(`${STORAGE_KEY}_${number}`, str))
     if (this.lastSnapshot) promises.push(this.appStorage.setItem(`${STORAGE_KEY}_${number}_ss`, this.lastSnapshot))
     if (number > 0) this.lastNumber = number
