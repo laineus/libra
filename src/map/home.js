@@ -193,8 +193,7 @@ export default {
     } else if (absenceAction === ABSENCE_ACTIONS.SLEEP) {
       amili.object.setPosition(field.positions.bed.x + 20, field.positions.bed.y)
       amili.lookTo('rightUp')
-      if (!state.events.itemReactions.includes('tissue')) return
-      const consumed = consumeTissue(0.3)
+      const consumed = state.events.itemReactions.includes('tissue') && consumeTissue(0.3)
       greetingEvent = async () => {
         await speakAmiliScripts(consumed ? t('events.home.sleeping2') : t('events.home.sleeping1'))
         return false
