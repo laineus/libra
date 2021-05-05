@@ -390,6 +390,42 @@
                  "width":0,
                  "x":432.964564385468,
                  "y":219.090502460116
+                }, 
+                {
+                 "height":0,
+                 "id":29,
+                 "name":"penguin",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":521.191350469196,
+                 "y":278.873929008568
+                }, 
+                {
+                 "height":0,
+                 "id":30,
+                 "name":"penguin",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":949.424724602203,
+                 "y":683.084455324357
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -398,7 +434,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":29,
+ "nextobjectid":31,
  "orientation":"orthogonal",
  "properties":[
         {

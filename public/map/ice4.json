@@ -376,6 +376,24 @@
                  "width":0,
                  "x":458.912280701754,
                  "y":317.929824561404
+                }, 
+                {
+                 "height":0,
+                 "id":26,
+                 "name":"penguin",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.7
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":711.425931629196,
+                 "y":580.535879273175
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -384,7 +402,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":26,
+ "nextobjectid":27,
  "orientation":"orthogonal",
  "properties":[
         {
