@@ -139,6 +139,8 @@ export default {
     trash: 'Trash',
     trashCan1: 'Trash can',
     trashCan2: 'Trash can',
+    tablemat1: 'Table mat',
+    tablemat2: 'Table mat',
     tv: 'TV',
     star: 'Star',
     vendingMachine: 'Vending machine',

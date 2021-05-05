@@ -138,6 +138,8 @@ export default {
     trash: 'ティッシュのごみ',
     trashCan1: 'ごみ箱',
     trashCan2: 'ごみ箱',
+    tablemat1: 'テーブルマット',
+    tablemat2: 'テーブルマット',
     tv: 'テレビ',
     star: '星',
     vendingMachine: '自動販売機',
