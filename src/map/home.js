@@ -133,6 +133,7 @@ export default {
     const requestApple = async () => {
       if ((state.status.heart + state.status.body) === 0) return
       if (Math.chance(0.15)) return await speakAmiliScripts(t('events.home.iloveyou'))
+      if (state.events.main === MAIN_STEPS.DEAD) return
       if (bag.hasItem('apple')) return
       await speakAmiliScripts(t(Math.chance(0.5) ? 'events.home.requestApple.a' : 'events.home.requestApple.b'))
     }
