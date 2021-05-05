@@ -314,7 +314,7 @@
                  "visible":true,
                  "width":0,
                  "x":183,
-                 "y":939
+                 "y":944.75
                 }, 
                 {
                  "height":0,
@@ -483,6 +483,54 @@
                  "width":0,
                  "x":144,
                  "y":826
+                }, 
+                {
+                 "height":0,
+                 "id":34,
+                 "name":"tablemat1",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":241,
+                 "y":378
+                }, 
+                {
+                 "height":0,
+                 "id":35,
+                 "name":"tablemat1",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":241,
+                 "y":345
+                }, 
+                {
+                 "height":0,
+                 "id":36,
+                 "name":"tablemat2",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":183,
+                 "y":951
+                }, 
+                {
+                 "height":0,
+                 "id":37,
+                 "name":"tablemat2",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":182,
+                 "y":896
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -491,7 +539,7 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":34,
+ "nextobjectid":38,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.5.0",

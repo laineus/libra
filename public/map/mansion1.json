@@ -318,6 +318,36 @@
                  "width":0,
                  "x":443.563066273033,
                  "y":625.568563575282
+                }, 
+                {
+                 "height":0,
+                 "id":20,
+                 "name":"tablemat1",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":495.392446299501,
+                 "y":701.504631986155
+                }, 
+                {
+                 "height":0,
+                 "id":22,
+                 "name":"coke",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"chance",
+                         "type":"float",
+                         "value":0.5
+                        }],
+                 "rotation":0,
+                 "type":"Random",
+                 "visible":true,
+                 "width":0,
+                 "x":501.333333333333,
+                 "y":696.666666666667
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -326,7 +356,7 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":20,
+ "nextobjectid":23,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.5.0",
