@@ -30,7 +30,7 @@ export default {
     kajitsu.setVisible(computed(() => state.events.intro < INTRO_STEPS.COMPLETED))
     const area = field.getObjectById(5)
     const mountApple = () => field.addObject({ name: 'apple', x: field.positions.apple.x, y: field.positions.apple.y })
-    if (sumStatus.value > 0 && Math.chance(0.01) && !bag.hasItem('apple', 1, { room: true, bag: true })) {
+    if ((state.events.intro === INTRO_STEPS.APPLE || (sumStatus.value > 0 && Math.chance(0.01))) && !bag.hasItem('apple', 1, { room: true, bag: true })) {
       mountApple()
     }
 
