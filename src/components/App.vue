@@ -4,8 +4,7 @@
     <template v-else>
       <GameScene ref="gameScene" />
       <UIScene ref="uiScene" />
-      <!-- <Debug v-if="env === 'development'" /> -->
-      <Debug />
+      <Debug v-if="env === 'development'" />
     </template>
   </div>
 </template>
