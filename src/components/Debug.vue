@@ -52,7 +52,7 @@ export default {
         key: selectedItem.value.key,
         scale: selectedItem.value.minScale ? Math.randomInt(selectedItem.value.minScale * 10, 10) / 10 : 1,
         bagX: Math.randomInt(30, 200),
-        bagY: Math.randomInt(60, 410)
+        bagY: Math.randomInt(60, 380)
       })
       uiScene.value.menu.select('bag')
       // selectedItem.value = null
