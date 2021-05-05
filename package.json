@@ -9,7 +9,7 @@
     "build": "webpack --mode production",
     "lint": "eslint src",
     "tile": "autotile --config autotile.config.js && tile-extrude --config extrude.config.js",
-    "nwbuild": "nwbuild -p linux64,win64,osx64 -v0.53.0 -o nw/ nw/public/"
+    "nwbuild": "nwbuild -p linux64,win64,osx64 -v0.53.0 -o nw/ nw/public/ --flavor normal"
   },
   "dependencies": {
     "@sentry/browser": "^6.2.5",
