@@ -26,6 +26,7 @@ export default {
         progress.value = Math.max(value, progress.value)
       })
       scene.load.on('complete', function () {
+        Phaser.BlendModes.OVERLAY = scene.game.renderer.addBlendMode([WebGLRenderingContext.SRC_ALPHA, WebGLRenderingContext.ONE], WebGLRenderingContext.FUNC_ADD)
         // console.log('complete')
       })
       if (window.ASSET_HOST) scene.load.setBaseURL(window.ASSET_HOST)

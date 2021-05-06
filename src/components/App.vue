@@ -21,7 +21,6 @@ export default {
   components: { BootScene, GameScene, UIScene },
   setup () {
     const game = inject('game')
-    Phaser.BlendModes.OVERLAY = game.renderer.addBlendMode([WebGLRenderingContext.SRC_ALPHA, WebGLRenderingContext.ONE], WebGLRenderingContext.FUNC_ADD)
     const gameScene = ref(null)
     const uiScene = ref(null)
     const loaded = ref(false)
