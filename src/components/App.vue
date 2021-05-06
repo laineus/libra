@@ -4,7 +4,6 @@
     <template v-else>
       <GameScene ref="gameScene" />
       <UIScene ref="uiScene" />
-      <Debug v-if="env === 'development'" />
     </template>
   </div>
 </template>
@@ -13,14 +12,13 @@
 import BootScene from '@/components/BootScene'
 import GameScene from '@/components/GameScene'
 import UIScene from '@/components/UIScene'
-import Debug from '@/components/Debug'
 import AudioController from '@/class/AudioController'
 import SaveDataManager from '@/class/SaveDataManager'
 import AchieveManager from '@/class/AchieveManager'
 import setting from '@/data/setting'
 import { inject, provide, ref, computed, reactive } from 'vue'
 export default {
-  components: { BootScene, GameScene, UIScene, Debug },
+  components: { BootScene, GameScene, UIScene },
   setup () {
     const game = inject('game')
     Phaser.BlendModes.OVERLAY = game.renderer.addBlendMode([WebGLRenderingContext.SRC_ALPHA, WebGLRenderingContext.ONE], WebGLRenderingContext.FUNC_ADD)
@@ -84,7 +82,6 @@ export default {
       removeItem: (key, count = 1) => count.toArray().forEach(() => sdm.state.bagItems.delete(v => v.key === key))
     })
     return {
-      env: ENV,
       loaded,
       gameScene, uiScene
     }

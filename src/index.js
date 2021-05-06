@@ -40,6 +40,9 @@ const game = new Phaser.Game({
       gravity: { y: 0 }
     }
   },
+  // audio: {
+  //   disableWebAudio: true
+  // },
   input: {
     activePointers: 3
   },

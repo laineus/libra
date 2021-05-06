@@ -38,6 +38,7 @@
     <Credit v-if="credit.resolve" :depth="config.DEPTH.TRANSITION" :endA="credit.endA" @completed="credit.resolve" />
     <Opening v-if="opening" :depth="config.DEPTH.TRANSITION" @unlock="opening" @completed="opening = null" />
     <Image v-for="(image, i) in images" :key="i" :texture="image.texture" :x="image.x" :y="image.y" :depth="image.depth" />
+    <Debug v-if="debug" />
   </Scene>
 </template>
 
@@ -57,6 +58,7 @@ import Transitions from './Transitions'
 import Tutorial from '@/components/Tutorial'
 import Credit from '@/components/Credit'
 import Opening from '@/components/Opening'
+import Debug from '@/components/Debug'
 import config from '@/data/config'
 const downloadBySource = (src, name) => {
   const link = document.createElement('a')
@@ -67,7 +69,7 @@ const downloadBySource = (src, name) => {
   document.body.removeChild(link)
 }
 export default {
-  components: { Scene, Title, Controller, Circle, Image, Container, Talk, Selector, Menu, Log, Text, Transitions, Tutorial, Credit, Opening },
+  components: { Scene, Title, Controller, Circle, Image, Container, Talk, Selector, Menu, Log, Text, Transitions, Tutorial, Credit, Opening, Debug },
   setup (props) {
     const mobile = inject('mobile')
     const frames = inject('frames')
@@ -96,12 +98,17 @@ export default {
     const nearestGrabbable = computed(() => {
       return field.value?.objects.map(v => v.ref.value).filter(v => v?.grabbable).findMin(v => v.distanceToPlayer)
     })
+    const debug = ref(false)
     onMounted(() => {
       refs.scene.value.input.setTopOnly(false)
       refs.scene.value.input.keyboard.on('keydown-F12', (e) => {
         e.preventDefault()
         const filename = `ScreenShot_${dayjs().format('YYYYMMDD_HHmmss')}.png`
         refs.scene.value.game.renderer.snapshot(img => downloadBySource(img.src, filename))
+      })
+      refs.scene.value.input.keyboard.on('keydown-F9', (e) => {
+        e.preventDefault()
+        if (e.ctrlKey) debug.value = !debug.value
       })
     })
     const titleScreen = ref(true)
@@ -167,6 +174,7 @@ export default {
       config,
       update,
       ...refs,
+      debug,
       titleScreen,
       credit, startCredit,
       opening, startOpening,
