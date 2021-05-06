@@ -11,7 +11,7 @@
     </template>
   </MenuContainer>
   <Container v-if="grab.item" :x="grab.x" :y="grab.y">
-    <Image ref="grabRef" :texture="itemData[grab.item.key].texture" :frame="itemData[grab.item.key].frame" :scale="grab.item.scale" :originX="0.5" :originY="1" @pointerup="drop" />
+    <Image ref="grabRef" :texture="itemData[grab.item.key].texture" :frame="itemData[grab.item.key].frame" :scale="grab.item.scale" :originX="0.5" :originY="1" />
     <Text v-if="grabRef" :text="grabItemName" :originX="0.5" :originY="1" :size="10" :y="-grabRef.height - 8" :style="{ stroke: config.COLORS.soy.toColorString, strokeThickness: 2 }" />
   </Container>
 </template>
@@ -71,7 +71,7 @@ export default {
     const thumbAdjust = mobile ? -60 : 0
     const update = () => {
       if (grab.item) {
-        if (!grab.pointer.active) return drop()
+        if (!grab.pointer.active || !grab.pointer.isDown) return drop()
         grab.x = grab.pointer.x
         grab.y = grab.pointer.y
         if (grab.mode === 'move' && grabbingBagItem.value) {
@@ -235,7 +235,7 @@ export default {
       bagItems: state.bagItems,
       container,
       controller, grab, grabRef,
-      grabItem, drop,
+      grabItem,
       grabItemName,
       onEatArea,
       switchRedecorate
