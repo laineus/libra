@@ -68,7 +68,7 @@ export default {
     const lyricsMap = LYRICS_MAP.map((v, i) => {
       return { start: v[0], end: v[1] ?? LYRICS_MAP[i + 1]?.[0] ?? v[0] + 3 }
     })
-    audio.setBgm('happy_end', { loop: false })
+    audio.setBgm('happyend_ed', { loop: false })
     // audio.currentBgm.setSeek(210)
     audio.currentBgm.pause()
     const data = reactive({
