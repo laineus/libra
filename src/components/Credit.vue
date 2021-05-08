@@ -3,19 +3,18 @@
     <Rectangle :width="config.WIDTH" :height="config.HEIGHT" :fillColor="config.COLORS.black" :origin="0" :tween="data.blackTween" :alpha="0" />
     <!-- Debug:  @wheel="p => currentBgm.seek += (p.deltaY / 20)" -->
     <Container :x="config.WIDTH.half" :y="data.creditY" :tween="data.creditTween">
-      <Container v-for="(v, i) in list" :key="i" :y="list.slice(0, i).sum(v => v.names.length * 40) + (i * 180) + config.HEIGHT">
+      <Container v-for="(v, i) in list" :key="i" :y="list.slice(0, i).sum(v => v.names.length * 40) + (i * 230) + config.HEIGHT">
         <Text :text="`- ${v.title} -`" :originX="0.5" color="white" />
         <Text v-for="(name, i2) in v.names" :key="i2" :text="name" :size="19" :originX="0.5" color="white" :y="40 + i2 * 40" />
       </Container>
       <!-- Site -->
-      <Text text="- Official Web site -" :originX="0.5" color="white" :y="1920" />
-      <Image texture="banner_libra" :y="1995" />
-      <Text text="https://libra.laineus.com" :originX="0.5" color="white" :y="2050" />
+      <Text text="- Official Web site -" :originX="0.5" color="white" :y="2190" />
+      <Image texture="banner_libra" :y="2270" />
+      <Text text="https://libra.laineus.com" :originX="0.5" color="white" :y="2330" />
       <!-- Site -->
-      <Image texture="phaser3" :y="2420" />
-      <Image texture="tiled" :y="2720" />
-      <Image texture="phavuer" :y="3020" />
-      <Image texture="drive_l" :y="3820" />
+      <Image texture="phaser3" :y="2600" />
+      <Image texture="phavuer" :y="2900" />
+      <Image texture="drive_l" :y="3500" />
     </Container>
     <Container :x="config.WIDTH.half" :y="config.HEIGHT.half">
       <Container>
@@ -70,13 +69,14 @@ export default {
       return { start: v[0], end: v[1] ?? LYRICS_MAP[i + 1]?.[0] ?? v[0] + 3 }
     })
     audio.setBgm('happyend_ed', { loop: false })
+    // audio.currentBgm.setSeek(20)
     audio.currentBgm.pause()
     const data = reactive({
       seek: 0,
       blackTween: Object.assign(tweens.alpha1, { onComplete: () => audio.currentBgm.resume() }),
       creditY: computed(() => {
         const progress = Math.min(data.seek / (FIRST_CHORUS - 10), 1)
-        return Math.round(3570 * -progress)
+        return Math.round(3240 * -progress)
       }),
       creditTween: computed(() => data.seek >= FIRST_CHORUS - 2 ? tweens.alpha0 : null),
       ssProgress: computed(() => Math.max((data.seek - FIRST_CHORUS) / (audio.currentBgm.duration - OUTRO - FIRST_CHORUS), 0)),
@@ -109,6 +109,7 @@ export default {
       data.seek = audio.currentBgm.seek
       playAnim()
     })
+    const title = t('happyend.title')
     return {
       data,
       ja,
@@ -121,7 +122,7 @@ export default {
         { title: 'Graphics by', names: ['Laineus'] },
         { title: 'Music by', names: ['Laineus', 'Miku Hatsune'] },
         { title: 'Developed by', names: ['Laineus'] },
-        { title: 'Theme song', names: ['『ハッピーエンド』'] },
+        { title: 'Theme song', names: [ja ? `『${title}』` : `"${title}"`] },
         { title: 'Simplified Chinese translations by', names: ['Yuriatelier'] }
       ]
     }
