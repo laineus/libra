@@ -1,5 +1,6 @@
 <template>
   <Image texture="main" :x="config.WIDTH.half" :y="config.HEIGHT.half" />
+  <Text :text="`Version: ${APP_VERSION}`" :size="11" color="soy" :origin="1" :x="config.WIDTH - 80" :y="config.HEIGHT - 35" />
   <Container>
     <Image v-if="setting.state.lang === 'ja'" texture="logo_ja" :x="config.WIDTH.half" :y="config.HEIGHT.half - 77" />
     <Image v-else texture="logo_en" :x="config.WIDTH.half" :y="config.HEIGHT.half - 90" />
@@ -83,6 +84,7 @@ export default {
       creditEnd.value = true
     }
     return {
+      APP_VERSION: APP_VERSION,
       t,
       Phaser,
       config,
