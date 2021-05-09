@@ -59,9 +59,8 @@ module.exports = (_env, argv) => ({
   },
   plugins: [
     new ESLintPlugin({ extensions: ['js', 'vue'] }),
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src/index.html')
-    }),
+    new HtmlWebpackPlugin({ filename: 'app.html', template: path.resolve(__dirname, 'src/app.html') }),
+    new HtmlWebpackPlugin({ filename: 'fullscreen.html', template: path.resolve(__dirname, 'src/fullscreen.html') }),
     new webpack.DefinePlugin({
       'ENV': JSON.stringify(argv.mode),
       'APP_VERSION': JSON.stringify(process.env.npm_package_version),
