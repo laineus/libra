@@ -2,7 +2,6 @@
 # やること
 プレスリリース
 LP
-GooglePlay
 
 # 修正
 iOS音でない
