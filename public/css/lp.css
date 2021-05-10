@@ -40,10 +40,6 @@ body.en .ja {
 
 .header {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 30px 0;
   background-color: var(--brown);
   background-image: url('../img/lp/cover.png');
   background-repeat: no-repeat;
@@ -54,8 +50,8 @@ body.en .ja {
   max-height: 540px;
 }
 .header-content {
-  width: 60%;
-  max-width: 700px;
+  margin: auto;
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -63,16 +59,22 @@ body.en .ja {
 }
 
 .headerLogo {
+  padding-top: 7%;
+  width: 60%;
+  max-width: 700px;
+  margin: auto;
 }
 .headerBody {
-  padding: 40px 20px 0;
+  padding: 2% 20px;
+  width: 60%;
+  max-width: 700px;
+  margin: auto;
 }
 
 .buttonList {
-  margin: 30px auto 0;
+  padding-top: 5%;
   display: flex;
   justify-content: center;
-  max-width: 560px;
 }
 .buttonList-item {
   margin: auto 10px;
@@ -83,7 +85,7 @@ body.en .ja {
 
 .gameInfo {
   margin: auto;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: bold;
   color: var(--brown);
   text-shadow: 0 0 2px var(--yellow), 0 0 2px var(--yellow), 0 0 2px var(--yellow), 0 0 2px var(--yellow), 0 0 2px var(--yellow);
@@ -336,27 +338,11 @@ body.ja .changeLang[data-lang="ja"] {
     font-size: 7px;
   }
   .header {
-    padding-top: 50px;
-    padding-bottom: 0;
-    flex-direction: column;
-    background-size: 200%;
-    background-position: center top;
-  }
-  .header-content {
-    width: 100%;
-    max-width: 100%;
-  }
-  .headerLogo {
-    margin: auto;
-    max-width: 500px;
-    padding: 20px 20px 55%;
+    height: auto;
+    max-height: none;
   }
   .headerBody {
-    padding: 0 5px 30px;
-    background-image: linear-gradient(0, rgba(60, 80, 100), transparent);
-  }
-  .buttonList-item {
-    margin: auto 5px;
+    width: auto;
   }
   .lang {
     padding: 10px 15px;
