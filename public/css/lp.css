@@ -151,6 +151,62 @@ body.ja .changeLang[data-lang="ja"] {
   font-size: 2rem;
 }
 
+.features .articleHeading {
+  color: var(--brown);
+}
+.featureItem {
+  position: relative;
+  display: flex;
+  text-align: left;
+  line-height: 1.7;
+  color: #210;
+}
+.featureItem:not(:first-child) {
+  margin-top: 70px;
+}
+.featureItem-img {
+  width: 50%;
+  border-radius: 5.625% / 10%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transform: rotate(2deg);
+}
+.featureItem:not(:first-child) .featureItem-img {
+  transform: rotate(-2deg);
+}
+.featureItem-content {
+  padding: 30px;
+}
+.featureItem-content-title {
+  margin-bottom: 30px;
+  border-bottom: 2px dashed;
+  font-size: 21px;
+  opacity: 1;
+  letter-spacing: 0;
+  text-indent: 0;
+}
+.featureItem-content-desc {
+  margin: 1em auto;
+  font-size: 16px;
+}
+.featureItem::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 105%;
+  height: 100%;
+  left: -2.5%;
+  background-color: #EEE;
+  border-radius: 80px;
+  transform: rotate(-2deg);
+  z-index: -1;
+}
+.featureItem:nth-of-type(2n)::before {
+  transform: rotate(2deg);
+}
+
+.gallery {
+  background-color: #210;
+}
 .trailer {
   display: block;
   margin: 50px auto 4%;
@@ -181,8 +237,6 @@ body.ja .changeLang[data-lang="ja"] {
 
 .play {
   padding: 80px 20px;
-  background-color: #222;
-  color: #FFF;
 }
 .play .buttonList {
   margin: 40px auto;
