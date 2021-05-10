@@ -1,0 +1,14 @@
+{
+  "name": "リブラの見た夢 - The Dream Libra had",
+  "short_name": "リブラの見た夢 - The Dream Libra had",
+  "icons": [
+      {
+          "src": "/img/icon.png",
+          "sizes": "144x144",
+          "type": "image/png"
+      }
+  ],
+  "start_url": "https://libra.laineus.com/app.html",
+  "display": "standalone",
+  "theme_color": "#111111"
+}
