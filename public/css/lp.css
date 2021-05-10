@@ -219,6 +219,8 @@ body.ja .changeLang[data-lang="ja"] {
 .screenShotList-item {
   width: 31.33%;
   margin-bottom: 4%;
+  border-radius: 20px;
+  overflow: hidden;
 }
 .screenShotList-item-wrapper.selected {
   position: fixed;
