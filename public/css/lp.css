@@ -27,10 +27,16 @@ li {
   list-style: none;
 }
 
-body.ja .en {
+body.ja .en:not(.ja),
+body.ja .cn:not(.ja) {
   display: none;
 }
-body.en .ja {
+body.en .ja:not(.en),
+body.en .cn:not(.en) {
+  display: none;
+}
+body.cn .ja:not(.cn),
+body.cn .en:not(.cn) {
   display: none;
 }
 
@@ -113,6 +119,9 @@ body.en .changeLang[data-lang="en"] {
   color: var(--yellow);
 }
 body.ja .changeLang[data-lang="ja"] {
+  color: var(--yellow);
+}
+body.cn .changeLang[data-lang="cn"] {
   color: var(--yellow);
 }
 
