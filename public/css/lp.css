@@ -99,6 +99,7 @@ body.en .ja {
   align-items: center;
   padding: 15px 20px;
   background: #222;
+  border-radius: 0 0 0 20px;
 }
 .lang-item {
   margin: 0 5px;
@@ -243,7 +244,7 @@ body.ja .changeLang[data-lang="ja"] {
   padding: 80px 20px;
 }
 .play .buttonList {
-  margin: 40px auto;
+  margin: 0 auto 5%;
   max-width: 720px;
 }
 .play .buttonList-item {
@@ -259,35 +260,6 @@ body.ja .changeLang[data-lang="ja"] {
 }
 .dataList-term:not(:first-child) {
   margin-left: 1em;
-}
-
-.shareUrl {
-  width: 500px;
-  position: relative;
-  margin: 30px auto;
-}
-.shareUrl-input {
-  width: 100%;
-  padding: 15px 18px;
-  font-size: 1.6rem;
-  color: #555;
-  border: 2px solid #AAA;
-}
-.shareUrl-copy {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 5px;
-  cursor: pointer;
-}
-.shareUrl-copied {
-  position: absolute;
-  top: 11px;
-  right: -85px;
-  padding: 4px 7px;
-  background: #222;
-  color: #FFF;
-  transition: opacity 0.2s;
 }
 
 .footer {
@@ -355,10 +327,6 @@ body.ja .changeLang[data-lang="ja"] {
   }
   .play .buttonList-item {
     margin: auto 5px;
-  }
-  .shareUrl-copied {
-    top: -30px;
-    right: 0;
   }
   .totop {
     width: 50px;

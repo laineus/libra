@@ -134,28 +134,19 @@
   </article>
 
   <article class="play">
-    <p class="logo"><img src="./img/lp/logo_ja.png" alt="リブラの見た夢" width="320"></p>
-    <ul class="buttonList">
-      <li class="buttonList-item"><a href="https://store.steampowered.com/app/1625720/The_Dream_Libra_had/" target="_blank"><img src="./img/lp/btn_steam_black.png" alt="STEAM"></a></li>
-      <li class="buttonList-item"><a href="https://play.google.com/store/apps/details?id=com.laineus.libra" target="_blank"><img class="ja" src="./img/lp/btn_googleplay.png" alt="GooglePlayで手に入れよう"><img class="en" src="./img/lp/btn_googleplay_en.png" alt="Got it on GooglePlay"></a></li>
-      <!-- <li class="buttonList-item"><a href="TODO" target="_blank"><img class="ja" src="./img/lp/btn_browser_black.png" alt="ブラウザで遊ぶ"><img class="en" src="./img/lp/btn_browser_black_en.png" alt="Play on Browser"></a></li> -->
-    </ul>
-    <dl class="dataList">
-      <dt class="dataList-term"><span class="ja">タイトル:</span><span class="en">Title:</span></dt>
-      <dd class="dataList-desc"><span class="ja">リブラの見た夢</span><span class="en">The Dream Libra had</span></dd>
-      <dt class="dataList-term"><span class="ja">価格:</span><span class="en">Price:</span></dt>
-      <dd class="dataList-desc"><span class="ja">無料</span><span class="en">Free</span></dd>
-    </dl>
-  </article>
-
-  <article class="article share">
     <div class="article-content">
-      <h2 class="articleHeading" data-animation="letterAnim">SHARE</h2>
-      <div class="shareUrl transparent" data-animation="transparent">
-        <input class="shareUrl-input" type="text" value="https://libra.laineus.com" readonly>
-        <div class="shareUrl-copy"><span class="ja">コピー</span><span class="en">Copy</span></div>
-        <div class="shareUrl-copied transparent">Copied !</div>
-      </div>
+      <p class="logo"><img src="./img/lp/logo_ja.png" alt="リブラの見た夢" width="320"></p>
+      <ul class="buttonList">
+        <li class="buttonList-item"><a href="https://store.steampowered.com/app/1625720/The_Dream_Libra_had/" target="_blank"><img src="./img/lp/btn_steam_black.png" alt="STEAM"></a></li>
+        <li class="buttonList-item"><a href="https://play.google.com/store/apps/details?id=com.laineus.libra" target="_blank"><img class="ja" src="./img/lp/btn_googleplay.png" alt="GooglePlayで手に入れよう"><img class="en" src="./img/lp/btn_googleplay_en.png" alt="Got it on GooglePlay"></a></li>
+        <!-- <li class="buttonList-item"><a href="TODO" target="_blank"><img class="ja" src="./img/lp/btn_browser_black.png" alt="ブラウザで遊ぶ"><img class="en" src="./img/lp/btn_browser_black_en.png" alt="Play on Browser"></a></li> -->
+      </ul>
+      <dl class="dataList">
+        <dt class="dataList-term"><span class="ja">タイトル:</span><span class="en">Title:</span></dt>
+        <dd class="dataList-desc"><span class="ja">リブラの見た夢</span><span class="en">The Dream Libra had</span></dd>
+        <dt class="dataList-term"><span class="ja">価格:</span><span class="en">Price:</span></dt>
+        <dd class="dataList-desc"><span class="ja">無料</span><span class="en">Free</span></dd>
+      </dl>
     </div>
   </article>
 
@@ -173,19 +164,6 @@
     // Button to Top
     const totop = document.querySelector('.totop')
     totop.addEventListener('click', () => window.scrollTo(0, 0))
-
-    // Share URL
-    const shareUrlInput = document.querySelector('.shareUrl-input')
-    const shareUrlCopy = document.querySelector('.shareUrl-copy')
-    const shareUrlCopied = document.querySelector('.shareUrl-copied')
-    shareUrlInput.addEventListener('click', () => shareUrlInput.select())
-    shareUrlCopy.addEventListener('click', () => {
-      shareUrlInput.select()
-      document.execCommand('copy')
-      if (!shareUrlCopied.classList.contains('transparent')) return
-      shareUrlCopied.classList.remove('transparent')
-      setTimeout(() => shareUrlCopied.classList.add('transparent'), 1500)
-    })
 
     // Gallery
     const images = document.querySelectorAll('.screenShotList-item-wrapper')
