@@ -169,6 +169,7 @@ body.cn .changeLang[data-lang="cn"] {
 .featureItem {
   position: relative;
   display: flex;
+  align-items: center;
   text-align: left;
   line-height: 1.7;
   color: #210;
@@ -182,7 +183,10 @@ body.cn .changeLang[data-lang="cn"] {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   transform: rotate(2deg);
 }
-.featureItem:not(:first-child) .featureItem-img {
+.featureItem:nth-of-type(2n) {
+  flex-direction: row-reverse;
+}
+.featureItem:nth-of-type(2n) .featureItem-img {
   transform: rotate(-2deg);
 }
 .featureItem-content {
@@ -344,6 +348,13 @@ body.cn .changeLang[data-lang="cn"] {
   .totop::before {
     width: 15px;
     height: 15px;
+  }
+  .featureItem,
+  .featureItem:nth-of-type(2n) {
+    flex-direction: column-reverse;
+  }
+  .featureItem-img {
+    width: 100%;
   }
 }
 
