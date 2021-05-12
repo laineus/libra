@@ -226,6 +226,7 @@ body.cn .changeLang[data-lang="cn"] {
 .trailer {
   display: block;
   margin: 50px auto 4%;
+  max-height: 50vw;
 }
 .screenShotList {
   display: flex;
