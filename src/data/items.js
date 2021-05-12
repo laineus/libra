@@ -40,6 +40,11 @@ const makeCharacter = (name, obj) => {
     temper: PLANT
   }, obj)
 }
+const getLogoTexture = () => {
+  if (setting.state.lang === 'ja') return 'item/logo'
+  if (setting.state.lang === 'cn') return 'item/logo_cn'
+  return 'item/logo_en'
+}
 export default [
   makeItem('apple', { hp: 25, weight: 30 }),
   makeItem('grass', { hp: 5, minScale: 0.6 }),
@@ -124,7 +129,7 @@ export default [
   makeItem('knife', { hp: 20 }),
   makeItem('lamp', { hp: 10, light: 0xAA6600 }),
   makeItem('libra', { hp: 5 }),
-  makeItem('logo', { hp: 10, texture: setting.state.lang === 'ja' ? 'item/logo' : 'item/logo_en' }),
+  makeItem('logo', { hp: 10, texture: getLogoTexture() }),
   makeItem('pedestal', { hp: 20, weight: 2, y: -45 }),
   makeItem('pot', { hp: 5, y: -5 }),
   makeItem('rack', { hp: 30, weight: 3, y: -32 }),
