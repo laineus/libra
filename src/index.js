@@ -25,6 +25,18 @@ location.query = location.search.substr(1).split('&').filter(Boolean).reduce((ob
 
 const vueApp = createApp(App)
 
+// Temporary fix: https://github.com/photonstorm/phaser/issues/5696
+Phaser.Scenes.SceneManager.prototype.loadComplete = function (loader) {
+  const scene = loader.scene
+  if (this.game.sound && this.game.sound.onBlurPausedSounds) {
+    this.game.sound.unlock()
+  }
+  this.create(scene)
+}
+
+const isTouchDevice = window.ontouchstart !== undefined && navigator.maxTouchPoints > 0
+const isMobileSafari = isTouchDevice && window.webkitAudioContext !== undefined
+
 const game = new Phaser.Game({
   type: Phaser.AUTO,
   width: config.WIDTH,
@@ -40,9 +52,9 @@ const game = new Phaser.Game({
       gravity: { y: 0 }
     }
   },
-  // audio: {
-  //   disableWebAudio: true
-  // },
+  audio: {
+    disableWebAudio: isMobileSafari
+  },
   input: {
     activePointers: 3
   },
