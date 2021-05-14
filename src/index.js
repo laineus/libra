@@ -34,8 +34,10 @@ Phaser.Scenes.SceneManager.prototype.loadComplete = function (loader) {
   this.create(scene)
 }
 
+const ua = navigator.userAgent
 const isTouchDevice = window.ontouchstart !== undefined && navigator.maxTouchPoints > 0
-const isMobileSafari = isTouchDevice && window.webkitAudioContext !== undefined
+const isAppleDevice = ua.indexOf('Macintosh') > -1 || ua.indexOf('iPhone') > -1 || ua.indexOf('iPad') > -1
+const iOS = isTouchDevice && isAppleDevice // iPhone or iPad
 
 const game = new Phaser.Game({
   type: Phaser.AUTO,
@@ -53,7 +55,7 @@ const game = new Phaser.Game({
     }
   },
   audio: {
-    disableWebAudio: isMobileSafari
+    disableWebAudio: iOS
   },
   input: {
     activePointers: 3
