@@ -66,6 +66,7 @@ export default {
       visible: true,
       tweens: null,
       distanceToPlayer: null,
+      closeToPlayer: false,
       hp: itemData.value?.hp ?? 10
     })
     let onDestroy = null
@@ -132,10 +133,11 @@ export default {
     }
     const create = obj => context.emit('create', obj)
     onPreUpdate(() => {
-      if (depth.value !== object.value.y + depthAdjust.value) depth.value = object.value.y + depthAdjust.value
+      depth.value = Math.round(object.value.y + depthAdjust.value)
       data.distanceToPlayer = Phaser.Math.Distance.Between(object.value.x, object.value.y, player.value.object.x, player.value.object.y)
+      data.closeToPlayer = data.distanceToPlayer < 150
     })
-    const interactive = computed(() => !event.state && data.distanceToPlayer < 150 && !player.value?.gun.mode.value && unref(data.visible))
+    const interactive = computed(() => !event.state && data.closeToPlayer && !player.value?.gun.mode.value && unref(data.visible))
     const setTapEvent = (event, options = {}) => {
       if (!event) return tapEvent.setEvent(null)
       tapEvent.setEvent(computed(() => {
