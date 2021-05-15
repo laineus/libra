@@ -96,7 +96,7 @@ export default {
       return field.value?.objects.map(v => v.ref.value).filter(v => v?.checkable).findMin(v => v.distanceToPlayer)
     })
     const nearestGrabbable = computed(() => {
-      return field.value?.objects.map(v => v.ref.value).filter(v => v?.grabbable).findMin(v => v.distanceToPlayer)
+      return field.value?.nearestGrabbable.value.value
     })
     const debug = ref(false)
     onMounted(() => {

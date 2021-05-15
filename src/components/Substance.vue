@@ -11,14 +11,14 @@
     <template v-if="hp > 0 && unref(visible)">
       <Image ref="lightObject" v-if="light" :blendMode="BlendModes.OVERLAY" :x="initX" :y="initY" :depth="config.DEPTH.LIGHT" :tint="light" texture="light" />
       <TapArea v-if="tapEvent.event.value" :visible="interactive" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @tap="execTapEvent" />
-      <GrabArea ref="grabArea" v-else-if="capturable" :visible="interactive || inHome" :noImage="inHome" :name="name" :scale="scale" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @grab="alpha = 0.5" @capture="onBroken" @move="move" @cancel="alpha = 1" />
+      <GrabArea ref="grabArea" v-else-if="capturable" :visible="grabbable" :noImage="hideGrabbable" :name="name" :scale="scale" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @grab="alpha = 0.5" @capture="onBroken" @move="move" @cancel="alpha = 1" />
     </template>
   </div>
 </template>
 
 <script>
 import { refObj, Container, Image, onPreUpdate } from 'phavuer'
-import { computed, inject, reactive, ref, toRefs, unref } from 'vue'
+import { computed, getCurrentInstance, inject, reactive, ref, toRefs, unref, toRaw } from 'vue'
 import items from '@/data/items'
 import TapArea from './TapArea'
 import GrabArea from './GrabArea'
@@ -40,6 +40,8 @@ export default {
   },
   emits: ['create', 'del', 'startEvent'],
   setup (props, context) {
+    const self = getCurrentInstance()
+    const mobile = inject('mobile')
     const frames = inject('frames')
     const field = inject('field')
     const event = inject('event')
@@ -62,7 +64,7 @@ export default {
     const light = computed(() => itemData.value?.light)
     const depthAdjust = computed(() => itemData.value?.y ?? 0)
     const imageTexture = computed(() => props.texture || itemData.value?.texture)
-    const capturable = computed(() => !props.unique && itemData.value?.capture)
+    const capturable = computed(() => !props.unique && itemData.value?.capture && !tapEvent.event.value)
     const data = reactive({
       visible: true,
       tweens: null,
@@ -133,13 +135,19 @@ export default {
       }
     }
     const create = obj => context.emit('create', obj)
+    const interactiveAllowed = computed(() => !event.state && !player.value?.gun.mode.value && unref(data.visible))
+    const interactive = computed(() => interactiveAllowed.value && data.closeToPlayer)
+    const checkable = computed(() => interactive.value && tapEvent.event.value)
+    const isNearest = computed(() => toRaw(field.value?.nearestGrabbable.value.value) === self.ctx)
+    const grabbable = computed(() => capturable.value && (inHome.value ? interactiveAllowed.value : interactive.value))
+    const hideGrabbable = computed(() => mobile ? !isNearest.value : inHome.value)
     onPreUpdate(() => {
-      if (frames.game % 10 > 0) return
+      if (frames.game % 6 !== 0) return
       depth.value = Math.round(object.value.y + depthAdjust.value)
       data.distanceToPlayer = Phaser.Math.Distance.Between(object.value.x, object.value.y, player.value.object.x, player.value.object.y)
       data.closeToPlayer = data.distanceToPlayer < 150
+      if (grabbable.value) field.value.nearestGrabbable.store(self.ctx)
     })
-    const interactive = computed(() => !event.state && data.closeToPlayer && !player.value?.gun.mode.value && unref(data.visible))
     const setTapEvent = (event, options = {}) => {
       if (!event) return tapEvent.setEvent(null)
       tapEvent.setEvent(computed(() => {
@@ -165,9 +173,7 @@ export default {
       BlendModes: Phaser.BlendModes,
       unref,
       ...toRefs(data),
-      interactive,
-      checkable: computed(() => interactive.value && tapEvent.event.value),
-      grabbable: computed(() => interactive.value && !tapEvent.event.value && capturable.value),
+      checkable, grabbable, hideGrabbable,
       create,
       drop, damage, attackAnim,
       damageEffectData, damageEffectTimeline,
