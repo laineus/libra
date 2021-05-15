@@ -3,7 +3,10 @@ const argbToRgba = argb => {
   return `#${argbStr.substr(3, 6)}${argbStr.substr(1, 2)}`
 }
 export default class {
-  constructor (scene, key, width, height) {
+  constructor (scene, key, width, height, compression = 1) {
+    width = Math.ceil(width / compression)
+    height = Math.ceil(height / compression)
+    this.compression = compression
     this.texture = scene.textures.createCanvas(key, width, height)
     this.context = this.texture.getContext()
     this.width = width
@@ -38,6 +41,9 @@ export default class {
     return this
   }
   removeArc (x, y, radius) {
+    x /= this.compression
+    y /= this.compression
+    radius /= this.compression
     this.context.beginPath()
     const gradient = this.context.createRadialGradient(x, y, 0, x, y, radius)
     gradient.addColorStop(0, 'rgba(255, 255, 255, 1)')

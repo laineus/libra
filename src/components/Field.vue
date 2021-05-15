@@ -9,7 +9,7 @@
     <Area v-for="v in areas" :key="v.id" :ref="v.ref" :x="v.x" :y="v.y" :width="v.width" :height="v.height" />
     <Gate v-for="v in gates" :key="v.id" :ref="v.ref" :x="v.x" :y="v.y" :width="v.width" :height="v.height" :to="{ key: v.name, x: v.fieldX.toPixelCenter, y: v.fieldY.toPixelCenter, r: player?.r }" />
     <Bullet v-for="v in bullets" :key="v.id" :initX="v.x" :initY="v.y" :r="v.r" @del="delBullet(v.id)" />
-    <Image :depth="config.DEPTH.DARKNESS" texture="darkness" :x="0" :y="0" :origin="0" />
+    <Image :depth="config.DEPTH.DARKNESS" texture="darkness" :x="0" :y="0" :origin="0" :scale="10" />
   </div>
 </template>
 
@@ -96,7 +96,7 @@ export default {
     }
     const event = maps[props.fieldKey] || {}
     scene.textures.remove('darkness')
-    const darkness = new Darkness(scene, 'darkness', field.width, field.height)
+    const darkness = new Darkness(scene, 'darkness', field.width, field.height, 10)
     const resetDarkness = () => {
       const arcs = lightSubstances.value.map(v => {
         return { x: v.x, y: v.y, radius: 120 }
