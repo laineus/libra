@@ -18,7 +18,7 @@
 
 <script>
 import { refObj, Container, Image, onPreUpdate } from 'phavuer'
-import { computed, getCurrentInstance, inject, reactive, ref, toRefs, unref, toRaw } from 'vue'
+import { computed, getCurrentInstance, inject, reactive, ref, toRefs, unref } from 'vue'
 import items from '@/data/items'
 import TapArea from './TapArea'
 import GrabArea from './GrabArea'
@@ -41,8 +41,8 @@ export default {
   emits: ['create', 'del', 'startEvent'],
   setup (props, context) {
     const self = getCurrentInstance()
-    const mobile = inject('mobile')
     const frames = inject('frames')
+    const mobile = inject('mobile')
     const field = inject('field')
     const event = inject('event')
     const camera = inject('camera')
@@ -68,7 +68,7 @@ export default {
     const data = reactive({
       visible: true,
       tweens: null,
-      distanceToPlayer: null,
+      distanceToPlayer: Infinity,
       closeToPlayer: false,
       hp: itemData.value?.hp ?? 10
     })
@@ -138,7 +138,7 @@ export default {
     const interactiveAllowed = computed(() => !event.state && !player.value?.gun.mode.value && unref(data.visible))
     const interactive = computed(() => interactiveAllowed.value && data.closeToPlayer)
     const checkable = computed(() => interactive.value && tapEvent.event.value)
-    const isNearest = computed(() => toRaw(field.value?.nearestGrabbable.value.value) === self.ctx)
+    const isNearest = computed(() => field.value?.nearestGrabbable?.substance === self.proxy)
     const grabbable = computed(() => capturable.value && (inHome.value ? interactiveAllowed.value : interactive.value))
     const hideGrabbable = computed(() => mobile ? !isNearest.value : inHome.value)
     onPreUpdate(() => {
@@ -146,7 +146,6 @@ export default {
       depth.value = Math.round(object.value.y + depthAdjust.value)
       data.distanceToPlayer = Phaser.Math.Distance.Between(object.value.x, object.value.y, player.value.object.x, player.value.object.y)
       data.closeToPlayer = data.distanceToPlayer < 150
-      if (grabbable.value) field.value.nearestGrabbable.store(self.ctx)
     })
     const setTapEvent = (event, options = {}) => {
       if (!event) return tapEvent.setEvent(null)
@@ -165,6 +164,7 @@ export default {
       }))
     }
     return {
+      substance: self.proxy,
       config,
       itemData,
       inHome,
@@ -173,7 +173,7 @@ export default {
       BlendModes: Phaser.BlendModes,
       unref,
       ...toRefs(data),
-      checkable, grabbable, hideGrabbable,
+      interactive, checkable, grabbable, hideGrabbable,
       create,
       drop, damage, attackAnim,
       damageEffectData, damageEffectTimeline,

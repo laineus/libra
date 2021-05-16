@@ -92,12 +92,8 @@ export default {
       storage.state.tutorial.push(key)
       tutorial.value = key
     }
-    const nearestCheckable = computed(() => {
-      return field.value?.objects.map(v => v.ref.value).filter(v => v?.checkable).findMin(v => v.distanceToPlayer)
-    })
-    const nearestGrabbable = computed(() => {
-      return field.value?.nearestGrabbable.value.value
-    })
+    const nearestCheckable = computed(() => field.value?.nearestCheckable)
+    const nearestGrabbable = computed(() => field.value?.nearestGrabbable)
     const debug = ref(false)
     onMounted(() => {
       refs.scene.value.input.setTopOnly(false)

@@ -15,7 +15,6 @@
 
 <script>
 import fieldService from './modules/fieldService'
-import useNearest from './modules/useNearest'
 import Player from './Player'
 import Character from './Character'
 import Substance from './Substance'
@@ -96,7 +95,6 @@ export default {
     const charaCreate = obj => {
       objectGroup.add(obj)
     }
-    const nearestGrabbable = useNearest()
     const event = maps[props.fieldKey] || {}
     scene.textures.remove('darkness')
     const darkness = new Darkness(scene, 'darkness', field.width, field.height, 20)
@@ -120,8 +118,14 @@ export default {
       unwatchItems()
       unwatchLights()
     })
+    const nearestCheckable = ref(null)
+    const nearestGrabbable = ref(null)
     const update = (time) => {
-      if (frames.game % 6 === 0) nearestGrabbable.commit()
+      if (frames.game % 6 === 3) {
+        const refs = objects.map(v => v.ref.value)
+        nearestCheckable.value = refs.filter(v => v?.checkable).findMin(v => v.distanceToPlayer)
+        nearestGrabbable.value = refs.filter(v => v?.grabbable).findMin(v => v.distanceToPlayer)
+      }
       if (frames.game % 2 === 0) darkness.restore().removeArc(player.value.object.x, player.value.object.y, 300).refresh()
       field.update(time)
       if (event.update) event.update()
@@ -133,7 +137,7 @@ export default {
       layers, images, player, objects, charas, substances, areas, gates, positions, manualTiles,
       addObject, delObject, dropItem, updateRoomItems,
       bullets, addBullet, delBullet,
-      nearestGrabbable,
+      nearestCheckable, nearestGrabbable,
       isCollides, getObjectById,
       layerCreate, charaCreate,
       resetDarkness,
