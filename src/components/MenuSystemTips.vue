@@ -27,8 +27,12 @@ export default {
   components: { Container, Rectangle, Line, Text, ScrollBar },
   setup () {
     const audio = inject('audio')
-    const keys = ['hp', 'charm', 'weight', 'use', 'dispose', 'store', 'amili', 'people', 'gun', 'murder']
-    const list = keys.map(key => {
+    const mobile = inject('mobile')
+    const keys = ['hp', 'charm', 'weight', 'use', 'dispose', 'store', 'amili', 'people', 'gun', 'murder', 'screenshot']
+    const list = keys.filter(key => {
+      if (key === 'screenshot' && mobile) return false
+      return true
+    }).map(key => {
       return { title: t(`tips.${key}.title`), desc: t(`tips.${key}.desc`) }
     })
     const refs = { scrollBar: ref(null) }

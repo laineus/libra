@@ -323,6 +323,10 @@ export default {
     murder: {
       title: 'Murder',
       desc: 'If you kill inhabitants who can talk to you, they will not revive again. And you will not be able to complete related quests.'
+    },
+    screenshot: {
+      title: 'Screenshot',
+      desc: 'You can take a screenshot with the F12 key.'
     }
   },
   tutorial: {

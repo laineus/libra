@@ -320,6 +320,10 @@ export default {
     murder: {
       title: '杀害',
       desc: '一旦杀害了能够对话的居民，就不会再次复活。相关的事件将会无法完成。'
+    },
+    screenshot: {
+      title: 'Screenshot',
+      desc: 'You can take a screenshot with the F12 key.'
     }
   },
   tutorial: {
