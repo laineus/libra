@@ -45,9 +45,7 @@ export default chara => {
       if (leaveFromTargetObject.value && distance > 160) return clearTargetPosition()
     }
     const body = unref(chara).body
-    const x = (!body.blocked.left && !body.blocked.right) ? diffX : diffX * 0.1
-    const y = (!body.blocked.top && !body.blocked.down) ? diffY : diffY * 0.1
-    leaveFromTargetObject.value ? body.setVelocity(-x, -y) : body.setVelocity(x, y)
+    leaveFromTargetObject.value ? body.setVelocity(-diffX, -diffY) : body.setVelocity(diffX, diffY)
     const spd = Math.min(speed, distance * 10)
     body.velocity.normalize().scale(spd)
     if (distance < 5) clearTargetPosition()
