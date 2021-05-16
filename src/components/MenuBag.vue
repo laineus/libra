@@ -73,7 +73,7 @@ export default {
       if (grab.item) {
         if (!grab.pointer.active || !grab.pointer.isDown) return drop()
         grab.x = grab.pointer.x
-        grab.y = grab.pointer.y
+        grab.y = grab.pointer.y + thumbAdjust
         if (grab.mode === 'move' && grabbingBagItem.value) {
           if (!onBagArea.value) grab.mode = 'dispose'
         } else if (grab.mode === 'dispose') {
