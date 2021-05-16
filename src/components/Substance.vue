@@ -40,6 +40,7 @@ export default {
   },
   emits: ['create', 'del', 'startEvent'],
   setup (props, context) {
+    const frames = inject('frames')
     const field = inject('field')
     const event = inject('event')
     const camera = inject('camera')
@@ -133,6 +134,7 @@ export default {
     }
     const create = obj => context.emit('create', obj)
     onPreUpdate(() => {
+      if (frames.game % 10 > 0) return
       depth.value = Math.round(object.value.y + depthAdjust.value)
       data.distanceToPlayer = Phaser.Math.Distance.Between(object.value.x, object.value.y, player.value.object.x, player.value.object.y)
       data.closeToPlayer = data.distanceToPlayer < 150
