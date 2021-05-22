@@ -14,13 +14,13 @@ export default {
     penguin: 'Penguin',
     pinkPenguin: 'Pink Penguin',
     anton: 'Dr.Anton',
-    minePenguin: 'Coal Mining Penguin',
-    doctorPenguin: 'Doctor Penguin',
+    minePenguin: 'Coal Miner',
+    doctorPenguin: 'Doctor',
     pumpkin: 'Pumpkin',
     pig: 'Pig',
     ghost: 'Ghost',
     patient: 'Patient',
-    beetle: 'Rhinoceros Beetle',
+    beetle: 'Beetle',
     stagBeetle: 'Stag Beetle',
     hercules: 'Hercules',
     ladybird: 'Ladybug',
@@ -28,7 +28,7 @@ export default {
     grey2: 'Grey'
   },
   place: {
-    home: 'Room',
+    home: 'Home',
     forest1: 'Forest 1',
     forest2: 'Forest 2',
     forest3: 'Forest 3',
@@ -84,10 +84,10 @@ export default {
     crystal1: 'Crystal',
     crystal2: 'Crystal',
     fish: 'Fish',
-    uminoke: 'Uminoke', // 意味がわからないです。
+    uminoke: 'Uminoke',
     unagi: 'Eel',
     ice: 'Ice',
-    unadon: 'Eel rice bow',
+    unadon: 'Unajyuu',
     antonLetter: `Anton's Letter`,
     pityLetter: `Tokine's Letter`,
     bike1: 'Motorcycle',
@@ -180,7 +180,7 @@ export default {
   },
   quest: {
     torrentFlog: {
-      title: 'The two who being desperated to live',
+      title: 'Desperated to live',
       desc: 'Torrent has lost the rare bug called Hercules, which he promised to show to Frog.'
     },
     clover: {
@@ -188,7 +188,7 @@ export default {
       desc: 'Frog is looking for his lover, who has been reborn as a four-leaf clover.'
     },
     snakeFlog: {
-      title: 'The libra of the Snake and the Frog',
+      title: 'The Snake and the Frog',
       desc: 'The Snake will give you an apple in exchange for a jem.'
     },
     curse: {
@@ -611,11 +611,11 @@ export default {
         `I'll explain it to you, so listen.`,
         'It was quite a while ago, my girlfriend, a frog, died.',
         'I was very sad, but then one day she came back to me.',
-        'She had been reborn as a ladybird.',
+        'She had been reborn as a ladybug.',
         'I was so happy.',
         'But frog and ladybug are hard to get along with.',
         'So I talked to her and we decided to make her reborn again.',
-        'I mean, I killed her, the ladybird.',
+        'I mean, I killed her, the ladybug.',
         'It was very painful though.',
         'I promised her that no matter how many times she rebornd, I would always find her.',
         `She hasn't shown up for a while, but recently, she has finally come back again.`
