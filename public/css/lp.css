@@ -26,6 +26,9 @@ body {
 li {
   list-style: none;
 }
+a {
+  color: #ff9830;
+}
 
 body.ja .en:not(.ja),
 body.ja .cn:not(.ja) {
@@ -274,6 +277,15 @@ body.cn .changeLang[data-lang="cn"] {
 }
 .dataList-term:not(:first-child) {
   margin-left: 1em;
+}
+.links {
+  margin-top: 5px;
+}
+.links a {
+  font-weight: bold;
+}
+.links a:hover {
+  text-decoration: none;
 }
 
 .footer {
