@@ -290,7 +290,7 @@ body.cn .changeLang[data-lang="cn"] {
 
 .footer {
   position: relative;
-  padding: 70px 0 80px;
+  padding: 70px 15px 80px;
   background: #222;
   color: #FFF;
 }
