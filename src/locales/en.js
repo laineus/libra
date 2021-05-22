@@ -5,8 +5,8 @@ export default {
     libra: 'Libra',
     amili: 'Amili',
     kajitsu: 'Kajitsu',
-    flog: 'Flog',
-    fallFlog: 'Fall Flog',
+    flog: 'Frog',
+    fallFlog: 'Autumn Frog', // Fallは「倒れる」と同音なので避けた方がいいと思われる
     torrent: 'Torrent',
     bat: 'Bat',
     snake: 'Snake',
@@ -14,21 +14,21 @@ export default {
     penguin: 'Penguin',
     pinkPenguin: 'Pink Penguin',
     anton: 'Dr.Anton',
-    minePenguin: 'Coal Minor',
-    doctorPenguin: 'Doctor',
+    minePenguin: 'Coal Mining Penguin',
+    doctorPenguin: 'Doctor Penguin',
     pumpkin: 'Pumpkin',
     pig: 'Pig',
     ghost: 'Ghost',
     patient: 'Patient',
-    beetle: 'Beetle',
+    beetle: 'Rhinoceros Beetle',
     stagBeetle: 'Stag Beetle',
     hercules: 'Hercules',
-    ladybird: 'Ladybird',
+    ladybird: 'Ladybug',
     grey1: 'Grey',
     grey2: 'Grey'
   },
   place: {
-    home: 'Home',
+    home: 'Room',
     forest1: 'Forest 1',
     forest2: 'Forest 2',
     forest3: 'Forest 3',
@@ -43,18 +43,18 @@ export default {
     ice2: 'Ice 2',
     ice3: 'Ice 3',
     ice4: 'Ice 4',
-    dark: 'Dark',
+    dark: 'Darkness',
     crossing: 'Accident',
     heart: 'Heart',
-    fall1: 'Fall 1',
-    fall2: 'Fall 2',
+    fall1: 'Autumn 1',
+    fall2: 'Autumn 2',
     coalmine1: 'Coalmine 1',
     coalmine2: 'Coalmine 2',
     coalmine3: 'Coalmine 3',
     coalmine4: 'Space port',
     cosmos: 'Cosmos',
     hospital1: 'Hospital 1',
-    hospital1night: 'Hospital 1 (Night)',
+    hospital1night: 'Hospital 1 (Night)', // 裏はNightではなくBackみたいな感じがします。
     hospital2: 'Hospital 2',
     hospital2night: 'Hospital 2 (Night)',
     mansion1: 'Mansion 1',
@@ -76,24 +76,24 @@ export default {
     moss: 'Moss',
     strawDoll: 'Straw doll',
     stone: 'Stone',
-    rock: 'Stone',
+    rock: 'Rock',
     sapphire: 'Sapphire',
     emerald: 'Emerald',
     amethyst: 'Amethyst',
     ruby: 'Ruby',
-    crystal1: 'Rock',
-    crystal2: 'Rock',
+    crystal1: 'Crystal',
+    crystal2: 'Crystal',
     fish: 'Fish',
-    uminoke: 'Uminoke',
+    uminoke: 'Uminoke', // 意味がわからないです。
     unagi: 'Eel',
     ice: 'Ice',
-    unadon: 'Unajyuu',
+    unadon: 'Eel rice bow',
     antonLetter: `Anton's Letter`,
     pityLetter: `Tokine's Letter`,
-    bike1: 'Motercycle',
-    bike2: 'Motercycle',
-    bike3: 'Motercycle',
-    matsutake: 'Matsutake',
+    bike1: 'Motorcycle',
+    bike2: 'Motorcycle',
+    bike3: 'Motorcycle',
+    matsutake: 'Matsutake mushroom',
     coinGold: 'Gold coin',
     coinSilver: 'Silver coin',
     audioSystem: 'Audio system',
@@ -101,15 +101,15 @@ export default {
     book1: 'Book',
     book2: 'Book',
     book3: 'Book',
-    candol1: 'Candol',
-    candol2: 'Candol',
+    candol1: 'Candle',
+    candol2: 'Candle',
     chest: 'Chest',
     coffin: 'Coffin',
     cookies: 'Cookies',
     curry: 'Curry',
     steak: 'Steak',
-    stirFry: 'Stir fry',
-    omurice: 'Omurice',
+    stirFry: 'Stir fry vegetables',
+    omurice: 'Omelette rice',
     lunchbox: 'Lunch box',
     wine: 'Wine',
     medicine1: 'Medicine',
@@ -131,12 +131,12 @@ export default {
     pot: 'Pot',
     rack: 'Rack',
     scalpel: 'Scalpel',
-    skul: 'Skul',
+    skul: 'Skull',
     sofa: 'Sofa',
-    text: 'Text',
+    text: 'Documents',
     tissue: 'Tissue',
-    tissueEmpty: 'Empty tissue',
-    trash: 'Trash',
+    tissueEmpty: 'Empty tissue box',
+    trash: 'Trash tissue',
     trashCan1: 'Trash can',
     trashCan2: 'Trash can',
     tablemat1: 'Table mat',
@@ -146,26 +146,26 @@ export default {
     vendingMachine: 'Vending machine',
     coke: 'Coke',
     tea: 'Tea',
-    art0: '"Tha Dream Libra had"',
+    art0: '"The Dream Libra had"',
     art1: '"Orange"',
     art2: '"1203"',
     art3: '"Jamie"',
     art4: '"Night Blue"',
     art5: '"Alone"',
-    art6: '"Happy end"',
+    art6: '"Happy ending"',
     art7: '"Sunset"',
     art8: '"Dr.Libra"',
-    art9: '"Kareta kajitsu"',
-    art10: '"certain place"',
+    art9: '"Withered fruits"',
+    art10: '"At a certain place"',
     art11: '"Wraith"',
     art12: '"Space war"',
     art13: '"Space war"',
     art14: '"Space war"',
     art15: '"Love"',
-    art16: '"Working coal minor"',
+    art16: '"HardWorking coal miner"',
     art17: '"Second space war"',
     art18: '"Unsung Kingdom"',
-    art19: `"Witch's craft"`,
+    art19: `"Witches's craft"`,
     art20: '"Mad pumpkin"',
     art21: '"Lilia"',
     art22: '"Deep sea"',
@@ -180,20 +180,20 @@ export default {
   },
   quest: {
     torrentFlog: {
-      title: 'Desperate to live',
+      title: 'The two who being desperated to live',
       desc: 'Torrent has lost the rare bug called Hercules, which he promised to show to Frog.'
     },
     clover: {
-      title: 'Lover is a Clover',
+      title: 'Lover turned into clover',
       desc: 'Frog is looking for his lover, who has been reborn as a four-leaf clover.'
     },
     snakeFlog: {
-      title: 'The Snake and the Frog',
-      desc: 'The Snake will give you an apple in exchange for a jems.'
+      title: 'The libra of the Snake and the Frog',
+      desc: 'The Snake will give you an apple in exchange for a jem.'
     },
     curse: {
       title: 'How to cast a Curse',
-      desc: 'The bats are making a bet about whether the Curse is real.'
+      desc: 'The bats are making a bet about whether the Curse is real or not.'
     },
     eel: {
       title: 'Uminoke',
@@ -201,39 +201,39 @@ export default {
     },
     pityPenguin: {
       title: 'The Poor Penguin',
-      desc: `The poor penguin, tricked by the woman, can't accept the fact and is still waiting her.`
+      desc: `The poor penguin can't accept the fact that he was tricked by the woman and still waiting for her.`
     },
     liveForEveryone: {
       title: 'Live a life for others',
-      desc: `The Penguin who lives for others have lost sight of what "for others" really means.`
+      desc: `The Penguin who lives for others have failed to understand what "for others" really means.`
     },
     matsutake: {
       title: 'Finest Mushrooms',
-      desc: 'The coal miner wants to try a matsutake mushroom once.'
+      desc: 'The coal miner wants to try eating a matsutake mushroom for once.'
     },
     painter: {
       title: 'The Unsuccessful Painter',
-      desc: 'The unsuccessful painter wants to sell his paintings to make the lie he once told his late mother a reality.'
+      desc: 'The unsuccessful painter wants to sell his paintings to make the lie he once told his passed away mother becoming reality.'
     },
     appreciation: {
       title: 'The Child of the Mansion',
-      desc: 'The child in the mansion paints a painting to thank a coal miners.'
+      desc: 'The child in the mansion painted a painting to thank the coal miner.'
     },
     beauty: {
       title: 'Elixir of Immortality',
-      desc: 'The pumpkin lady is looking for an Elixir of Immortality to make her beauty last forever.'
+      desc: 'The pumpkin lady is looking for the Elixir of Immortality to make her beauty last forever.'
     },
     bogusDoctor: {
-      title: 'The Hero on a Sacrifice',
-      desc: 'The doctor at the hospital is a self-taught physician, but he is tormented by the patients who lost their lives due to his past mistakes.'
+      title: 'The Hero beyond Sacrifice',
+      desc: 'The doctor at the hospital is a self-taught doctor, but he is tormented by the patients who lost their lives due to his past mistakes.'
     },
     forever: {
-      title: 'Stay with me forever',
+      title: 'Please stay with me forever',
       desc: 'A woman who has died of illness is waiting for her husband, who was supposed to pass away with her.'
     },
     raptor: {
       title: 'Ancient Romance',
-      desc: 'The man in the mansion has recently seen a dinosaur movie and is hooked on dinosaurs.'
+      desc: 'The man in the mansion has recently watched a dinosaur movie and become fascinated with dinosaurs.'
     },
     photosynthesis: {
       title: 'A Taste of Photosynthesis',
@@ -250,15 +250,15 @@ export default {
     client: 'Client',
     questStart: 'Started "#{title}"',
     questComplete: 'Completed "#{title}"',
-    pickup: '"#{name}" picked up',
+    pickup: 'Picked up "#{name}"',
     eat: 'Ate "#{name}"',
-    hpRecover: 'HP #{value} recovered',
-    weightOver: `It's overweight`,
+    hpRecover: '#{value} HP has been recovered',
+    weightOver: `Storage has been overweight`,
     cantPutItem: `Can't put it here`,
     saved: 'Saved successfully',
     nothingHappened: 'Nothing happened',
     trash: 'Threw out the trash (Great!)',
-    vendingMachine: 'Thank you for your purchase!',
+    vendingMachine: 'Thank you for your purchasement!',
     revive: 'A miracle has happened',
     raptor: 'Completed a dinosaur fossil!',
     status: 'Status',
@@ -267,14 +267,14 @@ export default {
     map: 'Map',
     system: 'System',
     save: 'Save',
-    config: 'Config',
+    config: 'Setting',
     tips: 'Tips',
     unregistered: 'Unregistered',
     weight: 'Weight',
-    playTime: 'Play Time',
+    playTime: 'Play duration',
     charmOfHeart: 'Heart charm',
     charmOfBody: 'Body charm',
-    sumOfCharm: 'Sum of charm',
+    sumOfCharm: 'Total charm',
     bgmVolume: 'BGM volume',
     seVolume: 'SE volume',
     normalSave: 'Save',
@@ -286,7 +286,7 @@ export default {
   tips: {
     amili: {
       title: 'Amili',
-      desc: `Amili, your girlfriend, wants apples. Let's explore the world and bring back apples.`
+      desc: `Your girlfriend Amili wants some apples. Let's explore the world and bring back apples for her.`
     },
     people: {
       title: 'Inhabitants',
@@ -294,15 +294,15 @@ export default {
     },
     hp: {
       title: 'HP',
-      desc: 'The heart displayed on the screen is your HP. When attacked by creatures and it runs out, you will be forced to move to your home.'
+      desc: 'The heart displayed on the screen is your HP. When attacked by creatures and it runs out, you will be forced to move back to your home.'
     },
     charm: {
       title: 'Charm',
-      desc: 'Charm increases when you walk or sleep with your girlfriend Amili. As your charm increases, you will be able to go deeper into this world.'
+      desc: 'Charm increases when you walk together or sleep with your girlfriend Amili. As your charm increases, you will be able to go deeper into this world.'
     },
     weight: {
       title: `Item's weight`,
-      desc: 'There is a limit to how much items you can carry with your bag. Apples are very heavy, so you had better back home to give them to Amili as soon as possible.'
+      desc: 'There is a limit of how much items you can carry with your bag. Apples are very heavy, so you should go back home to give them to Amili as soon as possible.'
     },
     use: {
       title: 'Eat items',
@@ -314,7 +314,7 @@ export default {
     },
     store: {
       title: 'Store items',
-      desc: 'Items placed in your home will not disappear even if you get out the home.'
+      desc: 'Items placed in your home will not disappear even if you move around the map.'
     },
     gun: {
       title: 'Gun',
@@ -332,15 +332,15 @@ export default {
   tutorial: {
     gunPc: `- Gun -\n\nYou've got a gun.\nYou can use it by clicking right mouse button.`,
     gunSp: `- Gun -\n\nYou've got a gun.\nYou can use it by tapping the gun icon displayed on the screen.`,
-    weight: `- Limit for items' weight -\n\nPay attention to the weight of the items you can carry.\nEspecially Apples are very heavy, so bring them home often.`,
+    weight: `- Limit for items' weight -\n\nPay attention to the weight of the items you can carry.\nEspecially, apples are very heavy, so you should bring them home often.`,
     home: '- Home -\n\nAt home, you can give apples to your girlfriend Amili and can store items.',
-    map: `- Teleport -\n\nYou can save current location with the map menu, then can teleport to there from another place.\nDon't forget to save the places you want to visit again.`,
+    map: `- Teleport -\n\nYou can save current location with the map menu on the bottom-right, then can teleport to there from another place.\nDon't forget to save the places you want to visit again.`,
     quest: '- Quest -\n\nThere are inhabitants who need your help in this world.\nYou might receive an apple if you help them.',
     kill: `- Murder -\n\nYou've shot the friendly inhabitant.\nThey will not revive if you kill them.`
   },
   events: {
     block: {
-      common: 'Can not yet go there.',
+      common: 'Can not go there yet.',
       status: 'You need a total of #{status} charms.'
     },
     libra: {
@@ -355,12 +355,12 @@ export default {
     forest2Kajitsu: {
       greet: [
         'My name is Kajitsu.',
-        'I was looking forward to meeting you.',
+        'It was nice to meet you.',
         'Allow me to instruct you on how to play this game.'
       ],
       walk: {
         pc: [
-          'You can tap ground or use WASD keys to walk.',
+          'You can use left-click on the ground or WASD keys to walk.',
           'Now, please come here.'
         ],
         sp: [
@@ -370,7 +370,7 @@ export default {
       },
       talk1: [
         'Good.',
-        'Then please talk to me next.'
+        'Then to continue, please try to talk to me.'
       ],
       talk2: {
         pc: [
@@ -386,25 +386,25 @@ export default {
       ],
       apple2: {
         pc: [
-          `Try to pick up the apple that's fallen over there.`,
+          'Try to pick up the apple that fell over there.',
           'You can keep left-clicking to grab it when you get close to it.',
-          'Then the bag window will open, and you can drop it there to pick it up.',
-          'Please pick it up and come back to me.'
+          'Then the bag window will open, and you can drop it into there to pick it up.',
+          'Please come back to me after picking it up.'
         ],
         sp: [
-          `Try to pick up the apple that's fallen over there.`,
+          'Try to pick up the apple that fell over there.',
           'You can keep left-clicking to grab it when you get close to it.',
           'Also you can use the button that will show up on right bottom of the screen.',
-          'Then the bag window will open, and you can drop it there to pick it up.',
-          'Please pick it up and come back to me.'
+          'Then the bag window will open, and you can drop it into there to pick it up.',
+          'Please come back to me after picking it up.'
         ]
       },
       completed: [
         'You have picked it up.',
-        'These are the basic operations.',
+        'These are the basic controls.',
         'By the way,',
         'Today, you came to this forest to bring an apple back to your girlfriend.',
-        'Your home is located at north of this forest.',
+        'Your home is located at the north of this forest.',
         `She's waiting for you.`,
         'Then, I will take my leave now.'
       ]
@@ -412,16 +412,16 @@ export default {
     home: {
       welcomeback: 'Welcome home, Libra.',
       goodmorning: 'Good morning, Libra.',
-      sleeping1: ['Yawn...', 'I was sleeping.'],
+      sleeping1: ['Yawn...', 'Sorry, I fell asleep.'],
       sleeping2: ['Whoa!', `You're home. I'm surprised.`],
-      cookie: ['Look at this, I baked cookies for you, Libra.', 'Here you go.'],
-      lunchbox: ['Look at this, I made lunch box for you, Libra.', 'Here you go.'],
+      cookie: ['Look at this, I have baked cookies for you, Libra.', 'Here you go.'],
+      lunchbox: ['Look at this, I have made lunch box for you, Libra.', 'Here you go.'],
       cooking: ['Dinner is ready.', 'Enjoy the meal.'],
-      giveApple: ['Give her an apple', 'Nothing'],
+      giveApple: ['Give her an apple', 'Do nothing'],
       followMe: 'Follow me',
       letsGo: `Let's go.`,
       finishFollowing: 'That was fun.',
-      noApple: `You don't have any apples.`,
+      noApple: `You don't have any apple.`,
       iloveyou: 'Libra, I love you!',
       gaveApple1: ['Thank you!', 'What do you want to do today?'],
       gaveApple2: ['Thank you!', 'What do you want to do next?'],
@@ -432,9 +432,9 @@ export default {
         b: ['Hmmm.', 'I want to eat apples again.', `Libra, you'll bring me some, won't you?`]
       },
       lvup: {
-        heart: 'Heart charm has increased',
-        body: 'Body charm has increased',
-        newArea: 'New area has unlocked'
+        heart: 'Heart charm has been increased',
+        body: 'Body charm has been increased',
+        newArea: 'New area has been unlocked'
       }
     },
     itemReactions: {
@@ -442,12 +442,12 @@ export default {
       lily: ['Did you decorate a room with a lily?', 'Ehehe.'],
       cosmos: [
         'You decorated the cosmos.',
-        `The language of the cosmos flower is "maiden's pure heart".`,
-        `But, if it is pink one, it is "maiden's chastity".`,
+        `The meaning of the cosmos flower is "maiden's pure heart".`,
+        `By the way, if it's pink then it's "maiden's chastity".`,
         `...It doesn't suit us.`
       ],
-      dandelion: ['Did you bring back a dandelion?', 'You cute Libra.'],
-      kinoko: ['Did you pick a mushroom?', 'Is it the kind eatable?'],
+      dandelion: [`Did you bring back a dandelion?', 'You're cute, Libra.`],
+      kinoko: ['Did you pick a mushroom?', 'Is it eatable kind?'],
       clover3: ['Clover? So cute.'],
       clover4: ['You found a four-leaf clover!', 'Ehehe, this will make you happy!', `...Libra, I'm so happy to be with you.`],
       gardenia: ['It smells so good.', 'Oh, it smells like gardenias.'],
@@ -456,29 +456,29 @@ export default {
       gem: ['You found a gem!', `It's beautiful.`],
       gemAll: ['Lots of gems!'],
       crystal: [`What's that big chunk of rock!`, 'Oh, maybe there are gems or fossils buried in it!'],
-      raptorParts: ['Oh, is it fossil?', `Fossils are exciting, aren't they?`, 'What kind of fossil is it?'],
+      raptorParts: ['Oh, is this fossil?', `Fossils are exciting, aren't they?`, 'What kind of fossil is this?'],
       raptor: ['Oh, great! A dinosaur fossil!', `That's so cool!`],
       fish: ['You caught a fish.', 'Should we have it for dinner tonight?'],
-      unagi: ['An eel!', `Yes! Let's make Unajyu!`],
-      ice: ['Why did you put ice?', `It's cold!`],
-      icePenguin: ['Oh, is it for Penguin...?', '..........', `...okay, I'll be patient!`],
+      unagi: ['An eel!', `Yes! Let's make Unajyu rice!`],
+      ice: ['Why did you put ice here?', `It's cold!`],
+      icePenguin: ['Oh, is it for Penguin...?', '..........', `...okay, I'll bear this!`],
       bike: ['Did you bring a motorcycle...?', `...it's kind of nostalgic.`],
       bikeAll: [`You've collected a lot of motorcycles.`],
-      matsutake: ['Hmm, It smells something delicious!'],
+      matsutake: ['Hmm, it smells something delicious!'],
       coin: ['Wow, Libra is so rich!'],
       audioSystem: ['We got a audio system!', 'What do you want to listen to?'],
       bear: [`It's a teddy bear!`, `It's so cute!!!`],
       bearMany: ['Lots of teddy bears.', `...aren't you putting too many?`, 'Is Libra lonely?'],
-      book: [`What's wrong with you collecting books?`, `You're not going to read them anyway!`],
-      candol: ['Why did you bring a candle?', `...don't use them for anything weird, okay?`],
-      chest: [`It's a chest of drawers.`, 'Indeed. We need to organize our house.'],
-      coffin: ['Wait, you brought back a coffin!', 'I cringe that...', `It's empty inside, right...?`],
+      book: ['Why are you collecting so many books?', `You're not going to read them anyway!`],
+      candol: ['Why did you bring back a candle?', `...don't use them for anything weird, okay?`],
+      chest: [`It's a drawer.`, 'Indeed, we need to organize our house.'],
+      coffin: ['Wait, you brought back a coffin!', 'As I expected...', `Of course it's empty inside, right...?`],
       wine: ['Wine?', 'What are you going to do, get me drunk?'],
       medicine: ['Medicine?', 'It is not the weird one, right?'],
       elixir: ['Elixir of immortality...?', `It's kind of fake.`, `Libra, I'll always love you, even when you get older.`],
       guitar: [`It's a guitar.`, `I wonder if I'll be able to play it if I practice.`],
-      gun: ['You got a .45 caliber handgun.', `It's the best one of automatic pistols.`, `It's a perfected gun.`],
-      rifle: ['You got a bolt-action rifle.', `The mechanism is simple, so it's highly accurate and reliable.`],
+      gun: ['You got a .45 caliber handgun.', `It's the best one of automatic pistols.`, `It's a well-made gun.`],
+      rifle: ['You got a bolt-action rifle.', `Because the mechanism is simple, so it's highly accurate and reliable.`],
       revolver: ['You got a revolver gun.', `It is very reliable because it doesn't have problems like bullet jamming.`],
       kitchen: ['We got a kitchen!', 'Now I can make some dinner for you.', 'Look forward to it.'],
       knife: [`The knife is dangerous, so don't touch it, Libra.`, 'Leave the cooking to me.'],
@@ -487,23 +487,23 @@ export default {
       sofa: ['You put a sofa.', 'Now we can relax!', `I'll get a lot of use out of it.`],
       tissue: ['Oh, tissue.', '...yeah, well, it need to be in that position.'],
       trashCan2: ['Good job throwing away the trash.'],
-      tv: ['We got a TV!', 'I want to watch a foreign TV series.', 'What do you want to watch Libra?'],
+      tv: ['We got a TV!', 'I want to watch some foreign TV series.', 'What do you want to watch Libra?'],
       star: [`You took the star, didn't you?`, 'Libra is the only one who can give me such a nice present.'],
       tea: [`Oh, it's green tea!`, `This is the best one when I'm thirsty.`],
       coke: [`Coke!, Let's drink it together.`],
-      vendingMachine: ['Wow! We got a vending machine!', 'Once I thought that if I had a vending machine in my room, I could have a drink whenever.'],
-      insect: [`Why you got a bug in our room!?`, 'I hate bugs!!'],
+      vendingMachine: ['Wow! We got a vending machine!', 'When I was a kid, I thought that if I had a vending machine in my room, I could have my favorite drink whenever I like.'],
+      insect: [`Why you put a bug into our room!?`, 'I hate bugs!!'],
       hercules: [`I hate bugs, even the rare ones!`, `...but well, it's kinda cool.`],
-      snake: [`libra! There's a snake in our room!`],
+      snake: [`Libra! There's a snake in our room!`],
       flog: ['Hello, frog.'],
       fallFlog: ['Hello, orange frog.'],
-      bat: ['Did you caught a bat?', `Okay, it's better than bugs...`],
-      pig: [`It's a pig! Hello.`, 'Oh..., is it okay if I cook with pork in front of the pig...?'],
-      ghost: [`...libra, ...I'm seeing things I shouldn't.`],
-      art: ['Did you put the picture?', 'I like it!'],
+      bat: ['Are you keeping a bat?', `Okay, it's better than bugs...`],
+      pig: [`It's a pig! Hello.`, 'Oh..., is it okay if I cook pork in front of the pig...?'],
+      ghost: [`...Libra, ...I'm seeing things that I shouldn't.`],
+      art: ['Did you decorate the picture?', 'I like it!'],
       artMany: [`You've got a lot of pictures.`, 'Are you collecting them?'],
       artAll: ['So many pictures!', `It's like a museum.`, 'You must have worked hard to collect them.'],
-      torrent: ['You brought a big one...'],
+      torrent: ['You have brought a big one...'],
       penguin: [`It's a penguin!`, `Isn't our room too hot for her?`],
       pinkPenguin: ['Wow! A pink penguin!', `That's so cute!!`],
       pumpkin: ['A pumpkin!', '...looks delicious.', 'Libra, would you like some pumpkin for dinner?', '..........', `...I'm just kidding!`],
@@ -518,19 +518,19 @@ export default {
       start2: [
         `Yes, it's not just any beetle.`,
         `It's a golden beetle called hercules, which is very rare in this region.`,
-        `And if I can't find that beetle, I'll be a liar.`
+        `And if I can't find that beetle, I'll become a liar.`
       ],
       options2: [`You'll be a liar?`, 'Why?'],
       start3: [
-        'Yes, that was last week.',
+        'Yes, that was because of last week.',
         'I was talking to my friend, Mister Frog.',
         '"By the way, Mr.Frog, do you know that there are golden beetles living in this forest?"',
-        `"Umm, Mr.Torrent, that's an outrageous lie. How can there be such a beetle in the world?"`,
+        `"Umm, Mr.Torrent, that's an outrageous lie. How can it be such a beetle in this world?"`,
         `"No, no, it's not a lie. It does surely exist."`,
         `"You can't make fun of me, Mr.Torrent."`,
         '"If there really is such a beetle, then bring it to me."',
         `"I'm not trying to make fun of you."`,
-        '"But the golden ones are very rare, so not easy to catch it."',
+        '"But the golden ones are very rare, so it is not easy to catch it."',
         `"Then I can't believe you. You're going to be liar, aren't you?"`,
         '"You had better bring the golden beetle to me someways to prove that."',
         `That's why I rushed to find a golden beetle, hercules.`,
@@ -545,18 +545,18 @@ export default {
       found: [
         'Oh! You found a hercules!',
         'Then could you please take it to Mr.Frog who lives in the south of this area?',
-        `I'm not very good at walking long distances...`
+        `I'm not very good at walking long distance...`
       ],
       options3: ['The frog was deceiving you.', 'I delivered the hercules to the frog.'],
       report: [
         'I see.',
-        `It's unfortunate, but there are times in life when such deceiving is necessary.`,
-        'Mr.Frog, and everyone are desperate to live.',
-        `So don't you think it's severe to only blame Mr.Flog?`
+        'Unfortunately, but there are times in life when such deceiving is necessary.',
+        'Both Mr.Frog, and me are desperated to live.',
+        `So don't you think it's too harsh to only blame Mr.Frog?`
       ],
-      options4: [`You're right. He should not be blamed.`, 'No one is allowed to deceive others to live.'],
+      options4: [`You're right. He should not be blamed.`, 'No one is allowed to deceive others even to live.'],
       end1: [
-        "Great. Now there's no reason of I'm going to be liar.",
+        "Great. The truth has been spoken, I'm not a liar anymore.",
         'Thank you very much. Here is my gratitude.'
       ],
       end2: [
@@ -565,13 +565,13 @@ export default {
       ],
       end3: [
         `Is that so? Then I'll make a confession to you for answering so.`,
-        `Actually, everything I told you is a lie.`,
+        `Actually, everything that I told you was a lie.`,
         'Mr.Frog and I deceived you to get a hercules, a expensive thing.',
         'I am really sorry.',
-        `But I'm also desperate to live.`,
+        `But I'm also desperated to live.`,
         'Please accept this as an apology.'
       ],
-      completed: 'Everyone is desperate to live.',
+      completed: 'Everyone is desperated to live.',
       flog: {
         greeting: 'Good morning.',
         give1: [
@@ -583,11 +583,11 @@ export default {
         options1: ['Give him the hercules', `Don't give it`],
         give2: [`Don't say that.`],
         log1: 'Gave him the hercules',
-        log2: 'He took the hercules.',
+        log2: 'He steal the hercules.',
         give3: [
           'Wow, this is the hercules.',
           `I won't have to worry about my livelihood if I sell this one, hehehe.`,
-          'Mr.Torrent is a softy.'
+          'Mr.Torrent is so naive.'
         ],
         options2: [`Is that for your livelihood?`, 'Did you deceive Torrent?'],
         give4: [
@@ -615,25 +615,25 @@ export default {
         'I was so happy.',
         'But frog and ladybug are hard to get along with.',
         'So I talked to her and we decided to make her reborn again.',
-        'I mean, I killed her, a ladybird.',
-        'It was very painful, though.',
-        'I promised her that no matter how many times she was reborn, I would always find you.',
-        `She didn't show up for a while, but recently, she finally came back again.`
+        'I mean, I killed her, the ladybird.',
+        'It was very painful though.',
+        'I promised her that no matter how many times she rebornd, I would always find her.',
+        `She hasn't shown up for a while, but recently, she has finally come back again.`
       ],
       start2: [
-        `She's been reborn as a clover next.`,
+        'It seems that she has been reborn as a clover.',
         `It's also a four-leaf clover.`,
-        `But I haven't been able to find her yet, although I can hear her calling me.`,
+        `Although I can hear her calling me, I haven't been able to find her yet.`,
         'So, if you find her, I want you to bring her to me.',
-        `I don't mind if you pluck her.`
+        `I don't mind if you pluck her out.`
       ],
-      options2: ['Give him the four-leaf clover', 'Nothing'],
+      options2: ['Give him the four-leaf clover', 'Do nothing'],
       log: ['Gave the four-leaf clover'],
       complete: [
         'Oh, you found her!',
         `Yeah, I'm sure. It's her.`,
         'Oh, you look so beautiful, Sally.',
-        'What are you going to be reborn next?',
+        'What are you going to reborn next?',
         `I'll find you again and again.`,
         'Now, this is to thank you for finding her.',
         'Thank you so much.'
@@ -651,8 +651,8 @@ export default {
     },
     snakeFlog: {
       start: [
-        'The value of a thing changes depending on the cases, but ultimately it is you who decides its value.',
-        'The rocks in this cave hold gems, and one time a bat bastard had one of them in his own mouth.',
+        'The value of a thing changes depending on the case, but in the end, you are the one who decides its value.',
+        'You can colect gems from the rocks in this cave, but there was one time, a bat bastard had brought them.',
         'So I said,',
         `"Hey, bat, you're always eating tiny insects, isn't your stomach getting bored?"`,
         `"Why don't you give me the gem in your mouth? I'll exchange it to something good to eat"`,
@@ -660,56 +660,57 @@ export default {
         'So I went outside the cave and caught a frog for him.',
         `Then what? He didn't look too happy about it an he said,`,
         `"Hey, snake. Do you think I'm a fool? A gem and a frog are not worth the same thing"`,
-        '"I know the value of gems even me."',
+        '"Even myself know the value of gems even."',
         '"The gem should be worth enough to feed my family, right?"',
         'Bullshit. So I told him.',
         `"Yeah. You're right, gems are worth that much."`,
         '"But how are you going to exchange the gem for money or food?"',
         `"You can't, right? So it is just a stone to you."`,
         `"But what about this frog meat? Isn't it a feast for you?"`,
-        `"In other words, I'm saying I'll trade you a stone for a feast."`,
-        `"If you still don't like to trade them, I'll give up and eat this frog myself now."`,
-        'Then the bat bastard said hurriedly.',
+        `"In other words, I'm saying that I'll trade you a stone for a feast."`,
+        `"If you still don't like to trade them, I'll drop the deal and eat this frog myself now."`,
+        'After that, the bat bastard said hurriedly.',
         '"Wait, I get it! I understand perfectly!"',
-        `"I don't need such a stone. Take it and give me the flog meat right now."`,
-        `Ever since then, he's been brought gems to me every day. He's been wanted to fill up his family.`,
+        `"I don't need such a stone. Take it and give me the frog meat right now."`,
+        `Ever since then, he has been brought gems to me every day. He wanted to fill up his family.`,
         'He and his families became fat day by day.',
-        'Then, I ate all of them, haha.',
-        `What I want to say is, worldly values don't always apply.`,
+        'Then, I ate all of them when they became too fat to fly, haha.',
+        'In conclusion, in the desert when you are nearly died of thirst, you will hand over lots of money for a single cup of water.',
+        `What I want to say is, in life values are not applied exactly as the same way as they normally are.`,
         `So if you bring me gems too, I'll trade you this apple.`
       ],
       started: [
         `So if you bring me gems too, I'll trade you this apple.`,
-        'Well, I want you to bring me two of each of the four colored gems.',
+        'Well, I want you to bring me gems of four distinguished color, two for each, from this cave.',
         'Destroy chunks of rock with a gun to get gems.'
       ],
-      options: ['Give him two gems each', 'Nothing'],
-      complete1: 'Good, you brought it.',
+      options: ['Give him two gems of each', 'Do nothing'],
+      complete1: 'Good, you brought it. Thank you.',
       logs: ['Gave him 2 sapphires', 'Gave him 2 emeralds', 'Gave him 2 amethysts', 'Gave him 2 rubies'],
-      complete2: 'Okay, take it.',
+      complete2: 'Okay, as I promised, take the apple.',
       completed: 'What? I have nothing to tell you anymore.'
     },
     strawDoll: {
       start: [
         'Hey you, look at this straw doll.',
         `I found this in the forest and brought it home, but later I threw it away because it was creepy.`,
-        `But when I woke up the next day, I found this doll in my house that I had thrown away.`,
-        'No matter how many times I throw it away, it always comes back to my house.',
+        `When I woke up the next day, I found this doll in my house although I had thrown it away.`,
+        'No matter how many times I threw it away, it always came back to my house.',
         `It's creepy, isn't it?`
       ],
       options: [`It's creepy`, `I'll take it back`],
       answer1: ['Yeah.'],
       answer2_1: [
         'Really? That would be helpful.',
-        'Then take it quickly.'
+        'Then please take it quickly.'
       ],
       answer2_2: [
         `But please don't throw it away.`,
         `I don't want it coming back to me.`
       ],
-      received: [`I don't wanna see the doll again.`],
+      received: [`I don't wanna see this creepy doll again.`],
       disposed: [
-        'Hey! that straw doll is coming back to me again.',
+        'Hey! that straw doll came back to me again.',
         `Don't throw it away.`
       ]
     },
@@ -722,9 +723,9 @@ export default {
       ],
       start2: [
         'Hmm?', // Left
-        `Hey, you, the doll you have...`, // Left
+        `Hey, you, the doll you are having...`, // Left
         `It's a straw doll, isn't it?`, // Left
-        `Yeah, it's often used in curse rituals.`, // Right
+        `Yeah, it's oftenly used in cursing rituals.`, // Right
         `Just right. Let's try it out using the straw doll.`, // Left
         `Oh, yeah, right. Try to curse me with it.`, // Right
         'If anything happens to me, you win.', // Right
@@ -734,7 +735,7 @@ export default {
       ],
       started1: [
         'In the northern area of the forest, there is a tree that grows apples, right?', // Left
-        'Torrent there knows a lot about it, you can ask him.', // Left
+        'At that place, there is Torrent who knows a lot about it, you can ask him.', // Left
         `We're counting on you.` // Left
       ],
       started2: [
@@ -744,25 +745,25 @@ export default {
         `Oh, it's you...`,
         `Actually, it's about the ritual, I wanna cancel it.`,
         'Somehow, that bastard suddenly got sick and passed away.',
-        `So there's no need to do the curse ritual now.`,
+        `So there's no need to do the cursing ritual now.`,
         `Maybe he's right, there is no such thing as a curse.`,
         'When we live, we can suddenly get sick like him.',
         `We can't put all the blame on a curse or some mysterious things.`
       ],
       noticeOptions: [`I've done the ritual.`, `I didn't do the ritual.`],
       answer1_1: [
-        `Well, I can't wait to see what happens next.`,
-        'Here, this is a thank you.'
+        `Well, I can't wait to see what gonna happen next.`,
+        'Here, this is your reward.'
       ],
       answer1_2: [
         'Oh, you did...', // Right
-        'Ah? What?', // Left
+        'Ah? What happened?', // Left
         'Nothing...' // Right
       ],
       answer2_1: [
         `You didn't do it?`, // Left
         `Oh, yeah, yeah, you didn't do it!`, // Right
-        `Well, it wasn't a good bet, but here's a thank you anyway.` // Right
+        `Well, it wasn't a good bet, but here's your reward anyway.` // Right
       ],
       answer2_2: [
         `Hmm? Why are you thanking her even she didn't do it?`, // Left
@@ -770,35 +771,35 @@ export default {
         'Well, see you later, miss.' // Right
       ],
       noticedDid1: [
-        `Good. I'm looking forward about what happens for him`,
+        `Good. I'm looking forward about what will happen to him`,
         '......'
       ],
       noticedDid2: [
-        `Hey, it looks the bet is my lose.`, // Right
+        `Hey, it looks I'm losing the bet.`, // Right
         `I'm rarely sick,`, // Right
         `but suddenly I've been feeling really sick since then.`, // Right
         'I think something might be wrong by the curse.', // Right
         'See, I told you so. I won the bet.' // Left
       ],
       completed: [
-        'Anyway, the best thing to do is to live your life of no one curse you.'
+        'Anyway, the best thing to do is to live your life that no one curse you.'
       ]
     },
     curser: {
       start: [
-        'A way to curse?',
-        `It's easy. Only you have to do is let them know that you've put a curse on them.`,
-        `You don't have to do an actual curse ritual.`,
+        'How to do the curse?',
+        `It's easy. You only have to let them know that you've put a curse on them.`,
+        `You don't have to do an actual cursing ritual.`,
         `Can't you believe it?`,
-        `There is a saying, "Disease is from your mind." isn't there?`,
-        `It's not just a saying.`,
-        'Three snakes in its group once try mind control to a rabbit.',
+        `There is a saying, "Disease is from your mind." isn't it?`,
+        `It's not just an idiom.`,
+        'There was a group of three snakes once tried to do mind control to a rabbit.',
         `Here's the story.`,
-        'The first snake to met the rabbit said...',
+        'The first snake to meet the rabbit said...',
         '"Hey, Rabbit. How are you doing?"',
         `"Hi, Mr.Snake. I'm doing very well!"`,
         `"Is that so? You don't look so good, do you?"`,
-        '"What? Am I look so?"',
+        '"What? Am I looking so?"',
         'The second snake also said that,',
         `"Hello, Rabbit. Oh, you don't look so good. Are you okay?"'`,
         `"Really? I think I'm okay."`,
@@ -808,23 +809,24 @@ export default {
         'The rabbit, who should have been fine, turn into sick by just words of others.',
         `Mind control is simple, isn't it?`,
         `So why don't you just tell them that you have cursed them without any ritual?`,
-        'Well, if you really want to actually do the curse ritual,',
+        'Well, if you really want to actually do the cursing ritual,',
         'I can help you if you bring me a straw doll.',
-        `But I don't recommend it, though.`
+        `But I don't recommend it though.`
       ],
-      options: ['Do the curse ritual', `Don't the curse ritual`],
-      failed: ['You need a straw doll to do the curse ritual.'],
+      options: ['Do the cursing ritual', `Don't do the cursing ritual`],
+      failed: ['You need a straw doll to do the cursing ritual.'],
       exec1: [
         'Okay.',
-        `Now Let's begin.`
+        `Now Let's begin.`,
+        'Please lend me the straw doll.'
       ],
       exec2: [
-        `I've done the curse ritual.`,
+        `I've done the cursing ritual.`,
         'See you then.'
       ],
       cancel: ['See you then.'],
       greet: ['How are you doing miss?'],
-      options2: ['Good', 'I want to do the curse ritual']
+      options2: ['Good', 'I want to do the cursing ritual']
     },
     eel: {
       start1: [
@@ -836,19 +838,19 @@ export default {
         `Don't you know Uminoke?`,
         `That was a few years ago. I was fishing and caught a fish I'd never seen before.`,
         'It was black, snakelike, and a little creepy.',
-        'I went home and tried it, but it was so delicious.',
+        'I went home and tried eating it, but it was so delicious.',
         'It was so good that I grilled it or try it as raw and ate the whole fish that day.',
         'But later, I had a stomachache and felt nauseous.',
         'Well, I thought it was just a food poisoning,',
-        'But then my skin turned purple, my body felt like paralysis, and I had trouble breathing.',
-        'So I went to see Dr.Anton to consult him.',
-        'I told him about the all, then he asked me that,',
+        'But then my skin turned purple, my body felt like paralysised, and I had trouble with breathing.',
+        'So I went to see Dr.Anton for his consult.',
+        'I told him all about the story, then he asked me that,',
         '"What did the fish look like?"',
         '"Well, it looked like a snake and it was black"',
         '"Ooh... it must be a Uminoke."',
         `"What is that?"`,
         '"Uminoke is a sea monster, not a fish."',
-        `"It's only natural that you'd be cursed if you ate such a thing."`,
+        `"It's not surprised that you'd be cursed after eating such thing."`,
         'I got freaked out.',
         '"Oh, no! What should I do?"',
         `"Well, don't panic. I'll exorcise you properly"`,
@@ -863,60 +865,60 @@ export default {
       ],
       startOptions2: ['Leave it to me', 'No thanks'],
       answer1: ['Thank you. Leave it to you.'],
-      lost: ['Hey, make sure you take it.'],
+      lost: ['Hey, make sure you bring it.'],
       answer2: ['Okay.'],
-      start3: ['So, miss, could you please take it to Dr.Anton?'],
+      start3: ['So, miss, I will give you a reward, could you please bring it to Dr.Anton?'],
       end1: [
-        'Did you done the exorcism? Great! Thank you so much.',
+        'The exorcism has finished? Great! Thank you so much.',
         'Please take my thanks with you. See you then.'
       ],
       endOptions: ['Give him the Unajyu and the letter', 'Give him the letter only'],
-      log1: 'Give him the letter',
+      log1: 'Gave him the letter',
       log2: 'Gave him the Unajyu',
       end2: [
         `Oh, Dr.Anton... I'm really surprised...`,
-        'But it tasted so good that he did such a thing.',
+        'But it tasted so good that he did such thing.',
         `Ignorance is disadvantage, isn't it?`,
-        'I had food poisoning, was fooled by stories of monsters, and missed out on delicious fish for a long time afterwards.',
+        'I had food poisoning, was fooled by monster stories, and missed out delicious fish for a long time afterwards.',
         `Because I'm ignorance.`,
         `I'm more ashamed of my ignorance than angry for him now.`,
         'Anyway, thank you for today. Please take this. See you then.'
       ],
       completed1: ['Thanks for the help.'],
-      completed2: ['I realize that the more ignorant, the more lose...']
+      completed2: ['I realize that the more you are ignorant, the more you gonna lose...']
     },
     anton: {
       start1: [
         'Hey miss. How can I help you today?'
       ],
-      startOptions1: ['Give him the Uminoke', 'Nothing'],
+      startOptions1: ['Give him the Uminoke', 'Do nothing'],
       giveLog: 'Gave the Uminoke',
       start2: [
         `Oh, this is an eel, isn't it?`,
-        'Are you going to give me this, by any chance?'
+        'By any chance, are you going to give me this?'
       ],
-      startOptions2: ['This is Uminoke', 'Eel?'],
+      startOptions2: ['This is Uminoke?', 'Eel?'],
       start3: [
         'What?',
         `Oh! I see, I see... you're his messenger...`,
         'Okay...',
-        `I'll tell you everything`,
+        `I'll confess you the truth`,
         'Actually, this fish is a very tasty fish called eel.',
         'I really like this fish.',
-        'And I lied to him who would have asked you.',
-        'There is no such a monster as Uminoke.',
+        'And I told lie to him, who has asked you.',
+        'There is no such monster as Uminoke.',
         'Eel blood has a poison called ixotoxin.',
-        'His symptoms are caused by that very poison, and are not any curse.',
-        'However, even the strong poison is completely harmless once it is heating.',
+        'His symptoms are caused by that poison, definitely not by any curse.',
+        'However, even the strong poison is completely harmless once it has been heating.',
         'He must have eaten it as raw.',
-        'At that time, I came up with a bad idea...',
+        'At that time, I came up with a bad thought...',
         `I lied and said, "It is a sea monster, so don't eat it and bring it to me next time."`,
-        'As a result, he began to bring me the supreme fish.',
+        'As a result, he began to bring me this supreme fish.',
         `Oh, please don't look at me like that.`,
-        `I'm so sorry for him, but It tastes so good that it made me doing such a bad thing.`,
-        'Please, please keep this to yourself.'
+        `I'm so sorry for him, but it tasted so good that it made me doing such a bad thing.`,
+        'Please, please keep this secret to yourself.'
       ],
-      startOptions3: ['Let me eat cooked eel instead', 'You should apologize for him'],
+      startOptions3: ['Let me eat cooked eel instead', 'You should apologize to him'],
       answer1_1: ['Yes, sure.'],
       answer1_2: [
         `It's ready. Please take it.`,
@@ -927,34 +929,34 @@ export default {
         'Please wait for a minutes.'
       ],
       answer2_2: [
-        `It's done. Here is the cooked eel and the letter of apology for him.`,
+        `It's done. Here is the cooked eel and the apology letter to him.`,
         'Please give this to him.'
       ],
       solved: ['See you then.']
     },
     liveForEveryone: {
       start: [
-        'I am able to see what the person wants and what they want me to do.',
-        `I'm not saying a lie.`,
-        'For example, You want apples, right?',
+        `I'm able to see what the person wants and what they want me to do.`,
+        `I'm not lying.`,
+        'For example, you want apples, right?',
         'With this ability that was given from God, I had vowed to live a life for others.',
-        `So I have always granted a person's wishes without anything in return.`,
-        'But, I realize that I wanted something returns in fact.',
+        `So I have always granted people's wishes without anything in return.`,
+        'But, I realized that in fact, I wanted something in return.',
         'One day, I passed a traveling man who was thirsty and wanted a drink.',
-        'So I gave him a canteen full of tea.',
-        'Then he drank it down and went away without a word.',
+        'So I gave him a can full of tea.',
+        'Then he drank it down and went away without any word.',
         `I wondered why he didn't say thank you.`,
         'At the moment, I realized that.',
-        '"Without returns"? No. my heart was unconsciously waiting for a "thank you".',
+        '"Without returns"? No, my heart was unconsciously waiting for a "thank you".',
         `I can't say "live a life for others" with this kind of mind.`,
-        'So I have been thinking about what "for others" means for the past few days.',
+        'So I have been thinking about what "for others" really means for the past few days.',
         `For example, if I save someone's life in exchange for my own life, is that "for others"?`,
-        `The action is might for eternal honor after my life.`,
+        `The action is might for eternal honor even in afterlife.`,
         `Now I'm completely not sure what "for others" is.`,
         'I am going to start my austere training all over again.',
         'I have to realize what is the truth.',
         'Thank you for listening to me so far.',
-        'Now, this is just a thank you.'
+        'Now, this is a gift to thank you.'
       ],
       options: ['Thank you', `I didn't hear you for anything in return.`],
       answer1: [
@@ -968,14 +970,14 @@ export default {
     },
     pityPenguin: {
       greet: ['Can I help you?'],
-      options: ['Give the letter and gardenia', 'Give the letter only', 'Nothing'],
+      options: ['Give the letter and gardenia', 'Give the letter only', 'Do nothing'],
       log1: 'Gave the letter',
-      log2: 'Gave a gardenia',
+      log2: 'Gave the gardenia',
       solve1: [
         'Oh, this is...',
         `I won't be able to...see her again...will I?`
       ],
-      reactions: [`You don't hold a grudge?`, 'Forget such a woman'],
+      reactions: [`You don't hold a grudge?`, 'Forget that kind of woman'],
       answer1: [
         `I don't.`,
         'Because I really loved her.'
@@ -985,7 +987,7 @@ export default {
       ],
       solve2: [
         `I don't care if she deceived me.`,
-        `I don't even miss the money.`,
+        `I don't even regret the money I gave.`,
         `I'm just sad that I can't see her again.`,
         `But I can't help saying that...`,
         `I'm going to change my mind little by little.`,
@@ -997,15 +999,15 @@ export default {
         '....',
         'Huh, what have I been dwelling on...',
         `I've made my friend worry about me so much...`,
-        'In fact, I already realized that I was being deceived.',
+        `In fact, I've already realized that I was being deceived.`,
         `I just didn't want to admit it.`,
         `I can't... see her again...`,
-        `But, okay, I'm okay now.`,
+        `But, I'm okay now.`,
         'Because I have such a good friend.',
         'Thank you very much. Please take this.'
       ],
       solved: [
-        `I'm okay now. Don't worry about me.`
+        `I'm okay now. Don't worry about me.` // CHECKPOINT
       ]
     },
     pityPenguinFriend: {
