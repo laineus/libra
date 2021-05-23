@@ -4,10 +4,13 @@
     <Text :text="t('events.bogusDoctor.lockMap')" :x="10" :y="10" v-if="lockInHospital" />
     <template v-else>
       <Container v-for="(v, i) in places" :key="i" :x="rowWidth.half + 10" :y="(i * rowHeight) + rowHeight.half + 5" :width="rowWidth" :height="rowHeight" @pointerdown="p => tapItem(p, i)">
-        <Rectangle :visible="i === selectedIndex" :fillColor="COLORS.orange" :width="rowWidth" :height="rowHeight" :alpha="0.8" />
+        <Rectangle :visible="i === selectedIndex && !del" :fillColor="COLORS.orange" :width="rowWidth" :height="rowHeight" :alpha="0.8" />
         <Line v-if="i !== places.length - 1" :x="0" :y="rowHeight.half" :lineWidth="0.5" :x2="rowWidth" :strokeColor="COLORS.brown" :alpha="0.25" />
         <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="v ? `${t(`place.${v.key}`)} (${v.x}, ${v.y})` : t('ui.unregistered')" :size="13" :bold="Boolean(v)" />
-        <Image v-if="v" texture="garbage" :scale="0.45" :tint="COLORS.brown" :x="100" @pointerdown.stop="p => tapGarbage(p, i)" />
+        <Container v-if="v" :width="rowHeight" :height="rowHeight" :x="100" @pointerdown.stop="p => tapGarbage(p, i)">
+          <Rectangle :visible="i === selectedIndex && del" :fillColor="COLORS.orange" :width="rowHeight" :height="rowHeight" :alpha="0.8" />
+          <Image texture="garbage" :scale="0.45" :tint="COLORS.brown" />
+        </Container>
       </Container>
       <template v-if="selectedIndex !== null">
         <Selector v-if="del" :x="tapX" :y="tapY" :list="[t('ui.delete'), t('ui.cancel')]" @select="submit" />
@@ -48,7 +51,7 @@ export default {
         data.selectedIndex = null
         return
       }
-      data.tapX = pointer.x - container.value.offsetX + 5
+      data.tapX = Math.min(pointer.x - container.value.offsetX + 5, del ? 205 : 180)
       data.tapY = pointer.y - container.value.offsetY - 10
       data.selectedIndex = i
       data.del = del

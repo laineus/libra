@@ -5,10 +5,10 @@
     <Text :text="`${t('ui.weight')}:`" :originX="1" :originY="0.5" :x="163" :y="-3" :size="12" />
     <Text :text="`${weight}/100`" :originX="1" :originY="0.5" :x="221" :y="-3" :size="13" :bold="warning" :color="warning ? 'red' : undefined" />
     <Image v-if="grab.item && itemData[grab.item.key].eat" :tint="onEatArea ? config.COLORS.orange : config.COLORS.brown" texture="eat" :origin="1" :x="229" :y="375" />
-    <template v-if="field.name === 'home'">
-      <Text :text="t('ui.redecorate')" :origin="1" :x="212" :y="-31" :size="13" color="soy" :bold="true" :style="{ stroke: config.COLORS.brown.toColorString, strokeThickness: 2 }" @pointerdown.stop="switchRedecorate" />
-      <Image :x="236" :y="-30" :origin="1" texture="check" :frame="redecorate ? 1 : 0" :tint="config.COLORS.soy" @pointerdown.stop="switchRedecorate" />
-    </template>
+    <Container v-if="field.name === 'home'" :x="168" :y="-38" :width="170" :height="45" @pointerdown.stop="switchRedecorate">
+      <Text :text="t('ui.redecorate')" :originX="1" :originY="0.5" :x="46" :size="13" color="soy" :bold="true" :style="{ stroke: config.COLORS.brown.toColorString, strokeThickness: 2 }" />
+      <Image :x="70" :originX="1" :originY="0.5" texture="check" :frame="redecorate ? 1 : 0" :tint="config.COLORS.soy" />
+    </Container>
   </MenuContainer>
   <Container v-if="grab.item" :x="grab.x" :y="grab.y">
     <Image ref="grabRef" :texture="itemData[grab.item.key].texture" :frame="itemData[grab.item.key].frame" :scale="grab.item.scale" :originX="0.5" :originY="1" />
@@ -133,21 +133,22 @@ export default {
         if (onCeil(x, y)) {
           uiScene.log.push(t('ui.cantPutItem'))
         } else if (trashCan(x, y)) {
+          audio.se('drop')
           state.bagItems.delete(grab.item)
           context.emit('close')
         } else if (['coinGold', 'coinSilver'].includes(data.key) && vendingMachine) {
+          audio.se('drop')
           state.bagItems.delete(grab.item)
           field.dropItem(['coke', 'tea'].random(), vendingMachine.ref.value.object)
           context.emit('close')
           uiScene.log.push(t('ui.vendingMachine'))
           achieve.activate('drink')
         } else {
+          audio.se('drop')
           field.addObject({ id: Math.randomInt(1000000, 9999999), name: data.key, x, y, scale: grab.item.scale })
           state.bagItems.delete(grab.item)
           if (grab.item.key.startsWith('raptor')) makeRaptor(true, { state, uiScene, field, achieve, audio })
-          context.emit('close')
         }
-        audio.se('drop')
         grab.resolver()
       } else if (grab.mode === 'move') {
         const x = grab.x + camera.scrollX

@@ -63,7 +63,7 @@ export default {
           data.selectedIndex = null
           return
         }
-        data.tapX = pointer.x - props.offsetX + 5
+        data.tapX = Math.min(pointer.x - props.offsetX + 5, 190)
         data.tapY = pointer.y - props.offsetY - 10
         data.selectedIndex = i
       }
