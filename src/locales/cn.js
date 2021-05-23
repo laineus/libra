@@ -322,8 +322,8 @@ export default {
       desc: '一旦杀害了能够对话的居民，就不会再次复活。相关的事件将会无法完成。'
     },
     screenshot: {
-      title: 'Screenshot',
-      desc: 'You can take a screenshot with the F12 key.'
+      title: '截图',
+      desc: '按F12键可以截屏。向大家分享您的房间的截图吧！'
     }
   },
   tutorial: {
