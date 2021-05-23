@@ -1765,7 +1765,7 @@ export default {
     }
   },
   happyend: {
-    title: 'Happy end',
+    title: 'Happy ending',
     lyrics: [
       `If the Sound of Night Wind is the god's voice`,
       `I'm going to hear it until the sun comes up`,
