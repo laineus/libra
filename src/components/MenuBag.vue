@@ -133,21 +133,22 @@ export default {
         if (onCeil(x, y)) {
           uiScene.log.push(t('ui.cantPutItem'))
         } else if (trashCan(x, y)) {
+          audio.se('drop')
           state.bagItems.delete(grab.item)
           context.emit('close')
         } else if (['coinGold', 'coinSilver'].includes(data.key) && vendingMachine) {
+          audio.se('drop')
           state.bagItems.delete(grab.item)
           field.dropItem(['coke', 'tea'].random(), vendingMachine.ref.value.object)
           context.emit('close')
           uiScene.log.push(t('ui.vendingMachine'))
           achieve.activate('drink')
         } else {
+          audio.se('drop')
           field.addObject({ id: Math.randomInt(1000000, 9999999), name: data.key, x, y, scale: grab.item.scale })
           state.bagItems.delete(grab.item)
           if (grab.item.key.startsWith('raptor')) makeRaptor(true, { state, uiScene, field, achieve, audio })
-          context.emit('close')
         }
-        audio.se('drop')
         grab.resolver()
       } else if (grab.mode === 'move') {
         const x = grab.x + camera.scrollX
