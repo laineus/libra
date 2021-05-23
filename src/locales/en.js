@@ -54,7 +54,7 @@ export default {
     coalmine4: 'Space port',
     cosmos: 'Cosmos',
     hospital1: 'Hospital 1',
-    hospital1night: 'Hospital 1 (Night)', // 裏はNightではなくBackみたいな感じがします。
+    hospital1night: 'Hospital 1 (Night)',
     hospital2: 'Hospital 2',
     hospital2night: 'Hospital 2 (Night)',
     mansion1: 'Mansion 1',
@@ -76,13 +76,13 @@ export default {
     moss: 'Moss',
     strawDoll: 'Straw doll',
     stone: 'Stone',
-    rock: 'Rock',
+    rock: 'Stone',
     sapphire: 'Sapphire',
     emerald: 'Emerald',
     amethyst: 'Amethyst',
     ruby: 'Ruby',
-    crystal1: 'Crystal',
-    crystal2: 'Crystal',
+    crystal1: 'Rock',
+    crystal2: 'Rock',
     fish: 'Fish',
     uminoke: 'Uminoke',
     unagi: 'Eel',
@@ -109,7 +109,7 @@ export default {
     curry: 'Curry',
     steak: 'Steak',
     stirFry: 'Stir fry vegetables',
-    omurice: 'Omelette rice',
+    omurice: 'Omurice',
     lunchbox: 'Lunch box',
     wine: 'Wine',
     medicine1: 'Medicine',
@@ -189,7 +189,7 @@ export default {
     },
     snakeFlog: {
       title: 'The Snake and the Frog',
-      desc: 'The Snake will give you an apple in exchange for a jem.'
+      desc: 'The Snake will give you an apple in exchange for a gem.'
     },
     curse: {
       title: 'How to cast a Curse',
@@ -217,7 +217,7 @@ export default {
     },
     appreciation: {
       title: 'The Child of the Mansion',
-      desc: 'The child in the mansion painted a painting to thank the coal miner.'
+      desc: 'The child in the mansion painted a painting to thank the coal miners.'
     },
     beauty: {
       title: 'Elixir of Immortality',
@@ -228,7 +228,7 @@ export default {
       desc: 'The doctor at the hospital is a self-taught doctor, but he is tormented by the patients who lost their lives due to his past mistakes.'
     },
     forever: {
-      title: 'Please stay with me forever',
+      title: 'Stay with me forever',
       desc: 'A woman who has died of illness is waiting for her husband, who was supposed to pass away with her.'
     },
     raptor: {
@@ -793,7 +793,7 @@ export default {
         `Can't you believe it?`,
         `There is a saying, "Disease is from your mind." isn't it?`,
         `It's not just an idiom.`,
-        'There was a group of three snakes once tried to do mind control to a rabbit.',
+        'There were three snakes once together tried to do mind control to a rabbit.',
         `Here's the story.`,
         'The first snake to meet the rabbit said...',
         '"Hey, Rabbit. How are you doing?"',
@@ -897,7 +897,7 @@ export default {
         `Oh, this is an eel, isn't it?`,
         'By any chance, are you going to give me this?'
       ],
-      startOptions2: ['This is Uminoke?', 'Eel?'],
+      startOptions2: ['This is Uminoke', 'Eel?'],
       start3: [
         'What?',
         `Oh! I see, I see... you're his messenger...`,
