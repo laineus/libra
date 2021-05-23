@@ -3,7 +3,7 @@
     <Rectangle :origin="0" :width="config.WIDTH" :height="config.HEIGHT" @pointerdown="next" />
     <SpeachBubble :x="x" :y="y" :width="bgWidth" :height="bgHeight">
       <Text ref="name" v-if="current.chara" :text="current.chara.name" :size="15" :bold="true" color="soy" :style="{ stroke: COLORS.brown.toColorString, strokeThickness: 3 }" :originX="0" :originY="1" :x="-2" :y="7" :rotation="-0.05" />
-      <Text ref="txt" :text="current.text" :size="adjustFontSize(14)" :x="bgWidth.half" :y="6" :originX="0.5" :lineSpacing="3" :padding="{ top: 2 }" :style="{ wordWrap: { width: 240, useAdvancedWrap: true } }" />
+      <Text ref="txt" :text="current.text" :size="adjustFontSize(15)" :x="bgWidth.half" :y="6" :originX="0.5" :lineSpacing="3" :padding="{ top: 2 }" :style="{ wordWrap: { width: 240, useAdvancedWrap: true } }" />
     </SpeachBubble>
   </Container>
 </template>

@@ -26,6 +26,9 @@ body {
 li {
   list-style: none;
 }
+a {
+  color: #ff9830;
+}
 
 body.ja .en:not(.ja),
 body.ja .cn:not(.ja) {
@@ -275,10 +278,19 @@ body.cn .changeLang[data-lang="cn"] {
 .dataList-term:not(:first-child) {
   margin-left: 1em;
 }
+.links {
+  margin-top: 5px;
+}
+.links a {
+  font-weight: bold;
+}
+.links a:hover {
+  text-decoration: none;
+}
 
 .footer {
   position: relative;
-  padding: 80px 0;
+  padding: 70px 15px 80px;
   background: #222;
   color: #FFF;
 }
@@ -316,7 +328,7 @@ body.cn .changeLang[data-lang="cn"] {
   border-bottom: transparent;
 }
 .banner {
-  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 @media screen and (max-width: 800px) {
