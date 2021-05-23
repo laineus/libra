@@ -1594,13 +1594,13 @@ export default {
         'Oh, the aliens who enslaved humans are not us, Grey aliens.'
       ]
     },
-    photosynthesis: { // CHECKPOINT
+    photosynthesis: {
       greeting: [
         `Hey, you're human, right?`,
         'We Grey aliens are probably the most familiar aliens to humans.',
         'Also from our point of view, humans are the closest thing as a research subject.',
         'And the interesting thing about humans for us is eating and reproducing.',
-        `Because we don't eat and we don't reproduce sexually.`
+        `Because we don't eat and we don't sexually reproduce.`
       ],
       questions: ['So how do you get nutrition?', 'So how do you make descendants?'],
       answer1: [
@@ -1619,7 +1619,7 @@ export default {
         'By the way, you human.',
         `We'd like your cooperation in our research.`,
         'I want to know what human eat.',
-        'Can you bring me some food of the earth?',
+        'Can you bring me some food of the Earth?',
         'I want your recommendation.'
       ],
       started: [
@@ -1627,7 +1627,7 @@ export default {
         'Please bring me more Earth food.'
       ],
       option: 'Give #{name}',
-      cancel: 'Nothing',
+      cancel: 'Do nothing',
       log: 'Gave #{name}',
       omurice: [
         'Omu-rice?',
@@ -1653,7 +1653,7 @@ export default {
         'Hmmm...',
         'I like the taste.',
         'Hmm?',
-        'This is making my mouth tingle.',
+        'This is making my mouth tingly.',
         `I don't want any more.`,
         'After all, photosynthesis is much more delicious.'
       ],
@@ -1667,7 +1667,7 @@ export default {
       ],
       complete: [
         `Okay, I'm full.`,
-        'As a thank you for your cooperation, I give you this.',
+        'As a thank you for your cooperation, I will give you this.',
         `It's from Earth.`
       ],
       completed: [
@@ -1687,36 +1687,36 @@ export default {
         'Thank you.',
         'Actually, this hospital used to have no doctors at all.',
         'There were only patients.',
-        'So, naturally, the patients died without any treatment.',
-        `I wasn't a any doctor, but I couldn't stand to see that happen.`,
+        'So naturally, the patients died without any treatment.',
+        `I wasn't a real doctor, but I couldn't stand to see that happen.`,
         'I read the medical books in this hospital and prescribed medicines by guessing.',
         'Sometimes they worked, and sometimes I was wrong and made them worse.',
         'Somewhere along the line, my patients began to think of me as a real doctor.',
-        'Eventually, medication alone was not enough, and I had to have surgery.',
+        'Eventually, medication alone was not enough, and I had to do surgery.',
         'But no matter how many books I read, there was no way I could do the surgery well.',
         'Naturally, I failed many times.',
         'No, I killed my patients many times.',
-        'Still, the patients had no choice but to rely on me, the one fake doctor.',
-        `Now my surgical skills have improved and I've been able to save patients' lives.`,
+        'Still, the patients had no choice but to rely on me, the only fake doctor.',
+        `Now my surgical skills have been improved and I've been able to save patient's lives.`,
         `But I can't stop thinking about the patients who died from my surgeries in the past.`,
         'I can still see and hear their groaning faces and voices.',
         `I've always been agonised over.`
       ],
       talk3: [
-        'If I save tens or hundreds of lives, will they who passed away saved?',
+        'If I save ten times or hundred times of lives that passed away, will they also be saved?',
         'And will I be forgiven?',
-        `That's what I've been thinking, and I've been trying my best to save patients every day.`,
+        `That's what I've been thinking, so I've been trying my best to save patients every day.`,
         `But even now, I still don't understand.`,
         'Have I been forgiven?'
       ],
       options2: [`You're a great doctor`, 'They have a grudge against you'],
       answer1: [
         'Thank you for saying that.',
-        'I feel a little relieved.'
+        'I feel a little relief.'
       ],
       answer2: [
         `Yeah... you're right.`,
-        `From their point of view, Even if many people can be saved, it's outrageous that their lives would sacrifice instead.`,
+        `From their point of view, it's not fair that their own lives would be sacrificed instead even if many people can be saved.`,
         'This atonement is for my own self-satisfaction.',
         `Once again, I've made up my mind.`,
         'I will continue to atone for my sins for the rest of my life.'
@@ -1782,8 +1782,8 @@ export default {
       `It's a Happy End with a cheerful tune`,
       `I'm contented even life like that`,
       'A girl who I once loved was crying',
-      `So I pretended I'm sad`,
-      'Lyrics and sounds I love',
+      `So I pretended that I'm sad`,
+      'Lyrics and sounds that I love',
       'Even a liar looked kind to me',
       'Even if the rain you make fall is tears',
       'If it makes a rainbow on my heart',
