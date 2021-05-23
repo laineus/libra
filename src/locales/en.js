@@ -162,7 +162,7 @@ export default {
     art13: '"Space war"',
     art14: '"Space war"',
     art15: '"Love"',
-    art16: '"HardWorking coal miner"',
+    art16: '"Working coal miner"',
     art17: '"Second space war"',
     art18: '"Unsung Kingdom"',
     art19: `"Witches's craft"`,
@@ -1007,7 +1007,7 @@ export default {
         'Thank you very much. Please take this.'
       ],
       solved: [
-        `I'm okay now. Don't worry about me.` // CHECKPOINT
+        `I'm okay now. Don't worry about me.`
       ]
     },
     pityPenguinFriend: {
@@ -1017,48 +1017,48 @@ export default {
         'He was supposed to live his lonely life.',
         'But a few months ago, he was visited by a beautiful woman.',
         'So he asked her what she wanted, and she said,',
-        '"My name is Tokine. You must suspicious me, a sudden visitor, but please listen to me."',
+        '"My name is Tokine. You must be suspicious of me, a sudden visitor, but please listen to me."',
         '"I have come to this place on business."',
         '"And when I saw you from over there, my heart was instantly captivated by you."',
         `That's what she said.`,
         'Furthermore, she got into his house and asked him to marry her right now.',
-        `Of course, there's no such a good deal in this world.`,
-        'Even him, he was suspicious of her. So he said,',
-        `"Don't trying to trick me with that kind of nonsense."`,
+        `Of course, there ain't no such thing as a free lunch in this world.`,
+        'Even though he was suspicious of her, he said,',
+        `"Don't try to trick me with that kind of nonsense."`,
         `"If I let you in, you'll probably steal everything while I'm sleeping, won't you?"`,
         'The woman replied,',
-        `"I'll never do like that! If you can't trust me, you can tie my ankles to the pillars in your room."`,
-        'Cause she insist, Hachi took her up to his room and tied her ankle to the pillar.',
-        'But the woman just looked at him, smiling and happy, so Hachi was completely confused.',
-        'But he ended up spending the night with the woman that night.',
-        'After that, Hachi is simple.',
-        'He was completely smitten by the woman after the night.',
+        `"I'll never do such thing like that! If you don't trust me, you can tie my ankles to the pillars in your room."`,
+        'Cause she insisted, Hachi took her up to his room and tied her ankle to the pillar.',
+        'But after that, the woman just looked at him, smiled happyly, so Hachi was completely confused.',
+        'Despite of being confused, he ended up spending the night with the woman that night.',
+        'After that, Hachi lost his guard.',
+        'He was completely smitten with the woman after that night.',
         '"Are you sure you want to marry me?"',
         '"I will tell you again and again. I am yours."',
-        'The woman is still smiling and looked happy.',
+        'The woman was still smiling and looking happy.',
         `"But you're here on business, aren't you? You should go back and greet your family"`,
         `"Indeed, I'm sure my parents are worried about me, so I'll go back to greet them as you said."`,
         'Hachi held out a bundle of bills to the woman and said.',
-        `"This is the cost of the round trip and the betrothal money for your parents' home"`,
+        `"This is the expense of the round trip and the betrothal money for your parents' home"`,
         `"Thank you. I'll be back for sure."`,
-        `The woman went back to her parents' home, but no matter how long he waited, she didn't coming back.`,
-        'At first, he suspected her, but just one night makes him fool.',
+        `The woman went back to her parents' home, but no matter how long he had been waited, she didn't come back.`,
+        'At first, he suspected her, but just becasue of one night he was fooled.',
         'How can men be so stupid?',
         `'"Face it! You've been deceived by a bad woman", he doesn't care who says it to him.`,
         `And, he's still waiting for her.`,
         `I'm sorry to see him like that. I just want to make him give up somehow.`,
         'And I got the idea.',
         `If I pretend to be that woman and send him a letter and tell him clearly that she can't marry him, he might give up.`,
-        `But even if I just send a letter, he doesn't believe it.`,
+        `But even if I just send a letter, he won't believe it.`,
         'The woman once told him that her hometown has a lot of gardenias.',
-        'So if I add gardenia, he must believe it.',
-        'What do you think? Can you help him with me?'
+        'So if I add a gardenia, he sure will believe it.',
+        'What do you think? Can you help me with that?'
       ],
       start2: [
-        'I want you to go the forest and get a gardenia.',
+        'I want you to go to the forest and get a gardenia.',
         `I'll prepare the letter by then.`
       ],
-      options: ['Give a gardenia', 'Nothing'],
+      options: ['Give a gardenia', 'Do nothing'],
       found1: [
         'Great.',
         'Then go give it to him along with this letter.'
@@ -1070,7 +1070,7 @@ export default {
       lost: [
         `Hey, don't lose the letter.`
       ],
-      solved: [`I see you've brought it to me. Thanks to you, He's helped.`],
+      solved: [`I see that you've brought it to me. Thank you.`],
       completed: ['There is no shame in being deceived by a woman.']
     },
     dark: {
@@ -1078,15 +1078,15 @@ export default {
       kajitsu2: ['Do you remember what this world is?'],
       kajitsu3: [
         `Can't you remember...?`,
-        `It's been about a month since you came to this world.`,
-        `But you have forgotten why you came here.`
+        `It's been about a month since you last came to this world.`,
+        `But you've forgotten why you came here.`
       ],
       kajitsu4: [`If you don't do something, Amili will be in danger.`],
       kajitsu5: [`I'll be waiting for you just up ahead. Please be sure to come.`]
     },
     crossing: {
-      start1: ['Do you remember?'],
-      start2: ['Yes, You died here.'],
+      start1: ['Have you remembered it yet?'],
+      start2: ['Yes. You died here.'],
       start3: [
         'But this world is not the afterlife.',
         `This world is in Amili's mind.`,
@@ -1107,7 +1107,7 @@ export default {
         'The way to get out of here is simple.',
         'You just have to make a strong wish to get out of here.',
         `But you don't have the determination to do that now.`,
-        'So you would be hesitant.'
+        `Because you're having a hesitation.`
       ],
       start4: [
         'So...',
@@ -1123,7 +1123,7 @@ export default {
         'But as you can see, we are this kind of status.',
         `We'll never be able to eat any expensive food, and we'll die.`,
         `And I'm the oldest of the workers here.`,
-        `So I'll just die in five years or soon without any pleasures.`,
+        `So I'll just die in five years or sooner without any pleasure.`,
         `Isn't that too miserable?`,
         `Hey sis, I'd like to eat luxury food just once before I die.`,
         'Can you pick up a Matsutake mushroom for me?',
@@ -1133,7 +1133,7 @@ export default {
         'Please grant me my last wish.'
       ],
       started: ['Can you pick up a Matsutake mushroom for me?', 'Please grant me my last wish.'],
-      options: ['Give a Matsutake mushroom', 'Give a mushroom', 'Nothing'],
+      options: ['Give a Matsutake mushroom', 'Give a mushroom', 'Do nothing'],
       log1: 'Gave a Matsutake mushroom.',
       log2: 'Gave a mushroom.',
       complete1: [
@@ -1148,26 +1148,26 @@ export default {
         'Huh.',
         'Okay, I thought they were just mushrooms, even though they are high grade.',
         'But, it was even better than I expected.',
-        `One of my friends said, "They think it taste good because it's high grade, but it's just a mushroom."`,
+        `One of my friends said, "They think it tastes good because it's high grade, but it's just a mushroom."`,
         `But he's just a poor man with a poor tongue.`,
-        'Anyway, I got to eat such delicious food. I have no regrets about my life now.',
+        'Anyway, I was able to eat such delicious food. I have no regret about my life now.',
         'Thank you, sis.',
         'Accept the apple.'
       ],
       complete2: [
-        'Oh, is this the matsutake mushroom?',
-        'Looks like a ordinary mushroom.',
+        'Oh, is this the Matsutake mushroom?',
+        'Looks like an ordinary mushroom.',
         'Anyway, let me try it.',
         '..........',
         'Hmmm..., hmmm?',
         'Tasty is tasty, but not that surprising.',
-        `One of my friends said, "They think it taste good because it's high grade, but it's just a mushroom."`,
+        `One of my friends said, "They think it tastes good because it's high grade, but it's just a mushroom."`,
         `Maybe he's right.`,
-        `Oh, I'm sorry you had to go out of your way to find it.`,
+        `Oh, I'm sorry you had to go through a lot to find it.`,
         'Anyway, thanks for doing me a favor.',
         'Accept the apple.'
       ],
-      completed: ['Thank you again.', 'I have no regrets about my life now.']
+      completed: ['Thank you again.', 'I have no regret about my life now.']
     },
     painter: {
       start: [
@@ -1175,14 +1175,14 @@ export default {
         'I used to be a painter before I was brought here.',
         'I liked to paint, but it was not a good business.',
         'My family was also poor to begin with, so my life was a little difficult.',
-        'At one point, I got desperate and tore my paintings to pieces.',
+        'At one point, I got desperated and tore my paintings into pieces.',
         'But I managed to make a living.',
         'Then one day, my mother fell ill and fell asleep.',
         'I tried to take her to the hospital immediately, but she refused.',
         'She was worried about the medical expenses.',
-        `She said, "I'll be fine. you just keep working."`,
+        `She said, "I'll be fine. you just need to keep working."`,
         `We certainly didn't have enough money to go to the hospital.`,
-        'I decided to think it was just a cold and kept painting as my mother said.',
+        'I decided to think it was just a cold and kept painting like my mother said.',
         `I tried harder than ever to paint, but I still couldn't sell any of my paintings.`,
         'I had no choice but to borrow money from a loan shark to pay for the medical bills.',
         `That's how I got my mother into the hospital.`,
@@ -1190,10 +1190,10 @@ export default {
         'My mother looked truly happy.',
         '..........',
         '...And, my mother passed away.',
-        `When I opened my mother's chest to organize it, I found a lot of pieces of paper inside.`,
-        '...They were my paintings that I torn to pieces.',
+        `When I opened my mother's chest to reorganize it, I found a lot of pieces of paper inside.`,
+        '...They were my paintings that I torn into pieces.',
         'My mother always told me that...',
-        `"Your dream coming true is my dream, so don't give up and keep going."`,
+        `"My dream is that your dream can come true, so don't give up and keep going."`,
         'I still continue to paint whenever I find time.',
         'But I can never be out of here.',
         'So, please. Can you please sell this painting for me?'
@@ -1230,7 +1230,7 @@ export default {
         'If you have any good paintings, bring them to me.',
         `I'll give you a good price.`
       ],
-      options: ['Dou you buy this paint?', 'Nothing'],
+      options: ['Do you buy this painting?', 'Do nothing'],
       solve1: ['Let me see.'],
       log: 'Gave a painting "Love"',
       solve2: [
@@ -1244,7 +1244,7 @@ export default {
       start: [
         'Hi.',
         'Do you know about the people who work in the coal mine?',
-        'They work hard every day for a long time.',
+        'They have been working hard every day for a long time.',
         'We owe our comfortable lives to them.',
         `So I wanted to go and thank them, but my mom said I couldn't go.`,
         'So, I want you to go and tell them "Thank you for everything" instead of me.'
@@ -1253,12 +1253,12 @@ export default {
       answer1: [
         'Thank you!',
         'Then take this painting with you.',
-        `I drew this painting of they're working hard.`,
+        `I drew this painting of when they're working hard.`,
         `Do you think they'll like it?`,
         `Then, I'm counting on you!`
       ],
       answer2: [`You're mean!`],
-      started: ['Get my painting to them in the mines!'],
+      started: ['Bring my painting to them in the mines!'],
       lost: [`Hey, dont throw away my painting!`],
       complete1: [
         `It's you!`,
@@ -1270,12 +1270,12 @@ export default {
     },
     miner: {
       greet: ['Huh? What do you want?'],
-      options: ['Give the painting by the child', 'Nothing'],
-      log: 'Gave "Working coal minor"',
+      options: ['Give the painting to the child', 'Do nothing'],
+      log: 'Gave "Working coal miner"',
       solve: [
         'A kid from the mansion wants to thank me?',
         'Damn, Thanks for being so condescending.',
-        `We can't fill our stomachs with any beautiful paintings.`,
+        `We can't fill our stomachs with just beautiful paintings.`,
         '...hmm?',
         'Oh, the frame that holds this painting looks like it will sell for a good price.',
         'Good, good, I think I can eat a full meal after a long time.',
@@ -1283,14 +1283,14 @@ export default {
         'See you later'
       ],
       regain: {
-        options1: ['I want to buy the painting', 'Nothing'],
+        options1: ['I want to buy the painting', 'Do nothing'],
         start: [
           'You wanna buy this?',
           'Sure.',
           'Then bring me four kinds of gems.',
           `I'll trade you for them.`
         ],
-        options2: ['Give the gems', 'Nothing'],
+        options2: ['Give the gems', 'Do nothing'],
         logs: [
           'Gave a sapphire',
           'Gave a emerald',
@@ -1309,7 +1309,7 @@ export default {
         `Women's charm is beauty.`,
         'And I am the most beautiful woman in the world.',
         'Even more than the poor lady in the next room.',
-        'But you see, I will grow old in time.',
+        'But you see, I will grow old by time.',
         `And when I do, I'll be outnumbered by younger women.`,
         `I don't want that.`,
         `I'm a wealthy lady and I should always be the best.`,
@@ -1318,11 +1318,11 @@ export default {
       ],
       started: [
         'Apparently, an Elixir of Immortality was being developed there.',
-        `It's rumored that it's still hidden somewhere in the hospital.`,
+        `People rumored that it's still hidden somewhere in the hospital.`,
         'So I want you to go and find it for me.',
-        `You'll be rewarded handsomely.`
+        `You'll be rewarded generously.`
       ],
-      options: ['Give the elixir', 'Nothing'],
+      options: ['Give the elixir', 'Do nothing'],
       log: 'Gave the elixir',
       solve1: [
         'Is this the Elixir?',
@@ -1342,18 +1342,18 @@ export default {
       ]
     },
     lady2: {
-      greet: ['The deluded woman in the next room, I never like her.'],
+      greet: ['The deluded woman in the next room, I have never liked her.'],
       start: [
-        `The deluded woman in the next room, she's got some kind of Elixir.`,
+        `The deluded woman in the next room, she's gotten some kind of Elixir.`,
         `I don't like it.`,
-        `Hey, you, Why don't you go kill the bitch for me?`,
-        `Even if she's immortal, get shot with a gun, that's over, isn't it?`,
+        `Hey, you. Why don't you go kill that bitch for me?`,
+        `Even if she's immortal, getting shot with a gun, that's over, isn't it?`,
         'So stupid.',
         'Go on, then.'
       ],
       started: [
         `What's that look on your face?`,
-        'Get a move on.',
+        'Get move.',
         `I'll give you what you want more than she gave you.`
       ],
       complete1: [
@@ -1363,9 +1363,9 @@ export default {
       complete2: [
         'Eternal youth is nonsense.',
         'We are beautiful because we are finite.',
-        `She was a pathetic bitch who doesn't realize that.`
+        `She was a pathetic bitch who couldn't realize that.`
       ],
-      completed: [`I'm comfortable the noisy bitch is gone.`]
+      completed: [`I'm comfortable that the noisy bitch is gone.`]
     },
     forever: {
       ghost: {
@@ -1395,7 +1395,7 @@ export default {
           `He had promised me that he would always be there for me, but he wasn't.`,
           'Did he forget his promise?',
           `I've been waiting for him here...`,
-          'So I ask you.'
+          'So I ask you a favor.'
         ],
         answer2: ['.........'],
         started: [
@@ -1403,7 +1403,7 @@ export default {
           'He is still working in this hospital, in this place.',
           'But he is still alive.',
           `He can't go to heaven with me if he's still alive.`,
-          'Do you understand that meaning?',
+          'Do you understand what I meant?',
           'You are the only one who can help me.',
           'So, please do me a favor.'
         ],
@@ -1440,7 +1440,7 @@ export default {
         start2: [`...Anyway, please don't do such horrible things.`],
         completed: [
           'Why did you kill me?',
-          'What do you, and my wife, think my life is?',
+          'What do you and my wife think my life is?',
           'This is horrible.'
         ]
       }
@@ -1457,7 +1457,7 @@ export default {
       ],
       advice: [
         `Hey, you've got a lot of fossils.`,
-        'Are they dinosaur fossils, by any chance?',
+        'Are they dinosaur fossils by any chance?',
         `Why don't you try assembling them?`,
         `If it's a dinosaur fossil, give it to me.`
       ],
@@ -1469,7 +1469,7 @@ export default {
       cancel: [
         'Oh..., I see...'
       ],
-      log: 'Gave the dinosaur Fossil',
+      log: 'Gave the dinosaur fossil',
       gave: [
         'Oh, my God! I finally got my hands on a dinosaur fossil!',
         'Hey, this is for you.',
@@ -1502,7 +1502,7 @@ export default {
       kajitsu1: ['You came.'],
       kajitsu2: [
         `You will now leave Amili's mind and go to the afterlife.`,
-        'Then, Amili, who is wandering between life and death, will soon wake up.'
+        'Then, Amili who is wandering between life and death, will soon wake up.'
       ],
       kajitsu3: ['Are you ready?'],
       yesno: ['Yes', 'No'],
@@ -1510,8 +1510,8 @@ export default {
       kajitsu4: [`Then, let's do it.`, 'Please make a strong wish to get out of here.'],
       message: 'Good. You gonna wake up.',
       amili1: [
-        `Libra, I'm sorry I ever lied you.`,
-        `Everything I've ever told you is a lie...`
+        `Libra, I'm sorry that I've lied to you.`,
+        `Everything I've ever told you was a lie...`
       ],
       amili2: [
         'This world is not inside my mind.',
@@ -1519,14 +1519,14 @@ export default {
         'This world is inside your mind.'
       ],
       amili3: [
-        'Who really died is me, and you are the one who is wandering between life and death.',
+        'Who really died was me, and you are the one who is wandering between life and death.',
         'Can you remember?'
       ],
       amili4: [
         'This is your heart.',
         `I'm in your heart as a spirit.`,
         'You had not been able to wake up because you were shutting up in your own mind.',
-        'So I lied to you to make you think leave here.'
+        'So I lied to you to make you think leaving here.'
       ],
       amili5: [
         `Libra's head was full of me...`,
@@ -1535,7 +1535,7 @@ export default {
       ],
       amili6: [
         `But..., you're okay now.`,
-        'Live a happy life for me.'
+        'Live a happy life for me too.'
       ],
       amili7: [
         `I'll be waiting for you..., in your heart.`,
@@ -1547,7 +1547,7 @@ export default {
           '...Libra',
           '...Good bye.'
         ],
-        message: `I'll be leaving you for a while.`
+        message: `I'll leave you away for a while.`
       },
       last2: {
         amili1: ['What!?'],
@@ -1572,7 +1572,7 @@ export default {
       minePenguin2: [
         `You went to space?`,
         `That's amazing.`,
-        'Whether you believe the story or not, Thank you for telling me the dreamy story.'
+        'Whether you believe the story or not, thank you for telling me the dreamy story.'
       ],
       guide1: [
         'I am an alien.',
@@ -1581,20 +1581,20 @@ export default {
       guide2: [
         `We've arrived in space.`,
         'When humans walk in space, they are easily lost.',
-        `So I made sure you can't get going too far.`,
+        `So I made sure you can't go too far.`,
         `But the truth is, it's much bigger.`
       ],
       evolution: [
-        `Do you really think you've evolved from monkeys?`,
-        'Why do you think such a stupid thing?',
-        'Humans were created as a slave by aliens from another planet.',
+        `Do you really think that you've evolved from monkeys?`,
+        'Why do you believe in such stupid thing?',
+        'Humans were created as slave by aliens from another planet.',
         'And your telomeres and life expectancy were set to 100 years to prevent rebelling.',
         'Look at the other animals on Earth.',
-        `It's only humans that change appearance when get old.`,
-        'Oh, the aliens who enslaved humans are not us Grey aliens.'
+        `It's only humans that change appearance when getting old.`,
+        'Oh, the aliens who enslaved humans are not us, Grey aliens.'
       ]
     },
-    photosynthesis: {
+    photosynthesis: { // CHECKPOINT
       greeting: [
         `Hey, you're human, right?`,
         'We Grey aliens are probably the most familiar aliens to humans.',
