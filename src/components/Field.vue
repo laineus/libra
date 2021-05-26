@@ -68,6 +68,9 @@ export default {
     const dropItem = (name, gameObject, options) => {
       return addObject(Object.assign({ name, x: gameObject.x, y: gameObject.y }, options)).then(v => v.drop?.())
     }
+    // Field apples
+    state.fieldApples.filter(v => v.map === field.name).forEach(v => addObject({ name: 'apple', x: v.x, y: v.y }))
+    state.fieldApples = state.fieldApples.filter(v => v.map !== field.name)
     // Room items
     if (isRoom) state.roomItems.forEach(v => addObject({ id: v.id, name: v.key, x: v.x, y: v.y, scale: v.scale }))
     const updateRoomItems = () => {
@@ -113,6 +116,12 @@ export default {
       event.create?.(props.payload)
     })
     onBeforeUnmount(() => {
+      if (!isRoom) {
+        const apples = objects.filter(v => v.name === 'apple').map(v => {
+          return { map: field.name, x: v.x, y: v.y }
+        })
+        state.fieldApples.push(...apples)
+      }
       darkness.destroy()
       event.destroy?.()
       unwatchItems()

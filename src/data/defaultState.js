@@ -13,6 +13,7 @@ export default {
   amiliFollowing: false,
   bagItems: [],
   roomItems: [],
+  fieldApples: [],
   lastAbsenceAction: 1,
   stomach: [],
   places: [
