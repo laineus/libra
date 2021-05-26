@@ -1,7 +1,6 @@
 <template>
   <Substance ref="substance" :initX="initX" :initY="initY" :texture="gun.mode.value ? 'chara_sprite/libra_gun' : 'chara_sprite/libra'" :frame="frame">
     <Body :drag="500" :width="20" :height="12" :offsetX="5" :offsetY="15" />
-    <Light v-if="object" :x="object.x" :y="object.y" :intensity="0.1" :color="0xFF8800" :radius="10" /><!-- TODO: Tilemap will be invisible when removed all lights -->
     <Image v-if="hp > 0" texture="shadow" :tint="0x000000" :scale="0.5" :alpha="0.5" :y="-3" />
     <Line v-if="gun.mode.value" :x="Math.cos(r) * 25" :y="Math.sin(r) * 25 + gunDiffY" :x2="700" :y2="0" :lineWidth="0.5" :strokeColor="config.COLORS.orange" :originX="0" :rotation="r" />
   </Substance>
@@ -9,14 +8,14 @@
 
 <script>
 import { computed, inject, onBeforeUnmount, onMounted, reactive, ref, toRefs } from 'vue'
-import { onPreUpdate, Body, Light, Image, Line } from 'phavuer'
+import { onPreUpdate, Body, Image, Line } from 'phavuer'
 import Substance from './Substance'
 import useFollowing from './modules/useFollowing'
 import useFrameAnimChara from './modules/useFrameAnimChara'
 import useGun from './modules/useGun'
 import config from '@/data/config'
 export default {
-  components: { Body, Light, Image, Line, Substance },
+  components: { Body, Image, Line, Substance },
   props: {
     initX: { default: 0 },
     initY: { default: 0 },
