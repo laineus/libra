@@ -17,7 +17,8 @@ export default {
   components: { Substance, Body, Image },
   props: {
     initR: { default: 0 },
-    name: { default: null }
+    name: { default: null },
+    temper: { default: null }
   },
   emits: ['del'],
   setup (props) {
@@ -36,19 +37,22 @@ export default {
     const textureData = scene.textures.get(itemData.texture)
     const numOfDirection = Object.keys(textureData.frames).map(Number).count(Number.isInteger) / 3
     const { play: playFrameAnim, lookTo } = useFrameAnimChara(object, props.initR ?? Math.PI * Math.random(), numOfDirection, itemData?.standingAnim)
-    const setTemper = type => {
-      if (!itemData) return
-      if (itemData.temper[type] === TEMPER.RANDOM) {
+    const setTemper = temper => {
+      if (temper === TEMPER.RANDOM) {
         following.setRandomWalk(150)
-      } else if (itemData.temper[type] === TEMPER.ATTACK) {
+      } else if (temper === TEMPER.ATTACK) {
         attackTarget.value = player.value
         following.setTargetObject(player.value.object)
-      } else if (itemData.temper[type] === TEMPER.ESCAPE) {
+      } else if (temper === TEMPER.ESCAPE) {
         following.setTargetObject(player.value.object, true)
       }
     }
+    const setTemperMode = mode => {
+      if (!itemData) return
+      setTemper(itemData.temper[mode])
+    }
     onMounted(() => {
-      setTemper('normal')
+      props.temper ? setTemper(TEMPER[props.temper]) : setTemperMode('normal')
     })
     const attackDelay = ref(0)
     onPreUpdate(() => {
@@ -72,7 +76,7 @@ export default {
     })
     const damage = (value, r) => {
       if (substance.value?.tapEvent?.event.value) uiScene.setTutorial('kill')
-      setTemper('shot')
+      setTemperMode('shot')
       substance.value?.damage(value, r)
       substance.value?.setTapEvent(null)
     }
@@ -98,7 +102,7 @@ export default {
       damage,
       startEvent,
       speed,
-      setTemper,
+      setTemper, setTemperMode,
       attackTarget,
       // Following
       stopWalking,

@@ -468,6 +468,11 @@
                  "point":true,
                  "properties":[
                         {
+                         "name":"temper",
+                         "type":"string",
+                         "value":"RANDOM"
+                        }, 
+                        {
                          "name":"unique",
                          "type":"bool",
                          "value":true

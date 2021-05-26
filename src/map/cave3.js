@@ -16,13 +16,13 @@ export default {
     if (!leftBat || !rightBat) return
     leftBat.setDamageEvent(() => {
       rightBat.setTapEvent(null)
-      rightBat.setTemper('shot')
+      rightBat.setTemperMode('shot')
       leftBat.setDamageEvent(null)
       rightBat.setDamageEvent(null)
     })
     rightBat.setDamageEvent(() => {
       leftBat.setTapEvent(null)
-      leftBat.setTemper('shot')
+      leftBat.setTemperMode('shot')
       leftBat.setDamageEvent(null)
       rightBat.setDamageEvent(null)
     })
