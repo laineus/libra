@@ -39,10 +39,10 @@ You should declare that which files you will translate in issue to avoid duplica
 
 # Contributers
 
-Simplified Chinese translations by [百合炼金工坊](https://yuriatelier.lofter.com/)
+Simplified Chinese translations by [百合炼金工坊](https://yuriatelier.lofter.com/)  
 Help with English translation [datpd96](https://github.com/datpd96) 
 
 # Licence
 
-This source code is able to use in MIT Licence.
+This source code is able to use in MIT Licence.  
 Assets such as graphics, sounds and scenario are not allowed to use.
