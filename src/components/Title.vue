@@ -40,11 +40,13 @@ export default {
   emits: ['close'],
   setup (_, context) {
     const gameScene = inject('gameScene')
+    const storage = inject('storage')
     const setting = inject('setting')
     const audio = inject('audio')
     const selected = ref(null)
     const list = ['newGame', 'continue', 'config']
     const tween = ref(null)
+    storage.init()
     const select = async i => {
       if (i === null) {
         audio.se('cancel')
