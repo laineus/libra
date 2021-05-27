@@ -5,7 +5,7 @@ const getDefaultLang = () => {
 }
 const lang = getDefaultLang().startsWith('ja') ? 'ja' : 'en'
 export default {
-  bgm: 100,
+  bgm: 70,
   se: 100,
   lang
 }
