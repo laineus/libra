@@ -1,10 +1,10 @@
 const MAP = {
-  raptor1: { minX: 20, minY: -30, maxX: 40, maxY: -5 }, // head
-  raptor4: { minX: -10, minY: -40, maxX: 40, maxY: -7 }, // left arm
-  raptor3: { minX: 10, minY: -10, maxX: 35, maxY: 15 }, // right arm
-  raptor6: { minX: -35, minY: 8, maxX: 23, maxY: 30 }, // leftLeg
-  raptor5: { minX: 5, minY: 18, maxX: 23, maxY: 34 }, // rightLeg
-  raptor7: { minX: -48, minY: 0, maxX: -30, maxY: 15 } // tail
+  raptor1: { minX: 15, maxX: 45, minY: -35, maxY: 0 }, // head
+  raptor4: { minX: -15, maxX: 45, minY: -45, maxY: -2 }, // left arm
+  raptor3: { minX: 5, maxX: 40, minY: -15, maxY: 20 }, // right arm
+  raptor6: { minX: -40, maxX: 28, minY: 3, maxY: 35 }, // leftLeg
+  raptor5: { minX: 0, maxX: 28, minY: 13, maxY: 39 }, // rightLeg
+  raptor7: { minX: -53, maxX: -25, minY: -5, maxY: 20 } // tail
 }
 export default (isField, { state, uiScene, field, achieve, audio }) => {
   const items = isField ? field.objects : state.bagItems
