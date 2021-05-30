@@ -117,7 +117,7 @@ export default {
     })
     onBeforeUnmount(() => {
       if (!isRoom) {
-        const apples = objects.filter(v => v.name === 'apple').map(v => {
+        const apples = objects.filter(v => v.name === 'apple' && v.ref?.value).map(v => {
           return { map: field.name, x: v.x, y: v.y }
         })
         state.fieldApples.push(...apples)
