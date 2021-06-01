@@ -59,6 +59,7 @@ export default {
     const addObject = object => {
       const itemData = items.find(v => v.key === object.name)
       const obj = Object.assign({ ref: ref(null), id: Symbol('id'), type: itemData.type }, object)
+      if (isRoom) obj.temper = 'RANDOM'
       objects.push(obj)
       return new Promise(resolve => {
         nextTick(() => resolve(obj.ref.value))
