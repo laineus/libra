@@ -1,7 +1,8 @@
-import { computed, ref, reactive, unref } from 'vue'
+import { inject, computed, ref, reactive, unref } from 'vue'
 import useRandomWalk from '@/components/modules/useRandomWalk'
 
 export default chara => {
+  const field = inject('field')
   const targetPosition = reactive({
     x: null,
     y: null
@@ -28,7 +29,7 @@ export default chara => {
   }
   const setRandomWalk = distance => {
     if (!distance) return randomWalk = null
-    randomWalk = useRandomWalk(chara, distance)
+    randomWalk = useRandomWalk(field.value, chara, distance)
   }
   const hasTargetPosition = computed(() => targetPosition.x !== null && targetPosition.y !== null)
   const getDiffToTargetPositionX = () => hasTargetPosition.value ? targetPosition.x - unref(chara).x : 0
