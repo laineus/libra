@@ -1,4 +1,4 @@
-import { computed, inject } from 'vue'
+import { computed, inject, watch } from 'vue'
 import Talker from '@/util/Talker'
 import { BOGUS_STEPS } from '@/data/eventSteps'
 import { initHospitalButton } from '@/map/hospitalFunctions'
@@ -47,6 +47,9 @@ export default {
     if (state.events.bogusDoctor === BOGUS_STEPS.SOLVED) {
       event.exec(async () => {
         if (!doctor) return
+        const unwatch = watch(() => event.state, value => {
+          if (!value) event.setState(true)
+        })
         const speakLibra = talk.getSpeakScripts(new Talker(t('name.libra'), libra.value.object))
         libra.value.object.setPosition(doctor.object.x, doctor.object.y + 70)
         libra.value.lookTo('up')
@@ -61,6 +64,7 @@ export default {
         await field.dropItem('apple', doctor.object)
         uiScene.log.push(t('ui.questComplete', t('quest.bogusDoctor')))
         state.events.bogusDoctor = BOGUS_STEPS.COMPLETED
+        unwatch()
       })
     }
   }
