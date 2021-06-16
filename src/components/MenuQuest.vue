@@ -58,7 +58,7 @@ export default {
     if (state.status.body > 0 || state.status.heart > 0) {
       uiScene.setTutorial('quest')
     }
-    if (quest.every(q => q.started(state))) {
+    if (quest.every(q => q.completed(state))) {
       achieve.activate('quest')
     }
     return {
