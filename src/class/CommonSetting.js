@@ -1,9 +1,9 @@
 import { reactive } from 'vue'
-import defaultSetting from '@/data/defaultSetting'
+import getDefaultSetting from '@/data/getDefaultSetting'
 const KEY = 'libra_setting'
 export default class CommonSetting {
   constructor () {
-    this.setSetting(this.getDefaultSetting())
+    this.setSetting(getDefaultSetting())
     this.initializedLang = this.state.lang
     this.loadSetting()
   }
@@ -23,8 +23,5 @@ export default class CommonSetting {
   save () {
     const json = JSON.stringify(this.state)
     localStorage.setItem(KEY, json)
-  }
-  getDefaultSetting () {
-    return Object.assign({}, defaultSetting)
   }
 }
