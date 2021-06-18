@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import defaultState from '@/data/defaultState'
+import getDefaultState from '@/data/getDefaultState'
 import AppStorage from '@/class/AppStorage'
 import { reactive } from 'vue'
 const STORAGE_KEY = 'libra_data'
@@ -11,13 +11,10 @@ export default class SaveDataManager {
   }
   init () {
     this.lastSnapshot = null
-    this.setState(this.getDefaultState())
+    this.setState(getDefaultState())
   }
   initSteam (greenworks) {
     this.appStorage.initSteam(greenworks)
-  }
-  getDefaultState () {
-    return Object.assign({}, defaultState)
   }
   loadSetting () {
     this.appStorage.getItem(`${STORAGE_KEY}_last_saved_number`).then(savedNumber => {
@@ -93,7 +90,7 @@ export default class SaveDataManager {
       shouldBeDeleted.forEach(k => delete data[k])
       shouldContinueToFix.forEach(k => row(origin[k], data[k]))
     }
-    row(this.getDefaultState(), data)
+    row(getDefaultState(), data)
     return data
   }
 }

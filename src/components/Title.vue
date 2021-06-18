@@ -46,7 +46,6 @@ export default {
     const selected = ref(null)
     const list = ['newGame', 'continue', 'config']
     const tween = ref(null)
-    storage.init()
     const select = async i => {
       if (i === null) {
         audio.se('cancel')
@@ -54,6 +53,7 @@ export default {
       } else if (i === 0) {
         audio.se('click')
         selected.value = 0
+        storage.init()
         await gameScene.value.setField('forest2', (12).toPixelCenter, (23).toPixelCenter, -Math.PI.half, { autosave: false })
         context.emit('close')
       } else {
