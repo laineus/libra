@@ -334,7 +334,7 @@ export default {
     gunSp: `- Gun -\n\nYou've got a gun.\nYou can use it by tapping the gun icon displayed on the screen.`,
     weight: `- Limit for items' weight -\n\nPay attention to the weight of the items you can carry.\nEspecially, apples are very heavy, so you should bring them home often.`,
     home: '- Home -\n\nAt home, you can give apples to your girlfriend Amili and can store items.',
-    amili: `- Alimi -\n\nAmili will react to the things you bring home and use the furniture you set up.\nLet's redecorate the room where you and Amili live.`,
+    amili: `- Amili -\n\nAmili will react to the things you bring home and use the furniture you set up.\nLet's redecorate the room where you and Amili live.`,
     map: `- Teleport -\n\nYou can save current location with the map menu on the bottom-right, then can teleport to there from another place.\nDon't forget to save the places you want to visit again.`,
     quest: '- Quest -\n\nThere are inhabitants who need your help in this world.\nYou might receive an apple if you help them.',
     kill: `- Murder -\n\nYou've shot the friendly inhabitant.\nThey will not revive if you kill them.`
