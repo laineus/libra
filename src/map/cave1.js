@@ -12,7 +12,7 @@ export default {
 
     const snake = field.getObjectById(5)
     snake?.setTapEvent(async () => {
-      const speakSnake = talk.getSpeakScripts(new Talker(t('name.bat'), snake.object))
+      const speakSnake = talk.getSpeakScripts(new Talker(t('name.snake'), snake.object))
       if (state.events.snakeFlog === SNAKE_FLOG_STEPS.NULL) {
         await speakSnake(t('events.snakeFlog.start'))
         uiScene.log.push(t('ui.questStart', t('quest.snakeFlog')))
