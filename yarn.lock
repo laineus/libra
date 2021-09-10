@@ -6363,19 +6363,19 @@ performance-now@^2.1.0:
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
 
-phaser-assets-loader@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/phaser-assets-loader/-/phaser-assets-loader-1.0.0.tgz#d817d14670aa761378db4a7d984f48ec6c639104"
-  integrity sha512-pni7iuxEU9hV+ewtgEHzyEP62QarmX965qLqtlXQ1ubff9uWzdG8Yyomq4wm8QVWJUBk+twG9baJ6Ao80d4IaQ==
+phaser-assets-loader@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/phaser-assets-loader/-/phaser-assets-loader-1.0.1.tgz#d611983a0119921b2a02e51bc8613ad6c29164b9"
+  integrity sha512-Z572pN0KppYjyl/s48avOr7AQw6PWrurCmjmn8YMQavI87JV/idW3qGfH3x/hY6B8L9ojIKKaUVTBDOyHQRRGQ==
   dependencies:
     image-size "^1.0.0"
 
-phaser-assets-webpack-plugin@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/phaser-assets-webpack-plugin/-/phaser-assets-webpack-plugin-2.2.0.tgz#bbb3c3753bbff179831f1ec67d3caf90b74a712a"
-  integrity sha512-ZeF8cvze4jY4eXnnyo9VJ9AXY+p79FKRbbIIr842EUJy3R56WnQjipqlMcxQ0I2HACV9OqslnvGvKREbltn/Tw==
+phaser-assets-webpack-plugin@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/phaser-assets-webpack-plugin/-/phaser-assets-webpack-plugin-2.2.1.tgz#3c02d53e2f701aa5600c87f73949acb6877fa0fd"
+  integrity sha512-78sZEV0I5iXIBG0ZQKtHPHtbdwydgbhOzhsu4TH2pay3KwerGLdqW+AwqBJQP6aWoWuPxhh4mhH6s+Uyhxz6Dg==
   dependencies:
-    phaser-assets-loader "^1.0.0"
+    phaser-assets-loader "^1.0.1"
 
 phaser-tiled-json-external-loader@^0.1.1:
   version "0.1.1"
