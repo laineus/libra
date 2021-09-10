@@ -4521,12 +4521,12 @@ image-q@^1.1.1:
   resolved "https://registry.yarnpkg.com/image-q/-/image-q-1.1.1.tgz#fc84099664460b90ca862d9300b6bfbbbfbf8056"
   integrity sha1-/IQJlmRGC5DKhi2TALa/u7+/gFY=
 
-image-size@^0.9.1:
-  version "0.9.3"
-  resolved "https://registry.yarnpkg.com/image-size/-/image-size-0.9.3.tgz#f7efce6b0a1649b44b9bc43b9d9a5acf272264b6"
-  integrity sha512-5SakFa79uhUVSjKeQE30GVzzLJ0QNzB53+I+/VD1vIesD6GP6uatWIlgU0uisFNLt1u0d6kBydp7yfk+lLJhLQ==
+image-size@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/image-size/-/image-size-1.0.0.tgz#58b31fe4743b1cec0a0ac26f5c914d3c5b2f0750"
+  integrity sha512-JLJ6OwBfO1KcA+TvJT+v8gbE6iWbj24LyDNFgFEN0lzegn6cC6a/p3NIDaepMsJjQjlUWqIC7wJv8lBFxPNjcw==
   dependencies:
-    queue "6.0.1"
+    queue "6.0.2"
 
 imagemin-pngquant@^9.0.0:
   version "9.0.1"
@@ -6363,12 +6363,19 @@ performance-now@^2.1.0:
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
 
-phaser-assets-webpack-plugin@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/phaser-assets-webpack-plugin/-/phaser-assets-webpack-plugin-2.1.0.tgz#78f8533f7f7c771564c157b28d8f56170a32d2cd"
-  integrity sha512-kFwFO8hs8Xm5aJAr2jxubU4jfO22Xuk7LxiuENZe2/LGYvoBRsro9asiiXk3RAKTB6C4Tj3NG6K+uWGu5eXpdw==
+phaser-assets-loader@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/phaser-assets-loader/-/phaser-assets-loader-1.0.0.tgz#d817d14670aa761378db4a7d984f48ec6c639104"
+  integrity sha512-pni7iuxEU9hV+ewtgEHzyEP62QarmX965qLqtlXQ1ubff9uWzdG8Yyomq4wm8QVWJUBk+twG9baJ6Ao80d4IaQ==
   dependencies:
-    image-size "^0.9.1"
+    image-size "^1.0.0"
+
+phaser-assets-webpack-plugin@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/phaser-assets-webpack-plugin/-/phaser-assets-webpack-plugin-2.2.0.tgz#bbb3c3753bbff179831f1ec67d3caf90b74a712a"
+  integrity sha512-ZeF8cvze4jY4eXnnyo9VJ9AXY+p79FKRbbIIr842EUJy3R56WnQjipqlMcxQ0I2HACV9OqslnvGvKREbltn/Tw==
+  dependencies:
+    phaser-assets-loader "^1.0.0"
 
 phaser-tiled-json-external-loader@^0.1.1:
   version "0.1.1"
@@ -6715,10 +6722,10 @@ querystringify@^2.1.1:
   resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.2.0.tgz#3345941b4153cb9d082d8eee4cda2016a9aef7f6"
   integrity sha512-FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==
 
-queue@6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/queue/-/queue-6.0.1.tgz#abd5a5b0376912f070a25729e0b6a7d565683791"
-  integrity sha512-AJBQabRCCNr9ANq8v77RJEv73DPbn55cdTb+Giq4X0AVnNVZvMHlYp7XlQiN+1npCZj1DuSmaA2hYVUUDgxFDg==
+queue@6.0.2:
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/queue/-/queue-6.0.2.tgz#b91525283e2315c7553d2efa18d83e76432fed65"
+  integrity sha512-iHZWu+q3IdFZFX36ro/lKBkSvfkztY5Y7HMiPlOUjhupPcG2JMfst2KKEpu5XndviX/3UhFbRngUPNKtgvtZiA==
   dependencies:
     inherits "~2.0.3"
 
