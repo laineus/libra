@@ -18,7 +18,7 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  font-size: 1.5rem;
+  font-size: max(1.5rem, 12px);
   text-align: center;
   letter-spacing: 1px;
   min-width: 320px;
@@ -116,6 +116,8 @@ body.cn .en:not(.cn) {
   font-weight: bold;
   color: #FFF;
   text-decoration: none;
+}
+.lang-item[data-lang] {
   cursor: pointer;
 }
 body.en .changeLang[data-lang="en"] {
@@ -136,7 +138,7 @@ body.cn .changeLang[data-lang="cn"] {
   max-width: 1200px;
 }
 .articleHeading {
-  font-size: 1.8rem;
+  font-size: 18px;
   font-weight: normal;
   letter-spacing: 0.6em;
   color: var(--yellow);
@@ -273,13 +275,13 @@ body.cn .changeLang[data-lang="cn"] {
 .dataList-term,
 .dataList-desc {
   display: inline;
-  font-size: 1.3rem;
+  font-size: 13px;
 }
 .dataList-term:not(:first-child) {
   margin-left: 1em;
 }
 .links {
-  margin-top: 5px;
+  margin-top: 8px;
 }
 .links a {
   font-weight: bold;
@@ -353,6 +355,10 @@ body.cn .changeLang[data-lang="cn"] {
   }
   .play .buttonList-item {
     margin: auto 5px;
+  }
+  .dataList-term,
+  .dataList-desc {
+    font-size: 12px;
   }
   .totop {
     width: 50px;
