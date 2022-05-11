@@ -19,6 +19,9 @@
     <Circle :x="174" :y="137" :lineWidth="1" :strokeColor="COLORS.brown" :radius="7" @pointerdown="setLang('cn')" />
     <Circle v-if="setting.state.lang === 'cn'" :x="174" :y="137" :fillColor="COLORS.brown" :radius="4" />
     <Text text="简体字" :x="187" :y="137" :originY="0.5" :size="13" :bold="true" @pointerdown="setLang('cn')" />
+    <Circle :x="234" :y="137" :lineWidth="1" :strokeColor="COLORS.brown" :radius="7" @pointerdown="setLang('es')" />
+    <Circle v-if="setting.state.lang === 'es'" :x="234" :y="137" :fillColor="COLORS.brown" :radius="4" />
+    <Text text="Español" :x="247" :y="137" :originY="0.5" :size="13" :bold="true" @pointerdown="setLang('es')" />
     <!-- Back to title -->
     <Text v-if="backToTitle" :text="'Back to Title →'" :x="230" :y="186" :originX="1" :originY="0.5" :size="13" :bold="true" @pointerdown="confirmBackToTitle" />
     <Selector v-if="confirm" :x="tapX" :y="tapY" :list="[t('ui.ok'), t('ui.cancel')]" @select="submitBackToTitle" />
