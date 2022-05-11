@@ -267,7 +267,7 @@ export default {
     map: 'Mapa',
     system: 'Sistema',
     save: 'Guardar',
-    config: 'Configuración',
+    config: 'Config',
     tips: 'Consejos',
     unregistered: 'No registrado',
     weight: 'Peso',
