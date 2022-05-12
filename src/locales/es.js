@@ -335,7 +335,7 @@ export default {
     weight: `- Limite de peso de los items -\n\nPresta atención al peso de los ítems que puedes llevar.\nEspecialmente, las manzanas son muy pesadas, así que deberías llevarlas al hogar a menudo.`,
     home: '- Hogar -\n\nEn tu hogar, puedes darle manzanas a tu novia Amili, y puedes almacenar items.',
     amili: `- Amili -\n\nAmili reaccionará con las cosas que traigas a casa y usará los muebles que coloques.\nVamos a redecorar la habitación en la que Amili y tú vivís.`,
-    map: `- Teletransporte -\n\nPuedes grabar la ubicación actual con el menú del mapa ubicado en la esquina inferior derecha, y entonces puedes teleportarte de un lugar a otro.\nNo olvides grabar los lugares que quieres visitar de nuevo.`,
+    map: `- Teletransporte -\n\nPuedes grabar la ubicación actual con el menú del mapa ubicado en la esquina inferior derecha,\ny entonces puedes teleportarte de un lugar a otro.\nNo olvides grabar los lugares que quieres visitar de nuevo.`,
     quest: '- Misión -\n\nHay habitantes que necesitan tu ayuda en este mundo.\nPodrías recibir una manzana si les ayudas.',
     kill: `- Asesina -\n\nHas disparado a un habitante amistoso.\nEllos no revivirán si les matas.`
   },
