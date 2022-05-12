@@ -8,13 +8,13 @@
         <Text v-for="(name, i2) in v.names" :key="i2" :text="name" :size="19" :originX="0.5" color="white" :y="40 + i2 * 40" />
       </Container>
       <!-- Site -->
-      <Text text="- Official Web site -" :originX="0.5" color="white" :y="2190" />
-      <Image texture="banner_libra" :y="2270" />
-      <Text text="https://libra.laineus.com" :originX="0.5" color="white" :y="2330" />
+      <Text text="- Official Web site -" :originX="0.5" color="white" :y="2480" />
+      <Image texture="banner_libra" :y="2560" />
+      <Text text="https://libra.laineus.com" :originX="0.5" color="white" :y="2620" />
       <!-- Site -->
-      <Image texture="phaser3" :y="2600" />
-      <Image texture="phavuer" :y="2900" />
-      <Image texture="drive_l" :y="3500" />
+      <Image texture="phaser3" :y="2890" />
+      <Image texture="phavuer" :y="3190" />
+      <Image texture="drive_l" :y="3790" />
     </Container>
     <Container :x="config.WIDTH.half" :y="config.HEIGHT.half">
       <Container>
@@ -75,8 +75,8 @@ export default {
       seek: 0,
       blackTween: Object.assign(tweens.alpha1, { onComplete: () => audio.currentBgm.resume() }),
       creditY: computed(() => {
-        const progress = Math.min(data.seek / (FIRST_CHORUS - 10), 1)
-        return Math.round(3240 * -progress)
+        const progress = Math.min(data.seek / (FIRST_CHORUS - 8), 1)
+        return Math.round(3530 * -progress)
       }),
       creditTween: computed(() => data.seek >= FIRST_CHORUS - 2 ? tweens.alpha0 : null),
       ssProgress: computed(() => Math.max((data.seek - FIRST_CHORUS) / (audio.currentBgm.duration - OUTRO - FIRST_CHORUS), 0)),
@@ -123,7 +123,8 @@ export default {
         { title: 'Music by', names: ['Laineus', 'Miku Hatsune'] },
         { title: 'Developed by', names: ['Laineus'] },
         { title: 'Theme song', names: [ja ? `『${title}』` : `"${title}"`] },
-        { title: 'Simplified Chinese translations by', names: ['Yuriatelier'] }
+        { title: 'Simplified Chinese translations by', names: ['Yuriatelier'] },
+        { title: 'Spanish translations by', names: ['Kinae Wolf'] }
       ]
     }
   }
