@@ -1075,7 +1075,7 @@ export default {
       completed: ['No hay vergüenza en ser engañado por una mujer.']
     },
     dark: {
-      kajitsu1: ['¿Lo echas de menos?'],
+      kajitsu1: '¿Lo echas de menos?',
       kajitsu2: ['¿Recuerdas qué es este mundo?'],
       kajitsu3: [
         `¿No puedes recordar...?`,
@@ -1086,7 +1086,7 @@ export default {
       kajitsu5: [`Te estaré esperando más adelante. Por favor, asegúrate de venir.`]
     },
     crossing: {
-      start1: ['¿Lo recuerdas ya?'],
+      start1: '¿Lo recuerdas ya?',
       start2: ['Sí. Aquí perdiste la vida.'],
       start3: [
         'Pero este mundo no es el Más Allá.',

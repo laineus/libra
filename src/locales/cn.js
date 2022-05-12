@@ -1078,7 +1078,7 @@ export default {
       completed: ['被女人欺骗可不是什么羞耻的事。']
     },
     dark: {
-      kajitsu1: ['感觉很怀念吗？'],
+      kajitsu1: '感觉很怀念吗？',
       kajitsu2: ['回想起这里是哪里了吗？'],
       kajitsu3: [
         '没有想起来吗……',
@@ -1089,7 +1089,7 @@ export default {
       kajitsu5: ['我在前面等着。请一定要过来。']
     },
     crossing: {
-      start1: ['想起来了吗？'],
+      start1: '想起来了吗？',
       start2: ['是的。您是在这里死去的。'],
       start3: [
         '但不是说这个世界是死后的世界。',
