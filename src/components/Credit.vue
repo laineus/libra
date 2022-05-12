@@ -26,7 +26,7 @@
         <Image v-else texture="ed_zzz" :x="-0.5" :y="-30" :origin="0.5" :frame="animFrame" :tint="config.COLORS.gray" />
       </Container>
     </Container>
-    <Image :texture="ja ? 'logo_ja' : 'logo_en'" :x="config.WIDTH.half" :y="config.HEIGHT.half - 20" :origin="0.5" :scale="0.8" :tween="data.logoTween" :alpha="0" />
+    <Image :texture="logoName" :x="config.WIDTH.half" :y="config.HEIGHT.half - 20" :origin="0.5" :scale="0.8" :tween="data.logoTween" :alpha="0" />
     <Text :text="data.lyrics" :origin="ja ? 0.5 : 1" :x="(ja ? 45 : 25).byRight" :y="ja ? config.HEIGHT.half : (20).byBottom" color="white" :size="14" />
   </Container>
 </template>
@@ -110,8 +110,15 @@ export default {
       playAnim()
     })
     const title = t('happyend.title')
+    const getLogoName = () => {
+      if (setting.state.lang === 'ja') return 'logo_ja'
+      if (setting.state.lang === 'cn') return 'logo_cn'
+      if (setting.state.lang === 'es') return 'logo_es'
+      return 'logo_en'
+    }
     return {
       data,
+      logoName: getLogoName(),
       ja,
       animFrame,
       tweens,
