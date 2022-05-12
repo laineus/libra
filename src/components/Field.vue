@@ -30,6 +30,7 @@ import randomObjectByRandom from './modules/randomObjectByRandom'
 import maps from '@/data/maps'
 import config from '@/data/config'
 import items from '@/data/items'
+import { INTRO_STEPS } from '@/data/eventSteps'
 export default {
   components: { TilemapLayer, Image, Player, Character, Substance, Area, Gate, Bullet, ManualTile },
   props: [
@@ -117,7 +118,7 @@ export default {
       event.create?.(props.payload)
     })
     onBeforeUnmount(() => {
-      if (!isRoom) {
+      if (!isRoom && state.events.intro !== INTRO_STEPS.APPLE) {
         const apples = objects.filter(v => v.name === 'apple' && v.ref?.value).map(v => {
           return { map: field.name, x: v.x, y: v.y }
         })
