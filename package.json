@@ -15,7 +15,7 @@
     "@sentry/browser": "^6.2.5",
     "@sentry/tracing": "^6.2.5",
     "dayjs": "^1.10.4",
-    "phaser": "^3.54.0",
+    "phaser": "^3.55.2",
     "phaser-tiled-json-external-loader": "^0.1.1",
     "phavuer": "^0.10.1",
     "vue": "^3.0.11"
