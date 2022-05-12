@@ -3,13 +3,13 @@
 </template>
 
 <script>
-import { inject, shallowReactive } from 'vue'
-import { Rectangle } from 'phavuer'
+import { shallowReactive } from 'vue'
+import { useScene, Rectangle } from 'phavuer'
 import config from '@/data/config'
 export default {
   components: { Rectangle },
   setup () {
-    const scene = inject('scene')
+    const scene = useScene()
     const transitions = shallowReactive([])
     const getTransitionTween = target => (duration, { alpha, hold, destroy, depth }) => {
       return new Promise(resolve => {

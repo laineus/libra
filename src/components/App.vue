@@ -16,11 +16,12 @@ import AudioController from '@/class/AudioController'
 import SaveDataManager from '@/class/SaveDataManager'
 import AchieveManager from '@/class/AchieveManager'
 import setting from '@/data/setting'
-import { inject, provide, ref, computed, reactive } from 'vue'
+import { provide, ref, computed, reactive } from 'vue'
+import { useGame } from 'phavuer'
 export default {
   components: { BootScene, GameScene, UIScene },
   setup () {
-    const game = inject('game')
+    const game = useGame()
     const gameScene = ref(null)
     const uiScene = ref(null)
     const loaded = ref(false)

@@ -8,7 +8,7 @@
 
 <script>
 import { computed, inject, onBeforeUnmount, onMounted, reactive, ref, toRefs } from 'vue'
-import { onPreUpdate, Body, Image, Line } from 'phavuer'
+import { useScene, onPreUpdate, Body, Image, Line } from 'phavuer'
 import Substance from './Substance'
 import useFollowing from './modules/useFollowing'
 import useFrameAnimChara from './modules/useFrameAnimChara'
@@ -24,7 +24,7 @@ export default {
   emits: ['shot'],
   setup (props, context) {
     const gameScene = inject('gameScene')
-    const scene = inject('scene')
+    const scene = useScene()
     const event = inject('event')
     const camera = inject('camera')
     const menuOpened = inject('menuOpened')

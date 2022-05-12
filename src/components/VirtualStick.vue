@@ -6,14 +6,14 @@
 </template>
 
 <script>
-import { Container, Circle } from 'phavuer'
-import { inject, reactive, toRaw, toRefs } from 'vue'
+import { useScene, Container, Circle } from 'phavuer'
+import { reactive, toRaw, toRefs } from 'vue'
 const MAX_DISTANCE = 50
 export default {
   components: { Container, Circle },
   props: ['x', 'y'],
-  setup (props) {
-    const scene = inject('scene')
+  setup () {
+    const scene = useScene()
     const data = reactive({
       stick: null,
       radian: 0,

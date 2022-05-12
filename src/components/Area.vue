@@ -4,13 +4,13 @@
 
 <script>
 import { inject, onMounted, computed } from 'vue'
-import { refObj, Zone } from 'phavuer'
+import { refObj, useScene, Zone } from 'phavuer'
 import useEvent from './modules/useEvent'
 const FRAMES_FOR_NEW_ENTER = 10
 export default {
   components: { Zone },
   setup () {
-    const scene = inject('scene')
+    const scene = useScene()
     const frames = inject('frames')
     const event = inject('event')
     const player = inject('player')

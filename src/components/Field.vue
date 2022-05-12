@@ -24,7 +24,7 @@ import Bullet from './Bullet'
 import ManualTile from './ManualTile'
 import Darkness from './modules/Darkness'
 import { inject, onBeforeUnmount, onMounted, ref, computed, shallowReactive, nextTick, watch } from 'vue'
-import { refObj, Image, TilemapLayer } from 'phavuer'
+import { useScene, refObj, Image, TilemapLayer } from 'phavuer'
 import setupCamera from './modules/setupCamera'
 import randomObjectByRandom from './modules/randomObjectByRandom'
 import maps from '@/data/maps'
@@ -36,7 +36,7 @@ export default {
     'fieldKey', 'playerX', 'playerY', 'playerR', 'payload'
   ],
   setup (props) {
-    const scene = inject('scene')
+    const scene = useScene()
     const frames = inject('frames')
     const audio = inject('audio')
     const state = inject('storage').state

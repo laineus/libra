@@ -23,9 +23,10 @@
 import assets from '../assets.json'
 import { ref, inject } from 'vue'
 import items from '@/data/items'
+import { useGame } from 'phavuer'
 export default {
   setup () {
-    const game = inject('game')
+    const game = useGame()
     const gameScene = inject('gameScene')
     const uiScene = inject('uiScene')
     const storage = inject('storage')

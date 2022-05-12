@@ -16,7 +16,7 @@
 
 <script>
 import { inject, reactive } from 'vue'
-import { Image } from 'phavuer'
+import { useScene, Image } from 'phavuer'
 const splitFrame = (texture, frame, count) => {
   const sum = count * count
   if (texture.has(`${frame}_0`)) {
@@ -43,7 +43,7 @@ export default {
   emits: ['broken'],
   setup (props, context) {
     const splitCount = 3
-    const scene = inject('scene')
+    const scene = useScene()
     const audio = inject('audio')
     audio.se('break')
     const texture = scene.textures.get(props.texture)
