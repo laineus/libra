@@ -43,6 +43,7 @@ const makeCharacter = (name, obj) => {
 const getLogoTexture = () => {
   if (setting.state.lang === 'ja') return 'item/logo'
   if (setting.state.lang === 'cn') return 'item/logo_cn'
+  if (setting.state.lang === 'es') return 'item/logo_es'
   return 'item/logo_en'
 }
 export default [

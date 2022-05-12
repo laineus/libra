@@ -4,6 +4,7 @@
   <Container>
     <Image v-if="setting.state.lang === 'ja'" texture="logo_ja" :x="config.WIDTH.half" :y="config.HEIGHT.half - 77" />
     <Image v-else-if="setting.state.lang === 'cn'" texture="logo_cn" :x="config.WIDTH.half" :y="config.HEIGHT.half - 77" />
+    <Image v-else-if="setting.state.lang === 'es'" texture="logo_es" :x="config.WIDTH.half" :y="config.HEIGHT.half - 80" />
     <Image v-else texture="logo_en" :x="config.WIDTH.half" :y="config.HEIGHT.half - 90" />
   </Container>
   <Container v-for="(v, i) in list" :key="i" :x="config.WIDTH.half" :y="380 + (i * 40)">
