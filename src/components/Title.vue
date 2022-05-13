@@ -4,6 +4,7 @@
   <Container>
     <Image v-if="setting.state.lang === 'ja'" texture="logo_ja" :x="config.WIDTH.half" :y="config.HEIGHT.half - 77" />
     <Image v-else-if="setting.state.lang === 'cn'" texture="logo_cn" :x="config.WIDTH.half" :y="config.HEIGHT.half - 77" />
+    <Image v-else-if="setting.state.lang === 'es'" texture="logo_es" :x="config.WIDTH.half" :y="config.HEIGHT.half - 80" />
     <Image v-else texture="logo_en" :x="config.WIDTH.half" :y="config.HEIGHT.half - 90" />
   </Container>
   <Container v-for="(v, i) in list" :key="i" :x="config.WIDTH.half" :y="380 + (i * 40)">
@@ -15,10 +16,10 @@
     <OrganicWindow v-if="selected === 1" :x="config.WIDTH.half" :y="340" :width="250" :height="275" @pointerdown.stop>
       <menu-system-save v-if="selected === 1" :x="-120" :y="-128" :load="true" @load="$emit('close')" />
     </OrganicWindow>
-    <OrganicWindow v-else-if="selected === 2" :x="config.WIDTH.half" :y="375" :width="250" :height="210" @pointerdown.stop>
-      <menu-system-config :x="-120" :y="-98" :backToTitle="false" />
-      <RoundRectangle :width="101" :height="23" :origin="0.5" :radius="7" :strokeColor="config.COLORS.brown" :lineWidth="1" :y="82" @pointerdown="select(null)" />
-      <Text :text="t('ui.ok')" :origin="0.5" :y="82" :size="14" />
+    <OrganicWindow v-else-if="selected === 2" :x="config.WIDTH.half" :y="355" :width="250" :height="230" @pointerdown.stop>
+      <menu-system-config :x="-120" :y="-108" :backToTitle="false" />
+      <RoundRectangle :width="101" :height="23" :origin="0.5" :radius="7" :strokeColor="config.COLORS.brown" :lineWidth="1" :y="92" @pointerdown="select(null)" />
+      <Text :text="t('ui.ok')" :origin="0.5" :y="92" :size="14" />
     </OrganicWindow>
   </Container>
   <template v-if="!creditEnd">

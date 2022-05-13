@@ -59,12 +59,8 @@ const game = new Phaser.Game({
   },
   input: {
     activePointers: 3
-  },
-  callbacks: {
-    postBoot () {
-      window.addEventListener('resize', () => game.scale.refresh())
-      createPhavuerApp(game, vueApp)
-    }
   }
   // fps: { target: 30, forceSetTimeOut: true }
 })
+window.addEventListener('resize', () => game.scale.refresh())
+createPhavuerApp(game, vueApp)

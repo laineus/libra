@@ -1075,7 +1075,7 @@ export default {
       completed: ['There is no shame in being deceived by a woman.']
     },
     dark: {
-      kajitsu1: ['Do you miss it?'],
+      kajitsu1: 'Do you miss it?',
       kajitsu2: ['Do you remember what this world is?'],
       kajitsu3: [
         `Can't you remember...?`,
@@ -1086,7 +1086,7 @@ export default {
       kajitsu5: [`I'll be waiting for you just up ahead. Please be sure to come.`]
     },
     crossing: {
-      start1: ['Have you remembered it yet?'],
+      start1: 'Have you remembered it yet?',
       start2: ['Yes. You died here.'],
       start3: [
         'But this world is not the afterlife.',

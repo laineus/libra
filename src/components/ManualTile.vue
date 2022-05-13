@@ -5,14 +5,13 @@
 </template>
 
 <script>
-import { Image, refObj, StaticBody } from 'phavuer'
-import { inject } from 'vue'
+import { useScene, Image, refObj, StaticBody } from 'phavuer'
 import config from '@/data/config'
 export default {
   components: { Image, StaticBody },
   props: ['setting', 'field'],
   setup (props) {
-    const scene = inject('scene')
+    const scene = useScene()
     const object = refObj(null)
     const map = scene.cache.tilemap.get(props.field.name).data
     const originalLayerIndex = map.layers.findIndex(v => v.objects?.some(o => o.id === props.setting.id))

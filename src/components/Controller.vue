@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import { useScene } from 'phavuer'
 import { ref, inject } from 'vue'
 import VirtualStick from './VirtualStick'
 const wasdController = keyboard => {
@@ -28,7 +29,7 @@ export default {
   components: { VirtualStick },
   props: { velocity: { default: 25 } },
   setup (props) {
-    const scene = inject('scene')
+    const scene = useScene()
     const virtualStick = ref(null)
     const mobile = inject('mobile')
     const wasd = wasdController(scene.input.keyboard)

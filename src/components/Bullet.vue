@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { refObj, Rectangle, onPreUpdate } from 'phavuer'
+import { useScene, refObj, Rectangle, onPreUpdate } from 'phavuer'
 import { unref, onMounted, inject } from 'vue'
 import config from '@/data/config'
 export default {
@@ -15,7 +15,7 @@ export default {
   },
   emits: ['del'],
   setup (props, context) {
-    const scene = inject('scene')
+    const scene = useScene()
     const field = inject('field')
     const audio = inject('audio')
     const object = refObj(null)

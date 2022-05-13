@@ -24,19 +24,20 @@ import Bullet from './Bullet'
 import ManualTile from './ManualTile'
 import Darkness from './modules/Darkness'
 import { inject, onBeforeUnmount, onMounted, ref, computed, shallowReactive, nextTick, watch } from 'vue'
-import { refObj, Image, TilemapLayer } from 'phavuer'
+import { useScene, refObj, Image, TilemapLayer } from 'phavuer'
 import setupCamera from './modules/setupCamera'
 import randomObjectByRandom from './modules/randomObjectByRandom'
 import maps from '@/data/maps'
 import config from '@/data/config'
 import items from '@/data/items'
+import { INTRO_STEPS } from '@/data/eventSteps'
 export default {
   components: { TilemapLayer, Image, Player, Character, Substance, Area, Gate, Bullet, ManualTile },
   props: [
     'fieldKey', 'playerX', 'playerY', 'playerR', 'payload'
   ],
   setup (props) {
-    const scene = inject('scene')
+    const scene = useScene()
     const frames = inject('frames')
     const audio = inject('audio')
     const state = inject('storage').state
@@ -117,7 +118,7 @@ export default {
       event.create?.(props.payload)
     })
     onBeforeUnmount(() => {
-      if (!isRoom) {
+      if (!isRoom && state.events.intro !== INTRO_STEPS.APPLE) {
         const apples = objects.filter(v => v.name === 'apple' && v.ref?.value).map(v => {
           return { map: field.name, x: v.x, y: v.y }
         })

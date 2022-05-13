@@ -7,7 +7,7 @@
 
 <script>
 import { computed, inject, onMounted, ref, unref } from 'vue'
-import { onPreUpdate, Body, Image } from 'phavuer'
+import { useScene, onPreUpdate, Body, Image } from 'phavuer'
 import Substance from './Substance'
 import useFollowing from './modules/useFollowing'
 import useFrameAnimChara from './modules/useFrameAnimChara'
@@ -22,7 +22,7 @@ export default {
   },
   emits: ['del'],
   setup (props) {
-    const scene = inject('scene')
+    const scene = useScene()
     const player = inject('player')
     const uiScene = inject('uiScene').value
     const event = inject('event')
