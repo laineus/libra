@@ -31,15 +31,23 @@ a {
 }
 
 body.ja .en:not(.ja),
-body.ja .cn:not(.ja) {
+body.ja .cn:not(.ja),
+body.ja .es:not(.ja) {
   display: none;
 }
 body.en .ja:not(.en),
-body.en .cn:not(.en) {
+body.en .cn:not(.en),
+body.en .es:not(.en) {
   display: none;
 }
 body.cn .ja:not(.cn),
-body.cn .en:not(.cn) {
+body.cn .en:not(.cn),
+body.cn .es:not(.cn) {
+  display: none;
+}
+body.es .ja:not(.es),
+body.es .en:not(.es),
+body.es .cn:not(.es) {
   display: none;
 }
 
@@ -127,6 +135,9 @@ body.ja .changeLang[data-lang="ja"] {
   color: var(--yellow);
 }
 body.cn .changeLang[data-lang="cn"] {
+  color: var(--yellow);
+}
+body.es .changeLang[data-lang="es"] {
   color: var(--yellow);
 }
 
