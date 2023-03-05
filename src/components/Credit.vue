@@ -38,14 +38,14 @@ import Text from '@/components/Text'
 import config from '@/data/config'
 import useFrameAnim from '@/components/modules/useFrameAnim'
 const LYRICS_MAP = [
-  [1.22], [8.35], [15.3], [22.4, 29.5],
-  [58.1], [65.2], [72.3], [79.3],
-  [86.5], [93.6],
-  [100.15], [107], [114.1], [121.1, 128.45],
-  [129.19], [136.34, 143.52],
-  [171.9], [179],
-  [185.6], [192.35], [199.5], [206.55, 213.9],
-  [214.52], [221.65, 230.3]
+  [1.58], [8.45], [15.15], [22, 28.84],
+  [42.71], [49.56], [56.4], [63.15],
+  [70.10], [76.94],
+  [83.26], [89.86], [96.71], [103.46, 110.55],
+  [111.26], [118.16, 125.08],
+  [138.73], [145.58],
+  [151.94], [158.45], [165.35], [172.14, 179.23],
+  [179.83], [186.71, 195.05]
 ]
 export default {
   components: { Container, Rectangle, Image, Text },
@@ -54,8 +54,8 @@ export default {
   },
   emits: ['completed'],
   setup (props, context) {
-    const FIRST_CHORUS = 99
-    const OUTRO = 5
+    const FIRST_CHORUS = 82
+    const OUTRO = 9
     const SS = 7
     const setting = inject('setting')
     const audio = inject('audio')
@@ -127,7 +127,7 @@ export default {
       list: [
         { title: 'Written by', names: ['Laineus'] },
         { title: 'Graphics by', names: ['Laineus'] },
-        { title: 'Music by', names: ['Laineus', 'Miku Hatsune'] },
+        { title: 'Music by', names: ['Laineus', 'KAFU & Miku Hatsune'] },
         { title: 'Developed by', names: ['Laineus'] },
         { title: 'Theme song', names: [ja ? `『${title}』` : `"${title}"`] },
         { title: 'Simplified Chinese translations by', names: ['Yuriatelier'] },
