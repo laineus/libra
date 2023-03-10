@@ -1,5 +1,5 @@
 
-Happy End / Laineus feat. Hatsune Miku
+Happy End / Laineus feat. KAFU
 
 If the Sound of Night Wind is the god's voice
 I'm going to hear it until the sun comes up
@@ -33,7 +33,7 @@ I'm contented even life like that
 Even if tomorrow is the end of the world
 Please don't look so sad
 
-ハッピーエンド / Laineus feat. 初音ミク
+ハッピーエンド / Laineus feat. 可不
 
 夜風の音が 神さまの声なら
 聞きに行くのさ 日が昇るまで
