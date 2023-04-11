@@ -16,6 +16,10 @@
   <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p:500,800&display=auto&subset=japanese" rel="stylesheet">
   <link href="./css/lp.css?v=4" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+  <link rel="alternate" hreflang="en" href="https://libra.laineus.com?lang=en" />
+  <link rel="alternate" hreflang="ja" href="https://libra.laineus.com?lang=ja" />
+  <link rel="alternate" hreflang="zh-cn" href="https://libra.laineus.com?lang=zh" />
+  <link rel="alternate" hreflang="es" href="https://libra.laineus.com?lang=es" />
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-838WPJJQK1"></script>
   <script>
@@ -242,6 +246,7 @@
     })
 
     // Language
+    const queries = Object.fromEntries(location.search.replace(/^\?/, '').split('&').filter(Boolean).map(v => v.split('=')))
     const setLang = lang => {
       document.body.classList.remove('ja', 'en', 'cn', 'es')
       document.body.classList.add(lang)
@@ -253,6 +258,7 @@
       })
     })
     const getDefaultLang = () => {
+      if (['ja', 'en', 'zh', 'es'].includes(queries.lang)) return queries.lang
       const nav = window.navigator
       if (nav.languages) return nav.languages[0]
       return nav.language || nav.userLanguage || nav.browserLanguage
