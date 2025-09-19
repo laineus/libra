@@ -7,7 +7,6 @@ The Dream Libra had is an Adventure Game made with [Phavuer](https://github.com/
 
 - [WebSite](https://libra.laineus.com/)
 - [Steam](https://store.steampowered.com/app/1625720/)
-- [GooglePlay](https://play.google.com/store/apps/details?id=com.laineus.libra)
 
 # Build
 
