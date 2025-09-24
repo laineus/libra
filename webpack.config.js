@@ -57,7 +57,9 @@ module.exports = (_env, argv) => {
       extensions: ['.js', '.vue']
     },
     devServer: {
-      contentBase: path.resolve(__dirname, 'public')
+      static: {
+        directory: path.resolve(__dirname, 'public')
+      }
     },
     plugins: [
       new ESLintPlugin({ extensions: ['js', 'vue'] }),
