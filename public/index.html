@@ -172,6 +172,33 @@
     </ul>
   </article>
 
+  <article class="article reviews">
+    <div class="article-content">
+      <h2 class="articleHeading" data-animation="letterAnim">Reviews</h2>
+      <!-- <div class="reviewSummary transparent" data-animation="transparent">
+        <div class="reviewSummary-rating ja">非常に好評</div>
+        <div class="reviewSummary-rating en">Overwhelmingly Positive</div>
+        <div class="reviewSummary-rating cn">好评如潮</div>
+        <div class="reviewSummary-rating es">Extremadamente positivas</div>
+        <div class="reviewSummary-count">
+          <a href="https://steamcommunity.com/app/1625720/positivereviews/?browsefilter=toprated&filterLanguage=all" target="_blank">
+            <span class="ja">(181件のレビュー)</span>
+            <span class="en">(181 reviews)</span>
+            <span class="cn">(181条评论)</span>
+            <span class="es">(181 reseñas)</span>
+          </a>
+        </div>
+      </div> -->
+      <ul class="reviewList" id="reviewList"></ul>
+      <p class="reviewSource">
+        <span class="ja">引用元: Steam 翻訳: ChatGPT</span>
+        <span class="en">Source: Steam Translation: ChatGPT</span>
+        <span class="cn">来源: Steam 翻译: ChatGPT</span>
+        <span class="es">Fuente: Steam Traducción: ChatGPT</span>
+      </p>
+    </div>
+  </article>
+
   <article class="article gallery">
     <div class="article-content">
       <h2 class="articleHeading" data-animation="letterAnim">Gallery</h2>
@@ -243,6 +270,49 @@
       })
     })
 
+    // Reviews
+    fetch('./reviews.json')
+      .then(response => response.json())
+      .then(reviews => {
+        const reviewList = document.getElementById('reviewList')
+        const langMap = { ja: 'ja', en: 'en', zh: 'cn', es: 'es' }
+        const langLabels = {
+          ja: { ja: '日本語', en: 'English', cn: '中文', es: 'Español' },
+          en: { ja: 'Japanese', en: 'English', cn: 'Chinese', es: 'Spanish' },
+          cn: { ja: '日语', en: '英语', cn: '中文', es: '西班牙语' },
+          es: { ja: 'Japonés', en: 'Inglés', cn: 'Chino', es: 'Español' }
+        }
+        reviews.slice(0, 9).forEach(review => {
+          const li = document.createElement('li')
+          li.className = 'reviewList-item transparent'
+          li.setAttribute('data-animation', 'transparent')
+          const origLang = langMap[review.lang] || review.lang
+          Object.keys(langLabels).forEach(displayLang => {
+            const wrapper = document.createElement('div')
+            wrapper.className = `reviewList-item-wrapper ${displayLang}`
+            const text = document.createElement('p')
+            text.className = 'reviewList-item-text'
+            text.textContent = review[displayLang] || review.en
+            const meta = document.createElement('div')
+            meta.className = 'reviewList-item-meta'
+            const langLabel = document.createElement('a')
+            langLabel.href = review.url
+            langLabel.target = '_blank'
+            langLabel.textContent = displayLang === 'ja' ? '元の言語: ' : 
+                                   displayLang === 'en' ? 'Original language: ' :
+                                   displayLang === 'cn' ? '原始语言: ' :
+                                   'Idioma original: '
+            langLabel.textContent += langLabels[displayLang][origLang]
+            meta.appendChild(langLabel)
+            wrapper.appendChild(text)
+            wrapper.appendChild(meta)
+            li.appendChild(wrapper)
+          })
+          reviewList.appendChild(li)
+        })
+        animationEvent()
+      })
+
     // Language
     const queries = Object.fromEntries(location.search.replace(/^\?/, '').split('&').filter(Boolean).map(v => v.split('=')))
     const setLang = lang => {
@@ -277,8 +347,8 @@
       const y = elm.offsetTop - window.scrollY
       return (y + elm.clientHeight) > 0 && window.innerHeight > y
     }
-    const animElements = document.querySelectorAll('[data-animation]')
     const animationEvent = () => {
+      const animElements = document.querySelectorAll('[data-animation]')
       animElements.forEach(elm => elm.classList.toggle(elm.dataset.animation, !inScreen(elm)))
     }
     document.addEventListener('scroll', animationEvent)

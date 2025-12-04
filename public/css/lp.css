@@ -237,7 +237,7 @@ body.es .changeLang[data-lang="es"] {
 }
 
 .gallery {
-  background-color: #210;
+  background-color: #403224;
 }
 .trailer {
   display: block;
@@ -254,6 +254,7 @@ body.es .changeLang[data-lang="es"] {
   margin-bottom: 4%;
   border-radius: 20px;
   overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 .screenShotList-item-wrapper.selected {
   position: fixed;
@@ -299,6 +300,81 @@ body.es .changeLang[data-lang="es"] {
 }
 .links a:hover {
   text-decoration: none;
+}
+
+/* Reviews */
+.reviews {
+  background: #6f5f4f;
+}
+.reviews h2 {
+  color: #210;
+}
+.reviewSummary {
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 40px;
+  font-size: 1.8rem;
+}
+.reviewSummary-rating {
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: #ff9830;
+  margin-bottom: 10px;
+}
+.reviewSummary-count a {
+  color: #ff9830;
+  text-decoration: none;
+}
+.reviewSummary-count a:hover {
+  text-decoration: underline;
+}
+
+.reviewList {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+.reviewList-item {
+  background: #403224;
+  color: var(--soy);
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  white-space: pre-wrap;
+}
+.reviewList-item-wrapper {
+  padding: 25px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.reviewList-item-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.9;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+.reviewList-item-meta {
+  text-align: right;
+  font-size: 1.2rem;
+  padding-top: 15px;
+  border-top: 1px solid #6f5f4f;
+}
+.reviewList-item-meta a {
+  text-decoration: none;
+}
+.reviewList-item-meta a:hover {
+  text-decoration: underline;
+}
+
+.reviewSource {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #403224;
+  margin-top: 20px;
 }
 
 .footer {
@@ -385,6 +461,15 @@ body.es .changeLang[data-lang="es"] {
   }
   .featureItem-img {
     width: 100%;
+  }
+  .reviewList {
+    grid-template-columns: 1fr;
+  }
+  .reviewList-item:nth-child(n+7) {
+    display: none;
+  }
+  .reviewList-item-text {
+    font-size: 1.8rem;
   }
 }
 
