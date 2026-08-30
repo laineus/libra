@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { useScene } from 'phavuer'
+import { onPreUpdate, useScene } from 'phavuer'
 import { ref, inject, onBeforeUnmount } from 'vue'
 import VirtualStick from './VirtualStick.vue'
 import InputController from '@/class/InputController'
@@ -11,7 +11,7 @@ import InputController from '@/class/InputController'
 export default {
   components: { VirtualStick },
   props: { velocity: { default: 25 } },
-  emits: ['confirm', 'cancel', 'grabstart', 'grabend', 'bag', 'map', 'system', 'menuleft', 'menuright'],
+  emits: ['confirm', 'cancel', 'navigate', 'grabstart', 'grabend', 'bag', 'map', 'system', 'menuleft', 'menuright'],
   setup (props, context) {
     const scene = useScene()
     const virtualStick = ref(null)
@@ -27,7 +27,9 @@ export default {
     input.on('systemstart', () => context.emit('system'))
     input.on('menuLeftstart', () => context.emit('menuleft'))
     input.on('menuRightstart', () => context.emit('menuright'))
+    input.on('navigate', direction => context.emit('navigate', direction))
     input.on('gamepadchange', connected => gamepadConnected.value = connected)
+    onPreUpdate((time, delta) => input.update(delta))
     onBeforeUnmount(() => input.destroy())
     scene.input.mouse.disableContextMenu()
     const getVelocity = () => {

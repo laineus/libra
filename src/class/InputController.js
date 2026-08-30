@@ -1,4 +1,6 @@
 const GAMEPAD_DEAD_ZONE = 0.25
+const NAVIGATION_REPEAT_DELAY = 400
+const NAVIGATION_REPEAT_INTERVAL = 100
 
 const GAMEPAD_BUTTONS = {
   confirm: 0,
@@ -22,6 +24,8 @@ export default class InputController {
       { key: input.keyboard.addKey('D'), x: 1, y: 0 }
     ]
     this.listeners = new Map()
+    this.navigationDirection = null
+    this.navigationRepeatRemaining = NAVIGATION_REPEAT_DELAY
     this.onGamepadButtonDown = (pad, button) => {
       const action = Object.keys(GAMEPAD_BUTTONS).find(action => GAMEPAD_BUTTONS[action] === button.index)
       if (action) this.emit(`${action}start`)
@@ -79,6 +83,48 @@ export default class InputController {
       if (Math.hypot(x, y) >= GAMEPAD_DEAD_ZONE) return { x, y }
     }
     return { x: 0, y: 0 }
+  }
+
+  update (delta = 0) {
+    const direction = this.getNavigationDirection()
+    const key = direction ? `${direction.x},${direction.y}` : null
+    if (!key) {
+      this.navigationDirection = null
+      this.navigationRepeatRemaining = NAVIGATION_REPEAT_DELAY
+      return
+    }
+    if (key !== this.navigationDirection) {
+      this.emit('navigate', direction)
+      this.navigationDirection = key
+      this.navigationRepeatRemaining = NAVIGATION_REPEAT_DELAY
+      return
+    }
+    this.navigationRepeatRemaining -= delta
+    if (this.navigationRepeatRemaining <= 0) {
+      this.emit('navigate', direction)
+      this.navigationRepeatRemaining += NAVIGATION_REPEAT_INTERVAL
+    }
+    this.navigationDirection = key
+  }
+
+  getNavigationDirection () {
+    if (!this.gamepad) return null
+    for (const pad of this.gamepad.gamepads) {
+      if (!pad?.connected) continue
+      const dpad = {
+        x: Number(pad.right) - Number(pad.left),
+        y: Number(pad.down) - Number(pad.up)
+      }
+      if (dpad.x || dpad.y) return Math.abs(dpad.x) >= Math.abs(dpad.y) ? { x: dpad.x, y: 0 } : { x: 0, y: dpad.y }
+
+      const sticks = [pad.leftStick, pad.rightStick]
+      const stick = sticks.sort((a, b) => Math.hypot(b.x, b.y) - Math.hypot(a.x, a.y))[0]
+      if (Math.hypot(stick.x, stick.y) < GAMEPAD_DEAD_ZONE) continue
+      return Math.abs(stick.x) >= Math.abs(stick.y)
+        ? { x: Math.sign(stick.x), y: 0 }
+        : { x: 0, y: Math.sign(stick.y) }
+    }
+    return null
   }
 
   on (action, listener) {

@@ -70,6 +70,12 @@ export default {
       if (index.value === null) return
       return select((index.value + direction + menu.length) % menu.length)
     }
+    const navigate = direction => selected.value?.ref.value?.navigate?.(direction)
+    const confirm = () => selected.value?.ref.value?.confirm?.()
+    const cancel = () => {
+      if (selected.value?.ref.value?.cancel?.()) return
+      close()
+    }
     const tapButton = (i, pointer) => {
       pointer.isDown = false
       index.value === i ? close() : select(i)
@@ -90,6 +96,7 @@ export default {
       index, selected,
       select, close,
       toggle, shift,
+      navigate, confirm, cancel,
       tapButton, tapCloseArea,
       redecorate
     }

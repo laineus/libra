@@ -2,7 +2,7 @@
   <Scene ref="scene" name="UIScene" :autoStart="true" @update="update">
     <Title @close="titleScreen = false" v-if="titleScreen" />
     <template v-else>
-      <Controller ref="controller" @confirm="confirm" @cancel="closeMenu" @grabstart="grabStart" @grabend="grabEnd" @bag="toggleMenu('bag')" @map="toggleMenu('map')" @system="toggleMenu('system')" @menuleft="shiftMenu(-1)" @menuright="shiftMenu(1)" />
+      <Controller ref="controller" @confirm="confirm" @cancel="cancel" @navigate="navigateMenu" @grabstart="grabStart" @grabend="grabEnd" @bag="toggleMenu('bag')" @map="toggleMenu('map')" @system="toggleMenu('system')" @menuleft="shiftMenu(-1)" @menuright="shiftMenu(1)" />
       <template v-if="mobile && !event.state">
         <Container v-if="nearestGrabbable" :x="(70).byRight" :y="(125).byBottom">
           <Circle :radius="40" :fillColor="0x000000" :alpha="0.5" @pointerdown="p => nearestGrabbable.execGrabEvent(p)" />
@@ -98,18 +98,20 @@ export default {
     const debug = ref(false)
     const confirm = () => {
       if (refs.talk.value?.current) return refs.talk.value.next()
-      if (refs.menu.value?.selected) return
+      if (refs.menu.value?.selected) return refs.menu.value.confirm()
       if (!event.state) nearestCheckable.value?.execTapEvent()
     }
     const toggleMenu = name => {
       if (!event.state) refs.menu.value?.toggle(name)
     }
-    const closeMenu = () => refs.menu.value?.close()
+    const cancel = () => refs.menu.value?.cancel()
+    const navigateMenu = direction => refs.menu.value?.navigate(direction)
     const shiftMenu = direction => refs.menu.value?.shift(direction)
     let grabPointer = null
     const grabStart = () => {
       const target = nearestGrabbable.value
-      if (!target || event.state || refs.menu.value?.selected) return
+      if (refs.menu.value?.selected) return refs.menu.value.confirm()
+      if (!target || event.state) return
       const x = target.object.x - camera.value.scrollX
       const y = target.object.y - camera.value.scrollY
       grabPointer = {
@@ -208,7 +210,7 @@ export default {
       mobile,
       config,
       confirm,
-      toggleMenu, closeMenu, shiftMenu,
+      toggleMenu, cancel, navigateMenu, shiftMenu,
       grabStart, grabEnd,
       update,
       ...refs,
