@@ -2,7 +2,7 @@
   <Scene ref="scene" name="UIScene" :autoStart="true" @update="update">
     <Title @close="titleScreen = false" v-if="titleScreen" />
     <template v-else>
-      <Controller ref="controller" />
+      <Controller ref="controller" @confirm="confirm" />
       <template v-if="mobile && !event.state">
         <Container v-if="nearestGrabbable" :x="(70).byRight" :y="(125).byBottom">
           <Circle :radius="40" :fillColor="0x000000" :alpha="0.5" @pointerdown="p => nearestGrabbable.execGrabEvent(p)" />
@@ -95,6 +95,10 @@ export default {
     const nearestCheckable = computed(() => field.value?.nearestCheckable)
     const nearestGrabbable = computed(() => field.value?.nearestGrabbable)
     const debug = ref(false)
+    const confirm = () => {
+      if (refs.talk.value?.current) return refs.talk.value.next()
+      if (!event.state) nearestCheckable.value?.execTapEvent()
+    }
     onMounted(() => {
       refs.scene.value.input.setTopOnly(false)
       refs.scene.value.input.keyboard.on('keydown-F12', (e) => {
@@ -168,6 +172,7 @@ export default {
       event,
       mobile,
       config,
+      confirm,
       update,
       ...refs,
       debug,
