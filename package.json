@@ -3,11 +3,11 @@
   "version": "3.0.0",
   "author": "Laineus",
   "license": "MIT",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "generate-autotile": "autotile --config autotile.config.js"
   },
   "dependencies": {
     "@sentry/browser": "^10.72.0",
@@ -20,6 +20,7 @@
   "devDependencies": {
     "@rollup/plugin-inject": "^5.0.5",
     "@vitejs/plugin-vue": "^6.0.6",
+    "auto-tile-webpack-plugin": "^0.11.0",
     "phaser-assets-loader": "^1.2.1",
     "vite": "^8.0.10"
   }
