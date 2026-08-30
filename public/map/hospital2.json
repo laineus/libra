@@ -426,6 +426,28 @@
                  "width":0,
                  "x":1088,
                  "y":320
+                },
+                {
+                 "height":352,
+                 "id":66,
+                 "name":"tutorial",
+                 "properties":[
+                        {
+                         "name":"fieldX",
+                         "type":"int",
+                         "value":30
+                        },
+                        {
+                         "name":"fieldY",
+                         "type":"int",
+                         "value":4
+                        }],
+                 "rotation":0,
+                 "type":"Area",
+                 "visible":true,
+                 "width":288,
+                 "x":928,
+                 "y":192
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -434,7 +456,7 @@
          "y":0
         }],
  "nextlayerid":21,
- "nextobjectid":66,
+ "nextobjectid":67,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.5.0",

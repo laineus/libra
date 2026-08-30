@@ -16,6 +16,12 @@ export default {
 
     initHospitalButton(field.getObjectById(63))
 
+    const tutorialArea = field.getObjectById(66)
+    tutorialArea?.setEvent(computed(() => {
+      if (state.tutorial.includes('horror')) return null
+      return async () => uiScene.setTutorial('horror')
+    }))
+
     const doctor = field.getObjectById(3)
     const speakDoctor = talk.getSpeakScripts(new Talker(t('name.doctorPenguin'), doctor?.object))
     doctor?.setTapEvent(computed(() => {

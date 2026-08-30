@@ -337,6 +337,7 @@ export default {
     amili: `- Amili -\n\nAmili will react to the things you bring home and use the furniture you set up.\nLet's redecorate the room where you and Amili live.`,
     map: `- Teleportation -\n\nUse the map icon in the bottom-right to save your current location. You can then teleport back there from elsewhere.\nRemember to save any place you want to revisit.`,
     quest: '- Quest -\n\nThere are inhabitants who need your help in this world.\nYou might receive an apple if you help them.',
+    horror: `- Horror Content -\n\nThis NPC's quest contains horror elements.\nIf you dislike horror or have a heart condition, we recommend ignoring this NPC's request and continuing onward.`,
     kill: `- Murder -\n\nYou've shot the friendly inhabitant.\nThey will not revive if you kill them.`
   },
   events: {

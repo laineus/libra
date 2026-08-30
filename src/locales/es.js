@@ -337,6 +337,7 @@ export default {
     amili: '- Amili -\n\nAmili reaccionará con las cosas que traigas a casa y usará los muebles que coloques.\nRedecora la habitación en la que Amili y tú vivís.',
     map: '- Teletransporte -\n\nPuedes grabar la ubicación actual con el menú del mapa ubicado en la esquina inferior derecha,\ny entonces puedes teleportarte de un lugar a otro.\nNo olvides grabar los lugares que quieres visitar de nuevo.',
     quest: '- Misión -\n\nHay habitantes que necesitan tu ayuda en este mundo.\nPodrías recibir una manzana si les ayudas.',
+    horror: '- Contenido de terror -\n\nLa misión de este NPC contiene elementos de terror.\nSi no te gustan las escenas de terror o tienes problemas cardíacos, recomendamos ignorar su petición y continuar.',
     kill: '- Asesina -\n\nHas disparado a un habitante amistoso.\nEllos no revivirán si les matas.'
   },
   events: {
