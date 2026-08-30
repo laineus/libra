@@ -64,10 +64,12 @@ export default {
     const tAmili = new Talker(t('name.amili'), amili.object)
     const speakAmiliScripts = talk.getSpeakScripts(tAmili)
 
-    sleep(1000).then(() => {
-      const totalCharm = state.status.heart + state.status.body
-      uiScene.setTutorial(totalCharm >= 2 ? 'amili' : 'home')
-    })
+    if (!respawn) {
+      sleep(1000).then(() => {
+        const totalCharm = state.status.heart + state.status.body
+        uiScene.setTutorial(totalCharm >= 2 ? 'amili' : 'home')
+      })
+    }
 
     const consumeTissue = chance => {
       if (!Math.chance(chance)) return false

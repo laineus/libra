@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import * as Phaser from 'phaser'
 import { inject, reactive } from 'vue'
 import { useScene, Image } from 'phavuer'
 const splitFrame = (texture, frame, count) => {
