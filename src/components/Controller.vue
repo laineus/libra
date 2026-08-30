@@ -6,6 +6,8 @@
 import { useScene } from 'phavuer'
 import { ref, inject } from 'vue'
 import VirtualStick from './VirtualStick.vue'
+const GAMEPAD_DEAD_ZONE = 0.25
+
 const wasdController = keyboard => {
   keyboard.addCapture('W,S,A,D')
   const wasd = [
@@ -25,6 +27,27 @@ const wasdController = keyboard => {
   }
 }
 
+const gamepadController = gamepadPlugin => ({
+  get velocity () {
+    if (!gamepadPlugin) return { x: 0, y: 0 }
+
+    for (const pad of gamepadPlugin.gamepads) {
+      if (!pad?.connected) continue
+
+      const dpadX = Number(pad.right) - Number(pad.left)
+      const dpadY = Number(pad.down) - Number(pad.up)
+      if (dpadX || dpadY) return { x: dpadX, y: dpadY }
+
+      const { x, y } = pad.leftStick
+      const length = Math.hypot(x, y)
+      if (length >= GAMEPAD_DEAD_ZONE) {
+        return { x: x / length, y: y / length }
+      }
+    }
+    return { x: 0, y: 0 }
+  }
+})
+
 export default {
   components: { VirtualStick },
   props: { velocity: { default: 25 } },
@@ -33,15 +56,23 @@ export default {
     const virtualStick = ref(null)
     const mobile = inject('mobile')
     const wasd = wasdController(scene.input.keyboard)
+    const gamepad = gamepadController(scene.input.gamepad)
     scene.input.mouse.disableContextMenu()
+    const getVelocity = () => {
+      const gamepadVelocity = gamepad.velocity
+      if (gamepadVelocity.x || gamepadVelocity.y) return gamepadVelocity
+      return mobile
+        ? { x: virtualStick.value?.velocityX ?? 0, y: virtualStick.value?.velocityY ?? 0 }
+        : wasd.velocity
+    }
     return {
       mobile,
       virtualStick,
       get velocityX () {
-        return (mobile ? virtualStick.value.velocityX : wasd.velocity.x) * props.velocity
+        return getVelocity().x * props.velocity
       },
       get velocityY () {
-        return (mobile ? virtualStick.value.velocityY : wasd.velocity.y) * props.velocity
+        return getVelocity().y * props.velocity
       },
       get activePointer () {
         return scene.input.manager.pointers.find(v => v.isDown && v.button === 0)
