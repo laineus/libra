@@ -60,6 +60,16 @@ export default {
       index.value = null
       audio.se('cancel')
     }
+    const toggle = name => {
+      const target = menu.findIndex(v => v.key === name)
+      if (target < 0) return
+      if (index.value === target) return close()
+      return select(target)
+    }
+    const shift = direction => {
+      if (index.value === null) return
+      return select((index.value + direction + menu.length) % menu.length)
+    }
     const tapButton = (i, pointer) => {
       pointer.isDown = false
       index.value === i ? close() : select(i)
@@ -79,6 +89,7 @@ export default {
       menu,
       index, selected,
       select, close,
+      toggle, shift,
       tapButton, tapCloseArea,
       redecorate
     }

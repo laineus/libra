@@ -2,7 +2,7 @@
   <Scene ref="scene" name="UIScene" :autoStart="true" @update="update">
     <Title @close="titleScreen = false" v-if="titleScreen" />
     <template v-else>
-      <Controller ref="controller" @confirm="confirm" />
+      <Controller ref="controller" @confirm="confirm" @cancel="closeMenu" @grabstart="grabStart" @grabend="grabEnd" @bag="toggleMenu('bag')" @map="toggleMenu('map')" @system="toggleMenu('system')" @menuleft="shiftMenu(-1)" @menuright="shiftMenu(1)" />
       <template v-if="mobile && !event.state">
         <Container v-if="nearestGrabbable" :x="(70).byRight" :y="(125).byBottom">
           <Circle :radius="40" :fillColor="0x000000" :alpha="0.5" @pointerdown="p => nearestGrabbable.execGrabEvent(p)" />
@@ -60,6 +60,7 @@ import Credit from '@/components/Credit.vue'
 import Opening from '@/components/Opening.vue'
 import Debug from '@/components/Debug.vue'
 import config from '@/data/config'
+const GAMEPAD_GRAB_SPEED = 300
 const downloadBySource = (src, name) => {
   const link = document.createElement('a')
   link.href = src
@@ -97,7 +98,35 @@ export default {
     const debug = ref(false)
     const confirm = () => {
       if (refs.talk.value?.current) return refs.talk.value.next()
+      if (refs.menu.value?.selected) return
       if (!event.state) nearestCheckable.value?.execTapEvent()
+    }
+    const toggleMenu = name => {
+      if (!event.state) refs.menu.value?.toggle(name)
+    }
+    const closeMenu = () => refs.menu.value?.close()
+    const shiftMenu = direction => refs.menu.value?.shift(direction)
+    let grabPointer = null
+    const grabStart = () => {
+      const target = nearestGrabbable.value
+      if (!target || event.state || refs.menu.value?.selected) return
+      const x = target.object.x - camera.value.scrollX
+      const y = target.object.y - camera.value.scrollY
+      grabPointer = {
+        active: true,
+        isDown: true,
+        button: 0,
+        x,
+        y,
+        worldX: target.object.x,
+        worldY: target.object.y
+      }
+      target.execGrabEvent(grabPointer)
+    }
+    const grabEnd = () => {
+      if (!grabPointer) return
+      grabPointer.isDown = false
+      grabPointer = null
     }
     onMounted(() => {
       refs.scene.value.input.setTopOnly(false)
@@ -158,8 +187,14 @@ export default {
         }
       })
     }
-    const update = (scene, time) => {
+    const update = (scene, time, delta) => {
       frames.total++
+      if (!grabPointer) return
+      const controller = refs.controller.value
+      grabPointer.x = Math.fix(grabPointer.x + controller.rightStickX * GAMEPAD_GRAB_SPEED * delta / 1000, 0, config.WIDTH)
+      grabPointer.y = Math.fix(grabPointer.y + controller.rightStickY * GAMEPAD_GRAB_SPEED * delta / 1000, 0, config.HEIGHT)
+      grabPointer.worldX = grabPointer.x + camera.value.scrollX
+      grabPointer.worldY = grabPointer.y + camera.value.scrollY
     }
     const mapName = ref(null)
     const setMapName = name => {
@@ -173,6 +208,8 @@ export default {
       mobile,
       config,
       confirm,
+      toggleMenu, closeMenu, shiftMenu,
+      grabStart, grabEnd,
       update,
       ...refs,
       debug,
