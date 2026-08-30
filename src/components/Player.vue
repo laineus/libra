@@ -58,8 +58,8 @@ export default {
       const diffY = scene.input.manager.pointers[0]?.y + camera.value?.scrollY - (object.value?.y + gunDiffY)
       return Math.atan2(diffY, diffX)
     }
-    onPreUpdate(() => {
-      data.frame = playFrameAnim()
+    onPreUpdate((time, delta) => {
+      data.frame = playFrameAnim(delta)
       if (!event.state && !menuOpened.value) {
         if (controller.value.velocityX || controller.value.velocityY) {
           const x = Math.fix(object.value.x + controller.value.velocityX, 0, field.value.field.width)
@@ -79,7 +79,7 @@ export default {
         }
       }
       if (!gun.mode.value) {
-        following.walkToTargetPosition(event.state ? 100 : data.speed)
+        following.walkToTargetPosition(event.state ? 100 : data.speed, delta)
       }
       state.x = Number(object.value.x)
       state.y = Number(object.value.y)

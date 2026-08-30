@@ -1,9 +1,10 @@
 import { ref, unref } from 'vue'
+const BASE_FRAME_DURATION = 1000 / 60
 export default (field, chara, range) => {
   const radius = Math.round(range / 2)
   const delay = ref(0)
   const setNextDelay = () => {
-    delay.value = Math.randomInt(100, 200)
+    delay.value = Math.randomInt(100, 200) * BASE_FRAME_DURATION
   }
   setNextDelay()
   const getRandomPosition = (tryCount = 10) => {
@@ -13,8 +14,8 @@ export default (field, chara, range) => {
     const collides = field.isCollides(x.toTile, y.toTile)
     return collides ? getRandomPosition(tryCount - 1) : { x, y }
   }
-  const play = callback => {
-    delay.value--
+  const play = (delta, callback) => {
+    delay.value -= delta
     if (delay.value > 0) return
     setNextDelay()
     const pos = getRandomPosition()

@@ -56,14 +56,14 @@ export default (object, initR, numOfDirection, standingAnim = false) => {
     r: initR,
     directionKey: velocityToDirectionKey(initR)
   })
-  const play = () => {
+  const play = delta => {
     const walking = Math.hypot(unref(object).body.velocity.x, unref(object).body.velocity.y) > 1
     if (walking) {
       state.r = Math.atan2(unref(object).body.velocity.y, unref(object).body.velocity.x)
       state.directionKey = velocityToDirectionKey(state.r)
-      return frameAnim.play(state.directionKey)
+      return frameAnim.play(delta, state.directionKey)
     } else if (standingAnim) {
-      return frameAnim.play(state.directionKey)
+      return frameAnim.play(delta, state.directionKey)
     }
     return baseFrames[state.directionKey]
   }

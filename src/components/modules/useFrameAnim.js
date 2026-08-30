@@ -1,25 +1,26 @@
 import { ref } from 'vue'
 const DEFAULT = Symbol('default')
+const BASE_FRAME_DURATION = 1000 / 60
 export default settings => {
   if (!Array.isArray(settings)) settings = [settings]
   const patterns = {}
-  let tick = 0
+  let elapsed = 0
   let lastPlayedKey = null
   const frame = ref(settings[0].frames[0])
   settings.forEach(({ key = DEFAULT, frames, duration }) => {
-    patterns[key] = tick => {
-      const i = Math.floor(tick / duration) % frames.length
+    patterns[key] = elapsed => {
+      const i = Math.floor(elapsed / (duration * BASE_FRAME_DURATION)) % frames.length
       return frames[i]
     }
   })
-  const play = (key = DEFAULT) => {
+  const play = (delta, key = DEFAULT) => {
     if (key !== lastPlayedKey) {
-      tick = 0
+      elapsed = 0
       lastPlayedKey = key
     } else {
-      tick++
+      elapsed += delta
     }
-    frame.value = patterns[key](tick)
+    frame.value = patterns[key](elapsed)
     return frame.value
   }
   return {

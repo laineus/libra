@@ -13,6 +13,7 @@ import useFollowing from './modules/useFollowing'
 import useFrameAnimChara from './modules/useFrameAnimChara'
 import items from '@/data/items'
 import { TEMPER } from '@/data/constants'
+const ATTACK_DELAY = 100 * (1000 / 60)
 export default {
   components: { Substance, Body, Image },
   props: {
@@ -55,17 +56,17 @@ export default {
       props.temper ? setTemper(TEMPER[props.temper]) : setTemperMode('normal')
     })
     const attackDelay = ref(0)
-    onPreUpdate(() => {
+    onPreUpdate((time, delta) => {
       if (!unref(substance.value.visible)) return
-      frame.value = playFrameAnim()
-      following.walkToTargetPosition(speed.value)
+      frame.value = playFrameAnim(delta)
+      following.walkToTargetPosition(speed.value, delta)
       // Attack
       if (!event.state && attackTarget.value?.hp > 0) {
         const diffX = attackTarget.value.object.x - object.value.x
         const diffY = attackTarget.value.object.y - object.value.y
         const distance = Math.hypot(diffX, diffY)
-        distance < 70 ? attackDelay.value++ : attackDelay.value = 0
-        if (attackDelay.value > 100) {
+        distance < 70 ? attackDelay.value += delta : attackDelay.value = 0
+        if (attackDelay.value >= ATTACK_DELAY) {
           attackDelay.value = 0
           const angle = Math.atan2(diffY, diffX)
           substance.value?.attackAnim(angle)

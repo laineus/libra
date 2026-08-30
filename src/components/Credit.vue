@@ -104,10 +104,10 @@ export default {
       context.emit('completed')
     })
     const { play: playAnim, frame: animFrame } = useFrameAnim(props.endA ? { frames: (8).toArray(), duration: 27 } : { frames: (16).toArray(), duration: 13 })
-    onPreUpdate(() => {
+    onPreUpdate((time, delta) => {
       if (!audio.currentBgm) return
       data.seek = audio.currentBgm.seek
-      playAnim()
+      playAnim(delta)
     })
     const title = t('happyend.title')
     const getLogoName = () => {
