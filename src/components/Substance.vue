@@ -156,7 +156,7 @@ export default {
     const checkable = computed(() => interactive.value && tapEvent.event.value)
     const isNearest = computed(() => field.value?.nearestGrabbable?.substance === self.proxy)
     const grabbable = computed(() => capturable.value && (inHome.value ? interactiveAllowed.value : interactive.value))
-    const hideGrabbable = computed(() => (mobile || controller.value?.gamepadConnected) ? !isNearest.value : inHome.value)
+    const hideGrabbable = computed(() => (mobile || controller.value?.gamepadMode) ? !isNearest.value : inHome.value)
     onPreUpdate(() => {
       if (frames.game % 6 !== 0) return
       depth.value = Math.round(object.value.y + depthAdjust.value)

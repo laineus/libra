@@ -27,6 +27,7 @@ export default class InputController {
     this.navigationDirection = null
     this.navigationRepeatRemaining = NAVIGATION_REPEAT_DELAY
     this.onGamepadButtonDown = (pad, button) => {
+      this.setInputMode('gamepad')
       const action = Object.keys(GAMEPAD_BUTTONS).find(action => GAMEPAD_BUTTONS[action] === button.index)
       if (action) this.emit(`${action}start`)
     }
@@ -93,6 +94,7 @@ export default class InputController {
       this.navigationRepeatRemaining = NAVIGATION_REPEAT_DELAY
       return
     }
+    this.setInputMode('gamepad')
     if (key !== this.navigationDirection) {
       this.emit('navigate', direction)
       this.navigationDirection = key
@@ -105,6 +107,12 @@ export default class InputController {
       this.navigationRepeatRemaining += NAVIGATION_REPEAT_INTERVAL
     }
     this.navigationDirection = key
+  }
+
+  setInputMode (mode) {
+    if (this.inputMode === mode) return
+    this.inputMode = mode
+    this.emit('inputmode', mode)
   }
 
   getNavigationDirection () {

@@ -18,6 +18,7 @@ export default {
     const mobile = inject('mobile')
     const input = new InputController(scene.input)
     const gamepadConnected = ref(input.gamepadConnected)
+    const gamepadMode = ref(false)
     input.on('confirmstart', () => context.emit('confirm'))
     input.on('cancelstart', () => context.emit('cancel'))
     input.on('grabstart', () => context.emit('grabstart'))
@@ -29,8 +30,19 @@ export default {
     input.on('menuRightstart', () => context.emit('menuright'))
     input.on('navigate', direction => context.emit('navigate', direction))
     input.on('gamepadchange', connected => gamepadConnected.value = connected)
+    input.on('inputmode', mode => gamepadMode.value = mode === 'gamepad')
+    const onPointerMove = pointer => {
+      if (!pointer.wasTouch) {
+        input.setInputMode('mouse')
+        gamepadMode.value = false
+      }
+    }
+    scene.input.on('pointermove', onPointerMove)
     onPreUpdate((time, delta) => input.update(delta))
-    onBeforeUnmount(() => input.destroy())
+    onBeforeUnmount(() => {
+      scene.input.off('pointermove', onPointerMove)
+      input.destroy()
+    })
     scene.input.mouse.disableContextMenu()
     const getVelocity = () => {
       const inputVelocity = input.velocity
@@ -43,6 +55,7 @@ export default {
       mobile,
       virtualStick,
       gamepadConnected,
+      gamepadMode,
       get velocityX () {
         return getVelocity().x * props.velocity
       },
