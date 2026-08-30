@@ -137,6 +137,17 @@
                  "width":0,
                  "x":992,
                  "y":520
+                },
+                {
+                 "height":128,
+                 "id":13,
+                 "name":"tutorial",
+                 "rotation":0,
+                 "type":"Area",
+                 "visible":true,
+                 "width":224,
+                 "x":768,
+                 "y":96
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -252,7 +263,7 @@
          "y":0
         }],
  "nextlayerid":15,
- "nextobjectid":13,
+ "nextobjectid":14,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.5.0",

@@ -14,6 +14,12 @@ export default {
       field.getObjectById(3).setEvent(async () => uiScene.log.push(t('events.block.common')))
     }
 
+    const tutorialArea = field.getObjectById(13)
+    tutorialArea?.setEvent(computed(() => {
+      if (state.events.main !== MAIN_STEPS.BRAIN || state.tutorial.includes('storyBranch')) return null
+      return async () => uiScene.setTutorial('storyBranch')
+    }))
+
     const area = field.getObjectById(4)
     const kajitsu = field.getObjectById(5)
     const speakLibra = talk.getSpeakScripts(new Talker(t('name.libra'), libra.object))
