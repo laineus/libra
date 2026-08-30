@@ -133,7 +133,7 @@ export default {
     const nearestGrabbable = ref(null)
     const update = (time) => {
       if (frames.game % 6 === 3) {
-        const refs = objects.map(v => v.ref.value)
+        const refs = objects.map(v => Array.isArray(v.ref.value) ? v.ref.value[0] : v.ref.value)
         nearestCheckable.value = refs.filter(v => v?.checkable).findMin(v => v.distanceToPlayer)
         nearestGrabbable.value = refs.filter(v => v?.grabbable).findMin(v => v.distanceToPlayer)
       }
