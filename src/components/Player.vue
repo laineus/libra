@@ -9,7 +9,7 @@
 <script>
 import { computed, inject, onBeforeUnmount, onMounted, reactive, ref, toRefs } from 'vue'
 import { useScene, onPreUpdate, Body, Image, Line } from 'phavuer'
-import Substance from './Substance'
+import Substance from './Substance.vue'
 import useFollowing from './modules/useFollowing'
 import useFrameAnimChara from './modules/useFrameAnimChara'
 import useGun from './modules/useGun'

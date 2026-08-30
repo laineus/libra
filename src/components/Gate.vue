@@ -4,7 +4,7 @@
 
 <script>
 import { inject, ref, onMounted, computed, unref } from 'vue'
-import Area from './Area'
+import Area from './Area.vue'
 export default {
   components: { Area },
   props: ['to'],

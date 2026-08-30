@@ -1,3 +1,4 @@
+import * as Phaser from 'phaser'
 const pathToName = path => path.split('/').slice(-1)[0].split('.')[0]
 const mapProperties = (base, properties) => {
   if (properties && Array.isArray(properties)) {
@@ -15,7 +16,11 @@ const mapProperties = (base, properties) => {
 // }
 const getTilesets = tilemap => {
   return tilemap.tilesets.map(tileset => {
-    return tilemap.addTilesetImage(tileset.name, `tileset/${pathToName(tileset.name)}`, 32, 32, 1, 2)
+    if (tileset.name.includes('/images/')) {
+      return tilemap.addTilesetImage(tileset.name, `tileset/${pathToName(tileset.name)}`)
+    } else {
+      return tilemap.addTilesetImage(tileset.name, `tileset/${pathToName(tileset.name)}`, 32, 32)
+    }
   })
 }
 const getLayers = tilemap => {

@@ -44,21 +44,21 @@
 
 <script>
 import { computed, inject, onMounted, reactive, ref, shallowReactive } from 'vue'
-import { refScene, Scene, Circle, Image, Container } from 'phavuer'
+import { refPhaserInstance, Scene, Circle, Image, Container } from 'phavuer'
 import dayjs from 'dayjs'
 import adjustFontSize from '@/util/adjustFontSize'
-import Title from './Title'
-import Controller from './Controller'
-import Talk from './Talk'
-import Selector from './Selector'
-import Menu from './Menu'
-import Log from './Log'
-import Text from './Text'
-import Transitions from './Transitions'
-import Tutorial from '@/components/Tutorial'
-import Credit from '@/components/Credit'
-import Opening from '@/components/Opening'
-import Debug from '@/components/Debug'
+import Title from './Title.vue'
+import Controller from './Controller.vue'
+import Talk from './Talk.vue'
+import Selector from './Selector.vue'
+import Menu from './Menu.vue'
+import Log from './Log.vue'
+import Text from './Text.vue'
+import Transitions from './Transitions.vue'
+import Tutorial from '@/components/Tutorial.vue'
+import Credit from '@/components/Credit.vue'
+import Opening from '@/components/Opening.vue'
+import Debug from '@/components/Debug.vue'
 import config from '@/data/config'
 const downloadBySource = (src, name) => {
   const link = document.createElement('a')
@@ -79,7 +79,7 @@ export default {
     const field = inject('field')
     const event = inject('event')
     const refs = {
-      scene: refScene(null),
+      scene: refPhaserInstance(null),
       controller: ref(null),
       talk: ref(null),
       log: ref(null),

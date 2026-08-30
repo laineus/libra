@@ -4,7 +4,7 @@
 
 <script>
 import { inject, onMounted, computed } from 'vue'
-import { refObj, useScene, Zone } from 'phavuer'
+import { refPhaserInstance, useScene, Zone } from 'phavuer'
 import useEvent from './modules/useEvent'
 const FRAMES_FOR_NEW_ENTER = 10
 export default {
@@ -14,7 +14,7 @@ export default {
     const frames = inject('frames')
     const event = inject('event')
     const player = inject('player')
-    const object = refObj(null)
+    const object = refPhaserInstance(null)
     const areaEvent = useEvent()
     let lastEnteredFrame = frames.game
     const active = computed(() => areaEvent.event.value && !event.state)

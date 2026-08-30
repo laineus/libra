@@ -1,23 +1,14 @@
-<template>
-  <div>
-    <BootScene ref="bootScene" @create="loaded = true" v-if="!loaded" />
-    <template v-else>
-      <GameScene ref="gameScene" />
-      <UIScene ref="uiScene" />
-    </template>
-  </div>
-</template>
-
 <script>
-import BootScene from '@/components/BootScene'
-import GameScene from '@/components/GameScene'
-import UIScene from '@/components/UIScene'
+import { provide, ref, computed, reactive } from 'vue'
+import { useGame } from 'phavuer'
+import BootScene from '@/components/BootScene.vue'
+import GameScene from '@/components/GameScene.vue'
+import UIScene from '@/components/UIScene.vue'
 import AudioController from '@/class/AudioController'
 import SaveDataManager from '@/class/SaveDataManager'
 import AchieveManager from '@/class/AchieveManager'
 import setting from '@/data/setting'
-import { provide, ref, computed, reactive } from 'vue'
-import { useGame } from 'phavuer'
+
 export default {
   components: { BootScene, GameScene, UIScene },
   setup () {
@@ -88,3 +79,11 @@ export default {
   }
 }
 </script>
+
+<template>
+  <BootScene ref="bootScene" @create="loaded = true" v-if="!loaded" />
+  <template v-else>
+    <GameScene ref="gameScene" />
+    <UIScene ref="uiScene" />
+  </template>
+</template>

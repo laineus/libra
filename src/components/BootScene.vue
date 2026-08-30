@@ -13,7 +13,7 @@ import { ref } from 'vue'
 import { Scene, Rectangle, Container } from 'phavuer'
 import assets from '@/assets.json'
 import config from '@/data/config'
-import Text from '@/components/Text'
+import Text from '@/components/Text.vue'
 assets.audio.filter(v => Array.isArray(v[1])).forEach(v => v[1].reverse()) // [m4a, ogg] -> [ogg, m4a]
 if (window.ASSET_PATH) assets.tilemapTiledJSONExternal.forEach(v => v.push('/')) // bugfix
 export default {
@@ -24,10 +24,6 @@ export default {
       scene.load.on('progress', function (value) {
         // console.log(value)
         progress.value = Math.max(value, progress.value)
-      })
-      scene.load.on('complete', function () {
-        Phaser.BlendModes.OVERLAY = scene.game.renderer.addBlendMode([WebGLRenderingContext.SRC_ALPHA, WebGLRenderingContext.ONE], WebGLRenderingContext.FUNC_ADD)
-        // console.log('complete')
       })
       if (window.ASSET_HOST) scene.load.setBaseURL(window.ASSET_HOST)
       if (window.ASSET_PATH) scene.load.setPath(window.ASSET_PATH)

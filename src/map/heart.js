@@ -1,3 +1,4 @@
+import * as Phaser from 'phaser'
 import { inject } from 'vue'
 import Talker from '@/util/Talker'
 import { MAIN_STEPS } from '@/data/eventSteps'

@@ -2,17 +2,17 @@
   <Container :x="15" :y="70">
     <Container v-for="(v, i) in list" :key="v.id" :y="i * 27">
       <Rectangle :originX="0" :originY="0.5" :width="(v.refText.value?.width ?? 0) + 14" :height="22" :fillColor="config.COLORS.black" :alpha="0.5" />
-      <Text :ref="v.refText" :originX="0" :originY="0.5" :text="v.text" :x="7" :size="adjustFontSize(12)" color="white" />
+      <Text :ref="el => v.refText.value = el?.phaserInstance" :originX="0" :originY="0.5" :text="v.text" :x="7" :size="adjustFontSize(12)" color="white" />
     </Container>
   </Container>
 </template>
 
 <script>
-import { onBeforeUnmount, shallowReactive } from 'vue'
-import { refObj, Container, Rectangle } from 'phavuer'
+import { onBeforeUnmount, ref, shallowReactive } from 'vue'
+import { Container, Rectangle } from 'phavuer'
 import adjustFontSize from '@/util/adjustFontSize'
 import config from '@/data/config'
-import Text from '@/components/Text'
+import Text from '@/components/Text.vue'
 export default {
   components: { Container, Rectangle, Text },
   setup () {
@@ -21,7 +21,7 @@ export default {
     const push = (...textList) => {
       textList.forEach(text => {
         list.splice(10)
-        list.push({ id: lastId, text, refText: refObj(null), time: 100 })
+        list.push({ id: lastId, text, refText: ref(null), time: 100 })
         lastId++
       })
     }

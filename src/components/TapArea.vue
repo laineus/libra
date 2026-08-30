@@ -6,7 +6,7 @@
 
 <script>
 import { onMounted } from 'vue'
-import { useScene, refObj, Container, Image, onPreUpdate } from 'phavuer'
+import { useScene, refPhaserInstance, Container, Image, onPreUpdate } from 'phavuer'
 import tappedNearest from '@/components/modules/tappedNearest'
 export default {
   components: { Container, Image },
@@ -17,7 +17,7 @@ export default {
   emits: ['tap'],
   setup (props, context) {
     const scene = useScene()
-    const tapArea = refObj(null)
+    const tapArea = refPhaserInstance(null)
     const onTap = pointer => {
       if (pointer.button !== 0) return
       if (!tappedNearest(scene.input._temp, pointer, tapArea.value)) return

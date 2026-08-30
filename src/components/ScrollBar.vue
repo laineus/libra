@@ -1,16 +1,16 @@
 <template>
   <Container>
-    <RoundRectangle :width="5" :height="height" :radius="3" :fillColor="COLORS.brown" :originX="1" :originY="0" :alpha="0.3" />
-    <RoundRectangle :y="scrollLength * modelValue" :width="5" :height="height * (limit / length)" :radius="3" :fillColor="COLORS.brown" :originX="1" :originY="0" />
+    <Rectangle :width="5" :height="height" :radius="3" :fillColor="COLORS.brown" :originX="1" :originY="0" :alpha="0.3" />
+    <Rectangle :y="scrollLength * modelValue" :width="5" :height="height * (limit / length)" :radius="3" :fillColor="COLORS.brown" :originX="1" :originY="0" />
   </Container>
 </template>
 
 <script>
 import { computed } from 'vue'
-import { Container, RoundRectangle } from 'phavuer'
+import { Container, Rectangle } from 'phavuer'
 import config from '@/data/config'
 export default {
-  components: { Container, RoundRectangle },
+  components: { Container, Rectangle },
   props: {
     modelValue: { default: 0 },
     height: { default: 0 },

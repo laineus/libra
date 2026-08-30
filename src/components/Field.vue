@@ -1,8 +1,8 @@
 <template>
   <div>
-    <TilemapLayer v-for="v in layers" :key="v.index" :ref="v.ref" :depth="config.DEPTH[v.depth] ?? v.index" :tilemap="field.tilemap" :layerIndex="v.index" :tileset="field.tilesets" :collisionByProperty="{ collides: true}" @create="layerCreate" />
+    <TilemapLayer v-for="v in layers" :key="v.index" :ref="el => v.ref.value = el?.phaserInstance" :depth="config.DEPTH[v.depth] ?? v.index" :tilemap="field.tilemap" :layerIndex="v.index" :tileset="field.tilesets" :collisionByProperty="{ collides: true}" @create="layerCreate" />
     <ManualTile v-for="v in manualTiles" :key="v.id" :setting="v" :field="field" @create="layerCreate" />
-    <Image v-for="(v, i) in images" :key="i" :ref="v.ref" :texture="`tileset/${v.key}`" :x="v.x" :y="v.y" :origin="0" @create="obj => obj.setDepth(obj.y + obj.height)" />
+    <Image v-for="(v, i) in images" :key="i" :ref="el => v.ref.value = el?.phaserInstance" :texture="`tileset/${v.key}`" :x="v.x" :y="v.y" :origin="0" @create="obj => obj.setDepth(obj.y + obj.height)" />
     <Player ref="player" :initX="playerX" :initY="playerY" :initR="playerR" @create="charaCreate" @shot="addBullet" />
     <Character v-for="v in charas" :key="v.id" :ref="v.ref" :unique="v.unique && `${name}_${v.id}`" :initX="v.x" :initY="v.y" :initR="v.radian" :name="v.name" :scale="v.scale" :temper="v.temper" @create="charaCreate" @del="delObject(v.id)" />
     <Substance v-for="v in substances" :key="v.id" :ref="v.ref" :unique="v.unique && `${name}_${v.id}`" :initX="v.x" :initY="v.y" :name="v.name" :scale="v.scale" @del="delObject(v.id)" />
@@ -15,16 +15,16 @@
 
 <script>
 import fieldService from './modules/fieldService'
-import Player from './Player'
-import Character from './Character'
-import Substance from './Substance'
-import Area from './Area'
-import Gate from './Gate'
-import Bullet from './Bullet'
-import ManualTile from './ManualTile'
+import Player from './Player.vue'
+import Character from './Character.vue'
+import Substance from './Substance.vue'
+import Area from './Area.vue'
+import Gate from './Gate.vue'
+import Bullet from './Bullet.vue'
+import ManualTile from './ManualTile.vue'
 import Darkness from './modules/Darkness'
 import { inject, onBeforeUnmount, onMounted, ref, computed, shallowReactive, nextTick, watch } from 'vue'
-import { useScene, refObj, Image, TilemapLayer } from 'phavuer'
+import { useScene, Image, TilemapLayer } from 'phavuer'
 import setupCamera from './modules/setupCamera'
 import randomObjectByRandom from './modules/randomObjectByRandom'
 import maps from '@/data/maps'
@@ -46,9 +46,9 @@ export default {
     const player = ref(null)
     const field = fieldService(scene, props.fieldKey)
     const isRoom = field.name === 'home'
-    if (ENV === 'development') console.log(field)
-    const layers = field.layers.map(v => Object.assign({ ref: refObj(null) }, v))
-    const images = field.images.map(v => Object.assign({ ref: refObj(null) }, v))
+    if (process.env.NODE_ENV === 'development') console.log(field)
+    const layers = field.layers.map(v => Object.assign({ ref: ref(null) }, v))
+    const images = field.images.map(v => Object.assign({ ref: ref(null) }, v))
     const objects = shallowReactive(field.objects.map(v => Object.assign({ ref: ref(null) }, v)))
     const manualTiles = computed(() => objects.filter(v => 'gid' in v))
     const charas = computed(() => objects.filter(v => v.type === 'Character'))
@@ -89,7 +89,7 @@ export default {
     const isCollides = (tileX, tileY) => {
       return layers.some(layer => layer.ref.value.getTileAt(tileX, tileY)?.collides)
     }
-    const getObjectById = id => objects.find(v => v.id === id)?.ref.value
+    const getObjectById = id => objects.find(v => v.id === id)?.ref.value[0]
     randomObjectByRandom(objects.filter(v => v.type === 'Random')).forEach(addObject)
     const layerGroup = scene.add.group()
     const objectGroup = scene.add.group()

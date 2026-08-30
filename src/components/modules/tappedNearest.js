@@ -1,3 +1,4 @@
+import * as Phaser from 'phaser'
 export default (list, pointer, obj) => {
   const nearest = list.slice().sort((a, b) => {
     const distanceToA = Phaser.Math.Distance.Between(a.x, a.y, pointer.worldX, pointer.worldY) - (a.tapDistance ?? 0)

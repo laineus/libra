@@ -1,5 +1,5 @@
 <template>
-  <Container ref="object">
+  <Container ref="phaserInstance">
     <Rectangle :origin="0" :x="left" :y="top" :width="width" :height="height" :fillColor="fillColor" @pointerdown="pointerdown" @pointerup="pointerup" /><!-- Stroke -->
     <Rectangle :origin="0" :x="left + outline" :y="top + outline" :width="innerWidth" :height="innerHeight" :fillColor="bgColor" /><!-- BG -->
     <Rectangle :origin="0" :x="left + outline" :y="top + outline" :width="innerWidth" :height="innerHeight" :fillColor="fillColor" :scaleX="value / max" /><!-- Value -->
@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { Container, Rectangle, refObj } from 'phavuer'
+import { Container, Rectangle, refPhaserInstance } from 'phavuer'
 import { computed } from 'vue'
 import config from '@/data/config'
 export default {
@@ -33,7 +33,7 @@ export default {
     const left = computed(() => props.width * -originX.value)
     const top = computed(() => props.height * -originY.value)
     return {
-      object: refObj(null),
+      phaserInstance: refPhaserInstance(null),
       innerWidth, innerHeight,
       left, top,
       pointerdown: (...args) => context.emit('pointerdown', ...args),

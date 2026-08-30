@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { useScene, refObj, Rectangle, onPreUpdate } from 'phavuer'
+import { useScene, refPhaserInstance, Rectangle, onPreUpdate } from 'phavuer'
 import { unref, onMounted, inject } from 'vue'
 import config from '@/data/config'
 export default {
@@ -18,7 +18,7 @@ export default {
     const scene = useScene()
     const field = inject('field')
     const audio = inject('audio')
-    const object = refObj(null)
+    const object = refPhaserInstance(null)
     audio.se('shot')
     onMounted(() => {
       scene.physics.world.enable(object.value)

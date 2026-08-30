@@ -1,49 +1,26 @@
 {
   "name": "dream-libra-had",
-  "version": "2.2.1",
-  "main": "index.js",
+  "version": "3.0.0",
   "author": "Laineus",
   "license": "MIT",
+  "type": "module",
   "scripts": {
-    "dev": "webpack serve --mode development --host 0.0.0.0",
-    "build": "webpack --mode production",
-    "lint": "eslint src",
-    "tile": "autotile --config autotile.config.js && tile-extrude --config extrude.config.js",
-    "nwbuild": "nwbuild -p linux64,win64,osx64 -v0.53.0 -o nw/ nw/public/ --flavor normal"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@sentry/browser": "^6.2.5",
-    "@sentry/tracing": "^6.2.5",
-    "dayjs": "^1.10.4",
-    "phaser": "^3.90.0",
+    "@sentry/browser": "^10.72.0",
+    "dayjs": "^1.11.20",
+    "phaser": "^4.1.0",
     "phaser-tiled-json-external-loader": "^0.1.1",
-    "phavuer": "^0.10.1",
-    "vue": "^3.0.11"
+    "phavuer": "^0.23.0",
+    "vue": "^3.5.32"
   },
   "devDependencies": {
-    "@babel/core": "^7.28.4",
-    "@babel/preset-env": "^7.28.3",
-    "@vue/compiler-sfc": "^3.0.11",
-    "auto-tile-webpack-plugin": "^0.11.0",
-    "babel-loader": "^10.0.0",
-    "css-loader": "^5.0.1",
-    "eslint": "^7.16.0",
-    "eslint-config-standard": "^16.0.2",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^5.0.0",
-    "eslint-plugin-vue": "^7.4.0",
-    "eslint-webpack-plugin": "^2.5.3",
-    "html-webpack-plugin": "^5.6.4",
-    "nw": "^0.53.0",
-    "nw-builder": "^3.5.7",
-    "phaser-assets-webpack-plugin": "^2.2.1",
-    "style-loader": "^2.0.0",
-    "tile-extrude-webpack-plugin": "^1.2.0",
-    "vue-loader": "^17.4.2",
-    "webpack": "^5.101.3",
-    "webpack-cli": "^6.0.1",
-    "webpack-dev-server": "^5.2.2"
+    "@rollup/plugin-inject": "^5.0.5",
+    "@vitejs/plugin-vue": "^6.0.6",
+    "phaser-assets-loader": "^1.2.1",
+    "vite": "^8.0.10"
   }
 }

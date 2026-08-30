@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import * as Phaser from 'phaser'
 import { useScene, Container, Circle } from 'phavuer'
 import { reactive, toRaw, toRefs } from 'vue'
 const MAX_DISTANCE = 50

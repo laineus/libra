@@ -7,14 +7,14 @@
 
 <script>
 import { ref, reactive, provide, inject, nextTick, onMounted } from 'vue'
-import { refScene, Scene } from 'phavuer'
-import Field from './Field'
+import { refPhaserInstance, Scene } from 'phavuer'
+import Field from './Field.vue'
 import { rForKey } from '@/components/modules/useFrameAnimChara'
 export default {
   components: { Scene, Field },
   setup (props, context) {
     const fieldData = reactive({ name: null, x: 0, y: 0, r: 0, payload: undefined })
-    const scene = refScene(null)
+    const scene = refPhaserInstance(null)
     const frames = inject('frames')
     const uiScene = inject('uiScene')
     const storage = inject('storage')

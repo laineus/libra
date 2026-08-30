@@ -1,9 +1,9 @@
 <template>
-  <PhavuerText ref="object" :style="mergedStyle" />
+  <PhavuerText ref="phaserInstance" :style="mergedStyle" />
 </template>
 
 <script>
-import { refObj, Text } from 'phavuer'
+import { refPhaserInstance, Text } from 'phavuer'
 import config from '@/data/config'
 import { computed } from 'vue'
 export default {
@@ -24,7 +24,7 @@ export default {
       }, props.style)
     })
     return {
-      object: refObj(),
+      phaserInstance: refPhaserInstance(),
       mergedStyle
     }
   }

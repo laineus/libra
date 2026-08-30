@@ -25,11 +25,11 @@
 import { computed, nextTick, ref, inject, provide } from 'vue'
 import { Container, Image } from 'phavuer'
 import config from '@/data/config'
-import MenuStatus from '@/components/MenuStatus'
-import MenuBag from '@/components/MenuBag'
-import MenuQuest from '@/components/MenuQuest'
-import MenuMap from '@/components/MenuMap'
-import MenuSystem from '@/components/MenuSystem'
+import MenuStatus from '@/components/MenuStatus.vue'
+import MenuBag from '@/components/MenuBag.vue'
+import MenuQuest from '@/components/MenuQuest.vue'
+import MenuMap from '@/components/MenuMap.vue'
+import MenuSystem from '@/components/MenuSystem.vue'
 export default {
   components: { Container, Image, MenuStatus, MenuBag, MenuQuest, MenuMap, MenuSystem },
   setup () {

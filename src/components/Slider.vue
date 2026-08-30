@@ -4,8 +4,8 @@
 
 <script>
 import { ref } from 'vue'
-import { refObj, onPreUpdate } from 'phavuer'
-import Indicator from '@/components/Indicator'
+import { refPhaserInstance, onPreUpdate } from 'phavuer'
+import Indicator from '@/components/Indicator.vue'
 import config from '@/data/config'
 const getScenePosition = object => {
   const getParentPosition = obj => {
@@ -25,7 +25,7 @@ export default {
   },
   emits: ['update:modelValue', 'commit'],
   setup (props, context) {
-    const indicator = refObj(null)
+    const indicator = refPhaserInstance(null)
     const pointer = ref(null)
     const pointerdown = (p) => {
       pointer.value = p

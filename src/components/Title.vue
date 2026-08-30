@@ -1,6 +1,6 @@
 <template>
   <Image texture="main" :x="config.WIDTH.half" :y="config.HEIGHT.half" />
-  <Text :text="`Version: ${APP_VERSION}`" :size="11" color="soy" :origin="1" :x="config.WIDTH - 80" :y="config.HEIGHT - 35" />
+  <Text :text="`Version: ${appVersion}`" :size="11" color="soy" :origin="1" :x="config.WIDTH - 80" :y="config.HEIGHT - 35" />
   <Container>
     <Image v-if="setting.state.lang === 'ja'" texture="logo_ja" :x="config.WIDTH.half" :y="config.HEIGHT.half - 77" />
     <Image v-else-if="setting.state.lang === 'cn'" texture="logo_cn" :x="config.WIDTH.half" :y="config.HEIGHT.half - 77" />
@@ -8,7 +8,7 @@
     <Image v-else texture="logo_en" :x="config.WIDTH.half" :y="config.HEIGHT.half - 90" />
   </Container>
   <Container v-for="(v, i) in list" :key="i" :x="config.WIDTH.half" :y="380 + (i * 40)">
-    <Image texture="nav" :frame="i" :blendMode="Phaser.BlendModes.OVERLAY" :alpha="selected === i ? 1 : 0.87" @pointerdown.stop="select(i)" />
+    <Image texture="nav" :frame="i" :blendMode="Phaser.BlendModes.ADD" :alpha="selected === i ? 1 : 0.87" @pointerdown.stop="select(i)" />
     <Text :text="t(`ui.${v}`).split('').join(' ')" :size="13" :origin="0.5" :bold="true" :style="{ shadow: { offsetX: 0, offsetY: 1, blur: 1, color: '#00000020', fill: true } }" />
   </Container>
   <Container v-if="selected > 0" :tween="tween">
@@ -18,7 +18,7 @@
     </OrganicWindow>
     <OrganicWindow v-else-if="selected === 2" :x="config.WIDTH.half" :y="355" :width="250" :height="230" @pointerdown.stop>
       <menu-system-config :x="-120" :y="-108" :backToTitle="false" />
-      <RoundRectangle :width="101" :height="23" :origin="0.5" :radius="7" :strokeColor="config.COLORS.brown" :lineWidth="1" :y="92" @pointerdown="select(null)" />
+      <Rectangle :width="101" :height="23" :origin="0.5" :radius="7" :strokeColor="config.COLORS.brown" :lineWidth="1" :y="92" @pointerdown="select(null)" />
       <Text :text="t('ui.ok')" :origin="0.5" :y="92" :size="14" />
     </OrganicWindow>
   </Container>
@@ -29,15 +29,17 @@
 </template>
 
 <script>
+import * as Phaser from 'phaser'
 import { inject, ref } from 'vue'
-import { Rectangle, Image, Container, RoundRectangle } from 'phavuer'
+import { Rectangle, Image, Container } from 'phavuer'
 import config from '@/data/config'
-import Text from '@/components/Text'
-import MenuSystemSave from '@/components/MenuSystemSave'
-import MenuSystemConfig from '@/components/MenuSystemConfig'
-import OrganicWindow from '@/components/OrganicWindow'
+import Text from '@/components/Text.vue'
+import MenuSystemSave from '@/components/MenuSystemSave.vue'
+import MenuSystemConfig from '@/components/MenuSystemConfig.vue'
+import OrganicWindow from '@/components/OrganicWindow.vue'
+import packageJson from '../../package.json'
 export default {
-  components: { Rectangle, Text, Image, Container, RoundRectangle, MenuSystemSave, MenuSystemConfig, OrganicWindow },
+  components: { Rectangle, Text, Image, Container, MenuSystemSave, MenuSystemConfig, OrganicWindow },
   emits: ['close'],
   setup (_, context) {
     const gameScene = inject('gameScene')
@@ -87,8 +89,9 @@ export default {
       audio.setBgm('happy')
       creditEnd.value = true
     }
+    const appVersion = packageJson.version
     return {
-      APP_VERSION: APP_VERSION,
+      appVersion,
       t,
       Phaser,
       config,

@@ -11,7 +11,7 @@
 
 <script>
 import { Container, Image } from 'phavuer'
-import OrganicRectangle from '@/components/OrganicRectangle'
+import OrganicRectangle from '@/components/OrganicRectangle.vue'
 import config from '@/data/config'
 export default {
   components: { Container, OrganicRectangle, Image },

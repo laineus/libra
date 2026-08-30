@@ -1,3 +1,4 @@
+import * as Phaser from 'phaser'
 import config from '@/data/config'
 const extendNativeClassFunctions = (screenWidth, screenHeight, tileSize) => {
   // Number instance methods

@@ -34,7 +34,7 @@
 <script>
 import { inject, reactive, computed } from 'vue'
 import { Container, Rectangle, Image, onPreUpdate } from 'phavuer'
-import Text from '@/components/Text'
+import Text from '@/components/Text.vue'
 import config from '@/data/config'
 import useFrameAnim from '@/components/modules/useFrameAnim'
 const LYRICS_MAP = [

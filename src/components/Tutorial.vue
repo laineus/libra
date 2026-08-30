@@ -10,7 +10,7 @@ import { computed, inject, reactive } from 'vue'
 import { Rectangle, Container } from 'phavuer'
 import adjustFontSize from '@/util/adjustFontSize'
 import config from '@/data/config'
-import Text from '@/components/Text'
+import Text from '@/components/Text.vue'
 export default {
   components: { Rectangle, Container, Text },
   props: ['name'],

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { useScene, Container, Image, onPreUpdate, refObj } from 'phavuer'
+import { useScene, Container, Image, onPreUpdate, refPhaserInstance } from 'phavuer'
 import { inject, reactive, shallowReactive } from 'vue'
 import config from '@/data/config'
 import tappedNearest from '@/components/modules/tappedNearest'
@@ -21,7 +21,7 @@ export default {
   setup (props, context) {
     const scene = useScene()
     const menu = inject('menu')
-    const container = refObj(null)
+    const container = refPhaserInstance(null)
     const data = shallowReactive({
       x: 0, y: 0, grabbing: false
     })

@@ -2,14 +2,14 @@
   <div>
     <Container ref="object" :visible="unref(visible)" :x="initX" :y="initY" :width="imgWidth" :height="imgHeight" :depth="depth" :tweens="tweens" @create="create">
       <template v-if="imageTexture">
-        <Image v-if="hp > 0" ref="image" :texture="imageTexture" :frame="frame" :originX="0.5" :originY="1" :scale="scale" :alpha="alpha" :pipeline="pipeline" />
+        <Image v-if="hp > 0" ref="image" :texture="imageTexture" :frame="frame" :originX="0.5" :originY="1" :scale="scale" :alpha="alpha" />
         <Break v-else :texture="imageTexture" :scale="scale" :initialFrame="frame" @broken="onBroken" />
         <Image v-if="damageEffectData.value" texture="attack" :scale="0" :alpha="1" :x="damageEffectData.diffX" :y="damageEffectData.diffY - imgHeight.half" :timeline="damageEffectTimeline" />
       </template>
       <slot />
     </Container>
     <template v-if="hp > 0 && unref(visible)">
-      <Image ref="lightObject" v-if="light" :blendMode="BlendModes.OVERLAY" :x="initX" :y="initY" :depth="config.DEPTH.LIGHT" :tint="light" texture="light" />
+      <Image ref="lightObject" v-if="light" :blendMode="BlendModes.ADD" :x="initX" :y="initY" :depth="config.DEPTH.LIGHT" :tint="light" texture="light" />
       <TapArea v-if="tapEvent.event.value" :visible="interactive" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @tap="execTapEvent" />
       <GrabArea ref="grabArea" v-else-if="capturable" :visible="grabbable" :noImage="hideGrabbable" :name="name" :scale="scale" :width="imgWidth * scale + 15" :height="imgHeight * scale + 40" :follow="object" @grab="alpha = 0.5" @capture="onBroken" @move="move" @cancel="alpha = 1" />
     </template>
@@ -17,12 +17,13 @@
 </template>
 
 <script>
-import { refObj, Container, Image, onPreUpdate } from 'phavuer'
+import * as Phaser from 'phaser'
+import { refPhaserInstance, Container, Image, onPreUpdate } from 'phavuer'
 import { computed, getCurrentInstance, inject, reactive, ref, toRefs, unref } from 'vue'
 import items from '@/data/items'
-import TapArea from './TapArea'
-import GrabArea from './GrabArea'
-import Break from './Break'
+import TapArea from './TapArea.vue'
+import GrabArea from './GrabArea.vue'
+import Break from './Break.vue'
 import useEvent from './modules/useEvent'
 import config from '@/data/config'
 const toAdditionalString = v => v < 0 ? `-=${Math.abs(v)}` : `+=${v}`
@@ -35,7 +36,6 @@ export default {
     scale: { default: 1 },
     name: { default: null },
     texture: { default: null },
-    pipeline: { default: null },
     frame: { default: '__BASE' }
   },
   emits: ['create', 'del', 'startEvent'],
@@ -50,9 +50,9 @@ export default {
     const state = inject('storage').state
     const audio = inject('audio')
     const achieve = inject('achieve')
-    const object = refObj(null)
-    const lightObject = refObj(null)
-    const image = refObj(null)
+    const object = refPhaserInstance(null)
+    const lightObject = refPhaserInstance(null)
+    const image = refPhaserInstance(null)
     const grabArea = ref(null)
     const inHome = computed(() => field.value?.name === 'home')
     const imgWidth = computed(() => image.value?.width ?? 30)
@@ -103,7 +103,22 @@ export default {
       data.tweens = [{ x, y, duration: 80, yoyo: true }]
     }
     const damageEffectData = reactive({ value: false, diffX: 0, diffY: 0 })
-    const damageEffectTimeline = { duration: 120, tweens: [{ scale: 0.6 }, { scale: 1, alpha: 0 }], onComplete: () => damageEffectData.value = false }
+    const damageEffectTimeline = [
+      {
+        tween: {
+          scale: 0.6,
+          duration: 120
+        }
+      },
+      {
+        tween: {
+          scale: 1,
+          alpha: 0,
+          duration: 120,
+          onComplete: () => damageEffectData.value = false
+        },
+      }
+    ]
     let onDamage = null
     const setDamageEvent = e => {
       onDamage = e

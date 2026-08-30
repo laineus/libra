@@ -17,10 +17,11 @@
 </template>
 
 <script>
-import { Image, Container, refObj, onPreUpdate } from 'phavuer'
+import * as Phaser from 'phaser'
+import { Image, Container, refPhaserInstance, onPreUpdate } from 'phavuer'
 import { inject, computed, reactive, ref, nextTick, onBeforeUnmount } from 'vue'
-import MenuContainer from '@/components/MenuContainer'
-import Text from '@/components/Text'
+import MenuContainer from '@/components/MenuContainer.vue'
+import Text from '@/components/Text.vue'
 import config from '@/data/config'
 import items from '@/data/items'
 import makeRaptor from '@/components/modules/makeRaptor'
@@ -56,7 +57,7 @@ export default {
     const onEatArea = computed(() => Math.hypot(grab.x - 909, grab.y - 410) < 25)
     const onBagArea = computed(() => (grab.x - offsetX.value) >= 0)
     const weight = computed(() => state.bagItems.reduce((sum, v) => sum + itemData[v.key].weight, 0))
-    const grabRef = refObj(null)
+    const grabRef = refPhaserInstance(null)
     const showBag = computed(() => {
       if (grab.mode === 'dispose') return false
       if (grab.mode === 'move' && !grabbingBagItem.value) return false

@@ -21,12 +21,12 @@
 </template>
 
 <script>
-import MenuContainer from '@/components/MenuContainer'
+import MenuContainer from '@/components/MenuContainer.vue'
 import { computed, inject, reactive, ref, toRefs } from 'vue'
 import { Container, Rectangle, Line, Image } from 'phavuer'
 import config from '@/data/config'
-import Text from '@/components/Text'
-import Selector from '@/components/Selector'
+import Text from '@/components/Text.vue'
+import Selector from '@/components/Selector.vue'
 import { BOGUS_STEPS } from '@/data/eventSteps'
 export default {
   components: { MenuContainer, Container, Rectangle, Text, Line, Image, Selector },

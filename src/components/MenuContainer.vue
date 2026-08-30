@@ -1,5 +1,5 @@
 <template>
-  <OrganicWindow ref="object" :x="left + width.half" :y="top + height.half" :width="width" :height="height" @pointerdown.stop @wheel="$emit('wheel', $event)" @pointermove="$emit('pointermove', $event)">
+  <OrganicWindow ref="phaserInstance" :x="left + width.half" :y="top + height.half" :width="width" :height="height" @pointerdown.stop @wheel="$emit('wheel', $event)" @pointermove="$emit('pointermove', $event)">
     <Image texture="menu_label" :origin="0" :x="-width.half - 20" :y="-height.half - 15" :rotation="-0.07" :scaleX="0.78" />
     <Text :text="title" :x="-width.half - 8" :y="-height.half - 8" :rotation="-0.07" :size="14" :bold="true" color="soy" />
     <Container ref="container" :x="-width.half" :y="-height.half + labelSpace">
@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import { Container, Image, refObj } from 'phavuer'
-import Text from '@/components/Text'
-import OrganicWindow from '@/components/OrganicWindow'
+import { Container, Image, refPhaserInstance } from 'phavuer'
+import Text from '@/components/Text.vue'
+import OrganicWindow from '@/components/OrganicWindow.vue'
 import config from '@/data/config'
 import { reactive, toRefs } from 'vue'
 export default {
@@ -20,8 +20,8 @@ export default {
   emits: ['wheel', 'pointermove'],
   setup (props) {
     const refs = reactive({
-      object: refObj(null),
-      container: refObj(null)
+      phaserInstance: refPhaserInstance(null),
+      container: refPhaserInstance(null)
     })
     const labelSpace = 12
     const width = 240

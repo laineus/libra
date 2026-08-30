@@ -21,8 +21,8 @@ import { reactive, toRefs, ref, inject } from 'vue'
 import { Container, Rectangle, Line } from 'phavuer'
 import adjustFontSize from '@/util/adjustFontSize'
 import config from '@/data/config'
-import Text from '@/components/Text'
-import ScrollBar from '@/components/ScrollBar'
+import Text from '@/components/Text.vue'
+import ScrollBar from '@/components/ScrollBar.vue'
 export default {
   components: { Container, Rectangle, Line, Text, ScrollBar },
   setup () {

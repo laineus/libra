@@ -9,12 +9,12 @@
 </template>
 
 <script>
-import { refObj, Container, Rectangle } from 'phavuer'
+import { refPhaserInstance, Container, Rectangle } from 'phavuer'
 import { computed, ref, inject, onUpdated, reactive, toRefs } from 'vue'
 import config from '@/data/config'
 import adjustFontSize from '@/util/adjustFontSize'
-import SpeachBubble from '@/components/SpeachBubble'
-import Text from '@/components/Text'
+import SpeachBubble from '@/components/SpeachBubble.vue'
+import Text from '@/components/Text.vue'
 export default {
   components: { Container, Rectangle, Text, SpeachBubble },
   setup () {
@@ -22,8 +22,8 @@ export default {
     const camera = inject('camera')
     const audio = inject('audio')
     // refs
-    const bg = refObj()
-    const txt = refObj()
+    const bg = refPhaserInstance()
+    const txt = refPhaserInstance()
     // data
     const list = ref([])
     const current = computed(() => list.value[0])

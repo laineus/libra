@@ -8,7 +8,7 @@
 <script>
 import { computed, inject, onMounted, ref, unref } from 'vue'
 import { useScene, onPreUpdate, Body, Image } from 'phavuer'
-import Substance from './Substance'
+import Substance from './Substance.vue'
 import useFollowing from './modules/useFollowing'
 import useFrameAnimChara from './modules/useFrameAnimChara'
 import items from '@/data/items'

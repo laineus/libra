@@ -18,8 +18,8 @@
 <script>
 import { inject, computed } from 'vue'
 import { Image, Line } from 'phavuer'
-import MenuContainer from '@/components/MenuContainer'
-import Text from '@/components/Text'
+import MenuContainer from '@/components/MenuContainer.vue'
+import Text from '@/components/Text.vue'
 import config from '@/data/config'
 const secToMinSecString = sec => {
   const s = sec % 60
@@ -29,6 +29,7 @@ const secToMinSecString = sec => {
 }
 export default {
   components: { Text, Image, Line, MenuContainer },
+  emits: ['close'],
   setup () {
     const storage = inject('storage')
     const LIST = [

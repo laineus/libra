@@ -21,9 +21,9 @@
 import { inject, reactive, ref, toRefs } from 'vue'
 import { Container, Line, Image } from 'phavuer'
 import adjustFontSize from '@/util/adjustFontSize'
-import MenuContainer from '@/components/MenuContainer'
-import Text from '@/components/Text'
-import ScrollBar from '@/components/ScrollBar'
+import MenuContainer from '@/components/MenuContainer.vue'
+import Text from '@/components/Text.vue'
+import ScrollBar from '@/components/ScrollBar.vue'
 import quest from '@/data/quest'
 import config from '@/data/config'
 export default {

@@ -36,9 +36,9 @@
 <script>
 import { inject, reactive, toRefs } from 'vue'
 import { Container, Circle } from 'phavuer'
-import Text from '@/components/Text'
-import Slider from '@/components/Slider'
-import Selector from '@/components/Selector'
+import Text from '@/components/Text.vue'
+import Slider from '@/components/Slider.vue'
+import Selector from '@/components/Selector.vue'
 import config from '@/data/config'
 export default {
   components: { Container, Text, Slider, Circle, Selector },

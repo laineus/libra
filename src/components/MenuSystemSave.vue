@@ -15,8 +15,8 @@ import { inject, reactive, ref, toRefs } from 'vue'
 import { Container, Rectangle, Line } from 'phavuer'
 import dayjs from 'dayjs'
 import config from '@/data/config'
-import Text from '@/components/Text'
-import Selector from '@/components/Selector'
+import Text from '@/components/Text.vue'
+import Selector from '@/components/Selector.vue'
 export default {
   components: { Container, Rectangle, Text, Line, Selector },
   props: ['offsetX', 'offsetY', 'load'],

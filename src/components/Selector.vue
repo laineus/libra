@@ -6,17 +6,17 @@
     <Image texture="menu_arrow" :origin="0.5" :scale="0.7" :rotation="-0.07" :tint="config.COLORS.soy" :y="(bgWidth * 0.039) + 2.5" />
     <Container v-for="(v, i) in options" :key="i" :y="-sumHeight + (bgHeight + 5) * i + 2.5">
       <Image texture="menu_label" :originX="0.5" :originY="0" :y="-1" :rotation="-0.015" :scaleX="(bgWidth + 15) / 138" :scaleY="0.9" @pointerdown.stop="select($event, i)" />
-      <Text :ref="v.ref" :originX="0.5" :originY="0" :text="v.text" :size="14" color="soy" :y="5" :lineSpacing="3" />
+      <Text :ref="el => v.ref.value = el" :originX="0.5" :originY="0" :text="v.text" :size="14" color="soy" :y="5" :lineSpacing="3" />
     </Container>
   </Container>
 </template>
 
 <script>
-import { refObj, Container, Image } from 'phavuer'
-import { reactive, toRefs, onMounted, inject } from 'vue'
+import { Container, Image } from 'phavuer'
+import { reactive, toRefs, onMounted, inject, ref } from 'vue'
 import config from '@/data/config'
-import Text from '@/components/Text'
-import OrganicRectangle from '@/components/OrganicRectangle'
+import Text from '@/components/Text.vue'
+import OrganicRectangle from '@/components/OrganicRectangle.vue'
 export default {
   components: { Container, Image, Text, OrganicRectangle },
   props: ['list'],
@@ -25,14 +25,14 @@ export default {
     const audio = inject('audio')
     // data
     const options = props.list.map(text => {
-      return { ref: refObj(null), text }
+      return { ref: ref(null), text }
     })
     const data = reactive({
       bgWidth: 0,
       bgHeight: 27
     })
     onMounted(() => {
-      data.bgWidth = Math.max(...options.map(v => v.ref.value.width)) + 32
+      data.bgWidth = Math.max(...options.map(v => v.ref.value.phaserInstance.width)) + 32
     })
     const select = (pointer, i) => {
       pointer.isDown = false
