@@ -2,6 +2,7 @@
   <MenuContainer ref="container" :height="320" :title="t('ui.quest')" @wheel="onWheel" @pointermove.stop="onSwipe">
     <Image texture="menu_arrow" :x="118" :y="320" :rotation="-0.1" :tint="COLORS.soy" />
     <Container v-for="(v, i) in quest.slice(offset, offset + 8)" :key="i" :visible="!selected" :x="rowWidth.half + 10" :y="(i * rowHeight) + rowHeight.half + 5" :width="rowWidth" :height="rowHeight" @pointerup.stop="p => tapItem(p, v)">
+      <Rectangle :visible="gamepadMode && offset + i === cursorIndex" :fillColor="COLORS.orange" :width="rowWidth" :height="rowHeight" :alpha="0.8" />
       <Line v-if="i !== 8 - 1" :x="0" :y="rowHeight.half" :lineWidth="0.5" :x2="rowWidth" :strokeColor="COLORS.brown" :alpha="0.25" />
       <Text :x="-rowWidth.half + 10" :y="0" :originY="0.5" :text="v.started(state) ? t(`quest.${v.key}.title`) : '？？？'" :size="13" :bold="v.started(state)" />
       <Image :x="rowWidth.half - 12" :y="0" :originY="0.5" texture="check" frame="3" :scale="0.9" :tint="COLORS.brown" v-if="v.completed(state)" />
@@ -18,8 +19,8 @@
 </template>
 
 <script>
-import { inject, reactive, ref, toRefs } from 'vue'
-import { Container, Line, Image } from 'phavuer'
+import { computed, inject, reactive, ref, toRefs } from 'vue'
+import { Container, Rectangle, Line, Image } from 'phavuer'
 import adjustFontSize from '@/util/adjustFontSize'
 import MenuContainer from '@/components/MenuContainer.vue'
 import Text from '@/components/Text.vue'
@@ -27,19 +28,21 @@ import ScrollBar from '@/components/ScrollBar.vue'
 import quest from '@/data/quest'
 import config from '@/data/config'
 export default {
-  components: { MenuContainer, Container, Text, ScrollBar, Line, Image },
+  components: { MenuContainer, Container, Rectangle, Text, ScrollBar, Line, Image },
   emits: ['close'],
   setup (_, context) {
     const state = inject('storage').state
     const uiScene = inject('uiScene').value
     const audio = inject('audio')
     const achieve = inject('achieve')
+    const controller = inject('controller')
     const refs = {
       scrollBar: ref(null),
       container: ref(null)
     }
     const data = reactive({
       selected: null,
+      cursorIndex: 0,
       offset: 0,
       rowWidth: 215, rowHeight: 37
     })
@@ -47,14 +50,31 @@ export default {
       if (p.isMoved || !v.started(state)) return
       audio.se('click')
       data.selected = v
+      data.cursorIndex = quest.indexOf(v)
     }
     const back = p => {
-      if (p.isMoved) return
+      if (p?.isMoved) return
       audio.se('cancel')
       data.selected = null
     }
     const onWheel = pointer => refs.scrollBar.value.add(Math.sign(pointer.deltaY))
     const onSwipe = pointer => refs.scrollBar.value.swipe(pointer)
+    const navigate = ({ y }) => {
+      if (data.selected || !y) return
+      data.cursorIndex = (data.cursorIndex + y + quest.length) % quest.length
+      if (data.cursorIndex < data.offset) data.offset = data.cursorIndex
+      if (data.cursorIndex >= data.offset + 8) data.offset = data.cursorIndex - 7
+    }
+    const confirm = () => {
+      if (data.selected || !quest[data.cursorIndex].started(state)) return
+      audio.se('click')
+      data.selected = quest[data.cursorIndex]
+    }
+    const cancel = () => {
+      if (!data.selected) return false
+      back()
+      return true
+    }
     if (state.status.body > 0 || state.status.heart > 0) {
       uiScene.setTutorial('quest')
     }
@@ -67,9 +87,11 @@ export default {
       COLORS: config.COLORS,
       adjustFontSize,
       quest,
+      gamepadMode: computed(() => controller.value?.gamepadMode),
       ...refs,
       ...toRefs(data),
       tapItem, back,
+      navigate, confirm, cancel,
       onWheel, onSwipe
     }
   }
