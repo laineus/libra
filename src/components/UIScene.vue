@@ -33,7 +33,7 @@
       </Container>
     </template>
     <Transitions ref="transitions" />
-    <Tutorial v-if="tutorial" :name="tutorial" @close="tutorial = null" />
+    <Tutorial ref="tutorialOverlay" v-if="tutorial" :name="tutorial" @close="tutorial = null" />
     <Text v-if="screenMessage.text" :text="screenMessage.text" :tween="screenMessage.tween" :x="config.WIDTH.half" :y="config.HEIGHT.half" :size="adjustFontSize(17)" :color="screenMessage.color" :origin="0.5" :depth="config.DEPTH.TRANSITION" />
     <Credit v-if="credit.resolve" :depth="config.DEPTH.TRANSITION" :endA="credit.endA" @completed="credit.resolve" />
     <Opening v-if="opening" :depth="config.DEPTH.TRANSITION" @unlock="opening" @completed="opening = null" />
@@ -86,6 +86,7 @@ export default {
       talk: ref(null),
       log: ref(null),
       menu: ref(null),
+      tutorialOverlay: ref(null),
       transitions: ref(null)
     }
     const tutorial = ref(null)
@@ -99,6 +100,7 @@ export default {
     const debug = ref(false)
     const gamepadMode = computed(() => refs.controller.value?.gamepadMode)
     const confirm = () => {
+      if (tutorial.value) return refs.tutorialOverlay.value?.tap()
       if (titleScreen.value) return refs.title.value?.confirm()
       if (selector.list) {
         if (selector.index !== null) selector.resolver(selector.index)
@@ -112,7 +114,10 @@ export default {
       if (titleScreen.value) return
       if (!event.state) refs.menu.value?.toggle(name)
     }
-    const cancel = () => titleScreen.value ? refs.title.value?.cancel() : refs.menu.value?.cancel()
+    const cancel = () => {
+      if (tutorial.value) return refs.tutorialOverlay.value?.tap()
+      return titleScreen.value ? refs.title.value?.cancel() : refs.menu.value?.cancel()
+    }
     const navigate = direction => {
       if (titleScreen.value) return refs.title.value?.navigate(direction)
       if (selector.list) {
@@ -135,6 +140,7 @@ export default {
     const aimEnd = () => player.value?.setGunMode(false)
     let grabPointer = null
     const grabStart = () => {
+      if (tutorial.value) return refs.tutorialOverlay.value?.tap()
       if (titleScreen.value) return refs.title.value?.confirm()
       if (selector.list) {
         if (selector.index !== null) selector.resolver(selector.index)
