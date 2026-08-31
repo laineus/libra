@@ -50,7 +50,7 @@ export default {
       return setTalk(list)
     }
     const next = (pointer) => {
-      pointer.isDown = false
+      if (pointer) pointer.isDown = false
       list.value.splice(0, 1)
       if (!list.value.length && resolver) return resolver()
       audio.se('talk')

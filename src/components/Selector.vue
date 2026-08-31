@@ -5,7 +5,7 @@
     <Image texture="menu_arrow" :origin="0.5" :scale="0.7" :rotation="-0.07" :tint="config.COLORS.brown" :y="(bgWidth * 0.039) + 4" />
     <Image texture="menu_arrow" :origin="0.5" :scale="0.7" :rotation="-0.07" :tint="config.COLORS.soy" :y="(bgWidth * 0.039) + 2.5" />
     <Container v-for="(v, i) in options" :key="i" :y="-sumHeight + (bgHeight + 5) * i + 2.5">
-      <Image texture="menu_label" :originX="0.5" :originY="0" :y="-1" :rotation="-0.015" :scaleX="(bgWidth + 15) / 138" :scaleY="0.9" @pointerdown.stop="select($event, i)" />
+      <Image texture="menu_label" :originX="0.5" :originY="0" :y="-1" :rotation="-0.015" :scaleX="(bgWidth + 15) / 138" :scaleY="0.9" :tint="i === selectedIndex ? config.COLORS.orange : undefined" @pointerdown.stop="select($event, i)" />
       <Text :ref="el => v.ref.value = el" :originX="0.5" :originY="0" :text="v.text" :size="14" color="soy" :y="5" :lineSpacing="3" />
     </Container>
   </Container>
@@ -19,7 +19,7 @@ import Text from '@/components/Text.vue'
 import OrganicRectangle from '@/components/OrganicRectangle.vue'
 export default {
   components: { Container, Image, Text, OrganicRectangle },
-  props: ['list'],
+  props: ['list', 'selectedIndex'],
   emits: ['select'],
   setup (props, context) {
     const audio = inject('audio')

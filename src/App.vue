@@ -19,7 +19,8 @@ const gameConfig = {
     }
   },
   input: {
-    activePointers: 3
+    activePointers: 3,
+    gamepad: true
   }
   // fps: { target: 30, forceSetTimeOut: true }
 }

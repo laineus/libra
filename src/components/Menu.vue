@@ -12,11 +12,18 @@
     </Container>
     <template v-if="selected">
       <Container :depth="-1" :x="config.WIDTH.half" :y="config.HEIGHT.half" :width="config.WIDTH" :height="config.HEIGHT" @pointerdown="tapCloseArea" />
+      <Image v-if="gamepadMode" texture="gamepad_lb" :x="716" :y="468" :scale="0.5" />
+      <Image v-if="gamepadMode" texture="gamepad_rb" :x="932" :y="468" :scale="0.5" />
       <MenuStatus v-if="selected.key === 'status'" :ref="menu[0].ref" @close="index = null" />
       <MenuBag v-else-if="selected.key === 'bag'" :ref="menu[1].ref" @close="index = null" v-model:redecorate="redecorate" />
       <MenuQuest v-else-if="selected.key === 'quest'" :ref="menu[2].ref" @close="index = null" />
       <MenuMap v-else-if="selected.key === 'map'" :ref="menu[3].ref" @close="index = null" />
       <MenuSystem v-else-if="selected.key === 'system'" :ref="menu[4].ref" @close="index = null" />
+    </template>
+    <template v-else-if="gamepadMode">
+      <Image texture="gamepad_x" :x="(185).byRight" :y="478" :scale="0.33" />
+      <Image texture="gamepad_y" :x="(85).byRight" :y="478" :scale="0.33" />
+      <Image texture="gamepad_start" :x="(35).byRight" :y="478" :scale="0.33" />
     </template>
   </div>
 </template>
@@ -36,6 +43,8 @@ export default {
     const state = inject('storage').state
     const event = inject('event')
     const audio = inject('audio')
+    const controller = inject('controller')
+    const gamepadMode = computed(() => controller.value?.gamepadMode)
     const menu = [
       { key: 'status', ref: ref(null) },
       { key: 'bag', ref: ref(null) },
@@ -60,6 +69,28 @@ export default {
       index.value = null
       audio.se('cancel')
     }
+    const toggle = name => {
+      const target = menu.findIndex(v => v.key === name)
+      if (target < 0) return
+      if (index.value === target) return close()
+      return select(target)
+    }
+    const shift = direction => {
+      if (index.value === null) return
+      return select((index.value + direction + menu.length) % menu.length)
+    }
+    const navigate = direction => selected.value?.ref.value?.navigate?.(direction)
+    const confirm = () => selected.value?.ref.value?.confirm?.()
+    const grab = () => {
+      const child = selected.value?.ref.value
+      if (child?.grabFocused) return child.grabFocused()
+      return child?.confirm?.()
+    }
+    const grabEnd = () => selected.value?.ref.value?.grabEnd?.()
+    const cancel = () => {
+      if (selected.value?.ref.value?.cancel?.()) return
+      close()
+    }
     const tapButton = (i, pointer) => {
       pointer.isDown = false
       index.value === i ? close() : select(i)
@@ -76,9 +107,12 @@ export default {
     return {
       onMistelyCircle,
       config, COLORS: config.COLORS,
+      gamepadMode,
       menu,
       index, selected,
       select, close,
+      toggle, shift,
+      navigate, confirm, grab, grabEnd, cancel,
       tapButton, tapCloseArea,
       redecorate
     }

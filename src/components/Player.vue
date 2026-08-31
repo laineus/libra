@@ -47,12 +47,14 @@ export default {
     const gun = useGun(context, object, { y: gunDiffY })
     const shot = () => gun.shot(r.value)
     const hasGun = computed(() => bag.hasItem('gun') || bag.hasItem('revolver'))
-    const gunSwitch = () => {
-      if (!hasGun.value && !gun.mode.value) return
+    const setGunMode = mode => {
+      if (mode && !hasGun.value) return
+      if (gun.mode.value === mode) return
       audio.se('gun')
-      gun.setMode(!gun.mode.value)
+      gun.setMode(mode)
       following.clearTargetPosition()
     }
+    const gunSwitch = () => setGunMode(!gun.mode.value)
     const getRadianToPointer = () => {
       const diffX = scene.input.manager.pointers[0]?.x + camera.value?.scrollX - object.value?.x
       const diffY = scene.input.manager.pointers[0]?.y + camera.value?.scrollY - (object.value?.y + gunDiffY)
@@ -61,11 +63,12 @@ export default {
     onPreUpdate((time, delta) => {
       data.frame = playFrameAnim(delta)
       if (!event.state && !menuOpened.value) {
-        if (controller.value.velocityX || controller.value.velocityY) {
-          const x = Math.fix(object.value.x + controller.value.velocityX, 0, field.value.field.width)
-          const y = Math.fix(object.value.y + controller.value.velocityY, 0, field.value.field.height)
+        const velocityX = controller.value.velocityX
+        const velocityY = controller.value.velocityY
+        if (velocityX || velocityY) {
+          const x = Math.fix(object.value.x + velocityX, 0, field.value.field.width)
+          const y = Math.fix(object.value.y + velocityY, 0, field.value.field.height)
           following.setTargetPosition(x, y)
-          if (gun.mode.value) lookTo(Math.atan2(controller.value.velocityY, controller.value.velocityX))
         } else if (!mobile) {
           if (controller.value.activePointer) {
             const { x, y } = controller.value.activePointer
@@ -75,7 +78,17 @@ export default {
             if (field.value.isCollides(worldX.toTile, worldY.toTile)) return
             following.setTargetPosition(worldX, worldY)
           }
-          if (gun.mode.value) lookTo(getRadianToPointer())
+        }
+        if (gun.mode.value) {
+          if (controller.value.gamepadMode) {
+            const aimX = controller.value.rightStickX
+            const aimY = controller.value.rightStickY
+            if (aimX || aimY) lookTo(Math.atan2(aimY, aimX))
+          } else if (velocityX || velocityY) {
+            lookTo(Math.atan2(velocityY, velocityX))
+          } else if (!mobile) {
+            lookTo(getRadianToPointer())
+          }
         }
       }
       if (!gun.mode.value) {
@@ -125,7 +138,7 @@ export default {
     return {
       config,
       object, substance,
-      gun, shot, gunSwitch, hasGun, gunDiffY,
+      gun, shot, gunSwitch, setGunMode, hasGun, gunDiffY,
       damage,
       ...toRefs(data),
       r, lookTo,

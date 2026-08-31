@@ -1,47 +1,77 @@
 <template>
-  <VirtualStick ref="virtualStick" :x="100" :y="(100).byBottom" v-if="mobile" />
+  <VirtualStick ref="virtualStick" :x="100" :y="(100).byBottom" v-if="mobile && virtualStickEnabled" />
 </template>
 
 <script>
-import { useScene } from 'phavuer'
-import { ref, inject } from 'vue'
+import { onPreUpdate, useScene } from 'phavuer'
+import { ref, inject, onBeforeUnmount } from 'vue'
 import VirtualStick from './VirtualStick.vue'
-const wasdController = keyboard => {
-  keyboard.addCapture('W,S,A,D')
-  const wasd = [
-    { key: keyboard.addKey('W'), x: 0, y: -1 },
-    { key: keyboard.addKey('A'), x: -1, y: 0 },
-    { key: keyboard.addKey('S'), x: 0, y: 1 },
-    { key: keyboard.addKey('D'), x: 1, y: 0 }
-  ]
-  return {
-    get velocity () {
-      return wasd.filter(v => v.key.isDown).reduce((position, v) => {
-        position.x += v.x
-        position.y += v.y
-        return position
-      }, { x: 0, y: 0 })
-    }
-  }
-}
+import InputController from '@/class/InputController'
 
 export default {
   components: { VirtualStick },
-  props: { velocity: { default: 25 } },
-  setup (props) {
+  props: {
+    velocity: { default: 25 },
+    virtualStickEnabled: { type: Boolean, default: true }
+  },
+  emits: ['confirm', 'cancel', 'navigate', 'aimstart', 'aimend', 'grabstart', 'grabend', 'bag', 'map', 'system', 'menuleft', 'menuright'],
+  setup (props, context) {
     const scene = useScene()
     const virtualStick = ref(null)
     const mobile = inject('mobile')
-    const wasd = wasdController(scene.input.keyboard)
+    const input = new InputController(scene.input)
+    const gamepadConnected = ref(input.gamepadConnected)
+    const gamepadMode = ref(false)
+    input.on('confirmstart', () => context.emit('confirm'))
+    input.on('cancelstart', () => context.emit('cancel'))
+    input.on('aimstart', () => context.emit('aimstart'))
+    input.on('aimend', () => context.emit('aimend'))
+    input.on('grabstart', () => context.emit('grabstart'))
+    input.on('grabend', () => context.emit('grabend'))
+    input.on('bagstart', () => context.emit('bag'))
+    input.on('mapstart', () => context.emit('map'))
+    input.on('systemstart', () => context.emit('system'))
+    input.on('menuLeftstart', () => context.emit('menuleft'))
+    input.on('menuRightstart', () => context.emit('menuright'))
+    input.on('navigate', direction => context.emit('navigate', direction))
+    input.on('gamepadchange', connected => gamepadConnected.value = connected)
+    input.on('inputmode', mode => gamepadMode.value = mode === 'gamepad')
+    const onPointerMove = pointer => {
+      if (!pointer.wasTouch) {
+        input.setInputMode('mouse')
+        gamepadMode.value = false
+      }
+    }
+    scene.input.on('pointermove', onPointerMove)
+    onPreUpdate((time, delta) => input.update(delta))
+    onBeforeUnmount(() => {
+      scene.input.off('pointermove', onPointerMove)
+      input.destroy()
+    })
     scene.input.mouse.disableContextMenu()
+    const getVelocity = () => {
+      const inputVelocity = input.velocity
+      if (inputVelocity.x || inputVelocity.y) return inputVelocity
+      return mobile
+        ? { x: virtualStick.value?.velocityX ?? 0, y: virtualStick.value?.velocityY ?? 0 }
+        : inputVelocity
+    }
     return {
       mobile,
       virtualStick,
+      gamepadConnected,
+      gamepadMode,
       get velocityX () {
-        return (mobile ? virtualStick.value.velocityX : wasd.velocity.x) * props.velocity
+        return getVelocity().x * props.velocity
       },
       get velocityY () {
-        return (mobile ? virtualStick.value.velocityY : wasd.velocity.y) * props.velocity
+        return getVelocity().y * props.velocity
+      },
+      get rightStickX () {
+        return input.rightStick.x
+      },
+      get rightStickY () {
+        return input.rightStick.y
       },
       get activePointer () {
         return scene.input.manager.pointers.find(v => v.isDown && v.button === 0)

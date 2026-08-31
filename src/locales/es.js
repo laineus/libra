@@ -281,7 +281,10 @@ export default {
     overwriteSave: 'Sobrescribir',
     registerPlace: 'Registrar ubicación actual',
     moveToRegisteredPlace: 'Ir a ubicación registrada',
-    redecorate: 'Modo redecorar'
+    redecorate: 'Modo redecorar',
+    aimGun: 'Apuntar arma',
+    aim: 'Apuntar',
+    fire: 'Disparar'
   },
   tips: {
     amili: {
@@ -332,6 +335,7 @@ export default {
   tutorial: {
     gunPc: '- Pistola -\n\nTienes una pistola.\nPuedes usarla usando click derecho del ratón.',
     gunSp: '- Pistola -\n\nTienes una pistola.\nPuedes usarla tocando el icono de la pistola que se muestra en la pantalla.',
+    gunGamepad: '- Pistola -\n\nTienes una pistola.\nMantén pulsado el botón LT para apuntar.\nMueve la mira con el stick derecho y pulsa el botón RT para disparar.',
     weight: '- Limite de peso de los items -\n\nPresta atención al peso de los ítems que puedes llevar.\nEspecialmente, las manzanas son muy pesadas, así que deberías llevarlas al hogar a menudo.',
     home: '- Hogar -\n\nEn tu hogar, puedes darle manzanas a tu novia Amili, y puedes almacenar items.',
     amili: '- Amili -\n\nAmili reaccionará con las cosas que traigas a casa y usará los muebles que coloques.\nRedecora la habitación en la que Amili y tú vivís.',
@@ -369,6 +373,10 @@ export default {
         sp: [
           'Puedes usar el controlador ubicado en la esquina inferior izquierda de la pantalla para moverte.',
           'Ahora, por favor, ven aquí.'
+        ],
+        gamepad: [
+          'Puedes usar el stick izquierdo para moverte.',
+          'Ahora, por favor, ven aquí.'
         ]
       },
       talk1: [
@@ -381,6 +389,9 @@ export default {
         ],
         sp: [
           'Puedes tocar sobre mí, o el botón de la esquina inferior derecha de la pantalla, para hablar.'
+        ],
+        gamepad: [
+          'Acércate a mí y pulsa el botón A para hablar.'
         ]
       },
       apple1: [
@@ -399,6 +410,12 @@ export default {
           'Puedes mantener click izquierdo para recogerla cuando te acerques a ella.',
           'También puedes usar el botón que se mostrará en la parte inferior derecha de la pantalla.',
           'Entonces la ventana de la mochila se abrirá, y puedes depositarla dentro para recogerla.',
+          'Por favor, vuelve a mí después de recogerla.'
+        ],
+        gamepad: [
+          'Intenta recoger la manzana que ha caído allí.',
+          'Acércate y mantén pulsado el botón RT para agarrarla.',
+          'Mueve la manzana dentro de la mochila con el stick derecho y suelta el botón RT para recogerla.',
           'Por favor, vuelve a mí después de recogerla.'
         ]
       },

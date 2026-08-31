@@ -1,8 +1,8 @@
 <template>
   <Scene ref="scene" name="UIScene" :autoStart="true" @update="update">
-    <Title @close="titleScreen = false" v-if="titleScreen" />
+    <Controller ref="controller" :virtualStickEnabled="!titleScreen" @confirm="confirm" @cancel="cancel" @navigate="navigate" @aimstart="aimStart" @aimend="aimEnd" @grabstart="grabStart" @grabend="grabEnd" @bag="toggleMenu('bag')" @map="toggleMenu('map')" @system="toggleMenu('system')" @menuleft="shiftMenu(-1)" @menuright="shiftMenu(1)" />
+    <Title ref="title" @close="titleScreen = false" v-if="titleScreen" />
     <template v-else>
-      <Controller ref="controller" />
       <template v-if="mobile && !event.state">
         <Container v-if="nearestGrabbable" :x="(70).byRight" :y="(125).byBottom">
           <Circle :radius="40" :fillColor="0x000000" :alpha="0.5" @pointerdown="p => nearestGrabbable.execGrabEvent(p)" />
@@ -22,8 +22,20 @@
           <Image texture="shot" :alpha="0.3" :scale="0.8" />
         </Container>
       </template>
+      <Container v-if="(gamepadMode || !mobile) && player?.hasGun && !event.state && !menu?.selected" :x="25" :y="515">
+        <template v-if="player?.gun.mode.value">
+          <Image :texture="gamepadMode ? 'gamepad_right_stick' : 'mouse_move'" :scale="0.35" />
+          <Text :text="t('ui.aim')" :x="18" :originY="0.5" :size="13" :bold="true" color="soy" :style="{ stroke: config.COLORS.brown.toColorString, strokeThickness: 3 }" />
+          <Image :texture="gamepadMode ? 'gamepad_rt' : 'mouse_left'" :x="97" :scale="0.35" />
+          <Text :text="t('ui.fire')" :x="115" :originY="0.5" :size="13" :bold="true" color="soy" :style="{ stroke: config.COLORS.brown.toColorString, strokeThickness: 3 }" />
+        </template>
+        <template v-else>
+          <Image :texture="gamepadMode ? 'gamepad_lt' : 'mouse_right'" :scale="0.35" />
+          <Text :text="t('ui.aimGun')" :x="18" :originY="0.5" :size="13" :bold="true" color="soy" :style="{ stroke: config.COLORS.brown.toColorString, strokeThickness: 3 }" />
+        </template>
+      </Container>
       <Talk ref="talk" />
-      <Selector v-if="selector.list" :x="selector.x" :y="selector.y" :list="selector.list" @select="selector.resolver" />
+      <Selector v-if="selector.list" :x="selector.x" :y="selector.y" :list="selector.list" :selectedIndex="gamepadMode ? selector.index : null" @select="selector.resolver" />
       <Log ref="log" />
       <Menu ref="menu" />
       <Image v-for="v in 5" :key="v" texture="hp" :frame="Math.round(storage.state.status.hp / 20) >= v ? 0 : 1" :x="32 + ((v - 1) * 42)" :y="27" />
@@ -33,7 +45,7 @@
       </Container>
     </template>
     <Transitions ref="transitions" />
-    <Tutorial v-if="tutorial" :name="tutorial" @close="tutorial = null" />
+    <Tutorial ref="tutorialOverlay" v-if="tutorial" :name="tutorial" @close="tutorial = null" />
     <Text v-if="screenMessage.text" :text="screenMessage.text" :tween="screenMessage.tween" :x="config.WIDTH.half" :y="config.HEIGHT.half" :size="adjustFontSize(17)" :color="screenMessage.color" :origin="0.5" :depth="config.DEPTH.TRANSITION" />
     <Credit v-if="credit.resolve" :depth="config.DEPTH.TRANSITION" :endA="credit.endA" @completed="credit.resolve" />
     <Opening v-if="opening" :depth="config.DEPTH.TRANSITION" @unlock="opening" @completed="opening = null" />
@@ -60,6 +72,7 @@ import Credit from '@/components/Credit.vue'
 import Opening from '@/components/Opening.vue'
 import Debug from '@/components/Debug.vue'
 import config from '@/data/config'
+const GAMEPAD_GRAB_SPEED = 500
 const downloadBySource = (src, name) => {
   const link = document.createElement('a')
   link.href = src
@@ -80,10 +93,12 @@ export default {
     const event = inject('event')
     const refs = {
       scene: refPhaserInstance(null),
+      title: ref(null),
       controller: ref(null),
       talk: ref(null),
       log: ref(null),
       menu: ref(null),
+      tutorialOverlay: ref(null),
       transitions: ref(null)
     }
     const tutorial = ref(null)
@@ -95,6 +110,77 @@ export default {
     const nearestCheckable = computed(() => field.value?.nearestCheckable)
     const nearestGrabbable = computed(() => field.value?.nearestGrabbable)
     const debug = ref(false)
+    const gamepadMode = computed(() => refs.controller.value?.gamepadMode)
+    const confirm = () => {
+      if (tutorial.value) return refs.tutorialOverlay.value?.tap()
+      if (titleScreen.value) return refs.title.value?.confirm()
+      if (selector.list) {
+        if (selector.index !== null) selector.resolver(selector.index)
+        return
+      }
+      if (refs.talk.value?.current) return refs.talk.value.next()
+      if (refs.menu.value?.selected) return refs.menu.value.confirm()
+      if (!event.state) nearestCheckable.value?.execTapEvent()
+    }
+    const toggleMenu = name => {
+      if (titleScreen.value) return
+      if (!event.state) refs.menu.value?.toggle(name)
+    }
+    const cancel = () => {
+      if (tutorial.value) return refs.tutorialOverlay.value?.tap()
+      return titleScreen.value ? refs.title.value?.cancel() : refs.menu.value?.cancel()
+    }
+    const navigate = direction => {
+      if (titleScreen.value) return refs.title.value?.navigate(direction)
+      if (selector.list) {
+        if (direction.y && selector.index === null) {
+          selector.index = direction.y < 0 ? 0 : Math.min(1, selector.list.length - 1)
+        } else if (direction.y) {
+          selector.index = (selector.index + direction.y + selector.list.length) % selector.list.length
+        }
+        return
+      }
+      refs.menu.value?.navigate(direction)
+    }
+    const shiftMenu = direction => {
+      if (!titleScreen.value) refs.menu.value?.shift(direction)
+    }
+    const aimStart = () => {
+      if (titleScreen.value || event.state || refs.menu.value?.selected || selector.list) return
+      player.value?.setGunMode(true)
+    }
+    const aimEnd = () => player.value?.setGunMode(false)
+    let grabPointer = null
+    const grabStart = () => {
+      if (tutorial.value) return refs.tutorialOverlay.value?.tap()
+      if (titleScreen.value) return refs.title.value?.confirm()
+      if (selector.list) {
+        if (selector.index !== null) selector.resolver(selector.index)
+        return
+      }
+      const target = nearestGrabbable.value
+      if (refs.menu.value?.selected) return refs.menu.value.grab()
+      if (player.value?.gun.mode.value && !event.state) return player.value.shot()
+      if (!target || event.state) return
+      const x = target.object.x - camera.value.scrollX
+      const y = target.object.y - camera.value.scrollY
+      grabPointer = {
+        active: true,
+        isDown: true,
+        button: 0,
+        x,
+        y,
+        worldX: target.object.x,
+        worldY: target.object.y
+      }
+      target.execGrabEvent(grabPointer)
+    }
+    const grabEnd = () => {
+      refs.menu.value?.grabEnd()
+      if (!grabPointer) return
+      grabPointer.isDown = false
+      grabPointer = null
+    }
     onMounted(() => {
       refs.scene.value.input.setTopOnly(false)
       refs.scene.value.input.keyboard.on('keydown-F12', (e) => {
@@ -141,10 +227,11 @@ export default {
         screenMessage.tween = { alpha: { from: 0, to: 1 }, duration: 300, onComplete: resolve(clear) }
       })
     }
-    const selector = reactive({ list: null, resolver: null, x: 0, y: 0 })
+    const selector = reactive({ list: null, resolver: null, index: null, x: 0, y: 0 })
     const setSelector = list => {
       return new Promise(resolve => {
         selector.list = list
+        selector.index = null
         selector.x = player.value?.object.x - camera.value?.scrollX
         selector.y = player.value?.object.y - camera.value?.scrollY - 65
         selector.resolver = result => {
@@ -154,20 +241,31 @@ export default {
         }
       })
     }
-    const update = (scene, time) => {
+    const update = (scene, time, delta) => {
       frames.total++
+      if (!grabPointer) return
+      const controller = refs.controller.value
+      grabPointer.x = Math.fix(grabPointer.x + controller.rightStickX * GAMEPAD_GRAB_SPEED * delta / 1000, 0, config.WIDTH)
+      grabPointer.y = Math.fix(grabPointer.y + controller.rightStickY * GAMEPAD_GRAB_SPEED * delta / 1000, 0, config.HEIGHT)
+      grabPointer.worldX = grabPointer.x + camera.value.scrollX
+      grabPointer.worldY = grabPointer.y + camera.value.scrollY
     }
     const mapName = ref(null)
     const setMapName = name => {
       mapName.value = name
     }
     return {
+      t,
       adjustFontSize,
       storage,
       nearestCheckable, nearestGrabbable,
       event,
       mobile,
       config,
+      gamepadMode,
+      confirm,
+      toggleMenu, cancel, navigate, shiftMenu, aimStart, aimEnd,
+      grabStart, grabEnd,
       update,
       ...refs,
       debug,
