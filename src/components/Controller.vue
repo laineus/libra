@@ -1,5 +1,5 @@
 <template>
-  <VirtualStick ref="virtualStick" :x="100" :y="(100).byBottom" v-if="mobile" />
+  <VirtualStick ref="virtualStick" :x="100" :y="(100).byBottom" v-if="mobile && virtualStickEnabled" />
 </template>
 
 <script>
@@ -10,7 +10,10 @@ import InputController from '@/class/InputController'
 
 export default {
   components: { VirtualStick },
-  props: { velocity: { default: 25 } },
+  props: {
+    velocity: { default: 25 },
+    virtualStickEnabled: { type: Boolean, default: true }
+  },
   emits: ['confirm', 'cancel', 'navigate', 'grabstart', 'grabend', 'bag', 'map', 'system', 'menuleft', 'menuright'],
   setup (props, context) {
     const scene = useScene()

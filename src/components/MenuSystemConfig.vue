@@ -113,6 +113,8 @@ export default {
         data.focusIndex -= 2
       } else if (props.backToTitle) {
         data.focusIndex = 6
+      } else {
+        return 'footer'
       }
     }
     const controllerConfirm = () => {
@@ -120,8 +122,8 @@ export default {
       if (data.focusIndex >= 2 && data.focusIndex <= 5) return setLang(['en', 'es', 'ja', 'cn'][data.focusIndex - 2])
       if (data.focusIndex === 6 && props.backToTitle) {
         data.confirming = true
-        data.optionIndex = 0
-        data.tapX = 230
+        data.optionIndex = 1
+        data.tapX = 175
         data.tapY = 193
       }
     }
@@ -129,6 +131,10 @@ export default {
       if (!data.confirming) return false
       data.confirming = false
       return true
+    }
+    const focusLast = () => {
+      const index = languageIndex()
+      data.focusIndex = index < 4 ? index + 2 : index
     }
     return {
       t,
@@ -139,7 +145,7 @@ export default {
       setting,
       gamepadMode: computed(() => props.controllerActive && controller.value?.gamepadMode),
       setLang,
-      navigate, confirm: controllerConfirm, cancel,
+      navigate, confirm: controllerConfirm, cancel, focusLast,
       model: {
         get bgm () {
           return setting.state.bgm
