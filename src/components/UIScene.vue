@@ -183,11 +183,14 @@ export default {
     }
     onMounted(() => {
       refs.scene.value.input.setTopOnly(false)
-      refs.scene.value.input.keyboard.on('keydown-F12', (e) => {
-        e.preventDefault()
-        const filename = `ScreenShot_${dayjs().format('YYYYMMDD_HHmmss')}.png`
-        refs.scene.value.game.renderer.snapshot(img => downloadBySource(img.src, filename))
-      })
+      const isElectron = navigator.userAgent.toLowerCase().includes(' electron/')
+      if (!isElectron) {
+        refs.scene.value.input.keyboard.on('keydown-F12', (e) => {
+          e.preventDefault()
+          const filename = `ScreenShot_${dayjs().format('YYYYMMDD_HHmmss')}.png`
+          refs.scene.value.game.renderer.snapshot(img => downloadBySource(img.src, filename))
+        })
+      }
       refs.scene.value.input.keyboard.on('keydown-F9', (e) => {
         e.preventDefault()
         if (e.ctrlKey) debug.value = !debug.value
