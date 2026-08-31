@@ -23,7 +23,7 @@
         </Container>
       </template>
       <Talk ref="talk" />
-      <Selector v-if="selector.list" :x="selector.x" :y="selector.y" :list="selector.list" @select="selector.resolver" />
+      <Selector v-if="selector.list" :x="selector.x" :y="selector.y" :list="selector.list" :selectedIndex="gamepadMode ? selector.index : null" @select="selector.resolver" />
       <Log ref="log" />
       <Menu ref="menu" />
       <Image v-for="v in 5" :key="v" texture="hp" :frame="Math.round(storage.state.status.hp / 20) >= v ? 0 : 1" :x="32 + ((v - 1) * 42)" :y="27" />
@@ -97,8 +97,13 @@ export default {
     const nearestCheckable = computed(() => field.value?.nearestCheckable)
     const nearestGrabbable = computed(() => field.value?.nearestGrabbable)
     const debug = ref(false)
+    const gamepadMode = computed(() => refs.controller.value?.gamepadMode)
     const confirm = () => {
       if (titleScreen.value) return refs.title.value?.confirm()
+      if (selector.list) {
+        if (selector.index !== null) selector.resolver(selector.index)
+        return
+      }
       if (refs.talk.value?.current) return refs.talk.value.next()
       if (refs.menu.value?.selected) return refs.menu.value.confirm()
       if (!event.state) nearestCheckable.value?.execTapEvent()
@@ -108,13 +113,28 @@ export default {
       if (!event.state) refs.menu.value?.toggle(name)
     }
     const cancel = () => titleScreen.value ? refs.title.value?.cancel() : refs.menu.value?.cancel()
-    const navigate = direction => titleScreen.value ? refs.title.value?.navigate(direction) : refs.menu.value?.navigate(direction)
+    const navigate = direction => {
+      if (titleScreen.value) return refs.title.value?.navigate(direction)
+      if (selector.list) {
+        if (direction.y && selector.index === null) {
+          selector.index = direction.y < 0 ? 0 : Math.min(1, selector.list.length - 1)
+        } else if (direction.y) {
+          selector.index = (selector.index + direction.y + selector.list.length) % selector.list.length
+        }
+        return
+      }
+      refs.menu.value?.navigate(direction)
+    }
     const shiftMenu = direction => {
       if (!titleScreen.value) refs.menu.value?.shift(direction)
     }
     let grabPointer = null
     const grabStart = () => {
       if (titleScreen.value) return refs.title.value?.confirm()
+      if (selector.list) {
+        if (selector.index !== null) selector.resolver(selector.index)
+        return
+      }
       const target = nearestGrabbable.value
       if (refs.menu.value?.selected) return refs.menu.value.confirm()
       if (!target || event.state) return
@@ -182,10 +202,11 @@ export default {
         screenMessage.tween = { alpha: { from: 0, to: 1 }, duration: 300, onComplete: resolve(clear) }
       })
     }
-    const selector = reactive({ list: null, resolver: null, x: 0, y: 0 })
+    const selector = reactive({ list: null, resolver: null, index: null, x: 0, y: 0 })
     const setSelector = list => {
       return new Promise(resolve => {
         selector.list = list
+        selector.index = null
         selector.x = player.value?.object.x - camera.value?.scrollX
         selector.y = player.value?.object.y - camera.value?.scrollY - 65
         selector.resolver = result => {
@@ -215,6 +236,7 @@ export default {
       event,
       mobile,
       config,
+      gamepadMode,
       confirm,
       toggleMenu, cancel, navigate, shiftMenu,
       grabStart, grabEnd,
