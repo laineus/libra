@@ -10,6 +10,7 @@ const GAMEPAD_BUTTONS = {
   map: 3,
   menuLeft: 4,
   menuRight: 5,
+  aim: 6,
   grab: 7,
   system: 9
 }
@@ -39,6 +40,7 @@ export default class InputController {
     }
     this.onGamepadConnected = () => this.emit('gamepadchange', true)
     this.onGamepadDisconnected = () => {
+      this.emit('aimend')
       this.emit('grabend')
       this.emit('gamepadchange', this.gamepadConnected)
     }

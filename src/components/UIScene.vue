@@ -1,6 +1,6 @@
 <template>
   <Scene ref="scene" name="UIScene" :autoStart="true" @update="update">
-    <Controller ref="controller" :virtualStickEnabled="!titleScreen" @confirm="confirm" @cancel="cancel" @navigate="navigate" @grabstart="grabStart" @grabend="grabEnd" @bag="toggleMenu('bag')" @map="toggleMenu('map')" @system="toggleMenu('system')" @menuleft="shiftMenu(-1)" @menuright="shiftMenu(1)" />
+    <Controller ref="controller" :virtualStickEnabled="!titleScreen" @confirm="confirm" @cancel="cancel" @navigate="navigate" @aimstart="aimStart" @aimend="aimEnd" @grabstart="grabStart" @grabend="grabEnd" @bag="toggleMenu('bag')" @map="toggleMenu('map')" @system="toggleMenu('system')" @menuleft="shiftMenu(-1)" @menuright="shiftMenu(1)" />
     <Title ref="title" @close="titleScreen = false" v-if="titleScreen" />
     <template v-else>
       <template v-if="mobile && !event.state">
@@ -128,6 +128,11 @@ export default {
     const shiftMenu = direction => {
       if (!titleScreen.value) refs.menu.value?.shift(direction)
     }
+    const aimStart = () => {
+      if (titleScreen.value || event.state || refs.menu.value?.selected || selector.list) return
+      player.value?.setGunMode(true)
+    }
+    const aimEnd = () => player.value?.setGunMode(false)
     let grabPointer = null
     const grabStart = () => {
       if (titleScreen.value) return refs.title.value?.confirm()
@@ -137,6 +142,7 @@ export default {
       }
       const target = nearestGrabbable.value
       if (refs.menu.value?.selected) return refs.menu.value.grab()
+      if (player.value?.gun.mode.value && !event.state) return player.value.shot()
       if (!target || event.state) return
       const x = target.object.x - camera.value.scrollX
       const y = target.object.y - camera.value.scrollY
@@ -239,7 +245,7 @@ export default {
       config,
       gamepadMode,
       confirm,
-      toggleMenu, cancel, navigate, shiftMenu,
+      toggleMenu, cancel, navigate, shiftMenu, aimStart, aimEnd,
       grabStart, grabEnd,
       update,
       ...refs,

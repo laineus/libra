@@ -14,7 +14,7 @@ export default {
     velocity: { default: 25 },
     virtualStickEnabled: { type: Boolean, default: true }
   },
-  emits: ['confirm', 'cancel', 'navigate', 'grabstart', 'grabend', 'bag', 'map', 'system', 'menuleft', 'menuright'],
+  emits: ['confirm', 'cancel', 'navigate', 'aimstart', 'aimend', 'grabstart', 'grabend', 'bag', 'map', 'system', 'menuleft', 'menuright'],
   setup (props, context) {
     const scene = useScene()
     const virtualStick = ref(null)
@@ -24,6 +24,8 @@ export default {
     const gamepadMode = ref(false)
     input.on('confirmstart', () => context.emit('confirm'))
     input.on('cancelstart', () => context.emit('cancel'))
+    input.on('aimstart', () => context.emit('aimstart'))
+    input.on('aimend', () => context.emit('aimend'))
     input.on('grabstart', () => context.emit('grabstart'))
     input.on('grabend', () => context.emit('grabend'))
     input.on('bagstart', () => context.emit('bag'))
