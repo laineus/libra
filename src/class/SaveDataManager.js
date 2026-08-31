@@ -13,8 +13,8 @@ export default class SaveDataManager {
     this.lastSnapshot = null
     this.setState(getDefaultState())
   }
-  initSteam (greenworks) {
-    this.appStorage.initSteam(greenworks)
+  initSteam (steamAPI) {
+    this.appStorage.initSteam(steamAPI)
   }
   loadSetting () {
     this.appStorage.getItem(`${STORAGE_KEY}_last_saved_number`).then(savedNumber => {

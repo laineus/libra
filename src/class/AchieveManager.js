@@ -24,8 +24,8 @@ export default class AchieveManager {
   initGtag (gtag) {
     this.gtag = gtag
   }
-  initSteam (greenworks) {
-    this.steam = greenworks
+  initSteam (steamAPI) {
+    this.steam = steamAPI
   }
   activate (name) {
     const achievements = getLocalStorageAchievements()
@@ -33,7 +33,9 @@ export default class AchieveManager {
       achievements.push(name)
       setLocalStorageAchievements(achievements)
       if (this.steam) {
-        this.steam.activateAchievement(name, () => null)
+        this.steam.activateAchievement(name).catch(error => {
+          console.error(`Failed to activate Steam achievement: ${name}`, error)
+        })
       }
       console.log('Activate achievement', achievements)
     }

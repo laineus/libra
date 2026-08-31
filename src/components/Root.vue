@@ -36,14 +36,12 @@ export default {
     const frames = reactive({ total: 0, game: 0 })
     const sdm = new SaveDataManager()
     const achieve = new AchieveManager()
-    if (typeof greenworks !== 'undefined') {
-      try {
-        greenworks.init()
-        sdm.initSteam(greenworks)
-        achieve.initSteam(greenworks)
-      } catch (e) {
-        alert(e)
-      }
+    if (window.steamAPI) {
+      window.steamAPI.isAvailable().then(isAvailable => {
+        if (!isAvailable) return
+        sdm.initSteam(window.steamAPI)
+        achieve.initSteam(window.steamAPI)
+      }).catch(error => console.error('Failed to initialize Steam:', error))
     }
     setInterval(() => sdm.state.sec++, 1000)
     provide('event', eventManager)

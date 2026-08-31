@@ -1,0 +1,54 @@
+{
+  "name": "the-dream-libra-had",
+  "version": "1.0.0",
+  "description": "Steam版 リブラの見た夢 - The Dream Libra Had",
+  "main": "main.js",
+  "scripts": {
+    "dev": "NODE_ENV=development electron .",
+    "build": "electron-builder",
+    "build:linux": "electron-builder --linux",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac"
+  },
+  "build": {
+    "appId": "com.laineus.the-dream-libra-had",
+    "productName": "The Dream Libra Had",
+    "files": [
+      "main.js",
+      "preload.js",
+      "node_modules/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "icon.png",
+        "to": "icon.png"
+      }
+    ],
+    "linux": {
+      "target": "dir",
+      "category": "Game",
+      "icon": "icon.png"
+    },
+    "win": {
+      "target": "dir",
+      "icon": "icon.png"
+    },
+    "mac": {
+      "target": "dir",
+      "category": "public.app-category.games",
+      "icon": "icon.png"
+    }
+  },
+  "author": "Laineus",
+  "license": "MIT",
+  "engines": {
+    "node": ">=24.19.0"
+  },
+  "devDependencies": {
+    "electron": "43.5.0",
+    "electron-builder": "26.15.3"
+  },
+  "dependencies": {
+    "steamworks.js": "^0.4.0"
+  }
+}
