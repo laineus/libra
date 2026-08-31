@@ -60,7 +60,7 @@ import Credit from '@/components/Credit.vue'
 import Opening from '@/components/Opening.vue'
 import Debug from '@/components/Debug.vue'
 import config from '@/data/config'
-const GAMEPAD_GRAB_SPEED = 300
+const GAMEPAD_GRAB_SPEED = 500
 const downloadBySource = (src, name) => {
   const link = document.createElement('a')
   link.href = src
@@ -136,7 +136,7 @@ export default {
         return
       }
       const target = nearestGrabbable.value
-      if (refs.menu.value?.selected) return refs.menu.value.confirm()
+      if (refs.menu.value?.selected) return refs.menu.value.grab()
       if (!target || event.state) return
       const x = target.object.x - camera.value.scrollX
       const y = target.object.y - camera.value.scrollY
@@ -152,6 +152,7 @@ export default {
       target.execGrabEvent(grabPointer)
     }
     const grabEnd = () => {
+      refs.menu.value?.grabEnd()
       if (!grabPointer) return
       grabPointer.isDown = false
       grabPointer = null

@@ -72,6 +72,12 @@ export default {
     }
     const navigate = direction => selected.value?.ref.value?.navigate?.(direction)
     const confirm = () => selected.value?.ref.value?.confirm?.()
+    const grab = () => {
+      const child = selected.value?.ref.value
+      if (child?.grabFocused) return child.grabFocused()
+      return child?.confirm?.()
+    }
+    const grabEnd = () => selected.value?.ref.value?.grabEnd?.()
     const cancel = () => {
       if (selected.value?.ref.value?.cancel?.()) return
       close()
@@ -96,7 +102,7 @@ export default {
       index, selected,
       select, close,
       toggle, shift,
-      navigate, confirm, cancel,
+      navigate, confirm, grab, grabEnd, cancel,
       tapButton, tapCloseArea,
       redecorate
     }
