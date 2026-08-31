@@ -278,7 +278,10 @@ export default {
     overwriteSave: '覆盖保存',
     registerPlace: '登记现在地',
     moveToRegisteredPlace: '移动到登记过的场所',
-    redecorate: '换装模式'
+    redecorate: '换装模式',
+    aimGun: '举枪瞄准',
+    aim: '瞄准',
+    fire: '射击'
   },
   tips: {
     amili: {

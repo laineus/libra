@@ -281,7 +281,10 @@ export default {
     overwriteSave: 'Overwrite',
     registerPlace: 'Register current place',
     moveToRegisteredPlace: 'Go to the registered place',
-    redecorate: 'Redecorate mode'
+    redecorate: 'Redecorate mode',
+    aimGun: 'Aim gun',
+    aim: 'Aim',
+    fire: 'Fire'
   },
   tips: {
     amili: {

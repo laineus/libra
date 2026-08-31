@@ -280,7 +280,10 @@ export default {
     overwriteSave: '上書き保存',
     registerPlace: '現在地を登録',
     moveToRegisteredPlace: '登録した場所へ移動',
-    redecorate: '模様替えモード'
+    redecorate: '模様替えモード',
+    aimGun: '銃を構える',
+    aim: '照準',
+    fire: '発砲'
   },
   tips: {
     amili: {

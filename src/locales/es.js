@@ -281,7 +281,10 @@ export default {
     overwriteSave: 'Sobrescribir',
     registerPlace: 'Registrar ubicación actual',
     moveToRegisteredPlace: 'Ir a ubicación registrada',
-    redecorate: 'Modo redecorar'
+    redecorate: 'Modo redecorar',
+    aimGun: 'Apuntar arma',
+    aim: 'Apuntar',
+    fire: 'Disparar'
   },
   tips: {
     amili: {

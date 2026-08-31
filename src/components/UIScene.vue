@@ -22,6 +22,18 @@
           <Image texture="shot" :alpha="0.3" :scale="0.8" />
         </Container>
       </template>
+      <Container v-if="(gamepadMode || !mobile) && player?.hasGun && !event.state && !menu?.selected" :x="25" :y="515">
+        <template v-if="player?.gun.mode.value">
+          <Image :texture="gamepadMode ? 'gamepad_right_stick' : 'mouse_move'" :scale="0.35" />
+          <Text :text="t('ui.aim')" :x="18" :originY="0.5" :size="13" :bold="true" color="soy" :style="{ stroke: config.COLORS.brown.toColorString, strokeThickness: 3 }" />
+          <Image :texture="gamepadMode ? 'gamepad_rt' : 'mouse_left'" :x="97" :scale="0.35" />
+          <Text :text="t('ui.fire')" :x="115" :originY="0.5" :size="13" :bold="true" color="soy" :style="{ stroke: config.COLORS.brown.toColorString, strokeThickness: 3 }" />
+        </template>
+        <template v-else>
+          <Image :texture="gamepadMode ? 'gamepad_lt' : 'mouse_right'" :scale="0.35" />
+          <Text :text="t('ui.aimGun')" :x="18" :originY="0.5" :size="13" :bold="true" color="soy" :style="{ stroke: config.COLORS.brown.toColorString, strokeThickness: 3 }" />
+        </template>
+      </Container>
       <Talk ref="talk" />
       <Selector v-if="selector.list" :x="selector.x" :y="selector.y" :list="selector.list" :selectedIndex="gamepadMode ? selector.index : null" @select="selector.resolver" />
       <Log ref="log" />
@@ -243,6 +255,7 @@ export default {
       mapName.value = name
     }
     return {
+      t,
       adjustFontSize,
       storage,
       nearestCheckable, nearestGrabbable,
