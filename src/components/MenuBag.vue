@@ -260,7 +260,7 @@ export default {
           grab.resolver(true)
           sleep(30).then(() => context.emit('close'))
           if (['gun', 'revolver', 'rifle'].includes(grab.item.key)) {
-            uiScene.setTutorial(mobile ? 'gunSp' : 'gunPc')
+            uiScene.setTutorial(controller?.gamepadConnected ? 'gunGamepad' : mobile ? 'gunSp' : 'gunPc')
           } else if (weight.value >= 60) {
             uiScene.setTutorial('weight')
           }

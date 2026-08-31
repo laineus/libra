@@ -13,6 +13,7 @@ export default {
     const { exec } = inject('event')
     const bag = inject('bag')
     const mobile = inject('mobile')
+    const controller = inject('controller')
     const killed = computed(() => state.killed.length > 0)
     if (!killed.value) {
       field.delObject(48)
@@ -35,7 +36,7 @@ export default {
     }
 
     const speakKajitsu = talk.getSpeakScripts(new Talker(t('name.kajitsu'), kajitsu.object))
-    const env = mobile ? 'sp' : 'pc'
+    const env = () => controller.value?.gamepadConnected ? 'gamepad' : mobile ? 'sp' : 'pc'
 
     // Auto start event
     if (state.events.intro === INTRO_STEPS.INTRO) {
@@ -45,7 +46,7 @@ export default {
         const revert = await camera.move(0, -100, 2000)
         await sleep(500)
         await speakKajitsu(t('events.forest2Kajitsu.greet'))
-        await speakKajitsu(t(`events.forest2Kajitsu.walk.${env}`))
+        await speakKajitsu(t(`events.forest2Kajitsu.walk.${env()}`))
         await revert()
         state.events.intro = INTRO_STEPS.WALK
       })
@@ -56,7 +57,7 @@ export default {
       if (state.events.intro !== INTRO_STEPS.WALK) return
       return async () => {
         await speakKajitsu(t('events.forest2Kajitsu.talk1'))
-        await speakKajitsu(t(`events.forest2Kajitsu.talk2.${env}`))
+        await speakKajitsu(t(`events.forest2Kajitsu.talk2.${env()}`))
         state.events.intro = INTRO_STEPS.TALK
       }
     })
@@ -71,12 +72,12 @@ export default {
           await speakKajitsu(t('events.forest2Kajitsu.apple1'))
           const revert = await camera.move(100, -200, 2000)
           await sleep(500)
-          await speakKajitsu(t(`events.forest2Kajitsu.apple2.${env}`))
+          await speakKajitsu(t(`events.forest2Kajitsu.apple2.${env()}`))
           await revert()
         }
       } else if (state.events.intro === INTRO_STEPS.APPLE && !bag.hasItem('apple')) {
         return async () => {
-          await speakKajitsu(t(`events.forest2Kajitsu.apple2.${env}`))
+          await speakKajitsu(t(`events.forest2Kajitsu.apple2.${env()}`))
         }
       } else if (state.events.intro === INTRO_STEPS.APPLE) {
         return async () => {

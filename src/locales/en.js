@@ -332,6 +332,7 @@ export default {
   tutorial: {
     gunPc: `- Gun -\n\nYou found a gun.\nRight-click to use it.`,
     gunSp: `- Gun -\n\nYou've got a gun.\nYou can use it by tapping the gun icon displayed on the screen.`,
+    gunGamepad: `- Gun -\n\nYou've got a gun.\nHold the LT button to aim.\nMove the crosshair with the right stick and press the RT button to fire.`,
     weight: `- Carrying Limit -\n\nKeep an eye on the weight of the items you carry.\nApples are especially heavy, so take them home often.`,
     home: '- Home -\n\nAt home, you can give apples to your girlfriend, Amili, and store items.',
     amili: `- Amili -\n\nAmili will react to the things you bring home and use the furniture you set up.\nLet's redecorate the room where you and Amili live.`,
@@ -369,6 +370,10 @@ export default {
         sp: [
           'Move using the controller in the bottom-left corner of the screen.',
           'First, please walk over to me.'
+        ],
+        gamepad: [
+          'Move using the left stick.',
+          'First, please walk over to me.'
         ]
       },
       talk1: [
@@ -381,6 +386,9 @@ export default {
         ],
         sp: [
           'Tap me or the button in the bottom-right corner to start a conversation.'
+        ],
+        gamepad: [
+          'Move close to me and press the A button to start a conversation.'
         ]
       },
       apple1: [
@@ -398,6 +406,12 @@ export default {
           'Try picking up the apple lying over there.',
           'Move close, then hold either the apple or the bottom-right button to grab it.',
           'Your bag will open. Drop the apple into it to pick it up.',
+          'Please come back to me after picking it up.'
+        ],
+        gamepad: [
+          'Try picking up the apple lying over there.',
+          'Move close to it, then hold the RT button to grab it.',
+          'Move the apple into your bag with the right stick, then release the RT button to pick it up.',
           'Please come back to me after picking it up.'
         ]
       },
