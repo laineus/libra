@@ -11,6 +11,8 @@ const ABSENCE_ACTIONS = Object.freeze({
   TV: 5,
   CD: 6
 })
+const COOKING_ITEMS = ['curry', 'steak', 'stirFry', 'omurice']
+let cookingIndex = Math.floor(Math.random() * COOKING_ITEMS.length)
 const USING_POSITION = {
   kitchen: { x: 0, y: 20 },
   tv: { x: 0, y: 70 },
@@ -217,7 +219,8 @@ export default {
         const tablemat = state.roomItems.filter(v => ['tablemat1', 'tablemat2'].includes(v.key)).filter(v => {
           return v.x > tableBegin.x && v.x < tableEnd.x && v.y > tableBegin.y && v.y < tableEnd.y
         }).random()
-        const name = unagi ? 'unadon' : ['curry', 'steak', 'stirFry', 'omurice'].random()
+        const name = unagi ? 'unadon' : COOKING_ITEMS[cookingIndex]
+        if (!unagi) cookingIndex = (cookingIndex + 1) % COOKING_ITEMS.length
         const pos = tablemat ?? field.positions.dish
         field.addObject({ name, x: pos.x, y: pos.y - 2 })
         return false

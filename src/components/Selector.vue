@@ -4,7 +4,7 @@
     <OrganicRectangle :fillColor="config.COLORS.soy" :width="bgWidth + 24" :height="sumHeight" :y="-sumHeight.half" />
     <Image texture="menu_arrow" :origin="0.5" :scale="0.7" :rotation="-0.07" :tint="config.COLORS.brown" :y="(bgWidth * 0.039) + 4" />
     <Image texture="menu_arrow" :origin="0.5" :scale="0.7" :rotation="-0.07" :tint="config.COLORS.soy" :y="(bgWidth * 0.039) + 2.5" />
-    <Container v-for="(v, i) in options" :key="i" :y="-sumHeight + (bgHeight + 5) * i + 2.5">
+    <Container v-for="(v, i) in options" :key="i" :y="-sumHeight + (bgHeight + 5) * i + 2.5" :alpha="selectedIndex === null || selectedIndex === undefined || i === selectedIndex ? 1 : 0.8">
       <Image texture="menu_label" :originX="0.5" :originY="0" :y="-1" :rotation="-0.015" :scaleX="(bgWidth + 15) / 138" :scaleY="0.9" :tint="i === selectedIndex ? config.COLORS.orange : undefined" @pointerdown.stop="select($event, i)" />
       <Text :ref="el => v.ref.value = el" :originX="0.5" :originY="0" :text="v.text" :size="14" color="soy" :y="5" :lineSpacing="3" />
     </Container>

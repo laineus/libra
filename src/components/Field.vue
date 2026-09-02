@@ -63,7 +63,7 @@ export default {
       if (isRoom) obj.temper = 'RANDOM'
       objects.push(obj)
       return new Promise(resolve => {
-        nextTick(() => resolve(obj.ref.value))
+        nextTick(() => resolve(Array.isArray(obj.ref.value) ? obj.ref.value[0] : obj.ref.value))
       })
     }
     const delObject = itemOrId => objects.delete(typeof itemOrId === 'object' ? itemOrId : v => v.id === itemOrId)
