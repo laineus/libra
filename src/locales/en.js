@@ -204,11 +204,11 @@ export default {
       desc: `A poor penguin who was deceived by a woman cannot accept the truth and still waits for her.`
     },
     liveForEveryone: {
-      title: 'A Penguin Who Lives for Others',
+      title: 'The Selfless Penguin',
       desc: `A penguin who lives for others has lost sight of what living “for others” really means.`
     },
     matsutake: {
-      title: 'The Mushroom of His Dreams',
+      title: 'Mushroom of His Dreams',
       desc: 'The coal miner wants to try matsutake just once in his life.'
     },
     painter: {

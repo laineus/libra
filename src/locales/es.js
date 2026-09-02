@@ -204,7 +204,7 @@ export default {
       desc: 'El pobre pingüino no puede aceptar el hecho de haber sido engañado por la mujer y todavía la espera.'
     },
     liveForEveryone: {
-      title: 'Vive una vida para los demás',
+      title: 'Vivir para los demás',
       desc: 'El Pingüino que vive para los demás no ha conseguido entender lo que significa realmente “para los demás”.'
     },
     matsutake: {
@@ -224,11 +224,11 @@ export default {
       desc: 'La Señora Calabaza está buscando el “Elixir de Inmortalidad” para hacer que su belleza dure para siempre.'
     },
     bogusDoctor: {
-      title: 'El Héroe más allá del Sacrificio',
+      title: 'Héroe más allá del Sacrificio',
       desc: 'El Médico del Hospital es un médico autodidacta, pero está atormentado por los pacientes que perdieron sus vidas debido a sus errores del pasado.'
     },
     forever: {
-      title: 'Quédate conmigo para siempre',
+      title: 'Quédate a mi lado siempre',
       desc: 'Una mujer que ha muerto por una enfermedad está esperando a su marido, que se suponía que iba a morir con ella.'
     },
     raptor: {
@@ -236,7 +236,7 @@ export default {
       desc: 'El hombre de la mansión ha visto una película de dinosaurios y ha quedado fascinado con ellos.'
     },
     photosynthesis: {
-      title: 'Una Muestra de la Fotosíntesis',
+      title: 'El Sabor de la Fotosíntesis',
       desc: 'El Alien Gris quiere probar la comida de la Tierra para su investigación.'
     }
   },
