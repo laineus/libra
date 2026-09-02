@@ -37,7 +37,7 @@ export default {
     const substance = ref(null)
     const data = reactive({
       frame: 0,
-      speed: 200
+      speed: 240
     })
     const object = computed(() => substance.value?.object)
     const following = useFollowing(object)
