@@ -31,6 +31,8 @@ import maps from '@/data/maps'
 import config from '@/data/config'
 import items from '@/data/items'
 import { INTRO_STEPS } from '@/data/eventSteps'
+const PICKUP_PRIORITY_DISTANCE = 7
+const PICKUP_PRIORITY_ITEMS = new Set(['apple', 'curry', 'steak', 'stirFry', 'omurice', 'cookies', 'lunchbox', 'unadon'])
 export default {
   components: { TilemapLayer, Image, Player, Character, Substance, Area, Gate, Bullet, ManualTile },
   props: [
@@ -141,7 +143,10 @@ export default {
       if (frames.game % 6 === 3) {
         const refs = objects.map(getObjectRef)
         nearestCheckable.value = refs.filter(v => v?.checkable).findMin(v => v.distanceToPlayer)
-        nearestGrabbable.value = refs.filter(v => v?.grabbable).findMin(v => v.distanceToPlayer)
+        nearestGrabbable.value = refs.filter(v => v?.grabbable).findMin(v => {
+          const pickupPriority = PICKUP_PRIORITY_ITEMS.has(v.itemData?.key)
+          return v.distanceToPlayer - (pickupPriority ? PICKUP_PRIORITY_DISTANCE : 0)
+        })
       }
       if (frames.game % 2 === 0) darkness.restore().removeArc(player.value.object.x, player.value.object.y, 300).refresh()
       field.update(time)
