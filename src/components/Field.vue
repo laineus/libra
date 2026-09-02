@@ -56,14 +56,18 @@ export default {
     const areas = computed(() => objects.filter(v => v.type === 'Area'))
     const gates = computed(() => objects.filter(v => v.type === 'Gate'))
     const positions = computed(() => objects.filter(v => v.type === 'Position').toObject(v => [v.name, { x: v.x, y: v.y }]))
-    const lightSubstances = computed(() => substances.value.filter(v => v.ref.value?.light))
+    const getObjectRef = item => {
+      const value = item?.ref?.value
+      return Array.isArray(value) ? value[0] : value
+    }
+    const lightSubstances = computed(() => substances.value.filter(v => getObjectRef(v)?.light))
     const addObject = object => {
       const itemData = items.find(v => v.key === object.name)
       const obj = Object.assign({ ref: ref(null), id: Symbol('id'), type: itemData.type }, object)
       if (isRoom) obj.temper = 'RANDOM'
       objects.push(obj)
       return new Promise(resolve => {
-        nextTick(() => resolve(Array.isArray(obj.ref.value) ? obj.ref.value[0] : obj.ref.value))
+        nextTick(() => resolve(getObjectRef(obj)))
       })
     }
     const delObject = itemOrId => objects.delete(typeof itemOrId === 'object' ? itemOrId : v => v.id === itemOrId)
@@ -78,7 +82,8 @@ export default {
     const updateRoomItems = () => {
       if (!isRoom) return
       state.roomItems = objects.filter(v => ['Character', 'Substance'].includes(v.type) && v.name !== 'amili').map(item => {
-        return { id: item.id, key: item.name, x: item.ref.value?.object.x ?? item.x, y: item.ref.value?.object.y ?? item.y, scale: item.scale }
+        const component = getObjectRef(item)
+        return { id: item.id, key: item.name, x: component?.object.x ?? item.x, y: component?.object.y ?? item.y, scale: item.scale }
       })
     }
     const unwatchItems = watch(() => objects.length, updateRoomItems)
@@ -89,7 +94,7 @@ export default {
     const isCollides = (tileX, tileY) => {
       return layers.some(layer => layer.ref.value.getTileAt(tileX, tileY)?.collides)
     }
-    const getObjectById = id => objects.find(v => v.id === id)?.ref.value[0]
+    const getObjectById = id => getObjectRef(objects.find(v => v.id === id))
     randomObjectByRandom(objects.filter(v => v.type === 'Random')).forEach(addObject)
     const layerGroup = scene.add.group()
     const objectGroup = scene.add.group()
@@ -105,7 +110,8 @@ export default {
     const darkness = new Darkness(scene, 'darkness', field.width, field.height, 20)
     const resetDarkness = () => {
       const arcs = lightSubstances.value.map(v => {
-        return { x: v.x, y: v.y, radius: 120 }
+        const object = getObjectRef(v)?.object
+        return { x: object?.x ?? v.x, y: object?.y ?? v.y, radius: 120 }
       })
       darkness.clear().fillBg(field.properties.darkness ?? 0x77000000).removeArcs(arcs).save().refresh()
     }
@@ -133,7 +139,7 @@ export default {
     const nearestGrabbable = ref(null)
     const update = (time) => {
       if (frames.game % 6 === 3) {
-        const refs = objects.map(v => Array.isArray(v.ref.value) ? v.ref.value[0] : v.ref.value)
+        const refs = objects.map(getObjectRef)
         nearestCheckable.value = refs.filter(v => v?.checkable).findMin(v => v.distanceToPlayer)
         nearestGrabbable.value = refs.filter(v => v?.grabbable).findMin(v => v.distanceToPlayer)
       }
@@ -149,7 +155,7 @@ export default {
       addObject, delObject, dropItem, updateRoomItems,
       bullets, addBullet, delBullet,
       nearestCheckable, nearestGrabbable,
-      isCollides, getObjectById,
+      isCollides, getObjectById, getObjectRef,
       layerCreate, charaCreate,
       resetDarkness,
       play: update

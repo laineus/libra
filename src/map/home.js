@@ -34,9 +34,10 @@ export default {
     const getItemReaction = useItemReaction(state)
 
     field.charas.filter(v => v.name !== 'amili').forEach(v => {
-      v.ref.value.setTargetObject(null)
-      v.ref.value.setRandomWalk(100)
-      v.ref.value.attackTarget = null
+      const chara = field.getObjectRef(v)
+      chara?.setTargetObject(null)
+      chara?.setRandomWalk(100)
+      if (chara) chara.attackTarget = null
     })
 
     const getUsableItem = key => {

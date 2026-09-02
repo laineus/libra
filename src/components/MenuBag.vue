@@ -165,7 +165,10 @@ export default {
     const onCeil = (x, y) => field.field.tilemap.layers.some(l => l.tilemapLayer.depth >= config.DEPTH.CEIL && l.tilemapLayer.getTileAtWorldXY(x, y)?.collides)
     const trashCan = (x, y) => {
       if (!['tissueEmpty', 'trash'].includes(grab.item.key)) return false
-      const trashCan = field.substances.find(o => ['trashCan1', 'trashCan2'].includes(o.name) && Phaser.Math.Distance.Between(o.ref.value.object.x, o.ref.value.object.y, x, y) < 20)
+      const trashCan = field.substances.find(o => {
+        const component = field.getObjectRef(o)
+        return ['trashCan1', 'trashCan2'].includes(o.name) && component && Phaser.Math.Distance.Between(component.object.x, component.object.y, x, y) < 20
+      })
       if (!trashCan) return false
       state.bagItems.delete(grab.item)
       if (trashCan.name === 'trashCan1') {
@@ -198,7 +201,10 @@ export default {
       } else if (grab.mode === 'dispose') {
         const x = grab.x + camera.scrollX
         const y = grab.y + camera.scrollY
-        const vendingMachine = field.substances.find(o => o.name === 'vendingMachine' && Phaser.Math.Distance.Between(o.ref.value.object.x, o.ref.value.object.y - 30, x, y) < 28)
+        const vendingMachine = field.substances.find(o => {
+          const component = field.getObjectRef(o)
+          return o.name === 'vendingMachine' && component && Phaser.Math.Distance.Between(component.object.x, component.object.y - 30, x, y) < 28
+        })
         if (onCeil(x, y)) {
           uiScene.log.push(t('ui.cantPutItem'))
         } else if (trashCan(x, y)) {
@@ -208,7 +214,7 @@ export default {
         } else if (['coinGold', 'coinSilver'].includes(data.key) && vendingMachine) {
           audio.se('drop')
           state.bagItems.delete(grab.item)
-          field.dropItem(['coke', 'tea'].random(), vendingMachine.ref.value.object)
+          field.dropItem(['coke', 'tea'].random(), field.getObjectRef(vendingMachine).object)
           context.emit('close')
           uiScene.log.push(t('ui.vendingMachine'))
           achieve.activate('drink')

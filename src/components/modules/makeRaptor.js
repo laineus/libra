@@ -12,11 +12,13 @@ export default (isField, { state, uiScene, field, achieve, audio }) => {
   const keyY = isField ? 'y' : 'bagY'
   const keyName = isField ? 'name' : 'key'
   const completedParts = items.filter(v => v[keyName] === 'raptor2').map(body => {
-    const baseX = isField ? (body.ref.value?.object.x ?? body.x) : body.bagX
-    const baseY = isField ? (body.ref.value?.object.y ?? body.y) : body.bagY
+    const bodyComponent = isField ? field.getObjectRef(body) : null
+    const baseX = isField ? (bodyComponent?.object.x ?? body.x) : body.bagX
+    const baseY = isField ? (bodyComponent?.object.y ?? body.y) : body.bagY
     const getDiff = tgt => {
-      const tgtX = isField ? (tgt.ref.value?.object.x ?? tgt.x) : tgt.bagX
-      const tgtY = isField ? (tgt.ref.value?.object.y ?? tgt.y) : tgt.bagY
+      const component = isField ? field.getObjectRef(tgt) : null
+      const tgtX = isField ? (component?.object.x ?? tgt.x) : tgt.bagX
+      const tgtY = isField ? (component?.object.y ?? tgt.y) : tgt.bagY
       return [tgtX - baseX, tgtY - baseY]
     }
     const validParts = Object.entries(MAP).map(([key, v]) => {
