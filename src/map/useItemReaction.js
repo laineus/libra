@@ -50,6 +50,7 @@ export default state => () => {
     { key: 'skul' },
     { key: 'sofa' },
     { key: 'tissue', test: () => state.roomItems.find(v => v.key === 'tissue' && v.x > 610 && v.y < 300) },
+    { key: 'trash' },
     { key: 'trashCan2' },
     { key: 'tv' },
     { key: 'star' },
