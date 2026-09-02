@@ -9,6 +9,7 @@
     <Text :text="`${weight}/100`" :originX="1" :originY="0.5" :x="221" :y="-3" :size="13" :bold="warning" :color="warning ? 'red' : undefined" />
     <Image v-if="grab.item && itemData[grab.item.key].eat" :tint="onEatArea ? config.COLORS.orange : config.COLORS.brown" texture="eat" :origin="1" :x="229" :y="375" />
     <Container v-if="field.name === 'home'" :x="168" :y="-38" :width="170" :height="45" @pointerdown.stop="switchRedecorate">
+      <Rectangle v-if="gamepadMode && focusRedecorate" :x="60" :width="24" :height="24" :lineWidth="2" :strokeColor="config.COLORS.orange" :radius="4" />
       <Text :text="t('ui.redecorate')" :originX="1" :originY="0.5" :x="46" :size="13" color="soy" :bold="true" :style="{ stroke: config.COLORS.brown.toColorString, strokeThickness: 2 }" />
       <Image :x="70" :originX="1" :originY="0.5" texture="check" :frame="redecorate ? 1 : 0" :tint="config.COLORS.soy" />
     </Container>
@@ -32,6 +33,7 @@ const itemData = items.toObject(v => [v.key, v])
 const WIDTH = 240
 const HEIGHT = 390
 const GAMEPAD_GRAB_SPEED = 500
+const REDECORATE_FOCUS_TARGET = { redecorate: true, bagX: 228, bagY: -38 }
 let lastFocusedItemId = null
 export default {
   components: { Image, Container, Rectangle, MenuContainer, Text },
@@ -50,6 +52,7 @@ export default {
     const bag = inject('bag')
     const container = ref(null)
     const focusedItem = ref(state.bagItems.find(item => item.id === lastFocusedItemId) ?? state.bagItems[0] ?? null)
+    const focusRedecorate = ref(false)
     const itemSizes = reactive({})
     const focusedItemSize = computed(() => itemSizes[focusedItem.value?.id])
     const offsetX = computed(() => container.value?.offsetX)
@@ -102,6 +105,7 @@ export default {
     }
     onPreUpdate(update)
     const grabItem = (item, mode, pointer) => {
+      focusRedecorate.value = false
       if ('bagX' in item) {
         focusedItem.value = item
         lastFocusedItemId = item.id
@@ -119,29 +123,37 @@ export default {
       return promise
     }
     const navigate = ({ x, y, rawX = x, rawY = y }) => {
-      if (grab.item || (!x && !y) || !state.bagItems.length) return
-      if (!focusedItem.value || !state.bagItems.includes(focusedItem.value)) {
-        focusedItem.value = state.bagItems[0]
+      if (grab.item || (!x && !y)) return
+      const targets = [...state.bagItems]
+      if (field.name === 'home') targets.push(REDECORATE_FOCUS_TARGET)
+      if (!targets.length) return
+      if (!focusRedecorate.value && (!focusedItem.value || !state.bagItems.includes(focusedItem.value))) {
+        const first = state.bagItems[0] ?? REDECORATE_FOCUS_TARGET
+        focusRedecorate.value = first.redecorate === true
+        focusedItem.value = focusRedecorate.value ? null : first
         return
       }
-      const current = focusedItem.value
+      const current = focusRedecorate.value ? REDECORATE_FOCUS_TARGET : focusedItem.value
       const inputLength = Math.hypot(rawX, rawY)
       const directionX = rawX / inputLength
       const directionY = rawY / inputLength
-      const candidates = state.bagItems.filter(item => {
+      const candidates = targets.filter(item => {
         if (item === current) return false
         return ((item.bagX - current.bagX) * directionX) + ((item.bagY - current.bagY) * directionY) > 0
       })
-      focusedItem.value = candidates.findMin(item => {
+      const next = candidates.findMin(item => {
         const dx = item.bagX - current.bagX
         const dy = item.bagY - current.bagY
         const distance = Math.hypot(dx, dy)
         const cosine = ((dx * directionX) + (dy * directionY)) / distance
         return distance * (1 + ((1 - cosine) * 8))
       }) ?? current
-      lastFocusedItemId = focusedItem.value.id
+      focusRedecorate.value = next.redecorate === true
+      focusedItem.value = focusRedecorate.value ? null : next
+      if (focusedItem.value) lastFocusedItemId = focusedItem.value.id
     }
     const grabFocusedItem = () => {
+      if (focusRedecorate.value) return switchRedecorate()
       const item = focusedItem.value
       if (!item || grab.item) return
       const pointer = {
@@ -294,6 +306,10 @@ export default {
       context.emit('update:redecorate', !props.redecorate)
       audio.se('click')
     }
+    const confirm = () => {
+      if (!focusRedecorate.value) return
+      switchRedecorate()
+    }
     const warning = computed(() => weight.value > 70)
     const minItemSize = mobile ? 50 : 25
     const createdItem = (bagItem, item) => {
@@ -317,10 +333,10 @@ export default {
       container,
       controller, grab, grabRef,
       gamepadMode: computed(() => controllerRef.value?.gamepadMode),
-      focusedItem,
+      focusedItem, focusRedecorate,
       focusedItemSize,
       grabItem,
-      navigate, grabFocused: grabFocusedItem, grabEnd, cancel,
+      navigate, confirm, grabFocused: grabFocusedItem, grabEnd, cancel,
       grabItemName,
       focusedItemName,
       onEatArea,
