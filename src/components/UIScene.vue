@@ -45,7 +45,7 @@
       </Container>
     </template>
     <Transitions ref="transitions" />
-    <Tutorial ref="tutorialOverlay" v-if="tutorial" :name="tutorial" @close="tutorial = null" />
+    <Tutorial ref="tutorialOverlay" v-if="tutorial" :name="tutorial" @close="closeTutorial" />
     <Text v-if="screenMessage.text" :text="screenMessage.text" :tween="screenMessage.tween" :x="config.WIDTH.half" :y="config.HEIGHT.half" :size="adjustFontSize(17)" :color="screenMessage.color" :origin="0.5" :depth="config.DEPTH.TRANSITION" />
     <Credit v-if="credit.resolve" :depth="config.DEPTH.TRANSITION" :endA="credit.endA" @completed="credit.resolve" />
     <Opening v-if="opening" :depth="config.DEPTH.TRANSITION" @unlock="opening" @completed="opening = null" />
@@ -102,10 +102,19 @@ export default {
       transitions: ref(null)
     }
     const tutorial = ref(null)
+    let tutorialResolver = null
     const setTutorial = key => {
       if (storage.state.tutorial.includes(key)) return
       storage.state.tutorial.push(key)
       tutorial.value = key
+      return new Promise(resolve => {
+        tutorialResolver = resolve
+      })
+    }
+    const closeTutorial = () => {
+      tutorial.value = null
+      tutorialResolver?.()
+      tutorialResolver = null
     }
     const nearestCheckable = computed(() => field.value?.nearestCheckable)
     const nearestGrabbable = computed(() => field.value?.nearestGrabbable)
@@ -278,7 +287,7 @@ export default {
       selector, setSelector,
       screenMessage, setScreenMessage,
       mapName, setMapName,
-      tutorial, setTutorial,
+      tutorial, setTutorial, closeTutorial,
       transition: (...args) => refs.transitions.value.add(...args),
       player,
       images: shallowReactive([])
