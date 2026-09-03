@@ -257,7 +257,12 @@ export default {
         const isRaptor = grab.item.key.startsWith('raptor')
         const isField = !grabbingBagItem.value
         nextTick(() => {
-          if (isRaptor) makeRaptor(isField, { state, uiScene, field, achieve, audio })
+          if (!isRaptor) return
+          const completedRaptor = makeRaptor(isField, { state, uiScene, field, achieve, audio })
+          if (!isField && completedRaptor) {
+            focusedItem.value = completedRaptor
+            lastFocusedItemId = completedRaptor.id
+          }
         })
         sortItems()
       } else if (grab.mode === 'capture') {

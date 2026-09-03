@@ -47,5 +47,5 @@ export default (isField, { state, uiScene, field, achieve, audio }) => {
   uiScene.log.push(t('ui.raptor'))
   achieve.activate('raptor')
   audio.se('drop')
-  return true
+  return raptor
 }
