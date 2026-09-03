@@ -94,10 +94,11 @@ export default {
         if (y) data.optionIndex = (data.optionIndex + y + 2) % 2
         return
       }
-      if (y < 0 && data.cursorIndex === (props.load ? 0 : 1)) return 'tabs'
+      if (!props.load && y < 0 && data.cursorIndex === 1) return 'tabs'
       if (y) {
         const first = props.load ? 0 : 1
-        data.cursorIndex = Math.fix(data.cursorIndex + y, first, list.value.length - 1)
+        const length = list.value.length - first
+        if (length) data.cursorIndex = first + ((data.cursorIndex - first + y + length) % length)
       }
     }
     const confirm = () => data.selectedIndex !== null ? tapSaveOption(data.optionIndex) : selectRow(data.cursorIndex)
