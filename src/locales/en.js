@@ -1414,7 +1414,7 @@ export default {
           'When I was alive, I was admitted to this hospital.',
           'And my doctor was also my husband.',
           'He was here every night to hold my hand, no matter how tired he was from work.',
-          'My husband and I both knew that my disease could not be cured and that I would not live long.',
+          'My husband and I knew that my disease could not be cured and that I would not live long.',
           'But my husband always encouraged me, saying that he would always be there for me.',
           'Eventually, my condition worsened and my own death became imminent.',
           'I thought I was prepared for it, but I was so scared.',
