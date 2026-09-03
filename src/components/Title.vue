@@ -7,8 +7,8 @@
     <Image v-else-if="setting.state.lang === 'es'" texture="logo_es" :x="config.WIDTH.half" :y="config.HEIGHT.half - 80" />
     <Image v-else texture="logo_en" :x="config.WIDTH.half" :y="config.HEIGHT.half - 90" />
   </Container>
-  <Container v-for="(v, i) in list" :key="i" :x="config.WIDTH.half" :y="380 + (i * 40)">
-    <Image texture="nav" :frame="i" :blendMode="Phaser.BlendModes.ADD" :alpha="selected === i || (gamepadMode && selected === null && cursorIndex === i) ? 1 : gamepadMode ? 0.55 : 0.87" @pointerdown.stop="select(i)" />
+  <Container v-for="(v, i) in list" :key="i" :x="config.WIDTH.half" :y="menuY + (i * 40)">
+    <Image texture="nav" :frame="i % 3" :blendMode="Phaser.BlendModes.ADD" :alpha="selected === i || (gamepadMode && selected === null && cursorIndex === i) ? 1 : gamepadMode ? 0.55 : 0.87" @pointerdown.stop="select(i)" />
     <Text :text="t(`ui.${v}`).split('').join(' ')" :size="13" :origin="0.5" :bold="true" :style="{ shadow: { offsetX: 0, offsetY: 1, blur: 1, color: '#00000020', fill: true } }" />
   </Container>
   <Container v-if="selected > 0" :tween="tween">
@@ -56,7 +56,10 @@ export default {
     storage.getList().then(rows => {
       if (!cursorMoved && rows.some(row => row.exists)) cursorIndex.value = 1
     })
+    const isElectron = Boolean(window.electronAPI)
     const list = ['newGame', 'continue', 'config']
+    if (isElectron) list.push('quit')
+    const menuY = isElectron ? 350 : 380
     const tween = ref(null)
     const select = async i => {
       if (i === null) {
@@ -68,6 +71,9 @@ export default {
         storage.init()
         await gameScene.value.setField('forest2', (12).toPixelCenter, (23).toPixelCenter, -Math.PI.half, { autosave: false })
         context.emit('close')
+      } else if (list[i] === 'quit') {
+        audio.se('click')
+        window.electronAPI.quit()
       } else {
         audio.se('click')
         selected.value = i
@@ -80,7 +86,9 @@ export default {
       if (selected.value === null) {
         if (direction.y) {
           cursorMoved = true
-          cursorIndex.value = Math.fix(cursorIndex.value + direction.y, 0, list.length - 1)
+          cursorIndex.value = controller.value?.gamepadMode
+            ? (cursorIndex.value + direction.y + list.length) % list.length
+            : Math.fix(cursorIndex.value + direction.y, 0, list.length - 1)
         }
         return
       }
@@ -148,7 +156,7 @@ export default {
       gamepadMode: computed(() => controller.value?.gamepadMode),
       saveMenu, configMenu,
       tween,
-      list,
+      list, menuY,
       select,
       navigate, confirm, cancel,
       creditEnd,

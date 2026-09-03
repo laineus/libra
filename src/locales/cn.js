@@ -243,6 +243,7 @@ export default {
     delete: '删除',
     newGame: '新的开始',
     continue: '继续游戏',
+    quit: '退出游戏',
     location: '场所',
     client: '委托人',
     questStart: '『#{title}』开始',

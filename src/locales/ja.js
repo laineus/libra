@@ -245,6 +245,7 @@ export default {
     delete: '削除',
     newGame: 'はじめから',
     continue: 'つづきから',
+    quit: 'ゲーム終了',
     location: '場所',
     client: '依頼主',
     questStart: '『#{title}』を開始',

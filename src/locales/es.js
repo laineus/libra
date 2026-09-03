@@ -246,6 +246,7 @@ export default {
     delete: 'Borrar',
     newGame: 'Nueva Partida',
     continue: 'Continuar',
+    quit: 'Salir del Juego',
     location: 'Ubicación',
     client: 'Cliente',
     questStart: 'Empezado "#{title}"',
