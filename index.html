@@ -16,10 +16,53 @@
   <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p:500,800&display=auto&subset=japanese" rel="stylesheet">
   <link href="./css/lp.css?v=4" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
-  <link rel="alternate" hreflang="en" href="https://libra.laineus.com?lang=en" />
-  <link rel="alternate" hreflang="ja" href="https://libra.laineus.com?lang=ja" />
-  <link rel="alternate" hreflang="zh-cn" href="https://libra.laineus.com?lang=zh" />
-  <link rel="alternate" hreflang="es" href="https://libra.laineus.com?lang=es" />
+  <link rel="alternate" hreflang="ja" href="https://libra.laineus.com/" />
+  <link rel="alternate" hreflang="en" href="https://libra.laineus.com/?lang=en" />
+  <link rel="alternate" hreflang="zh-Hans" href="https://libra.laineus.com/?lang=zh" />
+  <link rel="alternate" hreflang="es" href="https://libra.laineus.com/?lang=es" />
+  <link rel="alternate" hreflang="x-default" href="https://libra.laineus.com/" />
+  <script>
+    (() => {
+      const language = new URLSearchParams(location.search).get('lang')
+      const pages = {
+        en: {
+          url: 'https://libra.laineus.com/?lang=en',
+          htmlLang: 'en',
+          title: 'The Dream Libra Had | Official Website',
+          description: 'A dream exploration adventure RPG about Libra and her girlfriend Amili wandering through an incorporeal world after an accident. Available on Steam and the web.'
+        },
+        zh: {
+          url: 'https://libra.laineus.com/?lang=zh',
+          htmlLang: 'zh-Hans',
+          title: '莉卜拉的梦境 | 官方网站',
+          description: '事故后，莉卜拉与恋人阿米莉在濒死体验中徘徊于没有实体的世界。现已在 Steam 与网页端推出。'
+        },
+        es: {
+          url: 'https://libra.laineus.com/?lang=es',
+          htmlLang: 'es',
+          title: 'El Sueño que Libra tuvo | Sitio oficial',
+          description: 'Un RPG de aventura y exploración onírica sobre Libra y su novia Amili, que vagan por un mundo incorpóreo tras un accidente. Disponible en Steam y web.'
+        },
+        ja: {
+          url: 'https://libra.laineus.com/',
+          htmlLang: 'ja',
+          title: 'リブラの見た夢 | 公式サイト',
+          description: '事故に遭った二人の少女、リブラとその恋人のアミリが、臨死体験として実態なき世界を彷徨う夢探索アドベンチャーRPG。Steam・Webにて好評配信中！'
+        }
+      }
+      const page = pages[language] || pages.ja
+      const canonical = document.createElement('link')
+      canonical.rel = 'canonical'
+      canonical.href = page.url
+      document.head.appendChild(canonical)
+      document.documentElement.lang = page.htmlLang
+      document.title = page.title
+      document.querySelector('meta[name="description"]').content = page.description
+      document.querySelector('meta[property="og:title"]').content = page.title
+      document.querySelector('meta[property="og:description"]').content = page.description
+      document.querySelector('meta[property="og:url"]').content = page.url
+    })()
+  </script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-838WPJJQK1"></script>
   <script>
@@ -54,13 +97,13 @@
       </div>
     </div>
     <div class="lang">
-      <div class="lang-item changeLang" data-lang="en">EN</div>
+      <a class="lang-item changeLang" data-lang="en" href="./?lang=en" hreflang="en">EN</a>
       <div class="lang-item">/</div>
-      <div class="lang-item changeLang" data-lang="ja">JP</div>
+      <a class="lang-item changeLang" data-lang="ja" href="./" hreflang="ja">JP</a>
       <div class="lang-item">/</div>
-      <div class="lang-item changeLang" data-lang="cn">CN</div>
+      <a class="lang-item changeLang" data-lang="cn" href="./?lang=zh" hreflang="zh-Hans">CN</a>
       <div class="lang-item">/</div>
-      <div class="lang-item changeLang" data-lang="es">ES</div>
+      <a class="lang-item changeLang" data-lang="es" href="./?lang=es" hreflang="es">ES</a>
     </div>
   </header>
 
@@ -318,7 +361,7 @@
       })
 
     // Language
-    const queries = Object.fromEntries(location.search.replace(/^\?/, '').split('&').filter(Boolean).map(v => v.split('=')))
+    const queries = Object.fromEntries(new URLSearchParams(location.search))
     const setLang = lang => {
       document.body.classList.remove('ja', 'en', 'cn', 'es')
       document.body.classList.add(lang)
@@ -329,13 +372,7 @@
         animationEvent() 
       })
     })
-    const getDefaultLang = () => {
-      if (['ja', 'en', 'zh', 'es'].includes(queries.lang)) return queries.lang
-      const nav = window.navigator
-      if (nav.languages) return nav.languages[0]
-      return nav.language || nav.userLanguage || nav.browserLanguage
-    }
-    const lang = getDefaultLang()
+    const lang = ['ja', 'en', 'zh', 'es'].includes(queries.lang) ? queries.lang : 'ja'
     if (lang.startsWith('ja')) {
       setLang('ja')
     } else if (lang.startsWith('zh')) {
