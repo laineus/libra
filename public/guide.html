@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>リブラの見た夢 | 攻略ガイド</title>
-  <meta name="description" content="『リブラの見た夢』の攻略ガイド。メインシナリオ、クエスト、Steam実績、隠し要素をまとめます。現在、内容を準備中です。">
+  <meta name="description" content="『リブラの見た夢』の攻略ガイド。メインシナリオ、クエスト、Steam実績、隠し要素・小ネタをまとめます。ゲームの進め方、攻略チャート、エンディングの条件、隠し要素・小ネタを掲載しています。">
   <link rel="canonical" href="https://libra.laineus.com/guide.html">
   <meta property="og:title" content="リブラの見た夢 | 攻略ガイド">
-  <meta property="og:description" content="メインシナリオ・クエスト・Steam実績・隠し要素の攻略ガイド。現在、内容を準備中です。">
+  <meta property="og:description" content="メインシナリオ・クエスト・Steam実績・隠し要素・小ネタの攻略ガイド。ゲームの進め方、攻略チャート、エンディングの条件、隠し要素・小ネタを掲載しています。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://libra.laineus.com/guide.html">
   <meta property="og:image" content="https://libra.laineus.com/img/lp/ogp.png">
@@ -63,6 +63,18 @@
     .placeholder h3 { display: flex; align-items: center; gap: 12px; margin: 0 0 12px; font-size: 15px; font-weight: 500; }
     .placeholder h3::before { content: ''; width: 4px; height: 16px; background: var(--yellow); }
     .placeholder p { color: var(--muted); font-size: 12px; margin: 0; }
+    .guide-body { margin: 28px 0; }
+    .guide-body h3 { margin: 0 0 12px; color: var(--brown); font-size: 17px; }
+    .guide-body p { margin: 10px 0; }
+    .guide-body strong { color: var(--brown); }
+    .guide-note { padding: 16px 20px; border-left: 3px solid var(--yellow); background: #f2ead9; font-size: 13px; }
+    .guide-flow, .walkthrough { padding-left: 26px; }
+    .guide-flow li { padding-left: 7px; margin: 16px 0; }
+    .guide-flow li::marker, .walkthrough li::marker { color: #926119; font-weight: 800; }
+    .walkthrough > li { padding: 0 0 24px 10px; margin-bottom: 24px; border-bottom: 1px solid var(--line); }
+    .walkthrough > li:last-child { margin-bottom: 0; }
+    .walkthrough h3 { margin-bottom: 8px; }
+    .walkthrough .step-condition { display: inline-block; margin: 0 0 8px; color: #77501b; font-size: 12px; }
     .skeleton { margin-top: 22px; display: grid; gap: 10px; }
     .skeleton span { height: 7px; background: #eee9df; border-radius: 3px; width: 92%; }
     .skeleton span:last-child { width: 62%; }
@@ -113,6 +125,7 @@
         <h2><span aria-hidden="true">01</span>メインシナリオ</h2>
         <ul>
           <li><a href="#how-to-play">ゲームの進め方</a></li>
+          <li><a href="#charm">魅力の上げ方</a></li>
           <li><a href="#walkthrough">攻略チャート</a></li>
           <li><a href="#endings">エンディング分岐</a></li>
         </ul>
@@ -133,8 +146,19 @@
         </ul>
       </div>
       <div class="nav-group">
-        <h2><span aria-hidden="true">04</span>隠し要素</h2>
-        <ul><li><a href="#secret-1">[隠し要素名1]</a></li></ul>
+        <h2><span aria-hidden="true">04</span>隠し要素・小ネタ</h2>
+        <ul>
+          <li><a href="#secret-1">宇宙への行き方</a></li>
+          <li><a href="#revive">住人の復活</a></li>
+          <li><a href="#vending-machine">ジュース購入</a></li>
+          <li><a href="#amili-cooking">アミリの料理</a></li>
+          <li><a href="#amili-reactions">アミリの特殊な反応</a></li>
+          <li><a href="#rare-items">レアアイテム</a></li>
+          <li><a href="#tissue">ティッシュ</a></li>
+          <li><a href="#straw-doll">藁人形</a></li>
+          <li><a href="#stomach">胃</a></li>
+          <li><a href="#extra-apples">リンゴの追加入手</a></li>
+        </ul>
       </div>
     </nav>
     <div class="sidebar-footer"><a href="./">← 公式サイトへ</a></div>
@@ -145,30 +169,113 @@
       <p class="eyebrow">ADVENTURE GUIDE</p>
       <h1>攻略ガイド</h1>
       <p class="intro">物語の進め方から、夢の世界に隠された要素まで。</p>
-      <div class="notice"><strong>制作中</strong><span>このページはモックです。攻略内容は順次追加予定です。</span></div>
       <!-- Keep every article in the initial HTML. JavaScript only switches visibility;
            without it, this is a readable single document with ordinary anchor links.
            Fragment identifiers locate sections, not separately indexed pages. -->
       <article class="guide-section" id="how-to-play" aria-labelledby="how-to-play-title">
         <p class="section-category">01 / メインシナリオ</p>
-        <div class="section-heading"><h2 id="how-to-play-title" tabindex="-1">ゲームの進め方</h2><span class="badge">準備中</span></div>
-        <p class="section-desc">基本的な操作や、探索の進め方をまとめる予定です。</p>
-        <section class="placeholder"><h3>基本操作</h3><p>ここに操作方法の説明が入ります。</p><div class="skeleton" aria-hidden="true"><span></span><span></span></div></section>
-        <section class="placeholder"><h3>探索の流れ</h3><p>ここにゲームの基本的な流れが入ります。</p><div class="skeleton" aria-hidden="true"><span></span><span></span></div></section>
+        <div class="section-heading"><h2 id="how-to-play-title" tabindex="-1">ゲームの進め方</h2></div>
+        <p class="section-desc">住人の悩みを解決してリンゴを集め、アミリとの時間を過ごしながら、夢の世界の奥へ進みましょう。</p>
+        <section class="guide-body">
+          <h3>探索と、アミリの待つ部屋を行き来する</h3>
+          <ol class="guide-flow">
+            <li><strong>住人の悩みを解決して、リンゴを手に入れる</strong><br>各地の住人に話しかけると、クエストが始まります。頼みごとを解決すると、お礼にリンゴをもらえます。探索する場所やクエストを進める順番は自由です。</li>
+            <li><strong>リンゴをアミリに渡して、魅力を上げる</strong><br>自宅の「部屋」に戻り、アミリにリンゴを渡して一緒に過ごすと、魅力が上がります。選択肢による違いは「<a href="#charm">魅力の上げ方</a>」で説明しています。</li>
+            <li><strong>新しく通れるようになった道を探索する</strong><br>心の魅力と体の魅力を足した「魅力合計」が、特定の道を通る条件になります。魅力合計1・3・10を目安に、行けなかった場所を訪れてみましょう。</li>
+            <li><strong>特定のマップで、メインシナリオを進める</strong><br>「暗闇」「事故」「心臓」「脳」では、メインシナリオのイベントが起こります。イベントを進めることで開く道もあるため、クエストで魅力を上げることと、物語を進めることの両方が大切です。</li>
+          </ol>
+        </section>
+        <nav class="section-next" aria-label="次の項目"><a href="#charm"><small>次の項目</small>魅力の上げ方 →</a></nav>
+      </article>
+      <article class="guide-section" id="charm" aria-labelledby="charm-title">
+        <p class="section-category">01 / メインシナリオ</p>
+        <div class="section-heading"><h2 id="charm-title" tabindex="-1">魅力の上げ方</h2></div>
+        <p class="section-desc">魅力には「心の魅力」と「体の魅力」があります。迷ったら、両方をバランスよく上げていけばOKです。</p>
+        <section class="guide-body">
+          <h3>リンゴを渡して、アミリと過ごす</h3>
+          <p>クエストをこなして手に入れたリンゴを、自宅の「部屋」にいるアミリへ持って帰りましょう。話しかけて「リンゴを渡す」を選ぶと、次の2つの選択肢が出ます。</p>
+          <ul class="guide-flow">
+            <li><strong>「散歩がしたい」</strong>：心の魅力が1上がります。</li>
+            <li><strong>「一緒に寝たい」</strong>：体の魅力が1上がります。</li>
+          </ul>
+          <p>どちらを選んでもリンゴを1個使い、魅力合計は1上がります。現在の心の魅力・体の魅力・魅力合計は、メニューのステータスで確認できます。</p>
+        </section>
+        <section class="guide-body">
+          <h3>心と体の魅力を、バランスよく上げよう</h3>
+          <p>新しい道を通るために必要なのは、心の魅力と体の魅力を足した「魅力合計」です。一方で、<strong>心と体の魅力の配分は、終盤のエンディングの選択肢に影響します。</strong></p>
+          <p>特にこだわりがなければ、散歩と一緒に寝ることを交互に選んでいけば大丈夫です。<strong>心の魅力5・体の魅力5</strong>を目指すと、魅力合計10で終盤へ進めるうえ、どちらのエンディングの選択肢も選べるようになります。</p>
+          <p>片方に偏っていても、あとからリンゴを渡して低い方を上げられます。最後に「心臓」を訪れる前に、両方が5以上になっているか確認しておきましょう。</p>
+        </section>
         <nav class="section-next" aria-label="次の項目"><a href="#walkthrough"><small>次の項目</small>攻略チャート →</a></nav>
       </article>
       <article class="guide-section" id="walkthrough" aria-labelledby="walkthrough-title">
         <p class="section-category">01 / メインシナリオ</p>
-        <div class="section-heading"><h2 id="walkthrough-title" tabindex="-1">攻略チャート</h2><span class="badge">準備中</span></div>
-        <p class="section-desc">メインシナリオの攻略手順をまとめる予定です。</p>
-        <section class="placeholder"><h3>攻略の流れ</h3><p>ここに進行順と各段階の説明が入ります。</p><div class="skeleton" aria-hidden="true"><span></span><span></span></div></section>
+        <div class="section-heading"><h2 id="walkthrough-title" tabindex="-1">攻略チャート</h2></div>
+        <p class="section-desc">ゲーム開始から、「脳」のイベントを経て再び「心臓」を訪れるまでの流れです。クエストは好きな順番で進めて構いません。</p>
+        <p class="guide-note">以下の魅力は、心の魅力と体の魅力の合計です。マップ名はゲーム内の表記に合わせ、「事故」は交差点のマップ、「墓」は墓地のマップを指します。</p>
+        <ol class="walkthrough guide-body">
+          <li>
+            <h3>「森2」でチュートリアルを受ける</h3>
+            <p>開始直後の案内に従って、移動・会話・アイテムの拾い方を覚えます。リンゴを拾ったら案内役のところへ戻り、もう一度話しかけてチュートリアルを終えましょう。</p>
+          </li>
+          <li>
+            <h3>森を抜けて「部屋」に帰り、アミリに会う</h3>
+            <p class="step-condition">魅力合計 0 → 1</p>
+            <p>「森2」の東から「森1」へ出て、北へ進むと「胃」に着きます。「胃」の北側、中央寄りの道から自宅の「部屋」に入りましょう。</p>
+            <p>アミリに話しかけ、チュートリアルで拾ったリンゴを渡します。散歩か一緒に寝ることを選ぶと魅力合計が1になり、「胃」の西から「洞窟2」、東から「氷1」へ進む道が通れるようになります。</p>
+          </li>
+          <li>
+            <h3>「森」「氷」「洞窟」などを探索し、魅力を3まで上げる</h3>
+            <p class="step-condition">魅力合計 1 → 3</p>
+            <p>各地で住人の頼みごとを聞き、リンゴを集めます。手に入れたリンゴをアミリに渡し、魅力合計をあと2上げましょう。すぐに解決できないクエストは後回しにして構いません。</p>
+            <p>魅力合計が3になると、「胃」の北東にある「暗闇」への道が通れるようになります。</p>
+          </li>
+          <li>
+            <h3>「胃」の北東から「暗闇」を抜け、「事故」へ進む</h3>
+            <p class="step-condition">必要な魅力合計：3</p>
+            <p>「暗闇」を北へ進み、途中のイベントを見ます。そのまま北へ抜けると、交差点のある「事故」に到着します。ここでもイベントを進めましょう。</p>
+          </li>
+          <li>
+            <h3>「事故」の北東から「心臓」へ進む</h3>
+            <p>「事故」の北側には2本の道があります。まずは東側の道から「心臓」に入り、イベントを見ましょう。</p>
+            <p>イベント後は「事故」の北西の道から「秋1」へ進めるようになります。同時に「豪邸2」の南北も開き、南の「豪邸1」と北の「豪邸3」へ行き来できるようになります。</p>
+          </li>
+          <li>
+            <h3>「秋」「豪邸」「炭鉱」「病院」などでクエストを進める</h3>
+            <p class="step-condition">目標：魅力合計10</p>
+            <p>「秋1」からは、北へ進むと「豪邸1」、東へ進むと「炭鉱1」、西へ進むと「秋2」に行けます。「秋2」の西には「病院1」があります。</p>
+            <p>新しいエリアや、これまでに訪れた場所でクエストを進め、リンゴをアミリに渡して魅力合計を10まで上げましょう。魅力合計3からなら、追加で7個のリンゴが目安です。</p>
+          </li>
+          <li>
+            <h3>「墓」の北から「脳」へ進む</h3>
+            <p class="step-condition">必要な魅力合計：10 ／ 最初の「心臓」のイベント後</p>
+            <p>「病院1」の北から「病院2」へ進み、さらに北へ抜けると「墓」に着きます。魅力合計が10以上なら、「墓」の北の道から「脳」に入れます。中で起こるイベントを見ましょう。</p>
+          </li>
+          <li>
+            <h3>必要に応じて、各地のクエストや魅力の配分を見直す</h3>
+            <p>「脳」のイベント後、先へ進むために魅力合計をさらに上げる必要はありません。残ったクエストを進めたい場合は、ここで各地を巡りましょう。エンディングに備えた配分の目安は「<a href="#charm">魅力の上げ方</a>」を参照してください。</p>
+          </li>
+          <li>
+            <h3>再び「心臓」を訪れる</h3>
+            <p>準備ができたら「事故」に戻り、北東の道から「心臓」へ入ります。「脳」のイベントを終えていると、物語の続きが始まります。</p>
+          </li>
+        </ol>
         <nav class="section-next" aria-label="次の項目"><a href="#endings"><small>次の項目</small>エンディング分岐 →</a></nav>
       </article>
       <article class="guide-section" id="endings" aria-labelledby="endings-title">
         <p class="section-category">01 / メインシナリオ</p>
-        <div class="section-heading"><h2 id="endings-title" tabindex="-1">エンディング分岐</h2><span class="badge">準備中</span></div>
-        <p class="section-desc">各エンディングの分岐条件をまとめる予定です。</p>
-        <section class="placeholder"><h3>分岐条件</h3><p>ここにエンディングごとの条件が入ります。</p><div class="skeleton" aria-hidden="true"><span></span><span></span></div></section>
+        <div class="section-heading"><h2 id="endings-title" tabindex="-1">エンディング分岐</h2></div>
+        <p class="section-desc">エンディングは2通りあります。ここでは物語の内容に触れず、両方を選べるようにするための条件を説明します。</p>
+        <section class="guide-body">
+          <h3>心の魅力・体の魅力を、それぞれ5以上にする</h3>
+          <p><strong>心の魅力と体の魅力が両方とも5以上</strong>なら、終盤で2通りのエンディングにつながる選択肢を選べます。どちらか一方が5未満だと、選べるのは片方だけになります。</p>
+          <p>魅力合計が10でも、心7・体3のように偏っていると両方は選べません。迷ったら、心5・体5を目指してバランスよく上げていきましょう。</p>
+        </section>
+        <section class="guide-body">
+          <h3>最後に「心臓」を訪れる前に確認する</h3>
+          <p>メニューのステータスで、心と体の魅力を確認しましょう。どちらかが足りなければ、アミリにリンゴを渡して低い方を上げれば大丈夫です。詳しい手順は「<a href="#charm">魅力の上げ方</a>」を参照してください。</p>
+          <p>両方が5以上になったら、あとは物語を進め、そのときに選びたい方を選んでください。</p>
+        </section>
       </article>
       <article class="guide-section" id="quest-1" aria-labelledby="quest-1-title">
         <p class="section-category">02 / クエスト</p>
@@ -202,10 +309,164 @@
         <section class="placeholder"><h3>解除条件・達成方法</h3><p>ここに実績の条件と補足が入ります。</p><div class="skeleton" aria-hidden="true"><span></span><span></span></div></section>
       </article>
       <article class="guide-section" id="secret-1" aria-labelledby="secret-1-title">
-        <p class="section-category">04 / 隠し要素</p>
-        <div class="section-heading"><h2 id="secret-1-title" tabindex="-1">[隠し要素名1]</h2><span class="badge">準備中</span></div>
-        <p class="section-desc">隠し要素の発見条件と確認方法をまとめる予定です。</p>
-        <section class="placeholder"><h3>発見条件・場所</h3><p>ここに隠し要素の詳細が入ります。</p><div class="skeleton" aria-hidden="true"><span></span><span></span></div></section>
+        <p class="section-category">04 / 隠し要素・小ネタ</p>
+        <div class="section-heading"><h2 id="secret-1-title" tabindex="-1">宇宙への行き方</h2></div>
+        <p class="section-desc">「炭鉱3」の地面にある不思議な模様が、宇宙への入口になっています。</p>
+        <section class="guide-body">
+          <h3>模様の上で「現在地を登録」する</h3>
+          <ol class="guide-flow">
+            <li>「秋1」の東から「炭鉱1」へ入り、南へ進んで「炭鉱3」に向かいます。</li>
+            <li>「炭鉱3」の東側にある、地面の不思議な模様の上に立ちます。マップのアイコンが緑色に変わるのが目印です。</li>
+            <li>マップメニューを開き、未登録の枠を選んで<strong>「現在地を登録」</strong>します。通常の現在地ではなく「宇宙港」が登録されます。</li>
+            <li>登録された「宇宙港」を選び、<strong>「登録した場所へ移動」</strong>で移動します。</li>
+            <li>「宇宙港」の東側にあるUFOに乗ると、「宇宙」へ行けます。</li>
+          </ol>
+          <p>宇宙にも話しかけられる住人やクエストがあります。帰りに備えて、普段使う場所もマップに登録しておくと便利です。</p>
+        </section>
+      </article>
+      <article class="guide-section" id="revive" aria-labelledby="revive-title">
+        <p class="section-category">04 / 隠し要素・小ネタ</p>
+        <div class="section-heading"><h2 id="revive-title" tabindex="-1">住人の復活</h2></div>
+        <p class="section-desc">殺してしまった住人は、「森2」の鳥居で復活させられます。ただし、クエストの展開による死亡には例外があります。</p>
+        <section class="guide-body">
+          <h3>「森2」の賽銭箱にコインを入れる</h3>
+          <p>復活の対象になる住人を殺すと、チュートリアルを受けた「森2」の北側に鳥居と賽銭箱が現れます。<strong>金貨か銀貨を1枚、かばんから賽銭箱の上へ落とす</strong>と、対象の住人がまとめて復活します。<strong>「奇跡が起きた」と表示されれば成功です。</strong>各地に戻って確認しましょう。</p>
+          <p>クエストの進行状況は巻き戻りません。復活させた住人のクエストは、その時点の進行状況から続きます。</p>
+        </section>
+        <section class="guide-body">
+          <h3>クエストで死亡した住人はどうなる？</h3>
+          <p>以下のクエストの展開によって死亡した住人は、鳥居で復活させることができません。</p>
+          <ul class="guide-flow">
+            <li>ずっと一緒に居て下さい</li>
+            <li>不老不死の薬</li>
+            <li>呪いのかけ方</li>
+          </ul>
+        </section>
+      </article>
+      <article class="guide-section" id="vending-machine" aria-labelledby="vending-machine-title">
+        <p class="section-category">04 / 隠し要素・小ネタ</p>
+        <div class="section-heading"><h2 id="vending-machine-title" tabindex="-1">ジュース購入</h2></div>
+        <p class="section-desc">自動販売機は飾りではなく、コインを入れると飲み物を買えます。</p>
+        <section class="guide-body">
+          <h3>自動販売機にコインを落とす</h3>
+          <p>自動販売機に近づき、<strong>金貨か銀貨を1枚、かばんから自動販売機の正面上寄りへ落とします。</strong>コインが消費され、飲み物が足元に出てきます。</p>
+          <p>出てくるのは<strong>コーラかお茶のどちらか</strong>で、種類はランダムです。金貨でも銀貨でも、もらえる数は1本です。</p>
+          <p>自動販売機を部屋に持ち帰った場合も、同じ方法で購入できます。</p>
+        </section>
+      </article>
+      <article class="guide-section" id="amili-cooking" aria-labelledby="amili-cooking-title">
+        <p class="section-category">04 / 隠し要素・小ネタ</p>
+        <div class="section-heading"><h2 id="amili-cooking-title" tabindex="-1">アミリの料理</h2></div>
+        <p class="section-desc">部屋にキッチンを置くと、留守の間にアミリが料理やおやつを用意してくれることがあります。</p>
+        <section class="guide-body">
+          <h3>キッチンを置いて、外出してみよう</h3>
+          <p>キッチンを部屋に持ち帰り、アミリが使えるように手前を家具などでふさがずに設置します。外出して戻ったとき、料理中のアミリに話しかけると食事を出してくれます。毎回料理をするわけではないので、探索の合間に様子を見ましょう。</p>
+          <p>通常の料理は<strong>カレー・ステーキ・野菜炒め・オムライス</strong>の4種類です。</p>
+          <p>料理とは別に、<strong>クッキーかお弁当</strong>を渡してくれることもあります。こちらもキッチンの設置が条件です。</p>
+        </section>
+        <section class="guide-body">
+          <h3>うなぎを置くと「うな重」に</h3>
+          <p>部屋に<strong>うなぎ</strong>を置いておくと、アミリが料理をするときに1匹使い、通常の料理の代わりに<strong>うな重</strong>を作ります。かばんに入れたままではなく、部屋に置いておきましょう。うなぎの入手方法は「<a href="#rare-items">レアアイテム</a>」を参照してください。</p>
+        </section>
+        <section class="guide-body">
+          <h3>テーブルマットで食卓を整える</h3>
+          <p>部屋のテーブルに<strong>テーブルマット（ランチョンマット）</strong>を敷いておくと、アミリがその上に料理を置いてくれます。食卓の模様替えも楽しんでみましょう。</p>
+        </section>
+      </article>
+      <article class="guide-section" id="amili-reactions" aria-labelledby="amili-reactions-title">
+        <p class="section-category">04 / 隠し要素・小ネタ</p>
+        <div class="section-heading"><h2 id="amili-reactions-title" tabindex="-1">アミリの特殊な反応</h2></div>
+        <p class="section-desc">部屋に置くものを変えると、アミリのコメントや留守中の過ごし方にも変化があります。</p>
+        <section class="guide-body">
+          <h3>アイテムの組み合わせで、特別なコメント</h3>
+          <p>次のものを部屋にそろえてアミリに話しかけると、単体で置いたときとは違うコメントが聞けます。</p>
+          <ul class="guide-flow">
+            <li><strong>氷とペンギン</strong>を一緒に置く。先にペンギンだけを置いてアミリの反応を見てから、氷を追加するのがおすすめです。</li>
+            <li><strong>宝石4種類</strong>（サファイア・エメラルド・アメジスト・ルビー）をそろえる。</li>
+            <li><strong>バイク3種類</strong>をそろえる。</li>
+            <li><strong>クマのぬいぐるみを3個以上</strong>置く。</li>
+          </ul>
+          <p>ほかのアイテムへの反応が先に出ることもあるので、何度か話しかけてみましょう。</p>
+          <p><a href="#tissue">ティッシュの特殊な反応についてはこちら</a></p>
+        </section>
+        <section class="guide-body">
+          <h3>家具によって、留守中の行動が変わる</h3>
+          <p>ソファ・テレビ・オーディオを部屋に置くと、帰宅時にアミリがソファでくつろいだり、テレビやオーディオの前で過ごしたりすることがあります。</p>
+          <p>家具の手前をふさがず、使えるように配置しておきましょう。毎回同じ行動をするわけではないので、探索から帰ったときの様子も楽しんでみてください。</p>
+        </section>
+      </article>
+      <article class="guide-section" id="rare-items" aria-labelledby="rare-items-title">
+        <p class="section-category">04 / 隠し要素・小ネタ</p>
+        <div class="section-heading"><h2 id="rare-items-title" tabindex="-1">レアアイテム</h2></div>
+        <p class="section-desc">氷の中には、魚だけでなく珍しい生き物が隠れていることがあります。</p>
+        <section class="guide-body">
+          <h3>氷を壊して探す</h3>
+          <p>「氷」エリアなどにある氷のオブジェクトを、銃などで壊してみましょう。次のものが出てくることがあります。</p>
+          <ul class="guide-flow">
+            <li><strong>うなぎ</strong><br>部屋に持ち帰ると、<a href="#amili-cooking">アミリの料理</a>でうな重の材料になります。</li>
+            <li><strong>ピンクペンギン</strong><br>珍しいピンク色のペンギンです。捕まえて部屋に連れて帰ると、アミリの特別な反応も見られます。</li>
+          </ul>
+        </section>
+      </article>
+      <article class="guide-section" id="tissue" aria-labelledby="tissue-title">
+        <p class="section-category">04 / 隠し要素・小ネタ</p>
+        <div class="section-heading"><h2 id="tissue-title" tabindex="-1">ティッシュ</h2></div>
+        <p class="section-desc">ティッシュは置く場所によって、アミリの反応や部屋での出来事が変わります。</p>
+        <section class="guide-body">
+          <h3>ベッドの近くに置いて話しかける</h3>
+          <p>中身のあるティッシュを<strong>部屋の右上、ベッドの近く</strong>に置いてアミリに話しかけると、専用のコメントをもらえます。ほかの場所に置くだけでは、この反応は出ません。</p>
+          <p>ほかの家具への反応が先に出る場合は、何度か話しかけてみましょう。このコメントは一度だけです。</p>
+        </section>
+        <section class="guide-body">
+          <h3>留守中に使われることがある</h3>
+          <p>専用のコメントを聞いたあと、ティッシュをベッドの近くに置いたまま外出すると、アミリが一人で使うことがあります。帰宅時にアミリがベッドにいる場合の一部で起こり、必ず発生するわけではありません。</p>
+          <p>使われていた場合は、通常の「ごめん、寝ちゃってた。」から、<strong>慌てた様子の特別なセリフ</strong>に変わります。ベッドの周りにはティッシュのごみも出ます。</p>
+        </section>
+        <section class="guide-body">
+          <h3>「一緒に寝たい」を選んだときにも使われる</h3>
+          <p>ベッドの近くに中身のあるティッシュを置き、リンゴを渡して<strong>「一緒に寝たい」</strong>を選ぶと、二人で過ごしたあとにもティッシュが使われ、ごみが出ます。</p>
+        </section>
+        <section class="guide-body">
+          <h3>空箱とごみはゴミ箱へ</h3>
+          <p>ティッシュは使っているとなくなり、「ティッシュの空箱」になることがあります。空箱のままでは使われないので、続けて見たい場合は新しいティッシュを置きましょう。</p>
+          <p><strong>「ティッシュのごみ」と「ティッシュの空箱」</strong>は、拾ってかばんからゴミ箱の上へ落とすと捨てられます。中身の残っているティッシュは、この方法では捨てられません。</p>
+        </section>
+      </article>
+      <article class="guide-section" id="straw-doll" aria-labelledby="straw-doll-title">
+        <p class="section-category">04 / 隠し要素・小ネタ</p>
+        <div class="section-heading"><h2 id="straw-doll-title" tabindex="-1">藁人形</h2></div>
+        <p class="section-desc">「洞窟2」のカエルから引き取れる藁人形には、捨てても戻ってくる不思議な性質があります。</p>
+        <section class="guide-body">
+          <h3>捨てると、元の持ち主のところへ戻る</h3>
+          <p>藁人形を部屋の外で捨て、その場所を離れたあとに「洞窟2」のカエルへ話しかけてみましょう。<strong>捨てたはずの藁人形がカエルのところへ戻っており、特別な反応とともに受け取り直せます。</strong></p>
+          <p>部屋に置いて保管している場合は、カエルのところへは戻りません。</p>
+        </section>
+        <section class="guide-body">
+          <h3>持ち帰ったり、住人に見せたりしてみよう</h3>
+          <p>藁人形を部屋に置いてアミリに話しかけると、専用のコメントが聞けます。また、持ち歩いていると「呪いのかけ方」のクエストを始めるきっかけにもなります。</p>
+        </section>
+      </article>
+      <article class="guide-section" id="stomach" aria-labelledby="stomach-title">
+        <p class="section-category">04 / 隠し要素・小ネタ</p>
+        <div class="section-heading"><h2 id="stomach-title" tabindex="-1">胃</h2></div>
+        <p class="section-desc">「胃」は各地をつなぐだけでなく、食べたものが再び現れる場所でもあります。</p>
+        <section class="guide-body">
+          <h3>食べたものが、左下の小部屋に現れる</h3>
+          <p>かばんから食べ物を使って体力を回復したあとに「胃」を訪れると、<strong>食べたものがマップ左下の小部屋に現れます。</strong>消費したはずの食べ物を、もう一度拾うことができます。</p>
+          <p>料理などを食べたら、部屋へ帰る途中に小部屋をのぞいてみましょう。</p>
+        </section>
+      </article>
+      <article class="guide-section" id="extra-apples" aria-labelledby="extra-apples-title">
+        <p class="section-category">04 / 隠し要素・小ネタ</p>
+        <div class="section-heading"><h2 id="extra-apples-title" tabindex="-1">リンゴの追加入手</h2></div>
+        <p class="section-desc">進める範囲で十分なリンゴを集められず、魅力が足りなくなったときの救済措置です。</p>
+        <p class="guide-note">クエストで必要なリンゴを集められているなら、利用する必要はありません。そのまま探索と物語を進めて大丈夫です。</p>
+        <section class="guide-body">
+          <h3>「森2」でリンゴを探す</h3>
+          <p>最初のリンゴをアミリに渡して魅力を上げたあと、<strong>かばんにも部屋にもリンゴがない状態</strong>で「森2」を訪れると、チュートリアルでリンゴを拾った場所に再びリンゴが落ちていることがあります。</p>
+          <p>毎回現れるわけではありません。どうしてもリンゴが足りずに困ったときは、「森2」に入り直して様子を見てみましょう。</p>
+          <p>見つけたリンゴは、クエストでもらったものと同じようにアミリに渡して魅力を上げられます。</p>
+        </section>
       </article>
       <footer class="page-footer"><span>リブラの見た夢 — 攻略ガイド</span><span>© Laineus</span></footer>
     </main>
