@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://libra.laineus.com/sitemap.xml
