@@ -301,6 +301,15 @@ body.es .changeLang[data-lang="es"] {
 .links a:hover {
   text-decoration: none;
 }
+.guideLinks {
+  margin-top: 8px;
+}
+.guideLinks a {
+  font-weight: bold;
+}
+.guideLinks a:hover {
+  text-decoration: none;
+}
 
 /* Reviews */
 .reviews {
