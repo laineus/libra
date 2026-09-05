@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>リブラの見た夢 | 攻略ガイド</title>
+  <meta name="description" content="『リブラの見た夢』の攻略ガイド。メインシナリオ、クエスト、Steam実績、隠し要素をまとめます。現在、内容を準備中です。">
+  <link rel="canonical" href="https://libra.laineus.com/guide.html">
+  <meta property="og:title" content="リブラの見た夢 | 攻略ガイド">
+  <meta property="og:description" content="メインシナリオ・クエスト・Steam実績・隠し要素の攻略ガイド。現在、内容を準備中です。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://libra.laineus.com/guide.html">
+  <meta property="og:image" content="https://libra.laineus.com/img/lp/ogp.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="./favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=M+PLUS+1p:wght@500;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --yellow: #fcbb4c; --brown: #4a2400; --soy: #bbaa88; --ink: #403224; --muted: #796a58; --paper: #faf7f0; --line: #e5ddcf; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'Josefin Sans', 'M PLUS 1p', sans-serif; font-size: 14px; line-height: 1.9; }
+    a { color: inherit; text-underline-offset: 4px; }
+    button { font: inherit; cursor: pointer; }
+    a:focus-visible, button:focus-visible { outline: 3px solid #ba7200; outline-offset: 5px; }
+    .skip-link { position: fixed; top: -100px; left: 20px; z-index: 5; background: var(--yellow); padding: 10px 20px; }
+    .skip-link:focus { top: 10px; }
+    .sidebar { position: fixed; inset: 0 auto 0 0; width: 280px; padding: 34px 26px 24px; background: #221100; color: var(--soy); overflow-y: auto; }
+    .brand { display: block; padding: 0 6px; }
+    .brand img { display: block; width: 220px; height: auto; }
+    .sidebar-label { margin: 16px 0 30px; text-align: center; color: var(--yellow); font-size: 11px; letter-spacing: .25em; }
+    .toc-heading { display: flex; align-items: center; gap: 10px; margin-bottom: 23px; font-size: 11px; letter-spacing: .2em; }
+    .toc-heading::after { content: ''; height: 1px; background: #59432c; flex: 1; }
+    .nav-group + .nav-group { margin-top: 22px; }
+    .nav-group h2 { margin: 0 0 7px; color: #f6eddb; font-size: 13px; font-weight: 500; }
+    .nav-group h2 span { margin-right: 10px; color: var(--yellow); font-size: 11px; }
+    .nav-group ul { list-style: none; margin: 0; padding: 0; }
+    .nav-group a { display: block; border-radius: 4px; padding: 7px 12px 7px 29px; text-decoration: none; font-size: 12px; }
+    .nav-group a:hover { background: #372410; color: #fff; }
+    .nav-group a[aria-current] { background: var(--yellow); color: var(--brown); }
+    .sidebar-footer { margin-top: 32px; padding-top: 18px; border-top: 1px solid #59432c; font-size: 11px; }
+    .menu-toggle { display: none; }
+    .page { margin-left: 280px; }
+    .topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 19px 48px; border-bottom: 1px solid var(--line); font-size: 12px; }
+    .topbar strong { font-weight: 400; letter-spacing: .13em; }
+    .topbar a { color: var(--muted); }
+    main { max-width: 1030px; margin: auto; padding: 52px 64px 30px; }
+    .eyebrow { color: #926119; font-size: 12px; letter-spacing: .24em; margin: 0 0 5px; }
+    h1 { margin: 0; color: var(--brown); font-size: 30px; font-weight: 800; letter-spacing: .06em; }
+    .intro { margin: 12px 0 26px; color: var(--muted); }
+    .notice { display: flex; align-items: baseline; gap: 15px; padding: 12px 18px; margin-bottom: 36px; background: #f2ead9; border-left: 3px solid var(--yellow); font-size: 12px; }
+    .notice strong { flex-shrink: 0; color: var(--brown); }
+    .guide-section { scroll-margin-top: 24px; }
+    .guide-section + .guide-section { margin-top: 48px; }
+    .enhanced .guide-section { margin-top: 0; }
+    [hidden] { display: none !important; }
+    .section-category { margin: 0 0 9px; color: var(--muted); font-size: 12px; }
+    .section-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 19px; border-bottom: 1px solid var(--line); }
+    .section-heading h2 { margin: 0; color: var(--brown); font-size: 25px; line-height: 1.5; }
+    .badge { white-space: nowrap; border: 1px solid #d8cab2; padding: 2px 10px; border-radius: 3px; color: var(--muted); font-size: 10px; font-weight: 500; }
+    .section-desc { color: var(--muted); margin: 22px 0 28px; font-size: 13px; }
+    .placeholder { padding: 26px 28px; border: 1px solid var(--line); background: #fffdf8; border-radius: 5px; margin: 18px 0; }
+    .placeholder h3 { display: flex; align-items: center; gap: 12px; margin: 0 0 12px; font-size: 15px; font-weight: 500; }
+    .placeholder h3::before { content: ''; width: 4px; height: 16px; background: var(--yellow); }
+    .placeholder p { color: var(--muted); font-size: 12px; margin: 0; }
+    .skeleton { margin-top: 22px; display: grid; gap: 10px; }
+    .skeleton span { height: 7px; background: #eee9df; border-radius: 3px; width: 92%; }
+    .skeleton span:last-child { width: 62%; }
+    .section-next { display: flex; justify-content: flex-end; margin-top: 30px; }
+    .section-next a { min-width: 200px; padding: 12px 18px; border: 1px solid var(--line); border-radius: 4px; text-decoration: none; font-size: 13px; }
+    .section-next a:hover { border-color: #b79a68; background: #f2ead9; }
+    .section-next small { display: block; color: var(--muted); font-size: 10px; }
+    .page-footer { display: flex; justify-content: space-between; gap: 12px; padding: 24px 0 0; margin-top: 48px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; letter-spacing: .05em; }
+    @media (min-width: 1500px) { main { padding-top: 68px; } }
+    @media (max-width: 1000px) { .sidebar { width: 240px; padding: 28px 20px; } .page { margin-left: 240px; } main { padding: 36px 32px 24px; } .topbar { padding: 18px 32px; } }
+    @media (max-width: 700px) {
+      .sidebar { position: relative; width: 100%; padding: 18px 22px; }
+      .brand { padding: 0; width: 172px; }
+      .sidebar-label { margin: 5px 0 0; text-align: left; font-size: 9px; }
+      .enhanced .menu-toggle { display: block; position: absolute; top: 27px; right: 22px; padding: 6px 13px; border: 1px solid #796344; border-radius: 4px; background: transparent; color: #f6eddb; font-size: 12px; }
+      .toc { margin-top: 24px; }
+      .enhanced .toc:not(.is-open) { display: none; }
+      .sidebar-footer { display: none; }
+      .page { margin-left: 0; }
+      .topbar { padding: 12px 22px; font-size: 10px; }
+      main { padding: 30px 22px 22px; }
+      h1 { font-size: 26px; }
+      .intro { font-size: 12px; }
+      .notice { gap: 10px; padding: 12px; font-size: 11px; }
+      .section-heading h2 { font-size: 22px; }
+      .placeholder { padding: 22px 20px; }
+      .page-footer { margin-top: 36px; flex-wrap: wrap; }
+    }
+    @media print {
+      .sidebar, .topbar, .skip-link, .section-next { display: none; }
+      .page { margin: 0; }
+      main { max-width: none; padding: 0; }
+      .guide-section[hidden] { display: block !important; }
+      .enhanced .guide-section { margin-top: 32px; }
+      .placeholder { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へスキップ</a>
+  <aside class="sidebar">
+    <a class="brand" href="./" aria-label="リブラの見た夢 公式サイト"><img src="./img/lp/logo_ja.png" alt="リブラの見た夢" width="960" height="315"></a>
+    <p class="sidebar-label">THE DREAM LIBRA HAD</p>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="toc">目次を開く</button>
+    <nav class="toc" id="toc" aria-label="攻略ガイドの目次">
+      <div class="toc-heading">CONTENTS</div>
+      <div class="nav-group">
+        <h2><span aria-hidden="true">01</span>メインシナリオ</h2>
+        <ul>
+          <li><a href="#how-to-play">ゲームの進め方</a></li>
+          <li><a href="#walkthrough">攻略チャート</a></li>
+          <li><a href="#endings">エンディング分岐</a></li>
+        </ul>
+      </div>
+      <div class="nav-group">
+        <h2><span aria-hidden="true">02</span>クエスト</h2>
+        <ul>
+          <li><a href="#quest-1">[クエスト名1]</a></li>
+          <li><a href="#quest-2">[クエスト名2]</a></li>
+          <li><a href="#quest-3">[クエスト名3]</a></li>
+        </ul>
+      </div>
+      <div class="nav-group">
+        <h2><span aria-hidden="true">03</span>Steam実績</h2>
+        <ul>
+          <li><a href="#achievement-1">[実績名1]</a></li>
+          <li><a href="#achievement-2">[実績名2]</a></li>
+        </ul>
+      </div>
+      <div class="nav-group">
+        <h2><span aria-hidden="true">04</span>隠し要素</h2>
+        <ul><li><a href="#secret-1">[隠し要素名1]</a></li></ul>
+      </div>
+    </nav>
+    <div class="sidebar-footer"><a href="./">← 公式サイトへ</a></div>
+  </aside>
+  <div class="page">
+    <header class="topbar"><strong>リブラの見た夢 / 攻略ガイド</strong><a href="./app.html">ゲームを遊ぶ ↗</a></header>
+    <main id="main" tabindex="-1">
+      <p class="eyebrow">ADVENTURE GUIDE</p>
+      <h1>攻略ガイド</h1>
+      <p class="intro">物語の進め方から、夢の世界に隠された要素まで。</p>
+      <div class="notice"><strong>制作中</strong><span>このページはモックです。攻略内容は順次追加予定です。</span></div>
+      <!-- Keep every article in the initial HTML. JavaScript only switches visibility;
+           without it, this is a readable single document with ordinary anchor links.
+           Fragment identifiers locate sections, not separately indexed pages. -->
+      <article class="guide-section" id="how-to-play" aria-labelledby="how-to-play-title">
+        <p class="section-category">01 / メインシナリオ</p>
+        <div class="section-heading"><h2 id="how-to-play-title" tabindex="-1">ゲームの進め方</h2><span class="badge">準備中</span></div>
+        <p class="section-desc">基本的な操作や、探索の進め方をまとめる予定です。</p>
+        <section class="placeholder"><h3>基本操作</h3><p>ここに操作方法の説明が入ります。</p><div class="skeleton" aria-hidden="true"><span></span><span></span></div></section>
+        <section class="placeholder"><h3>探索の流れ</h3><p>ここにゲームの基本的な流れが入ります。</p><div class="skeleton" aria-hidden="true"><span></span><span></span></div></section>
+        <nav class="section-next" aria-label="次の項目"><a href="#walkthrough"><small>次の項目</small>攻略チャート →</a></nav>
+      </article>
+      <article class="guide-section" id="walkthrough" aria-labelledby="walkthrough-title">
+        <p class="section-category">01 / メインシナリオ</p>
+        <div class="section-heading"><h2 id="walkthrough-title" tabindex="-1">攻略チャート</h2><span class="badge">準備中</span></div>
+        <p class="section-desc">メインシナリオの攻略手順をまとめる予定です。</p>
+        <section class="placeholder"><h3>攻略の流れ</h3><p>ここに進行順と各段階の説明が入ります。</p><div class="skeleton" aria-hidden="true"><span></span><span></span></div></section>
+        <nav class="section-next" aria-label="次の項目"><a href="#endings"><small>次の項目</small>エンディング分岐 →</a></nav>
+      </article>
+      <article class="guide-section" id="endings" aria-labelledby="endings-title">
+        <p class="section-category">01 / メインシナリオ</p>
+        <div class="section-heading"><h2 id="endings-title" tabindex="-1">エンディング分岐</h2><span class="badge">準備中</span></div>
+        <p class="section-desc">各エンディングの分岐条件をまとめる予定です。</p>
+        <section class="placeholder"><h3>分岐条件</h3><p>ここにエンディングごとの条件が入ります。</p><div class="skeleton" aria-hidden="true"><span></span><span></span></div></section>
+      </article>
+      <article class="guide-section" id="quest-1" aria-labelledby="quest-1-title">
+        <p class="section-category">02 / クエスト</p>
+        <div class="section-heading"><h2 id="quest-1-title" tabindex="-1">[クエスト名1]</h2><span class="badge">準備中</span></div>
+        <p class="section-desc">クエストの発生条件と攻略手順をまとめる予定です。</p>
+        <section class="placeholder"><h3>発生条件・場所</h3><p>ここにクエストの開始条件が入ります。</p><div class="skeleton" aria-hidden="true"><span></span><span></span></div></section>
+        <section class="placeholder"><h3>攻略手順・報酬</h3><p>ここに達成までの手順と報酬が入ります。</p><div class="skeleton" aria-hidden="true"><span></span><span></span></div></section>
+      </article>
+      <article class="guide-section" id="quest-2" aria-labelledby="quest-2-title">
+        <p class="section-category">02 / クエスト</p>
+        <div class="section-heading"><h2 id="quest-2-title" tabindex="-1">[クエスト名2]</h2><span class="badge">準備中</span></div>
+        <p class="section-desc">クエストの発生条件と攻略手順をまとめる予定です。</p>
+        <section class="placeholder"><h3>クエスト情報</h3><p>ここに発生条件・攻略手順・報酬が入ります。</p><div class="skeleton" aria-hidden="true"><span></span><span></span></div></section>
+      </article>
+      <article class="guide-section" id="quest-3" aria-labelledby="quest-3-title">
+        <p class="section-category">02 / クエスト</p>
+        <div class="section-heading"><h2 id="quest-3-title" tabindex="-1">[クエスト名3]</h2><span class="badge">準備中</span></div>
+        <p class="section-desc">クエストの発生条件と攻略手順をまとめる予定です。</p>
+        <section class="placeholder"><h3>クエスト情報</h3><p>ここに発生条件・攻略手順・報酬が入ります。</p><div class="skeleton" aria-hidden="true"><span></span><span></span></div></section>
+      </article>
+      <article class="guide-section" id="achievement-1" aria-labelledby="achievement-1-title">
+        <p class="section-category">03 / Steam実績</p>
+        <div class="section-heading"><h2 id="achievement-1-title" tabindex="-1">[実績名1]</h2><span class="badge">準備中</span></div>
+        <p class="section-desc">実績の解除条件と達成方法をまとめる予定です。</p>
+        <section class="placeholder"><h3>解除条件・達成方法</h3><p>ここに実績の条件と補足が入ります。</p><div class="skeleton" aria-hidden="true"><span></span><span></span></div></section>
+      </article>
+      <article class="guide-section" id="achievement-2" aria-labelledby="achievement-2-title">
+        <p class="section-category">03 / Steam実績</p>
+        <div class="section-heading"><h2 id="achievement-2-title" tabindex="-1">[実績名2]</h2><span class="badge">準備中</span></div>
+        <p class="section-desc">実績の解除条件と達成方法をまとめる予定です。</p>
+        <section class="placeholder"><h3>解除条件・達成方法</h3><p>ここに実績の条件と補足が入ります。</p><div class="skeleton" aria-hidden="true"><span></span><span></span></div></section>
+      </article>
+      <article class="guide-section" id="secret-1" aria-labelledby="secret-1-title">
+        <p class="section-category">04 / 隠し要素</p>
+        <div class="section-heading"><h2 id="secret-1-title" tabindex="-1">[隠し要素名1]</h2><span class="badge">準備中</span></div>
+        <p class="section-desc">隠し要素の発見条件と確認方法をまとめる予定です。</p>
+        <section class="placeholder"><h3>発見条件・場所</h3><p>ここに隠し要素の詳細が入ります。</p><div class="skeleton" aria-hidden="true"><span></span><span></span></div></section>
+      </article>
+      <footer class="page-footer"><span>リブラの見た夢 — 攻略ガイド</span><span>© Laineus</span></footer>
+    </main>
+  </div>
+  <script>
+    (() => {
+      const sections = [...document.querySelectorAll('.guide-section')];
+      const links = [...document.querySelectorAll('.toc a')];
+      const menu = document.querySelector('.toc');
+      const menuButton = document.querySelector('.menu-toggle');
+      const closeMenu = () => {
+        menu.classList.remove('is-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.textContent = '目次を開く';
+      };
+      const showSection = (moveFocus = false) => {
+        let id;
+        try { id = decodeURIComponent(location.hash.slice(1)); } catch { id = ''; }
+        if (id === 'main' && moveFocus) return;
+        const target = document.getElementById(id);
+        const active = sections.find(section => section === target || section.contains(target)) || sections[0];
+        sections.forEach(section => { section.hidden = section !== active; });
+        links.forEach(link => {
+          if (link.hash === '#' + active.id) link.setAttribute('aria-current', 'location');
+          else link.removeAttribute('aria-current');
+        });
+        closeMenu();
+        if (moveFocus && id !== 'main') {
+          active.querySelector('h2').focus({ preventScroll: true });
+          document.querySelector('main').scrollIntoView({ block: 'start' });
+        }
+      };
+      menuButton.addEventListener('click', () => {
+        const open = menu.classList.toggle('is-open');
+        menuButton.setAttribute('aria-expanded', String(open));
+        menuButton.textContent = open ? '目次を閉じる' : '目次を開く';
+      });
+      menu.addEventListener('keydown', event => {
+        if (event.key === 'Escape') { closeMenu(); menuButton.focus(); }
+      });
+      // Native anchors retain sharing, new-tab navigation and browser history.
+      document.addEventListener('click', event => {
+        const link = event.target.closest('.toc a, .section-next a');
+        if (link && link.hash === location.hash && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey && event.button === 0) {
+          event.preventDefault();
+          showSection(true);
+        }
+      });
+      window.addEventListener('hashchange', () => showSection(true));
+      showSection();
+      document.documentElement.classList.add('enhanced');
+    })();
+  </script>
+</body>
+</html>
