@@ -42,7 +42,7 @@
     const pageURL = new URL(baseURL);
     if (active !== home) pageURL.searchParams.set('page', active.id);
     canonical.href = pageURL.href;
-    document.querySelectorAll('[data-language-link]').forEach(link => {
+    document.querySelectorAll('[data-language-link], [data-guide-alternate]').forEach(link => {
       const translatedURL = new URL(link.href);
       if (active === home) translatedURL.searchParams.delete('page');
       else translatedURL.searchParams.set('page', active.id);
