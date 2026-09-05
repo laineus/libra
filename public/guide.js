@@ -85,5 +85,6 @@
     if (location.hash !== '#main') showSection(true);
   });
   showSection();
+  window.scrollTo({ top: 0, left: 0 });
   document.documentElement.classList.add('enhanced');
 })();
