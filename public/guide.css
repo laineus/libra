@@ -22,6 +22,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid #ba7200; outline-offs
 .nav-group a[aria-current] { background: var(--yellow); color: var(--brown); }
 .sidebar-footer { margin-top: 32px; padding-top: 18px; border-top: 1px solid #59432c; font-size: 11px; }
 .menu-toggle { display: none; }
+.home-menu-toggle { display: none; }
 .page { margin-left: 300px; }
 .topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 19px 48px; border-bottom: 1px solid var(--line); font-size: 12px; }
 .topbar strong { font-weight: 400; letter-spacing: .13em; }
@@ -90,6 +91,8 @@ h1 { margin: 0; color: var(--brown); font-size: 30px; font-weight: 800; letter-s
   .enhanced .toc { position: fixed; inset: 82px 0 0; margin: 0; padding: 24px 22px 25vh; padding-bottom: 25dvh; background: #221100; overflow-y: auto; overscroll-behavior: contain; }
   main, .guide-section { scroll-margin-top: 98px; }
   .enhanced .menu-toggle { display: block; position: absolute; top: 22px; right: 22px; padding: 6px 13px; border: 1px solid #796344; border-radius: 4px; background: transparent; color: #f6eddb; font-size: 12px; }
+  .enhanced .home-menu-toggle { display: block; width: 100%; margin: -8px 0 28px; padding: 11px 16px; border: 1px solid #b79a68; border-radius: 4px; background: #f2ead9; color: var(--brown); font-size: 13px; }
+  .enhanced .home-menu-toggle:hover { background: #eadfc9; }
   .toc { margin-top: 24px; }
   .enhanced .toc:not(.is-open) { display: none; }
   .sidebar-footer { display: none; }

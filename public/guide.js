@@ -7,6 +7,8 @@
   });
   const menu = document.querySelector('.toc');
   const menuButton = document.querySelector('.menu-toggle');
+  const menuButtons = [menuButton, ...document.querySelectorAll('.home-menu-toggle')];
+  let activeMenuButton = menuButton;
   // Localized text and the language-specific base URL belong to each HTML file.
   const siteTitle = document.title;
   const description = document.querySelector('meta[name="description"]');
@@ -15,8 +17,10 @@
   const baseURL = canonical.href;
   const closeMenu = () => {
     menu.classList.remove('is-open');
-    menuButton.setAttribute('aria-expanded', 'false');
-    menuButton.textContent = menuButton.dataset.openLabel;
+    menuButtons.forEach(button => {
+      button.setAttribute('aria-expanded', 'false');
+      button.textContent = button.dataset.openLabel;
+    });
   };
   const findSection = id => {
     const target = document.getElementById(id);
@@ -63,13 +67,16 @@
       document.querySelector('main').scrollIntoView({ block: 'start' });
     }
   };
-  menuButton.addEventListener('click', () => {
+  menuButtons.forEach(button => button.addEventListener('click', () => {
+    activeMenuButton = button;
     const open = menu.classList.toggle('is-open');
-    menuButton.setAttribute('aria-expanded', String(open));
-    menuButton.textContent = open ? menuButton.dataset.closeLabel : menuButton.dataset.openLabel;
-  });
+    menuButtons.forEach(toggle => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.textContent = open ? toggle.dataset.closeLabel : toggle.dataset.openLabel;
+    });
+  }));
   menu.addEventListener('keydown', event => {
-    if (event.key === 'Escape') { closeMenu(); menuButton.focus(); }
+    if (event.key === 'Escape') { closeMenu(); activeMenuButton.focus(); }
   });
   document.addEventListener('click', event => {
     const link = event.target.closest('a[href]');
